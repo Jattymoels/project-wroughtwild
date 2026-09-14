@@ -1,0 +1,563 @@
+{
+  "wood-end-close-before.png": {
+    "source": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-pass02-g1-forward_plus-g1-forward_plus\\wood-end-close-daylight.png",
+    "sha256": "98f69e64c136a80b72717ffc04c9dc54f552fa082e122546b444510be5e3e929",
+    "pixels": [
+      1440,
+      900
+    ],
+    "transform": "none; exact engine PNG bytes"
+  },
+  "slate-cut-close-before.png": {
+    "source": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-pass02-g1-forward_plus-g1-forward_plus\\slate-cut-close-daylight.png",
+    "sha256": "e37ad7bf0b97c0ce9d151d07da2cca437a415b65f7b18528254c423babdfb621",
+    "pixels": [
+      1440,
+      900
+    ],
+    "transform": "none; exact engine PNG bytes"
+  },
+  "metal-joins-eye-before.png": {
+    "source": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-pass02-g1-forward_plus-g1-forward_plus\\metal-joins-eye-daylight.png",
+    "sha256": "62135c2106821fe0fb5ded98d3ab3ffaa575187ac36602dafe1a1c473e4b01d6",
+    "pixels": [
+      1440,
+      900
+    ],
+    "transform": "none; exact engine PNG bytes"
+  },
+  "roofs-rotations-close-before.png": {
+    "source": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-pass02-g1-forward_plus-g1-forward_plus\\roofs-rotations-close-daylight.png",
+    "sha256": "a52286ebfb25efd20eef2dbc493351e548e8bc6a01a76e574ac01ba5489f4dc1",
+    "pixels": [
+      1440,
+      900
+    ],
+    "transform": "none; exact engine PNG bytes"
+  },
+  "glass-sorting-axis-before.png": {
+    "source": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-pass02-g1-forward_plus-g1-forward_plus\\glass-sorting-axis-daylight.png",
+    "sha256": "703ec61f99ff02df0e4e82530f240f8563964bd7359ad20efcde4e846833a6bc",
+    "pixels": [
+      1440,
+      900
+    ],
+    "transform": "none; exact engine PNG bytes"
+  },
+  "paid-exterior-eye-daylight-before.png": {
+    "source": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-g1-forward_plus-g1-forward_plus\\paid-exterior-eye-daylight.png",
+    "sha256": "b801a89074f5000a7f08b708e75b4b60fb348a4f7bf601dc65879249109f2434",
+    "pixels": [
+      1440,
+      900
+    ],
+    "transform": "none; exact engine PNG bytes"
+  },
+  "paid-exterior-eye-dusk-before.png": {
+    "source": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-g1-forward_plus-g1-forward_plus\\paid-exterior-eye-dusk.png",
+    "sha256": "827166070d15067721fff1b2e30bff7d6434409a3fe688a59be3401f07cbd6de",
+    "pixels": [
+      1440,
+      900
+    ],
+    "transform": "none; exact engine PNG bytes"
+  },
+  "paid-interior-close-daylight-before.png": {
+    "source": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-g1-forward_plus-g1-forward_plus\\paid-interior-close-daylight.png",
+    "sha256": "9948f975069f3cda5003151e789a08906530ece51645c2b50518203c466c03e8",
+    "pixels": [
+      1440,
+      900
+    ],
+    "transform": "none; exact engine PNG bytes"
+  },
+  "paid-interior-close-dusk-before.png": {
+    "source": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-g1-forward_plus-g1-forward_plus\\paid-interior-close-dusk.png",
+    "sha256": "88b81bc5795f7d8ffb3841f1cbb998dc3bdacbea9b29e104bcce4fdd2c847311",
+    "pixels": [
+      1440,
+      900
+    ],
+    "transform": "none; exact engine PNG bytes"
+  },
+  "wood-end-close-after.png": {
+    "source": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-pass02-r3-forward_plus-candidate-forward_plus\\wood-end-close-daylight.png",
+    "sha256": "32f15643c24689151286eaccb4cb6a33aecceb6fce959a2d871317e8a5b01657",
+    "pixels": [
+      1440,
+      900
+    ],
+    "transform": "none; exact engine PNG bytes"
+  },
+  "slate-cut-close-after.png": {
+    "source": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-pass02-r3-forward_plus-candidate-forward_plus\\slate-cut-close-daylight.png",
+    "sha256": "0415e2ee5854ed2037466191cb491b2c5eaed641a56ca3c981c0c9afcfa11284",
+    "pixels": [
+      1440,
+      900
+    ],
+    "transform": "none; exact engine PNG bytes"
+  },
+  "metal-joins-eye-after.png": {
+    "source": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-pass02-r3-forward_plus-candidate-forward_plus\\metal-joins-eye-daylight.png",
+    "sha256": "2b62c4410893ff8dd32e3351466bb35ff115d28b817cee2ef6b1e5a7c51eaaaa",
+    "pixels": [
+      1440,
+      900
+    ],
+    "transform": "none; exact engine PNG bytes"
+  },
+  "roofs-rotations-close-after.png": {
+    "source": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-pass02-r3-forward_plus-candidate-forward_plus\\roofs-rotations-close-daylight.png",
+    "sha256": "cafe84f23d0b7a63651ec8851f7c0bd5998c976ebd3782d7520eeb8c66c5e950",
+    "pixels": [
+      1440,
+      900
+    ],
+    "transform": "none; exact engine PNG bytes"
+  },
+  "glass-sorting-axis-after.png": {
+    "source": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-pass02-r3-forward_plus-candidate-forward_plus\\glass-sorting-axis-daylight.png",
+    "sha256": "4b575b3211082ff7a1a32a4b8bb7ff2cbda6389722f6476287dbaea577f71ec1",
+    "pixels": [
+      1440,
+      900
+    ],
+    "transform": "none; exact engine PNG bytes"
+  },
+  "paid-exterior-eye-daylight-after.png": {
+    "source": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-r3-forward_plus-candidate-forward_plus\\paid-exterior-eye-daylight.png",
+    "sha256": "66a6e00788f7da0cb71ff3826e6d6e675348b8d8bca3c70bc4fc8951abacbca7",
+    "pixels": [
+      1440,
+      900
+    ],
+    "transform": "none; exact engine PNG bytes"
+  },
+  "paid-exterior-eye-dusk-after.png": {
+    "source": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-r3-forward_plus-candidate-forward_plus\\paid-exterior-eye-dusk.png",
+    "sha256": "e18778b3b6cc2a5b17595b415a0ddc893c1d2fb1da77610862fb7375fbee97e4",
+    "pixels": [
+      1440,
+      900
+    ],
+    "transform": "none; exact engine PNG bytes"
+  },
+  "paid-interior-close-daylight-after.png": {
+    "source": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-r3-forward_plus-candidate-forward_plus\\paid-interior-close-daylight.png",
+    "sha256": "7c82b47679df54dadc6b1a78edfbd511e12d721a76e676a75c384148ff4ffc3d",
+    "pixels": [
+      1440,
+      900
+    ],
+    "transform": "none; exact engine PNG bytes"
+  },
+  "paid-interior-close-dusk-after.png": {
+    "source": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-r3-forward_plus-candidate-forward_plus\\paid-interior-close-dusk.png",
+    "sha256": "494c94c467208add9d156b172b3c28c8613ec4674084cc320a9f799cb51dd1a3",
+    "pixels": [
+      1440,
+      900
+    ],
+    "transform": "none; exact engine PNG bytes"
+  },
+  "octagon-triangles-eye-daylight.png": {
+    "source": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-pass02-r3-forward_plus-candidate-forward_plus\\octagon-triangles-eye-daylight.png",
+    "sha256": "e5b19873a8cad54c327daf8ceb5adc666e018dc6742142987858068fd1b04f3c",
+    "pixels": [
+      1440,
+      900
+    ],
+    "transform": "none; exact engine PNG bytes"
+  },
+  "wood-joins-eye-shade.png": {
+    "source": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-pass02-r3-forward_plus-candidate-forward_plus\\wood-joins-eye-shade.png",
+    "sha256": "4a08ecb5152ec8c24a44add69edd027dc87f824609ad32d6ce9e6e5acc6929c3",
+    "pixels": [
+      1440,
+      900
+    ],
+    "transform": "none; exact engine PNG bytes"
+  },
+  "wood-joins-eye-dusk.png": {
+    "source": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-pass02-r3-forward_plus-candidate-forward_plus\\wood-joins-eye-dusk.png",
+    "sha256": "4d3048798165c43a4b74b9d4e39e72ec6bc476d22588d8c4a38dbffd998dd3a7",
+    "pixels": [
+      1440,
+      900
+    ],
+    "transform": "none; exact engine PNG bytes"
+  },
+  "covering-edge-close-daylight.png": {
+    "source": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-pass02-r3-forward_plus-candidate-forward_plus\\covering-edge-close-daylight.png",
+    "sha256": "be163d95a95a5ab6011815a878661fee7a37e014c510daa78c892ccc5eaf0e7d",
+    "pixels": [
+      1440,
+      900
+    ],
+    "transform": "none; exact engine PNG bytes"
+  },
+  "wood-end-close-compatibility.png": {
+    "source": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-pass02-r3-gl_compatibility-candidate-gl_compatibility\\wood-end-close-daylight.png",
+    "sha256": "0069ebe142a3a76068f6c8b5df9ae4b65ca180c68ebdb9e412f635ad2b5083a2",
+    "pixels": [
+      1440,
+      900
+    ],
+    "transform": "none; exact engine PNG bytes"
+  },
+  "slate-cut-close-compatibility.png": {
+    "source": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-pass02-r3-gl_compatibility-candidate-gl_compatibility\\slate-cut-close-daylight.png",
+    "sha256": "e9060aba18bcc2a380d1fa2196af1c529381f31d695ed7bce2e30389f4ba7cc2",
+    "pixels": [
+      1440,
+      900
+    ],
+    "transform": "none; exact engine PNG bytes"
+  },
+  "glass-sorting-axis-compatibility.png": {
+    "source": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-pass02-r3-gl_compatibility-candidate-gl_compatibility\\glass-sorting-axis-daylight.png",
+    "sha256": "e08e3f8be88f607c5515cd52ae6d518cf3ede6c8c2550842d21a7780e1c82075",
+    "pixels": [
+      1440,
+      900
+    ],
+    "transform": "none; exact engine PNG bytes"
+  },
+  "roofs-rotations-close-compatibility.png": {
+    "source": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-pass02-r3-gl_compatibility-candidate-gl_compatibility\\roofs-rotations-close-daylight.png",
+    "sha256": "4c98c8c5e8d01dbafac989a2ece606558e623c5fedcd35d548b8e9fcd7d57df7",
+    "pixels": [
+      1440,
+      900
+    ],
+    "transform": "none; exact engine PNG bytes"
+  },
+  "metric-10cm.png": {
+    "source": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-pass02-r3-forward_plus-candidate-forward_plus\\metric-10cm.png",
+    "sha256": "7eda393b32b122c21d39b57aa2e4fa06a66a260c670ae2908f35cd43377186e7",
+    "pixels": [
+      1440,
+      900
+    ],
+    "transform": "none; exact engine PNG bytes"
+  },
+  "paid-native-walk.gif": {
+    "sha256": "e8b0b1704275a9d17fe6471cb0494cc2683cea1d99295e94d3aa8d3148691e74",
+    "sources": [
+      {
+        "path": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-r3-forward_plus-candidate-forward_plus\\walk\\000.png",
+        "sha256": "f97826a5cfad77ae577b495fc5377bea92d1bd08a8e50e19695174e98f18bec4"
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-r3-forward_plus-candidate-forward_plus\\walk\\003.png",
+        "sha256": "9c0827ecdd6d663fc51c237ff565ac1ac11bc1a7931e19c2d0a525473becadcc"
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-r3-forward_plus-candidate-forward_plus\\walk\\006.png",
+        "sha256": "a957287893c241cfe9c0636d1fb353e06f8aeb2afae227ec8233369cd0bc955d"
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-r3-forward_plus-candidate-forward_plus\\walk\\009.png",
+        "sha256": "a957287893c241cfe9c0636d1fb353e06f8aeb2afae227ec8233369cd0bc955d"
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-r3-forward_plus-candidate-forward_plus\\walk\\012.png",
+        "sha256": "a957287893c241cfe9c0636d1fb353e06f8aeb2afae227ec8233369cd0bc955d"
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-r3-forward_plus-candidate-forward_plus\\walk\\015.png",
+        "sha256": "a957287893c241cfe9c0636d1fb353e06f8aeb2afae227ec8233369cd0bc955d"
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-r3-forward_plus-candidate-forward_plus\\walk\\018.png",
+        "sha256": "a957287893c241cfe9c0636d1fb353e06f8aeb2afae227ec8233369cd0bc955d"
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-r3-forward_plus-candidate-forward_plus\\walk\\021.png",
+        "sha256": "a957287893c241cfe9c0636d1fb353e06f8aeb2afae227ec8233369cd0bc955d"
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-r3-forward_plus-candidate-forward_plus\\walk\\024.png",
+        "sha256": "a957287893c241cfe9c0636d1fb353e06f8aeb2afae227ec8233369cd0bc955d"
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-r3-forward_plus-candidate-forward_plus\\walk\\027.png",
+        "sha256": "a957287893c241cfe9c0636d1fb353e06f8aeb2afae227ec8233369cd0bc955d"
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-r3-forward_plus-candidate-forward_plus\\walk\\030.png",
+        "sha256": "a957287893c241cfe9c0636d1fb353e06f8aeb2afae227ec8233369cd0bc955d"
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-r3-forward_plus-candidate-forward_plus\\walk\\033.png",
+        "sha256": "a957287893c241cfe9c0636d1fb353e06f8aeb2afae227ec8233369cd0bc955d"
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-r3-forward_plus-candidate-forward_plus\\walk\\036.png",
+        "sha256": "a957287893c241cfe9c0636d1fb353e06f8aeb2afae227ec8233369cd0bc955d"
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-r3-forward_plus-candidate-forward_plus\\walk\\039.png",
+        "sha256": "a957287893c241cfe9c0636d1fb353e06f8aeb2afae227ec8233369cd0bc955d"
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-r3-forward_plus-candidate-forward_plus\\walk\\042.png",
+        "sha256": "a957287893c241cfe9c0636d1fb353e06f8aeb2afae227ec8233369cd0bc955d"
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-r3-forward_plus-candidate-forward_plus\\walk\\045.png",
+        "sha256": "a957287893c241cfe9c0636d1fb353e06f8aeb2afae227ec8233369cd0bc955d"
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-r3-forward_plus-candidate-forward_plus\\walk\\048.png",
+        "sha256": "a957287893c241cfe9c0636d1fb353e06f8aeb2afae227ec8233369cd0bc955d"
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-r3-forward_plus-candidate-forward_plus\\walk\\051.png",
+        "sha256": "a957287893c241cfe9c0636d1fb353e06f8aeb2afae227ec8233369cd0bc955d"
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-r3-forward_plus-candidate-forward_plus\\walk\\054.png",
+        "sha256": "a957287893c241cfe9c0636d1fb353e06f8aeb2afae227ec8233369cd0bc955d"
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-r3-forward_plus-candidate-forward_plus\\walk\\057.png",
+        "sha256": "a957287893c241cfe9c0636d1fb353e06f8aeb2afae227ec8233369cd0bc955d"
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-r3-forward_plus-candidate-forward_plus\\walk\\060.png",
+        "sha256": "a957287893c241cfe9c0636d1fb353e06f8aeb2afae227ec8233369cd0bc955d"
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-r3-forward_plus-candidate-forward_plus\\walk\\063.png",
+        "sha256": "a957287893c241cfe9c0636d1fb353e06f8aeb2afae227ec8233369cd0bc955d"
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-r3-forward_plus-candidate-forward_plus\\walk\\066.png",
+        "sha256": "a957287893c241cfe9c0636d1fb353e06f8aeb2afae227ec8233369cd0bc955d"
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-r3-forward_plus-candidate-forward_plus\\walk\\069.png",
+        "sha256": "a957287893c241cfe9c0636d1fb353e06f8aeb2afae227ec8233369cd0bc955d"
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-r3-forward_plus-candidate-forward_plus\\walk\\072.png",
+        "sha256": "a957287893c241cfe9c0636d1fb353e06f8aeb2afae227ec8233369cd0bc955d"
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-r3-forward_plus-candidate-forward_plus\\walk\\075.png",
+        "sha256": "a957287893c241cfe9c0636d1fb353e06f8aeb2afae227ec8233369cd0bc955d"
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-r3-forward_plus-candidate-forward_plus\\walk\\078.png",
+        "sha256": "a957287893c241cfe9c0636d1fb353e06f8aeb2afae227ec8233369cd0bc955d"
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-r3-forward_plus-candidate-forward_plus\\walk\\081.png",
+        "sha256": "a957287893c241cfe9c0636d1fb353e06f8aeb2afae227ec8233369cd0bc955d"
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-r3-forward_plus-candidate-forward_plus\\walk\\084.png",
+        "sha256": "a957287893c241cfe9c0636d1fb353e06f8aeb2afae227ec8233369cd0bc955d"
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\evidence\\r3-home-pass02-paid-r3-forward_plus-candidate-forward_plus\\walk\\087.png",
+        "sha256": "a957287893c241cfe9c0636d1fb353e06f8aeb2afae227ec8233369cd0bc955d"
+      }
+    ],
+    "pixels": [
+      640,
+      400
+    ],
+    "frames": 30,
+    "playback_ms_per_frame": 100,
+    "scope": "Illustrative playback of actual native controller captures, resized and GIF-quantized; no interpolation. Full original PNGs and exact engine tick stamps remain in the sealed evidence. This is not a performance recording.",
+    "motion_tick_start": 80,
+    "motion_tick_end": 322,
+    "motion_physics_frames": [
+      81,
+      89,
+      90,
+      91,
+      97,
+      98,
+      99,
+      105,
+      106,
+      107,
+      113,
+      114,
+      115,
+      121,
+      122,
+      123,
+      129,
+      130,
+      131,
+      137,
+      138,
+      139,
+      145,
+      146,
+      147,
+      153,
+      154,
+      155,
+      161,
+      162,
+      163,
+      169,
+      170,
+      171,
+      177,
+      178,
+      179,
+      185,
+      186,
+      187,
+      193,
+      194,
+      195,
+      201,
+      202,
+      203,
+      209,
+      210,
+      211,
+      217,
+      218,
+      219,
+      225,
+      226,
+      227,
+      233,
+      234,
+      235,
+      241,
+      242,
+      243,
+      249,
+      250,
+      251,
+      257,
+      258,
+      259,
+      265,
+      266,
+      267,
+      273,
+      274,
+      275,
+      281,
+      282,
+      283,
+      289,
+      290,
+      291,
+      297,
+      298,
+      299,
+      305,
+      306,
+      307,
+      313,
+      314,
+      315,
+      321,
+      322
+    ],
+    "motion_positions": [
+      "(460.5, 32.97, 444.5)",
+      "(460.5, 32.96084, 443.8333)",
+      "(460.5, 32.96084, 443.7499)",
+      "(460.5, 32.96084, 443.6666)",
+      "(460.5, 32.96084, 443.1665)",
+      "(460.5, 32.96084, 443.0832)",
+      "(460.5, 32.96084, 442.9998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)",
+      "(460.5, 32.96084, 442.4998)"
+    ]
+  }
+}
