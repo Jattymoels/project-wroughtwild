@@ -5,7 +5,7 @@ The owner starts this worker manually. Do not create another task or reviewer.
 ## Workspace
 
 - Owner depot: `C:/Users/Matty/Dev/project-wroughtwild`, branch `main`.
-- Worker checkout: `C:/Users/Matty/Dev/project-wroughtwild/build/mainline-art/a1/worktree`.
+- Worker checkout: `D:/project-wroughtwild-mainline-art-a1`.
 - Worker branch: `codex/mainline-art-a1`, based on current main including this handoff.
 - Engine: `C:/Users/Matty/Godot/Godot_v4.5-stable_win64.exe`.
 - Read-only R8 input: `D:/project-wroughtwild-art07-r8/build/art07-repairs/r8/v01/handoff-final`.
@@ -14,13 +14,18 @@ The owner starts this worker manually. Do not create another task or reviewer.
 - Put new test logs/private APPDATA under the worker's ignored `build/a1/`.
   Do not run the input package or overwrite its files.
 - Coordinator setup records the actual base, setup duration and native-DLL reuse
-  in the local sibling `SETUP.md`. Count that setup time in A1's verification budget.
+  in the worker's ignored `build/a1/SETUP.md`. Count that setup time in A1's verification budget.
+- C: had only about 400 MB free at setup; a full checkout there failed and Git
+  removed it. D: has ample space. This linked worktree still stores Git objects
+  in the C: owner depot: check capacity before staging large new assets. Preserve
+  old packages/saves and report a concrete capacity blocker; do not delete them.
 
 If the workspace is already prepared, use it; do not recreate it. If absent, the
 coordinator can prepare it once from the owner depot using:
 
 ```powershell
-git -C C:/Users/Matty/Dev/project-wroughtwild worktree add -b codex/mainline-art-a1 C:/Users/Matty/Dev/project-wroughtwild/build/mainline-art/a1/worktree main
+git -C C:/Users/Matty/Dev/project-wroughtwild worktree add D:/project-wroughtwild-mainline-art-a1 codex/mainline-art-a1
+git -C D:/project-wroughtwild-mainline-art-a1 merge --ff-only main
 ```
 
 ## Exact implementation instruction

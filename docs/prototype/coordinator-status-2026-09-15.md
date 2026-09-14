@@ -92,6 +92,13 @@ art. PLAY-01–04 remain open until actual fixes/feedback establish otherwise.
 
 ## Handoffs and playtesting
 
+Setup found about 400 MB free on C:. The attempted new checkout there failed
+and Git removed it; A1 uses `D:/project-wroughtwild-mainline-art-a1` instead.
+D: has ample space, but this linked worktree's Git objects and the owner main
+checkout remain on C:. New asset staging/main integration may require more C:
+space or a separately agreed depot relocation. Do not delete retained packages
+or saves to make room automatically.
+
 Every worker returns: what changed in play; material limits/open issues; checks
 actually run and elapsed verification time; exact commits; and a short launch/
 playtest recipe. The coordinator reuses that evidence, integrates only the slice,
