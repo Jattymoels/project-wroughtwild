@@ -56,6 +56,20 @@ approval review rejects publication, explain the stated reason and obtain the
 specific approval it requires; do not retry through another route. A local
 commit and a successful remote push must be reported separately.
 
+## Desktop comfort during automation
+
+The owner reported on 14 September 2026 that automated art/game runs interfere
+with moving the mouse across their monitors. Prefer background Blender jobs and
+headless Godot checks whenever the check does not require rendered output.
+For rendered captures, use a verified test-only mouse-capture opt-out and a
+non-focusing window where supported; hidden or offscreen launch alone does not
+prove that the cursor stays free. Prefer engine viewport captures and scripted
+camera/input over moving the desktop pointer. Keep real mouse-control tests
+explicit, and mention unavoidable foreground interaction before running them.
+Preserve normal play controls, source seals, active peer jobs and benchmark
+conditions; do not silently throttle measurements or edit running worktrees.
+This is a workflow preference, not evidence that existing launchers implement it.
+
 ## Prototype boundaries
 
 Unless a human-approved decision changes the boundary, do not introduce:
