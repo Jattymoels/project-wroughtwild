@@ -1,0 +1,154 @@
+{
+  "publication_commits": {
+    "b2": {
+      "branch": "codex/art07-b2",
+      "worker_tip": "8a64a9f558121c64f528bb09651a0e37b627933b",
+      "commits": [
+        "2f3cb09eab7ea613ac8a569acabc6c0e752e201e",
+        "8a64a9f558121c64f528bb09651a0e37b627933b"
+      ],
+      "main_commits": [
+        "f51e82436686149777b7f7eb66d85ebc5a31dd9d",
+        "8496673695266ce317d2ec0cd657abcfd6131ccc"
+      ],
+      "publication_report": "D:\\project-wroughtwild-art07-r7\\docs\\prototype\\art07-production\\publication-2026-09-11.json",
+      "publication_report_sha256": "876ad9adfea81a43dfb0d1201605f486f6f44f798a801738d5ac0a596e627a7b"
+    },
+    "b4": {
+      "branch": "codex/art07-b4",
+      "worker_tip": "434be791e71310c969b43da71f9b78a20adfe97d",
+      "commits": [
+        "ab403dcbfd37c92d188e6f488908ebd58b18706f",
+        "434be791e71310c969b43da71f9b78a20adfe97d"
+      ],
+      "main_commits": [
+        "a80c0a8269feb24e205da7670d214ae570ce2df0",
+        "224a67a01ab2a2daf12146b74ce9b079daca8b29"
+      ],
+      "publication_report": "D:\\project-wroughtwild-art07-r7\\docs\\prototype\\art07-production\\publication-2026-09-11-batch3.json",
+      "publication_report_sha256": "0d4578176450b0e7af128eea6dcd5a5c55eeaa006ce75b7e5e9e03ab9b06f889"
+    }
+  },
+  "selected_meshes": [
+    {
+      "role": "bramble",
+      "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v01\\runtime\\game\\b2\\assets\\bramble-lod2.glb",
+      "sha256": "169ef19731676b7d7e837dc927d5888fdb5e67d6aa3e94cfd6bd12600f8d35ab",
+      "bytes": 82408,
+      "status": "Unchanged verified G1 copy of B2 published far geometry",
+      "candidate_path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game\\b2\\assets\\bramble-lod2.glb"
+    },
+    {
+      "role": "fern-lush",
+      "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v01\\runtime\\game\\b2\\assets\\fern-lush-lod2.glb",
+      "sha256": "4f02005eb9e621cf17e75b3d5a4c945dce329594fb2cac59e579d12c81c0470a",
+      "bytes": 166980,
+      "status": "Unchanged verified G1 copy of B2 published far geometry",
+      "candidate_path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game\\b2\\assets\\fern-lush-lod2.glb"
+    },
+    {
+      "role": "fern-sparse",
+      "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v01\\runtime\\game\\b2\\assets\\fern-sparse-lod2.glb",
+      "sha256": "f14252ad2c49f7ab22fd75999cf097d33dd6fbde1d5cdd3fe7f38698236fa7bd",
+      "bytes": 112140,
+      "status": "Unchanged verified G1 copy of B2 published far geometry",
+      "candidate_path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game\\b2\\assets\\fern-sparse-lod2.glb"
+    },
+    {
+      "role": "grass-edge",
+      "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v01\\runtime\\game\\b2\\assets\\grass-edge-lod2.glb",
+      "sha256": "cf706e3c906ce7ee2ab14013cbb256c9fce143e22b0a94eabd3921abcc949ab0",
+      "bytes": 9912,
+      "status": "Unchanged verified G1 copy of B2 published far geometry",
+      "candidate_path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game\\b2\\assets\\grass-edge-lod2.glb"
+    },
+    {
+      "role": "grass-meadow",
+      "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v01\\runtime\\game\\b2\\assets\\grass-meadow-lod2.glb",
+      "sha256": "dd6222e2c1612cf505e1e6d07e4894328019b0022dcf7af0f7fcb6a39de73bb5",
+      "bytes": 18488,
+      "status": "Unchanged verified G1 copy of B2 published far geometry",
+      "candidate_path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game\\b2\\assets\\grass-meadow-lod2.glb"
+    },
+    {
+      "role": "sapling-shrub",
+      "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v01\\runtime\\game\\b2\\assets\\sapling-shrub-lod2.glb",
+      "sha256": "1a3960388003947ced7156cce33a9208d4f0486fdf650e8ab85814799eadf098",
+      "bytes": 13691048,
+      "status": "Unchanged verified G1 copy of B2 published far geometry",
+      "candidate_path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game\\b2\\assets\\sapling-shrub-lod2.glb"
+    }
+  ],
+  "reopened_masters": {
+    "sources": [
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\sources\\b2\\editable\\groundcover-master.blend",
+        "sha256": "8c67adb4c73be9f8d01da7a21aaaa903ae23e59739b5aee92dcfd9205a2d0033",
+        "meshes": 253,
+        "images": [
+          {
+            "name": "forest-floor.png",
+            "size": [
+              1254,
+              1254
+            ],
+            "packed": true,
+            "packed_bytes": 3699621
+          },
+          {
+            "name": "Image_0",
+            "size": [
+              2048,
+              2048
+            ],
+            "packed": true,
+            "packed_bytes": 8600757
+          },
+          {
+            "name": "Image_1",
+            "size": [
+              2048,
+              2048
+            ],
+            "packed": true,
+            "packed_bytes": 4494973
+          }
+        ],
+        "source_unchanged": true
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\sources\\b2\\editable\\shrub-source.blend",
+        "sha256": "910a5fe5d58a58d515ee110c204d3e1fea80a7606babf6ac1a2e95a5f5fba55c",
+        "meshes": 1,
+        "images": [
+          {
+            "name": "Image_0",
+            "size": [
+              2048,
+              2048
+            ],
+            "packed": true,
+            "packed_bytes": 8600757
+          },
+          {
+            "name": "Image_1",
+            "size": [
+              2048,
+              2048
+            ],
+            "packed": true,
+            "packed_bytes": 4494973
+          }
+        ],
+        "source_unchanged": true
+      }
+    ],
+    "scope": "Fresh read-only reopened original packed masters; R7 changes composition transforms and material bindings only. No geometry/map/source master edits."
+  },
+  "parent": {
+    "path": "D:/project-wroughtwild-art07-r1/build/art07-repairs/r1/v03/handoff",
+    "manifest_sha256": "9c0cd855d03cd5d88df1823538417da776775abd96a732eb7ad94f24a1f02c7e",
+    "files": 5940,
+    "bytes": 5622031314
+  }
+}

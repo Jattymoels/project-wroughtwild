@@ -1,0 +1,3995 @@
+[
+  {
+    "path": "D:\\project-wroughtwild-art07-r7\\docs\\art\\leyline-studies\\2026-09-14\\art07-repairs\\r7\\forward_plus-habitat-pair.jpg",
+    "sha256": "99167652ab7516b1d7ac3209fb2a83d70eda8ca2ae1ee382cab9e66da15e9456",
+    "sources": [
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\evidence\\r1-comparison\\r7-views-before-forward_plus\\habitat-player-height-day.png",
+        "sha256": "6bb7cea50d0c239dee835481adf05d12d706d67b3ef2671e5fb17707f0bb3328",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          47.83243817456237,
+          50.82274425257556,
+          55.61658472906556
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\habitat-player-height-day.png",
+        "sha256": "86d33c8118d8f81ba45c6a51a47398d9dc3ad9ee5a82ffe783d71ad49ce3b177",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          47.83623915930725,
+          50.64093668609724,
+          55.58821074041802
+        ]
+      }
+    ],
+    "pixels": [
+      1440,
+      450
+    ],
+    "operation": "Lanczos resize to 720 x 450 and row-major tiling. Left is executed R1 parent, right is V02 R7. JPEG94 encoding; original 1440 x 900 PNGs remain sealed. No painted/generated pixels."
+  },
+  {
+    "path": "D:\\project-wroughtwild-art07-r7\\docs\\art\\leyline-studies\\2026-09-14\\art07-repairs\\r7\\forward_plus-day-pairs.jpg",
+    "sha256": "3d056c59fa3a5d8cd2ecf87c5c4135804dbcbd1116a1757f621fe648e4547857",
+    "sources": [
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\evidence\\r1-comparison\\r7-views-before-forward_plus\\home-player-height-day.png",
+        "sha256": "5e15e46fa28baa448d0f709d3048a25f87c24cc2d616ed63d5f5655cee6e26c3",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          51.85870456224517,
+          57.21293690187817,
+          71.44938745690118
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\home-player-height-day.png",
+        "sha256": "1ab27fe194a8910e792a84e41272aca202cc1b08866f35c6ed2b993c95e782d3",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          51.37392438592412,
+          56.76897362939701,
+          71.22132170525668
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\evidence\\r1-comparison\\r7-views-before-forward_plus\\route-player-height-day.png",
+        "sha256": "4d821785d6cb786d4ce290954a5f2c10873e6a31107799da0c426e64656fee5d",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          47.761240997730845,
+          49.42679390746241,
+          44.866707638960335
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\route-player-height-day.png",
+        "sha256": "998d9cfda5e2d8c494f228900b4e9392d4a0b78f79180aa808ff5e6d2f773a7b",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          47.70323688504242,
+          49.30114118641146,
+          44.818595013508684
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\evidence\\r1-comparison\\r7-views-before-forward_plus\\clearing-player-height-day.png",
+        "sha256": "e057743d4abf98d08c76076e30d43afb61a109c64405b278c802815b4fc7f79c",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          47.73909506776323,
+          51.78414103009393,
+          64.34815105467324
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\clearing-player-height-day.png",
+        "sha256": "213adcc909bf3741c268f4866978402b258bee74e5689f5bec2f648884a6bfda",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          47.67699702685797,
+          51.710524884615765,
+          64.34827402778429
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\evidence\\r1-comparison\\r7-views-before-forward_plus\\habitat-player-height-day.png",
+        "sha256": "6bb7cea50d0c239dee835481adf05d12d706d67b3ef2671e5fb17707f0bb3328",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          47.83243817456237,
+          50.82274425257556,
+          55.61658472906556
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\habitat-player-height-day.png",
+        "sha256": "86d33c8118d8f81ba45c6a51a47398d9dc3ad9ee5a82ffe783d71ad49ce3b177",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          47.83623915930725,
+          50.64093668609724,
+          55.58821074041802
+        ]
+      }
+    ],
+    "pixels": [
+      1440,
+      1800
+    ],
+    "operation": "Lanczos resize to 720 x 450 and row-major tiling. Left is executed R1 parent, right is V02 R7. JPEG94 encoding; original 1440 x 900 PNGs remain sealed. No painted/generated pixels."
+  },
+  {
+    "path": "D:\\project-wroughtwild-art07-r7\\docs\\art\\leyline-studies\\2026-09-14\\art07-repairs\\r7\\forward_plus-shade-pairs.jpg",
+    "sha256": "c981c83903477af2fcc077aafc3bf6c92f632dd41df4ae7cdda2b90f01537a03",
+    "sources": [
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\evidence\\r1-comparison\\r7-views-before-forward_plus\\home-player-height-shade.png",
+        "sha256": "971f47444bbeb9f14550768ac7ca8267db97cdbda446e153debdcf0db829a71f",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          63.187417453944555,
+          68.85606334505364,
+          79.0006504511958
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\home-player-height-shade.png",
+        "sha256": "43c0e9e2295e6fa3a88e10be0b9e4b06b832a44879ebb1950a7b0c468119d24b",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          63.0634883430698,
+          68.75106736273791,
+          78.93251347444426
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\evidence\\r1-comparison\\r7-views-before-forward_plus\\route-player-height-shade.png",
+        "sha256": "568956b92bbf546c42f13e699806c07bbcec322ae93489a14c69525d54267c5c",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          36.40743370999252,
+          38.716022812824356,
+          44.08881108234062
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\route-player-height-shade.png",
+        "sha256": "4c12902702df3219b448ff39fdc87d35d886eb19d4138bdca2cbd1796c1ed20b",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          36.378699466625434,
+          38.682927965297395,
+          44.09616615505651
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\evidence\\r1-comparison\\r7-views-before-forward_plus\\clearing-player-height-shade.png",
+        "sha256": "b3b97a6d1f9081a6573ba524fbd9498f588391f39ed307912e2f6c51736bbb68",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          58.17162084530326,
+          62.47415525516644,
+          71.97708949619535
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\clearing-player-height-shade.png",
+        "sha256": "b19ec2152f60f8ccb7ba978bb9eb9e78f18e5bb410ac9a87520ad32f76b602cf",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          58.17920243264171,
+          62.49273455804435,
+          71.98807236473336
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\evidence\\r1-comparison\\r7-views-before-forward_plus\\habitat-player-height-shade.png",
+        "sha256": "16f6aa5998b2cd61ddf8a7f14bec8644f4ded954e2892e5f5e76c247abb468b4",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          50.177341302686145,
+          53.87975708832935,
+          60.07340453552558
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\habitat-player-height-shade.png",
+        "sha256": "e976abb1267ac58162e0cd7a4615eb4762fd03a9310e3f313919d34d0153a0a2",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          50.22932091021025,
+          53.92623198474133,
+          60.13456811758399
+        ]
+      }
+    ],
+    "pixels": [
+      1440,
+      1800
+    ],
+    "operation": "Lanczos resize to 720 x 450 and row-major tiling. Left is executed R1 parent, right is V02 R7. JPEG94 encoding; original 1440 x 900 PNGs remain sealed. No painted/generated pixels."
+  },
+  {
+    "path": "D:\\project-wroughtwild-art07-r7\\docs\\art\\leyline-studies\\2026-09-14\\art07-repairs\\r7\\forward_plus-dusk-pairs.jpg",
+    "sha256": "65a0fa7153a219ca516d3e159a634bd071ae705492f6aef5b4ec090fbbfdb549",
+    "sources": [
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\evidence\\r1-comparison\\r7-views-before-forward_plus\\home-player-height-dusk.png",
+        "sha256": "ab6527109c72537ab2e401faaf97df8eee8dd6cad3d01916296a96a7f502815f",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          60.01619625987372,
+          66.68143382277748,
+          78.66733616706726
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\home-player-height-dusk.png",
+        "sha256": "7874a056ea82a9cd60dc31f7fb3b794dbc73456eb4e2648f8c398b9450c3420f",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          59.81722589308766,
+          66.52642804346294,
+          78.59050471265033
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\evidence\\r1-comparison\\r7-views-before-forward_plus\\route-player-height-dusk.png",
+        "sha256": "8d44683a54ba46e4b1a15ebcd0e9a9810ba2e87a17aec4fbd1d34184dcf06ff2",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          37.11875247706776,
+          38.999459298801185,
+          44.02800405777321
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\route-player-height-dusk.png",
+        "sha256": "a0c468aab04aaa3ca16f0b553301df7c91bfc81e7bea5b1755326deee5bdb424",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          37.06893084696655,
+          38.942669041586235,
+          44.033100596034004
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\evidence\\r1-comparison\\r7-views-before-forward_plus\\clearing-player-height-dusk.png",
+        "sha256": "8830a2be4ff1004fe5c7178c1c34bb48644122601a2c7efd998c68e66543e07a",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          55.016791838550674,
+          60.21037686590532,
+          71.62353831280657
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\clearing-player-height-dusk.png",
+        "sha256": "c8b0a65905febcc261a0bc8ee44b11f6c377d8e73bae106ffeb07a6bf8500487",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          55.01501254074045,
+          60.220975410064554,
+          71.63390801860295
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\evidence\\r1-comparison\\r7-views-before-forward_plus\\habitat-player-height-dusk.png",
+        "sha256": "5832c09c0130eba30b325f7914dcc625445a5096c73b45064a05458ee2feb3a8",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          48.690716391049065,
+          52.6921246830491,
+          59.83422424170968
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\habitat-player-height-dusk.png",
+        "sha256": "732049a24e34ad6fdaa1ed4b952a4231b64b32ba721f6d3dfdcd37d21be5cfeb",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          48.73878287394136,
+          52.71614710151547,
+          59.892621692415425
+        ]
+      }
+    ],
+    "pixels": [
+      1440,
+      1800
+    ],
+    "operation": "Lanczos resize to 720 x 450 and row-major tiling. Left is executed R1 parent, right is V02 R7. JPEG94 encoding; original 1440 x 900 PNGs remain sealed. No painted/generated pixels."
+  },
+  {
+    "path": "D:\\project-wroughtwild-art07-r7\\docs\\art\\leyline-studies\\2026-09-14\\art07-repairs\\r7\\forward_plus-distance-pairs.jpg",
+    "sha256": "1f616dce4ded9aacd64060bbe9c9b09a9f1f83bb584189f23d832fc5234ad607",
+    "sources": [
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\evidence\\r1-comparison\\r7-views-before-forward_plus\\distance-2.5.png",
+        "sha256": "a0ad56ac14ac2b773d70812f7f55050c1ecf56218104468c572fdd1f77168a03",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          12.892686175385718,
+          11.43337634527748,
+          8.394821308707026
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\distance-2.5.png",
+        "sha256": "ac457203bddbf722cd854cd1fa4b2d10fe1b0c63e31d6639a47054364af73531",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          13.167776386690447,
+          11.175657035322393,
+          8.149260156525761
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\evidence\\r1-comparison\\r7-views-before-forward_plus\\distance-18.0.png",
+        "sha256": "65ee182a6ac20062378d4c44a4be3e5d7d629b05c65fae5dd9d29bca0538c2a6",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          29.79281297163497,
+          31.836680515283074,
+          35.45854338481464
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\distance-18.0.png",
+        "sha256": "be75251733286bedf46bf2859dc73e47d90da34a97f58460d630c9d9a1e61798",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          29.79026476376248,
+          31.784354683205294,
+          35.46551946192197
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\evidence\\r1-comparison\\r7-views-before-forward_plus\\distance-72.0.png",
+        "sha256": "6c744431b2216d8bd96a9fc122369e5dac5066990b6b2a82b18b6f8ad2d87c9b",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          49.040826839596896,
+          52.164512765636694,
+          64.54264845694458
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\distance-72.0.png",
+        "sha256": "a66b202d8cd331d065dfafa707ed2f21d346936e8ad8117bc7b8afbb695a47f0",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          48.96671950874913,
+          52.10482882266109,
+          64.51642604393123
+        ]
+      }
+    ],
+    "pixels": [
+      1440,
+      1350
+    ],
+    "operation": "Lanczos resize to 720 x 450 and row-major tiling. Left is executed R1 parent, right is V02 R7. JPEG94 encoding; original 1440 x 900 PNGs remain sealed. No painted/generated pixels."
+  },
+  {
+    "path": "D:\\project-wroughtwild-art07-r7\\docs\\art\\leyline-studies\\2026-09-14\\art07-repairs\\r7\\forward_plus-rooted-sway.webp",
+    "sha256": "d74e2c99265641556037652e76a106a60e26c1b253e0cab912e3fdaa972f2c3b",
+    "sources": [
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\000.png",
+        "sha256": "5eefb70640bce963b7b593b1ad343b2ef5a92501dca5ecfe420665617755a2c8",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.57613543733717,
+          9.318197093565123,
+          4.793619681953546
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\001.png",
+        "sha256": "3405160fc33f17bd0e3453fed6b5f067efcd030ad1d7e8e2418fdf40e9045ee0",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.57564445689934,
+          9.317613019390558,
+          4.793046555236895
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\002.png",
+        "sha256": "da1365b40fac4b3dc95ad219834aa1fab8a78d924a4656904472cc0d035701d6",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.577778337204865,
+          9.321191447821699,
+          4.793447348628504
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\003.png",
+        "sha256": "cb616bdffee2e82d1fea5421e337338f9a6c623270844cc996ef7a256ce758ee",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.576654471038907,
+          9.319503335197702,
+          4.792539414090156
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\004.png",
+        "sha256": "1233e39073e649ef853b93dde2583e0162203d501ad0792c1eaa9d7c1beb249e",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.577873101357602,
+          9.318137062616556,
+          4.792137902515002
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\005.png",
+        "sha256": "d60cd8b3aee29d705b56293c8e03b9c32ca5474908f26e09fb51da595153d2a8",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.579057310290256,
+          9.31852474795143,
+          4.792094186560856
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\006.png",
+        "sha256": "05fa18c62029c7551470ce17326ddab0805cd8f7ce0ccca5bbf8e10d9c353e06",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.581038699233897,
+          9.319539711650943,
+          4.79227851830199
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\007.png",
+        "sha256": "c1577b2221f5241d780aeb7da044c4815021087d00b094742683035ecc333f4f",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.582218598021008,
+          9.320545295403035,
+          4.792265389992012
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\008.png",
+        "sha256": "6915f1868bc0f72e68c47dc3431e73cec2762c26cc865fdd7a58749f11832815",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.582766727726803,
+          9.321081051343173,
+          4.791623324260495
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\009.png",
+        "sha256": "72315f8ddda1fa9d335d705abf504e2f6c33f3360c63150f6e754338c3e0e166",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.583865801193708,
+          9.322826991727934,
+          4.791573148694583
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\010.png",
+        "sha256": "48c7da5198633ed61201b6b7565be7963df3096d8633ed093656244384f1f6bc",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.58450742786516,
+          9.323506996946323,
+          4.7922260522412925
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\011.png",
+        "sha256": "7d6cb408a4117bc6934a9ef663d3f7e6858c94fe1e416b241d3237a3ddb47040",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.589336060156592,
+          9.328339617479745,
+          4.793464502119987
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\012.png",
+        "sha256": "c8dcda06d9ca29febdf81b9f6438d679dd441f5e8d535138f8d11f192cd5bd98",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.591288297322032,
+          9.329039947092223,
+          4.7937449603554505
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\013.png",
+        "sha256": "81e4d90c4b9e2bedf2865b6e867d490778b7caf5f68e06ba2df9401bb54f036c",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.596103232267003,
+          9.334477401513968,
+          4.795373612980613
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\014.png",
+        "sha256": "256d443cd0e5030754e06fa6eecaa51bcc995aeff127ecbcc379379318b5198d",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.593884113542336,
+          9.331780142251072,
+          4.794925540300809
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\015.png",
+        "sha256": "67602b9a133919e23a7d1896e6d4713ad87aeafd54762a62a535a3115ad67c26",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.595546383693875,
+          9.332391099577011,
+          4.795043622233002
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\016.png",
+        "sha256": "92b87032c499d7833cb773eb2484d24515be72f27da3d6a904d3a23b1178c238",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.594838620807073,
+          9.331922752962146,
+          4.79403242317537
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\017.png",
+        "sha256": "dfcaba7668e6c6e09fdf2c53a9621437b6aa541ad503a02f4df1d623cd5e8769",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.598008947910845,
+          9.334439186282458,
+          4.794880434658102
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\018.png",
+        "sha256": "bd8acc35dde3ead0aaf656245fcccb6811499cbe4d2dce2334c0dc30e9939152",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.595753363926864,
+          9.331725255343242,
+          4.794126219588198
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\019.png",
+        "sha256": "5a223293f21b83b4973bd2bc5ddb92e159ba2cf93fea3bfcc867690c38ac83f1",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.596689600746933,
+          9.333388293255819,
+          4.793520480624009
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\020.png",
+        "sha256": "c7fe3a70c94a6be4cf420571e7276e71207b037fd8c3bed8b03f9df51b19aa44",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.596955828668063,
+          9.333296478835557,
+          4.795055753211337
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\021.png",
+        "sha256": "973e046d3930f8f07fc8e4e5900589b76fab687b682d3609398a157f3c014428",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.598311976472111,
+          9.335018132955287,
+          4.795835767806127
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\022.png",
+        "sha256": "f1afff8ba7c21ad7cddd9bb4fa8b9ef6c2e121b4bc242dd78d71787d57c0ef71",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.597056211319044,
+          9.334455454449058,
+          4.795443451247711
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\023.png",
+        "sha256": "13ad796e60a65106cbc5e33a3e3cfdc21bc6f0d085fa66243bb6bc1cfef91038",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.596543284122065,
+          9.334044371340491,
+          4.795146794180642
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\024.png",
+        "sha256": "d0f1bf2ff5c3f3d8b8666e88d610ec72494787b898ec5c1759d4f5311a2a1b58",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.597371119386285,
+          9.335789228008583,
+          4.795733920593421
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\025.png",
+        "sha256": "af59cf382871164ba230e020c39e0f96b708039f105e0aa6c9f933e8a06ac97a",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.59855704217447,
+          9.337185474306176,
+          4.796620774622518
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\026.png",
+        "sha256": "3de4de6395519cc1681dd2c9c616d0a7d976c10578ea03e983da4f7d7bb0a4f7",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.59497438259648,
+          9.333970888432397,
+          4.795781518063051
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\027.png",
+        "sha256": "7a935f73bbebb771ab4d56b6f549fbd46ba77477595e14a25d2957f1c846bd91",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.592914408539258,
+          9.33414902969233,
+          4.795212679860099
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\028.png",
+        "sha256": "ff7812992373c3efce7a186fe3414af8aa2947790be022467cf336a3adc10219",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.594813040549008,
+          9.33545636200308,
+          4.796531490844392
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\029.png",
+        "sha256": "bf7f91ff9bccadff0fb84201f7874f49ccf298f99a725f6f9e198066c9457d84",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.590540956477072,
+          9.331302076950342,
+          4.7955918751377995
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\030.png",
+        "sha256": "bd1143063626bc4167a6901df5198f2cf2c2e6e0e8e8f24a145786393964ff04",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.58713931117418,
+          9.328721181438292,
+          4.794853124426892
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\031.png",
+        "sha256": "a14ef8eabd25d3f26618402b14c5ad4e772ed21f23cefef876437ca713dea45f",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.582996753168999,
+          9.324132014105103,
+          4.793437385043911
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\032.png",
+        "sha256": "f01fc2345d6bb88509b11360a5da53c2ad1859e614418e3b31b716a44dd57815",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.583920058548376,
+          9.324870729940391,
+          4.793792146920441
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\033.png",
+        "sha256": "ce6c41b5f1ce60cea78badd84f22b7376e2588ed7f42db947f5ec80abf11402f",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.577918164622076,
+          9.318757468793798,
+          4.793524596860108
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\034.png",
+        "sha256": "522777c7fca9bafbec677b296627c1ed19ff63a12f1f16747fc92f4d33e6dbfc",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.57916594804374,
+          9.320813946989876,
+          4.793747673675622
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\035.png",
+        "sha256": "d16a2c5c469102ce87a8d8bfc382076f471fdb86da87e574b0461a903861e13e",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.576992393287147,
+          9.3197593878595,
+          4.792229349925571
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\036.png",
+        "sha256": "812ac4b13bfc2954d6eaf647bde5b5519db20d0daedb92e000ba49f095f944f7",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.575958655473562,
+          9.319097889501657,
+          4.792915369507062
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\037.png",
+        "sha256": "d2cca07f11c4f9962b94b4f94ba38a9ed7ae62538caea9b0111eeef8fbfd96e5",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.576699592569428,
+          9.319896348468573,
+          4.793391446794072
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\038.png",
+        "sha256": "90883413e74c588eb74084a89b56e1487b8357b03ee97372a6a7bb6f75afb925",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.579213400165797,
+          9.323860061474566,
+          4.794211857587033
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\039.png",
+        "sha256": "ceb120d458522b5270636b00a8d949cfffb88e37b4dfa04f963079b990e7ba7e",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.577436493623624,
+          9.320798314388172,
+          4.7947312140328915
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\040.png",
+        "sha256": "dbbea7440dbaebfa47b0b580f95abb31ee5bf3cfb14196328866eb397d765a63",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.575781904659634,
+          9.319243868404108,
+          4.793705269793864
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\041.png",
+        "sha256": "6197ea0bcef5f685b8afe4e532d40713ab60daf262e72f0700ba35150418af66",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.576637624390873,
+          9.318785041150702,
+          4.793661330665947
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\042.png",
+        "sha256": "2cec37cf5736f2aedb46a45bc01f69a87b01f3bb9c4f1151a9d78b53b5620f16",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.574348428924381,
+          9.316850986670085,
+          4.792640747388803
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\043.png",
+        "sha256": "8039f96fc3231bd65021c1a7f8c4a83685b4786323ffc902e34d25aad7623c55",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.575754821120396,
+          9.318644788003901,
+          4.792522655934117
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\044.png",
+        "sha256": "c4f2ece793d2cd3778b691be669e1481d63973b2ed9800cb0ace3c9cb07cf707",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.577211868678418,
+          9.320054048431963,
+          4.792825936456791
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\045.png",
+        "sha256": "9d550d9c1aac8847f8638f969c264ef76f78d5884b7b4b2a149554b84a17a230",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.578224891121078,
+          9.318725532607516,
+          4.792219912767754
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\046.png",
+        "sha256": "0bb014c5b041824ccacd447a6785357b3b335ea184240cb62ad6f683a2a4220e",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.578154256930906,
+          9.318349509929858,
+          4.791950296607338
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\047.png",
+        "sha256": "74f89e255a2745e9e7007159d863e8be17069837885f540256fef5da37961567",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.580737332479865,
+          9.319088421409012,
+          4.792460849189911
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\048.png",
+        "sha256": "cbf5d770403693dcabf02c1e5533324ccc280d6a3ff42ab3c72b70ed3332b751",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.581755299765984,
+          9.320210904959572,
+          4.792219640992066
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\049.png",
+        "sha256": "deff46fb94f2d268e706b760f8a59b46d5b4e5357d62796d29da40358660ab12",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.579104307705856,
+          9.317457376389177,
+          4.790838171052958
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\050.png",
+        "sha256": "bcb0a18e5c57380dba92ce1dfc5123df2cd077b73819fcb8f58ea32a0ef17404",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.584277032866632,
+          9.322652788196963,
+          4.79190302948513
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\051.png",
+        "sha256": "1e5ddb2c8b0e0515656310b5884d9836bb956d8a1a59ad92527b82c555c51958",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.583019498885484,
+          9.322186005498034,
+          4.791296501904501
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\052.png",
+        "sha256": "2075b9dff540e2d40945cd14c9ee35aedc372239fb4848f5b24e129b8dbcdf7f",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.58880936322334,
+          9.328061530190368,
+          4.793483277483429
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\053.png",
+        "sha256": "afe39f00c5414ba7311e2e77f2a643e3154b8851e69ca5a67d6c9e71b7ac657b",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.589762016261613,
+          9.327848443269968,
+          4.793655542381167
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\054.png",
+        "sha256": "eaf0f09ea1b852baf486e3e94c6303df4560f2480923f59612c1e741b7ec8fc4",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.59566119258456,
+          9.334096312192074,
+          4.795144998357977
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\055.png",
+        "sha256": "cffbcdd05bb1454222ae17814e2da3bb213245f389f818710996e5f4912067e8",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.594374267365453,
+          9.332865895462811,
+          4.794568865828843
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\056.png",
+        "sha256": "89c4fa22efa8e353eda5160cfaded6af09c299a73eb04590da1276c865e1588f",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.597219066618901,
+          9.334039032726908,
+          4.795916793575086
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\057.png",
+        "sha256": "3efe61b2c5fd96a2cbff787dd760bd5c9c3ca4c5a3d4a5687d9081ca078dc385",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.597562983654111,
+          9.334811122013297,
+          4.795111904768276
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\058.png",
+        "sha256": "561a09a7a544d563e44af131a463238f00efab622ee2aae78178723d2e826bb5",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.596571743088548,
+          9.33343854746375,
+          4.794350700150211
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\059.png",
+        "sha256": "2e4f9cca859379abe3ebc3d6819e74a77df74c187f96d2dce01e3f11425b5405",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.59715301089159,
+          9.333297901912184,
+          4.794296648887127
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\060.png",
+        "sha256": "ea85f63f9c2b0aa09b9af31db57d3e7be851cd5a38cb958344b04f91f31523c7",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.596246165490784,
+          9.332895342649019,
+          4.793411868170178
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\061.png",
+        "sha256": "8ef705be71da62df6489b5852b4faad6df04c1fb124ce06e927f57a9a169b369",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.596205329479563,
+          9.332287510957201,
+          4.79479007021478
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\062.png",
+        "sha256": "b50cce47e8e6ed1574fac586031e351479df1a1737aba27a8512147a1ffe1a51",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.597475478552175,
+          9.333514469104282,
+          4.795988677616046
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\063.png",
+        "sha256": "c8fb7f27a24723c5f528e03ae30e1173cc053b774e58c549b6bf09682084f714",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.59838168780164,
+          9.33559907033407,
+          4.795740563780995
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\064.png",
+        "sha256": "f1835676a3c7cb5df3c33d7983a8748c199621550c52a6a777c107f2d34f3b4a",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.59672784435644,
+          9.33409418804995,
+          4.795108134651684
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\motion\\065.png",
+        "sha256": "cd27836954745d9076fc4335e61e4045a705aef3865fe33a2faec51b26b3ada9",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          11.598522352189173,
+          9.336641223751437,
+          4.796299216295175
+        ]
+      }
+    ],
+    "pixels": [
+      960,
+      600
+    ],
+    "duration_ms": [
+      162,
+      155,
+      156,
+      155,
+      155,
+      154,
+      155,
+      155,
+      155,
+      154,
+      156,
+      156,
+      157,
+      155,
+      156,
+      155,
+      155,
+      156,
+      155,
+      154,
+      155,
+      155,
+      155,
+      155,
+      155,
+      156,
+      158,
+      156,
+      156,
+      155,
+      156,
+      154,
+      156,
+      155,
+      155,
+      154,
+      156,
+      155,
+      156,
+      153,
+      155,
+      154,
+      154,
+      155,
+      154,
+      156,
+      156,
+      155,
+      155,
+      156,
+      155,
+      155,
+      154,
+      155,
+      155,
+      156,
+      154,
+      155,
+      158,
+      156,
+      155,
+      157,
+      155,
+      157,
+      156,
+      156
+    ],
+    "operation": "Actual live environment-clock frames with recorded wall-time intervals, including capture overhead. Last duration repeats previous interval. No interpolation, animated source geometry or synthetic camera movement. Lanczos resize and WebP88 encoding only; all original PNGs retained."
+  },
+  {
+    "path": "D:\\project-wroughtwild-art07-r7\\docs\\art\\leyline-studies\\2026-09-14\\art07-repairs\\r7\\forward_plus-habitat-player-height-day.png",
+    "sha256": "86d33c8118d8f81ba45c6a51a47398d9dc3ad9ee5a82ffe783d71ad49ce3b177",
+    "sources": [
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\habitat-player-height-day.png",
+        "sha256": "86d33c8118d8f81ba45c6a51a47398d9dc3ad9ee5a82ffe783d71ad49ce3b177",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          47.83623915930725,
+          50.64093668609724,
+          55.58821074041802
+        ]
+      }
+    ],
+    "operation": "Byte-identical selected full-resolution PNG"
+  },
+  {
+    "path": "D:\\project-wroughtwild-art07-r7\\docs\\art\\leyline-studies\\2026-09-14\\art07-repairs\\r7\\forward_plus-distance-2.5.png",
+    "sha256": "ac457203bddbf722cd854cd1fa4b2d10fe1b0c63e31d6639a47054364af73531",
+    "sources": [
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-forward_plus\\distance-2.5.png",
+        "sha256": "ac457203bddbf722cd854cd1fa4b2d10fe1b0c63e31d6639a47054364af73531",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          13.167776386690447,
+          11.175657035322393,
+          8.149260156525761
+        ]
+      }
+    ],
+    "operation": "Byte-identical selected full-resolution PNG"
+  },
+  {
+    "path": "D:\\project-wroughtwild-art07-r7\\docs\\art\\leyline-studies\\2026-09-14\\art07-repairs\\r7\\gl_compatibility-habitat-pair.jpg",
+    "sha256": "83b392be61e14fbeb5130f7a9999167f4c7c14ffafc8cf4b95bc0a1f987e2fa3",
+    "sources": [
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\evidence\\r1-comparison\\r7-views-before-gl_compatibility\\habitat-player-height-day.png",
+        "sha256": "c7938180497710c67b75585c1309fba50ba4083ef492021410f4dd98ecabd100",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          52.38877242074076,
+          54.097387802998824,
+          59.37356819718068
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\habitat-player-height-day.png",
+        "sha256": "e3cd873cf78b784c9bf6801294a1995fcfed2f875969e7dca3be6bdf4a2b0236",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          52.63009157252995,
+          54.31572533028341,
+          59.550900825059266
+        ]
+      }
+    ],
+    "pixels": [
+      1440,
+      450
+    ],
+    "operation": "Lanczos resize to 720 x 450 and row-major tiling. Left is executed R1 parent, right is V02 R7. JPEG94 encoding; original 1440 x 900 PNGs remain sealed. No painted/generated pixels."
+  },
+  {
+    "path": "D:\\project-wroughtwild-art07-r7\\docs\\art\\leyline-studies\\2026-09-14\\art07-repairs\\r7\\gl_compatibility-day-pairs.jpg",
+    "sha256": "5dfe337ac580cc9f8e4edfea878b82577791c7131b6c9299129f2180df878a00",
+    "sources": [
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\evidence\\r1-comparison\\r7-views-before-gl_compatibility\\home-player-height-day.png",
+        "sha256": "4cfc1d7499ba57f26c16001dc146277d04cabe7b99e6a7506c9f26e478fa6447",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          54.12015179717381,
+          61.42689158441538,
+          74.17356343722335
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\home-player-height-day.png",
+        "sha256": "1f8cc43c81c94b31f35b17ee1339fcc6ed999212e5d130142afd45bcf9975e4e",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          53.85137767903549,
+          61.12590733005494,
+          73.94506387414548
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\evidence\\r1-comparison\\r7-views-before-gl_compatibility\\route-player-height-day.png",
+        "sha256": "61436bca52c3119145009eebc2ca68b4ac65870f94ead15d590668b7010ad925",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          44.27516254996649,
+          45.09399867331683,
+          47.81111897302235
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\route-player-height-day.png",
+        "sha256": "b5d10ce0680a75cdd7cacc4a718f0f42c2e80a05368177a447e8bcd94efcc4cf",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          44.405796987436936,
+          45.07139565798617,
+          47.8258402115805
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\evidence\\r1-comparison\\r7-views-before-gl_compatibility\\clearing-player-height-day.png",
+        "sha256": "e127b42e744e678a6db2445ef3e3d35581fe16f45dffb80b62aa7bc9b602e0a3",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          52.304529465371466,
+          57.9510694063594,
+          68.8613544103176
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\clearing-player-height-day.png",
+        "sha256": "513afbbf3c13d84921ed9d9d338cf0786afed1f2116c28f254513f39816fc2c4",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          52.340487939787735,
+          57.96180985575613,
+          68.79398782035216
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\evidence\\r1-comparison\\r7-views-before-gl_compatibility\\habitat-player-height-day.png",
+        "sha256": "c7938180497710c67b75585c1309fba50ba4083ef492021410f4dd98ecabd100",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          52.38877242074076,
+          54.097387802998824,
+          59.37356819718068
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\habitat-player-height-day.png",
+        "sha256": "e3cd873cf78b784c9bf6801294a1995fcfed2f875969e7dca3be6bdf4a2b0236",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          52.63009157252995,
+          54.31572533028341,
+          59.550900825059266
+        ]
+      }
+    ],
+    "pixels": [
+      1440,
+      1800
+    ],
+    "operation": "Lanczos resize to 720 x 450 and row-major tiling. Left is executed R1 parent, right is V02 R7. JPEG94 encoding; original 1440 x 900 PNGs remain sealed. No painted/generated pixels."
+  },
+  {
+    "path": "D:\\project-wroughtwild-art07-r7\\docs\\art\\leyline-studies\\2026-09-14\\art07-repairs\\r7\\gl_compatibility-shade-pairs.jpg",
+    "sha256": "57d2e1e458cd6893c55c8652642299a252ebd0f97ab266bdc57cef68475a93ea",
+    "sources": [
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\evidence\\r1-comparison\\r7-views-before-gl_compatibility\\home-player-height-shade.png",
+        "sha256": "579055792605bc1b8803bb90b5e57465dde7d0a2a4e62c42efa6fd4dbfea3070",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          61.0310191736128,
+          69.81908724632308,
+          79.74378051613293
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\home-player-height-shade.png",
+        "sha256": "78333fd7f520aef76ac774307c3da57e1d105b5d48785c31d0fe927c9e19a6c3",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          60.91819299348912,
+          69.70045591199101,
+          79.64653323603817
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\evidence\\r1-comparison\\r7-views-before-gl_compatibility\\route-player-height-shade.png",
+        "sha256": "ada2715133dec6278828fbed22437fd6ee64b2915a0035ce5dcb2ba44df83fb3",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          36.636782731480366,
+          40.72962641674035,
+          45.51294722446631
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\route-player-height-shade.png",
+        "sha256": "f0904e31eadbb25083b02ab43a747cd4e84e6b645fe56ecdf985915c7a50dbdb",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          36.6651647894029,
+          40.742023922942835,
+          45.535335609878935
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\evidence\\r1-comparison\\r7-views-before-gl_compatibility\\clearing-player-height-shade.png",
+        "sha256": "bfb05e6a711f0e961dbc34fb47e1de936029ee9a7140855f4664899648b953c7",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          58.300718959224405,
+          65.50894695464261,
+          73.61072269637484
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\clearing-player-height-shade.png",
+        "sha256": "8ce26fffd9bcc230329ee70a9011337c22d6d029092768c82fbf03e459f19e4d",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          58.28901063555019,
+          65.51084973561679,
+          73.58265486136004
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\evidence\\r1-comparison\\r7-views-before-gl_compatibility\\habitat-player-height-shade.png",
+        "sha256": "3ed8be4592087f5192d797deb444d3cce342313c2667434639a82d9591335569",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          49.67763934940371,
+          55.52670358207762,
+          60.83059161194911
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\habitat-player-height-shade.png",
+        "sha256": "6318dc7fe046b9fb4fe4ff4d4e7b91f780df11acc59145909384e04d2d3b19a7",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          49.82066840894963,
+          55.72644702481597,
+          60.986329641461765
+        ]
+      }
+    ],
+    "pixels": [
+      1440,
+      1800
+    ],
+    "operation": "Lanczos resize to 720 x 450 and row-major tiling. Left is executed R1 parent, right is V02 R7. JPEG94 encoding; original 1440 x 900 PNGs remain sealed. No painted/generated pixels."
+  },
+  {
+    "path": "D:\\project-wroughtwild-art07-r7\\docs\\art\\leyline-studies\\2026-09-14\\art07-repairs\\r7\\gl_compatibility-dusk-pairs.jpg",
+    "sha256": "77a09b01a2985bf4cae14fbac3da9e34205b4098befb476515045bf94e558d40",
+    "sources": [
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\evidence\\r1-comparison\\r7-views-before-gl_compatibility\\home-player-height-dusk.png",
+        "sha256": "9a4654f2a79e4b5c93477aaa1be578735c4e85b3f5267f5c60b3785cf0e9245a",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          59.007200772934894,
+          68.19490371540181,
+          79.5571507696904
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\home-player-height-dusk.png",
+        "sha256": "a6a641f73071ee852773727eab0618617a19fb7c5f1dab5dc46d8f541f31fed9",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          58.85184614233426,
+          68.0432832238026,
+          79.45503624551996
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\evidence\\r1-comparison\\r7-views-before-gl_compatibility\\route-player-height-dusk.png",
+        "sha256": "357961f8368ca745bc4382cd68a687f78d349ec25bdbeca197cfb2ccc0d14816",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          37.59276857489226,
+          40.89181790596126,
+          45.631724840715535
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\route-player-height-dusk.png",
+        "sha256": "a095f1a109ccf7f3e3eb4a2f4782355cb8d6339f3a7454952f156b501aa6c9d9",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          37.63052646692102,
+          40.89326777226232,
+          45.65380784880246
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\evidence\\r1-comparison\\r7-views-before-gl_compatibility\\clearing-player-height-dusk.png",
+        "sha256": "f1cb038342ce348b7dca2126f7b79cc446e7c8185a1047b07de81aaca9c56526",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          56.40692302649096,
+          63.94800257060066,
+          73.46264915544023
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\clearing-player-height-dusk.png",
+        "sha256": "2377053a04ce092aca32f1acd7eff5a3a15968c05650e30182e8a6edc533e81a",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          56.39613890991232,
+          63.948135173031915,
+          73.43003792146708
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\evidence\\r1-comparison\\r7-views-before-gl_compatibility\\habitat-player-height-dusk.png",
+        "sha256": "f108e06ba5b4d75a53c12c0cb99512f879d04eeb138514c0b1fc52a476cf885c",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          49.75738048008864,
+          54.97675418512782,
+          60.8250577082282
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\habitat-player-height-dusk.png",
+        "sha256": "7971c8252e3554302a04e6c33a7f64de886263800eea425d4ccc771ada27238e",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          49.94448280694465,
+          55.18930317568172,
+          60.988969880101074
+        ]
+      }
+    ],
+    "pixels": [
+      1440,
+      1800
+    ],
+    "operation": "Lanczos resize to 720 x 450 and row-major tiling. Left is executed R1 parent, right is V02 R7. JPEG94 encoding; original 1440 x 900 PNGs remain sealed. No painted/generated pixels."
+  },
+  {
+    "path": "D:\\project-wroughtwild-art07-r7\\docs\\art\\leyline-studies\\2026-09-14\\art07-repairs\\r7\\gl_compatibility-distance-pairs.jpg",
+    "sha256": "f9383dc6632e6449937c93a74164ba5d0229f70196344763e378d34584f2d10c",
+    "sources": [
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\evidence\\r1-comparison\\r7-views-before-gl_compatibility\\distance-2.5.png",
+        "sha256": "53cc659103ca22d106e1e6e488355bd392f9ab793d94ce41969f3da36d3ca754",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          22.207190029596962,
+          17.67535820061053,
+          12.370643816039598
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\distance-2.5.png",
+        "sha256": "48a72ad26749fb593cebfb5ac9fd215d1ae4390bf1add1b67101ccbbc38ea0e1",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          22.364215604383073,
+          17.65039018398203,
+          12.671135438968754
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\evidence\\r1-comparison\\r7-views-before-gl_compatibility\\distance-18.0.png",
+        "sha256": "e0c6fc57afef1acdc3bdc1a7cfaffd65b0f25811dac215e820e420516f3336d2",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          32.00052851086543,
+          32.82687552016228,
+          36.87369840204501
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\distance-18.0.png",
+        "sha256": "9598c358b9f440894444626f494f355d42133be483ab9adda08fc4dbae388fad",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          31.971908839523074,
+          32.8410620854314,
+          36.88024958780177
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\evidence\\r1-comparison\\r7-views-before-gl_compatibility\\distance-72.0.png",
+        "sha256": "259124dc79bd4e8607e7cac4a0840183f513562a0fa65ff68961f2926a08c9de",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          53.5924303323407,
+          58.80765917837515,
+          67.93258961220941
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\distance-72.0.png",
+        "sha256": "dd588844626ee5e5f9290d46758beb484a6e21167f73893b14d415e2513e5b4e",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          53.57167928391634,
+          58.76547842466065,
+          67.8830126137379
+        ]
+      }
+    ],
+    "pixels": [
+      1440,
+      1350
+    ],
+    "operation": "Lanczos resize to 720 x 450 and row-major tiling. Left is executed R1 parent, right is V02 R7. JPEG94 encoding; original 1440 x 900 PNGs remain sealed. No painted/generated pixels."
+  },
+  {
+    "path": "D:\\project-wroughtwild-art07-r7\\docs\\art\\leyline-studies\\2026-09-14\\art07-repairs\\r7\\gl_compatibility-rooted-sway.webp",
+    "sha256": "cf0262911b1dac4a52fefb999abfb5f8003a58ee47ff395fce550c66918e22f2",
+    "sources": [
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\000.png",
+        "sha256": "f7d155194e17720868805db9cb0d0e6b27c0b8a94541db4446c3591fa1f25170",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.309611641510283,
+          16.318187734904964,
+          10.642592638022958
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\001.png",
+        "sha256": "18acadf9137011517e6961f1193c5e09ec8b509587a17e9db4c4abe994b4b63e",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.312319520181006,
+          16.31839172376521,
+          10.642056571779515
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\002.png",
+        "sha256": "b77014b5375883275ab2f43d14f293d6202ad7b462ca1c16872da20254beff08",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.314950562977373,
+          16.320015328043322,
+          10.643258825666061
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\003.png",
+        "sha256": "499d928571a817735a85dd53363c783198071ff10bca0d795343ed20d2485488",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.316405864932793,
+          16.320819060060455,
+          10.643351955545132
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\004.png",
+        "sha256": "0fb57b8715fe69763aa1e9a0a80a2826d56ec8a7cae5f64a3752a42159cf3d18",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.320275480382836,
+          16.32316547553868,
+          10.642904398616288
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\005.png",
+        "sha256": "c1f27f2b4ad86abb44fdb6b32986d783104ff1f678d769a8e0f3b4708edcc2f0",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.321957142588502,
+          16.32476425721953,
+          10.643118271504486
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\006.png",
+        "sha256": "4e3c321cf583d59e4e84cfecebb0905494ef8a3aadfc4853776ab4078955ec4f",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.325981301248532,
+          16.328483780627582,
+          10.64584837751483
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\007.png",
+        "sha256": "4ea42584eecaa123ae382101fb6d015c397ea2081565a6e5cb131107229a5596",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.330197892484925,
+          16.33360078464783,
+          10.647938912124763
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\008.png",
+        "sha256": "0f2ca0d43ac105e01d0684485971182b5e383f8064b36c57df836808f0bbb4ce",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.333537956983232,
+          16.33605933751526,
+          10.649336930504207
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\009.png",
+        "sha256": "5175c701f37fec551624318eac58dd0524d32f4ff0002438f1ed8ca10f3d7ba1",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.336682636998162,
+          16.338308374673733,
+          10.651554979412346
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\010.png",
+        "sha256": "d5f95b494adfd23680f911dd0606786295f1e1181e4d02da1492c3680eafac2f",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.341627378156353,
+          16.34168022625533,
+          10.65409556553159
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\011.png",
+        "sha256": "1852e871131f2eb052ef2b5ec1f64961c8e81d8ed803735b88dc620fe4196c30",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.34067974205447,
+          16.338769791194206,
+          10.653330299876725
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\012.png",
+        "sha256": "00fb089ff6fdd14e0000228f33a801e641a10888b36737e08e42575fb97dcbb6",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.343698868542724,
+          16.340177994209483,
+          10.65408013850693
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\013.png",
+        "sha256": "8b4622558bd43d70ca503ebfdebe6cb5c9619cceee2a079a268ccbdcefb0315a",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.345242096899064,
+          16.3411784306608,
+          10.654405288516804
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\014.png",
+        "sha256": "f3e99755d897085591adb17dc2096e9a2232c0effabf8451bbd751eafe56b6ac",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.34556657644049,
+          16.341914602080344,
+          10.653098789092924
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\015.png",
+        "sha256": "2c7d25099f798bfafc67b43f233a2f324e874a467dbdd9a16fd8bf09fd1d1217",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.342860490095777,
+          16.34012350867088,
+          10.652507349631694
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\016.png",
+        "sha256": "d82ebec8c37298499d1437a85699a89262f5db0bde1ff698c463a7abdded8d6f",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.345509426511075,
+          16.34299594783275,
+          10.655056360302964
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\017.png",
+        "sha256": "8c9f535d2442215424db94ff1bb107e2cb00405fe881fdb71544d30a528c68a1",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.345728068887578,
+          16.34331780359206,
+          10.655095562869654
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\018.png",
+        "sha256": "6ac54b89a71387416260032e19840e008d9e45475ca69d171ad9279719576857",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.342036198344154,
+          16.34052569151966,
+          10.653799497484016
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\019.png",
+        "sha256": "a3e678694a1d587f1640d5b79df6f969f8e562375ae4aebdea9ce97612cd62b8",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.3428087787205,
+          16.34096242415497,
+          10.655991206916475
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\020.png",
+        "sha256": "c94a00b945f371e270daddb78b2547fbcac6dd86c4a1041fae54c29ede4633cd",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.341217587604994,
+          16.34080729716043,
+          10.655596965639374
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\021.png",
+        "sha256": "aabbe596707654974c447681510eafbd77ba62dc7f5b544ce09f2f49f80d7d5e",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.33822538068477,
+          16.338499123492387,
+          10.654275045506255
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\022.png",
+        "sha256": "6e4a02b4723d192165c3cfdf7d5bb4e890e73abe50ab4ae27a26766c051558d0",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.336361738838388,
+          16.339669648267048,
+          10.654427292190267
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\023.png",
+        "sha256": "1c9ba0075af04ea55144d54361672a05c73f075bce86540eeaf0d42c2db62f4a",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.335346873276606,
+          16.340017496463137,
+          10.654369072330237
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\024.png",
+        "sha256": "d755dcbc2c39e9b241708be73cbdf78faf9ce49300ed0fa2bb2d8250a990a003",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.334069173869374,
+          16.339765728294747,
+          10.654897065050463
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\025.png",
+        "sha256": "e69ebe910dcb711dc2ccc6e50a83b3d7d0469882b1032de51bb70f3afa460744",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.333963914309617,
+          16.340951097503147,
+          10.656129244315325
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\026.png",
+        "sha256": "69c310c5d4d8bc4d78561519660c667f18256f554aa42c4c92e22f09fc807e44",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.328224746380737,
+          16.33401594394745,
+          10.653223587022412
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\027.png",
+        "sha256": "cb3ef5d087a3deb77d70243d092a513a1a4d90ea7161fec0449fd5f34fe451c6",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.32386907067803,
+          16.33036825338872,
+          10.649829663204754
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\028.png",
+        "sha256": "6e23c97694be0e61b060b03b79290dc1e1b48b45dd2e506d0a5c028d8560f3d4",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.32164342098684,
+          16.32855528048876,
+          10.650328979757145
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\029.png",
+        "sha256": "5a67cae87a8ea769f0a622be1855935a76e4eacc484fcd2f1e4048849413367d",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.318306610527003,
+          16.326853523468532,
+          10.650482691090383
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\030.png",
+        "sha256": "ee3a76d51b36fad75705ff1697a4c9614600db9e39712371a0c707ea4e633559",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.313278663493527,
+          16.321347794153162,
+          10.64633669863176
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\031.png",
+        "sha256": "d6fb1a6895110fa33cca64b08f8a0ae1f3992b3cb66a9992446183576b5c8c2e",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.310184288876474,
+          16.32002773858213,
+          10.645383296377563
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\032.png",
+        "sha256": "3cbae2f279a7856d882dd89bbad7dc2f5815f7b8383aedb53accf8542f421efe",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.310735435222135,
+          16.322539926464927,
+          10.648926072946054
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\033.png",
+        "sha256": "0fdbcaf92e8b61c6d9748147f23e5b5f1533646e625875b51a67a7add6e1bf0a",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.309594883999495,
+          16.32147327751454,
+          10.649138935793738
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\034.png",
+        "sha256": "4422827ac320806955c1139944c201ccbd7b7d0ae9c9dc271d142f1f34758abc",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.307751928266917,
+          16.320321870721695,
+          10.64818300844282
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\035.png",
+        "sha256": "f0214986423ab7f45c420e7702e24b1dfa380f8971d41f73f7c81fe8d283aecf",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.306324962820916,
+          16.31767378740499,
+          10.647358176808114
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\036.png",
+        "sha256": "bd6a0332de79ab20160a957c5de5173d9aef65b3d044b8c2aa71d6d3ee3cff7b",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.302866939306192,
+          16.314146180875223,
+          10.644497392045732
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\037.png",
+        "sha256": "e446d9d12fe3e41e18f9c07fff04cc22bb6c29dda2ea22aa44e4d9561382cfb7",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.30192934574871,
+          16.312525430040708,
+          10.64277703804492
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\038.png",
+        "sha256": "34a8f9b7bb413db5a9fd6aa64ea252e3fe70b72776b64cc2c62d37327436db80",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.302409417653553,
+          16.312148153071853,
+          10.641925961537385
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\039.png",
+        "sha256": "4894622c23b54e895b55b15102e290da9cc7c5332e2eec99a814dbc70c5d8476",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.301929223082503,
+          16.311147932094,
+          10.640312038869077
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\040.png",
+        "sha256": "38639caec43adce5f006f016f70f488996d15656be7b29c813525c92371637e3",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.302826018484744,
+          16.312592668484623,
+          10.640339141966242
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\041.png",
+        "sha256": "c75e88cc366b8fce2b46f53adbd65950e7925c00a044e5b35e7cd878301af4a3",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.306607759342747,
+          16.313714702643825,
+          10.64046832988039
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\042.png",
+        "sha256": "132afb94eded752e0c5682883efe0f6330df3714c683ee36e6c167a94a4990c0",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.309246026418368,
+          16.317669943615527,
+          10.642121767586282
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\043.png",
+        "sha256": "842174ae4ab4dfe3d4bc671f3df0271f2d7631a4bbcdffd1b56393394631740d",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.312398094175705,
+          16.318614669573222,
+          10.642157571091344
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\044.png",
+        "sha256": "9f50566e05c6382f2cf80d358aaf8f5ccfc043872c1bced6cbb92d823683cab7",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.315222114057196,
+          16.320057206113656,
+          10.64345263960548
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\045.png",
+        "sha256": "f9564d8a6fbbe28e0f62015fdbf3f0d9c8b6e601ba7a280514afbbc10d6ef575",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.316320929969788,
+          16.32067885850168,
+          10.643236843528747
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\046.png",
+        "sha256": "731831ae86a23b4df0e77d31c2424fff83a817ae6d637c51d7eeef357e54fb37",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.31947935659237,
+          16.322807139283302,
+          10.642650268169602
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\047.png",
+        "sha256": "479654e94dac0cf2da0c4ca1d0fe427ca1d2021cd7e797f742a0cac6d1ae3665",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.322330989836697,
+          16.325011328696537,
+          10.643594618839616
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\048.png",
+        "sha256": "d9b947e8fcfc2f3e1b92b5e6c60c2d290567aac81575f477d34c169947aa3cf0",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.326129100013944,
+          16.328638981959884,
+          10.645846517390178
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\049.png",
+        "sha256": "b888649b61607cfc82beb0c541ff369aa5eb8ad0e6a5a685ff964d842a6a5a3d",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.33015440029387,
+          16.333357227788767,
+          10.648058689352974
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\050.png",
+        "sha256": "bce3b503e786632ebf6c14f178211f9712e81f552dade67cbabba45eaff31d67",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.333246391037207,
+          16.33549363578464,
+          10.649111284788649
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\051.png",
+        "sha256": "8d8d7cc6bb04a8361e120ad17ba756c4d83996b695f69a74117a4f366fed7073",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.338302460182504,
+          16.340111414939923,
+          10.652975516774768
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\052.png",
+        "sha256": "29d0cf91e590a9e60a76301b5599d0c1a7f0b35f3c27ba524decab73ca52d032",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.341898767925954,
+          16.342245333719323,
+          10.65430167027834
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\053.png",
+        "sha256": "3518fd216e641ab398c4d0d17671cb56e2a2d3f96f5f088a837949eab6242257",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.34123585769857,
+          16.3394229068477,
+          10.653827754100552
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\054.png",
+        "sha256": "71fc4d84b1cdd8dc32bde813b25797b3f1c4789c14fabd8c27de26f6ed285be7",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.343830726710415,
+          16.340571545793974,
+          10.654221363063243
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\055.png",
+        "sha256": "11effbae54dcd3d06d69d3c3d3523f2379343f30daf8125ed5320ac6df36e628",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.34515644860724,
+          16.341117837226186,
+          10.654572543596357
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\056.png",
+        "sha256": "416b4949a3c8cf74cc1293d9248571b11aec228a7405cf0b67c3e1858047711a",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.34540938595428,
+          16.3416231816011,
+          10.653159602231389
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\057.png",
+        "sha256": "c7c4720d76e17b806b06050eacf760c2c1371c5b02b8c00ecc6fe8f35e1528d7",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.342996368228984,
+          16.340220603997196,
+          10.652479893207492
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\058.png",
+        "sha256": "d75b77bcd99f115199ee21f0fb3cd353e0982b768e05d9d8ca85acae4d41c93e",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.34556965656079,
+          16.343235774540773,
+          10.655267886601552
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\059.png",
+        "sha256": "153cdcd9987a2a14bfbbc87735ab7a6be779d4027c08e48e3827bbe8b4c7075d",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.346119687008255,
+          16.343910166123614,
+          10.655659920061456
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\060.png",
+        "sha256": "49a9416bd5881de4746b4943a1a26bef16bbaf129c9bdfc9aad49c00f09a0b26",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.341954009551607,
+          16.34027135890538,
+          10.653568952600049
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\061.png",
+        "sha256": "d180303978f6877426911cf330ff0d2ab75a8f26c9c02504183337e4c3b1312a",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.342664057440587,
+          16.340750952237514,
+          10.655576063320598
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\062.png",
+        "sha256": "51ec37359594915f1ca6327256bd910058a8601092d2bb10ac6354f60a66ee1d",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.34071375591543,
+          16.339606685986688,
+          10.655303905786552
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\063.png",
+        "sha256": "ceb1bd17d9ad2e6a0399d065eeb938fcb3e97c5e58abc298da6e87240b355d2d",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.33833490965872,
+          16.33881182146537,
+          10.654558287776858
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\064.png",
+        "sha256": "f12ecec979024e84a8e75ba98e4e9bf8b101c230abba35827e73195007cadf4f",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.336699484739892,
+          16.33971372741917,
+          10.654705067644231
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\motion\\065.png",
+        "sha256": "5cb2e43218c8d21fcab7b6a2579ee092136d506757536c7543030aa5d02659c9",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          21.336301560675533,
+          16.340939422932678,
+          10.654655989912662
+        ]
+      }
+    ],
+    "pixels": [
+      960,
+      600
+    ],
+    "duration_ms": [
+      131,
+      130,
+      131,
+      131,
+      130,
+      131,
+      131,
+      130,
+      132,
+      130,
+      131,
+      132,
+      130,
+      130,
+      131,
+      130,
+      131,
+      131,
+      131,
+      130,
+      132,
+      132,
+      130,
+      130,
+      131,
+      130,
+      130,
+      131,
+      131,
+      130,
+      131,
+      131,
+      130,
+      130,
+      132,
+      131,
+      130,
+      131,
+      130,
+      130,
+      130,
+      131,
+      130,
+      131,
+      131,
+      131,
+      131,
+      132,
+      131,
+      130,
+      132,
+      130,
+      130,
+      131,
+      131,
+      131,
+      131,
+      130,
+      132,
+      132,
+      130,
+      131,
+      132,
+      130,
+      131,
+      131
+    ],
+    "operation": "Actual live environment-clock frames with recorded wall-time intervals, including capture overhead. Last duration repeats previous interval. No interpolation, animated source geometry or synthetic camera movement. Lanczos resize and WebP88 encoding only; all original PNGs retained."
+  },
+  {
+    "path": "D:\\project-wroughtwild-art07-r7\\docs\\art\\leyline-studies\\2026-09-14\\art07-repairs\\r7\\gl_compatibility-habitat-player-height-day.png",
+    "sha256": "e3cd873cf78b784c9bf6801294a1995fcfed2f875969e7dca3be6bdf4a2b0236",
+    "sources": [
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\habitat-player-height-day.png",
+        "sha256": "e3cd873cf78b784c9bf6801294a1995fcfed2f875969e7dca3be6bdf4a2b0236",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          52.63009157252995,
+          54.31572533028341,
+          59.550900825059266
+        ]
+      }
+    ],
+    "operation": "Byte-identical selected full-resolution PNG"
+  },
+  {
+    "path": "D:\\project-wroughtwild-art07-r7\\docs\\art\\leyline-studies\\2026-09-14\\art07-repairs\\r7\\gl_compatibility-distance-2.5.png",
+    "sha256": "48a72ad26749fb593cebfb5ac9fd215d1ae4390bf1add1b67101ccbbc38ea0e1",
+    "sources": [
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\r7-views-after-gl_compatibility\\distance-2.5.png",
+        "sha256": "48a72ad26749fb593cebfb5ac9fd215d1ae4390bf1add1b67101ccbbc38ea0e1",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          22.364215604383073,
+          17.65039018398203,
+          12.671135438968754
+        ]
+      }
+    ],
+    "operation": "Byte-identical selected full-resolution PNG"
+  },
+  {
+    "path": "D:\\project-wroughtwild-art07-r7\\docs\\art\\leyline-studies\\2026-09-14\\art07-repairs\\r7\\native-route.webp",
+    "sha256": "55cf1cc1de461799922f487c13cfd8936e7efda2deddeff5a9f2d08d2bfdbf57",
+    "sources": [
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0000.png",
+        "sha256": "09763ba8f62c5a62c387fefc78617d65a690ec61096d2e0cc2b7f281109612c2",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          54.849003793618856,
+          60.90346491652307,
+          67.95042667186785
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0001.png",
+        "sha256": "7c394d40169973457aa37631493fe5e018389f5488bdb3d3f48d17b980206dac",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          55.05252688234368,
+          61.12038226728298,
+          68.32908752866204
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0002.png",
+        "sha256": "19ce962daf936a10ec49f36ae61e5dcd5b97a68cca2a3d4d18c2fd76e99b9009",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          55.5305347660035,
+          61.22240079746804,
+          68.78052134695184
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0003.png",
+        "sha256": "c845b80ff20e90b0fd453f9d67ede1704ceab53df33f7f5966f117544f74d5a5",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          52.58275788010532,
+          56.29178466796135,
+          68.8949373811169
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0004.png",
+        "sha256": "5c4dfe1b0488aeb6d04f639499afa8de31d16ce38429383cfcf0c4de812001f8",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          44.213927546136006,
+          48.928467482572344,
+          65.34002220632433
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0005.png",
+        "sha256": "7a06d437819058e76e8af45f3899bf16368e53ad2e346513b5a60e54fa8ac106",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          44.905697442599205,
+          49.044130595230335,
+          64.24492230156206
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0006.png",
+        "sha256": "c1b173bce0e8743d2f2dacdcf8b8bdef903ab33dbf3b538ec28f70f67de9fbde",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          46.19893076610324,
+          50.11528062187525,
+          63.72198484311183
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0007.png",
+        "sha256": "d115de72ca674482c0f9c75d8686f72652a0fdbef1040590857dc705fa6b9efe",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          44.85105724008474,
+          48.0073655316074,
+          62.25009034942044
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0008.png",
+        "sha256": "7d890eb4210d78d92911ec93348bfc4f18a7fc321c864250ad39f9be7a230b63",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          46.40906426042549,
+          49.14452682704141,
+          64.09991274983348
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0009.png",
+        "sha256": "569a2dadd36b4acfb0619ee678e5876e7d89a0744320b9d3c01c9435dbba12b7",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          43.51319884543275,
+          45.131665266108385,
+          63.482323670534996
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0010.png",
+        "sha256": "0da86d2bc2e6158346f1f35f274fbfd2be02bcf8c9efadc31166ab8eb3eb1a75",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          43.52259454986285,
+          45.3672924417991,
+          60.97825496777637
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0011.png",
+        "sha256": "3b34918b8d2681dd5628b35e788b26809089876938117becd84a71b6b60e784b",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          44.54558961617904,
+          46.22318645925375,
+          57.840266886645026
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0012.png",
+        "sha256": "d1622e66717a5565aab2646a53e05d469294c5a2fd50866e4978d456d464e974",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          44.60421991052762,
+          46.59087503329027,
+          54.156534095482776
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0013.png",
+        "sha256": "7973923ad8d08c73f2e611daa6f190068561e4306ce5c7be0c8a2b8b4e6abe71",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          47.136149861362284,
+          48.49320426730052,
+          51.28247853606242
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0014.png",
+        "sha256": "5905f43a8f10611bab5a498ae24599176aeb43511a3baf5b6776e63905362b44",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          46.51472648991153,
+          48.237651890385386,
+          52.908557739027415
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0015.png",
+        "sha256": "3958deaa7684dfcd706fa321502fa480b6722cadf39c437fa7a8c361a0424cc8",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          47.427372683162545,
+          49.87640215760128,
+          56.45177579920038
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0016.png",
+        "sha256": "9225d8ee33b2e0c5547bde01732b25197d4b2928f007042943e87da2f4394f49",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          50.47482528840187,
+          53.60488726613625,
+          61.39498308029008
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0017.png",
+        "sha256": "b8a6ef89de5f2b7ed9fe8b9d19b61e2f7e9878143689bfe9acb756ac1f38186f",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          56.954383936578395,
+          59.91709885984015,
+          67.62613478389605
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0018.png",
+        "sha256": "88e8d1cb383e6c7d51734b85b023a804d50e304c37d78f634c625c2454c1b4e0",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          56.399787900405386,
+          59.3687318044655,
+          69.74389154953487
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0019.png",
+        "sha256": "bd4bdef226c297ddaf870bd2507af6a1bb980e60a4d9867e7af4bf3990a3084b",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          52.68703326135353,
+          55.620575987954055,
+          63.272759510240185
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0020.png",
+        "sha256": "919f1f1119b0365a898216af458c8e471566e7f036afb7376810e0512e4ff231",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          55.06875211822118,
+          58.34046066180718,
+          64.66688393190472
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0021.png",
+        "sha256": "ec836b2c25adfe5fc6c49cb86f508eedc8e0d74cf3047a0e3629d5aa55d632b7",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          52.0828242044673,
+          54.62594949107324,
+          67.1237908362275
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0022.png",
+        "sha256": "165e74d2259c944838e6515d0467680d361608ea566848dd7679a50d36f0bec8",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          48.10875998654993,
+          50.430526881837686,
+          63.169703874529134
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0023.png",
+        "sha256": "533e2e8a17751340e6d81751cb13eb8f09e5cc9d925aab66f26d6f75fb63abad",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          48.31260782979629,
+          51.2795378111765,
+          60.296518744059895
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0024.png",
+        "sha256": "d208979b3701b43160c30b53bbfc2c25c80df6bcd44ec3be0bcec63aa46a96f7",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          46.385365919318325,
+          48.730552439287834,
+          57.17581557574351
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0025.png",
+        "sha256": "1a82f281e643fab4c1afdcc80e45d3e3455ad0da0ed6752f51629417e2f3c384",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          46.723922288943385,
+          49.83302455107382,
+          54.92301789149433
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0026.png",
+        "sha256": "518566653a712bfca94fce4ea5386fec05be5a51ad1b68d911d9fdac1f72613f",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          45.86928603795427,
+          48.37565208741027,
+          51.04461664316213
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0027.png",
+        "sha256": "e443aad54c617105141c6e7131305d7d1ee97d8f63ae5c2cd250282ac5cb8df1",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          47.28225917921048,
+          49.21918330084473,
+          50.846449624240286
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0028.png",
+        "sha256": "95dbfc5b65b92dc9e4f26c5b04cd64bf0d8c819a715afc02167afcb1b7a96249",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          48.2947722691972,
+          50.725575399422524,
+          56.22503173275638
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0029.png",
+        "sha256": "10d50883a28614b43c2da2e77b006f68556f841e88bc0d59afdc60eec8b6e61d",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          48.4902432325345,
+          49.011085317235185,
+          49.57536796915725
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0030.png",
+        "sha256": "d2b4d787300080410e96698f3259d04513a9c3d9ef7c7a615b3708473c7678cf",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          49.14586258492235,
+          49.99443081756662,
+          52.3916770795577
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0031.png",
+        "sha256": "557156fd1ca9161484e3c64005e634c01729a7e6e414e6b61b0b5aeadbe5b2a9",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          50.629612442357896,
+          52.00319888241367,
+          55.132750552152
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0032.png",
+        "sha256": "afef2e6c84dce58eaba50233804cb68a318e40a0546e8fa3155d3db89a831ebf",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          51.87116859369934,
+          54.130009762337295,
+          56.393273811802366
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0033.png",
+        "sha256": "659b05378901948d491401adb058d915e33f0ebc693a56cebd68689c89fc14d0",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          50.402197599535214,
+          52.8750352863696,
+          56.72733794734163
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0034.png",
+        "sha256": "a3a5dec3d0bf1b87cc853ad705382719bc44a505cf36a195da78e4477cb5fe99",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          56.72861679511621,
+          59.75645129326984,
+          63.805536375725765
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0035.png",
+        "sha256": "47019b7f637d4fa6413d8c7538f042f16bbe91e956e423c21a85229c7aa94854",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          58.80890797725346,
+          61.783637899365964,
+          66.18990137943354
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0036.png",
+        "sha256": "3e7e45cb34c499d3a4b0f07a6bd2598a1628bffe72ac78e4aec515fd20a3c828",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          54.979841107747895,
+          56.839121503852844,
+          61.05907724988838
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0037.png",
+        "sha256": "0d6cd3d411f40093e8f0d04c39f761747f492012ac1d87f82f9ea386f1044707",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          51.357011994872465,
+          53.413127102716075,
+          55.305898614946216
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0038.png",
+        "sha256": "e0c76a5b962b2ad6bebcf4da7be54a0157d60c5fb8b65542dfff20c6859b7511",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          46.05712825375912,
+          47.460578883589484,
+          44.862451768347334
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0039.png",
+        "sha256": "f3affd060dd4d602cc431c038369fbd0a6b79b9a1d935141d3f49bc572ba2d49",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          45.07145136269324,
+          46.524967795516325,
+          44.21402541091376
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0040.png",
+        "sha256": "79036560e7a6061acad4e920df963d57ae62e4a48de29560831827268cc1a698",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          41.026506598885994,
+          42.921998066625186,
+          45.23942337481581
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0041.png",
+        "sha256": "76bf333bb1c4d75c1ec9250a8d7a60994ac09d32d24bdd84775859efca207cdf",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          47.7590111477404,
+          50.141788428208955,
+          51.975716202288915
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0042.png",
+        "sha256": "a55c67a54b00a95c227ac85a44401fe899ca964649660537e9a39eed1d894b02",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          45.64309382936149,
+          47.87381947207534,
+          49.992630387924414
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0043.png",
+        "sha256": "cf620ea32f129dbea7916cef9f0a0eeba2aae2d61ae43bcc19bbc72e368ff8c3",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          49.380215152746175,
+          51.77902479175671,
+          55.90679171938607
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0044.png",
+        "sha256": "da76881d7216e32b7b4c3d7011e5e3eb4f24087df48654a955bfc73eea3cc17b",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          56.17688109492098,
+          59.367973776159964,
+          68.39076433572778
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0045.png",
+        "sha256": "371c5356bfaf3ab5df1533a4ecc06b53dcdcc9b0b51d1d1430f7d600cdfd5059",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          37.66548447233594,
+          39.81988862990353,
+          47.64314115350116
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0046.png",
+        "sha256": "45199119a5411b75f593c193c22edf340d848de9f0b810ef5f8d7827c04ddb8d",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          33.38331403412764,
+          35.39453576259076,
+          40.015211009332596
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0047.png",
+        "sha256": "760b9107ed0887bfb46c651c01fa9f9641371ac8523a98cd060174462a7dfd26",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          39.23680865813147,
+          40.9541547480533,
+          62.280658007521076
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0048.png",
+        "sha256": "cb1c296f7d369549f86e31278cafa51e4a0354d1ac6fc37c63840496bbc5b9bb",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          38.04748501107916,
+          41.837119293652144,
+          54.60122274435681
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0049.png",
+        "sha256": "18cea5596d3de3c33cefbb0631c888bacc346d5fff8b13a607aa9c4925b75beb",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          29.287201232778454,
+          32.664241047407224,
+          46.2649510341573
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0050.png",
+        "sha256": "d5aec131f1b1000d9a562c0ac07a4a11e99302341e8a7c68d1cb981a94b28965",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          30.368223864486325,
+          32.747210020709126,
+          46.63118888879609
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0051.png",
+        "sha256": "04cd4c4a4277b64778eec36c87cf7f5cc3210ce3d7884a2aeaf92b1fd366ac5b",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          32.59286989929944,
+          33.56665063225366,
+          40.93334448783796
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0052.png",
+        "sha256": "a6d3792ee5fda07801e3b1ff01828979990414e9cc0d5a87774fed1296148ad7",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          47.44062325787406,
+          50.106069208202854,
+          61.92003587814061
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0053.png",
+        "sha256": "7c7d2da99c833ee9420faaa2eb4b5abb71393764e95c545aaca6b74cc2f03523",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          49.961098878310565,
+          52.32618406493221,
+          67.79023268218677
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0054.png",
+        "sha256": "247c77c412d3e6b0efe68065aa33d80500b4c7611eb68889f5a0755cc6b9af75",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          51.0673270827175,
+          53.39887332237101,
+          68.6701958020348
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0055.png",
+        "sha256": "073b9243d1d35fec41b7d285d69fd1d539f9e173bfb9cf2af02090896650f0aa",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          51.66487784580541,
+          54.31864668640438,
+          68.323920735179
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0056.png",
+        "sha256": "d675fde544f0f2733ee1bff539eec66330eac39eadbe4fcc37ae8ecdeececc3d",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          45.06617545936717,
+          46.20989275457956,
+          66.7825225023798
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0057.png",
+        "sha256": "f7a0c9914e3fcf750e7be7bbb7abad99259e8722496889ef6b8ffe8f69776f64",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          43.205230018270164,
+          44.14734175375269,
+          66.69881790093383
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0058.png",
+        "sha256": "36baf618b2cd524a53e1dafde62211fbe2ae956c911746f9592e714a50a91dbd",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          46.4425732132954,
+          47.77841015819989,
+          67.2191930447477
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0059.png",
+        "sha256": "d767930c9a618bffd15960a8c5877f3f9ebb37d4b356c2bd25c0f6cd9778e55e",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          51.37524656271496,
+          54.500124805290646,
+          69.63897777553096
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0060.png",
+        "sha256": "09bf3c69278c2ba87f246ffd3df102f1a59c3efefc82c75b2bbba21eed0eefdc",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          31.960112834345026,
+          33.833412990852494,
+          50.06338792974944
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0061.png",
+        "sha256": "010b8cb3827b81f5e3c2e626a9e495902122add2ddf59737c48dc9eefa95716c",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          44.11469198984031,
+          45.02322868698738,
+          66.66622710244246
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0062.png",
+        "sha256": "508bca3b295a1d0e13df358f0d048e607a038f57bfb0f9266d60f21ec8ea269a",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          41.75275437287774,
+          43.01718021379655,
+          64.79153333040561
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0063.png",
+        "sha256": "5df111dd6b37198cad6c27ceab4c74bcf00725ea24890ac423886e5bbe69ba08",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          48.69476548415431,
+          50.812509952801086,
+          68.31835145638725
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0064.png",
+        "sha256": "3da4e32c58a78c58e674057ad9920119b6e8252f692d84282702a3ee0a4d78b4",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          39.12802850907966,
+          42.200288235514236,
+          56.620559170005976
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0065.png",
+        "sha256": "b7ec07b0461d0db4c768c2bcf092f799299bbc799f7c5ac55e7ec89cd882227f",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          33.26275652024144,
+          33.36504093008272,
+          54.429323308147765
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0066.png",
+        "sha256": "b867486afa5415e8e364df21d69d0cfd3a2fafbe9f5a6baea06d5f183428af46",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          31.29133924667427,
+          33.88538866584949,
+          53.64971004854694
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0067.png",
+        "sha256": "17ea6e0bdbc9722ceec9b47f075c1bdcdaebddf7eb012cfcf1ce691679e2507d",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          32.63134255176577,
+          35.6121020598428,
+          53.398906855171155
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0068.png",
+        "sha256": "4195d14f2cc43f66fd83d55b8e54d667d0fd66d59bc5fc98d6722fcc200ab522",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          41.87637351115982,
+          45.35757330427636,
+          62.782960239151
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0069.png",
+        "sha256": "fe710329f6325da3a0c63712080c7c6ee092942d68bddb423f15e96328f259f2",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          46.293647631362674,
+          47.012335917527764,
+          64.30471723962702
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0070.png",
+        "sha256": "54b3f0bea2ed3a580d1e4d728b9eb650f1d0be01438c160b3214e8c38acc147b",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          48.16084430994155,
+          47.89602998408904,
+          64.32838397006056
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0071.png",
+        "sha256": "7c0d64cf7784d4f20cb733e09772afe53733094d9c00d29e8bbbce1afef94008",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          50.91275482012139,
+          51.28651957908155,
+          67.5602393012865
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0072.png",
+        "sha256": "7a8a2b79ee4620072daf98ac0c5eb9b76bf93741b31bc5a9f4dd3e3c8a6c0456",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          53.389280536746185,
+          53.892528887317,
+          69.35563821067069
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0073.png",
+        "sha256": "5d8bac6efb804b89e095e59ac5f992c3d72f7e65dee5f339786a81f77d188dd0",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          54.25085437632621,
+          53.882917981371,
+          68.62143614887646
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0074.png",
+        "sha256": "a2f1715a3f5c6151ad4aec4204e86784ae2ecca4a4e5be3e986901cb0a428036",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          53.66436866473323,
+          54.46261790197904,
+          69.60832331241077
+        ]
+      },
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\evidence\\paid-art-forward_plus-r7-route-motion\\walk\\0075.png",
+        "sha256": "decd0d7fd412c454ce264355748fa83faac5cf203384e3f78b09a75774da3dc3",
+        "pixels": [
+          1440,
+          900
+        ],
+        "rgb_stddev_below_caption": [
+          52.963739221090975,
+          53.29751262394628,
+          69.15562172038048
+        ]
+      }
+    ],
+    "pixels": [
+      960,
+      600
+    ],
+    "duration_ms": [
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300,
+      300
+    ],
+    "operation": "Actual controller-input route frames captured every 18 movement physics ticks at 60 Hz. Nominal 300 ms display intervals; drawing/capture adds unmeasured pacing between captures, so this is not a realtime timing record or camera animation. Lanczos resize and WebP88 encoding only; all original PNGs retained."
+  },
+  {
+    "path": "D:\\project-wroughtwild-art07-r7\\docs\\art\\leyline-studies\\2026-09-14\\art07-repairs\\r7\\selected-fullness-reference.png",
+    "sha256": "2bcb3d2e39f50d0d62f13b00a0574e2dcf969aef4887a90f508ab9fc172db238",
+    "sources": [
+      {
+        "path": "D:\\project-wroughtwild-art07-r7\\docs\\art\\concepts\\environment\\2026-09-09-frontier\\01-world-keyframe.png",
+        "sha256": "2bcb3d2e39f50d0d62f13b00a0574e2dcf969aef4887a90f508ab9fc172db238",
+        "pixels": [
+          1672,
+          941
+        ],
+        "rgb_stddev_below_caption": [
+          53.99039579195272,
+          49.7207913585767,
+          47.54067372082111
+        ]
+      }
+    ],
+    "operation": "Unchanged previously generated concept reference, not an engine capture or approved new geography."
+  }
+]

@@ -1,0 +1,4113 @@
+{
+  "passed": true,
+  "anchors": [
+    {
+      "renderer": "forward_plus",
+      "view": "home-player-height",
+      "anchor_batches": 1927,
+      "anchors": 25190,
+      "composed_anchors": 16379,
+      "geography_sha256": "550b2d742314136a71a8c177920059bd245996e744b8722c8ba8c68afbde4a70",
+      "exact_ids_counts_poses": true,
+      "static_collision_exact": true,
+      "inspector_capsule_yaw_differences": [],
+      "maximum_world_sway_component_bound_m": 0.022001175809599625,
+      "unchanged_building_clearance_m": 0.3,
+      "root_samples": 15689,
+      "root_gap_min_m": -0.0349998474121094,
+      "root_gap_max_m": -0.0149981150871099
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "route-player-height",
+      "anchor_batches": 1747,
+      "anchors": 22373,
+      "composed_anchors": 14523,
+      "geography_sha256": "550b2d742314136a71a8c177920059bd245996e744b8722c8ba8c68afbde4a70",
+      "exact_ids_counts_poses": true,
+      "static_collision_exact": true,
+      "inspector_capsule_yaw_differences": [],
+      "maximum_world_sway_component_bound_m": 0.022001175809599625,
+      "unchanged_building_clearance_m": 0.3,
+      "root_samples": 13833,
+      "root_gap_min_m": -0.0349998474121094,
+      "root_gap_max_m": -0.0149980983904641
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "clearing-player-height",
+      "anchor_batches": 1747,
+      "anchors": 22373,
+      "composed_anchors": 14523,
+      "geography_sha256": "550b2d742314136a71a8c177920059bd245996e744b8722c8ba8c68afbde4a70",
+      "exact_ids_counts_poses": true,
+      "static_collision_exact": true,
+      "inspector_capsule_yaw_differences": [],
+      "maximum_world_sway_component_bound_m": 0.022001175809599625,
+      "unchanged_building_clearance_m": 0.3,
+      "root_samples": 13833,
+      "root_gap_min_m": -0.0349998474121094,
+      "root_gap_max_m": -0.0149980983904641
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "habitat-player-height",
+      "anchor_batches": 1734,
+      "anchors": 22424,
+      "composed_anchors": 14855,
+      "geography_sha256": "550b2d742314136a71a8c177920059bd245996e744b8722c8ba8c68afbde4a70",
+      "exact_ids_counts_poses": true,
+      "static_collision_exact": true,
+      "inspector_capsule_yaw_differences": [],
+      "maximum_world_sway_component_bound_m": 0.022001175809599625,
+      "unchanged_building_clearance_m": 0.3,
+      "root_samples": 14165,
+      "root_gap_min_m": -0.0349998474121094,
+      "root_gap_max_m": -0.0149980969638222
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "home-player-height",
+      "anchor_batches": 1927,
+      "anchors": 25190,
+      "composed_anchors": 16379,
+      "geography_sha256": "550b2d742314136a71a8c177920059bd245996e744b8722c8ba8c68afbde4a70",
+      "exact_ids_counts_poses": true,
+      "static_collision_exact": true,
+      "inspector_capsule_yaw_differences": [],
+      "maximum_world_sway_component_bound_m": 0.022001175809599625,
+      "unchanged_building_clearance_m": 0.3,
+      "root_samples": 15689,
+      "root_gap_min_m": -0.0349998474121094,
+      "root_gap_max_m": -0.0149981150871099
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "route-player-height",
+      "anchor_batches": 1747,
+      "anchors": 22373,
+      "composed_anchors": 14523,
+      "geography_sha256": "550b2d742314136a71a8c177920059bd245996e744b8722c8ba8c68afbde4a70",
+      "exact_ids_counts_poses": true,
+      "static_collision_exact": true,
+      "inspector_capsule_yaw_differences": [],
+      "maximum_world_sway_component_bound_m": 0.022001175809599625,
+      "unchanged_building_clearance_m": 0.3,
+      "root_samples": 13833,
+      "root_gap_min_m": -0.0349998474121094,
+      "root_gap_max_m": -0.0149980983904641
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "clearing-player-height",
+      "anchor_batches": 1747,
+      "anchors": 22373,
+      "composed_anchors": 14523,
+      "geography_sha256": "550b2d742314136a71a8c177920059bd245996e744b8722c8ba8c68afbde4a70",
+      "exact_ids_counts_poses": true,
+      "static_collision_exact": true,
+      "inspector_capsule_yaw_differences": [],
+      "maximum_world_sway_component_bound_m": 0.022001175809599625,
+      "unchanged_building_clearance_m": 0.3,
+      "root_samples": 13833,
+      "root_gap_min_m": -0.0349998474121094,
+      "root_gap_max_m": -0.0149980983904641
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "habitat-player-height",
+      "anchor_batches": 1734,
+      "anchors": 22424,
+      "composed_anchors": 14855,
+      "geography_sha256": "550b2d742314136a71a8c177920059bd245996e744b8722c8ba8c68afbde4a70",
+      "exact_ids_counts_poses": true,
+      "static_collision_exact": true,
+      "inspector_capsule_yaw_differences": [],
+      "maximum_world_sway_component_bound_m": 0.022001175809599625,
+      "unchanged_building_clearance_m": 0.3,
+      "root_samples": 14165,
+      "root_gap_min_m": -0.0349998474121094,
+      "root_gap_max_m": -0.0149980969638222
+    }
+  ],
+  "costs": [
+    {
+      "renderer": "forward_plus",
+      "view": "home-player-height",
+      "lighting": "day",
+      "samples_each": 300,
+      "before": {
+        "camera": "(468.5, 32.68, 431.5)",
+        "cost": {
+          "buffer_bytes_total_loaded": 220065268,
+          "mesh_instances_including_multimesh_and_hidden": 31295,
+          "scene_unique_indices": 2306076,
+          "scene_unique_meshes_including_hidden": 1622,
+          "scene_unique_surfaces": 1946,
+          "scene_unique_triangles": 2469697,
+          "scene_unique_vertices": 6380700,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1371295232,
+          "video_bytes_total_loaded": 1643676000
+        },
+        "draw_calls": 1147,
+        "frame_median_ms": 3.933,
+        "frame_p95_ms": 5.061,
+        "frame_worst_ms": 6.084,
+        "gpu_median_ms": 2.42899990081787,
+        "gpu_p95_ms": 3.18600010871887,
+        "gpu_worst_ms": 3.33500003814697,
+        "lighting": "day",
+        "primitives": 8211573,
+        "render_cpu_median_ms": 1.45000004768372,
+        "samples": 300,
+        "scene": "home-player-height",
+        "target": "(460.5, 33.69, 445.5)"
+      },
+      "after": {
+        "camera": "(468.5, 32.68, 431.5)",
+        "cost": {
+          "buffer_bytes_total_loaded": 224658402,
+          "mesh_instances_including_multimesh_and_hidden": 31295,
+          "scene_unique_indices": 2532828,
+          "scene_unique_meshes_including_hidden": 1625,
+          "scene_unique_surfaces": 1979,
+          "scene_unique_triangles": 2545281,
+          "scene_unique_vertices": 6478970,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1404849664,
+          "video_bytes_total_loaded": 1681824528
+        },
+        "draw_calls": 1409,
+        "frame_median_ms": 4.369,
+        "frame_p95_ms": 4.974,
+        "frame_worst_ms": 5.874,
+        "gpu_median_ms": 2.92199993133545,
+        "gpu_p95_ms": 3.57100009918213,
+        "gpu_worst_ms": 3.80200004577637,
+        "lighting": "day",
+        "primitives": 9568845,
+        "render_cpu_median_ms": 1.68400001525879,
+        "samples": 300,
+        "scene": "home-player-height",
+        "target": "(460.5, 33.69, 445.5)"
+      },
+      "frame_median_change_percent": 11.085685227561658,
+      "frame_p95_change_percent": -1.7190278601066922
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "home-player-height",
+      "lighting": "shade",
+      "samples_each": 300,
+      "before": {
+        "camera": "(468.5, 32.68, 431.5)",
+        "cost": {
+          "buffer_bytes_total_loaded": 220065268,
+          "mesh_instances_including_multimesh_and_hidden": 31295,
+          "scene_unique_indices": 2306076,
+          "scene_unique_meshes_including_hidden": 1622,
+          "scene_unique_surfaces": 1946,
+          "scene_unique_triangles": 2469697,
+          "scene_unique_vertices": 6380700,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1371295232,
+          "video_bytes_total_loaded": 1643676000
+        },
+        "draw_calls": 1147,
+        "frame_median_ms": 3.992,
+        "frame_p95_ms": 4.649,
+        "frame_worst_ms": 5.274,
+        "gpu_median_ms": 2.42899990081787,
+        "gpu_p95_ms": 3.15700006484985,
+        "gpu_worst_ms": 3.50200009346008,
+        "lighting": "shade",
+        "primitives": 8211567,
+        "render_cpu_median_ms": 1.48500001430511,
+        "samples": 300,
+        "scene": "home-player-height",
+        "target": "(460.5, 33.69, 445.5)"
+      },
+      "after": {
+        "camera": "(468.5, 32.68, 431.5)",
+        "cost": {
+          "buffer_bytes_total_loaded": 224658402,
+          "mesh_instances_including_multimesh_and_hidden": 31295,
+          "scene_unique_indices": 2532828,
+          "scene_unique_meshes_including_hidden": 1625,
+          "scene_unique_surfaces": 1979,
+          "scene_unique_triangles": 2545281,
+          "scene_unique_vertices": 6478970,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1404849664,
+          "video_bytes_total_loaded": 1681824528
+        },
+        "draw_calls": 1409,
+        "frame_median_ms": 4.465,
+        "frame_p95_ms": 5.31,
+        "frame_worst_ms": 6.329,
+        "gpu_median_ms": 2.90400004386902,
+        "gpu_p95_ms": 3.55399990081787,
+        "gpu_worst_ms": 3.78900003433228,
+        "lighting": "shade",
+        "primitives": 9568839,
+        "render_cpu_median_ms": 1.74000000953674,
+        "samples": 300,
+        "scene": "home-player-height",
+        "target": "(460.5, 33.69, 445.5)"
+      },
+      "frame_median_change_percent": 11.848697394789575,
+      "frame_p95_change_percent": 14.21811142181113
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "home-player-height",
+      "lighting": "dusk",
+      "samples_each": 300,
+      "before": {
+        "camera": "(468.5, 32.68, 431.5)",
+        "cost": {
+          "buffer_bytes_total_loaded": 220065268,
+          "mesh_instances_including_multimesh_and_hidden": 31295,
+          "scene_unique_indices": 2306076,
+          "scene_unique_meshes_including_hidden": 1622,
+          "scene_unique_surfaces": 1946,
+          "scene_unique_triangles": 2469697,
+          "scene_unique_vertices": 6380700,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1371295232,
+          "video_bytes_total_loaded": 1643676000
+        },
+        "draw_calls": 1146,
+        "frame_median_ms": 3.96,
+        "frame_p95_ms": 4.452,
+        "frame_worst_ms": 5.158,
+        "gpu_median_ms": 2.42899990081787,
+        "gpu_p95_ms": 3.16700005531311,
+        "gpu_worst_ms": 3.53500008583069,
+        "lighting": "dusk",
+        "primitives": 8211573,
+        "render_cpu_median_ms": 1.51400005817413,
+        "samples": 300,
+        "scene": "home-player-height",
+        "target": "(460.5, 33.69, 445.5)"
+      },
+      "after": {
+        "camera": "(468.5, 32.68, 431.5)",
+        "cost": {
+          "buffer_bytes_total_loaded": 224658402,
+          "mesh_instances_including_multimesh_and_hidden": 31295,
+          "scene_unique_indices": 2532828,
+          "scene_unique_meshes_including_hidden": 1625,
+          "scene_unique_surfaces": 1979,
+          "scene_unique_triangles": 2545281,
+          "scene_unique_vertices": 6478970,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1404849664,
+          "video_bytes_total_loaded": 1681824528
+        },
+        "draw_calls": 1409,
+        "frame_median_ms": 4.305,
+        "frame_p95_ms": 4.829,
+        "frame_worst_ms": 5.091,
+        "gpu_median_ms": 2.90400004386902,
+        "gpu_p95_ms": 3.51699995994568,
+        "gpu_worst_ms": 3.7739999294281,
+        "lighting": "dusk",
+        "primitives": 9568851,
+        "render_cpu_median_ms": 1.5349999666214,
+        "samples": 300,
+        "scene": "home-player-height",
+        "target": "(460.5, 33.69, 445.5)"
+      },
+      "frame_median_change_percent": 8.712121212121215,
+      "frame_p95_change_percent": 8.468104222821204
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "route-player-height",
+      "lighting": "day",
+      "samples_each": 300,
+      "before": {
+        "camera": "(447.5, 32.68, 394.5)",
+        "cost": {
+          "buffer_bytes_total_loaded": 213638396,
+          "mesh_instances_including_multimesh_and_hidden": 28579,
+          "scene_unique_indices": 2306076,
+          "scene_unique_meshes_including_hidden": 1594,
+          "scene_unique_surfaces": 1898,
+          "scene_unique_triangles": 2392651,
+          "scene_unique_vertices": 6149562,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1371295232,
+          "video_bytes_total_loaded": 1637248128
+        },
+        "draw_calls": 523,
+        "frame_median_ms": 3.002,
+        "frame_p95_ms": 3.435,
+        "frame_worst_ms": 4.388,
+        "gpu_median_ms": 1.63900005817413,
+        "gpu_p95_ms": 2.29299998283386,
+        "gpu_worst_ms": 2.50799989700317,
+        "lighting": "day",
+        "primitives": 4692196,
+        "render_cpu_median_ms": 0.989000022411346,
+        "samples": 300,
+        "scene": "route-player-height",
+        "target": "(447.5, 32.68, 384.5)"
+      },
+      "after": {
+        "camera": "(447.5, 32.68, 394.5)",
+        "cost": {
+          "buffer_bytes_total_loaded": 218231530,
+          "mesh_instances_including_multimesh_and_hidden": 28579,
+          "scene_unique_indices": 2532828,
+          "scene_unique_meshes_including_hidden": 1597,
+          "scene_unique_surfaces": 1931,
+          "scene_unique_triangles": 2468235,
+          "scene_unique_vertices": 6247832,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1404849664,
+          "video_bytes_total_loaded": 1675396656
+        },
+        "draw_calls": 709,
+        "frame_median_ms": 3.229,
+        "frame_p95_ms": 3.738,
+        "frame_worst_ms": 4.083,
+        "gpu_median_ms": 1.87600004673004,
+        "gpu_p95_ms": 2.48799991607666,
+        "gpu_worst_ms": 2.75099992752075,
+        "lighting": "day",
+        "primitives": 6142742,
+        "render_cpu_median_ms": 1.13399994373322,
+        "samples": 300,
+        "scene": "route-player-height",
+        "target": "(447.5, 32.68, 384.5)"
+      },
+      "frame_median_change_percent": 7.561625582944709,
+      "frame_p95_change_percent": 8.820960698689962
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "route-player-height",
+      "lighting": "shade",
+      "samples_each": 300,
+      "before": {
+        "camera": "(447.5, 32.68, 394.5)",
+        "cost": {
+          "buffer_bytes_total_loaded": 213638396,
+          "mesh_instances_including_multimesh_and_hidden": 28579,
+          "scene_unique_indices": 2306076,
+          "scene_unique_meshes_including_hidden": 1594,
+          "scene_unique_surfaces": 1898,
+          "scene_unique_triangles": 2392651,
+          "scene_unique_vertices": 6149562,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1371295232,
+          "video_bytes_total_loaded": 1637248128
+        },
+        "draw_calls": 523,
+        "frame_median_ms": 2.997,
+        "frame_p95_ms": 3.446,
+        "frame_worst_ms": 4.314,
+        "gpu_median_ms": 1.63900005817413,
+        "gpu_p95_ms": 2.15799999237061,
+        "gpu_worst_ms": 2.53099989891052,
+        "lighting": "shade",
+        "primitives": 4692196,
+        "render_cpu_median_ms": 0.968999981880188,
+        "samples": 300,
+        "scene": "route-player-height",
+        "target": "(447.5, 32.68, 384.5)"
+      },
+      "after": {
+        "camera": "(447.5, 32.68, 394.5)",
+        "cost": {
+          "buffer_bytes_total_loaded": 218231530,
+          "mesh_instances_including_multimesh_and_hidden": 28579,
+          "scene_unique_indices": 2532828,
+          "scene_unique_meshes_including_hidden": 1597,
+          "scene_unique_surfaces": 1931,
+          "scene_unique_triangles": 2468235,
+          "scene_unique_vertices": 6247832,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1404849664,
+          "video_bytes_total_loaded": 1675396656
+        },
+        "draw_calls": 709,
+        "frame_median_ms": 3.233,
+        "frame_p95_ms": 3.808,
+        "frame_worst_ms": 4.289,
+        "gpu_median_ms": 1.87800002098084,
+        "gpu_p95_ms": 2.48300004005432,
+        "gpu_worst_ms": 2.80599999427795,
+        "lighting": "shade",
+        "primitives": 6142742,
+        "render_cpu_median_ms": 1.11600005626678,
+        "samples": 300,
+        "scene": "route-player-height",
+        "target": "(447.5, 32.68, 384.5)"
+      },
+      "frame_median_change_percent": 7.874541207874541,
+      "frame_p95_change_percent": 10.504933255948924
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "route-player-height",
+      "lighting": "dusk",
+      "samples_each": 300,
+      "before": {
+        "camera": "(447.5, 32.68, 394.5)",
+        "cost": {
+          "buffer_bytes_total_loaded": 213638396,
+          "mesh_instances_including_multimesh_and_hidden": 28579,
+          "scene_unique_indices": 2306076,
+          "scene_unique_meshes_including_hidden": 1594,
+          "scene_unique_surfaces": 1898,
+          "scene_unique_triangles": 2392651,
+          "scene_unique_vertices": 6149562,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1371295232,
+          "video_bytes_total_loaded": 1637248128
+        },
+        "draw_calls": 523,
+        "frame_median_ms": 3.186,
+        "frame_p95_ms": 3.893,
+        "frame_worst_ms": 4.304,
+        "gpu_median_ms": 1.63999998569489,
+        "gpu_p95_ms": 2.32299995422363,
+        "gpu_worst_ms": 2.52800011634827,
+        "lighting": "dusk",
+        "primitives": 4692196,
+        "render_cpu_median_ms": 0.938000023365021,
+        "samples": 300,
+        "scene": "route-player-height",
+        "target": "(447.5, 32.68, 384.5)"
+      },
+      "after": {
+        "camera": "(447.5, 32.68, 394.5)",
+        "cost": {
+          "buffer_bytes_total_loaded": 218231530,
+          "mesh_instances_including_multimesh_and_hidden": 28579,
+          "scene_unique_indices": 2532828,
+          "scene_unique_meshes_including_hidden": 1597,
+          "scene_unique_surfaces": 1931,
+          "scene_unique_triangles": 2468235,
+          "scene_unique_vertices": 6247832,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1404849664,
+          "video_bytes_total_loaded": 1675396656
+        },
+        "draw_calls": 709,
+        "frame_median_ms": 3.28,
+        "frame_p95_ms": 3.865,
+        "frame_worst_ms": 5.132,
+        "gpu_median_ms": 1.87600004673004,
+        "gpu_p95_ms": 2.59200000762939,
+        "gpu_worst_ms": 2.7960000038147,
+        "lighting": "dusk",
+        "primitives": 6142742,
+        "render_cpu_median_ms": 1.17299997806549,
+        "samples": 300,
+        "scene": "route-player-height",
+        "target": "(447.5, 32.68, 384.5)"
+      },
+      "frame_median_change_percent": 2.9504080351537842,
+      "frame_p95_change_percent": -0.7192396609298601
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "clearing-player-height",
+      "lighting": "day",
+      "samples_each": 300,
+      "before": {
+        "camera": "(453.0, 32.68, 431.0)",
+        "cost": {
+          "buffer_bytes_total_loaded": 222136548,
+          "mesh_instances_including_multimesh_and_hidden": 28664,
+          "scene_unique_indices": 2306076,
+          "scene_unique_meshes_including_hidden": 1623,
+          "scene_unique_surfaces": 1953,
+          "scene_unique_triangles": 2493737,
+          "scene_unique_vertices": 6452820,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1371295232,
+          "video_bytes_total_loaded": 1645751632
+        },
+        "draw_calls": 1160,
+        "frame_median_ms": 4.231,
+        "frame_p95_ms": 4.985,
+        "frame_worst_ms": 6.71,
+        "gpu_median_ms": 2.26699995994568,
+        "gpu_p95_ms": 2.97000002861023,
+        "gpu_worst_ms": 3.39000010490417,
+        "lighting": "day",
+        "primitives": 7558725,
+        "render_cpu_median_ms": 1.52400004863739,
+        "samples": 300,
+        "scene": "clearing-player-height",
+        "target": "(461.0, 32.0, 438.0)"
+      },
+      "after": {
+        "camera": "(453.0, 32.68, 431.0)",
+        "cost": {
+          "buffer_bytes_total_loaded": 226729682,
+          "mesh_instances_including_multimesh_and_hidden": 28664,
+          "scene_unique_indices": 2532828,
+          "scene_unique_meshes_including_hidden": 1626,
+          "scene_unique_surfaces": 1986,
+          "scene_unique_triangles": 2569321,
+          "scene_unique_vertices": 6551090,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1404849664,
+          "video_bytes_total_loaded": 1683900160
+        },
+        "draw_calls": 1358,
+        "frame_median_ms": 4.458,
+        "frame_p95_ms": 5.576,
+        "frame_worst_ms": 7.901,
+        "gpu_median_ms": 2.54800009727478,
+        "gpu_p95_ms": 3.27800011634827,
+        "gpu_worst_ms": 3.58999991416931,
+        "lighting": "day",
+        "primitives": 8594631,
+        "render_cpu_median_ms": 1.73099994659424,
+        "samples": 300,
+        "scene": "clearing-player-height",
+        "target": "(461.0, 32.0, 438.0)"
+      },
+      "frame_median_change_percent": 5.365161900259996,
+      "frame_p95_change_percent": 11.855566700100283
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "clearing-player-height",
+      "lighting": "shade",
+      "samples_each": 300,
+      "before": {
+        "camera": "(453.0, 32.68, 431.0)",
+        "cost": {
+          "buffer_bytes_total_loaded": 222136548,
+          "mesh_instances_including_multimesh_and_hidden": 28664,
+          "scene_unique_indices": 2306076,
+          "scene_unique_meshes_including_hidden": 1623,
+          "scene_unique_surfaces": 1953,
+          "scene_unique_triangles": 2493737,
+          "scene_unique_vertices": 6452820,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1371295232,
+          "video_bytes_total_loaded": 1645751632
+        },
+        "draw_calls": 1160,
+        "frame_median_ms": 4.039,
+        "frame_p95_ms": 4.715,
+        "frame_worst_ms": 5.603,
+        "gpu_median_ms": 2.26699995994568,
+        "gpu_p95_ms": 2.9760000705719,
+        "gpu_worst_ms": 3.36800003051758,
+        "lighting": "shade",
+        "primitives": 7558725,
+        "render_cpu_median_ms": 1.4889999628067,
+        "samples": 300,
+        "scene": "clearing-player-height",
+        "target": "(461.0, 32.0, 438.0)"
+      },
+      "after": {
+        "camera": "(453.0, 32.68, 431.0)",
+        "cost": {
+          "buffer_bytes_total_loaded": 226729682,
+          "mesh_instances_including_multimesh_and_hidden": 28664,
+          "scene_unique_indices": 2532828,
+          "scene_unique_meshes_including_hidden": 1626,
+          "scene_unique_surfaces": 1986,
+          "scene_unique_triangles": 2569321,
+          "scene_unique_vertices": 6551090,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1404849664,
+          "video_bytes_total_loaded": 1683900160
+        },
+        "draw_calls": 1358,
+        "frame_median_ms": 4.615,
+        "frame_p95_ms": 6.397,
+        "frame_worst_ms": 9.181,
+        "gpu_median_ms": 2.50099992752075,
+        "gpu_p95_ms": 3.2260000705719,
+        "gpu_worst_ms": 3.55399990081787,
+        "lighting": "shade",
+        "primitives": 8594631,
+        "render_cpu_median_ms": 1.75600004196167,
+        "samples": 300,
+        "scene": "clearing-player-height",
+        "target": "(461.0, 32.0, 438.0)"
+      },
+      "frame_median_change_percent": 14.260955682099553,
+      "frame_p95_change_percent": 35.67338282078474
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "clearing-player-height",
+      "lighting": "dusk",
+      "samples_each": 300,
+      "before": {
+        "camera": "(453.0, 32.68, 431.0)",
+        "cost": {
+          "buffer_bytes_total_loaded": 222136548,
+          "mesh_instances_including_multimesh_and_hidden": 28664,
+          "scene_unique_indices": 2306076,
+          "scene_unique_meshes_including_hidden": 1623,
+          "scene_unique_surfaces": 1953,
+          "scene_unique_triangles": 2493737,
+          "scene_unique_vertices": 6452820,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1371295232,
+          "video_bytes_total_loaded": 1645751632
+        },
+        "draw_calls": 1160,
+        "frame_median_ms": 4.182,
+        "frame_p95_ms": 5.379,
+        "frame_worst_ms": 6.297,
+        "gpu_median_ms": 2.27099990844727,
+        "gpu_p95_ms": 2.99300003051758,
+        "gpu_worst_ms": 3.33699989318848,
+        "lighting": "dusk",
+        "primitives": 7558725,
+        "render_cpu_median_ms": 1.53900003433228,
+        "samples": 300,
+        "scene": "clearing-player-height",
+        "target": "(461.0, 32.0, 438.0)"
+      },
+      "after": {
+        "camera": "(453.0, 32.68, 431.0)",
+        "cost": {
+          "buffer_bytes_total_loaded": 226729682,
+          "mesh_instances_including_multimesh_and_hidden": 28664,
+          "scene_unique_indices": 2532828,
+          "scene_unique_meshes_including_hidden": 1626,
+          "scene_unique_surfaces": 1986,
+          "scene_unique_triangles": 2569321,
+          "scene_unique_vertices": 6551090,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1404849664,
+          "video_bytes_total_loaded": 1683900160
+        },
+        "draw_calls": 1358,
+        "frame_median_ms": 4.844,
+        "frame_p95_ms": 6.339,
+        "frame_worst_ms": 7.444,
+        "gpu_median_ms": 2.67700004577637,
+        "gpu_p95_ms": 3.2590000629425,
+        "gpu_worst_ms": 3.6159999370575,
+        "lighting": "dusk",
+        "primitives": 8594631,
+        "render_cpu_median_ms": 1.72899997234344,
+        "samples": 300,
+        "scene": "clearing-player-height",
+        "target": "(461.0, 32.0, 438.0)"
+      },
+      "frame_median_change_percent": 15.829746532759437,
+      "frame_p95_change_percent": 17.847183491355278
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "habitat-player-height",
+      "lighting": "day",
+      "samples_each": 300,
+      "before": {
+        "camera": "(368.0, 33.68, 457.0)",
+        "cost": {
+          "buffer_bytes_total_loaded": 239424840,
+          "mesh_instances_including_multimesh_and_hidden": 28621,
+          "scene_unique_indices": 3625308,
+          "scene_unique_meshes_including_hidden": 1645,
+          "scene_unique_surfaces": 1916,
+          "scene_unique_triangles": 2823848,
+          "scene_unique_vertices": 6726809,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1382661632,
+          "video_bytes_total_loaded": 1674391504
+        },
+        "draw_calls": 1322,
+        "frame_median_ms": 4.979,
+        "frame_p95_ms": 6.633,
+        "frame_worst_ms": 7.98,
+        "gpu_median_ms": 3.74900007247925,
+        "gpu_p95_ms": 4.31199979782104,
+        "gpu_worst_ms": 4.54099988937378,
+        "lighting": "day",
+        "primitives": 11813589,
+        "render_cpu_median_ms": 1.93099999427795,
+        "samples": 300,
+        "scene": "habitat-player-height",
+        "target": "(375.0, 33.0, 449.0)"
+      },
+      "after": {
+        "camera": "(368.0, 33.68, 457.0)",
+        "cost": {
+          "buffer_bytes_total_loaded": 244017974,
+          "mesh_instances_including_multimesh_and_hidden": 28621,
+          "scene_unique_indices": 3852060,
+          "scene_unique_meshes_including_hidden": 1648,
+          "scene_unique_surfaces": 1949,
+          "scene_unique_triangles": 2899432,
+          "scene_unique_vertices": 6825079,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1416216064,
+          "video_bytes_total_loaded": 1712540032
+        },
+        "draw_calls": 1568,
+        "frame_median_ms": 5.567,
+        "frame_p95_ms": 6.717,
+        "frame_worst_ms": 8.148,
+        "gpu_median_ms": 4.31699991226196,
+        "gpu_p95_ms": 4.76100015640259,
+        "gpu_worst_ms": 5.15199995040894,
+        "lighting": "day",
+        "primitives": 13805469,
+        "render_cpu_median_ms": 2.11899995803833,
+        "samples": 300,
+        "scene": "habitat-player-height",
+        "target": "(375.0, 33.0, 449.0)"
+      },
+      "frame_median_change_percent": 11.809600321349677,
+      "frame_p95_change_percent": 1.2663952962460368
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "habitat-player-height",
+      "lighting": "shade",
+      "samples_each": 300,
+      "before": {
+        "camera": "(368.0, 33.68, 457.0)",
+        "cost": {
+          "buffer_bytes_total_loaded": 239424840,
+          "mesh_instances_including_multimesh_and_hidden": 28621,
+          "scene_unique_indices": 3625308,
+          "scene_unique_meshes_including_hidden": 1645,
+          "scene_unique_surfaces": 1916,
+          "scene_unique_triangles": 2823848,
+          "scene_unique_vertices": 6726809,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1382661632,
+          "video_bytes_total_loaded": 1674391504
+        },
+        "draw_calls": 1322,
+        "frame_median_ms": 6.862,
+        "frame_p95_ms": 7.978,
+        "frame_worst_ms": 9.068,
+        "gpu_median_ms": 3.74600005149841,
+        "gpu_p95_ms": 4.31599998474121,
+        "gpu_worst_ms": 4.59899997711182,
+        "lighting": "shade",
+        "primitives": 11813589,
+        "render_cpu_median_ms": 2.34599995613098,
+        "samples": 300,
+        "scene": "habitat-player-height",
+        "target": "(375.0, 33.0, 449.0)"
+      },
+      "after": {
+        "camera": "(368.0, 33.68, 457.0)",
+        "cost": {
+          "buffer_bytes_total_loaded": 244017974,
+          "mesh_instances_including_multimesh_and_hidden": 28621,
+          "scene_unique_indices": 3852060,
+          "scene_unique_meshes_including_hidden": 1648,
+          "scene_unique_surfaces": 1949,
+          "scene_unique_triangles": 2899432,
+          "scene_unique_vertices": 6825079,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1416216064,
+          "video_bytes_total_loaded": 1712540032
+        },
+        "draw_calls": 1568,
+        "frame_median_ms": 5.634,
+        "frame_p95_ms": 6.968,
+        "frame_worst_ms": 7.85,
+        "gpu_median_ms": 4.24300003051758,
+        "gpu_p95_ms": 4.74599981307983,
+        "gpu_worst_ms": 4.89799976348877,
+        "lighting": "shade",
+        "primitives": 13805469,
+        "render_cpu_median_ms": 2.15400004386902,
+        "samples": 300,
+        "scene": "habitat-player-height",
+        "target": "(375.0, 33.0, 449.0)"
+      },
+      "frame_median_change_percent": -17.895657242786356,
+      "frame_p95_change_percent": -12.659814489847076
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "habitat-player-height",
+      "lighting": "dusk",
+      "samples_each": 300,
+      "before": {
+        "camera": "(368.0, 33.68, 457.0)",
+        "cost": {
+          "buffer_bytes_total_loaded": 239424840,
+          "mesh_instances_including_multimesh_and_hidden": 28621,
+          "scene_unique_indices": 3625308,
+          "scene_unique_meshes_including_hidden": 1645,
+          "scene_unique_surfaces": 1916,
+          "scene_unique_triangles": 2823848,
+          "scene_unique_vertices": 6726809,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1382661632,
+          "video_bytes_total_loaded": 1674391504
+        },
+        "draw_calls": 1322,
+        "frame_median_ms": 7.362,
+        "frame_p95_ms": 8.324,
+        "frame_worst_ms": 9.845,
+        "gpu_median_ms": 3.76799988746643,
+        "gpu_p95_ms": 4.33900022506714,
+        "gpu_worst_ms": 4.57999992370605,
+        "lighting": "dusk",
+        "primitives": 11813589,
+        "render_cpu_median_ms": 2.57299995422363,
+        "samples": 300,
+        "scene": "habitat-player-height",
+        "target": "(375.0, 33.0, 449.0)"
+      },
+      "after": {
+        "camera": "(368.0, 33.68, 457.0)",
+        "cost": {
+          "buffer_bytes_total_loaded": 244017974,
+          "mesh_instances_including_multimesh_and_hidden": 28621,
+          "scene_unique_indices": 3852060,
+          "scene_unique_meshes_including_hidden": 1648,
+          "scene_unique_surfaces": 1949,
+          "scene_unique_triangles": 2899432,
+          "scene_unique_vertices": 6825079,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1416216064,
+          "video_bytes_total_loaded": 1712540032
+        },
+        "draw_calls": 1568,
+        "frame_median_ms": 5.439,
+        "frame_p95_ms": 6.172,
+        "frame_worst_ms": 7.29,
+        "gpu_median_ms": 4.24300003051758,
+        "gpu_p95_ms": 4.76800012588501,
+        "gpu_worst_ms": 5.03399991989136,
+        "lighting": "dusk",
+        "primitives": 13805469,
+        "render_cpu_median_ms": 2.09899997711182,
+        "samples": 300,
+        "scene": "habitat-player-height",
+        "target": "(375.0, 33.0, 449.0)"
+      },
+      "frame_median_change_percent": -26.12061939690301,
+      "frame_p95_change_percent": -25.852955309947145
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "home-player-height",
+      "lighting": "day",
+      "samples_each": 300,
+      "before": {
+        "camera": "(468.5, 32.68, 431.5)",
+        "cost": {
+          "buffer_bytes_total_loaded": 217755520,
+          "mesh_instances_including_multimesh_and_hidden": 31295,
+          "scene_unique_indices": 2306076,
+          "scene_unique_meshes_including_hidden": 1622,
+          "scene_unique_surfaces": 1946,
+          "scene_unique_triangles": 2469697,
+          "scene_unique_vertices": 6380700,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1351080075,
+          "video_bytes_total_loaded": 1568835595
+        },
+        "draw_calls": 3580,
+        "frame_median_ms": 7.126,
+        "frame_p95_ms": 8.532,
+        "frame_worst_ms": 10.156,
+        "gpu_median_ms": 3.27600002288818,
+        "gpu_p95_ms": 4.15299987792969,
+        "gpu_worst_ms": 5.03700017929077,
+        "lighting": "day",
+        "primitives": 8211573,
+        "render_cpu_median_ms": 3.17499995231628,
+        "samples": 300,
+        "scene": "home-player-height",
+        "target": "(460.5, 33.69, 445.5)"
+      },
+      "after": {
+        "camera": "(468.5, 32.68, 431.5)",
+        "cost": {
+          "buffer_bytes_total_loaded": 222343166,
+          "mesh_instances_including_multimesh_and_hidden": 31295,
+          "scene_unique_indices": 2532828,
+          "scene_unique_meshes_including_hidden": 1625,
+          "scene_unique_surfaces": 1979,
+          "scene_unique_triangles": 2545281,
+          "scene_unique_vertices": 6478970,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1395819315,
+          "video_bytes_total_loaded": 1618162481
+        },
+        "draw_calls": 4392,
+        "frame_median_ms": 7.686,
+        "frame_p95_ms": 8.491,
+        "frame_worst_ms": 9.409,
+        "gpu_median_ms": 3.37100005149841,
+        "gpu_p95_ms": 3.94799995422363,
+        "gpu_worst_ms": 4.20800018310547,
+        "lighting": "day",
+        "primitives": 9568839,
+        "render_cpu_median_ms": 3.90499997138977,
+        "samples": 300,
+        "scene": "home-player-height",
+        "target": "(460.5, 33.69, 445.5)"
+      },
+      "frame_median_change_percent": 7.8585461689587355,
+      "frame_p95_change_percent": -0.48054383497422304
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "home-player-height",
+      "lighting": "shade",
+      "samples_each": 300,
+      "before": {
+        "camera": "(468.5, 32.68, 431.5)",
+        "cost": {
+          "buffer_bytes_total_loaded": 217755520,
+          "mesh_instances_including_multimesh_and_hidden": 31295,
+          "scene_unique_indices": 2306076,
+          "scene_unique_meshes_including_hidden": 1622,
+          "scene_unique_surfaces": 1946,
+          "scene_unique_triangles": 2469697,
+          "scene_unique_vertices": 6380700,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1351080075,
+          "video_bytes_total_loaded": 1568835595
+        },
+        "draw_calls": 3583,
+        "frame_median_ms": 6.959,
+        "frame_p95_ms": 7.919,
+        "frame_worst_ms": 12.018,
+        "gpu_median_ms": 3.22300004959106,
+        "gpu_p95_ms": 4.00400018692017,
+        "gpu_worst_ms": 5.8289999961853,
+        "lighting": "shade",
+        "primitives": 8211579,
+        "render_cpu_median_ms": 3.1470000743866,
+        "samples": 300,
+        "scene": "home-player-height",
+        "target": "(460.5, 33.69, 445.5)"
+      },
+      "after": {
+        "camera": "(468.5, 32.68, 431.5)",
+        "cost": {
+          "buffer_bytes_total_loaded": 222343166,
+          "mesh_instances_including_multimesh_and_hidden": 31295,
+          "scene_unique_indices": 2532828,
+          "scene_unique_meshes_including_hidden": 1625,
+          "scene_unique_surfaces": 1979,
+          "scene_unique_triangles": 2545281,
+          "scene_unique_vertices": 6478970,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1395819315,
+          "video_bytes_total_loaded": 1618162481
+        },
+        "draw_calls": 4395,
+        "frame_median_ms": 7.679,
+        "frame_p95_ms": 8.559,
+        "frame_worst_ms": 11.437,
+        "gpu_median_ms": 3.44600009918213,
+        "gpu_p95_ms": 3.95099997520447,
+        "gpu_worst_ms": 4.56099987030029,
+        "lighting": "shade",
+        "primitives": 9568845,
+        "render_cpu_median_ms": 3.85199999809265,
+        "samples": 300,
+        "scene": "home-player-height",
+        "target": "(460.5, 33.69, 445.5)"
+      },
+      "frame_median_change_percent": 10.34631412559277,
+      "frame_p95_change_percent": 8.081828513701229
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "home-player-height",
+      "lighting": "dusk",
+      "samples_each": 300,
+      "before": {
+        "camera": "(468.5, 32.68, 431.5)",
+        "cost": {
+          "buffer_bytes_total_loaded": 217755520,
+          "mesh_instances_including_multimesh_and_hidden": 31295,
+          "scene_unique_indices": 2306076,
+          "scene_unique_meshes_including_hidden": 1622,
+          "scene_unique_surfaces": 1946,
+          "scene_unique_triangles": 2469697,
+          "scene_unique_vertices": 6380700,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1351080075,
+          "video_bytes_total_loaded": 1568835595
+        },
+        "draw_calls": 3579,
+        "frame_median_ms": 6.845,
+        "frame_p95_ms": 7.656,
+        "frame_worst_ms": 8.945,
+        "gpu_median_ms": 3.1029999256134,
+        "gpu_p95_ms": 3.97000002861023,
+        "gpu_worst_ms": 4.60500001907349,
+        "lighting": "dusk",
+        "primitives": 8211567,
+        "render_cpu_median_ms": 3.07500004768372,
+        "samples": 300,
+        "scene": "home-player-height",
+        "target": "(460.5, 33.69, 445.5)"
+      },
+      "after": {
+        "camera": "(468.5, 32.68, 431.5)",
+        "cost": {
+          "buffer_bytes_total_loaded": 222343166,
+          "mesh_instances_including_multimesh_and_hidden": 31295,
+          "scene_unique_indices": 2532828,
+          "scene_unique_meshes_including_hidden": 1625,
+          "scene_unique_surfaces": 1979,
+          "scene_unique_triangles": 2545281,
+          "scene_unique_vertices": 6478970,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1395819315,
+          "video_bytes_total_loaded": 1618162481
+        },
+        "draw_calls": 4398,
+        "frame_median_ms": 7.795,
+        "frame_p95_ms": 8.557,
+        "frame_worst_ms": 9.369,
+        "gpu_median_ms": 3.49499988555908,
+        "gpu_p95_ms": 3.96900010108948,
+        "gpu_worst_ms": 4.26000022888184,
+        "lighting": "dusk",
+        "primitives": 9568851,
+        "render_cpu_median_ms": 3.88700008392334,
+        "samples": 300,
+        "scene": "home-player-height",
+        "target": "(460.5, 33.69, 445.5)"
+      },
+      "frame_median_change_percent": 13.878743608473343,
+      "frame_p95_change_percent": 11.768547544409614
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "route-player-height",
+      "lighting": "day",
+      "samples_each": 300,
+      "before": {
+        "camera": "(447.5, 32.68, 394.5)",
+        "cost": {
+          "buffer_bytes_total_loaded": 211319336,
+          "mesh_instances_including_multimesh_and_hidden": 28579,
+          "scene_unique_indices": 2306076,
+          "scene_unique_meshes_including_hidden": 1594,
+          "scene_unique_surfaces": 1898,
+          "scene_unique_triangles": 2392651,
+          "scene_unique_vertices": 6149562,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1351080075,
+          "video_bytes_total_loaded": 1562399411
+        },
+        "draw_calls": 1913,
+        "frame_median_ms": 5.316,
+        "frame_p95_ms": 6.368,
+        "frame_worst_ms": 7.559,
+        "gpu_median_ms": 1.52100002765656,
+        "gpu_p95_ms": 2.0,
+        "gpu_worst_ms": 2.21900010108948,
+        "lighting": "day",
+        "primitives": 4692196,
+        "render_cpu_median_ms": 1.97300004959106,
+        "samples": 300,
+        "scene": "route-player-height",
+        "target": "(447.5, 32.68, 384.5)"
+      },
+      "after": {
+        "camera": "(447.5, 32.68, 394.5)",
+        "cost": {
+          "buffer_bytes_total_loaded": 215906982,
+          "mesh_instances_including_multimesh_and_hidden": 28579,
+          "scene_unique_indices": 2532828,
+          "scene_unique_meshes_including_hidden": 1597,
+          "scene_unique_surfaces": 1931,
+          "scene_unique_triangles": 2468235,
+          "scene_unique_vertices": 6247832,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1395819315,
+          "video_bytes_total_loaded": 1611726297
+        },
+        "draw_calls": 2658,
+        "frame_median_ms": 5.876,
+        "frame_p95_ms": 7.205,
+        "frame_worst_ms": 7.67,
+        "gpu_median_ms": 2.03699994087219,
+        "gpu_p95_ms": 2.86800003051758,
+        "gpu_worst_ms": 3.53999996185303,
+        "lighting": "day",
+        "primitives": 6142742,
+        "render_cpu_median_ms": 2.67000007629395,
+        "samples": 300,
+        "scene": "route-player-height",
+        "target": "(447.5, 32.68, 384.5)"
+      },
+      "frame_median_change_percent": 10.534236267870579,
+      "frame_p95_change_percent": 13.143844221105528
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "route-player-height",
+      "lighting": "shade",
+      "samples_each": 300,
+      "before": {
+        "camera": "(447.5, 32.68, 394.5)",
+        "cost": {
+          "buffer_bytes_total_loaded": 211319336,
+          "mesh_instances_including_multimesh_and_hidden": 28579,
+          "scene_unique_indices": 2306076,
+          "scene_unique_meshes_including_hidden": 1594,
+          "scene_unique_surfaces": 1898,
+          "scene_unique_triangles": 2392651,
+          "scene_unique_vertices": 6149562,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1351080075,
+          "video_bytes_total_loaded": 1562399411
+        },
+        "draw_calls": 1913,
+        "frame_median_ms": 5.217,
+        "frame_p95_ms": 6.159,
+        "frame_worst_ms": 7.292,
+        "gpu_median_ms": 1.52400004863739,
+        "gpu_p95_ms": 1.97000002861023,
+        "gpu_worst_ms": 2.19099998474121,
+        "lighting": "shade",
+        "primitives": 4692196,
+        "render_cpu_median_ms": 1.95299994945526,
+        "samples": 300,
+        "scene": "route-player-height",
+        "target": "(447.5, 32.68, 384.5)"
+      },
+      "after": {
+        "camera": "(447.5, 32.68, 394.5)",
+        "cost": {
+          "buffer_bytes_total_loaded": 215906982,
+          "mesh_instances_including_multimesh_and_hidden": 28579,
+          "scene_unique_indices": 2532828,
+          "scene_unique_meshes_including_hidden": 1597,
+          "scene_unique_surfaces": 1931,
+          "scene_unique_triangles": 2468235,
+          "scene_unique_vertices": 6247832,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1395819315,
+          "video_bytes_total_loaded": 1611726297
+        },
+        "draw_calls": 2658,
+        "frame_median_ms": 5.714,
+        "frame_p95_ms": 6.453,
+        "frame_worst_ms": 7.056,
+        "gpu_median_ms": 2.06399989128113,
+        "gpu_p95_ms": 2.74499988555908,
+        "gpu_worst_ms": 3.21600008010864,
+        "lighting": "shade",
+        "primitives": 6142742,
+        "render_cpu_median_ms": 2.56699991226196,
+        "samples": 300,
+        "scene": "route-player-height",
+        "target": "(447.5, 32.68, 384.5)"
+      },
+      "frame_median_change_percent": 9.526547824420174,
+      "frame_p95_change_percent": 4.773502191914281
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "route-player-height",
+      "lighting": "dusk",
+      "samples_each": 300,
+      "before": {
+        "camera": "(447.5, 32.68, 394.5)",
+        "cost": {
+          "buffer_bytes_total_loaded": 211319336,
+          "mesh_instances_including_multimesh_and_hidden": 28579,
+          "scene_unique_indices": 2306076,
+          "scene_unique_meshes_including_hidden": 1594,
+          "scene_unique_surfaces": 1898,
+          "scene_unique_triangles": 2392651,
+          "scene_unique_vertices": 6149562,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1351080075,
+          "video_bytes_total_loaded": 1562399411
+        },
+        "draw_calls": 1913,
+        "frame_median_ms": 5.203,
+        "frame_p95_ms": 5.907,
+        "frame_worst_ms": 6.789,
+        "gpu_median_ms": 1.51999998092651,
+        "gpu_p95_ms": 1.98500001430511,
+        "gpu_worst_ms": 2.11199998855591,
+        "lighting": "dusk",
+        "primitives": 4692196,
+        "render_cpu_median_ms": 1.95799994468689,
+        "samples": 300,
+        "scene": "route-player-height",
+        "target": "(447.5, 32.68, 384.5)"
+      },
+      "after": {
+        "camera": "(447.5, 32.68, 394.5)",
+        "cost": {
+          "buffer_bytes_total_loaded": 215906982,
+          "mesh_instances_including_multimesh_and_hidden": 28579,
+          "scene_unique_indices": 2532828,
+          "scene_unique_meshes_including_hidden": 1597,
+          "scene_unique_surfaces": 1931,
+          "scene_unique_triangles": 2468235,
+          "scene_unique_vertices": 6247832,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1395819315,
+          "video_bytes_total_loaded": 1611726297
+        },
+        "draw_calls": 2658,
+        "frame_median_ms": 5.746,
+        "frame_p95_ms": 6.569,
+        "frame_worst_ms": 7.286,
+        "gpu_median_ms": 2.06900000572205,
+        "gpu_p95_ms": 2.90499997138977,
+        "gpu_worst_ms": 3.10199999809265,
+        "lighting": "dusk",
+        "primitives": 6142742,
+        "render_cpu_median_ms": 2.61899995803833,
+        "samples": 300,
+        "scene": "route-player-height",
+        "target": "(447.5, 32.68, 384.5)"
+      },
+      "frame_median_change_percent": 10.436286757639834,
+      "frame_p95_change_percent": 11.207042491958696
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "clearing-player-height",
+      "lighting": "day",
+      "samples_each": 300,
+      "before": {
+        "camera": "(453.0, 32.68, 431.0)",
+        "cost": {
+          "buffer_bytes_total_loaded": 219791552,
+          "mesh_instances_including_multimesh_and_hidden": 28664,
+          "scene_unique_indices": 2306076,
+          "scene_unique_meshes_including_hidden": 1623,
+          "scene_unique_surfaces": 1953,
+          "scene_unique_triangles": 2493737,
+          "scene_unique_vertices": 6452820,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1351080075,
+          "video_bytes_total_loaded": 1570871627
+        },
+        "draw_calls": 3773,
+        "frame_median_ms": 6.919,
+        "frame_p95_ms": 7.862,
+        "frame_worst_ms": 9.779,
+        "gpu_median_ms": 3.31699991226196,
+        "gpu_p95_ms": 4.04300022125244,
+        "gpu_worst_ms": 4.96799993515015,
+        "lighting": "day",
+        "primitives": 7558725,
+        "render_cpu_median_ms": 3.24699997901917,
+        "samples": 300,
+        "scene": "clearing-player-height",
+        "target": "(461.0, 32.0, 438.0)"
+      },
+      "after": {
+        "camera": "(453.0, 32.68, 431.0)",
+        "cost": {
+          "buffer_bytes_total_loaded": 224379198,
+          "mesh_instances_including_multimesh_and_hidden": 28664,
+          "scene_unique_indices": 2532828,
+          "scene_unique_meshes_including_hidden": 1626,
+          "scene_unique_surfaces": 1986,
+          "scene_unique_triangles": 2569321,
+          "scene_unique_vertices": 6551090,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1395819315,
+          "video_bytes_total_loaded": 1620198513
+        },
+        "draw_calls": 4390,
+        "frame_median_ms": 7.402,
+        "frame_p95_ms": 8.273,
+        "frame_worst_ms": 9.181,
+        "gpu_median_ms": 3.14199995994568,
+        "gpu_p95_ms": 3.68300008773804,
+        "gpu_worst_ms": 3.9539999961853,
+        "lighting": "day",
+        "primitives": 8594631,
+        "render_cpu_median_ms": 3.80900001525879,
+        "samples": 300,
+        "scene": "clearing-player-height",
+        "target": "(461.0, 32.0, 438.0)"
+      },
+      "frame_median_change_percent": 6.980777569012875,
+      "frame_p95_change_percent": 5.227677435766975
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "clearing-player-height",
+      "lighting": "shade",
+      "samples_each": 300,
+      "before": {
+        "camera": "(453.0, 32.68, 431.0)",
+        "cost": {
+          "buffer_bytes_total_loaded": 219791552,
+          "mesh_instances_including_multimesh_and_hidden": 28664,
+          "scene_unique_indices": 2306076,
+          "scene_unique_meshes_including_hidden": 1623,
+          "scene_unique_surfaces": 1953,
+          "scene_unique_triangles": 2493737,
+          "scene_unique_vertices": 6452820,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1351080075,
+          "video_bytes_total_loaded": 1570871627
+        },
+        "draw_calls": 3774,
+        "frame_median_ms": 6.941,
+        "frame_p95_ms": 8.164,
+        "frame_worst_ms": 9.904,
+        "gpu_median_ms": 3.05200004577637,
+        "gpu_p95_ms": 4.19099998474121,
+        "gpu_worst_ms": 5.03499984741211,
+        "lighting": "shade",
+        "primitives": 7558725,
+        "render_cpu_median_ms": 3.27800011634827,
+        "samples": 300,
+        "scene": "clearing-player-height",
+        "target": "(461.0, 32.0, 438.0)"
+      },
+      "after": {
+        "camera": "(453.0, 32.68, 431.0)",
+        "cost": {
+          "buffer_bytes_total_loaded": 224379198,
+          "mesh_instances_including_multimesh_and_hidden": 28664,
+          "scene_unique_indices": 2532828,
+          "scene_unique_meshes_including_hidden": 1626,
+          "scene_unique_surfaces": 1986,
+          "scene_unique_triangles": 2569321,
+          "scene_unique_vertices": 6551090,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1395819315,
+          "video_bytes_total_loaded": 1620198513
+        },
+        "draw_calls": 4390,
+        "frame_median_ms": 7.572,
+        "frame_p95_ms": 8.75,
+        "frame_worst_ms": 10.147,
+        "gpu_median_ms": 3.23499989509583,
+        "gpu_p95_ms": 3.85899996757507,
+        "gpu_worst_ms": 4.23199987411499,
+        "lighting": "shade",
+        "primitives": 8594631,
+        "render_cpu_median_ms": 3.89299988746643,
+        "samples": 300,
+        "scene": "clearing-player-height",
+        "target": "(461.0, 32.0, 438.0)"
+      },
+      "frame_median_change_percent": 9.090909090909104,
+      "frame_p95_change_percent": 7.177853993140615
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "clearing-player-height",
+      "lighting": "dusk",
+      "samples_each": 300,
+      "before": {
+        "camera": "(453.0, 32.68, 431.0)",
+        "cost": {
+          "buffer_bytes_total_loaded": 219791552,
+          "mesh_instances_including_multimesh_and_hidden": 28664,
+          "scene_unique_indices": 2306076,
+          "scene_unique_meshes_including_hidden": 1623,
+          "scene_unique_surfaces": 1953,
+          "scene_unique_triangles": 2493737,
+          "scene_unique_vertices": 6452820,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1351080075,
+          "video_bytes_total_loaded": 1570871627
+        },
+        "draw_calls": 3772,
+        "frame_median_ms": 6.932,
+        "frame_p95_ms": 8.133,
+        "frame_worst_ms": 9.236,
+        "gpu_median_ms": 3.22399997711182,
+        "gpu_p95_ms": 4.09200000762939,
+        "gpu_worst_ms": 4.63299989700317,
+        "lighting": "dusk",
+        "primitives": 7558725,
+        "render_cpu_median_ms": 3.25300002098084,
+        "samples": 300,
+        "scene": "clearing-player-height",
+        "target": "(461.0, 32.0, 438.0)"
+      },
+      "after": {
+        "camera": "(453.0, 32.68, 431.0)",
+        "cost": {
+          "buffer_bytes_total_loaded": 224379198,
+          "mesh_instances_including_multimesh_and_hidden": 28664,
+          "scene_unique_indices": 2532828,
+          "scene_unique_meshes_including_hidden": 1626,
+          "scene_unique_surfaces": 1986,
+          "scene_unique_triangles": 2569321,
+          "scene_unique_vertices": 6551090,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1395819315,
+          "video_bytes_total_loaded": 1620198513
+        },
+        "draw_calls": 4389,
+        "frame_median_ms": 7.443,
+        "frame_p95_ms": 8.428,
+        "frame_worst_ms": 10.871,
+        "gpu_median_ms": 3.13199996948242,
+        "gpu_p95_ms": 3.72900009155273,
+        "gpu_worst_ms": 4.27699995040894,
+        "lighting": "dusk",
+        "primitives": 8594631,
+        "render_cpu_median_ms": 3.90100002288818,
+        "samples": 300,
+        "scene": "clearing-player-height",
+        "target": "(461.0, 32.0, 438.0)"
+      },
+      "frame_median_change_percent": 7.371609924985556,
+      "frame_p95_change_percent": 3.627197835976914
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "habitat-player-height",
+      "lighting": "day",
+      "samples_each": 300,
+      "before": {
+        "camera": "(368.0, 33.68, 457.0)",
+        "cost": {
+          "buffer_bytes_total_loaded": 237147236,
+          "mesh_instances_including_multimesh_and_hidden": 28621,
+          "scene_unique_indices": 3625308,
+          "scene_unique_meshes_including_hidden": 1645,
+          "scene_unique_surfaces": 1916,
+          "scene_unique_triangles": 2823848,
+          "scene_unique_vertices": 6726809,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1362395953,
+          "video_bytes_total_loaded": 1599543189
+        },
+        "draw_calls": 4293,
+        "frame_median_ms": 8.024,
+        "frame_p95_ms": 9.067,
+        "frame_worst_ms": 10.054,
+        "gpu_median_ms": 3.61800003051758,
+        "gpu_p95_ms": 3.83800005912781,
+        "gpu_worst_ms": 4.17999982833862,
+        "lighting": "day",
+        "primitives": 11813589,
+        "render_cpu_median_ms": 3.80299997329712,
+        "samples": 300,
+        "scene": "habitat-player-height",
+        "target": "(375.0, 33.0, 449.0)"
+      },
+      "after": {
+        "camera": "(368.0, 33.68, 457.0)",
+        "cost": {
+          "buffer_bytes_total_loaded": 241734882,
+          "mesh_instances_including_multimesh_and_hidden": 28621,
+          "scene_unique_indices": 3852060,
+          "scene_unique_meshes_including_hidden": 1648,
+          "scene_unique_surfaces": 1949,
+          "scene_unique_triangles": 2899432,
+          "scene_unique_vertices": 6825079,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1407135193,
+          "video_bytes_total_loaded": 1648870075
+        },
+        "draw_calls": 5191,
+        "frame_median_ms": 9.134,
+        "frame_p95_ms": 10.031,
+        "frame_worst_ms": 10.802,
+        "gpu_median_ms": 5.05299997329712,
+        "gpu_p95_ms": 5.63299989700317,
+        "gpu_worst_ms": 6.34700012207031,
+        "lighting": "day",
+        "primitives": 13805469,
+        "render_cpu_median_ms": 4.5770001411438,
+        "samples": 300,
+        "scene": "habitat-player-height",
+        "target": "(375.0, 33.0, 449.0)"
+      },
+      "frame_median_change_percent": 13.833499501495528,
+      "frame_p95_change_percent": 10.63196206021837
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "habitat-player-height",
+      "lighting": "shade",
+      "samples_each": 300,
+      "before": {
+        "camera": "(368.0, 33.68, 457.0)",
+        "cost": {
+          "buffer_bytes_total_loaded": 237147236,
+          "mesh_instances_including_multimesh_and_hidden": 28621,
+          "scene_unique_indices": 3625308,
+          "scene_unique_meshes_including_hidden": 1645,
+          "scene_unique_surfaces": 1916,
+          "scene_unique_triangles": 2823848,
+          "scene_unique_vertices": 6726809,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1362395953,
+          "video_bytes_total_loaded": 1599543189
+        },
+        "draw_calls": 4293,
+        "frame_median_ms": 8.077,
+        "frame_p95_ms": 9.332,
+        "frame_worst_ms": 9.897,
+        "gpu_median_ms": 3.59899997711182,
+        "gpu_p95_ms": 3.8529999256134,
+        "gpu_worst_ms": 4.07000017166138,
+        "lighting": "shade",
+        "primitives": 11813589,
+        "render_cpu_median_ms": 3.85500001907349,
+        "samples": 300,
+        "scene": "habitat-player-height",
+        "target": "(375.0, 33.0, 449.0)"
+      },
+      "after": {
+        "camera": "(368.0, 33.68, 457.0)",
+        "cost": {
+          "buffer_bytes_total_loaded": 241734882,
+          "mesh_instances_including_multimesh_and_hidden": 28621,
+          "scene_unique_indices": 3852060,
+          "scene_unique_meshes_including_hidden": 1648,
+          "scene_unique_surfaces": 1949,
+          "scene_unique_triangles": 2899432,
+          "scene_unique_vertices": 6825079,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1407135193,
+          "video_bytes_total_loaded": 1648870075
+        },
+        "draw_calls": 5191,
+        "frame_median_ms": 8.904,
+        "frame_p95_ms": 9.693,
+        "frame_worst_ms": 10.982,
+        "gpu_median_ms": 4.95100021362305,
+        "gpu_p95_ms": 5.53299999237061,
+        "gpu_worst_ms": 6.05999994277954,
+        "lighting": "shade",
+        "primitives": 13805469,
+        "render_cpu_median_ms": 4.5310001373291,
+        "samples": 300,
+        "scene": "habitat-player-height",
+        "target": "(375.0, 33.0, 449.0)"
+      },
+      "frame_median_change_percent": 10.238950105237098,
+      "frame_p95_change_percent": 3.868409772824677
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "habitat-player-height",
+      "lighting": "dusk",
+      "samples_each": 300,
+      "before": {
+        "camera": "(368.0, 33.68, 457.0)",
+        "cost": {
+          "buffer_bytes_total_loaded": 237147236,
+          "mesh_instances_including_multimesh_and_hidden": 28621,
+          "scene_unique_indices": 3625308,
+          "scene_unique_meshes_including_hidden": 1645,
+          "scene_unique_surfaces": 1916,
+          "scene_unique_triangles": 2823848,
+          "scene_unique_vertices": 6726809,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1362395953,
+          "video_bytes_total_loaded": 1599543189
+        },
+        "draw_calls": 4293,
+        "frame_median_ms": 7.96,
+        "frame_p95_ms": 9.509,
+        "frame_worst_ms": 11.941,
+        "gpu_median_ms": 3.59299993515015,
+        "gpu_p95_ms": 3.88199996948242,
+        "gpu_worst_ms": 4.2810001373291,
+        "lighting": "dusk",
+        "primitives": 11813589,
+        "render_cpu_median_ms": 3.75699996948242,
+        "samples": 300,
+        "scene": "habitat-player-height",
+        "target": "(375.0, 33.0, 449.0)"
+      },
+      "after": {
+        "camera": "(368.0, 33.68, 457.0)",
+        "cost": {
+          "buffer_bytes_total_loaded": 241734882,
+          "mesh_instances_including_multimesh_and_hidden": 28621,
+          "scene_unique_indices": 3852060,
+          "scene_unique_meshes_including_hidden": 1648,
+          "scene_unique_surfaces": 1949,
+          "scene_unique_triangles": 2899432,
+          "scene_unique_vertices": 6825079,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 1407135193,
+          "video_bytes_total_loaded": 1648870075
+        },
+        "draw_calls": 5191,
+        "frame_median_ms": 9.14,
+        "frame_p95_ms": 10.009,
+        "frame_worst_ms": 12.216,
+        "gpu_median_ms": 5.06400012969971,
+        "gpu_p95_ms": 5.64499998092651,
+        "gpu_worst_ms": 6.93300008773804,
+        "lighting": "dusk",
+        "primitives": 13805469,
+        "render_cpu_median_ms": 4.62400007247925,
+        "samples": 300,
+        "scene": "habitat-player-height",
+        "target": "(375.0, 33.0, 449.0)"
+      },
+      "frame_median_change_percent": 14.824120603015079,
+      "frame_p95_change_percent": 5.258176464402142
+    }
+  ],
+  "jobs": [
+    {
+      "id": "r7-import",
+      "results": [],
+      "program": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "localappdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\r7-import-01\\local",
+      "child_pid": 9300,
+      "start": "2026-09-14T13:22:08.8451473+09:30",
+      "log_sha256": "e1f4263098fb50d49ab5e127c0e07350bfba769617f127993f55363d95c74afa",
+      "exit_code": 0,
+      "benchmark_competitors": [],
+      "processes_before": null,
+      "failure": "",
+      "temp": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\r7-import-01\\temp",
+      "appdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\r7-import-01",
+      "seconds": 85.9312128,
+      "wrapper_pid": 33396,
+      "arguments": [
+        "--headless",
+        "--editor",
+        "--path",
+        "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game",
+        "--import"
+      ]
+    },
+    {
+      "id": "r7-smoke-forward_plus",
+      "results": [
+        "G1_PACKAGED_LAUNCH_OK"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "localappdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\r7-smoke-forward_plus-01\\local",
+      "child_pid": 34176,
+      "start": "2026-09-14T13:23:34.8714475+09:30",
+      "log_sha256": "a6457489dd615c57f47571067cb821b47a0330f90c95b3e27d339454e8509772",
+      "exit_code": 0,
+      "benchmark_competitors": [],
+      "processes_before": null,
+      "failure": "",
+      "temp": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\r7-smoke-forward_plus-01\\temp",
+      "appdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\r7-smoke-forward_plus-01",
+      "seconds": 87.6646789,
+      "wrapper_pid": 33396,
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--path",
+        "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game",
+        "res://g1/play.tscn",
+        "--",
+        "--smoke"
+      ]
+    },
+    {
+      "id": "r7-smoke-gl_compatibility",
+      "results": [
+        "G1_PACKAGED_LAUNCH_OK"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "localappdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\r7-smoke-gl_compatibility-01\\local",
+      "child_pid": 18384,
+      "start": "2026-09-14T13:25:02.5432797+09:30",
+      "log_sha256": "bcc5dd1c40549a72a960cfa2758068943fe9d3f7b5717a2024a4851ad364bbc0",
+      "exit_code": 0,
+      "benchmark_competitors": [],
+      "processes_before": null,
+      "failure": "",
+      "temp": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\r7-smoke-gl_compatibility-01\\temp",
+      "appdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\r7-smoke-gl_compatibility-01",
+      "seconds": 85.2843583,
+      "wrapper_pid": 33396,
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--path",
+        "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game",
+        "res://g1/play.tscn",
+        "--",
+        "--smoke"
+      ]
+    },
+    {
+      "id": "parse-views-01",
+      "results": [],
+      "program": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "localappdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\parse-views-01\\local",
+      "child_pid": 34376,
+      "start": "2026-09-14T13:26:27.8705292+09:30",
+      "log_sha256": "dae8228273d100d1cf41a2478c598503facf4efba77627edda1c58ec57ebc4ce",
+      "exit_code": 0,
+      "benchmark_competitors": [],
+      "processes_before": null,
+      "failure": "",
+      "temp": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\parse-views-01\\temp",
+      "appdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\parse-views-01",
+      "seconds": 1.255479,
+      "wrapper_pid": 33396,
+      "arguments": [
+        "--headless",
+        "--path",
+        "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game",
+        "--check-only",
+        "--script",
+        "res://r7/views.gd"
+      ]
+    },
+    {
+      "id": "parse-audit-01",
+      "results": [],
+      "program": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "localappdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\parse-audit-01\\local",
+      "child_pid": 30848,
+      "start": "2026-09-14T13:26:29.1312051+09:30",
+      "log_sha256": "dae8228273d100d1cf41a2478c598503facf4efba77627edda1c58ec57ebc4ce",
+      "exit_code": 0,
+      "benchmark_competitors": [],
+      "processes_before": null,
+      "failure": "",
+      "temp": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\parse-audit-01\\temp",
+      "appdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\parse-audit-01",
+      "seconds": 1.1565086,
+      "wrapper_pid": 33396,
+      "arguments": [
+        "--headless",
+        "--path",
+        "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game",
+        "--check-only",
+        "--script",
+        "res://r7/audit.gd"
+      ]
+    },
+    {
+      "id": "parse-cover-01",
+      "results": [],
+      "program": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "localappdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\parse-cover-01\\local",
+      "child_pid": 31668,
+      "start": "2026-09-14T13:26:30.2906933+09:30",
+      "log_sha256": "dae8228273d100d1cf41a2478c598503facf4efba77627edda1c58ec57ebc4ce",
+      "exit_code": 0,
+      "benchmark_competitors": [],
+      "processes_before": null,
+      "failure": "",
+      "temp": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\parse-cover-01\\temp",
+      "appdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\parse-cover-01",
+      "seconds": 1.1582715,
+      "wrapper_pid": 33396,
+      "arguments": [
+        "--headless",
+        "--path",
+        "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game",
+        "--check-only",
+        "--script",
+        "res://r7/cover.gd"
+      ]
+    },
+    {
+      "wrapper_pid": 34432,
+      "log_sha256": "dae8228273d100d1cf41a2478c598503facf4efba77627edda1c58ec57ebc4ce",
+      "program": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "temp": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\parse-mesh_checks-02\\temp",
+      "child_pid": 7468,
+      "seconds": 1.2098723,
+      "results": [],
+      "id": "parse-mesh_checks-02",
+      "start": "2026-09-14T13:31:44.2858713+09:30",
+      "appdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\parse-mesh_checks-02",
+      "failure": "",
+      "localappdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\parse-mesh_checks-02\\local",
+      "processes_before": null,
+      "exit_code": 0,
+      "arguments": [
+        "--headless",
+        "--path",
+        "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game",
+        "--check-only",
+        "--script",
+        "res://r7/mesh_checks.gd"
+      ],
+      "benchmark_competitors": []
+    },
+    {
+      "wrapper_pid": 34432,
+      "log_sha256": "ffae47d6651dfea5038615f61e8ccc178a3643b1c937fa83cef069d68d4aeeae",
+      "program": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "temp": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\views-after-forward_plus\\temp",
+      "child_pid": 30836,
+      "seconds": 138.3850112,
+      "results": [
+        "R7_VIEWS_OK after 4 views 0 timed samples 0 failures"
+      ],
+      "id": "views-after-forward_plus",
+      "start": "2026-09-14T13:31:46.8164111+09:30",
+      "appdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\views-after-forward_plus",
+      "failure": "",
+      "localappdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\views-after-forward_plus\\local",
+      "processes_before": null,
+      "exit_code": 0,
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--path",
+        "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game",
+        "res://r7/views.tscn"
+      ],
+      "benchmark_competitors": []
+    },
+    {
+      "wrapper_pid": 34432,
+      "log_sha256": "fc7f9d055ff4b264d1551d628f750e947f7a8ed319e3c6ebc4bc222818063581",
+      "program": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "temp": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\views-after-gl_compatibility\\temp",
+      "child_pid": 9856,
+      "seconds": 134.6497558,
+      "results": [
+        "R7_VIEWS_OK after 4 views 0 timed samples 0 failures"
+      ],
+      "id": "views-after-gl_compatibility",
+      "start": "2026-09-14T13:34:05.2044260+09:30",
+      "appdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\views-after-gl_compatibility",
+      "failure": "",
+      "localappdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\views-after-gl_compatibility\\local",
+      "processes_before": null,
+      "exit_code": 0,
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--path",
+        "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game",
+        "res://r7/views.tscn"
+      ],
+      "benchmark_competitors": []
+    },
+    {
+      "wrapper_pid": 34432,
+      "log_sha256": "b0479f2a2cd730da88dab5fff7414dea5d2fc81c3a82cafc2d712f8732f957e1",
+      "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\blender-tool\\blender-4.5.9-windows-x64\\blender.exe",
+      "temp": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\packed-reopen-01\\temp",
+      "child_pid": 37532,
+      "seconds": 1.515885,
+      "results": [],
+      "id": "packed-reopen-01",
+      "start": "2026-09-14T13:36:19.8876607+09:30",
+      "appdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\packed-reopen-01",
+      "failure": "",
+      "localappdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\packed-reopen-01\\local",
+      "processes_before": null,
+      "exit_code": 0,
+      "arguments": [
+        "--background",
+        "--threads",
+        "8",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "D:\\project-wroughtwild-art07-r7\\tools\\wroughtwild-art07-repairs\\r7\\reopen.py",
+        "--",
+        "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\sources\\b2",
+        "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\evidence\\packed-reopen.json"
+      ],
+      "benchmark_competitors": []
+    },
+    {
+      "failure": "",
+      "appdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\paid-before",
+      "program": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--headless",
+        "--path",
+        "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game",
+        "res://r7/paid.tscn",
+        "--",
+        "--r7-before",
+        "--run-id=r7-before"
+      ],
+      "log_sha256": "8f86e72af80474847bc32bf58012f9b125693b6a71c02a5bce76c00a24673507",
+      "benchmark_competitors": [],
+      "localappdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\paid-before\\local",
+      "temp": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\paid-before\\temp",
+      "processes_before": null,
+      "id": "paid-before",
+      "wrapper_pid": 38012,
+      "child_pid": 22240,
+      "exit_code": 0,
+      "results": [
+        "G1_PAID 865 checks, 0 failures"
+      ],
+      "seconds": 130.6321962,
+      "start": "2026-09-14T14:04:28.8828609+09:30"
+    },
+    {
+      "failure": "",
+      "appdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\paid-before",
+      "program": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--headless",
+        "--path",
+        "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game",
+        "res://r7/paid.tscn",
+        "--",
+        "--r7-before",
+        "--restart",
+        "--run-id=r7-restart-before"
+      ],
+      "log_sha256": "4d60bf09071638b1c43b5d67aa775c915b9d3f849f6d21e6a61d7f96cdb45a99",
+      "benchmark_competitors": [],
+      "localappdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\paid-before\\local",
+      "temp": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\paid-before\\temp",
+      "processes_before": null,
+      "id": "paid-restart-before",
+      "wrapper_pid": 38012,
+      "child_pid": 13584,
+      "exit_code": 0,
+      "results": [
+        "G1_PAID 8 checks, 0 failures"
+      ],
+      "seconds": 85.1584768,
+      "start": "2026-09-14T14:06:39.5191995+09:30"
+    },
+    {
+      "failure": "",
+      "appdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\paid-after",
+      "program": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--headless",
+        "--path",
+        "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game",
+        "res://r7/paid.tscn",
+        "--",
+        "--run-id=r7-after"
+      ],
+      "log_sha256": "8f86e72af80474847bc32bf58012f9b125693b6a71c02a5bce76c00a24673507",
+      "benchmark_competitors": [],
+      "localappdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\paid-after\\local",
+      "temp": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\paid-after\\temp",
+      "processes_before": null,
+      "id": "paid-after",
+      "wrapper_pid": 38012,
+      "child_pid": 41128,
+      "exit_code": 0,
+      "results": [
+        "G1_PAID 865 checks, 0 failures"
+      ],
+      "seconds": 132.7827883,
+      "start": "2026-09-14T14:08:04.6807986+09:30"
+    },
+    {
+      "failure": "",
+      "appdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\paid-after",
+      "program": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--headless",
+        "--path",
+        "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game",
+        "res://r7/paid.tscn",
+        "--",
+        "--restart",
+        "--run-id=r7-restart-after"
+      ],
+      "log_sha256": "4d60bf09071638b1c43b5d67aa775c915b9d3f849f6d21e6a61d7f96cdb45a99",
+      "benchmark_competitors": [],
+      "localappdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\paid-after\\local",
+      "temp": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\paid-after\\temp",
+      "processes_before": null,
+      "id": "paid-restart-after",
+      "wrapper_pid": 38012,
+      "child_pid": 39488,
+      "exit_code": 0,
+      "results": [
+        "G1_PAID 8 checks, 0 failures"
+      ],
+      "seconds": 78.9509912,
+      "start": "2026-09-14T14:10:17.4664963+09:30"
+    },
+    {
+      "wrapper_pid": 34432,
+      "log_sha256": "bb70e32d8a8eb561f2cc4817926fbbb8bd5bd6632bf9c29dde5c8d0ee878aad1",
+      "program": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "temp": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\mesh-checks-01\\temp",
+      "child_pid": 38708,
+      "seconds": 1.2379702,
+      "results": [
+        "R7_MESH_CHECKS 73 checks, 0 failures"
+      ],
+      "id": "mesh-checks-01",
+      "start": "2026-09-14T13:36:21.4404875+09:30",
+      "appdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\mesh-checks-01",
+      "failure": "",
+      "localappdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\mesh-checks-01\\local",
+      "processes_before": null,
+      "exit_code": 0,
+      "arguments": [
+        "--headless",
+        "--path",
+        "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game",
+        "res://r7/mesh_checks.tscn"
+      ],
+      "benchmark_competitors": []
+    },
+    {
+      "processes_before": null,
+      "log_sha256": "295afe84cced3db7aea07e722450c5bed96d7579cb920ae96c263dc5ffebe45c",
+      "child_pid": 41496,
+      "failure": "",
+      "exit_code": 0,
+      "results": [
+        "ECOLOGY_BUILDINGS 102 checks, 0 failures"
+      ],
+      "start": "2026-09-14T13:52:32.8036880+09:30",
+      "appdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\ecology-before-02",
+      "benchmark_competitors": [],
+      "localappdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\ecology-before-02\\local",
+      "program": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "id": "ecology-before-02",
+      "arguments": [
+        "--headless",
+        "--path",
+        "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game",
+        "res://r7/ecology.tscn",
+        "--",
+        "--r7-before"
+      ],
+      "wrapper_pid": 37548,
+      "seconds": 198.0230056,
+      "temp": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\ecology-before-02\\temp"
+    },
+    {
+      "processes_before": null,
+      "log_sha256": "295afe84cced3db7aea07e722450c5bed96d7579cb920ae96c263dc5ffebe45c",
+      "child_pid": 21996,
+      "failure": "",
+      "exit_code": 0,
+      "results": [
+        "ECOLOGY_BUILDINGS 102 checks, 0 failures"
+      ],
+      "start": "2026-09-14T13:55:50.8523978+09:30",
+      "appdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\ecology-after-02",
+      "benchmark_competitors": [],
+      "localappdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\ecology-after-02\\local",
+      "program": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "id": "ecology-after-02",
+      "arguments": [
+        "--headless",
+        "--path",
+        "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game",
+        "res://r7/ecology.tscn"
+      ],
+      "wrapper_pid": 37548,
+      "seconds": 197.9669877,
+      "temp": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\ecology-after-02\\temp"
+    },
+    {
+      "exit_code": 0,
+      "benchmark_competitors": [],
+      "log_sha256": "4cfb3077fb4d1d9cd5fdabb7de439516629dd4005b61199530b93f670b3ed116",
+      "program": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "id": "catalogue-forward_plus",
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--path",
+        "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game",
+        "res://r1/catalogue.tscn"
+      ],
+      "child_pid": 42796,
+      "failure": "",
+      "appdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\catalogue-forward_plus",
+      "localappdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\catalogue-forward_plus\\local",
+      "temp": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\catalogue-forward_plus\\temp",
+      "wrapper_pid": 41540,
+      "start": "2026-09-14T14:02:43.4148624+09:30",
+      "results": [
+        "G1_CATALOGUE 1861 checks, 0 failures; 273 legal pairs"
+      ],
+      "seconds": 9.2838868,
+      "processes_before": null
+    },
+    {
+      "failure": "",
+      "appdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\catalogue-gl_compatibility",
+      "program": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--path",
+        "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game",
+        "res://r1/catalogue.tscn"
+      ],
+      "log_sha256": "923964d71af409bfedbd374a5d65d1be154c26cf7b763740958aa8248d073fdd",
+      "benchmark_competitors": [],
+      "localappdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\catalogue-gl_compatibility\\local",
+      "temp": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\catalogue-gl_compatibility\\temp",
+      "processes_before": null,
+      "id": "catalogue-gl_compatibility",
+      "wrapper_pid": 38012,
+      "child_pid": 41620,
+      "exit_code": 0,
+      "results": [
+        "G1_CATALOGUE 1861 checks, 0 failures; 273 legal pairs"
+      ],
+      "seconds": 6.9326887,
+      "start": "2026-09-14T14:04:21.8994121+09:30"
+    },
+    {
+      "exit_code": 0,
+      "benchmark_competitors": [],
+      "log_sha256": "76983ec267f462c43953bf74f0b7f2939d08d8f913718f7fbbb75f8fa06863e7",
+      "program": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "id": "grounding-forward_plus-02",
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--path",
+        "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game",
+        "res://r7/grounding.tscn"
+      ],
+      "child_pid": 40868,
+      "failure": "",
+      "appdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\grounding-forward_plus-02",
+      "localappdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\grounding-forward_plus-02\\local",
+      "temp": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\grounding-forward_plus-02\\temp",
+      "wrapper_pid": 41540,
+      "start": "2026-09-14T14:02:37.8877055+09:30",
+      "results": [
+        "CODEX_GROUNDING 16 checks, 0 failures"
+      ],
+      "seconds": 2.8198333,
+      "processes_before": null
+    },
+    {
+      "exit_code": 0,
+      "benchmark_competitors": [],
+      "log_sha256": "4d2cd38d87a9da432cf37bfe8daba5c6acf275e2ea336e4994567daa71230f57",
+      "program": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "id": "grounding-gl_compatibility-02",
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--path",
+        "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game",
+        "res://r7/grounding.tscn"
+      ],
+      "child_pid": 42340,
+      "failure": "",
+      "appdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\grounding-gl_compatibility-02",
+      "localappdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\grounding-gl_compatibility-02\\local",
+      "temp": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\grounding-gl_compatibility-02\\temp",
+      "wrapper_pid": 41540,
+      "start": "2026-09-14T14:02:40.7295706+09:30",
+      "results": [
+        "CODEX_GROUNDING 16 checks, 0 failures"
+      ],
+      "seconds": 2.6537127,
+      "processes_before": null
+    },
+    {
+      "failure": "",
+      "appdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\cost-before-forward_plus",
+      "program": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--path",
+        "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game",
+        "res://r7/views.tscn",
+        "--",
+        "--benchmark",
+        "--r7-before"
+      ],
+      "log_sha256": "2b1fb52941498c959eaab05e01f71696cd8156dbdb305e521cc4d0f19c3de348",
+      "benchmark_competitors": [],
+      "localappdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\cost-before-forward_plus\\local",
+      "temp": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\cost-before-forward_plus\\temp",
+      "processes_before": null,
+      "id": "cost-before-forward_plus",
+      "wrapper_pid": 38012,
+      "child_pid": 16000,
+      "exit_code": 0,
+      "results": [
+        "R7_VIEWS_OK before 4 views 12 timed samples 0 failures"
+      ],
+      "seconds": 125.4740999,
+      "start": "2026-09-14T14:13:34.8325560+09:30"
+    },
+    {
+      "failure": "",
+      "appdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\cost-after-forward_plus",
+      "program": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--path",
+        "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game",
+        "res://r7/views.tscn",
+        "--",
+        "--benchmark"
+      ],
+      "log_sha256": "a9dee2ba633cdac3b7672f6e0580839b1ea9f22b6ab034b5dcdb181132672272",
+      "benchmark_competitors": [],
+      "localappdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\cost-after-forward_plus\\local",
+      "temp": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\cost-after-forward_plus\\temp",
+      "processes_before": null,
+      "id": "cost-after-forward_plus",
+      "wrapper_pid": 38012,
+      "child_pid": 13276,
+      "exit_code": 0,
+      "results": [
+        "R7_VIEWS_OK after 4 views 12 timed samples 0 failures"
+      ],
+      "seconds": 124.1694271,
+      "start": "2026-09-14T14:15:40.3122258+09:30"
+    },
+    {
+      "failure": "",
+      "appdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\cost-before-gl_compatibility",
+      "program": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--path",
+        "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game",
+        "res://r7/views.tscn",
+        "--",
+        "--benchmark",
+        "--r7-before"
+      ],
+      "log_sha256": "9052fa42db54d09bdbbe14c7fec4ae8c704335344d04593329f962de708b2dd0",
+      "benchmark_competitors": [],
+      "localappdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\cost-before-gl_compatibility\\local",
+      "temp": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\cost-before-gl_compatibility\\temp",
+      "processes_before": null,
+      "id": "cost-before-gl_compatibility",
+      "wrapper_pid": 38012,
+      "child_pid": 35708,
+      "exit_code": 0,
+      "results": [
+        "R7_VIEWS_OK before 4 views 12 timed samples 0 failures"
+      ],
+      "seconds": 128.3173473,
+      "start": "2026-09-14T14:17:44.4879254+09:30"
+    },
+    {
+      "failure": "",
+      "appdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\cost-after-gl_compatibility",
+      "program": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--path",
+        "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game",
+        "res://r7/views.tscn",
+        "--",
+        "--benchmark"
+      ],
+      "log_sha256": "f50b7d64e6ef68aeeff251ffc557e26d2ade1078114091831b059b61421ea54d",
+      "benchmark_competitors": [],
+      "localappdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\cost-after-gl_compatibility\\local",
+      "temp": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\cost-after-gl_compatibility\\temp",
+      "processes_before": null,
+      "id": "cost-after-gl_compatibility",
+      "wrapper_pid": 38012,
+      "child_pid": 38556,
+      "exit_code": 0,
+      "results": [
+        "R7_VIEWS_OK after 4 views 12 timed samples 0 failures"
+      ],
+      "seconds": 133.5536846,
+      "start": "2026-09-14T14:19:52.8116231+09:30"
+    },
+    {
+      "wrapper_pid": 34432,
+      "log_sha256": "28bd98f5eced9ed65f93ea96c06969448f420d80c5192650409d275adcde1d74",
+      "program": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "temp": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\source-probe-03\\temp",
+      "child_pid": 22104,
+      "seconds": 1.2383133,
+      "results": [],
+      "id": "source-probe-03",
+      "start": "2026-09-14T13:31:45.5385430+09:30",
+      "appdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\source-probe-03",
+      "failure": "",
+      "localappdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\source-probe-03\\local",
+      "processes_before": null,
+      "exit_code": 0,
+      "arguments": [
+        "--headless",
+        "--path",
+        "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game",
+        "res://r7/source_probe.tscn",
+        "--",
+        "--r7-before"
+      ],
+      "benchmark_competitors": []
+    },
+    {
+      "failure": "",
+      "appdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\route-motion-forward_plus",
+      "program": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--path",
+        "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game",
+        "res://r7/route.tscn",
+        "--",
+        "--capture",
+        "--run-id=r7-route-motion"
+      ],
+      "log_sha256": "3e797ac7116fd752166baeb9e9fcb853e5e5340f336766a5fc8e82bfe0037fb0",
+      "benchmark_competitors": [],
+      "localappdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\route-motion-forward_plus\\local",
+      "temp": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\users\\route-motion-forward_plus\\temp",
+      "processes_before": null,
+      "id": "route-motion-forward_plus",
+      "wrapper_pid": 38012,
+      "child_pid": 18296,
+      "exit_code": 0,
+      "results": [
+        "G1_PAID 2 checks, 0 failures"
+      ],
+      "seconds": 118.3758762,
+      "start": "2026-09-14T14:11:36.4539812+09:30"
+    },
+    {
+      "start": "2026-09-14T13:09:24.0255519+09:30",
+      "program": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--path",
+        "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v01\\runtime\\game",
+        "res://r7/views.tscn",
+        "--",
+        "--r7-before"
+      ],
+      "appdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v01\\users\\views-before-forward_plus-02",
+      "wrapper_pid": 36232,
+      "benchmark_competitors": [],
+      "seconds": 127.2155365,
+      "exit_code": 0,
+      "localappdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v01\\users\\views-before-forward_plus-02\\local",
+      "temp": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v01\\users\\views-before-forward_plus-02\\temp",
+      "child_pid": 1968,
+      "log_sha256": "48e660d4733bf9141169c600c9dceb7b83813df4587a23ee7cbe2cef6f209202",
+      "id": "views-before-forward_plus-02",
+      "results": [
+        "R7_VIEWS_OK before 4 views 0 timed samples 0 failures"
+      ],
+      "failure": "",
+      "processes_before": null
+    },
+    {
+      "start": "2026-09-14T13:15:49.3058065+09:30",
+      "program": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--path",
+        "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v01\\runtime\\game",
+        "res://r7/views.tscn",
+        "--",
+        "--r7-before"
+      ],
+      "appdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v01\\users\\views-before-gl_compatibility-02",
+      "wrapper_pid": 36232,
+      "benchmark_competitors": [],
+      "seconds": 125.2524194,
+      "exit_code": 0,
+      "localappdata": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v01\\users\\views-before-gl_compatibility-02\\local",
+      "temp": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v01\\users\\views-before-gl_compatibility-02\\temp",
+      "child_pid": 34536,
+      "log_sha256": "c1afb767853cab329a28a95592d3370830f7f948fedcfdada485d1ba021271ed",
+      "id": "views-before-gl_compatibility-02",
+      "results": [
+        "R7_VIEWS_OK before 4 views 0 timed samples 0 failures"
+      ],
+      "failure": "",
+      "processes_before": null
+    }
+  ],
+  "diagnostics": [
+    "The direct standalone grounding scene failed during resource preloading; the owned wrapper preloads the existing sandpit resource graph before running the unchanged original fixture. Original failure log remains. ",
+    "V02 first historical ecology test hit the inherited C6 expectation of CataclysmSites, absent in frontier_v3. Owned fixture now supplies an empty typed history container only; original profile/build logic/assertions are retained. Failure log is preserved.",
+    "V02 first mesh-check parser run failed inference of a local Vector3; explicit type fixed in fixture and fresh parse-mesh_checks-02 passed. Failed original log retained.",
+    "V01 first source probe failed because its output directory was missing; corrected before the accepted source probe.",
+    "V01 first view fixture rejected mixed indentation; corrected and explicitly parsed.",
+    "V01 darker/narrow shrub candidate rejected visually; all original images/logs retained. V02 changes only its composition and nonemissive leaf lighting.",
+    "Busy-slot attempts launched no engine and the shared wrapper exposed its missing-empty-log diagnostic; process/mutex guards remained unchanged.",
+    "Existing Compatibility SSAO warnings remain visible; no rendering diagnostic is suppressed."
+  ],
+  "paid": {
+    "stages": {
+      "initial": {
+        "full_snapshot_equal": true,
+        "raw_differences": [],
+        "native_ownership_and_geography_equal": true
+      },
+      "paid": {
+        "full_snapshot_equal": true,
+        "raw_differences": [],
+        "native_ownership_and_geography_equal": true
+      },
+      "final": {
+        "full_snapshot_equal": true,
+        "raw_differences": [],
+        "native_ownership_and_geography_equal": true
+      }
+    },
+    "checks_before": 865,
+    "checks_after": 865,
+    "walk_before": {
+      "metres": 135.078021510504,
+      "positions": [
+        [
+          467.416656494141,
+          31.9602947235107,
+          438.5
+        ],
+        [
+          466.916595458984,
+          31.9602947235107,
+          438.5
+        ],
+        [
+          465.916473388672,
+          31.9602947235107,
+          438.5
+        ],
+        [
+          464.916351318359,
+          31.9602947235107,
+          438.5
+        ],
+        [
+          463.916229248047,
+          31.9602947235107,
+          438.5
+        ],
+        [
+          462.916107177734,
+          31.9602947235107,
+          438.5
+        ],
+        [
+          461.915985107422,
+          31.9602947235107,
+          438.5
+        ],
+        [
+          460.915863037109,
+          31.9602947235107,
+          438.5
+        ],
+        [
+          459.915740966797,
+          31.9602947235107,
+          438.5
+        ],
+        [
+          458.915618896484,
+          31.9602947235107,
+          438.5
+        ],
+        [
+          457.915496826172,
+          31.9602947235107,
+          438.5
+        ],
+        [
+          456.915374755859,
+          31.9602947235107,
+          438.5
+        ],
+        [
+          455.915252685547,
+          31.9602947235107,
+          438.5
+        ],
+        [
+          454.915130615234,
+          31.9602947235107,
+          438.5
+        ],
+        [
+          453.961181640625,
+          31.9602947235107,
+          438.425415039063
+        ],
+        [
+          453.724914550781,
+          31.9602947235107,
+          437.895629882813
+        ],
+        [
+          453.574645996094,
+          31.9602947235107,
+          436.907379150391
+        ],
+        [
+          453.524597167969,
+          31.9602947235107,
+          435.908630371094
+        ],
+        [
+          453.508087158203,
+          31.9602947235107,
+          434.908843994141
+        ],
+        [
+          453.502655029297,
+          31.9602947235107,
+          433.908721923828
+        ],
+        [
+          453.500915527344,
+          31.9602947235107,
+          432.908599853516
+        ],
+        [
+          453.500244140625,
+          31.9602947235107,
+          431.908477783203
+        ],
+        [
+          453.500091552734,
+          31.9602947235107,
+          430.908355712891
+        ],
+        [
+          453.500091552734,
+          31.9602947235107,
+          429.908233642578
+        ],
+        [
+          453.500091552734,
+          31.9602947235107,
+          428.908111572266
+        ],
+        [
+          453.500091552734,
+          31.9602947235107,
+          427.907989501953
+        ],
+        [
+          453.500091552734,
+          31.9602947235107,
+          426.907867431641
+        ],
+        [
+          453.500091552734,
+          31.9602947235107,
+          425.907745361328
+        ],
+        [
+          453.500091552734,
+          31.9602947235107,
+          424.907623291016
+        ],
+        [
+          453.500091552734,
+          31.9602947235107,
+          423.907501220703
+        ],
+        [
+          453.500091552734,
+          31.9602947235107,
+          422.907379150391
+        ],
+        [
+          453.500091552734,
+          31.9602947235107,
+          421.907257080078
+        ],
+        [
+          453.500091552734,
+          31.9602947235107,
+          420.907135009766
+        ],
+        [
+          453.425262451172,
+          31.9602947235107,
+          419.953674316406
+        ],
+        [
+          452.946258544922,
+          31.9602947235107,
+          419.655853271484
+        ],
+        [
+          452.598480224609,
+          31.9602947235107,
+          418.926147460938
+        ],
+        [
+          451.94580078125,
+          31.9602947235107,
+          418.607696533203
+        ],
+        [
+          451.685974121094,
+          31.9602947235107,
+          417.906677246094
+        ],
+        [
+          451.562133789063,
+          31.9602947235107,
+          416.914703369141
+        ],
+        [
+          451.520629882813,
+          31.9602947235107,
+          415.915618896484
+        ],
+        [
+          451.5068359375,
+          31.9602947235107,
+          414.915832519531
+        ],
+        [
+          451.502319335938,
+          31.9602947235107,
+          413.915710449219
+        ],
+        [
+          451.500762939453,
+          31.9602947235107,
+          412.915588378906
+        ],
+        [
+          451.500244140625,
+          31.9602947235107,
+          411.915466308594
+        ],
+        [
+          451.500091552734,
+          31.9602947235107,
+          410.915344238281
+        ],
+        [
+          451.500091552734,
+          31.9602947235107,
+          409.915222167969
+        ],
+        [
+          451.500091552734,
+          31.9602947235107,
+          408.915100097656
+        ],
+        [
+          451.500091552734,
+          31.9602947235107,
+          407.914978027344
+        ],
+        [
+          451.500091552734,
+          31.9602947235107,
+          406.914855957031
+        ],
+        [
+          451.425506591797,
+          31.9602947235107,
+          405.9609375
+        ],
+        [
+          450.947998046875,
+          31.9602947235107,
+          405.660369873047
+        ],
+        [
+          450.667846679688,
+          31.9602947235107,
+          404.878082275391
+        ],
+        [
+          450.553833007813,
+          31.9602947235107,
+          403.884735107422
+        ],
+        [
+          450.517211914063,
+          31.9602947235107,
+          402.885314941406
+        ],
+        [
+          450.505462646484,
+          31.9602947235107,
+          401.885528564453
+        ],
+        [
+          450.501708984375,
+          31.9602947235107,
+          400.885406494141
+        ],
+        [
+          450.500579833984,
+          31.9602947235107,
+          399.885284423828
+        ],
+        [
+          450.500244140625,
+          31.9602947235107,
+          398.885162353516
+        ],
+        [
+          450.500091552734,
+          31.9602947235107,
+          397.885040283203
+        ],
+        [
+          450.500091552734,
+          31.9602947235107,
+          396.884918212891
+        ],
+        [
+          450.424621582031,
+          31.9602947235107,
+          395.932800292969
+        ],
+        [
+          449.941772460938,
+          31.9602947235107,
+          395.64306640625
+        ],
+        [
+          449.593475341797,
+          31.9602947235107,
+          394.914001464844
+        ],
+        [
+          448.88720703125,
+          31.9602947235107,
+          394.667907714844
+        ],
+        [
+          447.94287109375,
+          31.9602947235107,
+          394.481842041016
+        ],
+        [
+          447.69140625,
+          31.9602947235107,
+          393.867614746094
+        ],
+        [
+          447.571838378906,
+          31.9602947235107,
+          392.959197998047
+        ],
+        [
+          447.525390625,
+          31.9602947235107,
+          391.96044921875
+        ],
+        [
+          447.508941650391,
+          31.9602947235107,
+          390.960662841797
+        ],
+        [
+          447.503112792969,
+          31.9602947235107,
+          389.960540771484
+        ],
+        [
+          447.501037597656,
+          31.9602947235107,
+          388.960418701172
+        ],
+        [
+          447.500335693359,
+          31.9602947235107,
+          387.960296630859
+        ],
+        [
+          447.500091552734,
+          31.9602947235107,
+          386.960174560547
+        ],
+        [
+          447.500091552734,
+          31.9602947235107,
+          385.960052490234
+        ],
+        [
+          447.500091552734,
+          31.9602947235107,
+          384.959930419922
+        ],
+        [
+          447.426849365234,
+          31.9602947235107,
+          384.003387451172
+        ],
+        [
+          446.887481689453,
+          31.9602947235107,
+          383.646057128906
+        ],
+        [
+          446.597595214844,
+          31.9602947235107,
+          382.981018066406
+        ],
+        [
+          445.904510498047,
+          31.9602947235107,
+          382.701599121094
+        ],
+        [
+          444.962066650391,
+          31.9602947235107,
+          382.495758056641
+        ],
+        [
+          444.704376220703,
+          31.9602947235107,
+          381.884185791016
+        ],
+        [
+          444.566467285156,
+          31.9602947235107,
+          380.894226074219
+        ],
+        [
+          444.521545410156,
+          31.9602947235107,
+          379.895141601563
+        ],
+        [
+          444.432373046875,
+          32.9333763122559,
+          378.943878173828
+        ],
+        [
+          443.950469970703,
+          32.8571548461914,
+          378.651306152344
+        ],
+        [
+          443.661224365234,
+          33.5124282836914,
+          378.032531738281
+        ],
+        [
+          442.886871337891,
+          34.0842437744141,
+          377.688690185547
+        ],
+        [
+          442.646697998047,
+          34.8701782226563,
+          376.895233154297
+        ],
+        [
+          442.548187255859,
+          34.9063491821289,
+          375.901245117188
+        ],
+        [
+          442.515686035156,
+          35.0602607727051,
+          374.901763916016
+        ],
+        [
+          442.578063964844,
+          35.7833824157715,
+          373.950286865234
+        ],
+        [
+          443.057312011719,
+          35.857795715332,
+          373.653045654297
+        ],
+        [
+          443.336059570313,
+          36.0182342529297,
+          372.8701171875
+        ],
+        [
+          443.5087890625,
+          36.7646789550781,
+          372.007659912109
+        ],
+        [
+          444.110229492188,
+          36.9317398071289,
+          371.728210449219
+        ],
+        [
+          445.096649169922,
+          37.0726013183594,
+          371.576141357422
+        ],
+        [
+          446.096099853516,
+          37.0528945922852,
+          371.524963378906
+        ],
+        [
+          447.088562011719,
+          36.8652229309082,
+          371.508666992188
+        ],
+        [
+          448.089569091797,
+          36.8667984008789,
+          371.502838134766
+        ],
+        [
+          449.090454101563,
+          36.8677635192871,
+          371.500915527344
+        ],
+        [
+          450.090881347656,
+          37.0673675537109,
+          371.500244140625
+        ],
+        [
+          451.08935546875,
+          37.1336479187012,
+          371.501403808594
+        ],
+        [
+          452.085235595703,
+          37.140380859375,
+          371.500427246094
+        ],
+        [
+          453.083740234375,
+          37.1408805847168,
+          371.500091552734
+        ],
+        [
+          454.083557128906,
+          37.140926361084,
+          371.500091552734
+        ],
+        [
+          455.083770751953,
+          37.2912178039551,
+          371.500091552734
+        ],
+        [
+          456.083892822266,
+          37.8906555175781,
+          371.500091552734
+        ],
+        [
+          457.034729003906,
+          37.8742408752441,
+          371.425628662109
+        ],
+        [
+          457.337036132813,
+          37.9602317810059,
+          370.948852539063
+        ],
+        [
+          458.119384765625,
+          38.0752563476563,
+          370.668762207031
+        ],
+        [
+          459.0634765625,
+          38.1944122314453,
+          370.481384277344
+        ],
+        [
+          459.378662109375,
+          38.8274116516113,
+          369.919219970703
+        ],
+        [
+          460.085876464844,
+          38.9300575256348,
+          369.675537109375
+        ],
+        [
+          461.078857421875,
+          39.0971755981445,
+          369.559143066406
+        ],
+        [
+          462.031585693359,
+          39.392879486084,
+          369.446350097656
+        ],
+        [
+          462.368927001953,
+          39.803108215332,
+          368.896087646484
+        ],
+        [
+          463.029113769531,
+          39.9128303527832,
+          368.600219726563
+        ],
+        [
+          463.300750732422,
+          39.9607810974121,
+          367.910003662109
+        ],
+        [
+          463.432922363281,
+          40.910457611084,
+          366.919036865234
+        ],
+        [
+          463.477508544922,
+          40.9601745605469,
+          365.920166015625
+        ],
+        [
+          463.492431640625,
+          41.8095588684082,
+          364.921508789063
+        ],
+        [
+          463.497467041016,
+          42.8690452575684,
+          363.92138671875
+        ],
+        [
+          463.499176025391,
+          42.9602699279785,
+          362.922149658203
+        ],
+        [
+          463.499725341797,
+          43.8086433410645,
+          361.922027587891
+        ],
+        [
+          463.499908447266,
+          43.9602203369141,
+          360.922790527344
+        ],
+        [
+          463.499908447266,
+          44.8083686828613,
+          359.922668457031
+        ],
+        [
+          463.499908447266,
+          44.9601860046387,
+          358.923431396484
+        ],
+        [
+          463.499908447266,
+          45.8141670227051,
+          357.923309326172
+        ],
+        [
+          463.499908447266,
+          45.9601516723633,
+          356.924102783203
+        ],
+        [
+          463.499908447266,
+          45.9601516723633,
+          355.923980712891
+        ],
+        [
+          463.499908447266,
+          46.8140144348145,
+          354.923858642578
+        ],
+        [
+          463.499908447266,
+          46.9601173400879,
+          353.924621582031
+        ],
+        [
+          463.499908447266,
+          46.9601173400879,
+          352.924499511719
+        ]
+      ],
+      "stalled": false
+    },
+    "walk_after": {
+      "metres": 135.078021510504,
+      "positions": [
+        [
+          467.416656494141,
+          31.9602947235107,
+          438.5
+        ],
+        [
+          466.916595458984,
+          31.9602947235107,
+          438.5
+        ],
+        [
+          465.916473388672,
+          31.9602947235107,
+          438.5
+        ],
+        [
+          464.916351318359,
+          31.9602947235107,
+          438.5
+        ],
+        [
+          463.916229248047,
+          31.9602947235107,
+          438.5
+        ],
+        [
+          462.916107177734,
+          31.9602947235107,
+          438.5
+        ],
+        [
+          461.915985107422,
+          31.9602947235107,
+          438.5
+        ],
+        [
+          460.915863037109,
+          31.9602947235107,
+          438.5
+        ],
+        [
+          459.915740966797,
+          31.9602947235107,
+          438.5
+        ],
+        [
+          458.915618896484,
+          31.9602947235107,
+          438.5
+        ],
+        [
+          457.915496826172,
+          31.9602947235107,
+          438.5
+        ],
+        [
+          456.915374755859,
+          31.9602947235107,
+          438.5
+        ],
+        [
+          455.915252685547,
+          31.9602947235107,
+          438.5
+        ],
+        [
+          454.915130615234,
+          31.9602947235107,
+          438.5
+        ],
+        [
+          453.961181640625,
+          31.9602947235107,
+          438.425415039063
+        ],
+        [
+          453.724914550781,
+          31.9602947235107,
+          437.895629882813
+        ],
+        [
+          453.574645996094,
+          31.9602947235107,
+          436.907379150391
+        ],
+        [
+          453.524597167969,
+          31.9602947235107,
+          435.908630371094
+        ],
+        [
+          453.508087158203,
+          31.9602947235107,
+          434.908843994141
+        ],
+        [
+          453.502655029297,
+          31.9602947235107,
+          433.908721923828
+        ],
+        [
+          453.500915527344,
+          31.9602947235107,
+          432.908599853516
+        ],
+        [
+          453.500244140625,
+          31.9602947235107,
+          431.908477783203
+        ],
+        [
+          453.500091552734,
+          31.9602947235107,
+          430.908355712891
+        ],
+        [
+          453.500091552734,
+          31.9602947235107,
+          429.908233642578
+        ],
+        [
+          453.500091552734,
+          31.9602947235107,
+          428.908111572266
+        ],
+        [
+          453.500091552734,
+          31.9602947235107,
+          427.907989501953
+        ],
+        [
+          453.500091552734,
+          31.9602947235107,
+          426.907867431641
+        ],
+        [
+          453.500091552734,
+          31.9602947235107,
+          425.907745361328
+        ],
+        [
+          453.500091552734,
+          31.9602947235107,
+          424.907623291016
+        ],
+        [
+          453.500091552734,
+          31.9602947235107,
+          423.907501220703
+        ],
+        [
+          453.500091552734,
+          31.9602947235107,
+          422.907379150391
+        ],
+        [
+          453.500091552734,
+          31.9602947235107,
+          421.907257080078
+        ],
+        [
+          453.500091552734,
+          31.9602947235107,
+          420.907135009766
+        ],
+        [
+          453.425262451172,
+          31.9602947235107,
+          419.953674316406
+        ],
+        [
+          452.946258544922,
+          31.9602947235107,
+          419.655853271484
+        ],
+        [
+          452.598480224609,
+          31.9602947235107,
+          418.926147460938
+        ],
+        [
+          451.94580078125,
+          31.9602947235107,
+          418.607696533203
+        ],
+        [
+          451.685974121094,
+          31.9602947235107,
+          417.906677246094
+        ],
+        [
+          451.562133789063,
+          31.9602947235107,
+          416.914703369141
+        ],
+        [
+          451.520629882813,
+          31.9602947235107,
+          415.915618896484
+        ],
+        [
+          451.5068359375,
+          31.9602947235107,
+          414.915832519531
+        ],
+        [
+          451.502319335938,
+          31.9602947235107,
+          413.915710449219
+        ],
+        [
+          451.500762939453,
+          31.9602947235107,
+          412.915588378906
+        ],
+        [
+          451.500244140625,
+          31.9602947235107,
+          411.915466308594
+        ],
+        [
+          451.500091552734,
+          31.9602947235107,
+          410.915344238281
+        ],
+        [
+          451.500091552734,
+          31.9602947235107,
+          409.915222167969
+        ],
+        [
+          451.500091552734,
+          31.9602947235107,
+          408.915100097656
+        ],
+        [
+          451.500091552734,
+          31.9602947235107,
+          407.914978027344
+        ],
+        [
+          451.500091552734,
+          31.9602947235107,
+          406.914855957031
+        ],
+        [
+          451.425506591797,
+          31.9602947235107,
+          405.9609375
+        ],
+        [
+          450.947998046875,
+          31.9602947235107,
+          405.660369873047
+        ],
+        [
+          450.667846679688,
+          31.9602947235107,
+          404.878082275391
+        ],
+        [
+          450.553833007813,
+          31.9602947235107,
+          403.884735107422
+        ],
+        [
+          450.517211914063,
+          31.9602947235107,
+          402.885314941406
+        ],
+        [
+          450.505462646484,
+          31.9602947235107,
+          401.885528564453
+        ],
+        [
+          450.501708984375,
+          31.9602947235107,
+          400.885406494141
+        ],
+        [
+          450.500579833984,
+          31.9602947235107,
+          399.885284423828
+        ],
+        [
+          450.500244140625,
+          31.9602947235107,
+          398.885162353516
+        ],
+        [
+          450.500091552734,
+          31.9602947235107,
+          397.885040283203
+        ],
+        [
+          450.500091552734,
+          31.9602947235107,
+          396.884918212891
+        ],
+        [
+          450.424621582031,
+          31.9602947235107,
+          395.932800292969
+        ],
+        [
+          449.941772460938,
+          31.9602947235107,
+          395.64306640625
+        ],
+        [
+          449.593475341797,
+          31.9602947235107,
+          394.914001464844
+        ],
+        [
+          448.88720703125,
+          31.9602947235107,
+          394.667907714844
+        ],
+        [
+          447.94287109375,
+          31.9602947235107,
+          394.481842041016
+        ],
+        [
+          447.69140625,
+          31.9602947235107,
+          393.867614746094
+        ],
+        [
+          447.571838378906,
+          31.9602947235107,
+          392.959197998047
+        ],
+        [
+          447.525390625,
+          31.9602947235107,
+          391.96044921875
+        ],
+        [
+          447.508941650391,
+          31.9602947235107,
+          390.960662841797
+        ],
+        [
+          447.503112792969,
+          31.9602947235107,
+          389.960540771484
+        ],
+        [
+          447.501037597656,
+          31.9602947235107,
+          388.960418701172
+        ],
+        [
+          447.500335693359,
+          31.9602947235107,
+          387.960296630859
+        ],
+        [
+          447.500091552734,
+          31.9602947235107,
+          386.960174560547
+        ],
+        [
+          447.500091552734,
+          31.9602947235107,
+          385.960052490234
+        ],
+        [
+          447.500091552734,
+          31.9602947235107,
+          384.959930419922
+        ],
+        [
+          447.426849365234,
+          31.9602947235107,
+          384.003387451172
+        ],
+        [
+          446.887481689453,
+          31.9602947235107,
+          383.646057128906
+        ],
+        [
+          446.597595214844,
+          31.9602947235107,
+          382.981018066406
+        ],
+        [
+          445.904510498047,
+          31.9602947235107,
+          382.701599121094
+        ],
+        [
+          444.962066650391,
+          31.9602947235107,
+          382.495758056641
+        ],
+        [
+          444.704376220703,
+          31.9602947235107,
+          381.884185791016
+        ],
+        [
+          444.566467285156,
+          31.9602947235107,
+          380.894226074219
+        ],
+        [
+          444.521545410156,
+          31.9602947235107,
+          379.895141601563
+        ],
+        [
+          444.432373046875,
+          32.9333763122559,
+          378.943878173828
+        ],
+        [
+          443.950469970703,
+          32.8571548461914,
+          378.651306152344
+        ],
+        [
+          443.661224365234,
+          33.5124282836914,
+          378.032531738281
+        ],
+        [
+          442.886871337891,
+          34.0842437744141,
+          377.688690185547
+        ],
+        [
+          442.646697998047,
+          34.8701782226563,
+          376.895233154297
+        ],
+        [
+          442.548187255859,
+          34.9063491821289,
+          375.901245117188
+        ],
+        [
+          442.515686035156,
+          35.0602607727051,
+          374.901763916016
+        ],
+        [
+          442.578063964844,
+          35.7833824157715,
+          373.950286865234
+        ],
+        [
+          443.057312011719,
+          35.857795715332,
+          373.653045654297
+        ],
+        [
+          443.336059570313,
+          36.0182342529297,
+          372.8701171875
+        ],
+        [
+          443.5087890625,
+          36.7646789550781,
+          372.007659912109
+        ],
+        [
+          444.110229492188,
+          36.9317398071289,
+          371.728210449219
+        ],
+        [
+          445.096649169922,
+          37.0726013183594,
+          371.576141357422
+        ],
+        [
+          446.096099853516,
+          37.0528945922852,
+          371.524963378906
+        ],
+        [
+          447.088562011719,
+          36.8652229309082,
+          371.508666992188
+        ],
+        [
+          448.089569091797,
+          36.8667984008789,
+          371.502838134766
+        ],
+        [
+          449.090454101563,
+          36.8677635192871,
+          371.500915527344
+        ],
+        [
+          450.090881347656,
+          37.0673675537109,
+          371.500244140625
+        ],
+        [
+          451.08935546875,
+          37.1336479187012,
+          371.501403808594
+        ],
+        [
+          452.085235595703,
+          37.140380859375,
+          371.500427246094
+        ],
+        [
+          453.083740234375,
+          37.1408805847168,
+          371.500091552734
+        ],
+        [
+          454.083557128906,
+          37.140926361084,
+          371.500091552734
+        ],
+        [
+          455.083770751953,
+          37.2912178039551,
+          371.500091552734
+        ],
+        [
+          456.083892822266,
+          37.8906555175781,
+          371.500091552734
+        ],
+        [
+          457.034729003906,
+          37.8742408752441,
+          371.425628662109
+        ],
+        [
+          457.337036132813,
+          37.9602317810059,
+          370.948852539063
+        ],
+        [
+          458.119384765625,
+          38.0752563476563,
+          370.668762207031
+        ],
+        [
+          459.0634765625,
+          38.1944122314453,
+          370.481384277344
+        ],
+        [
+          459.378662109375,
+          38.8274116516113,
+          369.919219970703
+        ],
+        [
+          460.085876464844,
+          38.9300575256348,
+          369.675537109375
+        ],
+        [
+          461.078857421875,
+          39.0971755981445,
+          369.559143066406
+        ],
+        [
+          462.031585693359,
+          39.392879486084,
+          369.446350097656
+        ],
+        [
+          462.368927001953,
+          39.803108215332,
+          368.896087646484
+        ],
+        [
+          463.029113769531,
+          39.9128303527832,
+          368.600219726563
+        ],
+        [
+          463.300750732422,
+          39.9607810974121,
+          367.910003662109
+        ],
+        [
+          463.432922363281,
+          40.910457611084,
+          366.919036865234
+        ],
+        [
+          463.477508544922,
+          40.9601745605469,
+          365.920166015625
+        ],
+        [
+          463.492431640625,
+          41.8095588684082,
+          364.921508789063
+        ],
+        [
+          463.497467041016,
+          42.8690452575684,
+          363.92138671875
+        ],
+        [
+          463.499176025391,
+          42.9602699279785,
+          362.922149658203
+        ],
+        [
+          463.499725341797,
+          43.8086433410645,
+          361.922027587891
+        ],
+        [
+          463.499908447266,
+          43.9602203369141,
+          360.922790527344
+        ],
+        [
+          463.499908447266,
+          44.8083686828613,
+          359.922668457031
+        ],
+        [
+          463.499908447266,
+          44.9601860046387,
+          358.923431396484
+        ],
+        [
+          463.499908447266,
+          45.8141670227051,
+          357.923309326172
+        ],
+        [
+          463.499908447266,
+          45.9601516723633,
+          356.924102783203
+        ],
+        [
+          463.499908447266,
+          45.9601516723633,
+          355.923980712891
+        ],
+        [
+          463.499908447266,
+          46.8140144348145,
+          354.923858642578
+        ],
+        [
+          463.499908447266,
+          46.9601173400879,
+          353.924621582031
+        ],
+        [
+          463.499908447266,
+          46.9601173400879,
+          352.924499511719
+        ]
+      ],
+      "stalled": false
+    }
+  },
+  "mesh": {
+    "checks": 73,
+    "failures": 0,
+    "groups": [
+      {
+        "bounds": "[P: (-0.118733, 0.0, -0.13718), S: (0.249969, 0.131889, 0.246806)]",
+        "envelope": "[P: (-0.15, 0.0, -0.148102), S: (0.3, 0.158286, 0.296204)]",
+        "id": "ground/meadow/tuft",
+        "max_bend_m": 0.00237399771809578,
+        "outside_envelope_extrema": 0,
+        "parts": [
+          {
+            "role": "grass-meadow",
+            "root_y": 0.0,
+            "scale": 0.234036219539074,
+            "source_bounds": "[P: (-0.507329, 0.001, -0.586147), S: (1.068076, 0.56354, 1.054562)]",
+            "yaw": 0.0
+          },
+          {
+            "role": "grass-edge",
+            "root_y": 0.0,
+            "scale": 0.192804483409566,
+            "source_bounds": "[P: (-0.406222, 0.001, -0.557891), S: (0.822157, 0.237553, 0.981016)]",
+            "yaw": 1.7
+          }
+        ],
+        "root_shift_m": 0.0,
+        "root_vertices": 216,
+        "vertices": 540
+      },
+      {
+        "bounds": "[P: (-0.181373, 0.0, -0.183947), S: (0.318083, 0.178122, 0.350894)]",
+        "envelope": "[P: (-0.26, 0.0, -0.194498), S: (0.52, 0.246098, 0.388997)]",
+        "id": "ground/forest/fern",
+        "max_bend_m": 0.00320619195699692,
+        "outside_envelope_extrema": 0,
+        "parts": [
+          {
+            "role": "fern-lush",
+            "root_y": 0.0,
+            "scale": 0.253490512862483,
+            "source_bounds": "[P: (-0.715503, 0.005965, -0.725655), S: (1.254811, 0.702676, 1.384248)]",
+            "yaw": 0.0
+          },
+          {
+            "role": "grass-edge",
+            "root_y": 0.0,
+            "scale": 0.281801280579035,
+            "source_bounds": "[P: (-0.406222, 0.001, -0.557891), S: (0.822157, 0.237553, 0.981016)]",
+            "yaw": 1.4
+          }
+        ],
+        "root_shift_m": 0.0,
+        "root_vertices": 81,
+        "vertices": 3384
+      },
+      {
+        "bounds": "[P: (-0.096409, -0.0, -0.132405), S: (0.195123, 0.056379, 0.232826)]",
+        "envelope": "[P: (-0.117329, 0.0, -0.14), S: (0.234659, 0.067802, 0.28)]",
+        "id": "ground/ember_wastes/dead_grass",
+        "max_bend_m": 0.00101481512188911,
+        "outside_envelope_extrema": 0,
+        "parts": [
+          {
+            "role": "grass-edge",
+            "root_y": 0.0,
+            "scale": 0.237331074771797,
+            "source_bounds": "[P: (-0.406222, 0.001, -0.557891), S: (0.822157, 0.237553, 0.981016)]",
+            "yaw": 0.0
+          },
+          {
+            "role": "grass-meadow",
+            "root_y": 0.0,
+            "scale": 0.0866262346329291,
+            "source_bounds": "[P: (-0.507329, 0.001, -0.586147), S: (1.068076, 0.56354, 1.054562)]",
+            "yaw": 2.2
+          }
+        ],
+        "root_shift_m": 0.0,
+        "root_vertices": 216,
+        "vertices": 540
+      },
+      {
+        "bounds": "[P: (-0.118733, 0.0, -0.13718), S: (0.249969, 0.131889, 0.246806)]",
+        "envelope": "[P: (-0.15, 0.0, -0.148102), S: (0.3, 0.158286, 0.296204)]",
+        "id": "ground/rocky_hills/tuft",
+        "max_bend_m": 0.00237399771809578,
+        "outside_envelope_extrema": 0,
+        "parts": [
+          {
+            "role": "grass-meadow",
+            "root_y": 0.0,
+            "scale": 0.234036219539074,
+            "source_bounds": "[P: (-0.507329, 0.001, -0.586147), S: (1.068076, 0.56354, 1.054562)]",
+            "yaw": 0.0
+          },
+          {
+            "role": "grass-edge",
+            "root_y": 0.0,
+            "scale": 0.192804483409566,
+            "source_bounds": "[P: (-0.406222, 0.001, -0.557891), S: (0.822157, 0.237553, 0.981016)]",
+            "yaw": 1.7
+          }
+        ],
+        "root_shift_m": 0.0,
+        "root_vertices": 216,
+        "vertices": 540
+      },
+      {
+        "bounds": "[P: (-0.406525, 0.0, -0.399366), S: (0.844998, 0.65906, 0.769708)]",
+        "envelope": "[P: (-0.463625, -0.042938, -0.473548), S: (0.943628, 0.809625, 0.923854)]",
+        "id": "habitat/shrub0",
+        "max_bend_m": 0.0118630864620209,
+        "outside_envelope_extrema": 0,
+        "parts": [
+          {
+            "role": "sapling-shrub",
+            "root_y": 0.0,
+            "scale": 0.490522126175235,
+            "source_bounds": "[P: (-0.828759, 0.0, -0.354204), S: (1.72265, 1.34359, 0.780356)]",
+            "yaw": 0.0
+          },
+          {
+            "role": "sapling-shrub",
+            "root_y": 0.0,
+            "scale": 0.446819205227558,
+            "source_bounds": "[P: (-0.828759, 0.0, -0.354204), S: (1.72265, 1.34359, 0.780356)]",
+            "yaw": 1.57
+          },
+          {
+            "role": "fern-sparse",
+            "root_y": 0.0,
+            "scale": 0.319465036364594,
+            "source_bounds": "[P: (-0.79255, 0.005965, -0.534705), S: (1.556876, 0.736817, 1.164653)]",
+            "yaw": 1.8
+          }
+        ],
+        "root_shift_m": 0.0,
+        "root_vertices": 18,
+        "vertices": 33578
+      },
+      {
+        "bounds": "[P: (-0.325398, -0.0, -0.360571), S: (0.708643, 0.585278, 0.692603)]",
+        "envelope": "[P: (-0.463625, -0.042938, -0.473548), S: (0.943628, 0.809625, 0.923854)]",
+        "id": "habitat/shrub1",
+        "max_bend_m": 0.0105350099802017,
+        "outside_envelope_extrema": 0,
+        "parts": [
+          {
+            "role": "sapling-shrub",
+            "root_y": 0.0,
+            "scale": 0.435607975813231,
+            "source_bounds": "[P: (-0.828759, 0.0, -0.354204), S: (1.72265, 1.34359, 0.780356)]",
+            "yaw": 0.35
+          },
+          {
+            "role": "sapling-shrub",
+            "root_y": 0.0,
+            "scale": 0.409763809450328,
+            "source_bounds": "[P: (-0.828759, 0.0, -0.354204), S: (1.72265, 1.34359, 0.780356)]",
+            "yaw": 1.92
+          },
+          {
+            "role": "bramble",
+            "root_y": 0.0,
+            "scale": 0.523189947261077,
+            "source_bounds": "[P: (-0.605612, -0.001602, -0.3309), S: (1.248979, 0.515623, 0.719887)]",
+            "yaw": 1.7
+          }
+        ],
+        "root_shift_m": 0.0,
+        "root_vertices": 13,
+        "vertices": 32969
+      },
+      {
+        "bounds": "[P: (-0.407792, 0.0, -0.413578), S: (0.715164, 0.400482, 0.788936)]",
+        "envelope": "[P: (-0.431184, -0.024753, -0.442806), S: (0.888611, 0.439317, 0.88263)]",
+        "id": "habitat/fern_bed0",
+        "max_bend_m": 0.00720867222547531,
+        "outside_envelope_extrema": 0,
+        "parts": [
+          {
+            "role": "fern-lush",
+            "root_y": 0.0,
+            "scale": 0.569937817082971,
+            "source_bounds": "[P: (-0.715503, 0.005965, -0.725655), S: (1.254811, 0.702676, 1.384248)]",
+            "yaw": 0.0
+          },
+          {
+            "role": "grass-edge",
+            "root_y": 0.0,
+            "scale": 0.472595188513193,
+            "source_bounds": "[P: (-0.406222, 0.001, -0.557891), S: (0.822157, 0.237553, 0.981016)]",
+            "yaw": 1.2
+          }
+        ],
+        "root_shift_m": 4.19095158576965e-12,
+        "root_vertices": 81,
+        "vertices": 3384
+      },
+      {
+        "bounds": "[P: (-0.325743, -0.0, -0.282046), S: (0.639742, 0.305694, 0.566181)]",
+        "envelope": "[P: (-0.431184, -0.024753, -0.442806), S: (0.888611, 0.439317, 0.88263)]",
+        "id": "habitat/fern_bed1",
+        "max_bend_m": 0.00550249117612839,
+        "outside_envelope_extrema": 0,
+        "parts": [
+          {
+            "role": "fern-sparse",
+            "root_y": 0.0,
+            "scale": 0.414884558334787,
+            "source_bounds": "[P: (-0.79255, 0.005965, -0.534705), S: (1.556876, 0.736817, 1.164653)]",
+            "yaw": 0.5
+          },
+          {
+            "role": "fern-lush",
+            "root_y": 0.0,
+            "scale": 0.306118410703633,
+            "source_bounds": "[P: (-0.715503, 0.005965, -0.725655), S: (1.254811, 0.702676, 1.384248)]",
+            "yaw": 2.0
+          }
+        ],
+        "root_shift_m": 4.19095158576965e-12,
+        "root_vertices": 15,
+        "vertices": 5340
+      },
+      {
+        "bounds": "[P: (-0.325398, -0.0, -0.360571), S: (0.708643, 0.585278, 0.692603)]",
+        "envelope": "[P: (-0.463625, -0.042938, -0.473548), S: (0.943628, 0.809625, 0.923854)]",
+        "id": "regional/shrub",
+        "max_bend_m": 0.0105350099802017,
+        "outside_envelope_extrema": 0,
+        "parts": [
+          {
+            "role": "sapling-shrub",
+            "root_y": 0.0,
+            "scale": 0.435607975813231,
+            "source_bounds": "[P: (-0.828759, 0.0, -0.354204), S: (1.72265, 1.34359, 0.780356)]",
+            "yaw": 0.35
+          },
+          {
+            "role": "sapling-shrub",
+            "root_y": 0.0,
+            "scale": 0.409763809450328,
+            "source_bounds": "[P: (-0.828759, 0.0, -0.354204), S: (1.72265, 1.34359, 0.780356)]",
+            "yaw": 1.92
+          },
+          {
+            "role": "bramble",
+            "root_y": 0.0,
+            "scale": 0.523189947261077,
+            "source_bounds": "[P: (-0.605612, -0.001602, -0.3309), S: (1.248979, 0.515623, 0.719887)]",
+            "yaw": 1.7
+          }
+        ],
+        "root_shift_m": 0.0,
+        "root_vertices": 13,
+        "vertices": 32969
+      },
+      {
+        "bounds": "[P: (-0.691593, 0.01344, -0.701405), S: (1.212878, 0.679194, 1.33799)]",
+        "envelope": "[P: (-0.813849, 0.01344, -0.837504), S: (1.59238, 0.810116, 1.579143)]",
+        "id": "regional/fern",
+        "max_bend_m": 0.0122254963517189,
+        "outside_envelope_extrema": 0,
+        "parts": [
+          {
+            "role": "fern-lush",
+            "root_y": 0.0134398639202118,
+            "scale": 0.966581941651374,
+            "source_bounds": "[P: (-0.715503, 0.005965, -0.725655), S: (1.254811, 0.702676, 1.384248)]",
+            "yaw": 0.0
+          },
+          {
+            "role": "grass-edge",
+            "root_y": 0.0134398639202118,
+            "scale": 0.853301540993885,
+            "source_bounds": "[P: (-0.406222, 0.001, -0.557891), S: (0.822157, 0.237553, 0.981016)]",
+            "yaw": 1.2
+          }
+        ],
+        "root_shift_m": 0.0,
+        "root_vertices": 81,
+        "vertices": 3384
+      }
+    ],
+    "scope": "Independent scan of every actual composed vertex at both extrema of the shader sway, against each unchanged delivered envelope. Lowest root plane must have zero movement. No source geometry/texture bytes changed."
+  },
+  "checks": 48025
+}

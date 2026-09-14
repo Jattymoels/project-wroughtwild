@@ -1,0 +1,1223 @@
+{
+  "roles": [
+    {
+      "id": "canopy_broadleaf",
+      "role": "foliage",
+      "habitat": "meadow/forest",
+      "brief": "Several linked leaf-mass arrangements on real branches; near leaf detail, simpler middle crowns and matched distant silhouette.",
+      "status": "proposed art brief; no new simulation identity",
+      "r7_status": "consumed R1",
+      "retained_anchor_types": [
+        "wood resource body"
+      ],
+      "observed_counts_max_per_matched_view": {},
+      "assessment": "R1 lower trunk stays inside 0.343 m radius through 2.6 m, full crown above 4.2 m. Parent geometry/materials retained; no extra canopy roots."
+    },
+    {
+      "id": "canopy_conifer",
+      "role": "foliage",
+      "habitat": "forest/uplands",
+      "brief": "Needle-cluster branches with a sparse lower tier and irregular upper spire; separate wind weighting and distant solid read.",
+      "status": "proposed art brief; no new simulation identity",
+      "r7_status": "consumed R1",
+      "retained_anchor_types": [
+        "pine resource body"
+      ],
+      "observed_counts_max_per_matched_view": {},
+      "assessment": "Same published R1 body/crown fit and retained resource IDs; no new conifer placements."
+    },
+    {
+      "id": "sapling_shrub",
+      "role": "foliage",
+      "habitat": "meadow/forest",
+      "brief": "Young bent stems and low bush clusters connect grass to tree scale; leave trunk access and routes open.",
+      "status": "proposed art brief; no new simulation identity",
+      "r7_status": "composed",
+      "retained_anchor_types": [
+        "Habitat_shrub",
+        "shrub"
+      ],
+      "observed_counts_max_per_matched_view": {
+        "Habitat_shrub0": 212,
+        "Habitat_shrub1": 189,
+        "shrub": 325
+      },
+      "assessment": "B2 1.723 x 1.344 x 0.780 m source fits inside the original 0.944 x 0.810 x 0.924 m shrub envelope, with two crossed shrub forms and a lower fern or bramble sharing its root."
+    },
+    {
+      "id": "fern_bracken",
+      "role": "groundcover",
+      "habitat": "forest/river",
+      "brief": "Broad asymmetric frond groups with sparse and lush variants; reuse approved ART-02 understory where suitable.",
+      "status": "proposed art brief; no new simulation identity",
+      "r7_status": "composed",
+      "retained_anchor_types": [
+        "Habitat_fern_bed",
+        "fern",
+        "Cover_fern"
+      ],
+      "observed_counts_max_per_matched_view": {
+        "Cover_fern": 3163,
+        "Habitat_fern_bed0": 180,
+        "Habitat_fern_bed1": 197,
+        "fern": 365
+      },
+      "assessment": "Sparse/lush fronds and lower grass share existing roots. Habitat envelope 0.889 x 0.439 x 0.883 m; regional envelope 1.592 x 0.810 x 1.579 m; ordinary ground cap is much smaller."
+    },
+    {
+      "id": "meadow_grass",
+      "role": "groundcover",
+      "habitat": "meadow",
+      "brief": "Mixed-height clumps and flattened edge variant, quiet olive/straw colour shifts; distribute in authored patches.",
+      "status": "proposed art brief; no new simulation identity",
+      "r7_status": "composed",
+      "retained_anchor_types": [
+        "Cover_tuft"
+      ],
+      "observed_counts_max_per_matched_view": {
+        "Cover_tuft": 14915
+      },
+      "assessment": "Meadow and flattened-edge source forms share the retained approximately 0.300 x 0.158 x 0.296 m mesh envelope, before the unchanged per-anchor scale."
+    },
+    {
+      "id": "upland_tussock",
+      "role": "groundcover",
+      "habitat": "uplands",
+      "brief": "Dense low wind-combed clump with a dry rim and green centre; fills pockets between rock without hiding ledges.",
+      "status": "proposed art brief; no new simulation identity",
+      "r7_status": "retained, not reauthored",
+      "retained_anchor_types": [
+        "dry_sedge",
+        "Cover_tuft"
+      ],
+      "observed_counts_max_per_matched_view": {
+        "Cover_tuft": 14915,
+        "dry_sedge": 362
+      },
+      "assessment": "Existing regional dry_sedge geometry remains distinct. Small hillside tuft anchors receive the same bounded grass grouping. No new upland asset or occupancy."
+    },
+    {
+      "id": "fen_sedge",
+      "role": "groundcover",
+      "habitat": "fen",
+      "brief": "Short rooted wet sedge hummocks, distinct from the finite harvestable reed_bed.",
+      "status": "proposed art brief; no new simulation identity",
+      "r7_status": "retained, not reauthored",
+      "retained_anchor_types": [
+        "sedge",
+        "Cover_reed"
+      ],
+      "observed_counts_max_per_matched_view": {
+        "sedge": 860
+      },
+      "assessment": "The actual 1.335 x 0.809 x 1.104 m regional sedge and existing wet-ground reed anchors remain. They are not replaced by a grass mesh or a finite harvestable reed bed."
+    },
+    {
+      "id": "wastes_scrub",
+      "role": "groundcover",
+      "habitat": "ember_wastes",
+      "brief": "Thorny low scrub and coarse surviving grass, weathered seed heads, broken rhythm across grit rather than bare ash everywhere.",
+      "status": "proposed art brief; no new simulation identity",
+      "r7_status": "partial composition; scrub uncomposed",
+      "retained_anchor_types": [
+        "Cover_dead_grass"
+      ],
+      "observed_counts_max_per_matched_view": {},
+      "assessment": "Two grass silhouettes fit the delivered 0.235 x 0.068 x 0.280 m dry-grass envelope. That height cannot support the selected substantial thorn scrub. Existing regional rules have no separate waste-shrub anchor."
+    },
+    {
+      "id": "bramble_climber",
+      "role": "groundcover",
+      "habitat": "forest/ruins",
+      "brief": "Restrained thorn stems, leaf sprays and climbing ivy rooted to actual support; keep openings readable.",
+      "status": "proposed art brief; no new simulation identity",
+      "r7_status": "bramble composed; climber unsuitable",
+      "retained_anchor_types": [
+        "Habitat_shrub1",
+        "shrub"
+      ],
+      "observed_counts_max_per_matched_view": {
+        "Habitat_shrub1": 189,
+        "shrub": 325
+      },
+      "assessment": "Bramble is the rooted low layer of shrub variant 1. The 3.316 m B2 climber requires its exact matching context deadfall; the retained 1.472 m short deadfall is a different support. No floating universal ivy is fitted."
+    },
+    {
+      "id": "fungal_detritus",
+      "role": "groundcover",
+      "habitat": "oldgrowth/fen",
+      "brief": "Non-glowing shelf fungi, small mushrooms and damp wood debris as cosmetic habitat detail, no new harvest promise.",
+      "status": "proposed art brief; no new simulation identity",
+      "r7_status": "deliberately uncomposed",
+      "retained_anchor_types": [
+        "deadfall",
+        "stump"
+      ],
+      "observed_counts_max_per_matched_view": {
+        "deadfall": 21
+      },
+      "assessment": "No independent fungus source in the assigned B2/B4 candidate set or retained fungus anchor. Preserve the existing noncollectible deadwood; do not invent harvest silhouettes."
+    },
+    {
+      "id": "moss_lichen",
+      "role": "surface",
+      "habitat": "rock/forest/fen",
+      "brief": "Damp moss cushions and dry pale lichen masks with different edge shapes; no universal carpet on every material.",
+      "status": "proposed art brief; no new simulation identity",
+      "r7_status": "retained moss; new surface sheets unsuitable",
+      "retained_anchor_types": [
+        "moss"
+      ],
+      "observed_counts_max_per_matched_view": {
+        "moss": 214
+      },
+      "assessment": "Original regional moss stays. B2 lichen is a 2 mm sheet, while these anchors allow 0.7 m support rise; placing a flat sheet across them does not establish rooted contact. No arbitrary terrain-conformance system added."
+    },
+    {
+      "id": "leaf_needle_litter",
+      "role": "surface",
+      "habitat": "forest/meadow",
+      "brief": "Branch-correlated litter, dark humus and exposed soil transition; tiling maps plus a few silhouette-breaking chips.",
+      "status": "proposed art brief; no new simulation identity",
+      "r7_status": "deliberately uncomposed",
+      "retained_anchor_types": [
+        "Habitat_fern_bed",
+        "fern",
+        "shrub"
+      ],
+      "observed_counts_max_per_matched_view": {
+        "Habitat_fern_bed0": 180,
+        "Habitat_fern_bed1": 197,
+        "fern": 365,
+        "shrub": 325
+      },
+      "assessment": "The 23 mm thick source patches require fitted terrain across about 0.95 m. Existing plant-root anchors do not supply that continuous surface fit or branch-correlated litter identity. Do not spread a floating carpet."
+    },
+    {
+      "id": "root_skirt",
+      "role": "geology_contact",
+      "habitat": "forest/fen",
+      "brief": "Attached flared roots crossing soil and rock; modular contact pieces derived from parent tree, no floating ends.",
+      "status": "proposed art brief; no new simulation identity",
+      "r7_status": "retained parent contact",
+      "retained_anchor_types": [
+        "wood",
+        "pine",
+        "root_arch"
+      ],
+      "observed_counts_max_per_matched_view": {
+        "root_arch": 2,
+        "root_arch_b": 1,
+        "root_arch_c": 1
+      },
+      "assessment": "R1 root burial and lower-body fit remain exact, as do original decorative arch feet. Adding a separate skirt would require a matching parent contact and envelope."
+    },
+    {
+      "id": "deadwood_stump",
+      "role": "geology_contact",
+      "habitat": "forest/meadow",
+      "brief": "Broken log, stump and low branch variants; ordinary decorative pieces cannot mimic fresh resource yields.",
+      "status": "proposed art brief; no new simulation identity",
+      "r7_status": "retained, not reauthored",
+      "retained_anchor_types": [
+        "Habitat_deadfall",
+        "Habitat_stump",
+        "deadfall"
+      ],
+      "observed_counts_max_per_matched_view": {
+        "Habitat_deadfall0": 18,
+        "Habitat_deadfall1": 26,
+        "Habitat_stump0": 30,
+        "Habitat_stump1": 24,
+        "deadfall": 21
+      },
+      "assessment": "Retain 1.472 x 0.312 x 0.411 m deadfall and 0.686 x 0.512 x 0.683 m stump. B2 supported climber cannot be attached to their different topology by uniform fit."
+    },
+    {
+      "id": "river_bank",
+      "role": "geology_contact",
+      "habitat": "river/fen",
+      "brief": "Irregular damp ledge, root shelf and reed-edge transitions, matching actual bank support and access.",
+      "status": "proposed art brief; no new simulation identity",
+      "r7_status": "deliberately uncomposed",
+      "retained_anchor_types": [
+        "ShallowPool"
+      ],
+      "observed_counts_max_per_matched_view": {},
+      "assessment": "B4 river bank is part of its authored study landform. Existing generated water/pool boundaries are retained; no matching whole river-bank anchor or new geography is created."
+    },
+    {
+      "id": "talus_pebbles",
+      "role": "geology_contact",
+      "habitat": "uplands/river",
+      "brief": "Grouped angular scree plus rounded water pebbles; clustered with exposed ground between, not a collider on every stone.",
+      "status": "proposed art brief; no new simulation identity",
+      "r7_status": "retained, not reauthored",
+      "retained_anchor_types": [
+        "scree",
+        "Cover_scree"
+      ],
+      "observed_counts_max_per_matched_view": {
+        "Cover_scree_0": 1512,
+        "Cover_scree_1": 1510,
+        "Cover_scree_2": 1517,
+        "scree": 128
+      },
+      "assessment": "Existing regional scree and ordinary chips already retain independent anchors and clearance. B2 supplies foliage, not a replacement pebble source."
+    },
+    {
+      "id": "rock_shelf",
+      "role": "geology_contact",
+      "habitat": "uplands",
+      "brief": "Layered ledge transition and small outcrop variants; silhouette and material variation fit retained terrain.",
+      "status": "proposed art brief; no new simulation identity",
+      "r7_status": "retained, not reauthored",
+      "retained_anchor_types": [
+        "low_outcrop",
+        "stone_rib"
+      ],
+      "observed_counts_max_per_matched_view": {
+        "low_outcrop": 18,
+        "stone_rib": 7
+      },
+      "assessment": "Existing 4.050 x 1.696 x 2.478 m outcrop and native geology remain authoritative. Wider foliage is not fitted into rock-support roles."
+    },
+    {
+      "id": "cave_threshold",
+      "role": "geology_contact",
+      "habitat": "caves",
+      "brief": "Broken overhang/root lip and damp wall transitions framing existing cave opening; clear human entrance and host approach.",
+      "status": "proposed art brief; no new simulation identity",
+      "r7_status": "retained G1/C6",
+      "retained_anchor_types": [
+        "cave/ruin native anchors"
+      ],
+      "observed_counts_max_per_matched_view": {},
+      "assessment": "Existing C6 adapter remains installed; no relocated cave lip, new overhang or changed physical entrance."
+    },
+    {
+      "id": "leyline_scar",
+      "role": "augmentation",
+      "habitat": "existing_influence_routes",
+      "brief": "Deep host-specific recessed channel with dark margins and contained moving light; ordinary/recessed-unlit/lit review states.",
+      "status": "proposed art brief; no new simulation identity",
+      "r7_status": "retained G1/R1",
+      "retained_anchor_types": [
+        "existing host and trace anchors"
+      ],
+      "observed_counts_max_per_matched_view": {},
+      "assessment": "Retain approved host damage and moving light. All newly composed ordinary plant surfaces have altered=false and zero emission; source/work tells retain native meanings."
+    },
+    {
+      "id": "red_source",
+      "role": "retained_source",
+      "habitat": "existing_LF_red",
+      "brief": "Reuse ART-04 Red host, owned fragments, recovered salt and charge language; native lot/formation states only.",
+      "status": "reuse approved family",
+      "r7_status": "retained F5",
+      "retained_anchor_types": [
+        "red_home_margin"
+      ],
+      "observed_counts_max_per_matched_view": {},
+      "assessment": "Existing body, finite lots, work and claim ledger retained; native paid Red extraction/restart is separately tested."
+    },
+    {
+      "id": "white_source",
+      "role": "retained_source",
+      "habitat": "existing_LF_white",
+      "brief": "Reuse ART-04B White fractured host and recovered mineral; request transmission is not stored drive.",
+      "status": "reuse approved family",
+      "r7_status": "retained F5",
+      "retained_anchor_types": [
+        "white_home_margin"
+      ],
+      "observed_counts_max_per_matched_view": {},
+      "assessment": "Existing host, source lot and transmission identity retained. No cover anchor becomes a second source."
+    },
+    {
+      "id": "blue_source",
+      "role": "retained_source",
+      "habitat": "existing_LF_blue",
+      "brief": "Reuse ART-04C layered host and recovered flakes; retain native formation and held-request distinction.",
+      "status": "reuse approved family",
+      "r7_status": "retained F5",
+      "retained_anchor_types": [
+        "blue_home_margin"
+      ],
+      "observed_counts_max_per_matched_view": {},
+      "assessment": "Existing host/formation and held-request states retained; no new gameplay or cover replacement."
+    },
+    {
+      "id": "green_source",
+      "role": "retained_source",
+      "habitat": "existing_LF_green",
+      "brief": "Reuse ART-04D root host and resin pieces; growth supports branching anatomy, not free item propagation.",
+      "status": "reuse approved family",
+      "r7_status": "retained F5",
+      "retained_anchor_types": [
+        "green source anchor"
+      ],
+      "observed_counts_max_per_matched_view": {},
+      "assessment": "Existing root host, finite ownership and resin work state retained; ordinary shrub roots carry no propagation mechanic."
+    },
+    {
+      "id": "pressure_pocket",
+      "role": "existing_source",
+      "habitat": "existing_pressure_sites",
+      "brief": "Braced split host with readable finite pressure reservoir and attachment; intact/worked/exhausted native stock, no spontaneous refill.",
+      "status": "proposed art brief; no new simulation identity",
+      "r7_status": "retained F4",
+      "retained_anchor_types": [
+        "existing smithy pressure anchor"
+      ],
+      "observed_counts_max_per_matched_view": {},
+      "assessment": "Existing visual/native source restoration remains synchronous; no new cover in its work/attachment space."
+    },
+    {
+      "id": "ruin_wall",
+      "role": "ruin",
+      "habitat": "existing_ruins",
+      "brief": "Weathered low masonry wall, broken corner and small rubble cap, root contact; no relocation or new wall collision.",
+      "status": "proposed art brief; no new simulation identity",
+      "r7_status": "retained C6",
+      "retained_anchor_types": [
+        "existing ruin pieces"
+      ],
+      "observed_counts_max_per_matched_view": {},
+      "assessment": "No changed wall poses, collision or generation; original C6 presentation remains under the existing adapter."
+    },
+    {
+      "id": "ruin_threshold",
+      "role": "ruin",
+      "habitat": "existing_ruins",
+      "brief": "Fallen lintel, worn stair and fractured paving expose former human routes; keep existing entrance clear.",
+      "status": "proposed art brief; no new simulation identity",
+      "r7_status": "retained C6",
+      "retained_anchor_types": [
+        "existing ruin entrance"
+      ],
+      "observed_counts_max_per_matched_view": {},
+      "assessment": "No new lintel, stair or blocked doorway; native approach and body snapshots compare before/after."
+    },
+    {
+      "id": "workshop_approach",
+      "role": "ruin",
+      "habitat": "existing_workplaces",
+      "brief": "Reuse original smithy language and LF marks/clamps; distinguish old ordinary craft from deliberate later containment.",
+      "status": "proposed art brief; no new simulation identity",
+      "r7_status": "retained G1/C6",
+      "retained_anchor_types": [
+        "existing smithy/source route"
+      ],
+      "observed_counts_max_per_matched_view": {},
+      "assessment": "Native paid workshop and controller route remain the evidence; new cover uses only retained envelopes and participates in original building clearing."
+    },
+    {
+      "id": "trail_transition",
+      "role": "surface",
+      "habitat": "existing_routes",
+      "brief": "Exposed compacted soil, leaf-thin path edge and stone-step blend, no new pathfinding or forced navigation line.",
+      "status": "proposed art brief; no new simulation identity",
+      "r7_status": "deliberately uncomposed",
+      "retained_anchor_types": [
+        "existing native source route"
+      ],
+      "observed_counts_max_per_matched_view": {},
+      "assessment": "No continuous ground-sheet anchor exists along the full retained route. B4 layout and floor shader use its own study coordinates, which cannot be copied as new geography."
+    },
+    {
+      "id": "water_surface",
+      "role": "motion",
+      "habitat": "existing_water",
+      "brief": "Readable shallow edge, slow broad flow and small local riffles; match existing water geometry, no new swimming/flooding.",
+      "status": "proposed art brief; no new simulation identity",
+      "r7_status": "retained existing water",
+      "retained_anchor_types": [
+        "ShallowPool"
+      ],
+      "observed_counts_max_per_matched_view": {},
+      "assessment": "Keep actual pool geometry/material/motion and boundaries. B4 authored river surface is not substituted into unrelated terrain."
+    },
+    {
+      "id": "wind_motion",
+      "role": "motion",
+      "habitat": "canopy/groundcover",
+      "brief": "Shared gentle direction with different branch/reed response; preserve leaf attachment and keep combat tells visually stronger.",
+      "status": "proposed art brief; no new simulation identity",
+      "r7_status": "composed",
+      "retained_anchor_types": [
+        "Cover_tuft",
+        "Cover_fern",
+        "Cover_dead_grass",
+        "Habitat_shrub",
+        "Habitat_fern_bed",
+        "shrub",
+        "fern"
+      ],
+      "observed_counts_max_per_matched_view": {
+        "Cover_fern": 3163,
+        "Cover_tuft": 14915,
+        "Habitat_fern_bed0": 180,
+        "Habitat_fern_bed1": 197,
+        "Habitat_shrub0": 212,
+        "Habitat_shrub1": 189,
+        "fern": 365,
+        "shrub": 325
+      },
+      "assessment": "Existing environment clock drives inherited 18 mm/m, 5.5 s B4 motion. Root-height subtraction fixes the base, and composed per-surface materials are no longer masked by the ordinary cover override."
+    },
+    {
+      "id": "far_treeline",
+      "role": "distance",
+      "habitat": "forest/valley",
+      "brief": "Crown-group silhouette variants matched to near families; prevent a uniform green wall or obvious empty gaps beyond detail range.",
+      "status": "proposed art brief; no new simulation identity",
+      "r7_status": "consumed R1; distances retained",
+      "retained_anchor_types": [
+        "wood",
+        "pine",
+        "wildwood_tree",
+        "fen_tree"
+      ],
+      "observed_counts_max_per_matched_view": {
+        "fen_tree": 14,
+        "wildwood_tree": 108
+      },
+      "assessment": "Published R1 canopy plus original decorative skyline anchors. Visibility and selected LOD2 remain; near/middle/far views expose loss of small cover without inventing a distant forest."
+    },
+    {
+      "id": "far_rock_haze",
+      "role": "distance",
+      "habitat": "uplands/skyline",
+      "brief": "Reuse actual terrain skyline, large rock value planes and restrained atmospheric separation; concept mountains do not replace geography.",
+      "status": "proposed art brief; no new simulation identity",
+      "r7_status": "retained terrain/atmosphere",
+      "retained_anchor_types": [
+        "native skyline"
+      ],
+      "observed_counts_max_per_matched_view": {},
+      "assessment": "Actual terrain, rock planes and inherited haze remain. Selected concept mountain mass is not authority to reshape the world."
+    },
+    {
+      "id": "light_and_quiet",
+      "role": "atmosphere",
+      "habitat": "all",
+      "brief": "Broken sunlight, readable cool shade and dusk warmth; local water/leaf events with quiet gaps, no continuous magic drone.",
+      "status": "proposed art brief; no new simulation identity",
+      "r7_status": "retained G1/B4 language",
+      "retained_anchor_types": [
+        "existing atmosphere and quiet sound"
+      ],
+      "observed_counts_max_per_matched_view": {},
+      "assessment": "Day/shade/dusk are matched inspection settings. No gameplay light rig, continuous audio, hidden source cue or new ambience rules."
+    }
+  ],
+  "source_probe": {
+    "b2/bramble": {
+      "materials": [
+        {
+          "texture": "",
+          "type": "StandardMaterial3D"
+        },
+        {
+          "texture": "",
+          "type": "StandardMaterial3D"
+        }
+      ],
+      "min": [
+        -0.605611503124237,
+        -0.00160199217498302,
+        -0.330900132656097
+      ],
+      "size": [
+        1.24897861480713,
+        0.515622556209564,
+        0.719886660575867
+      ],
+      "triangles": 2130
+    },
+    "b2/climber": {
+      "materials": [
+        {
+          "texture": "",
+          "type": "StandardMaterial3D"
+        },
+        {
+          "texture": "",
+          "type": "StandardMaterial3D"
+        }
+      ],
+      "min": [
+        -2.18606853485107,
+        -0.00292750610969961,
+        -0.390192210674286
+      ],
+      "size": [
+        3.31617641448975,
+        0.643874228000641,
+        0.697443842887878
+      ],
+      "triangles": 2160
+    },
+    "b2/fern-lush": {
+      "materials": [
+        {
+          "texture": "",
+          "type": "StandardMaterial3D"
+        },
+        {
+          "texture": "",
+          "type": "StandardMaterial3D"
+        }
+      ],
+      "min": [
+        -0.71550327539444,
+        0.00596486637368798,
+        -0.725655376911163
+      ],
+      "size": [
+        1.25481104850769,
+        0.702676296234131,
+        1.38424837589264
+      ],
+      "triangles": 3924
+    },
+    "b2/fern-sparse": {
+      "materials": [
+        {
+          "texture": "",
+          "type": "StandardMaterial3D"
+        },
+        {
+          "texture": "",
+          "type": "StandardMaterial3D"
+        }
+      ],
+      "min": [
+        -0.792550265789032,
+        0.00596486683934927,
+        -0.534704983234406
+      ],
+      "size": [
+        1.55687642097473,
+        0.736816883087158,
+        1.16465306282043
+      ],
+      "triangles": 2616
+    },
+    "b2/grass-edge": {
+      "materials": [
+        {
+          "texture": "",
+          "type": "StandardMaterial3D"
+        }
+      ],
+      "min": [
+        -0.406221926212311,
+        0.00100000004749745,
+        -0.557891488075256
+      ],
+      "size": [
+        0.82215690612793,
+        0.237552613019943,
+        0.981016159057617
+      ],
+      "triangles": 108
+    },
+    "b2/grass-meadow": {
+      "materials": [
+        {
+          "texture": "",
+          "type": "StandardMaterial3D"
+        }
+      ],
+      "min": [
+        -0.507328927516937,
+        0.00100000004749745,
+        -0.586146712303162
+      ],
+      "size": [
+        1.06807637214661,
+        0.563539981842041,
+        1.05456244945526
+      ],
+      "triangles": 216
+    },
+    "b2/leaf-litter": {
+      "materials": [
+        {
+          "texture": "",
+          "type": "StandardMaterial3D"
+        }
+      ],
+      "min": [
+        -0.501455187797546,
+        0.00102430058177561,
+        -0.423641234636307
+      ],
+      "size": [
+        0.970084190368652,
+        0.0230197049677372,
+        0.928000330924988
+      ],
+      "triangles": 256
+    },
+    "b2/lichen": {
+      "materials": [
+        {
+          "texture": "",
+          "type": "StandardMaterial3D"
+        }
+      ],
+      "min": [
+        -0.468792229890823,
+        0.00100000004749745,
+        -0.355236142873764
+      ],
+      "size": [
+        0.90059220790863,
+        0.00199999986216426,
+        0.629434466362
+      ],
+      "triangles": 156
+    },
+    "b2/moss": {
+      "materials": [
+        {
+          "texture": "",
+          "type": "StandardMaterial3D"
+        }
+      ],
+      "min": [
+        -0.492035299539566,
+        0.00400000018998981,
+        -0.400692254304886
+      ],
+      "size": [
+        0.943305909633636,
+        0.0518254116177559,
+        0.796916663646698
+      ],
+      "triangles": 3080
+    },
+    "b2/needle-litter": {
+      "materials": [
+        {
+          "texture": "",
+          "type": "StandardMaterial3D"
+        }
+      ],
+      "min": [
+        -0.475637525320053,
+        0.00102430058177561,
+        -0.409109354019165
+      ],
+      "size": [
+        0.948660373687744,
+        0.0231769289821386,
+        0.914295196533203
+      ],
+      "triangles": 768
+    },
+    "b2/sapling-shrub": {
+      "materials": [
+        {
+          "texture": "res://b2/assets/sapling-shrub-lod2_Image_0.png",
+          "type": "StandardMaterial3D"
+        },
+        {
+          "texture": "",
+          "type": "StandardMaterial3D"
+        },
+        {
+          "texture": "",
+          "type": "StandardMaterial3D"
+        }
+      ],
+      "min": [
+        -0.828758955001831,
+        0.0,
+        -0.354203850030899
+      ],
+      "size": [
+        1.72264981269836,
+        1.34358954429626,
+        0.780356168746948
+      ],
+      "triangles": 9703
+    },
+    "ground/ember_wastes/dead_grass": {
+      "materials": [
+        {
+          "texture": "",
+          "type": "ShaderMaterial"
+        }
+      ],
+      "min": [
+        -0.117329329252243,
+        0.0,
+        -0.139999985694885
+      ],
+      "size": [
+        0.234658658504486,
+        0.067801870405674,
+        0.279999971389771
+      ],
+      "triangles": 108
+    },
+    "ground/forest/fern": {
+      "materials": [
+        {
+          "texture": "",
+          "type": "ShaderMaterial"
+        },
+        {
+          "texture": "",
+          "type": "ShaderMaterial"
+        }
+      ],
+      "min": [
+        -0.260000020265579,
+        0.0,
+        -0.194498285651207
+      ],
+      "size": [
+        0.519999980926514,
+        0.246098384261131,
+        0.388996601104736
+      ],
+      "triangles": 2616
+    },
+    "ground/meadow/tuft": {
+      "materials": [
+        {
+          "texture": "",
+          "type": "ShaderMaterial"
+        }
+      ],
+      "min": [
+        -0.149999991059303,
+        0.0,
+        -0.14810211956501
+      ],
+      "size": [
+        0.299999982118607,
+        0.158286422491074,
+        0.296204209327698
+      ],
+      "triangles": 216
+    },
+    "ground/rocky_hills/tuft": {
+      "materials": [
+        {
+          "texture": "",
+          "type": "ShaderMaterial"
+        }
+      ],
+      "min": [
+        -0.149999991059303,
+        0.0,
+        -0.14810211956501
+      ],
+      "size": [
+        0.299999982118607,
+        0.158286422491074,
+        0.296204209327698
+      ],
+      "triangles": 216
+    },
+    "habitat/deadfall": {
+      "materials": [
+        {
+          "texture": "",
+          "type": "StandardMaterial3D"
+        }
+      ],
+      "min": [
+        -0.720000028610229,
+        -0.0356361418962479,
+        -0.185060828924179
+      ],
+      "size": [
+        1.47192406654358,
+        0.312342405319214,
+        0.411067426204681
+      ],
+      "triangles": 158
+    },
+    "habitat/fern_bed": {
+      "materials": [
+        {
+          "texture": "",
+          "type": "StandardMaterial3D"
+        }
+      ],
+      "min": [
+        -0.431184113025665,
+        -0.0247527826577425,
+        -0.442805826663971
+      ],
+      "size": [
+        0.888611018657684,
+        0.439317226409912,
+        0.882630288600922
+      ],
+      "triangles": 2220
+    },
+    "habitat/shrub": {
+      "materials": [
+        {
+          "texture": "",
+          "type": "StandardMaterial3D"
+        }
+      ],
+      "min": [
+        -0.463624894618988,
+        -0.0429378747940063,
+        -0.473548412322998
+      ],
+      "size": [
+        0.943628191947937,
+        0.809624552726746,
+        0.923853874206543
+      ],
+      "triangles": 558
+    },
+    "habitat/stump": {
+      "materials": [
+        {
+          "texture": "",
+          "type": "StandardMaterial3D"
+        }
+      ],
+      "min": [
+        -0.328156471252441,
+        -0.0599999986588955,
+        -0.324692666530609
+      ],
+      "size": [
+        0.685996651649475,
+        0.511941313743591,
+        0.683286070823669
+      ],
+      "triangles": 256
+    },
+    "regional/deadfall": {
+      "materials": [
+        {
+          "texture": "",
+          "type": "StandardMaterial3D"
+        }
+      ],
+      "min": [
+        -0.720000028610229,
+        -0.0356361418962479,
+        -0.185060828924179
+      ],
+      "size": [
+        1.47192406654358,
+        0.312342405319214,
+        0.411067426204681
+      ],
+      "triangles": 158
+    },
+    "regional/dry_sedge": {
+      "materials": [
+        {
+          "texture": "",
+          "type": "StandardMaterial3D"
+        }
+      ],
+      "min": [
+        -0.682735502719879,
+        -0.025000000372529,
+        -0.455730795860291
+      ],
+      "size": [
+        1.33479845523834,
+        0.809449374675751,
+        1.10429835319519
+      ],
+      "triangles": 600
+    },
+    "regional/fen_tree": {
+      "materials": [
+        {
+          "texture": "",
+          "type": "StandardMaterial3D"
+        }
+      ],
+      "min": [
+        -4.37004947662354,
+        -0.253303468227386,
+        -3.47242021560669
+      ],
+      "size": [
+        9.44578647613525,
+        10.1947870254517,
+        7.23461246490479
+      ],
+      "triangles": 11042
+    },
+    "regional/fern": {
+      "materials": [
+        {
+          "texture": "",
+          "type": "StandardMaterial3D"
+        }
+      ],
+      "min": [
+        -0.813849151134491,
+        0.0134398639202118,
+        -0.837503731250763
+      ],
+      "size": [
+        1.59238028526306,
+        0.810116410255432,
+        1.57914304733276
+      ],
+      "triangles": 2860
+    },
+    "regional/hollow_trunk": {
+      "materials": [
+        {
+          "texture": "",
+          "type": "StandardMaterial3D"
+        }
+      ],
+      "min": [
+        -2.18151617050171,
+        -0.165638521313667,
+        -2.09191870689392
+      ],
+      "size": [
+        4.34756326675415,
+        4.95815515518188,
+        4.20998191833496
+      ],
+      "triangles": 2012
+    },
+    "regional/low_outcrop": {
+      "materials": [
+        {
+          "texture": "",
+          "type": "StandardMaterial3D"
+        }
+      ],
+      "min": [
+        -2.09498763084412,
+        -0.191076576709747,
+        -1.2959349155426
+      ],
+      "size": [
+        4.05046224594116,
+        1.69582605361938,
+        2.47786951065063
+      ],
+      "triangles": 272
+    },
+    "regional/moss": {
+      "materials": [
+        {
+          "texture": "",
+          "type": "StandardMaterial3D"
+        }
+      ],
+      "min": [
+        -0.702437400817871,
+        -0.073315754532814,
+        -0.51299774646759
+      ],
+      "size": [
+        1.37363886833191,
+        0.296966195106506,
+        1.14075422286987
+      ],
+      "triangles": 1540
+    },
+    "regional/root_arch_a": {
+      "materials": [
+        {
+          "texture": "",
+          "type": "StandardMaterial3D"
+        }
+      ],
+      "min": [
+        -7.45870685577393,
+        -0.760912954807281,
+        -3.26015782356262
+      ],
+      "size": [
+        14.4237260818481,
+        10.1761159896851,
+        7.2938346862793
+      ],
+      "triangles": 4860
+    },
+    "regional/scree": {
+      "materials": [
+        {
+          "texture": "",
+          "type": "StandardMaterial3D"
+        }
+      ],
+      "min": [
+        -1.12141418457031,
+        -0.0729404464364052,
+        -0.953251004219055
+      ],
+      "size": [
+        2.56156492233276,
+        0.198003470897675,
+        1.89146363735199
+      ],
+      "triangles": 1632
+    },
+    "regional/sedge": {
+      "materials": [
+        {
+          "texture": "",
+          "type": "StandardMaterial3D"
+        }
+      ],
+      "min": [
+        -0.682735502719879,
+        -0.025000000372529,
+        -0.455730795860291
+      ],
+      "size": [
+        1.33479845523834,
+        0.809449374675751,
+        1.10429835319519
+      ],
+      "triangles": 600
+    },
+    "regional/shrub": {
+      "materials": [
+        {
+          "texture": "",
+          "type": "StandardMaterial3D"
+        }
+      ],
+      "min": [
+        -0.463624894618988,
+        -0.0429378747940063,
+        -0.473548412322998
+      ],
+      "size": [
+        0.943628191947937,
+        0.809624552726746,
+        0.923853874206543
+      ],
+      "triangles": 558
+    },
+    "regional/stone_rib": {
+      "materials": [
+        {
+          "texture": "",
+          "type": "StandardMaterial3D"
+        }
+      ],
+      "min": [
+        -2.25692343711853,
+        -0.154332771897316,
+        -1.62495493888855
+      ],
+      "size": [
+        4.80395221710205,
+        5.63927173614502,
+        2.39256763458252
+      ],
+      "triangles": 1108
+    },
+    "regional/wildwood_sapling": {
+      "materials": [
+        {
+          "texture": "",
+          "type": "StandardMaterial3D"
+        }
+      ],
+      "min": [
+        -4.37004947662354,
+        -0.253303468227386,
+        -3.47242021560669
+      ],
+      "size": [
+        9.44578647613525,
+        10.1947870254517,
+        7.23461246490479
+      ],
+      "triangles": 11042
+    },
+    "regional/wildwood_tree": {
+      "materials": [
+        {
+          "texture": "",
+          "type": "StandardMaterial3D"
+        }
+      ],
+      "min": [
+        -4.37004947662354,
+        -0.253303468227386,
+        -3.47242021560669
+      ],
+      "size": [
+        9.44578647613525,
+        10.1947870254517,
+        7.23461246490479
+      ],
+      "triangles": 11042
+    }
+  },
+  "scope": "All 33 support-role briefs assessed. Empty observed cover counts mean a non-MultiMesh role or no such type in these four matched views, never an invented zero-world count. All regional anchor records are also retained in each raw report.",
+  "selected_sources": [
+    {
+      "role": "bramble",
+      "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v01\\runtime\\game\\b2\\assets\\bramble-lod2.glb",
+      "sha256": "169ef19731676b7d7e837dc927d5888fdb5e67d6aa3e94cfd6bd12600f8d35ab",
+      "bytes": 82408,
+      "status": "Unchanged verified G1 copy of B2 published far geometry",
+      "candidate_path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game\\b2\\assets\\bramble-lod2.glb"
+    },
+    {
+      "role": "fern-lush",
+      "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v01\\runtime\\game\\b2\\assets\\fern-lush-lod2.glb",
+      "sha256": "4f02005eb9e621cf17e75b3d5a4c945dce329594fb2cac59e579d12c81c0470a",
+      "bytes": 166980,
+      "status": "Unchanged verified G1 copy of B2 published far geometry",
+      "candidate_path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game\\b2\\assets\\fern-lush-lod2.glb"
+    },
+    {
+      "role": "fern-sparse",
+      "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v01\\runtime\\game\\b2\\assets\\fern-sparse-lod2.glb",
+      "sha256": "f14252ad2c49f7ab22fd75999cf097d33dd6fbde1d5cdd3fe7f38698236fa7bd",
+      "bytes": 112140,
+      "status": "Unchanged verified G1 copy of B2 published far geometry",
+      "candidate_path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game\\b2\\assets\\fern-sparse-lod2.glb"
+    },
+    {
+      "role": "grass-edge",
+      "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v01\\runtime\\game\\b2\\assets\\grass-edge-lod2.glb",
+      "sha256": "cf706e3c906ce7ee2ab14013cbb256c9fce143e22b0a94eabd3921abcc949ab0",
+      "bytes": 9912,
+      "status": "Unchanged verified G1 copy of B2 published far geometry",
+      "candidate_path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game\\b2\\assets\\grass-edge-lod2.glb"
+    },
+    {
+      "role": "grass-meadow",
+      "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v01\\runtime\\game\\b2\\assets\\grass-meadow-lod2.glb",
+      "sha256": "dd6222e2c1612cf505e1e6d07e4894328019b0022dcf7af0f7fcb6a39de73bb5",
+      "bytes": 18488,
+      "status": "Unchanged verified G1 copy of B2 published far geometry",
+      "candidate_path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game\\b2\\assets\\grass-meadow-lod2.glb"
+    },
+    {
+      "role": "sapling-shrub",
+      "path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v01\\runtime\\game\\b2\\assets\\sapling-shrub-lod2.glb",
+      "sha256": "1a3960388003947ced7156cce33a9208d4f0486fdf650e8ab85814799eadf098",
+      "bytes": 13691048,
+      "status": "Unchanged verified G1 copy of B2 published far geometry",
+      "candidate_path": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\runtime\\game\\b2\\assets\\sapling-shrub-lod2.glb"
+    }
+  ]
+}

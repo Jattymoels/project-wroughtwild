@@ -1,0 +1,135 @@
+{
+  "lod": 2,
+  "wind_bend_per_m": 0.018,
+  "wind_period_s": 5.5,
+  "envelope_inset_fraction": 0.025,
+  "leaf_colour_gain": [
+    0.85,
+    0.72,
+    0.6
+  ],
+  "groups": {
+    "ground_tuft": [
+      [
+        "grass-meadow",
+        0.95,
+        0.96,
+        0.0
+      ],
+      [
+        "grass-edge",
+        0.8,
+        0.45,
+        1.7
+      ]
+    ],
+    "ground_fern": [
+      [
+        "fern-lush",
+        0.97,
+        0.96,
+        0.0
+      ],
+      [
+        "grass-edge",
+        0.75,
+        0.35,
+        1.4
+      ]
+    ],
+    "ground_dry": [
+      [
+        "grass-edge",
+        0.97,
+        0.96,
+        0.0
+      ],
+      [
+        "grass-meadow",
+        0.7,
+        0.72,
+        2.2
+      ]
+    ],
+    "shrub0": [
+      [
+        "sapling-shrub",
+        0.97,
+        0.97,
+        0.0
+      ],
+      [
+        "sapling-shrub",
+        0.91,
+        0.9,
+        1.57
+      ],
+      [
+        "fern-sparse",
+        0.65,
+        0.4,
+        1.8
+      ]
+    ],
+    "shrub1": [
+      [
+        "sapling-shrub",
+        0.95,
+        0.97,
+        0.35
+      ],
+      [
+        "sapling-shrub",
+        0.92,
+        0.88,
+        1.92
+      ],
+      [
+        "bramble",
+        0.82,
+        0.47,
+        1.7
+      ]
+    ],
+    "fern0": [
+      [
+        "fern-lush",
+        0.97,
+        0.97,
+        0.0
+      ],
+      [
+        "grass-edge",
+        0.75,
+        0.36,
+        1.2
+      ]
+    ],
+    "fern1": [
+      [
+        "fern-sparse",
+        0.96,
+        0.94,
+        0.5
+      ],
+      [
+        "fern-lush",
+        0.68,
+        0.6,
+        2.0
+      ]
+    ]
+  },
+  "purpose": {
+    "lod": "Reuse the published B2 far exports at all existing distances. No new LOD switching or loading policy; inspect near/middle/far views honestly.",
+    "wind_bend_per_m": "Inherited B2/B4 gentle attached sway, 18 mm lateral motion per metre of local height; exactly zero at rooted base.",
+    "wind_period_s": "Inherited B2/B4 5.5 second slow wind cycle, driven by the existing pause-aware environment clock.",
+    "envelope_inset_fraction": "Reserve 2.5 percent on each side of the old anchor envelope for sway, keeping the full deformed visual within the retained clearance envelope.",
+    "leaf_colour_gain": "Inherited B4 warm olive multiplier for untextured ordinary foliage; textured shrub retains its source albedo and linear roughness/metal channels.",
+    "groups": "Each part is [published role, fraction of existing horizontal envelope, fraction of existing height, local yaw radians]. All sources root at the SAME local origin, without new scatter/offsets. Existing habitat variants select two asymmetric silhouettes; native anchor yaw/scale is unchanged. Two crossed copies of the existing shrub source fill the original bush volume while sharing one retained root and staying inside its prior envelope.",
+    "leaf_normal_up_mix": "Blend thin untextured foliage normals 72 percent toward world-up, retaining readable leaf faces in the existing dark habitat lighting without emissive fill or changing the world lights.",
+    "leaf_backlight": "Reuse B4 canopy-style 0.22 diffuse backlighting for thin untextured leaves; no emission or magic on ordinary plants."
+  },
+  "leaf_normal_up_mix": 0.72,
+  "leaf_backlight": 0.22
+}
