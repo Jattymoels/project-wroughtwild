@@ -1,0 +1,4555 @@
+{
+  "id": "r4",
+  "date": "2026-09-14",
+  "status": "verified_and_integrated",
+  "integration": {
+    "method": "scoped cherry-pick",
+    "previous_main": "519404393c95fbaac19018676be12be3bdf111d3",
+    "original_implementation_commit": "9cdb6d5b5e2fe96b21fe40f6df96d13d9015c187",
+    "original_receipt_commit": "df07870493d6962b9e8c8d1d64e9948700155820",
+    "implementation_commit": "1448b35cc38b3e20b54d8fcbefce82c2d01dcb09",
+    "receipt_commit": "b14c996714378e05dac34bd1a2dd7a7b4579cd74",
+    "worker_tree_content_match": "All owned paths have identical Git blob IDs",
+    "destination": "https://github.com/Jattymoels/project-wroughtwild.git",
+    "ref": "refs/heads/main"
+  },
+  "package": {
+    "path": "D:/project-wroughtwild-art07-r4/build/art07-repairs/r4/v01/handoff-v02",
+    "manifest_sha256": "acebe2937b819bb2210241b394262b5a19916dec9199184d69d4d9d25dd49541",
+    "files": 747,
+    "bytes": 13305657
+  },
+  "outcome": "R4 disposes completed fixture descendants and retires owned audio before normal exit. Eight review finish functions and two shared fixture helpers change; reusable gameplay and save rules do not.",
+  "verification": "Full G1/G2 and all eight assigned original source packages were verified, as was the 747-file delta seal. The publisher applied its exact ten masters after validating every original runtime byte and every before-hash in fresh v02. A fresh import, 22 native flow/restore processes and the bounded 12-cycle create/work/restore/dispose exercise pass. Native result markers match original pre-repair logs exactly and final native logs contain no warning, leaked instance, orphan StringName or fatal error.",
+  "static_verification": {
+    "result": "PASS",
+    "original_implementation": "9cdb6d5b5e2fe96b21fe40f6df96d13d9015c187",
+    "original_receipt": "df07870493d6962b9e8c8d1d64e9948700155820",
+    "package": {
+      "path": "D:/project-wroughtwild-art07-r4/build/art07-repairs/r4/v01/handoff-v02",
+      "manifest_sha256": "acebe2937b819bb2210241b394262b5a19916dec9199184d69d4d9d25dd49541",
+      "files": 747,
+      "bytes": 13305657
+    },
+    "owned_files": [
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r4/README.md",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r4/checks.json",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r4/commands.md",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r4/native-fall.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r4/native-full.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r4/ownership.md",
+      "docs/prototype/art07-repairs/2026-09-14/receipts/r4.json",
+      "docs/prototype/art07-repairs/2026-09-14/receipts/r4.md",
+      "tools/wroughtwild-art07-repairs/r4/audit.py",
+      "tools/wroughtwild-art07-repairs/r4/cleanup_options.gd",
+      "tools/wroughtwild-art07-repairs/r4/engine_checks.ps1",
+      "tools/wroughtwild-art07-repairs/r4/finish_evidence.py",
+      "tools/wroughtwild-art07-repairs/r4/fixture_cleanup.gd",
+      "tools/wroughtwild-art07-repairs/r4/report.py",
+      "tools/wroughtwild-art07-repairs/r4/run_when_free.ps1",
+      "tools/wroughtwild-art07-repairs/r4/soak.gd",
+      "tools/wroughtwild-art07-repairs/r4/soak.tscn",
+      "tools/wroughtwild-art07-repairs/r4/trace.gd",
+      "tools/wroughtwild-art07-repairs/r4/work.py"
+    ],
+    "sealed_recipe_matches": [
+      {
+        "path": "tools/wroughtwild-art07-repairs/r4/audit.py",
+        "sealed": "tools/r4/audit.py",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r4/cleanup_options.gd",
+        "sealed": "tools/r4/cleanup_options.gd",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r4/engine_checks.ps1",
+        "sealed": "tools/r4/engine_checks.ps1",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r4/finish_evidence.py",
+        "sealed": "tools/r4/finish_evidence.py",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r4/fixture_cleanup.gd",
+        "sealed": "tools/r4/fixture_cleanup.gd",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r4/report.py",
+        "sealed": "tools/r4/report.py",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r4/run_when_free.ps1",
+        "sealed": "tools/r4/run_when_free.ps1",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r4/soak.gd",
+        "sealed": "tools/r4/soak.gd",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r4/soak.tscn",
+        "sealed": "tools/r4/soak.tscn",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r4/trace.gd",
+        "sealed": "tools/r4/trace.gd",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r4/work.py",
+        "sealed": "tools/r4/work.py",
+        "match": "exact or CRLF-normalized"
+      }
+    ],
+    "worker_log_receipts": [
+      {
+        "id": "b3-final",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.8000679,
+        "log_sha256": "24750157cddb4d6109956659631b5adbee208cf73ea607286180b2a546ba9f60"
+      },
+      {
+        "id": "b3-partial",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.7781903,
+        "log_sha256": "d79697f8b598677e7e6c56656ff994905cf5f657fd9456b2e2d5fc87e3ef8a5a"
+      },
+      {
+        "id": "b3",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 2.801545,
+        "log_sha256": "791405a17c88040c3159da660752cc59f279d021fd9310db77c9f89ba1b8e87c"
+      },
+      {
+        "id": "c1-final",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.7827307,
+        "log_sha256": "9f1c77a80f11f938639bc67d69314f966d1b4cdc504ad664c329c818d6cce603"
+      },
+      {
+        "id": "c1-partial",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.7847271,
+        "log_sha256": "2555d3e45f604e3d0fda3f9308b09bf249794476a520b63a58699d41651cc7c4"
+      },
+      {
+        "id": "c1",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.8742553,
+        "log_sha256": "2e162ea51e982ad147d00ee5b5f1a5ed73c873bbf0bdf4fffad3c7d031f805df"
+      },
+      {
+        "id": "c2-final",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.7851719,
+        "log_sha256": "80c3d265236fa924c45cdf2e550b15dfa17e5d3b888e8bfacb11a5103c799055"
+      },
+      {
+        "id": "c2-partial",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.7858066,
+        "log_sha256": "00812f67cad9d270dc5cd66a7a7dd3b6811d9ca2cc10b842fc966ef5a0196222"
+      },
+      {
+        "id": "c2",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.7820522,
+        "log_sha256": "db0f54713a5a841f193ec4f0e6074aba5ce13faf63aa27b23fb63cc4863a1163"
+      },
+      {
+        "id": "c3-final",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.7808766,
+        "log_sha256": "d22b2b569d2ca4edcb5d6d6812a119d5d2d9241b95af6c75b4e03ebb495db956"
+      },
+      {
+        "id": "c3-partial",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.7810674,
+        "log_sha256": "10878b66807b42eebd5e8f4d0f86df42e9dba7ce709274e8e9f2f6c85761f4f2"
+      },
+      {
+        "id": "c3",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.7764512,
+        "log_sha256": "5d0d6e129cb85ebf3f6b664104aaf259d6baec07f36445b730ae098a6354e089"
+      },
+      {
+        "id": "c4-final",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.8769382,
+        "log_sha256": "68b14e733ea83fee406a25327d0c3daa155dfbbf5b4111323de59114521de671"
+      },
+      {
+        "id": "c4-partial",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.6873449,
+        "log_sha256": "6ccbef3616c3e6672bd146470ab41642cf6794915c12b828fb1d8e4d222c4ebe"
+      },
+      {
+        "id": "c4",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.6865415,
+        "log_sha256": "8ac2080b0ba44ee7a782f4b3c972c1fd1979009d717970c443142d4cda97d32d"
+      },
+      {
+        "id": "e1-restart",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 3.1015056,
+        "log_sha256": "e418ee231ebcd584f5e44975f160852ab19073a599953f629d49cc7e0b85baec"
+      },
+      {
+        "id": "e1",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 3.0068911,
+        "log_sha256": "0c060d5789f4f5f2119776dc03babee0b0322137400390ededb1bcf2d347d6a2"
+      },
+      {
+        "id": "f2-restart",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 2.3397259,
+        "log_sha256": "7d764dcb03d881b00c67644b5da409fdb740dc34de9a5973d5cb565f295ff559"
+      },
+      {
+        "id": "f2",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.9636159,
+        "log_sha256": "480cfbc32a8095316ce16f071ac405ffa2c87ad26a8b4397b532dd2f0fccc600"
+      },
+      {
+        "id": "f3-depleted",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 2.7078988,
+        "log_sha256": "c7774827beb91912731614753c92a4d9fad58b0a4bd710d1ddceb8b4d61f7a69"
+      },
+      {
+        "id": "f3-restart",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 2.7123852,
+        "log_sha256": "320b90ed45e4e1280c85d7119f2a0fdc9eca3957ebe8a8099dc3affcd9782636"
+      },
+      {
+        "id": "f3",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 2.6177834,
+        "log_sha256": "9b8d96ab7b3425857318867fd6583829708893b2cafcc894bc92f778e0ac0481"
+      },
+      {
+        "id": "b3-final",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.7864896,
+        "log_sha256": "9248deca97d371fe5da8d03fb2799acae2122d692ea63f504d8558fa23caf7d4"
+      },
+      {
+        "id": "b3-partial",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.7838046,
+        "log_sha256": "e1884dedb2e6851388ba70ca287202b7378ede7d6c04ab214e1a4f6fd38039fb"
+      },
+      {
+        "id": "b3",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 2.8054323,
+        "log_sha256": "a33cd755dec17c11e1f22fc09d9fa833150fb404963d5410d1fc5952a98b8a9b"
+      },
+      {
+        "id": "c1-final",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.7794355,
+        "log_sha256": "e654ce3be5822c34959263b15c780a43e20e94aaccdd7537cfa1aeacf3d3f776"
+      },
+      {
+        "id": "c1-partial",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.8001019,
+        "log_sha256": "37d42be62ce7a6ce2703a3fd66a3c5c33d438a1f38a5bdc647f9fd0825770fbd"
+      },
+      {
+        "id": "c1",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.8806593,
+        "log_sha256": "3ea5d9a57ad58c37a7afec25e9167d3b6ac6585ea4601ebfeb7e37e667002331"
+      },
+      {
+        "id": "c2-final",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.6976471,
+        "log_sha256": "61a44f459897cbe72d816cda1d231ed596d6ba714a29fa77e5367b947ba739e1"
+      },
+      {
+        "id": "c2-partial",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.6919414,
+        "log_sha256": "220265c1acabff6ab1c2530dcfbeb35d7cb2c740cf0ffb2125e6532cddcbaf80"
+      },
+      {
+        "id": "c2",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.8808364,
+        "log_sha256": "1c42d3080aa82f0e4039b4efb64e6a56ea315e3ac7668f029b76b5f81dfcd91f"
+      },
+      {
+        "id": "c3-final",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.6937442,
+        "log_sha256": "9dc6e05e9fca62b1728d59d87023a02dd46d47f6e3c3da5d8b0e2402ee68143d"
+      },
+      {
+        "id": "c3-partial",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.7850218,
+        "log_sha256": "5234e6fdc24a4ba467cf62259c459f81a64a2cb470edafbc66f0389eff7d1731"
+      },
+      {
+        "id": "c3",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.8736992,
+        "log_sha256": "f44f1701400d6adf73df43c650ebde64f828ac8f47a0552ff7a5c6fd65ca1c80"
+      },
+      {
+        "id": "c4-final",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.6900846,
+        "log_sha256": "9ec157e2f816278820001a708eb3ad1f8b03bde725a0933d9cff7308a54a67b9"
+      },
+      {
+        "id": "c4-partial",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.692564,
+        "log_sha256": "8881c778f4044b8f1ed3e6a94f92d0535cb312ff6d8b350ce11fd8b7a5d196c4"
+      },
+      {
+        "id": "c4",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.7809087,
+        "log_sha256": "07afb30ff37c1124902d8a447f5fdb0b16f2afb7afd0391c99b325163c91e311"
+      },
+      {
+        "id": "e1-restart",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 2.2497412,
+        "log_sha256": "bfdafa875bf575f3b45c8280773919db6c67f93bcdee301213db4f62cc1de523"
+      },
+      {
+        "id": "e1",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 2.894288,
+        "log_sha256": "d52fa11a3e2e32472bd410cb00ee1607f15f1343038bbde2ec94421223013d21"
+      },
+      {
+        "id": "f2-restart",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 2.3396694,
+        "log_sha256": "83027fcdca62cb080adc3223d51797652f628fecdc6f2d1a2161c667059bc377"
+      },
+      {
+        "id": "f2",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 2.3431031,
+        "log_sha256": "a071d94c7e2d0c4f41b9dc306a8ec6da44bb4499f5f34aa54ac9dbd5da14a811"
+      },
+      {
+        "id": "f3-depleted",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 2.7111089,
+        "log_sha256": "449c80f1388184793620a01febbf54e7f11a924fd069a09e0516ad61f8864d6b"
+      },
+      {
+        "id": "f3-restart",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 2.7105606,
+        "log_sha256": "002f9b6eb202a8ab339459cea76a7595ded07b963c7c0c8a27a1d6df81c389de"
+      },
+      {
+        "id": "f3",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 2.8894408,
+        "log_sha256": "6ccc8947ad86151bc9d786eabb698d074e7053c723d07587dd044871ecbd0d9d"
+      },
+      {
+        "id": "b3-final",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.6094515,
+        "log_sha256": "bdfd34b43b1fe487448331a84e85dfd3c37bb5cda430ea2e17cecb24877a9fa1"
+      },
+      {
+        "id": "b3-partial",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.6098103,
+        "log_sha256": "c9762ac189ac5d8f1ea36017c62a02ad191fc648e40268fbb0b567927d0c6db4"
+      },
+      {
+        "id": "b3",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 2.7744717,
+        "log_sha256": "a10dc3b828b0cdf283811756d505dc85f09872bd7b3ad525eea644c201fc71c5"
+      },
+      {
+        "id": "c1-final",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.6041612,
+        "log_sha256": "3f67bdd22ac975c4453a7bb3d7ad9d9636ba66e11ec57fb9c076fcad812460ea"
+      },
+      {
+        "id": "c1-partial",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.7281775,
+        "log_sha256": "f57a6859046b15855f97a6a4f98fd3c8bcaaa5b784846023bc1e8b6eca08cabe"
+      },
+      {
+        "id": "c1",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.7931345,
+        "log_sha256": "3db78209e7b6ec17924e69efc2fa56887e44dc50008e5bde64e54585e37de1cb"
+      },
+      {
+        "id": "c2-final",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.5968059,
+        "log_sha256": "267c5af454ebcc31f078e124f0c77f4890c69e476d375346b4c439f1e3972efc"
+      },
+      {
+        "id": "c2-partial",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.5941814,
+        "log_sha256": "26edbbb442d757c93d6c9a44bca6f2854f074ba4550ffd9197aa171a0c67a9b4"
+      },
+      {
+        "id": "c2",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.6073737,
+        "log_sha256": "22d9cfd48a68cebbc0a4f1f28b3681313a243bf7aa4e65993bd70eedf21ceec9"
+      },
+      {
+        "id": "c3-final",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.6049512,
+        "log_sha256": "1834f6aa21877ee03d9f38bb6afb9f8b29562be9c8b856b147fe6cf62ebd045a"
+      },
+      {
+        "id": "c3-partial",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.6005343,
+        "log_sha256": "9f4afc83335b039c91ab1b1d375c3e2f4c466efdec84c85f221a78eef2eda2d1"
+      },
+      {
+        "id": "c3",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.6900409,
+        "log_sha256": "bf18f9b244d609efd5c2602bdbeba56a9b2f9f32c44b47592c979b35c6c16746"
+      },
+      {
+        "id": "c4-final",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.506934,
+        "log_sha256": "ee163e733d05ad477a7b83ebc66e7613de228853be0092cc2076eb836e099be6"
+      },
+      {
+        "id": "c4-partial",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.5058754,
+        "log_sha256": "ee163e733d05ad477a7b83ebc66e7613de228853be0092cc2076eb836e099be6"
+      },
+      {
+        "id": "c4",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.5079603,
+        "log_sha256": "581077704cb509d780d7b7b5b3455a51932f5a7848c7637e9b8e80743181d5b1"
+      },
+      {
+        "id": "e1-restart",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 2.1648694,
+        "log_sha256": "5540d5d7aa8fc4e66408a3bdd354c3ec568287d3ddf1c0e1492dcc3279f1f045"
+      },
+      {
+        "id": "e1",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 2.4362499,
+        "log_sha256": "7190c2a051f1d516df2403bf266a2ce32ab9497f5e16c907dee04f79c7050c33"
+      },
+      {
+        "id": "f2-restart",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 2.15754,
+        "log_sha256": "3d4ca34d6bb074d462f2a218b00d381a05da76a191d180822e310eb43dd5478f"
+      },
+      {
+        "id": "f2",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.8908119,
+        "log_sha256": "5b753dc10d71278095ff5e12ae0d5f0c5a0e3f5c36d36cfc72f940cba5709b39"
+      },
+      {
+        "id": "f3-depleted",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 2.5210164,
+        "log_sha256": "4de3b2055ca58a869c45037e7177f5836fc30ae2317187040fdcb3a3a752a3ea"
+      },
+      {
+        "id": "f3-restart",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 2.5347046,
+        "log_sha256": "64e53d89fbf4063fe65cf4ec55cdaf0c0a5cf8d71c2f32cf27fdc02f4dc66cd8"
+      },
+      {
+        "id": "f3",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 2.5412977,
+        "log_sha256": "66f53aec88c1c38695ee9cd28688850086d709f05723b6e8a030b243cf6e6641"
+      },
+      {
+        "id": "b3",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 3.8821668,
+        "log_sha256": "e9e1e1b0146f1e6534d0b9d2fa11f5efed0904c0d80f368cc95fa8e00573c626"
+      },
+      {
+        "id": "c1",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.8836387,
+        "log_sha256": "3db78209e7b6ec17924e69efc2fa56887e44dc50008e5bde64e54585e37de1cb"
+      },
+      {
+        "id": "c3",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.7135857,
+        "log_sha256": "77af264ebf041ad6d9cdeb08a7fb1ff4bfbc49ad39aba376b14e2abe67b6c59f"
+      },
+      {
+        "id": "b3",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 2.6270064,
+        "log_sha256": "e9e1e1b0146f1e6534d0b9d2fa11f5efed0904c0d80f368cc95fa8e00573c626"
+      },
+      {
+        "id": "c1",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.7053888,
+        "log_sha256": "c7b54755d1ebafa8d41f6b6f1a5e8d963096fe62d8bc701c6d2c7706a8d9a34a"
+      },
+      {
+        "id": "c3",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.6000979,
+        "log_sha256": "77af264ebf041ad6d9cdeb08a7fb1ff4bfbc49ad39aba376b14e2abe67b6c59f"
+      },
+      {
+        "id": "b3",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 2.626884,
+        "log_sha256": "e9e1e1b0146f1e6534d0b9d2fa11f5efed0904c0d80f368cc95fa8e00573c626"
+      },
+      {
+        "id": "c1",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.6994373,
+        "log_sha256": "e6a7a3dc2c578da08bc1706bd4fb6d5b7f97f332eb45d7f4bd6006b6e9de3ee9"
+      },
+      {
+        "id": "c3",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.6017489,
+        "log_sha256": "77af264ebf041ad6d9cdeb08a7fb1ff4bfbc49ad39aba376b14e2abe67b6c59f"
+      },
+      {
+        "id": "import",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 82.6566876,
+        "log_sha256": "a7888570c0813bca8eb922e02a03770fab71b7a91f0f88fc45500a2dbf114984"
+      },
+      {
+        "id": "c3-final",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 2.8541391,
+        "log_sha256": "bd3f993ff64c68ba58bc8a5695c4225969f7fed7da7bd3f3671d22e0cbe19a44"
+      },
+      {
+        "id": "c3-partial",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 2.9447698,
+        "log_sha256": "8a962a468950447e6f58b3a3fe867dbef48a21dbbc6743d6d568d0c30a9d1603"
+      },
+      {
+        "id": "c3",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 4.6446195,
+        "log_sha256": "4e3c158076e526f20bd0ca274632b9bb9c996f53acee162450c1c643cc5569b4"
+      },
+      {
+        "id": "smoke-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 96.2041681,
+        "log_sha256": "a6457489dd615c57f47571067cb821b47a0330f90c95b3e27d339454e8509772"
+      },
+      {
+        "id": "smoke-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 91.7367641,
+        "log_sha256": "bcc5dd1c40549a72a960cfa2758068943fe9d3f7b5717a2024a4851ad364bbc0"
+      },
+      {
+        "id": "soak-after",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 8.1997028,
+        "log_sha256": "6d7311c0568c968efb800e8141a9815580d4910b44993b0d9547ca8da7327382"
+      },
+      {
+        "id": "soak-after",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 8.089962,
+        "log_sha256": "e8f72ceecd5f2206dec62f5078c8cd3bd47a2d1b23df2304ac6943437ebf459b"
+      },
+      {
+        "id": "soak-before",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 6.408956,
+        "log_sha256": "9f8dd40e44b06727b4a60ab574ecd8ce0f8ae715fa09b70461ded7fa1694114a"
+      },
+      {
+        "id": "b3",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 2.7176427,
+        "log_sha256": "b8a86f203bf0ad517469a1b4a9f3f9e150b25ee572cf619c201f51000de9193e"
+      },
+      {
+        "id": "c1",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.7885073,
+        "log_sha256": "b63e7cdee6f17428238dda7438c0861c9053a196bb2497974315922d76d2b06d"
+      },
+      {
+        "id": "c2",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.7815807,
+        "log_sha256": "d68a319f23a3c72a3b5e4804db2de2fe90b31a8e9a6a531fae9d47b576992799"
+      },
+      {
+        "id": "c3",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.60503,
+        "log_sha256": "95d3f1773d80addfe4bd0a40dc1235877736c3d0bb0d730c85d2fd0904c3fc2a"
+      },
+      {
+        "id": "c4",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.5987927,
+        "log_sha256": "43c6c815c81f982a2e8e2d384d9631f94e5b2fa0ad5bf73871eabdcae79e1e43"
+      },
+      {
+        "id": "e1",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 2.8041491,
+        "log_sha256": "2db54b7a228f4d236e5ca359aa263e8b503e931bd74e7aa12f514cb8a97a2985"
+      },
+      {
+        "id": "f2",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 2.1525026,
+        "log_sha256": "deab544a135dffed8f13bf7f5dcf7e24d98c238458dd41e1ef10170b7c5ce8ae"
+      },
+      {
+        "id": "f3",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 2.8145751,
+        "log_sha256": "0837b593371419820fefe4f6e15c3327bd6026c787051646e672d0c1a845a3a7"
+      },
+      {
+        "id": "c1",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 2.6692509,
+        "log_sha256": "4d3e482e3cd71ef6aae5c796a26b36ddc9f7ed233e4acc5fa23c7ac0e434126b"
+      },
+      {
+        "id": "c1",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.7052229,
+        "log_sha256": "066019089fa1ba2bd8259ccad8c8020814670967b02beabaa3a6f762708a28c2"
+      },
+      {
+        "id": "c1",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.7011404,
+        "log_sha256": "de72e4698c0969eb544530d8a5751741b5d7c935bc63262ce0fb2de35305360d"
+      },
+      {
+        "id": "c1",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.6994676,
+        "log_sha256": "91c54aa75bf7023c4c56ea12389f40b78abff9cc51950744878b1fbf4291af8a"
+      },
+      {
+        "id": "c1",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.7046615,
+        "log_sha256": "1f8e1e3f5bdcb3b00bae3a938415f2c55739436934d6ef6f60b65ba40a1df0ed"
+      },
+      {
+        "id": "c1",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.8426037,
+        "log_sha256": "b63e7cdee6f17428238dda7438c0861c9053a196bb2497974315922d76d2b06d"
+      },
+      {
+        "id": "c2",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.7041707,
+        "log_sha256": "2eabc32629b0419b1b7393f9a0fe0965c6d41feade9ef021641371590de86504"
+      },
+      {
+        "id": "f2",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.8775285,
+        "log_sha256": "deab544a135dffed8f13bf7f5dcf7e24d98c238458dd41e1ef10170b7c5ce8ae"
+      },
+      {
+        "id": "c1",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.7809603,
+        "log_sha256": "14aec5243da4da9f192213bf137be17f03ccd671e8aae522248a0cf157947e58"
+      },
+      {
+        "id": "c2",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.6996914,
+        "log_sha256": "d68a319f23a3c72a3b5e4804db2de2fe90b31a8e9a6a531fae9d47b576992799"
+      },
+      {
+        "id": "f2",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.8755973,
+        "log_sha256": "deab544a135dffed8f13bf7f5dcf7e24d98c238458dd41e1ef10170b7c5ce8ae"
+      },
+      {
+        "id": "c1",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.7781462,
+        "log_sha256": "b63e7cdee6f17428238dda7438c0861c9053a196bb2497974315922d76d2b06d"
+      },
+      {
+        "id": "c2",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.7004195,
+        "log_sha256": "fc4cab29c6cd3d091c18b484a147b670e056371789d193cf65bb770eba2848f2"
+      },
+      {
+        "id": "f2",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.7837841,
+        "log_sha256": "b296be6568b4c670c0dc667ec965bb5b485f4ab4de8b1772a3723748c0e9a438"
+      }
+    ],
+    "changes": {
+      "id": "r4",
+      "runtime_base": "6bb2e044dcd0bf1788896aa2c19cdf56fee93522",
+      "baseline_manifest_sha256": "fd5c592ef52185cc7d0737840e41af09dbb5bcea36b719539931e156f42865cd",
+      "parent_candidates": [],
+      "reusable_runtime_changes": [],
+      "files": [
+        {
+          "path": "game/b3/native_review.gd",
+          "classification": "fixture_only",
+          "before_sha256": "996be77212ed9cf1bf2f7077b93d55df98c615bbc3aaa8357a7f882505e5356f",
+          "after_sha256": "3e48b7119bf95b36eb847b12e46bb4be4475f16607d1ada5b01da9b2327bcdb3",
+          "before_bytes": 11698,
+          "after_bytes": 11749,
+          "functions": [
+            "finish"
+          ],
+          "purpose": "Dispose completed fixture descendants and retire owned audio before normal quit; existing checks and work/restore logic unchanged.",
+          "master": "changed-source/game/b3/native_review.gd",
+          "overlaps": [],
+          "settings": []
+        },
+        {
+          "path": "game/c1/native_review.gd",
+          "classification": "fixture_only",
+          "before_sha256": "3d4cf3f176f7b1675604bcc4201f2fcdc34d68e5e702a0c29a20f7a5b11c4bc2",
+          "after_sha256": "b4ee29c6a979de3ddf05d7be04382a78a6fdec31b04a1622c4612f423a5594c9",
+          "before_bytes": 8166,
+          "after_bytes": 8217,
+          "functions": [
+            "finish"
+          ],
+          "purpose": "Dispose completed fixture descendants and retire owned audio before normal quit; existing checks and work/restore logic unchanged.",
+          "master": "changed-source/game/c1/native_review.gd",
+          "overlaps": [],
+          "settings": []
+        },
+        {
+          "path": "game/c2/native_review.gd",
+          "classification": "fixture_only",
+          "before_sha256": "8f1ba26a50659d7037ab1a8d620db6c645aed43b0308c0fa6f4b5b4ef76cd61d",
+          "after_sha256": "8992285fd78029ace166ccf92736ec84f30fc269c042c638d7e9731a1a1c71e6",
+          "before_bytes": 8682,
+          "after_bytes": 8732,
+          "functions": [
+            "finish"
+          ],
+          "purpose": "Dispose completed fixture descendants and retire owned audio before normal quit; existing checks and work/restore logic unchanged.",
+          "master": "changed-source/game/c2/native_review.gd",
+          "overlaps": [],
+          "settings": []
+        },
+        {
+          "path": "game/c3/native_review.gd",
+          "classification": "fixture_only",
+          "before_sha256": "0cdb4fabd5aac08c3ec0f14d858506504eb3a42696d0954f3634f4e189caf6d0",
+          "after_sha256": "71d1f9f60e2b8ff9d9f983d4df368113bcf93c446cde3fc073cd29cf5a63ddc7",
+          "before_bytes": 8642,
+          "after_bytes": 8693,
+          "functions": [
+            "finish"
+          ],
+          "purpose": "Dispose completed fixture descendants and retire owned audio before normal quit; existing checks and work/restore logic unchanged.",
+          "master": "changed-source/game/c3/native_review.gd",
+          "overlaps": [],
+          "settings": []
+        },
+        {
+          "path": "game/c4/native_review.gd",
+          "classification": "fixture_only",
+          "before_sha256": "ae1217f45631b695bb7a189d18cc212de4f7698b7e1e81105b91ec44f89f155c",
+          "after_sha256": "2301218a528a2f9c4b1dce632985e94d5917a3df3d7c5bd3d4677a274663f484",
+          "before_bytes": 7099,
+          "after_bytes": 7150,
+          "functions": [
+            "finish"
+          ],
+          "purpose": "Dispose completed fixture descendants and retire owned audio before normal quit; existing checks and work/restore logic unchanged.",
+          "master": "changed-source/game/c4/native_review.gd",
+          "overlaps": [],
+          "settings": []
+        },
+        {
+          "path": "game/e1/review.gd",
+          "classification": "fixture_only",
+          "before_sha256": "58452b6800ba2db1cf504cb558798aac655315f259530abf80a0580c45f01ec6",
+          "after_sha256": "db6458c3c66c2becdee4ecc0f3a55b98df084f5acf860739c1812f5f11d7b728",
+          "before_bytes": 16972,
+          "after_bytes": 16934,
+          "functions": [
+            "finish_e1"
+          ],
+          "purpose": "Dispose completed fixture descendants and retire owned audio before normal quit; existing checks and work/restore logic unchanged.",
+          "master": "changed-source/game/e1/review.gd",
+          "overlaps": [],
+          "settings": []
+        },
+        {
+          "path": "game/f2/review.gd",
+          "classification": "fixture_only",
+          "before_sha256": "9614eaf827262e1d35f7489c4c91ed0ef07db81e591c3aa24785e13344a51d9a",
+          "after_sha256": "803834ee71587ff00b9e9407c5a2d117bdf8a36afab1933fa1bc3e4fe1f33c7d",
+          "before_bytes": 19216,
+          "after_bytes": 19266,
+          "functions": [
+            "_done"
+          ],
+          "purpose": "Dispose completed fixture descendants and retire owned audio before normal quit; existing checks and work/restore logic unchanged.",
+          "master": "changed-source/game/f2/review.gd",
+          "overlaps": [],
+          "settings": []
+        },
+        {
+          "path": "game/f3/review.gd",
+          "classification": "fixture_only",
+          "before_sha256": "a4a942744b1072448820bb08a9e8e6adf621f86b49a07b1c0943541abdce60eb",
+          "after_sha256": "32dcdf821706a09bfd057d3adc163b7eb496a50a829b13b02d6811b23c046f6e",
+          "before_bytes": 22266,
+          "after_bytes": 22316,
+          "functions": [
+            "finish"
+          ],
+          "purpose": "Dispose completed fixture descendants and retire owned audio before normal quit; existing checks and work/restore logic unchanged.",
+          "master": "changed-source/game/f3/review.gd",
+          "overlaps": [],
+          "settings": []
+        },
+        {
+          "path": "game/r4/fixture_cleanup.gd",
+          "classification": "fixture_only",
+          "before_sha256": null,
+          "after_sha256": "ee1cf70100c25b5882646ec4ea0b0c48cb275309435fdfa92c5528d72350e0ec",
+          "before_bytes": 0,
+          "after_bytes": 3866,
+          "functions": [
+            "dispose",
+            "finish",
+            "counts",
+            "_alive"
+          ],
+          "purpose": "Owned test-scene teardown and diagnostic controls only.",
+          "master": "changed-source/game/r4/fixture_cleanup.gd",
+          "overlaps": [],
+          "settings": []
+        },
+        {
+          "path": "game/r4/cleanup_options.gd",
+          "classification": "fixture_only",
+          "before_sha256": null,
+          "after_sha256": "7a841bb8a9cb34eff8b7afe0b4f50b2b30fbbf1a5fc0ebf54bb15dcd89588347",
+          "before_bytes": 0,
+          "after_bytes": 709,
+          "functions": [
+            "PREDISPOSE_FRAMES",
+            "MIX_PASSES",
+            "MAIN_FRAMES",
+            "POLL_SLEEP_MS",
+            "TIMEOUT_SECONDS",
+            "SOAK_ITERATIONS"
+          ],
+          "purpose": "Owned test-scene teardown and diagnostic controls only.",
+          "master": "changed-source/game/r4/cleanup_options.gd",
+          "overlaps": [],
+          "settings": [
+            {
+              "name": "PREDISPOSE_FRAMES",
+              "before": null,
+              "after": 3,
+              "purpose": "Let queued two-frame UI layout callbacks finish while their owned controls exist."
+            },
+            {
+              "name": "MIX_PASSES",
+              "before": null,
+              "after": 2,
+              "purpose": "Observe two real mixer progress events after stopping owned voices."
+            },
+            {
+              "name": "MAIN_FRAMES",
+              "before": null,
+              "after": 2,
+              "purpose": "Allow deferred node frees and main-thread audio retirement; also the final release sample delay."
+            },
+            {
+              "name": "POLL_SLEEP_MS",
+              "before": null,
+              "after": 1,
+              "purpose": "Yield CPU so accelerated headless frames do not starve the mixer."
+            },
+            {
+              "name": "TIMEOUT_SECONDS",
+              "before": null,
+              "after": 2.0,
+              "purpose": "Fail visibly if owned playback cannot retire; a timeout is never success."
+            },
+            {
+              "name": "SOAK_ITERATIONS",
+              "before": null,
+              "after": 12,
+              "purpose": "Bound the diagnostic create/work/restore/dispose exercise; no long-session claim."
+            }
+          ]
+        }
+      ],
+      "scope": "Eight fixture exit paths plus their shared fixture-only helper. No audio palette/cache, rendering, resource owner, simulation, gameplay, save or G1 hook changes.",
+      "overlap_policy": "Merge only listed finish-function changes if a peer repair changes the same review file; before-hash mismatch requires R8 reconciliation.",
+      "overlap_review": "Only the common baseline was consumed; peer candidate files were not inspected or applied. R8 must reconcile any before-hash mismatch at the listed finish functions.",
+      "verification_note": "Final helper masters differ from the engine-tested diagnostic-source copies only by removal of one terminal blank line. All executable bytes are identical after trimming terminal CR/LF; no engine rerun is claimed for that formatting-only change."
+    },
+    "scope": "Exact worker ancestry, exclusive Git paths, source/sealed recipe agreement, Python parsing, whitespace and all retained runner-log hashes. Full input/package payload verification is executed separately before fresh application."
+  },
+  "fresh_verification": {
+    "result": "PASS",
+    "runtime": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime",
+    "source_files_verified": 4789,
+    "fresh_jobs": [
+      {
+        "log_sha256": "ba80b86e86511facf15f10c3584caf19cea3b186e0b870511100dda533edacc8",
+        "arguments": [
+          "--headless",
+          "--editor",
+          "--path",
+          "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\game",
+          "--import"
+        ],
+        "seconds": 74.3253335,
+        "failure": "",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\import\\local",
+        "benchmark_competitors": [],
+        "processes_before": null,
+        "exit_code": 0,
+        "results": [],
+        "start": "2026-09-14T12:27:59.2510199+09:30",
+        "id": "import",
+        "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\import",
+        "wrapper_pid": 6484,
+        "child_pid": 3096,
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\import\\temp"
+      },
+      {
+        "log_sha256": "08fa71ee760112067c85500de3e72dc398610bc8d90c37343fae1025e1506205",
+        "arguments": [
+          "--verbose",
+          "--headless",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\game",
+          "res://b3/native_review.tscn"
+        ],
+        "seconds": 3.0090661,
+        "failure": "",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\b3\\local",
+        "benchmark_competitors": [],
+        "processes_before": null,
+        "exit_code": 0,
+        "results": [],
+        "start": "2026-09-14T12:29:13.7263326+09:30",
+        "id": "b3",
+        "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\b3",
+        "wrapper_pid": 6484,
+        "child_pid": 34280,
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\b3\\temp"
+      },
+      {
+        "log_sha256": "13472d7c548c279d2e3654754be199718639d7d621e57894d8c32a948a1a876c",
+        "arguments": [
+          "--verbose",
+          "--headless",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\game",
+          "res://b3/native_review.tscn",
+          "--",
+          "--restore-partial"
+        ],
+        "seconds": 1.8827019,
+        "failure": "",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\b3\\local",
+        "benchmark_competitors": [],
+        "processes_before": null,
+        "exit_code": 0,
+        "results": [],
+        "start": "2026-09-14T12:29:16.7431311+09:30",
+        "id": "b3-partial",
+        "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\b3",
+        "wrapper_pid": 6484,
+        "child_pid": 11068,
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\b3\\temp"
+      },
+      {
+        "log_sha256": "757221f534d54d27a6ff4800ddc740f2604cfd35939015cde73d9dc759767444",
+        "arguments": [
+          "--verbose",
+          "--headless",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\game",
+          "res://b3/native_review.tscn",
+          "--",
+          "--restore-final"
+        ],
+        "seconds": 1.8829483,
+        "failure": "",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\b3\\local",
+        "benchmark_competitors": [],
+        "processes_before": null,
+        "exit_code": 0,
+        "results": [],
+        "start": "2026-09-14T12:29:18.6325268+09:30",
+        "id": "b3-final",
+        "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\b3",
+        "wrapper_pid": 6484,
+        "child_pid": 7160,
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\b3\\temp"
+      },
+      {
+        "log_sha256": "2544f1018ecd93e9d60d407c64b06e42c5ad642f101032ca7294bb7567a373ce",
+        "arguments": [
+          "--verbose",
+          "--headless",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\game",
+          "res://c1/native_review.tscn"
+        ],
+        "seconds": 1.9062011,
+        "failure": "",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\c1\\local",
+        "benchmark_competitors": [],
+        "processes_before": null,
+        "exit_code": 0,
+        "results": [],
+        "start": "2026-09-14T12:29:20.5217640+09:30",
+        "id": "c1",
+        "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\c1",
+        "wrapper_pid": 6484,
+        "child_pid": 34156,
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\c1\\temp"
+      },
+      {
+        "log_sha256": "da2c09883eabcfcc49f51c1177945d3c41fdb5093c2f5170a92c1840874bd69b",
+        "arguments": [
+          "--verbose",
+          "--headless",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\game",
+          "res://c1/native_review.tscn",
+          "--",
+          "--restore-partial"
+        ],
+        "seconds": 1.8942661,
+        "failure": "",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\c1\\local",
+        "benchmark_competitors": [],
+        "processes_before": null,
+        "exit_code": 0,
+        "results": [],
+        "start": "2026-09-14T12:29:22.4341886+09:30",
+        "id": "c1-partial",
+        "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\c1",
+        "wrapper_pid": 6484,
+        "child_pid": 8092,
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\c1\\temp"
+      },
+      {
+        "log_sha256": "36d8a5c1c1aba35d0787ecb4881639200ca128935a940952b886ffe5138d3d66",
+        "arguments": [
+          "--verbose",
+          "--headless",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\game",
+          "res://c1/native_review.tscn",
+          "--",
+          "--restore-final"
+        ],
+        "seconds": 1.8908481,
+        "failure": "",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\c1\\local",
+        "benchmark_competitors": [],
+        "processes_before": null,
+        "exit_code": 0,
+        "results": [],
+        "start": "2026-09-14T12:29:24.3349518+09:30",
+        "id": "c1-final",
+        "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\c1",
+        "wrapper_pid": 6484,
+        "child_pid": 35624,
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\c1\\temp"
+      },
+      {
+        "log_sha256": "294d4f1e0ac63c63c65ddfadacfc997194891df7da5f099c8e74d1e8fcfc0c78",
+        "arguments": [
+          "--verbose",
+          "--headless",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\game",
+          "res://c2/native_review.tscn"
+        ],
+        "seconds": 1.8897091,
+        "failure": "",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\c2\\local",
+        "benchmark_competitors": [],
+        "processes_before": null,
+        "exit_code": 0,
+        "results": [
+          "C2_NATIVE_RESULT 25 checks, 0 failures"
+        ],
+        "start": "2026-09-14T12:29:26.2326808+09:30",
+        "id": "c2",
+        "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\c2",
+        "wrapper_pid": 6484,
+        "child_pid": 35240,
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\c2\\temp"
+      },
+      {
+        "log_sha256": "cf0d0b09b74a330d0ab7302450592c6a0a62a02f0b9c395a9a8874be530cbb0d",
+        "arguments": [
+          "--verbose",
+          "--headless",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\game",
+          "res://c2/native_review.tscn",
+          "--",
+          "--restore-partial"
+        ],
+        "seconds": 1.7875894,
+        "failure": "",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\c2\\local",
+        "benchmark_competitors": [],
+        "processes_before": null,
+        "exit_code": 0,
+        "results": [
+          "C2_NATIVE_RESULT 12 checks, 0 failures"
+        ],
+        "start": "2026-09-14T12:29:28.1286744+09:30",
+        "id": "c2-partial",
+        "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\c2",
+        "wrapper_pid": 6484,
+        "child_pid": 21512,
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\c2\\temp"
+      },
+      {
+        "log_sha256": "e8189dc90a3de3cd7e7a7f1d08028b4ae7b761df9ec20445d0da806e5539765a",
+        "arguments": [
+          "--verbose",
+          "--headless",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\game",
+          "res://c2/native_review.tscn",
+          "--",
+          "--restore-final"
+        ],
+        "seconds": 1.80355,
+        "failure": "",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\c2\\local",
+        "benchmark_competitors": [],
+        "processes_before": null,
+        "exit_code": 0,
+        "results": [
+          "C2_NATIVE_RESULT 10 checks, 0 failures"
+        ],
+        "start": "2026-09-14T12:29:29.9227611+09:30",
+        "id": "c2-final",
+        "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\c2",
+        "wrapper_pid": 6484,
+        "child_pid": 32932,
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\c2\\temp"
+      },
+      {
+        "log_sha256": "8ead9dbe8b7ef12c943c7807fd86d45f8009655e5db424735688cef173551ada",
+        "arguments": [
+          "--verbose",
+          "--headless",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\game",
+          "res://c3/native_review.tscn"
+        ],
+        "seconds": 1.8803366,
+        "failure": "",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\c3\\local",
+        "benchmark_competitors": [],
+        "processes_before": null,
+        "exit_code": 0,
+        "results": [],
+        "start": "2026-09-14T12:29:31.7324186+09:30",
+        "id": "c3",
+        "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\c3",
+        "wrapper_pid": 6484,
+        "child_pid": 28620,
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\c3\\temp"
+      },
+      {
+        "log_sha256": "c7d70cfcbdbc23e7a421d7d7edbe41dcf40521c9a756a1603457479535a74de4",
+        "arguments": [
+          "--verbose",
+          "--headless",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\game",
+          "res://c3/native_review.tscn",
+          "--",
+          "--restore-partial"
+        ],
+        "seconds": 1.7996696,
+        "failure": "",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\c3\\local",
+        "benchmark_competitors": [],
+        "processes_before": null,
+        "exit_code": 0,
+        "results": [],
+        "start": "2026-09-14T12:29:33.6195133+09:30",
+        "id": "c3-partial",
+        "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\c3",
+        "wrapper_pid": 6484,
+        "child_pid": 11456,
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\c3\\temp"
+      },
+      {
+        "log_sha256": "2369bab2cf699571361cd88318ee8fb349b66e2c328faa719aaa7359fddea593",
+        "arguments": [
+          "--verbose",
+          "--headless",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\game",
+          "res://c3/native_review.tscn",
+          "--",
+          "--restore-final"
+        ],
+        "seconds": 1.882746,
+        "failure": "",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\c3\\local",
+        "benchmark_competitors": [],
+        "processes_before": null,
+        "exit_code": 0,
+        "results": [],
+        "start": "2026-09-14T12:29:35.4256174+09:30",
+        "id": "c3-final",
+        "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\c3",
+        "wrapper_pid": 6484,
+        "child_pid": 3528,
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\c3\\temp"
+      },
+      {
+        "log_sha256": "ead81923ac9f09bd015811905af64f15391771aac4eb5316bfa2f5b0702a19ca",
+        "arguments": [
+          "--verbose",
+          "--headless",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\game",
+          "res://c4/native_review.tscn"
+        ],
+        "seconds": 1.7903944,
+        "failure": "",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\c4\\local",
+        "benchmark_competitors": [],
+        "processes_before": null,
+        "exit_code": 0,
+        "results": [],
+        "start": "2026-09-14T12:29:37.3184783+09:30",
+        "id": "c4",
+        "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\c4",
+        "wrapper_pid": 6484,
+        "child_pid": 8636,
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\c4\\temp"
+      },
+      {
+        "log_sha256": "2646a58970913839903a5de342e2fd3c13b786423c20038068b10347a9519ed0",
+        "arguments": [
+          "--verbose",
+          "--headless",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\game",
+          "res://c4/native_review.tscn",
+          "--",
+          "--restore-partial"
+        ],
+        "seconds": 1.7893105,
+        "failure": "",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\c4\\local",
+        "benchmark_competitors": [],
+        "processes_before": null,
+        "exit_code": 0,
+        "results": [],
+        "start": "2026-09-14T12:29:39.1146582+09:30",
+        "id": "c4-partial",
+        "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\c4",
+        "wrapper_pid": 6484,
+        "child_pid": 36376,
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\c4\\temp"
+      },
+      {
+        "log_sha256": "73fcf588bd6bec0ec9374efbce7d8ebfdac4d9dd30155cd6b3b99581f76a0a61",
+        "arguments": [
+          "--verbose",
+          "--headless",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\game",
+          "res://c4/native_review.tscn",
+          "--",
+          "--restore-final"
+        ],
+        "seconds": 1.6900843,
+        "failure": "",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\c4\\local",
+        "benchmark_competitors": [],
+        "processes_before": null,
+        "exit_code": 0,
+        "results": [],
+        "start": "2026-09-14T12:29:40.9105770+09:30",
+        "id": "c4-final",
+        "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\c4",
+        "wrapper_pid": 6484,
+        "child_pid": 5520,
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\c4\\temp"
+      },
+      {
+        "log_sha256": "8e0783a8764718b90c0c8d9189e7246a67e38099849f35196c0e090731df4480",
+        "arguments": [
+          "--verbose",
+          "--headless",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\game",
+          "res://e1/review.tscn",
+          "--",
+          "--check"
+        ],
+        "seconds": 2.636975,
+        "failure": "",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\e1\\local",
+        "benchmark_competitors": [],
+        "processes_before": null,
+        "exit_code": 0,
+        "results": [
+          "E1_CHECKS 304 checks, 0 failures"
+        ],
+        "start": "2026-09-14T12:29:42.6069612+09:30",
+        "id": "e1",
+        "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\e1",
+        "wrapper_pid": 6484,
+        "child_pid": 9416,
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\e1\\temp"
+      },
+      {
+        "log_sha256": "194c71c419dc94efb25bd187c84b83f1ec09684eff8345f83983a08cad025aa5",
+        "arguments": [
+          "--verbose",
+          "--headless",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\game",
+          "res://e1/review.tscn",
+          "--",
+          "--restore"
+        ],
+        "seconds": 2.3424428,
+        "failure": "",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\e1\\local",
+        "benchmark_competitors": [],
+        "processes_before": null,
+        "exit_code": 0,
+        "results": [
+          "E1_RESTORE 132 checks, 0 failures"
+        ],
+        "start": "2026-09-14T12:29:45.2507621+09:30",
+        "id": "e1-restart",
+        "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\e1",
+        "wrapper_pid": 6484,
+        "child_pid": 4800,
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\e1\\temp"
+      },
+      {
+        "log_sha256": "f1c3cd21aadb5c92e8184703b5d1ff56249dba9d2d3816fbbc493f3bdb33f786",
+        "arguments": [
+          "--verbose",
+          "--headless",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\game",
+          "res://f2/review.tscn",
+          "--",
+          "--check"
+        ],
+        "seconds": 2.0761843,
+        "failure": "",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\f2\\local",
+        "benchmark_competitors": [],
+        "processes_before": null,
+        "exit_code": 0,
+        "results": [
+          "F2_CHECKS 50 checks 0 failures"
+        ],
+        "start": "2026-09-14T12:29:47.6005764+09:30",
+        "id": "f2",
+        "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\f2",
+        "wrapper_pid": 6484,
+        "child_pid": 13628,
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\f2\\temp"
+      },
+      {
+        "log_sha256": "1212883fca41ad75d0698b476be4ad08ad96bc12516aa7ed1dbf7e876c36fdaa",
+        "arguments": [
+          "--verbose",
+          "--headless",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\game",
+          "res://f2/review.tscn",
+          "--",
+          "--restart"
+        ],
+        "seconds": 2.3571069,
+        "failure": "",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\f2\\local",
+        "benchmark_competitors": [],
+        "processes_before": null,
+        "exit_code": 0,
+        "results": [
+          "F2_RESTART 29 checks 0 failures"
+        ],
+        "start": "2026-09-14T12:29:49.6828946+09:30",
+        "id": "f2-restart",
+        "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\f2",
+        "wrapper_pid": 6484,
+        "child_pid": 15552,
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\f2\\temp"
+      },
+      {
+        "log_sha256": "3223c6c3c22dcb2f03de32ac2642d8bd41a3989c508ee6622ba55950a6f83e7d",
+        "arguments": [
+          "--verbose",
+          "--headless",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\game",
+          "res://f3/review.tscn"
+        ],
+        "seconds": 2.7136663,
+        "failure": "",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\f3\\local",
+        "benchmark_competitors": [],
+        "processes_before": null,
+        "exit_code": 0,
+        "results": [
+          "F3_CHECKS 306 checks, 0 failures"
+        ],
+        "start": "2026-09-14T12:29:52.0464394+09:30",
+        "id": "f3",
+        "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\f3",
+        "wrapper_pid": 6484,
+        "child_pid": 35108,
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\f3\\temp"
+      },
+      {
+        "log_sha256": "a1637bd738223c8437610245679a4b176a095f9d1126595f1930f8a7ee6b4d99",
+        "arguments": [
+          "--verbose",
+          "--headless",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\game",
+          "res://f3/review.tscn",
+          "--",
+          "--restart"
+        ],
+        "seconds": 2.805297,
+        "failure": "",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\f3\\local",
+        "benchmark_competitors": [],
+        "processes_before": null,
+        "exit_code": 0,
+        "results": [
+          "F3_RESTART 248 checks, 0 failures"
+        ],
+        "start": "2026-09-14T12:29:54.7663845+09:30",
+        "id": "f3-restart",
+        "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\f3",
+        "wrapper_pid": 6484,
+        "child_pid": 35008,
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\f3\\temp"
+      },
+      {
+        "log_sha256": "fb2063da129f9bb8e876994bce904ed3dd9c5721cb97a487cdad7f94f2891e89",
+        "arguments": [
+          "--verbose",
+          "--headless",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\game",
+          "res://f3/review.tscn",
+          "--",
+          "--restart-depleted"
+        ],
+        "seconds": 2.8067576,
+        "failure": "",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\f3\\local",
+        "benchmark_competitors": [],
+        "processes_before": null,
+        "exit_code": 0,
+        "results": [
+          "F3_RESTART-DEPLETED 247 checks, 0 failures"
+        ],
+        "start": "2026-09-14T12:29:57.5779670+09:30",
+        "id": "f3-depleted",
+        "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\f3",
+        "wrapper_pid": 6484,
+        "child_pid": 3476,
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\publisher\\f3\\temp"
+      },
+      {
+        "log_sha256": "9746bb91a767957ee996fe9af019b61cc283531903edbf063938d077899a5595",
+        "arguments": [
+          "--verbose",
+          "--headless",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\game",
+          "res://r4/soak.tscn",
+          "--"
+        ],
+        "seconds": 8.1102438,
+        "failure": "",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\soak-after-final\\local",
+        "benchmark_competitors": [],
+        "processes_before": null,
+        "exit_code": 0,
+        "results": [],
+        "start": "2026-09-14T12:30:00.3909807+09:30",
+        "id": "soak-after",
+        "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\soak-after-final",
+        "wrapper_pid": 6484,
+        "child_pid": 32068,
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\users\\soak-after-final\\temp"
+      }
+    ],
+    "additional_proof": {
+      "unchanged_native_matrix": [
+        {
+          "id": "b3",
+          "markers": [
+            "B3_NATIVE_OK 16621"
+          ],
+          "cleanup": {
+            "after": {
+              "cached_action_clips": 7,
+              "nodes": 4,
+              "objects": 1828,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 103946160
+            },
+            "before": {
+              "cached_action_clips": 7,
+              "nodes": 367,
+              "objects": 2613,
+              "orphans": 0,
+              "resources": 257,
+              "static_bytes": 117508756
+            },
+            "children_after": 0,
+            "fixture": "res://b3/native_review.gd",
+            "frame_waiters_before": 0,
+            "frame_waiters_before_free": 0,
+            "mix_passes": 2,
+            "playbacks_after": 0,
+            "poll_frames": 90,
+            "seconds": 0.181145,
+            "voices": [
+              {
+                "cue": "work_stone",
+                "name": "@AudioStreamPlayer3D@379",
+                "node_id": 160289524483,
+                "playback_id": -9223371876514919674,
+                "stream_id": -9223371883511018960
+              },
+              {
+                "cue": "work_stone",
+                "name": "@AudioStreamPlayer3D@381",
+                "node_id": 160457296652,
+                "playback_id": -9223371876347147505,
+                "stream_id": -9223371884349880550
+              },
+              {
+                "cue": "release_stone",
+                "name": "@AudioStreamPlayer3D@385",
+                "node_id": 160742509334,
+                "playback_id": -9223371876061934820,
+                "stream_id": -9223371879148942720
+              },
+              {
+                "cue": "work_stone",
+                "name": "@AudioStreamPlayer3D@389",
+                "node_id": 160960613156,
+                "playback_id": -9223371875843831001,
+                "stream_id": -9223371883511018960
+              },
+              {
+                "cue": "work_stone",
+                "name": "@AudioStreamPlayer3D@391",
+                "node_id": 161128385325,
+                "playback_id": -9223371875676058832,
+                "stream_id": -9223371884349880550
+              },
+              {
+                "cue": "work_stone",
+                "name": "@AudioStreamPlayer3D@393",
+                "node_id": 161296157494,
+                "playback_id": -9223371875508286663,
+                "stream_id": -9223371884198885601
+              },
+              {
+                "cue": "work_stone",
+                "name": "@AudioStreamPlayer3D@395",
+                "node_id": 161463929663,
+                "playback_id": -9223371875340514494,
+                "stream_id": -9223371883511018960
+              },
+              {
+                "cue": "release_stone",
+                "name": "@AudioStreamPlayer3D@399",
+                "node_id": 161765919562,
+                "playback_id": -9223371875038524592,
+                "stream_id": -9223371882001069523
+              }
+            ]
+          }
+        },
+        {
+          "id": "b3-partial",
+          "markers": [
+            "B3_NATIVE_OK 10"
+          ],
+          "cleanup": {
+            "after": {
+              "cached_action_clips": 0,
+              "nodes": 4,
+              "objects": 1807,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 103645396
+            },
+            "before": {
+              "cached_action_clips": 0,
+              "nodes": 327,
+              "objects": 2523,
+              "orphans": 0,
+              "resources": 266,
+              "static_bytes": 144213040
+            },
+            "children_after": 0,
+            "fixture": "res://b3/native_review.gd",
+            "frame_waiters_before": 0,
+            "frame_waiters_before_free": 0,
+            "mix_passes": 2,
+            "playbacks_after": 0,
+            "poll_frames": 91,
+            "seconds": 0.1858,
+            "voices": []
+          }
+        },
+        {
+          "id": "b3-final",
+          "markers": [
+            "B3_NATIVE_OK 8"
+          ],
+          "cleanup": {
+            "after": {
+              "cached_action_clips": 0,
+              "nodes": 4,
+              "objects": 1807,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 103645332
+            },
+            "before": {
+              "cached_action_clips": 0,
+              "nodes": 309,
+              "objects": 2454,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 107763844
+            },
+            "children_after": 0,
+            "fixture": "res://b3/native_review.gd",
+            "frame_waiters_before": 0,
+            "frame_waiters_before_free": 0,
+            "mix_passes": 2,
+            "playbacks_after": 0,
+            "poll_frames": 84,
+            "seconds": 0.171017,
+            "voices": []
+          }
+        },
+        {
+          "id": "c1",
+          "markers": [
+            "C1_NATIVE_OK flow 20"
+          ],
+          "cleanup": {
+            "after": {
+              "cached_action_clips": 12,
+              "nodes": 4,
+              "objects": 1830,
+              "orphans": 0,
+              "resources": 241,
+              "static_bytes": 104381900
+            },
+            "before": {
+              "cached_action_clips": 12,
+              "nodes": 325,
+              "objects": 2555,
+              "orphans": 0,
+              "resources": 257,
+              "static_bytes": 145918244
+            },
+            "children_after": 0,
+            "fixture": "res://c1/native_review.gd",
+            "frame_waiters_before": 0,
+            "frame_waiters_before_free": 0,
+            "mix_passes": 2,
+            "playbacks_after": 0,
+            "poll_frames": 50,
+            "seconds": 0.104328,
+            "voices": [
+              {
+                "cue": "release_fibre",
+                "name": "@AudioStreamPlayer3D@334",
+                "node_id": 173543524171,
+                "playback_id": -9223371863260920023,
+                "stream_id": -9223371879518042306
+              },
+              {
+                "cue": "work_fibre",
+                "name": "@AudioStreamPlayer3D@337",
+                "node_id": 174449493829,
+                "playback_id": -9223371862354949528,
+                "stream_id": -9223371881262872750
+              },
+              {
+                "cue": "work_fibre",
+                "name": "@AudioStreamPlayer3D@338",
+                "node_id": 175288354640,
+                "playback_id": -9223371861516088798,
+                "stream_id": -9223371880390457517
+              },
+              {
+                "cue": "collect",
+                "name": "@AudioStreamPlayer3D@339",
+                "node_id": 175791671117,
+                "playback_id": -9223371861012772247,
+                "stream_id": -9223371876934351065
+              },
+              {
+                "cue": "release_fibre",
+                "name": "@AudioStreamPlayer3D@340",
+                "node_id": 176479536969,
+                "playback_id": -9223371860324906499,
+                "stream_id": -9223371860392016065
+              },
+              {
+                "cue": "work_wood",
+                "name": "InteractionSound",
+                "node_id": 177402283812,
+                "playback_id": -9223371859402159621,
+                "stream_id": -9223371888258971828
+              },
+              {
+                "cue": "work_wood",
+                "name": "@AudioStreamPlayer3D@343",
+                "node_id": 178241145379,
+                "playback_id": -9223371858563298817,
+                "stream_id": -9223371890003802296
+              },
+              {
+                "cue": "release_wood",
+                "name": "@AudioStreamPlayer3D@344",
+                "node_id": 179163892233,
+                "playback_id": -9223371857640551891,
+                "stream_id": -9223371857707660795
+              }
+            ]
+          }
+        },
+        {
+          "id": "c1-partial",
+          "markers": [
+            "C1_NATIVE_OK partial-restart 9"
+          ],
+          "cleanup": {
+            "after": {
+              "cached_action_clips": 0,
+              "nodes": 4,
+              "objects": 1810,
+              "orphans": 0,
+              "resources": 241,
+              "static_bytes": 104202416
+            },
+            "before": {
+              "cached_action_clips": 0,
+              "nodes": 348,
+              "objects": 2574,
+              "orphans": 0,
+              "resources": 282,
+              "static_bytes": 197446220
+            },
+            "children_after": 0,
+            "fixture": "res://c1/native_review.gd",
+            "frame_waiters_before": 0,
+            "frame_waiters_before_free": 0,
+            "mix_passes": 2,
+            "playbacks_after": 0,
+            "poll_frames": 79,
+            "seconds": 0.163845,
+            "voices": []
+          }
+        },
+        {
+          "id": "c1-final",
+          "markers": [
+            "C1_NATIVE_OK final-restart 7"
+          ],
+          "cleanup": {
+            "after": {
+              "cached_action_clips": 0,
+              "nodes": 4,
+              "objects": 1810,
+              "orphans": 0,
+              "resources": 241,
+              "static_bytes": 104202352
+            },
+            "before": {
+              "cached_action_clips": 0,
+              "nodes": 309,
+              "objects": 2457,
+              "orphans": 0,
+              "resources": 241,
+              "static_bytes": 108321128
+            },
+            "children_after": 0,
+            "fixture": "res://c1/native_review.gd",
+            "frame_waiters_before": 0,
+            "frame_waiters_before_free": 0,
+            "mix_passes": 2,
+            "playbacks_after": 0,
+            "poll_frames": 79,
+            "seconds": 0.160854,
+            "voices": []
+          }
+        },
+        {
+          "id": "c2",
+          "markers": [
+            "C2_NATIVE_RESULT 25 checks, 0 failures"
+          ],
+          "cleanup": {
+            "after": {
+              "cached_action_clips": 7,
+              "nodes": 4,
+              "objects": 1824,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 104213384
+            },
+            "before": {
+              "cached_action_clips": 7,
+              "nodes": 336,
+              "objects": 2559,
+              "orphans": 0,
+              "resources": 251,
+              "static_bytes": 126377388
+            },
+            "children_after": 0,
+            "fixture": "res://c2/native_review.gd",
+            "frame_waiters_before": 0,
+            "frame_waiters_before_free": 0,
+            "mix_passes": 2,
+            "playbacks_after": 0,
+            "poll_frames": 82,
+            "seconds": 0.168943,
+            "voices": [
+              {
+                "cue": "work_stone",
+                "name": "@AudioStreamPlayer3D@353",
+                "node_id": 156900526636,
+                "playback_id": -9223371879903917508,
+                "stream_id": -9223371887889873077
+              },
+              {
+                "cue": "work_stone",
+                "name": "@AudioStreamPlayer3D@354",
+                "node_id": 157017967227,
+                "playback_id": -9223371879786477780,
+                "stream_id": -9223371887738878126
+              },
+              {
+                "cue": "release_stone",
+                "name": "@AudioStreamPlayer3D@355",
+                "node_id": 157370288761,
+                "playback_id": -9223371879434155365,
+                "stream_id": -9223371886262482386
+              },
+              {
+                "cue": "work_stone",
+                "name": "@AudioStreamPlayer3D@358",
+                "node_id": 157571615360,
+                "playback_id": -9223371879232829656,
+                "stream_id": -9223371887889873077
+              },
+              {
+                "cue": "work_stone",
+                "name": "@AudioStreamPlayer3D@359",
+                "node_id": 157689055838,
+                "playback_id": -9223371879115388267,
+                "stream_id": -9223371887738878126
+              },
+              {
+                "cue": "work_stone",
+                "name": "@AudioStreamPlayer3D@360",
+                "node_id": 157806496406,
+                "playback_id": -9223371878997947753,
+                "stream_id": -9223371887587883205
+              },
+              {
+                "cue": "release_stone",
+                "name": "@AudioStreamPlayer3D@362",
+                "node_id": 158192372376,
+                "playback_id": -9223371878612071792,
+                "stream_id": -9223371887436888254
+              },
+              {
+                "cue": "collect",
+                "name": "@AudioStreamPlayer3D@365",
+                "node_id": 159618435738,
+                "playback_id": -9223371877186008429,
+                "stream_id": -9223371882890261860
+              }
+            ]
+          }
+        },
+        {
+          "id": "c2-partial",
+          "markers": [
+            "C2_NATIVE_RESULT 12 checks, 0 failures"
+          ],
+          "cleanup": {
+            "after": {
+              "cached_action_clips": 0,
+              "nodes": 4,
+              "objects": 1809,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 104105780
+            },
+            "before": {
+              "cached_action_clips": 0,
+              "nodes": 331,
+              "objects": 2521,
+              "orphans": 0,
+              "resources": 265,
+              "static_bytes": 132090216
+            },
+            "children_after": 0,
+            "fixture": "res://c2/native_review.gd",
+            "frame_waiters_before": 0,
+            "frame_waiters_before_free": 0,
+            "mix_passes": 2,
+            "playbacks_after": 0,
+            "poll_frames": 51,
+            "seconds": 0.105487,
+            "voices": []
+          }
+        },
+        {
+          "id": "c2-final",
+          "markers": [
+            "C2_NATIVE_RESULT 10 checks, 0 failures"
+          ],
+          "cleanup": {
+            "after": {
+              "cached_action_clips": 0,
+              "nodes": 4,
+              "objects": 1809,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 104105716
+            },
+            "before": {
+              "cached_action_clips": 0,
+              "nodes": 311,
+              "objects": 2459,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 108232556
+            },
+            "children_after": 0,
+            "fixture": "res://c2/native_review.gd",
+            "frame_waiters_before": 0,
+            "frame_waiters_before_free": 0,
+            "mix_passes": 2,
+            "playbacks_after": 0,
+            "poll_frames": 48,
+            "seconds": 0.099526,
+            "voices": []
+          }
+        },
+        {
+          "id": "c3",
+          "markers": [
+            "C3_NATIVE_OK 21"
+          ],
+          "cleanup": {
+            "after": {
+              "cached_action_clips": 8,
+              "nodes": 4,
+              "objects": 1859,
+              "orphans": 0,
+              "resources": 250,
+              "static_bytes": 129448466
+            },
+            "before": {
+              "cached_action_clips": 8,
+              "nodes": 328,
+              "objects": 2560,
+              "orphans": 0,
+              "resources": 257,
+              "static_bytes": 135495994
+            },
+            "children_after": 0,
+            "fixture": "res://c3/native_review.gd",
+            "frame_waiters_before": 0,
+            "frame_waiters_before_free": 0,
+            "mix_passes": 2,
+            "playbacks_after": 0,
+            "poll_frames": 81,
+            "seconds": 0.164783,
+            "voices": [
+              {
+                "cue": "release_wood",
+                "name": "@AudioStreamPlayer3D@302",
+                "node_id": 146062445084,
+                "playback_id": -9223371890741999072,
+                "stream_id": -9223371890809107939
+              },
+              {
+                "cue": "collect",
+                "name": "@AudioStreamPlayer3D@305",
+                "node_id": 146263771681,
+                "playback_id": -9223371890540672471,
+                "stream_id": -9223371890607781338
+              },
+              {
+                "cue": "work_wood",
+                "name": "InteractionSound",
+                "node_id": 147673057074,
+                "playback_id": -9223371889131387107,
+                "stream_id": -9223371892470053065
+              },
+              {
+                "cue": "work_wood",
+                "name": "@AudioStreamPlayer3D@306",
+                "node_id": 148629358378,
+                "playback_id": -9223371888175085781,
+                "stream_id": -9223371892772042936
+              },
+              {
+                "cue": "release_wood",
+                "name": "@AudioStreamPlayer3D@307",
+                "node_id": 150038644541,
+                "playback_id": -9223371886765799603,
+                "stream_id": -9223371886832908461
+              },
+              {
+                "cue": "work_wood",
+                "name": "@AudioStreamPlayer3D@310",
+                "node_id": 150458074926,
+                "playback_id": -9223371886346368496,
+                "stream_id": -9223371892470053065
+              },
+              {
+                "cue": "work_wood",
+                "name": "@AudioStreamPlayer3D@311",
+                "node_id": 150575516179,
+                "playback_id": -9223371886228927963,
+                "stream_id": -9223371892772042936
+              },
+              {
+                "cue": "release_wood",
+                "name": "@AudioStreamPlayer3D@312",
+                "node_id": 150743288294,
+                "playback_id": -9223371886061155844,
+                "stream_id": -9223371886832908461
+              }
+            ]
+          }
+        },
+        {
+          "id": "c3-partial",
+          "markers": [
+            "C3_NATIVE_OK 9"
+          ],
+          "cleanup": {
+            "after": {
+              "cached_action_clips": 0,
+              "nodes": 4,
+              "objects": 1836,
+              "orphans": 0,
+              "resources": 250,
+              "static_bytes": 129308884
+            },
+            "before": {
+              "cached_action_clips": 0,
+              "nodes": 325,
+              "objects": 2515,
+              "orphans": 0,
+              "resources": 262,
+              "static_bytes": 159757680
+            },
+            "children_after": 0,
+            "fixture": "res://c3/native_review.gd",
+            "frame_waiters_before": 0,
+            "frame_waiters_before_free": 0,
+            "mix_passes": 2,
+            "playbacks_after": 0,
+            "poll_frames": 63,
+            "seconds": 0.128376,
+            "voices": []
+          }
+        },
+        {
+          "id": "c3-final",
+          "markers": [
+            "C3_NATIVE_OK 9"
+          ],
+          "cleanup": {
+            "after": {
+              "cached_action_clips": 0,
+              "nodes": 4,
+              "objects": 1832,
+              "orphans": 0,
+              "resources": 250,
+              "static_bytes": 129299764
+            },
+            "before": {
+              "cached_action_clips": 0,
+              "nodes": 311,
+              "objects": 2483,
+              "orphans": 0,
+              "resources": 250,
+              "static_bytes": 133428336
+            },
+            "children_after": 0,
+            "fixture": "res://c3/native_review.gd",
+            "frame_waiters_before": 0,
+            "frame_waiters_before_free": 0,
+            "mix_passes": 2,
+            "playbacks_after": 0,
+            "poll_frames": 91,
+            "seconds": 0.183495,
+            "voices": []
+          }
+        },
+        {
+          "id": "c4",
+          "markers": [
+            "C4_NATIVE_OK 35"
+          ],
+          "cleanup": {
+            "after": {
+              "cached_action_clips": 5,
+              "nodes": 4,
+              "objects": 1821,
+              "orphans": 0,
+              "resources": 241,
+              "static_bytes": 103632276
+            },
+            "before": {
+              "cached_action_clips": 5,
+              "nodes": 326,
+              "objects": 2516,
+              "orphans": 0,
+              "resources": 247,
+              "static_bytes": 116302088
+            },
+            "children_after": 0,
+            "fixture": "res://c4/native_review.gd",
+            "frame_waiters_before": 0,
+            "frame_waiters_before_free": 0,
+            "mix_passes": 2,
+            "playbacks_after": 0,
+            "poll_frames": 85,
+            "seconds": 0.172503,
+            "voices": [
+              {
+                "cue": "work_wood",
+                "name": "@AudioStreamPlayer3D@296",
+                "node_id": 141180274476,
+                "playback_id": -9223371895624169681,
+                "stream_id": -9223371896043600073
+              },
+              {
+                "cue": "work_wood",
+                "name": "@AudioStreamPlayer3D@297",
+                "node_id": 141448709940,
+                "playback_id": -9223371895355734246,
+                "stream_id": -9223371896345589944
+              },
+              {
+                "cue": "work_wood",
+                "name": "@AudioStreamPlayer3D@298",
+                "node_id": 141566150428,
+                "playback_id": -9223371895238293729,
+                "stream_id": -9223371896194594993
+              },
+              {
+                "cue": "release_wood",
+                "name": "@AudioStreamPlayer3D@299",
+                "node_id": 141767477029,
+                "playback_id": -9223371895036966417,
+                "stream_id": -9223371895104075994
+              },
+              {
+                "cue": "work_wood",
+                "name": "@AudioStreamPlayer3D@302",
+                "node_id": 141968804342,
+                "playback_id": -9223371894835639815,
+                "stream_id": -9223371896345589944
+              },
+              {
+                "cue": "work_wood",
+                "name": "@AudioStreamPlayer3D@303",
+                "node_id": 142086244860,
+                "playback_id": -9223371894718199297,
+                "stream_id": -9223371896194594993
+              },
+              {
+                "cue": "release_wood",
+                "name": "@AudioStreamPlayer3D@304",
+                "node_id": 142254017029,
+                "playback_id": -9223371894550427128,
+                "stream_id": -9223371895104075994
+              },
+              {
+                "cue": "collect",
+                "name": "InteractionSound",
+                "node_id": 147421399511,
+                "playback_id": -9223371889383044607,
+                "stream_id": -9223371889450153472
+              }
+            ]
+          }
+        },
+        {
+          "id": "c4-partial",
+          "markers": [
+            "C4_NATIVE_OK 22"
+          ],
+          "cleanup": {
+            "after": {
+              "cached_action_clips": 0,
+              "nodes": 4,
+              "objects": 1808,
+              "orphans": 0,
+              "resources": 241,
+              "static_bytes": 103563416
+            },
+            "before": {
+              "cached_action_clips": 0,
+              "nodes": 319,
+              "objects": 2481,
+              "orphans": 0,
+              "resources": 249,
+              "static_bytes": 116701452
+            },
+            "children_after": 0,
+            "fixture": "res://c4/native_review.gd",
+            "frame_waiters_before": 0,
+            "frame_waiters_before_free": 0,
+            "mix_passes": 2,
+            "playbacks_after": 0,
+            "poll_frames": 90,
+            "seconds": 0.182666,
+            "voices": []
+          }
+        },
+        {
+          "id": "c4-final",
+          "markers": [
+            "C4_NATIVE_OK 22"
+          ],
+          "cleanup": {
+            "after": {
+              "cached_action_clips": 0,
+              "nodes": 4,
+              "objects": 1808,
+              "orphans": 0,
+              "resources": 241,
+              "static_bytes": 103563352
+            },
+            "before": {
+              "cached_action_clips": 0,
+              "nodes": 309,
+              "objects": 2455,
+              "orphans": 0,
+              "resources": 241,
+              "static_bytes": 107681672
+            },
+            "children_after": 0,
+            "fixture": "res://c4/native_review.gd",
+            "frame_waiters_before": 0,
+            "frame_waiters_before_free": 0,
+            "mix_passes": 2,
+            "playbacks_after": 0,
+            "poll_frames": 48,
+            "seconds": 0.099388,
+            "voices": []
+          }
+        },
+        {
+          "id": "e1",
+          "markers": [
+            "E1_CHECKS 304 checks, 0 failures"
+          ],
+          "cleanup": {
+            "after": {
+              "cached_action_clips": 4,
+              "nodes": 4,
+              "objects": 1903,
+              "orphans": 0,
+              "resources": 286,
+              "static_bytes": 129793324
+            },
+            "before": {
+              "cached_action_clips": 4,
+              "nodes": 1084,
+              "objects": 4013,
+              "orphans": 0,
+              "resources": 286,
+              "static_bytes": 138871952
+            },
+            "children_after": 0,
+            "fixture": "res://e1/review.gd",
+            "frame_waiters_before": 0,
+            "frame_waiters_before_free": 0,
+            "mix_passes": 2,
+            "playbacks_after": 0,
+            "poll_frames": 66,
+            "seconds": 0.137929,
+            "voices": [
+              {
+                "cue": "craft_bench",
+                "name": "@AudioStreamPlayer3D@919",
+                "node_id": 212114344764,
+                "playback_id": -9223371824690100417,
+                "stream_id": -9223371824757208259
+              },
+              {
+                "cue": "craft_yard",
+                "name": "@AudioStreamPlayer3D@1200",
+                "node_id": 232666434590,
+                "playback_id": -9223371804138009555,
+                "stream_id": -9223371804205118432
+              }
+            ]
+          }
+        },
+        {
+          "id": "e1-restart",
+          "markers": [
+            "E1_RESTORE 132 checks, 0 failures"
+          ],
+          "cleanup": {
+            "after": {
+              "cached_action_clips": 0,
+              "nodes": 4,
+              "objects": 1895,
+              "orphans": 0,
+              "resources": 286,
+              "static_bytes": 130360948
+            },
+            "before": {
+              "cached_action_clips": 0,
+              "nodes": 889,
+              "objects": 8267,
+              "orphans": 1650,
+              "resources": 286,
+              "static_bytes": 161895300
+            },
+            "children_after": 0,
+            "fixture": "res://e1/review.gd",
+            "frame_waiters_before": 1,
+            "frame_waiters_before_free": 0,
+            "mix_passes": 2,
+            "playbacks_after": 0,
+            "poll_frames": 71,
+            "seconds": 0.168199,
+            "voices": []
+          }
+        },
+        {
+          "id": "f2",
+          "markers": [
+            "F2_CHECKS 50 checks 0 failures"
+          ],
+          "cleanup": {
+            "after": {
+              "cached_action_clips": 5,
+              "nodes": 4,
+              "objects": 1883,
+              "orphans": 0,
+              "resources": 278,
+              "static_bytes": 172266180
+            },
+            "before": {
+              "cached_action_clips": 5,
+              "nodes": 342,
+              "objects": 2637,
+              "orphans": 0,
+              "resources": 303,
+              "static_bytes": 219769400
+            },
+            "children_after": 0,
+            "fixture": "res://f2/review.gd",
+            "frame_waiters_before": 0,
+            "frame_waiters_before_free": 0,
+            "mix_passes": 2,
+            "playbacks_after": 0,
+            "poll_frames": 73,
+            "seconds": 0.149998,
+            "voices": [
+              {
+                "cue": "work_thrumroot",
+                "name": "InteractionSound",
+                "node_id": 151447931483,
+                "playback_id": -9223371885356512674,
+                "stream_id": -9223371885423621542
+              },
+              {
+                "cue": "work_thrumroot",
+                "name": "@AudioStreamPlayer3D@311",
+                "node_id": 151582149215,
+                "playback_id": -9223371885222294941,
+                "stream_id": -9223371885289403808
+              },
+              {
+                "cue": "work_thrumroot",
+                "name": "@AudioStreamPlayer3D@312",
+                "node_id": 151783475812,
+                "playback_id": -9223371885020968344,
+                "stream_id": -9223371885088077211
+              },
+              {
+                "cue": "release_thrumroot",
+                "name": "@AudioStreamPlayer3D@313",
+                "node_id": 151968025196,
+                "playback_id": -9223371884836418960,
+                "stream_id": -9223371884903527827
+              },
+              {
+                "cue": "collect",
+                "name": "@AudioStreamPlayer3D@316",
+                "node_id": 152169351793,
+                "playback_id": -9223371884635092359,
+                "stream_id": -9223371884702201226
+              }
+            ]
+          }
+        },
+        {
+          "id": "f2-restart",
+          "markers": [
+            "F2_RESTART 29 checks 0 failures"
+          ],
+          "cleanup": {
+            "after": {
+              "cached_action_clips": 0,
+              "nodes": 4,
+              "objects": 1873,
+              "orphans": 0,
+              "resources": 278,
+              "static_bytes": 172198836
+            },
+            "before": {
+              "cached_action_clips": 0,
+              "nodes": 343,
+              "objects": 2622,
+              "orphans": 0,
+              "resources": 305,
+              "static_bytes": 219966300
+            },
+            "children_after": 0,
+            "fixture": "res://f2/review.gd",
+            "frame_waiters_before": 0,
+            "frame_waiters_before_free": 0,
+            "mix_passes": 2,
+            "playbacks_after": 0,
+            "poll_frames": 53,
+            "seconds": 0.107469,
+            "voices": []
+          }
+        },
+        {
+          "id": "f3",
+          "markers": [
+            "F3_CHECKS 306 checks, 0 failures"
+          ],
+          "cleanup": {
+            "after": {
+              "cached_action_clips": 9,
+              "nodes": 4,
+              "objects": 1889,
+              "orphans": 0,
+              "resources": 266,
+              "static_bytes": 214789256
+            },
+            "before": {
+              "cached_action_clips": 9,
+              "nodes": 397,
+              "objects": 2757,
+              "orphans": 0,
+              "resources": 284,
+              "static_bytes": 224037396
+            },
+            "children_after": 0,
+            "fixture": "res://f3/review.gd",
+            "frame_waiters_before": 0,
+            "frame_waiters_before_free": 0,
+            "mix_passes": 2,
+            "playbacks_after": 0,
+            "poll_frames": 59,
+            "seconds": 0.122685,
+            "voices": [
+              {
+                "cue": "work_pullstone",
+                "name": "@AudioStreamPlayer3D@377",
+                "node_id": 156900526950,
+                "playback_id": -9223371879903917206,
+                "stream_id": -9223371879971026073
+              },
+              {
+                "cue": "work_ventlung",
+                "name": "@AudioStreamPlayer3D@378",
+                "node_id": 157017967467,
+                "playback_id": -9223371879786476689,
+                "stream_id": -9223371879853585556
+              },
+              {
+                "cue": "work_ventlung",
+                "name": "@AudioStreamPlayer3D@379",
+                "node_id": 157135407984,
+                "playback_id": -9223371879669036172,
+                "stream_id": -9223371879736145039
+              },
+              {
+                "cue": "release_stone",
+                "name": "@AudioStreamPlayer3D@412",
+                "node_id": 160121752408,
+                "playback_id": -9223371876682691762,
+                "stream_id": -9223371876749800628
+              },
+              {
+                "cue": "work_pullstone",
+                "name": "@AudioStreamPlayer3D@419",
+                "node_id": 160658623293,
+                "playback_id": -9223371876145820875,
+                "stream_id": -9223371876212929740
+              },
+              {
+                "cue": "release_pullstone",
+                "name": "@AudioStreamPlayer3D@420",
+                "node_id": 160826395509,
+                "playback_id": -9223371875978048723,
+                "stream_id": -9223371876045157584
+              },
+              {
+                "cue": "work_ventlung",
+                "name": "@AudioStreamPlayer3D@423",
+                "node_id": 161027722020,
+                "playback_id": -9223371875776722146,
+                "stream_id": -9223371875843831012
+              },
+              {
+                "cue": "release_ventlung",
+                "name": "@AudioStreamPlayer3D@424",
+                "node_id": 161195494167,
+                "playback_id": -9223371875608950000,
+                "stream_id": -9223371875676058858
+              }
+            ]
+          }
+        },
+        {
+          "id": "f3-restart",
+          "markers": [
+            "F3_RESTART 248 checks, 0 failures"
+          ],
+          "cleanup": {
+            "after": {
+              "cached_action_clips": 0,
+              "nodes": 4,
+              "objects": 1796,
+              "orphans": 0,
+              "resources": 241,
+              "static_bytes": 100374988
+            },
+            "before": {
+              "cached_action_clips": 0,
+              "nodes": 383,
+              "objects": 2781,
+              "orphans": 40,
+              "resources": 314,
+              "static_bytes": 425615076
+            },
+            "children_after": 0,
+            "fixture": "res://f3/review.gd",
+            "frame_waiters_before": 0,
+            "frame_waiters_before_free": 0,
+            "mix_passes": 2,
+            "playbacks_after": 0,
+            "poll_frames": 87,
+            "seconds": 0.184474,
+            "voices": []
+          }
+        },
+        {
+          "id": "f3-depleted",
+          "markers": [
+            "F3_RESTART-DEPLETED 247 checks, 0 failures"
+          ],
+          "cleanup": {
+            "after": {
+              "cached_action_clips": 0,
+              "nodes": 4,
+              "objects": 1796,
+              "orphans": 0,
+              "resources": 241,
+              "static_bytes": 100372216
+            },
+            "before": {
+              "cached_action_clips": 0,
+              "nodes": 367,
+              "objects": 2721,
+              "orphans": 40,
+              "resources": 284,
+              "static_bytes": 219938812
+            },
+            "children_after": 0,
+            "fixture": "res://f3/review.gd",
+            "frame_waiters_before": 0,
+            "frame_waiters_before_free": 0,
+            "mix_passes": 2,
+            "playbacks_after": 0,
+            "poll_frames": 92,
+            "seconds": 0.181909,
+            "voices": []
+          }
+        }
+      ],
+      "bounded_disposal": {
+        "after_release": {
+          "cached_action_clips": 6,
+          "nodes": 4,
+          "objects": 1811,
+          "orphans": 0,
+          "resources": 240,
+          "static_bytes": 104026724
+        },
+        "checks": 156,
+        "iterations": 12,
+        "observed_playbacks_alive": 0,
+        "reference_teardown": false,
+        "samples": [
+          {
+            "after_release": {
+              "cached_action_clips": 6,
+              "nodes": 4,
+              "objects": 1811,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 103773140
+            },
+            "before_create": {
+              "cached_action_clips": 0,
+              "nodes": 5,
+              "objects": 1705,
+              "orphans": 0,
+              "resources": 236,
+              "static_bytes": 78586706
+            },
+            "before_dispose": {
+              "cached_action_clips": 6,
+              "nodes": 313,
+              "objects": 2488,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 107936812
+            },
+            "cleanup": {
+              "after": {
+                "cached_action_clips": 6,
+                "nodes": 5,
+                "objects": 1831,
+                "orphans": 0,
+                "resources": 240,
+                "static_bytes": 103787328
+              },
+              "before": {
+                "cached_action_clips": 6,
+                "nodes": 313,
+                "objects": 2496,
+                "orphans": 0,
+                "resources": 240,
+                "static_bytes": 107940752
+              },
+              "children_after": 0,
+              "fixture": "R4Cycle0",
+              "frame_waiters_before": 0,
+              "frame_waiters_before_free": 0,
+              "mix_passes": 2,
+              "playbacks_after": 0,
+              "poll_frames": 82,
+              "seconds": 0.167088,
+              "voices": [
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@290",
+                  "node_id": 141884917572,
+                  "playback_id": -9223371894919526614,
+                  "stream_id": -9223371895489951926
+                },
+                {
+                  "cue": "collect",
+                  "name": "@AudioStreamPlayer3D@291",
+                  "node_id": 142002358057,
+                  "playback_id": -9223371894802086098,
+                  "stream_id": -9223371894869194965
+                },
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@292",
+                  "node_id": 142371456832,
+                  "playback_id": -9223371894432987340,
+                  "stream_id": -9223371894500096191
+                },
+                {
+                  "cue": "release_stone",
+                  "name": "@AudioStreamPlayer3D@293",
+                  "node_id": 142522451737,
+                  "playback_id": -9223371894281992419,
+                  "stream_id": -9223371894349101285
+                },
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@296",
+                  "node_id": 142723778340,
+                  "playback_id": -9223371894080665817,
+                  "stream_id": -9223371895338956975
+                },
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@297",
+                  "node_id": 142841219570,
+                  "playback_id": -9223371893963224587,
+                  "stream_id": -9223371894500096191
+                },
+                {
+                  "cue": "release_stone",
+                  "name": "@AudioStreamPlayer3D@298",
+                  "node_id": 142992214522,
+                  "playback_id": -9223371893812229635,
+                  "stream_id": -9223371894349101285
+                },
+                {
+                  "cue": "collect",
+                  "name": "InteractionSound",
+                  "node_id": 145676569081,
+                  "playback_id": -9223371891127875081,
+                  "stream_id": -9223371894869194965
+                }
+              ]
+            },
+            "iteration": 0,
+            "observed_playbacks_alive": 0
+          },
+          {
+            "after_release": {
+              "cached_action_clips": 6,
+              "nodes": 4,
+              "objects": 1811,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 103802584
+            },
+            "before_create": {
+              "cached_action_clips": 6,
+              "nodes": 5,
+              "objects": 1812,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 103771264
+            },
+            "before_dispose": {
+              "cached_action_clips": 6,
+              "nodes": 313,
+              "objects": 2488,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 107966640
+            },
+            "cleanup": {
+              "after": {
+                "cached_action_clips": 6,
+                "nodes": 5,
+                "objects": 1831,
+                "orphans": 0,
+                "resources": 240,
+                "static_bytes": 103816900
+              },
+              "before": {
+                "cached_action_clips": 6,
+                "nodes": 313,
+                "objects": 2496,
+                "orphans": 0,
+                "resources": 240,
+                "static_bytes": 107970580
+              },
+              "children_after": 0,
+              "fixture": "R4Cycle1",
+              "frame_waiters_before": 0,
+              "frame_waiters_before_free": 0,
+              "mix_passes": 2,
+              "playbacks_after": 0,
+              "poll_frames": 67,
+              "seconds": 0.136491,
+              "voices": [
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@589",
+                  "node_id": 164416718605,
+                  "playback_id": -9223371872387725553,
+                  "stream_id": -9223371895489951926
+                },
+                {
+                  "cue": "collect",
+                  "name": "@AudioStreamPlayer3D@590",
+                  "node_id": 164500604688,
+                  "playback_id": -9223371872303839538,
+                  "stream_id": -9223371894869194965
+                },
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@591",
+                  "node_id": 164836148998,
+                  "playback_id": -9223371871968295187,
+                  "stream_id": -9223371894500096191
+                },
+                {
+                  "cue": "release_stone",
+                  "name": "@AudioStreamPlayer3D@592",
+                  "node_id": 164953589499,
+                  "playback_id": -9223371871850854658,
+                  "stream_id": -9223371894349101285
+                },
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@595",
+                  "node_id": 165154916068,
+                  "playback_id": -9223371871649528088,
+                  "stream_id": -9223371895338956975
+                },
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@596",
+                  "node_id": 165272356588,
+                  "playback_id": -9223371871532087502,
+                  "stream_id": -9223371894500096191
+                },
+                {
+                  "cue": "release_stone",
+                  "name": "@AudioStreamPlayer3D@597",
+                  "node_id": 165423352318,
+                  "playback_id": -9223371871381092526,
+                  "stream_id": -9223371894349101285
+                },
+                {
+                  "cue": "collect",
+                  "name": "InteractionSound",
+                  "node_id": 168107706825,
+                  "playback_id": -9223371868696737995,
+                  "stream_id": -9223371894869194965
+                }
+              ]
+            },
+            "iteration": 1,
+            "observed_playbacks_alive": 0
+          },
+          {
+            "after_release": {
+              "cached_action_clips": 6,
+              "nodes": 4,
+              "objects": 1811,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 103816148
+            },
+            "before_create": {
+              "cached_action_clips": 6,
+              "nodes": 5,
+              "objects": 1812,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 103800692
+            },
+            "before_dispose": {
+              "cached_action_clips": 6,
+              "nodes": 313,
+              "objects": 2488,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 107980204
+            },
+            "cleanup": {
+              "after": {
+                "cached_action_clips": 6,
+                "nodes": 5,
+                "objects": 1831,
+                "orphans": 0,
+                "resources": 240,
+                "static_bytes": 103830464
+              },
+              "before": {
+                "cached_action_clips": 6,
+                "nodes": 313,
+                "objects": 2496,
+                "orphans": 0,
+                "resources": 240,
+                "static_bytes": 107984144
+              },
+              "children_after": 0,
+              "fixture": "R4Cycle2",
+              "frame_waiters_before": 0,
+              "frame_waiters_before_free": 0,
+              "mix_passes": 2,
+              "playbacks_after": 0,
+              "poll_frames": 68,
+              "seconds": 0.138814,
+              "voices": [
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@888",
+                  "node_id": 186596198193,
+                  "playback_id": -9223371850208245972,
+                  "stream_id": -9223371895489951926
+                },
+                {
+                  "cue": "collect",
+                  "name": "@AudioStreamPlayer3D@889",
+                  "node_id": 186680084292,
+                  "playback_id": -9223371850124359169,
+                  "stream_id": -9223371894869194965
+                },
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@890",
+                  "node_id": 187015628570,
+                  "playback_id": -9223371849788814846,
+                  "stream_id": -9223371894500096191
+                },
+                {
+                  "cue": "release_stone",
+                  "name": "@AudioStreamPlayer3D@891",
+                  "node_id": 187133069818,
+                  "playback_id": -9223371849671374350,
+                  "stream_id": -9223371894349101285
+                },
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@894",
+                  "node_id": 187334396413,
+                  "playback_id": -9223371849470048483,
+                  "stream_id": -9223371895338956975
+                },
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@895",
+                  "node_id": 187451836202,
+                  "playback_id": -9223371849352607968,
+                  "stream_id": -9223371894500096191
+                },
+                {
+                  "cue": "release_stone",
+                  "name": "@AudioStreamPlayer3D@896",
+                  "node_id": 187602831177,
+                  "playback_id": -9223371849201612420,
+                  "stream_id": -9223371894349101285
+                },
+                {
+                  "cue": "collect",
+                  "name": "InteractionSound",
+                  "node_id": 190287186388,
+                  "playback_id": -9223371846517258514,
+                  "stream_id": -9223371894869194965
+                }
+              ]
+            },
+            "iteration": 2,
+            "observed_playbacks_alive": 0
+          },
+          {
+            "after_release": {
+              "cached_action_clips": 6,
+              "nodes": 4,
+              "objects": 1811,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 103860464
+            },
+            "before_create": {
+              "cached_action_clips": 6,
+              "nodes": 5,
+              "objects": 1812,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 103814288
+            },
+            "before_dispose": {
+              "cached_action_clips": 6,
+              "nodes": 313,
+              "objects": 2488,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 108024648
+            },
+            "cleanup": {
+              "after": {
+                "cached_action_clips": 6,
+                "nodes": 5,
+                "objects": 1831,
+                "orphans": 0,
+                "resources": 240,
+                "static_bytes": 103874780
+              },
+              "before": {
+                "cached_action_clips": 6,
+                "nodes": 313,
+                "objects": 2496,
+                "orphans": 0,
+                "resources": 240,
+                "static_bytes": 108028588
+              },
+              "children_after": 0,
+              "fixture": "R4Cycle3",
+              "frame_waiters_before": 0,
+              "frame_waiters_before_free": 0,
+              "mix_passes": 2,
+              "playbacks_after": 0,
+              "poll_frames": 69,
+              "seconds": 0.139867,
+              "voices": [
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@1187",
+                  "node_id": 208792454921,
+                  "playback_id": -9223371828011989548,
+                  "stream_id": -9223371895489951926
+                },
+                {
+                  "cue": "collect",
+                  "name": "@AudioStreamPlayer3D@1188",
+                  "node_id": 208876341010,
+                  "playback_id": -9223371827928103091,
+                  "stream_id": -9223371894869194965
+                },
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@1189",
+                  "node_id": 209211885309,
+                  "playback_id": -9223371827592558776,
+                  "stream_id": -9223371894500096191
+                },
+                {
+                  "cue": "release_stone",
+                  "name": "@AudioStreamPlayer3D@1190",
+                  "node_id": 209329326553,
+                  "playback_id": -9223371827475118252,
+                  "stream_id": -9223371894349101285
+                },
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@1193",
+                  "node_id": 209530652498,
+                  "playback_id": -9223371827273791746,
+                  "stream_id": -9223371895338956975
+                },
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@1194",
+                  "node_id": 209648092878,
+                  "playback_id": -9223371827156351522,
+                  "stream_id": -9223371894500096191
+                },
+                {
+                  "cue": "release_stone",
+                  "name": "@AudioStreamPlayer3D@1195",
+                  "node_id": 209799087891,
+                  "playback_id": -9223371827005355716,
+                  "stream_id": -9223371894349101285
+                },
+                {
+                  "cue": "collect",
+                  "name": "InteractionSound",
+                  "node_id": 212483443155,
+                  "playback_id": -9223371824321000968,
+                  "stream_id": -9223371894869194965
+                }
+              ]
+            },
+            "iteration": 3,
+            "observed_playbacks_alive": 0
+          },
+          {
+            "after_release": {
+              "cached_action_clips": 6,
+              "nodes": 4,
+              "objects": 1811,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 103873996
+            },
+            "before_create": {
+              "cached_action_clips": 6,
+              "nodes": 5,
+              "objects": 1812,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 103858540
+            },
+            "before_dispose": {
+              "cached_action_clips": 6,
+              "nodes": 313,
+              "objects": 2488,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 108038180
+            },
+            "cleanup": {
+              "after": {
+                "cached_action_clips": 6,
+                "nodes": 5,
+                "objects": 1831,
+                "orphans": 0,
+                "resources": 240,
+                "static_bytes": 103888312
+              },
+              "before": {
+                "cached_action_clips": 6,
+                "nodes": 313,
+                "objects": 2496,
+                "orphans": 0,
+                "resources": 240,
+                "static_bytes": 108042120
+              },
+              "children_after": 0,
+              "fixture": "R4Cycle4",
+              "frame_waiters_before": 0,
+              "frame_waiters_before_free": 0,
+              "mix_passes": 2,
+              "playbacks_after": 0,
+              "poll_frames": 68,
+              "seconds": 0.1391,
+              "voices": [
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@1486",
+                  "node_id": 231005488960,
+                  "playback_id": -9223371805798954495,
+                  "stream_id": -9223371895489951926
+                },
+                {
+                  "cue": "collect",
+                  "name": "@AudioStreamPlayer3D@1487",
+                  "node_id": 231089375016,
+                  "playback_id": -9223371805715069161,
+                  "stream_id": -9223371894869194965
+                },
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@1488",
+                  "node_id": 231424920059,
+                  "playback_id": -9223371805379524847,
+                  "stream_id": -9223371894500096191
+                },
+                {
+                  "cue": "release_stone",
+                  "name": "@AudioStreamPlayer3D@1489",
+                  "node_id": 231542360546,
+                  "playback_id": -9223371805262083713,
+                  "stream_id": -9223371894349101285
+                },
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@1492",
+                  "node_id": 231743687036,
+                  "playback_id": -9223371805060757006,
+                  "stream_id": -9223371895338956975
+                },
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@1493",
+                  "node_id": 231861127679,
+                  "playback_id": -9223371804943316503,
+                  "stream_id": -9223371894500096191
+                },
+                {
+                  "cue": "release_stone",
+                  "name": "@AudioStreamPlayer3D@1494",
+                  "node_id": 232012121925,
+                  "playback_id": -9223371804792321786,
+                  "stream_id": -9223371894349101285
+                },
+                {
+                  "cue": "collect",
+                  "name": "InteractionSound",
+                  "node_id": 234696477142,
+                  "playback_id": -9223371802107967691,
+                  "stream_id": -9223371894869194965
+                }
+              ]
+            },
+            "iteration": 4,
+            "observed_playbacks_alive": 0
+          },
+          {
+            "after_release": {
+              "cached_action_clips": 6,
+              "nodes": 4,
+              "objects": 1811,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 103887528
+            },
+            "before_create": {
+              "cached_action_clips": 6,
+              "nodes": 5,
+              "objects": 1812,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 103872072
+            },
+            "before_dispose": {
+              "cached_action_clips": 6,
+              "nodes": 313,
+              "objects": 2488,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 108051712
+            },
+            "cleanup": {
+              "after": {
+                "cached_action_clips": 6,
+                "nodes": 5,
+                "objects": 1831,
+                "orphans": 0,
+                "resources": 240,
+                "static_bytes": 103901844
+              },
+              "before": {
+                "cached_action_clips": 6,
+                "nodes": 313,
+                "objects": 2496,
+                "orphans": 0,
+                "resources": 240,
+                "static_bytes": 108055652
+              },
+              "children_after": 0,
+              "fixture": "R4Cycle5",
+              "frame_waiters_before": 0,
+              "frame_waiters_before_free": 0,
+              "mix_passes": 2,
+              "playbacks_after": 0,
+              "poll_frames": 68,
+              "seconds": 0.139255,
+              "voices": [
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@1785",
+                  "node_id": 253201745660,
+                  "playback_id": -9223371783602698421,
+                  "stream_id": -9223371895489951926
+                },
+                {
+                  "cue": "collect",
+                  "name": "@AudioStreamPlayer3D@1786",
+                  "node_id": 253285631757,
+                  "playback_id": -9223371783518812711,
+                  "stream_id": -9223371894869194965
+                },
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@1787",
+                  "node_id": 253621176147,
+                  "playback_id": -9223371783183268464,
+                  "stream_id": -9223371894500096191
+                },
+                {
+                  "cue": "release_stone",
+                  "name": "@AudioStreamPlayer3D@1788",
+                  "node_id": 253738617293,
+                  "playback_id": -9223371783065827011,
+                  "stream_id": -9223371894349101285
+                },
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@1791",
+                  "node_id": 253939943740,
+                  "playback_id": -9223371782864500908,
+                  "stream_id": -9223371895338956975
+                },
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@1792",
+                  "node_id": 254057383757,
+                  "playback_id": -9223371782747060432,
+                  "stream_id": -9223371894500096191
+                },
+                {
+                  "cue": "release_stone",
+                  "name": "@AudioStreamPlayer3D@1793",
+                  "node_id": 254208378638,
+                  "playback_id": -9223371782596065071,
+                  "stream_id": -9223371894349101285
+                },
+                {
+                  "cue": "collect",
+                  "name": "InteractionSound",
+                  "node_id": 256892733906,
+                  "playback_id": -9223371779911710994,
+                  "stream_id": -9223371894869194965
+                }
+              ]
+            },
+            "iteration": 5,
+            "observed_playbacks_alive": 0
+          },
+          {
+            "after_release": {
+              "cached_action_clips": 6,
+              "nodes": 4,
+              "objects": 1811,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 103901188
+            },
+            "before_create": {
+              "cached_action_clips": 6,
+              "nodes": 5,
+              "objects": 1812,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 103885732
+            },
+            "before_dispose": {
+              "cached_action_clips": 6,
+              "nodes": 313,
+              "objects": 2488,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 108065372
+            },
+            "cleanup": {
+              "after": {
+                "cached_action_clips": 6,
+                "nodes": 5,
+                "objects": 1831,
+                "orphans": 0,
+                "resources": 240,
+                "static_bytes": 103915504
+              },
+              "before": {
+                "cached_action_clips": 6,
+                "nodes": 313,
+                "objects": 2496,
+                "orphans": 0,
+                "resources": 240,
+                "static_bytes": 108069312
+              },
+              "children_after": 0,
+              "fixture": "R4Cycle6",
+              "frame_waiters_before": 0,
+              "frame_waiters_before_free": 0,
+              "mix_passes": 2,
+              "playbacks_after": 0,
+              "poll_frames": 70,
+              "seconds": 0.142962,
+              "voices": [
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@2084",
+                  "node_id": 275398003196,
+                  "playback_id": -9223371761406441707,
+                  "stream_id": -9223371895489951926
+                },
+                {
+                  "cue": "collect",
+                  "name": "@AudioStreamPlayer3D@2085",
+                  "node_id": 275481888561,
+                  "playback_id": -9223371761322556007,
+                  "stream_id": -9223371894869194965
+                },
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@2086",
+                  "node_id": 275817433470,
+                  "playback_id": -9223371760987011316,
+                  "stream_id": -9223371894500096191
+                },
+                {
+                  "cue": "release_stone",
+                  "name": "@AudioStreamPlayer3D@2087",
+                  "node_id": 275934873322,
+                  "playback_id": -9223371760869570297,
+                  "stream_id": -9223371894349101285
+                },
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@2090",
+                  "node_id": 276136200454,
+                  "playback_id": -9223371760668243585,
+                  "stream_id": -9223371895338956975
+                },
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@2091",
+                  "node_id": 276253640471,
+                  "playback_id": -9223371760550803772,
+                  "stream_id": -9223371894500096191
+                },
+                {
+                  "cue": "release_stone",
+                  "name": "@AudioStreamPlayer3D@2092",
+                  "node_id": 276404635433,
+                  "playback_id": -9223371760399808357,
+                  "stream_id": -9223371894349101285
+                },
+                {
+                  "cue": "collect",
+                  "name": "InteractionSound",
+                  "node_id": 279088990679,
+                  "playback_id": -9223371757715453448,
+                  "stream_id": -9223371894869194965
+                }
+              ]
+            },
+            "iteration": 6,
+            "observed_playbacks_alive": 0
+          },
+          {
+            "after_release": {
+              "cached_action_clips": 6,
+              "nodes": 4,
+              "objects": 1811,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 103976160
+            },
+            "before_create": {
+              "cached_action_clips": 6,
+              "nodes": 5,
+              "objects": 1812,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 103899264
+            },
+            "before_dispose": {
+              "cached_action_clips": 6,
+              "nodes": 313,
+              "objects": 2488,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 108140344
+            },
+            "cleanup": {
+              "after": {
+                "cached_action_clips": 6,
+                "nodes": 5,
+                "objects": 1831,
+                "orphans": 0,
+                "resources": 240,
+                "static_bytes": 103990476
+              },
+              "before": {
+                "cached_action_clips": 6,
+                "nodes": 313,
+                "objects": 2496,
+                "orphans": 0,
+                "resources": 240,
+                "static_bytes": 108144284
+              },
+              "children_after": 0,
+              "fixture": "R4Cycle7",
+              "frame_waiters_before": 0,
+              "frame_waiters_before_free": 0,
+              "mix_passes": 2,
+              "playbacks_after": 0,
+              "poll_frames": 69,
+              "seconds": 0.14036,
+              "voices": [
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@2383",
+                  "node_id": 297627814398,
+                  "playback_id": -9223371739176630895,
+                  "stream_id": -9223371895489951926
+                },
+                {
+                  "cue": "collect",
+                  "name": "@AudioStreamPlayer3D@2384",
+                  "node_id": 297711699721,
+                  "playback_id": -9223371739092744415,
+                  "stream_id": -9223371894869194965
+                },
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@2385",
+                  "node_id": 298047244603,
+                  "playback_id": -9223371738757200083,
+                  "stream_id": -9223371894500096191
+                },
+                {
+                  "cue": "release_stone",
+                  "name": "@AudioStreamPlayer3D@2386",
+                  "node_id": 298164685292,
+                  "playback_id": -9223371738639759150,
+                  "stream_id": -9223371894349101285
+                },
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@2389",
+                  "node_id": 298366010778,
+                  "playback_id": -9223371738438432451,
+                  "stream_id": -9223371895338956975
+                },
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@2390",
+                  "node_id": 298483451353,
+                  "playback_id": -9223371738320991759,
+                  "stream_id": -9223371894500096191
+                },
+                {
+                  "cue": "release_stone",
+                  "name": "@AudioStreamPlayer3D@2391",
+                  "node_id": 298634446300,
+                  "playback_id": -9223371738169997207,
+                  "stream_id": -9223371894349101285
+                },
+                {
+                  "cue": "collect",
+                  "name": "InteractionSound",
+                  "node_id": 301318801870,
+                  "playback_id": -9223371735485642955,
+                  "stream_id": -9223371894869194965
+                }
+              ]
+            },
+            "iteration": 7,
+            "observed_playbacks_alive": 0
+          },
+          {
+            "after_release": {
+              "cached_action_clips": 6,
+              "nodes": 4,
+              "objects": 1811,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 103989692
+            },
+            "before_create": {
+              "cached_action_clips": 6,
+              "nodes": 5,
+              "objects": 1812,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 103974236
+            },
+            "before_dispose": {
+              "cached_action_clips": 6,
+              "nodes": 313,
+              "objects": 2488,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 108153876
+            },
+            "cleanup": {
+              "after": {
+                "cached_action_clips": 6,
+                "nodes": 5,
+                "objects": 1831,
+                "orphans": 0,
+                "resources": 240,
+                "static_bytes": 104004008
+              },
+              "before": {
+                "cached_action_clips": 6,
+                "nodes": 313,
+                "objects": 2496,
+                "orphans": 0,
+                "resources": 240,
+                "static_bytes": 108157816
+              },
+              "children_after": 0,
+              "fixture": "R4Cycle8",
+              "frame_waiters_before": 0,
+              "frame_waiters_before_free": 0,
+              "mix_passes": 2,
+              "playbacks_after": 0,
+              "poll_frames": 68,
+              "seconds": 0.139044,
+              "voices": [
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@2682",
+                  "node_id": 319840847689,
+                  "playback_id": -9223371716963595801,
+                  "stream_id": -9223371895489951926
+                },
+                {
+                  "cue": "collect",
+                  "name": "@AudioStreamPlayer3D@2683",
+                  "node_id": 319924733760,
+                  "playback_id": -9223371716879710814,
+                  "stream_id": -9223371894869194965
+                },
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@2684",
+                  "node_id": 320260278533,
+                  "playback_id": -9223371716544166128,
+                  "stream_id": -9223371894500096191
+                },
+                {
+                  "cue": "release_stone",
+                  "name": "@AudioStreamPlayer3D@2685",
+                  "node_id": 320377718543,
+                  "playback_id": -9223371716426725216,
+                  "stream_id": -9223371894349101285
+                },
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@2688",
+                  "node_id": 320579045531,
+                  "playback_id": -9223371716225398521,
+                  "stream_id": -9223371895338956975
+                },
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@2689",
+                  "node_id": 320696485273,
+                  "playback_id": -9223371716107958458,
+                  "stream_id": -9223371894500096191
+                },
+                {
+                  "cue": "release_stone",
+                  "name": "@AudioStreamPlayer3D@2690",
+                  "node_id": 320847480623,
+                  "playback_id": -9223371715956963274,
+                  "stream_id": -9223371894349101285
+                },
+                {
+                  "cue": "collect",
+                  "name": "InteractionSound",
+                  "node_id": 323531835833,
+                  "playback_id": -9223371713272609042,
+                  "stream_id": -9223371894869194965
+                }
+              ]
+            },
+            "iteration": 8,
+            "observed_playbacks_alive": 0
+          },
+          {
+            "after_release": {
+              "cached_action_clips": 6,
+              "nodes": 4,
+              "objects": 1811,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 104003224
+            },
+            "before_create": {
+              "cached_action_clips": 6,
+              "nodes": 5,
+              "objects": 1812,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 103987768
+            },
+            "before_dispose": {
+              "cached_action_clips": 6,
+              "nodes": 313,
+              "objects": 2488,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 108167408
+            },
+            "cleanup": {
+              "after": {
+                "cached_action_clips": 6,
+                "nodes": 5,
+                "objects": 1831,
+                "orphans": 0,
+                "resources": 240,
+                "static_bytes": 104017540
+              },
+              "before": {
+                "cached_action_clips": 6,
+                "nodes": 313,
+                "objects": 2496,
+                "orphans": 0,
+                "resources": 240,
+                "static_bytes": 108171348
+              },
+              "children_after": 0,
+              "fixture": "R4Cycle9",
+              "frame_waiters_before": 0,
+              "frame_waiters_before_free": 0,
+              "mix_passes": 2,
+              "playbacks_after": 0,
+              "poll_frames": 71,
+              "seconds": 0.143628,
+              "voices": [
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@2981",
+                  "node_id": 342037104403,
+                  "playback_id": -9223371694767339713,
+                  "stream_id": -9223371895489951926
+                },
+                {
+                  "cue": "collect",
+                  "name": "@AudioStreamPlayer3D@2982",
+                  "node_id": 342120990460,
+                  "playback_id": -9223371694683453636,
+                  "stream_id": -9223371894869194965
+                },
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@2983",
+                  "node_id": 342456535248,
+                  "playback_id": -9223371694347909308,
+                  "stream_id": -9223371894500096191
+                },
+                {
+                  "cue": "release_stone",
+                  "name": "@AudioStreamPlayer3D@2984",
+                  "node_id": 342573975340,
+                  "playback_id": -9223371694230468507,
+                  "stream_id": -9223371894349101285
+                },
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@2987",
+                  "node_id": 342775302249,
+                  "playback_id": -9223371694029141806,
+                  "stream_id": -9223371895338956975
+                },
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@2988",
+                  "node_id": 342892742433,
+                  "playback_id": -9223371693911701698,
+                  "stream_id": -9223371894500096191
+                },
+                {
+                  "cue": "release_stone",
+                  "name": "@AudioStreamPlayer3D@2989",
+                  "node_id": 343043737145,
+                  "playback_id": -9223371693760706560,
+                  "stream_id": -9223371894349101285
+                },
+                {
+                  "cue": "collect",
+                  "name": "InteractionSound",
+                  "node_id": 345728092625,
+                  "playback_id": -9223371691076351496,
+                  "stream_id": -9223371894869194965
+                }
+              ]
+            },
+            "iteration": 9,
+            "observed_playbacks_alive": 0
+          },
+          {
+            "after_release": {
+              "cached_action_clips": 6,
+              "nodes": 4,
+              "objects": 1811,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 104016756
+            },
+            "before_create": {
+              "cached_action_clips": 6,
+              "nodes": 5,
+              "objects": 1812,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 104001308
+            },
+            "before_dispose": {
+              "cached_action_clips": 6,
+              "nodes": 313,
+              "objects": 2488,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 108180940
+            },
+            "cleanup": {
+              "after": {
+                "cached_action_clips": 6,
+                "nodes": 5,
+                "objects": 1831,
+                "orphans": 0,
+                "resources": 240,
+                "static_bytes": 104031072
+              },
+              "before": {
+                "cached_action_clips": 6,
+                "nodes": 313,
+                "objects": 2496,
+                "orphans": 0,
+                "resources": 240,
+                "static_bytes": 108184880
+              },
+              "children_after": 0,
+              "fixture": "R4Cycle10",
+              "frame_waiters_before": 0,
+              "frame_waiters_before_free": 0,
+              "mix_passes": 2,
+              "playbacks_after": 0,
+              "poll_frames": 69,
+              "seconds": 0.140883,
+              "voices": [
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@3280",
+                  "node_id": 364283692869,
+                  "playback_id": -9223371672520751355,
+                  "stream_id": -9223371895489951926
+                },
+                {
+                  "cue": "collect",
+                  "name": "@AudioStreamPlayer3D@3281",
+                  "node_id": 364367579644,
+                  "playback_id": -9223371672436865277,
+                  "stream_id": -9223371894869194965
+                },
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@3282",
+                  "node_id": 364703123615,
+                  "playback_id": -9223371672101320942,
+                  "stream_id": -9223371894500096191
+                },
+                {
+                  "cue": "release_stone",
+                  "name": "@AudioStreamPlayer3D@3283",
+                  "node_id": 364820563412,
+                  "playback_id": -9223371671983880142,
+                  "stream_id": -9223371894349101285
+                },
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@3286",
+                  "node_id": 365021890614,
+                  "playback_id": -9223371671782553440,
+                  "stream_id": -9223371895338956975
+                },
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@3287",
+                  "node_id": 365139330466,
+                  "playback_id": -9223371671665113340,
+                  "stream_id": -9223371894500096191
+                },
+                {
+                  "cue": "release_stone",
+                  "name": "@AudioStreamPlayer3D@3288",
+                  "node_id": 365290326528,
+                  "playback_id": -9223371671514118189,
+                  "stream_id": -9223371894349101285
+                },
+                {
+                  "cue": "collect",
+                  "name": "InteractionSound",
+                  "node_id": 367974681034,
+                  "playback_id": -9223371668829763787,
+                  "stream_id": -9223371894869194965
+                }
+              ]
+            },
+            "iteration": 10,
+            "observed_playbacks_alive": 0
+          },
+          {
+            "after_release": {
+              "cached_action_clips": 6,
+              "nodes": 4,
+              "objects": 1811,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 104030544
+            },
+            "before_create": {
+              "cached_action_clips": 6,
+              "nodes": 5,
+              "objects": 1812,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 104015096
+            },
+            "before_dispose": {
+              "cached_action_clips": 6,
+              "nodes": 313,
+              "objects": 2488,
+              "orphans": 0,
+              "resources": 240,
+              "static_bytes": 108194728
+            },
+            "cleanup": {
+              "after": {
+                "cached_action_clips": 6,
+                "nodes": 5,
+                "objects": 1831,
+                "orphans": 0,
+                "resources": 240,
+                "static_bytes": 104044860
+              },
+              "before": {
+                "cached_action_clips": 6,
+                "nodes": 313,
+                "objects": 2496,
+                "orphans": 0,
+                "resources": 240,
+                "static_bytes": 108198668
+              },
+              "children_after": 0,
+              "fixture": "R4Cycle11",
+              "frame_waiters_before": 0,
+              "frame_waiters_before_free": 0,
+              "mix_passes": 2,
+              "playbacks_after": 0,
+              "poll_frames": 68,
+              "seconds": 0.139339,
+              "voices": [
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@3579",
+                  "node_id": 386496726798,
+                  "playback_id": -9223371650307717348,
+                  "stream_id": -9223371895489951926
+                },
+                {
+                  "cue": "collect",
+                  "name": "@AudioStreamPlayer3D@3580",
+                  "node_id": 386580613630,
+                  "playback_id": -9223371650223831259,
+                  "stream_id": -9223371894869194965
+                },
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@3581",
+                  "node_id": 386916157540,
+                  "playback_id": -9223371649888286936,
+                  "stream_id": -9223371894500096191
+                },
+                {
+                  "cue": "release_stone",
+                  "name": "@AudioStreamPlayer3D@3582",
+                  "node_id": 387033598465,
+                  "playback_id": -9223371649770846212,
+                  "stream_id": -9223371894349101285
+                },
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@3585",
+                  "node_id": 387234924544,
+                  "playback_id": -9223371649569519515,
+                  "stream_id": -9223371895338956975
+                },
+                {
+                  "cue": "work_stone",
+                  "name": "@AudioStreamPlayer3D@3586",
+                  "node_id": 387352364860,
+                  "playback_id": -9223371649452079335,
+                  "stream_id": -9223371894500096191
+                },
+                {
+                  "cue": "release_stone",
+                  "name": "@AudioStreamPlayer3D@3587",
+                  "node_id": 387503359820,
+                  "playback_id": -9223371649301084269,
+                  "stream_id": -9223371894349101285
+                },
+                {
+                  "cue": "collect",
+                  "name": "InteractionSound",
+                  "node_id": 390187715032,
+                  "playback_id": -9223371646616729874,
+                  "stream_id": -9223371894869194965
+                }
+              ]
+            },
+            "iteration": 11,
+            "observed_playbacks_alive": 0
+          }
+        ],
+        "scope": "accelerated native work/restore/dispose; cache intentionally retained; no long-session or process/GPU memory bound",
+        "seconds": 6.884123
+      },
+      "application_proof": {
+        "result": "PASS",
+        "original_entries_verified": 4787,
+        "exact_delta_files": 10,
+        "unchanged_code_outside_finish_functions": [
+          "game/b3/native_review.gd",
+          "game/c1/native_review.gd",
+          "game/c2/native_review.gd",
+          "game/c3/native_review.gd",
+          "game/c4/native_review.gd",
+          "game/e1/review.gd",
+          "game/f2/review.gd",
+          "game/f3/review.gd"
+        ],
+        "extra_verification_harness": [
+          {
+            "path": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\game\\r4\\soak.gd",
+            "sha256": "78dcf0687bdc8a9290073b0165c6aaf926d00cb0d8965eb4249b0f671018cfdf",
+            "scope": "publisher-only bounded exercise; not candidate delta"
+          },
+          {
+            "path": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime\\game\\r4\\soak.tscn",
+            "sha256": "44c315431dd9af2bf123922ed2199031dddce745b963da84db409b5e04461c24",
+            "scope": "publisher-only bounded exercise; not candidate delta"
+          }
+        ],
+        "note": "The sealed worker apply recipe is restricted to R8. This publisher copy independently enforces the same full before-hash/master checks inside the existing R4 v02 workspace; the shared recipe is unchanged."
+      },
+      "reproduced_worker_attribution": {
+        "result": "PASS",
+        "rederived_same_process_attribution": [
+          {
+            "log": "logs\\trace\\b3.log",
+            "matched": 14,
+            "total": 14
+          },
+          {
+            "log": "logs\\trace\\c1.log",
+            "matched": 0,
+            "total": 0
+          },
+          {
+            "log": "logs\\trace\\c2.log",
+            "matched": 0,
+            "total": 0
+          },
+          {
+            "log": "logs\\trace\\c3.log",
+            "matched": 22,
+            "total": 22
+          },
+          {
+            "log": "logs\\trace\\c4.log",
+            "matched": 14,
+            "total": 14
+          },
+          {
+            "log": "logs\\trace\\e1.log",
+            "matched": 4,
+            "total": 4
+          },
+          {
+            "log": "logs\\trace\\f2.log",
+            "matched": 0,
+            "total": 0
+          },
+          {
+            "log": "logs\\trace\\f3.log",
+            "matched": 16,
+            "total": 16
+          },
+          {
+            "log": "logs\\trace-quiet1\\c1.log",
+            "matched": 16,
+            "total": 16
+          },
+          {
+            "log": "logs\\trace-quiet2\\c1.log",
+            "matched": 32,
+            "total": 32
+          },
+          {
+            "log": "logs\\trace-quiet3\\c1.log",
+            "matched": 30,
+            "total": 30
+          },
+          {
+            "log": "logs\\trace-quiet4\\c1.log",
+            "matched": 31,
+            "total": 31
+          },
+          {
+            "log": "logs\\trace-quiet5\\c1.log",
+            "matched": 24,
+            "total": 24
+          },
+          {
+            "log": "logs\\trace-repeat1\\c1.log",
+            "matched": 0,
+            "total": 0
+          },
+          {
+            "log": "logs\\trace-repeat1\\c2.log",
+            "matched": 15,
+            "total": 15
+          },
+          {
+            "log": "logs\\trace-repeat1\\f2.log",
+            "matched": 0,
+            "total": 0
+          },
+          {
+            "log": "logs\\trace-repeat2\\c1.log",
+            "matched": 0,
+            "total": 0
+          },
+          {
+            "log": "logs\\trace-repeat2\\c2.log",
+            "matched": 0,
+            "total": 0
+          },
+          {
+            "log": "logs\\trace-repeat2\\f2.log",
+            "matched": 0,
+            "total": 0
+          },
+          {
+            "log": "logs\\trace-repeat3\\c1.log",
+            "matched": 0,
+            "total": 0
+          },
+          {
+            "log": "logs\\trace-repeat3\\c2.log",
+            "matched": 14,
+            "total": 14
+          },
+          {
+            "log": "logs\\trace-repeat3\\f2.log",
+            "matched": 10,
+            "total": 10
+          }
+        ],
+        "unchanged_final_native_matrix": [
+          {
+            "log": "b3-final.log",
+            "markers": [
+              "B3_NATIVE_OK 8"
+            ],
+            "cleanup_seconds": 0.157027
+          },
+          {
+            "log": "b3-partial.log",
+            "markers": [
+              "B3_NATIVE_OK 10"
+            ],
+            "cleanup_seconds": 0.159257
+          },
+          {
+            "log": "b3.log",
+            "markers": [
+              "B3_NATIVE_OK 16621"
+            ],
+            "cleanup_seconds": 0.115854
+          },
+          {
+            "log": "c1-final.log",
+            "markers": [
+              "C1_NATIVE_OK final-restart 7"
+            ],
+            "cleanup_seconds": 0.139386
+          },
+          {
+            "log": "c1-partial.log",
+            "markers": [
+              "C1_NATIVE_OK partial-restart 9"
+            ],
+            "cleanup_seconds": 0.140366
+          },
+          {
+            "log": "c1.log",
+            "markers": [
+              "C1_NATIVE_OK flow 20"
+            ],
+            "cleanup_seconds": 0.121976
+          },
+          {
+            "log": "c2-final.log",
+            "markers": [
+              "C2_NATIVE_RESULT 10 checks, 0 failures"
+            ],
+            "cleanup_seconds": 0.100316
+          },
+          {
+            "log": "c2-partial.log",
+            "markers": [
+              "C2_NATIVE_RESULT 12 checks, 0 failures"
+            ],
+            "cleanup_seconds": 0.097903
+          },
+          {
+            "log": "c2.log",
+            "markers": [
+              "C2_NATIVE_RESULT 25 checks, 0 failures"
+            ],
+            "cleanup_seconds": 0.13208
+          },
+          {
+            "log": "c3-final.log",
+            "markers": [
+              "C3_NATIVE_OK 9"
+            ],
+            "cleanup_seconds": 0.09891
+          },
+          {
+            "log": "c3-partial.log",
+            "markers": [
+              "C3_NATIVE_OK 9"
+            ],
+            "cleanup_seconds": 0.18531
+          },
+          {
+            "log": "c3.log",
+            "markers": [
+              "C3_NATIVE_OK 21"
+            ],
+            "cleanup_seconds": 0.171024
+          },
+          {
+            "log": "c4-final.log",
+            "markers": [
+              "C4_NATIVE_OK 22"
+            ],
+            "cleanup_seconds": 0.158022
+          },
+          {
+            "log": "c4-partial.log",
+            "markers": [
+              "C4_NATIVE_OK 22"
+            ],
+            "cleanup_seconds": 0.150234
+          },
+          {
+            "log": "c4.log",
+            "markers": [
+              "C4_NATIVE_OK 35"
+            ],
+            "cleanup_seconds": 0.180595
+          },
+          {
+            "log": "e1-restart.log",
+            "markers": [
+              "E1_RESTORE 132 checks, 0 failures"
+            ],
+            "cleanup_seconds": 0.125139
+          },
+          {
+            "log": "e1.log",
+            "markers": [
+              "E1_CHECKS 304 checks, 0 failures"
+            ],
+            "cleanup_seconds": 0.105429
+          },
+          {
+            "log": "f2-restart.log",
+            "markers": [
+              "F2_RESTART 29 checks 0 failures"
+            ],
+            "cleanup_seconds": 0.121691
+          },
+          {
+            "log": "f2.log",
+            "markers": [
+              "F2_CHECKS 50 checks 0 failures"
+            ],
+            "cleanup_seconds": 0.136619
+          },
+          {
+            "log": "f3-depleted.log",
+            "markers": [
+              "F3_RESTART-DEPLETED 247 checks, 0 failures"
+            ],
+            "cleanup_seconds": 0.167592
+          },
+          {
+            "log": "f3-restart.log",
+            "markers": [
+              "F3_RESTART 248 checks, 0 failures"
+            ],
+            "cleanup_seconds": 0.167129
+          },
+          {
+            "log": "f3.log",
+            "markers": [
+              "F3_CHECKS 306 checks, 0 failures"
+            ],
+            "cleanup_seconds": 0.104884
+          }
+        ],
+        "scope": "All trace identities matched within their own processes only. Original clean/leaking repeats and failed intermediate runs remain retained."
+      }
+    },
+    "scope": "Fresh publisher cache/state and separate-process native checks. Verification runs are not repeated benchmark or long-session claims."
+  },
+  "visual_review": "No art source, geometry, map or LOD was changed. The publisher reviewed the fixture-only terminal changes and retained capture provenance; the worker records 47 native PNGs including 42 fall frames.",
+  "finding": "G2-T01: technically resolved for the eight measured fixture exit paths. Ordinary-game shutdown, manual Escape and long-session behaviour remain outside that result.",
+  "remaining_limits": "The delta package is not a complete runnable game: R8 must use the pinned G1 runtime and apply the ten declared files by hash/function. Peer before-hash differences require reconciliation. The short accelerated disposal exercise is not an hours-long memory, RSS or VRAM bound. Owner visual acceptance and combined R8/R9 replay remain separate. No warning suppression or reusable audio-cache purge is introduced.",
+  "worker_remaining_limits": [
+    "Owner visual acceptance and independent R8 integration review remain pending; no ordinary-world rollout.",
+    "Fixture-only cleanup: no reusable InteractionSound, PCM cache, gameplay, simulation, save, data, mesh, body, recipe, scatter or geography change.",
+    "Automatic successful fixture completion is covered; manual Escape exits and ordinary-game shutdown are unchanged and unmeasured.",
+    "The repaired accelerated exercise lasts 7.024718 seconds over 12 cycles; it is not a long-session, process-RSS, VRAM, minimum-hardware or frame-time acceptance result.",
+    "Both reference and repaired release counts are stable. Reference observes seven pending playbacks and retains seven WeakRef observers at sampling; it also exits cleanly. The 14-object count difference is not 14 proven permanent leaks.",
+    "C3 uses original models/LOD selection and posed native work. Its 47 fresh PNGs and 42-frame fall sequence are not human playtime or owner art approval.",
+    "Verbose render logs retain NVAPI_EXECUTABLE_ALREADY_IN_USE(code -167); Compatibility import smoke retains the SSAO/Forward+ feature warning. No diagnostics were suppressed or reclassified as expected invalid input.",
+    "Final helper masters remove one terminal blank line from the engine-tested source copies. Executable bytes are identical after terminal CR/LF trimming; no new engine run is claimed for formatting alone. The first seal and staged whitespace failure are retained.",
+    "No peer candidate was consumed. R8 must reconcile review-file overlaps at the eight finish functions; guarded application rejects before-hash mismatches. The application recipe was not executed against R8.",
+    "Original source packages remain external immutable prerequisites; the final candidate contains exact changed-source masters and evidence, not a duplicate full runtime."
+  ],
+  "publisher_audit": {
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-repair-publication-rest-2026-09-14\\r4-publisher-audit.py",
+    "sha256": "4457dfd18fe05091ef83910f2cefceec8b6dd6a62877a15e39a7ff1068919034"
+  },
+  "publication": "These notes accompany an ordinary non-force push to approved origin/main. Actual remote-tip verification is retained separately after that push.",
+  "runtime_adoption": "Publication makes the isolated candidate available. R8 composes runtime hooks; ordinary-world rollout is not included."
+}

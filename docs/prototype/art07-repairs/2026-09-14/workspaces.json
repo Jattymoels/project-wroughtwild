@@ -155,6 +155,22 @@
         "waves": 4,
         "reading_files": 35,
         "local_links": 31
+      },
+      "current_delivery": {
+        "status": "published",
+        "source_commit": "1448b35cc38b3e20b54d8fcbefce82c2d01dcb09",
+        "receipt_commit": "b14c996714378e05dac34bd1a2dd7a7b4579cd74",
+        "original_source_commit": "9cdb6d5b5e2fe96b21fe40f6df96d13d9015c187",
+        "original_receipt_commit": "df07870493d6962b9e8c8d1d64e9948700155820",
+        "receipt": "docs/prototype/art07-repairs/2026-09-14/receipts/r4.json",
+        "package": {
+          "path": "D:/project-wroughtwild-art07-r4/build/art07-repairs/r4/v01/handoff-v02",
+          "manifest_sha256": "acebe2937b819bb2210241b394262b5a19916dec9199184d69d4d9d25dd49541",
+          "files": 747,
+          "bytes": 13305657
+        },
+        "publication_report": "docs/prototype/art07-repairs/2026-09-14/publication-r4.json",
+        "publisher_runtime": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v02\\runtime"
       }
     }
   ],

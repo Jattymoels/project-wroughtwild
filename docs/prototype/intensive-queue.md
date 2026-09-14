@@ -391,3 +391,8 @@ G2-V01: partial; isolated canopy fit is technically verified, with visual accept
 
 [R3 passed publisher verification](art07-repairs/2026-09-14/publication-r3.md).
 G2-V02: partial; isolated directional material candidate is technically verified, with owner and combined R8/R9 acceptance pending. Wave 2 still waits for R4 publication.
+
+### ART-07R4 publication, 14 September 2026
+
+[R4 passed publisher verification](art07-repairs/2026-09-14/publication-r4.md).
+G2-T01: technically resolved for the eight measured fixture exit paths. Ordinary-game shutdown, manual Escape and long-session behaviour remain outside that result. R1–R4 are checked and published; the wave-2 dependency gate is clear. Worktree preparation is recorded below once executed.
