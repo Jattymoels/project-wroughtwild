@@ -4,6 +4,33 @@ These instructions apply to every AI-assisted change in this repository.
 
 ## Prototype work limits — owner correction, 14 September 2026
 
+### Approved work belongs in the game
+
+The owner clarified that requested art/features are intended for the normal
+playable game. Once the owner approves the visuals/aesthetics or relevant
+behavior, that approval also authorises ordinary game integration, checked
+commits and ordinary pushes under the existing permission. Do not require a
+separate adoption/rollout permission or leave approved work in an isolated
+showcase/package as the final result. Use study-only delivery only when the owner
+explicitly asks for a study or approval is still pending.
+
+Do not require baseline comparisons, before/after renderer matrices, performance
+benchmarks, minimum-hardware clearance or another independent review before
+integrating approved work. Run only a short load/use smoke check and checks
+directly needed for changed behavior or a concrete observed failure. The owner
+will report lag during playtesting; investigate performance then, or when they
+explicitly request it. End-to-end and broad regression work can wait for the
+owner's selected playtest/final phase. Never conceal known breakage or mark
+unfinished checks passed. Preserve saves, paid ownership and existing game rules;
+do not invent unrelated mechanics to make an asset fit.
+
+This supersedes earlier blanket ordinary-world rollout exclusions, baseline-
+comparison requirements and target-device/performance gates for owner-approved
+work. It does not retroactively mark every candidate visually approved. Record
+the actual owner approval and integrate within that scope without asking again.
+
+### Keep verification proportionate
+
 This is a spare-time game prototype. The owner rejected the multi-hour R9 review
 and its repeated testing/analysis. These limits supersede older exhaustive evidence,
 benchmark, packaging and publisher requirements throughout this repository.
@@ -35,8 +62,9 @@ benchmark, packaging and publisher requirements throughout this repository.
 - At the deadline launch no more jobs and safely cancel only owned testing
   processes where possible. Preserve artifacts and report incomplete checks.
   Never leave background testing running after declaring the task stopped.
-- Only reproducible gameplay/save failures or demonstrated unusable performance
-  should be proposed as adoption blockers. Cosmetic gaps, exhaustive coverage,
+- Only concrete reproducible gameplay/save failures or an observed inability to
+  load/use the work should stop an integration. Do not proactively search for
+  performance blockers; performance tuning follows owner playtesting. Cosmetic gaps, exhaustive coverage,
   unmeasured hardware and hypothetical future risks are limitations by default.
   Prefer a playable iteration and owner feedback. No unsolicited repair waves.
 - Handoffs should be concise: achieved behavior, checks actually run, real

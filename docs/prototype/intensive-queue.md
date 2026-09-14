@@ -1,6 +1,6 @@
 # Wroughtwild intensive queue
 
-Updated: 14 September 2026 (all 26 original ART-07 deliveries complete; R1–R8 repairs published; R9 independent review is the current gate; Reclaimed Frontier future intensive and six owner references recorded). Owner: Matty. Delivery: Codex.
+Updated: 14 September 2026 (R1–R8 published; R9 stopped; owner-approved art is authorised for game integration with proportionate checks; Reclaimed Frontier remains future work). Owner: Matty. Delivery: Codex.
 
 The owner asked to keep track of the seven intensives discussed after the Wide
 Frontier pass and make a plan for the first one. This is the current planning
@@ -9,6 +9,15 @@ Recording an idea here does not mark it implemented or approve unspecified new
 game rules. Existing accepted work items and decisions remain authoritative.
 
 ## Current art priority — nature, world feel and all existing placeables
+
+**Owner integration policy, 14 September 2026:** requested art/features belong in
+the game once the owner approves the visuals/aesthetics or relevant behavior.
+That approval authorises integration; no separate adoption approval, baseline
+comparisons, benchmark gate or minimum-hardware clearance is required. Run a
+short load/use check and necessary focused checks. The owner will report lag
+during playtesting and choose when to run broader end-to-end work. This replaces
+older blanket rollout exclusions and testing gates for approved work. Preserve
+saves/game rules and report known problems; do not mark unapproved art approved.
 
 **Owner correction, 14 September 2026:** R9's multi-hour review was stopped as
 excessive for this spare-time prototype. Current owner AGENTS.md prototype work

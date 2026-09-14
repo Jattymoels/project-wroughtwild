@@ -5,6 +5,13 @@ Visual direction and reference preservation are accepted. Implementation has not
 started; the detailed generation/save/performance contract remains to be scoped.
 No additional R-wave number or worker prompt is assigned by this record.
 
+**Later owner workflow clarification, 14 September:** when the owner approves
+the result visually, integrate it into the game without separate rollout approval
+or baseline/benchmark gates. Current AGENTS.md prototype limits govern this future
+work too. Use a short load/use check and necessary changed-behavior checks;
+performance tuning and broad end-to-end review follow owner playtesting. No
+exhaustive evidence package or second art-review matrix is required.
+
 ## Intended result
 
 At walking height, the world feels undulating, inhabited and years beyond the
@@ -68,8 +75,8 @@ system, density target or implementation schedule by doing so.
 
 ## Proposed bounded approach for later planning
 
-1. Inspect the then-current main game and R9 findings. Establish matched ordinary
-   walking views and frame/streaming costs with the adopted kit. Separate asset
+1. Inspect the then-current main game and available R9 findings. Use ordinary
+   walking views with the adopted kit. Separate asset
    deficiencies from terrain shape, coverage and placement problems.
 2. Prepare a small terrain-and-vegetation target: a grassy walk through an old
    disturbance into woodland, plus a representative mountain view. Review
@@ -81,12 +88,14 @@ system, density target or implementation schedule by doing so.
    ownership; name a successor profile only if a later approved plan requires it.
 4. Carry the accepted relationships into representative seeded biome routes.
    Reuse the finished assets; set distances, coverage and pulse controls from
-   actual visual and runtime measurements. Document what each tuning value
+   visual review and practical use. Investigate runtime cost when the owner's
+   playtesting identifies a problem. Document what each tuning value
    changes for the player.
 5. Validate new-world variation and meaningful gameplay, save/reload, terrain
    edits, paid building, all legal forms including octagonal uses, resources,
-   historical profiles and both supported renderers. Review the result in motion
-   and publish a bounded playable build with costs and unresolved limitations.
+   historical profiles only where the behavior changes. Use one renderer by
+   default and stay within the prototype check budget. Publish the approved
+   playable result with known limitations; no performance comparison is required.
 
 These are planning checkpoints, not dispatched implementation slices or a fixed
 count of future repair waves. No engine/source-generation work is part of adding
@@ -96,7 +105,7 @@ this record.
 
 No clarification is required to preserve the owner's current intent. A later
 implementation plan must resolve terrain/placement ownership, legacy-save
-compatibility, representative biome scope and measured performance budgets before
+compatibility and representative biome scope before
 dependent changes. Crater size/frequency, erosion/cover proportions, pulse timing,
 vegetation density and draw distances remain untuned. The exact elapsed years
 can stay unspecified unless a concrete feature requires a number.
@@ -110,7 +119,8 @@ timings, protected terrain and progression are not rewritten by this art brief.
 Evaluate the future result with actual varied-seed, player-height day/shade/dusk
 views and native walking, including terrain away from hero landmarks. Check
 vegetation coverage/transition, mountain recovery, readable exposed scars with
-emission off/on, approach/building clearances, and matched setup/residency,
-settled and first-use/streaming costs. Owner acceptance concerns the sentiment
+emission off/on and approach/building clearances using a few useful views.
+Performance comparisons belong to a later owner-requested investigation.
+Owner acceptance concerns the sentiment
 and game feel, not pixel matching to these references. Technical tests alone do
-not close visual acceptance or establish performance on unmeasured hardware.
+not close visual acceptance. Unmeasured hardware does not block approved art adoption.

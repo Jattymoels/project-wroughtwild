@@ -13,6 +13,15 @@ R9 is closed out from available results; no further testing or packaging is
 authorised by its old prompt. A review can finish with explicit unverified limits
 and references to the existing R8 package instead of sealing another copy.
 
+The owner's subsequent clarification makes normal game integration the intended
+destination of requested art/features. Visual/aesthetic approval authorises that
+integration without separate rollout approval, baseline comparisons, benchmarks
+or performance clearance. Use a short load/use check; performance investigation
+and broader end-to-end work follow the owner's playtest feedback or request.
+This supersedes the old ordinary-world exclusions below for approved work, while
+preserving actual game rules/saves and avoiding assumptions that every candidate
+has already received visual approval. R9 itself remains stopped.
+
 The owner requested the plan, prompts and setup on 14 September 2026. This pack
 prepares follow-up work on the seven G2 findings. Sending one worker prompt selects
 that bounded task; preparing its directory does not implement it. The original

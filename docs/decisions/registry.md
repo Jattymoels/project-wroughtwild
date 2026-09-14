@@ -1,5 +1,19 @@
 # Decision Registry
 
+Owner workflow and integration correction, 14 September 2026: this is a spare-time
+prototype. Requested art/features should enter the normal game once the owner
+approves the visuals/aesthetics or relevant behavior. That approval includes
+ordinary integration and publication under standing Git permission. It requires
+no additional rollout permission, baseline comparisons, benchmark/target-device
+gate or independent review. Use a short load/use check and focused checks for
+changed behavior; performance tuning follows owner playtesting/feedback, and
+broad end-to-end work waits for their selected phase. R9's excessive review was
+stopped. Current [AGENTS.md](../../AGENTS.md) limits default review/verification
+to ten minutes and three focused jobs on one renderer. These owner corrections
+supersede historical exhaustive review and ordinary-world exclusion boilerplate
+for approved work. They do not approve every candidate, alter gameplay/save
+contracts or permit hiding known failures.
+
 Owner reference and future-work direction, 14 September 2026: preserve six new
 biome references with their sentiment and queue the
 [Reclaimed Frontier intensive](../prototype/reclaimed-frontier-intensive-2026-09-14.md)

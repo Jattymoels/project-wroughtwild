@@ -5,6 +5,10 @@ Copy into the serial coordinating task after a repair worker reports completion.
 ```text
 Coordinate publication of completed ART-07 repair candidates only.
 Owner checkout: C:/Users/Matty/Dev/project-wroughtwild.
+Owner-approved visuals/features are authorised for normal game integration.
+Do not impose separate rollout approval, baseline comparisons, benchmark or
+target-hardware gates. A short load/use check is sufficient unless a concrete
+changed behavior needs a focused check. Performance work follows owner playtesting.
 Read the current owner AGENTS.md Prototype work limits FIRST. This owner's later
 instruction supersedes exhaustive steps below: 10 minutes of review/verification,
 up to three focused checks, one renderer, no routine rerun of worker evidence or
@@ -52,8 +56,9 @@ after final integration. Report each G2 finding as open, partial or technically
 resolved with evidence, keeping owner visual acceptance and target hardware separate.
 The game/data/native baseline remains 6bb2e044dcd0bf1788896aa2c19cdf56fee93522.
 All 273 combinations including octagonal/chamfer/triangle uses, native bodies,
-stock/geography and paid save ownership remain constraints. No ordinary-world
-rollout, new geography/body decision or ART-06C rig adoption is implied by completion.
+stock/geography and paid save ownership remain constraints. Visual approval
+authorises normal game integration; an unreviewed candidate is not automatically
+approved. Do not invent unrelated geography/body/gameplay decisions.
 
 If platform automatic approval review rejects a publication, state the exact action
 and reason; do not retry by another route. Otherwise continue under standing scope.
