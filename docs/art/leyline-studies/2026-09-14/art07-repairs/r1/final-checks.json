@@ -1,0 +1,3766 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "check": "real job build-broadleaf",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job build-broadleaf",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job build-pine",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job build-pine",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job reopen",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job reopen",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job preserve-packed-02",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job preserve-packed-02",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job reopen-packed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job reopen-packed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job source-audit-packed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job source-audit-packed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job import",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job import",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job smoke-forward_plus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job smoke-forward_plus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job smoke-gl_compatibility",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job smoke-gl_compatibility",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job b1-before",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job b1-before",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job b1-after",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job b1-after",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job b1-partial",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job b1-partial",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job b1-final",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job b1-final",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job c4-flow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job c4-flow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job c4-partial",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job c4-partial",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job c4-final",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job c4-final",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job probe-before",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job probe-before",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job paid-before",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job paid-before",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job paid-restart-before",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job paid-restart-before",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job probe-after",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job probe-after",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job paid-after",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job paid-after",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job paid-restart-after",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job paid-restart-after",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job parse-native_tree",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job parse-native_tree",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job parse-views",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job parse-views",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job parse-studio",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job parse-studio",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job parse-route",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job parse-route",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job parse-b1_native",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job parse-b1_native",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job parse-c4_native",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job parse-c4_native",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job parse-paid",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job parse-paid",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job parse-probe",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job parse-probe",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job parse-catalogue",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job parse-catalogue",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job studio-forward_plus-02",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job studio-forward_plus-02",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job studio-gl_compatibility",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job studio-gl_compatibility",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job views-after-forward_plus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job views-after-forward_plus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job views-after-gl_compatibility",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job views-after-gl_compatibility",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job views-before-forward_plus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job views-before-forward_plus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job views-before-gl_compatibility",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job views-before-gl_compatibility",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job b1-rendered-forward_plus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job b1-rendered-forward_plus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job b1-rendered-gl_compatibility",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job b1-rendered-gl_compatibility",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job catalogue-forward_plus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job catalogue-forward_plus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job catalogue-gl_compatibility",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job catalogue-gl_compatibility",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job route-motion",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job route-motion",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job studio-final-forward_plus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job studio-final-forward_plus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job studio-final-gl_compatibility",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job studio-final-gl_compatibility",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job views-before-forward_plus-v02",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job views-before-forward_plus-v02",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job views-after-forward_plus-v02",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job views-after-forward_plus-v02",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job views-before-gl_compatibility-v02",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job views-before-gl_compatibility-v02",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job views-after-gl_compatibility-v02",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job views-after-gl_compatibility-v02",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job cost-before-forward_plus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job cost-before-forward_plus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job stream-before-forward_plus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job stream-before-forward_plus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job cost-after-forward_plus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job cost-after-forward_plus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job stream-after-forward_plus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job stream-after-forward_plus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job cost-before-gl_compatibility",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job cost-before-gl_compatibility",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job stream-before-gl_compatibility",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job stream-before-gl_compatibility",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job cost-after-gl_compatibility",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job cost-after-gl_compatibility",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real job stream-after-gl_compatibility",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "isolated job stream-after-gl_compatibility",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Full paid probe snapshots identical",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Full saved geography identical",
+      "passed": true,
+      "detail": "550b2d742314136a71a8c177920059bd245996e744b8722c8ba8c68afbde4a70"
+    },
+    {
+      "check": "Both probe assertion sets pass",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Full no-grants native ownership/geography initial with all raw differences exposed",
+      "passed": true,
+      "detail": {
+        "full_snapshot_equal": true,
+        "raw_differences": [],
+        "native_ownership_and_geography_equal": true
+      }
+    },
+    {
+      "check": "Full no-grants native ownership/geography paid with all raw differences exposed",
+      "passed": true,
+      "detail": {
+        "full_snapshot_equal": false,
+        "raw_differences": [
+          {
+            "path": "stations/2/name",
+            "before": "@StaticBody3D@4310",
+            "after": "@StaticBody3D@4311",
+            "station_key": "station_forge_basic_474500_31000_447500",
+            "classification": "Engine-generated scene name for a newly placed forge. Native ownership key, type, pose, rotation, upgrade and built flag are exactly equal. Save schema/code unchanged."
+          }
+        ],
+        "native_ownership_and_geography_equal": true
+      }
+    },
+    {
+      "check": "Full no-grants native ownership/geography final with all raw differences exposed",
+      "passed": true,
+      "detail": {
+        "full_snapshot_equal": false,
+        "raw_differences": [
+          {
+            "path": "stations/2/name",
+            "before": "@StaticBody3D@4310",
+            "after": "@StaticBody3D@4311",
+            "station_key": "station_forge_basic_474500_31000_447500",
+            "classification": "Engine-generated scene name for a newly placed forge. Native ownership key, type, pose, rotation, upgrade and built flag are exactly equal. Save schema/code unchanged."
+          }
+        ],
+        "native_ownership_and_geography_equal": true
+      }
+    },
+    {
+      "check": "Raw initial snapshot identical",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Paid flow before",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Real separate-process paid restore before",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Distinct paid process IDs before",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Paid flow after",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Real separate-process paid restore after",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Distinct paid process IDs after",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native r1-native-b1-after-forward_plus\\native-flow.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native r1-native-b1-after-gl_compatibility\\native-flow.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native r1-native-b1-after-headless\\native-final-restart.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native r1-native-b1-after-headless\\native-flow.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native r1-native-b1-after-headless\\native-partial-restart.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native r1-native-b1-before-headless\\native-flow.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native r1-native-c4-after-headless\\native-final-restart.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native r1-native-c4-after-headless\\native-flow.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native r1-native-c4-after-headless\\native-partial-restart.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Distinct b1-partial process",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Distinct b1-final process",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Distinct c4-partial process",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Distinct c4-final process",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Byte-identical selected export after packed-master repair broadleaf-a-lod0.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Byte-identical selected export after packed-master repair broadleaf-a-lod1.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Byte-identical selected export after packed-master repair broadleaf-a-lod2.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Byte-identical selected export after packed-master repair broadleaf-altered-lod0.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Byte-identical selected export after packed-master repair broadleaf-altered-lod1.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Byte-identical selected export after packed-master repair broadleaf-altered-lod2.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Byte-identical selected export after packed-master repair broadleaf-b-lod0.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Byte-identical selected export after packed-master repair broadleaf-b-lod1.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Byte-identical selected export after packed-master repair broadleaf-b-lod2.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Byte-identical selected export after packed-master repair broadleaf-root-skirt.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Byte-identical selected export after packed-master repair broadleaf-stump.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Byte-identical selected export after packed-master repair pine-a-lod0.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Byte-identical selected export after packed-master repair pine-a-lod1.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Byte-identical selected export after packed-master repair pine-a-lod2.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Byte-identical selected export after packed-master repair pine-b-lod0.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Byte-identical selected export after packed-master repair pine-b-lod1.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Byte-identical selected export after packed-master repair pine-b-lod2.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Byte-identical selected export after packed-master repair pine-root-skirt.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Byte-identical selected export after packed-master repair pine-stump.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Two actual packed-master copies reopened",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Every exported LOD/stage finite and fitted",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Original source objects/maps retained inside both masters",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Actual altered geometry sections measured in every LOD",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No extra triangles or changed decoded maps",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "All 19 source material bindings and sampler settings retained",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "forward_plus identical cameras",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "forward_plus matched views passed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "forward_plus camera label home-player-height",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_456_32_462",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_441_32_454",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_438_32_441",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_464_32_466",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_445_33_464",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_438_33_456",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_450_33_467",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_437_33_456",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_434_33_446",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_443_33_464",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_433_33_451",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_469_32_471",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_440_33_471",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_469_32_477",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_471_32_479",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_424_33_452",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_440_33_475",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_476_32_478",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_472_32_480",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_421_33_446",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_427_33_465",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_421_33_451",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_436_33_477",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_457_32_485",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_464_32_487",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_465_32_487",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_415_33_450",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_421_33_477",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_415_33_475",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_459_32_499",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_408_33_463",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_405_33_458",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_457_32_509",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_400_33_471",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_417_32_496",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_393_33_457",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_484_31_508",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_474_32_512",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_449_32_513",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_466_32_515",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_451_32_515",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_397_33_481",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_448_32_517",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_415_32_503",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_397_32_484",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_401_32_491",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_397_32_488",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_447_32_520",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_383_32_458",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_445_32_521",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_435_32_519",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_473_32_523",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_426_31_517",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_401_32_499",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_381_32_466",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_399_32_501",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_476_32_526",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_385_33_481",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_447_32_527",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_458_32_528",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_380_32_472",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_383_33_480",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_400_32_506",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_380_32_478",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_379_32_476",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_463_32_533",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_389_32_498",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_450_32_533",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_371_32_465",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_371_32_467",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_454_32_536",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_370_32_465",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_417_31_526",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_412_31_524",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_486_32_535",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_472_32_538",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_homev6_3_tree_1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_385_32_503",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_372_32_487",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_388_32_513",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_448_31_543",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_494_32_539",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_388_32_515",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_395_31_522",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_381_32_508",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_366_32_486",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_468_32_547",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_homev6_3_tree_2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_450_30_549",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_390_31_523",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_403_30_536",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_470_32_552",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_491_32_548",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_391_31_529",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_pine_356_33_479",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_492_32_549",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_485_32_551",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_474_32_553",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_367_32_503",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_407_30_541",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_377_32_518",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_462_31_556",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_412_29_549",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_464_31_561",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_pine_352_33_491",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_465_32_562",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_363_32_512",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_474_32_562",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "forward_plus camera label route-player-height",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_455_31_384",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_445_31_384",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_452_31_375",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_466_31_371",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_443_37_369",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_472_31_368",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_455_40_365",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_452_45_355",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_439_46_352",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_415_37_359",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_472_46_348",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_469_338",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_474_337",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_484_335",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_426_325",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_437_320",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_409_48_327",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_461_316",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_420_318",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_452_311",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_493_322",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_472_312",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_499_325",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_498_321",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_406_311",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_508_322",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_486_307",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_460_299",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_432_296",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_441_294",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_477_297",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_468_294",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_404_301",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_484_298",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_420_294",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_497_301",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_464_289",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_487_294",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_442_286",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_467_287",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_472_288",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_519_310",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_398_292",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_424_283",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_455_280",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_406_286",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_415_283",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_447_278",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_487_285",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_386_294",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_433_277",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_398_286",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_518_299",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_region_rootvault_wildwood_pine_405_283",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "forward_plus camera label pine-player-height",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_pine_283_52_4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "forward_plus camera label ash_wood-player-height",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_ash_snag_22_47_209",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_17_56_134",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_19_56_114",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility forward_plus wnv6_tree_34_48_92",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "forward_plus all 273 legal native pairs",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "forward_plus settled before",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "forward_plus streaming before",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "forward_plus settled after",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "forward_plus streaming after",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "forward_plus actual every-LOD images",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "forward_plus altered emission off/on and motion",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "forward_plus actual native fall frame timing",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "gl_compatibility identical cameras",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "gl_compatibility matched views passed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "gl_compatibility camera label home-player-height",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_456_32_462",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_441_32_454",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_438_32_441",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_464_32_466",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_445_33_464",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_438_33_456",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_450_33_467",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_437_33_456",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_434_33_446",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_443_33_464",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_433_33_451",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_469_32_471",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_440_33_471",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_469_32_477",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_471_32_479",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_424_33_452",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_440_33_475",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_476_32_478",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_472_32_480",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_421_33_446",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_427_33_465",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_421_33_451",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_436_33_477",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_457_32_485",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_464_32_487",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_465_32_487",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_415_33_450",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_421_33_477",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_415_33_475",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_459_32_499",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_408_33_463",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_405_33_458",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_457_32_509",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_400_33_471",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_417_32_496",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_393_33_457",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_484_31_508",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_474_32_512",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_449_32_513",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_466_32_515",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_451_32_515",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_397_33_481",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_448_32_517",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_415_32_503",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_397_32_484",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_401_32_491",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_397_32_488",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_447_32_520",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_383_32_458",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_445_32_521",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_435_32_519",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_473_32_523",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_426_31_517",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_401_32_499",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_381_32_466",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_399_32_501",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_476_32_526",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_385_33_481",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_447_32_527",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_458_32_528",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_380_32_472",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_383_33_480",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_400_32_506",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_380_32_478",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_379_32_476",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_463_32_533",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_389_32_498",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_450_32_533",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_371_32_465",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_371_32_467",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_454_32_536",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_370_32_465",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_417_31_526",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_412_31_524",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_486_32_535",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_472_32_538",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_homev6_3_tree_1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_385_32_503",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_372_32_487",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_388_32_513",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_448_31_543",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_494_32_539",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_388_32_515",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_395_31_522",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_381_32_508",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_366_32_486",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_468_32_547",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_homev6_3_tree_2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_450_30_549",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_390_31_523",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_403_30_536",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_470_32_552",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_491_32_548",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_391_31_529",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_pine_356_33_479",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_492_32_549",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_485_32_551",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_474_32_553",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_367_32_503",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_407_30_541",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_377_32_518",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_462_31_556",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_412_29_549",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_464_31_561",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_pine_352_33_491",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_465_32_562",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_363_32_512",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_474_32_562",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "gl_compatibility camera label route-player-height",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_455_31_384",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_445_31_384",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_452_31_375",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_466_31_371",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_443_37_369",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_472_31_368",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_455_40_365",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_452_45_355",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_439_46_352",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_415_37_359",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_472_46_348",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_469_338",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_474_337",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_484_335",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_426_325",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_437_320",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_409_48_327",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_461_316",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_420_318",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_452_311",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_493_322",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_472_312",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_499_325",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_498_321",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_406_311",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_508_322",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_486_307",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_460_299",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_432_296",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_441_294",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_477_297",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_468_294",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_404_301",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_484_298",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_420_294",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_497_301",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_464_289",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_487_294",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_442_286",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_467_287",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_472_288",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_519_310",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_398_292",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_424_283",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_455_280",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_406_286",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_415_283",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_447_278",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_487_285",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_386_294",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_433_277",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_398_286",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_518_299",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_region_rootvault_wildwood_pine_405_283",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "gl_compatibility camera label pine-player-height",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_pine_283_52_4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "gl_compatibility camera label ash_wood-player-height",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_ash_snag_22_47_209",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_17_56_134",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_19_56_114",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Native pose/body/visibility gl_compatibility wnv6_tree_34_48_92",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "gl_compatibility all 273 legal native pairs",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "gl_compatibility settled before",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "gl_compatibility streaming before",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "gl_compatibility settled after",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "gl_compatibility streaming after",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "gl_compatibility actual every-LOD images",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "gl_compatibility altered emission off/on and motion",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "gl_compatibility actual native fall frame timing",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Actual input route motion",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Exact pinned originals except one documented selection hook",
+      "passed": true,
+      "detail": [
+        "game/g1/art.gd"
+      ]
+    },
+    {
+      "check": "Unmodified copied source attachment-sockets.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source broadleaf-a-lod0.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source broadleaf-a-lod1.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source broadleaf-a-lod2.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source broadleaf-altered-lod0.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source broadleaf-altered-lod1.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source broadleaf-altered-lod2.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source broadleaf-b-lod0.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source broadleaf-b-lod1.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source broadleaf-b-lod2.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source broadleaf-deadwood.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source broadleaf-master.blend",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source broadleaf-root-skirt.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source broadleaf-stump.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source kit-report.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source attachment-sockets.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source kit-report.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source pine-a-lod0.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source pine-a-lod1.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source pine-a-lod2.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source pine-b-lod0.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source pine-b-lod1.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source pine-b-lod2.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source pine-deadwood.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source pine-master.blend",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source pine-root-skirt.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source pine-stump.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source kit.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source c4-master.blend",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source kit.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source ash-a-lod0.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source ash-a-lod1.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source ash-a-lod2.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source ash-altered-lod0.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source ash-altered-lod1.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source ash-altered-lod2.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source ash-b-lod0.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source ash-b-lod1.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source ash-b-lod2.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source ash-felled-a-lod0.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source ash-felled-a-lod1.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source ash-felled-a-lod2.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source ash-felled-b-lod0.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source ash-felled-b-lod1.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source ash-felled-b-lod2.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source ash-short-lod0.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source ash-short-lod1.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source ash-short-lod2.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source ash-stump-lod0.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source ash-stump-lod1.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source ash-stump-lod2.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source boulder-full-lod0.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source rock-shelf-lod0.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source scrub-lod0.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source scrub-lod1.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source scrub-lod2.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source seed-grass-lod0.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source seed-grass-lod1.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source seed-grass-lod2.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source talus-pebbles-lod0.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source thorn-lod0.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source thorn-lod1.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source thorn-lod2.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unmodified copied source models.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Private checkpoint retained b1-partial.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Private checkpoint retained b1-final.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Private checkpoint retained c4-partial.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Private checkpoint retained c4-final.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Private checkpoint retained g1-paid.json",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "jobs": [
+    {
+      "id": "build-broadleaf",
+      "seconds": 16.7474796,
+      "exit_code": 0,
+      "child_pid": 2876,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\build-broadleaf.log",
+      "log_sha256": "ef4794c4b674268fdb67927fe448763a812d45f7ce0dfe7e2336f2c541c4fb71",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\build-broadleaf",
+      "stderr": ""
+    },
+    {
+      "id": "build-pine",
+      "seconds": 17.8051979,
+      "exit_code": 0,
+      "child_pid": 31656,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\build-pine.log",
+      "log_sha256": "6511dbfcd53f3734d266f23a1b1b808fcafe0e9fe96aff67fc5afab654b1f7a5",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\build-pine",
+      "stderr": ""
+    },
+    {
+      "id": "reopen",
+      "seconds": 18.7450405,
+      "exit_code": 0,
+      "child_pid": 6400,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\reopen.log",
+      "log_sha256": "7211168253321d1ff83aa00d0977f616a8c54072ee82f4f5dd31fbfd5a8a4b5e",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\reopen",
+      "stderr": ""
+    },
+    {
+      "id": "preserve-packed-02",
+      "seconds": 8.5330493,
+      "exit_code": 0,
+      "child_pid": 29896,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\preserve-packed-02.log",
+      "log_sha256": "3cbee869ac9bbdbb0884a29f204ae6b0883218ba867ac535bea6097357dcf1ac",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\preserve-packed-02",
+      "stderr": ""
+    },
+    {
+      "id": "reopen-packed",
+      "seconds": 18.9581997,
+      "exit_code": 0,
+      "child_pid": 36108,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\reopen-packed.log",
+      "log_sha256": "ba857d0a1a54d21cb5ed7261d84c3c1e338fe5ecf8b8f74197dd40ae284f7f5f",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\reopen-packed",
+      "stderr": ""
+    },
+    {
+      "id": "source-audit-packed",
+      "seconds": 8.0045234,
+      "exit_code": 0,
+      "child_pid": 12172,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\source-audit-packed.log",
+      "log_sha256": "bd537eb75ffefebba3b6ac8d17a91c9609e60baa8aa7344ca087285e076c570c",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\source-audit-packed",
+      "stderr": ""
+    },
+    {
+      "id": "import",
+      "seconds": 88.2854343,
+      "exit_code": 0,
+      "child_pid": 20144,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\import.log",
+      "log_sha256": "56af520b84e59345d803c6a81ffe0a241880a908ea2755d27c27da062148e1e2",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\import",
+      "stderr": ""
+    },
+    {
+      "id": "smoke-forward_plus",
+      "seconds": 85.7367824,
+      "exit_code": 0,
+      "child_pid": 34988,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\smoke-forward_plus.log",
+      "log_sha256": "a6457489dd615c57f47571067cb821b47a0330f90c95b3e27d339454e8509772",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\smoke-forward_plus",
+      "stderr": ""
+    },
+    {
+      "id": "smoke-gl_compatibility",
+      "seconds": 83.0017796,
+      "exit_code": 0,
+      "child_pid": 35608,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\smoke-gl_compatibility.log",
+      "log_sha256": "bcc5dd1c40549a72a960cfa2758068943fe9d3f7b5717a2024a4851ad364bbc0",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\smoke-gl_compatibility",
+      "stderr": "WARNING: Screen-space ambient occlusion (SSAO) can only be enabled when using the Forward+ renderer.\n   at: environment_set_ssao (servers/rendering/storage/environment_storage.cpp:586)\n   GDScript backtrace (most recent call first):\n       [0] configure (res://art/wildland_atmosphere.gd:23)\n       [1] setup (res://scripts/biome_mood.gd:147)\n       [2] _build_world (res://scripts/sandpit.gd:141)\n       [3] _ready (res://g1/play.gd:6)\n"
+    },
+    {
+      "id": "b1-before",
+      "seconds": 1.7813704,
+      "exit_code": 0,
+      "child_pid": 10420,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\b1-before.log",
+      "log_sha256": "001cbbe08b68a222538b33461cc52396783a4e63bd2d0a3d454709b8670ec709",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\b1-before",
+      "stderr": "WARNING: ObjectDB instances leaked at exit (run with --verbose for details).\n   at: cleanup (core/object/object.cpp:2514)\n"
+    },
+    {
+      "id": "b1-after",
+      "seconds": 1.7731696,
+      "exit_code": 0,
+      "child_pid": 7820,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\b1-after.log",
+      "log_sha256": "001cbbe08b68a222538b33461cc52396783a4e63bd2d0a3d454709b8670ec709",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\b1-after",
+      "stderr": "WARNING: ObjectDB instances leaked at exit (run with --verbose for details).\n   at: cleanup (core/object/object.cpp:2514)\n"
+    },
+    {
+      "id": "b1-partial",
+      "seconds": 1.6823794,
+      "exit_code": 0,
+      "child_pid": 5856,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\b1-partial.log",
+      "log_sha256": "8d9ef41f60000bf9cad1349762d4d9c834827611266bea0c3bb6eac643df2552",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\b1-after",
+      "stderr": ""
+    },
+    {
+      "id": "b1-final",
+      "seconds": 1.688812,
+      "exit_code": 0,
+      "child_pid": 22624,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\b1-final.log",
+      "log_sha256": "8d9ef41f60000bf9cad1349762d4d9c834827611266bea0c3bb6eac643df2552",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\b1-after",
+      "stderr": ""
+    },
+    {
+      "id": "c4-flow",
+      "seconds": 1.5931139,
+      "exit_code": 0,
+      "child_pid": 31772,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\c4-flow.log",
+      "log_sha256": "55d5cce4b4c4f9bc0a655f8ea0b68ff3c4f2a35001b66e09495db3bff0492231",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\c4",
+      "stderr": "WARNING: ObjectDB instances leaked at exit (run with --verbose for details).\n   at: cleanup (core/object/object.cpp:2514)\n"
+    },
+    {
+      "id": "c4-partial",
+      "seconds": 1.5877148,
+      "exit_code": 0,
+      "child_pid": 16536,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\c4-partial.log",
+      "log_sha256": "50e964c238bb7c0406a53270c41a470d96d34b522e04df82e247236702b09207",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\c4",
+      "stderr": ""
+    },
+    {
+      "id": "c4-final",
+      "seconds": 1.5918202,
+      "exit_code": 0,
+      "child_pid": 17484,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\c4-final.log",
+      "log_sha256": "50e964c238bb7c0406a53270c41a470d96d34b522e04df82e247236702b09207",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\c4",
+      "stderr": ""
+    },
+    {
+      "id": "probe-before",
+      "seconds": 106.5313093,
+      "exit_code": 0,
+      "child_pid": 36064,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\probe-before.log",
+      "log_sha256": "dcd0d92a25cd2d0910f432354d04e1a2272a1082249a943e8ba224181222ac6c",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\probe-before",
+      "stderr": ""
+    },
+    {
+      "id": "paid-before",
+      "seconds": 122.9943233,
+      "exit_code": 0,
+      "child_pid": 33724,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\paid-before.log",
+      "log_sha256": "8f86e72af80474847bc32bf58012f9b125693b6a71c02a5bce76c00a24673507",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\paid-before",
+      "stderr": ""
+    },
+    {
+      "id": "paid-restart-before",
+      "seconds": 87.4311644,
+      "exit_code": 0,
+      "child_pid": 37232,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\paid-restart-before.log",
+      "log_sha256": "4d60bf09071638b1c43b5d67aa775c915b9d3f849f6d21e6a61d7f96cdb45a99",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\paid-before",
+      "stderr": ""
+    },
+    {
+      "id": "probe-after",
+      "seconds": 95.2325319,
+      "exit_code": 0,
+      "child_pid": 34524,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\probe-after.log",
+      "log_sha256": "dcd0d92a25cd2d0910f432354d04e1a2272a1082249a943e8ba224181222ac6c",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\probe-after",
+      "stderr": ""
+    },
+    {
+      "id": "paid-after",
+      "seconds": 111.6630808,
+      "exit_code": 0,
+      "child_pid": 3392,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\paid-after.log",
+      "log_sha256": "8f86e72af80474847bc32bf58012f9b125693b6a71c02a5bce76c00a24673507",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\paid-after",
+      "stderr": ""
+    },
+    {
+      "id": "paid-restart-after",
+      "seconds": 80.0104312,
+      "exit_code": 0,
+      "child_pid": 35428,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\paid-restart-after.log",
+      "log_sha256": "4d60bf09071638b1c43b5d67aa775c915b9d3f849f6d21e6a61d7f96cdb45a99",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\paid-after",
+      "stderr": ""
+    },
+    {
+      "id": "parse-native_tree",
+      "seconds": 1.0921267,
+      "exit_code": 0,
+      "child_pid": 37492,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\parse-native_tree.log",
+      "log_sha256": "dae8228273d100d1cf41a2478c598503facf4efba77627edda1c58ec57ebc4ce",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\parse-native_tree",
+      "stderr": ""
+    },
+    {
+      "id": "parse-views",
+      "seconds": 1.2204971,
+      "exit_code": 0,
+      "child_pid": 10276,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\parse-views.log",
+      "log_sha256": "dae8228273d100d1cf41a2478c598503facf4efba77627edda1c58ec57ebc4ce",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\parse-views",
+      "stderr": ""
+    },
+    {
+      "id": "parse-studio",
+      "seconds": 0.2067827,
+      "exit_code": 0,
+      "child_pid": 18364,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\parse-studio.log",
+      "log_sha256": "dae8228273d100d1cf41a2478c598503facf4efba77627edda1c58ec57ebc4ce",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\parse-studio",
+      "stderr": ""
+    },
+    {
+      "id": "parse-route",
+      "seconds": 1.2250946,
+      "exit_code": 0,
+      "child_pid": 35896,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\parse-route.log",
+      "log_sha256": "dae8228273d100d1cf41a2478c598503facf4efba77627edda1c58ec57ebc4ce",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\parse-route",
+      "stderr": ""
+    },
+    {
+      "id": "parse-b1_native",
+      "seconds": 1.0297278,
+      "exit_code": 0,
+      "child_pid": 35380,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\parse-b1_native.log",
+      "log_sha256": "dae8228273d100d1cf41a2478c598503facf4efba77627edda1c58ec57ebc4ce",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\parse-b1_native",
+      "stderr": ""
+    },
+    {
+      "id": "parse-c4_native",
+      "seconds": 1.0389642,
+      "exit_code": 0,
+      "child_pid": 33652,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\parse-c4_native.log",
+      "log_sha256": "dae8228273d100d1cf41a2478c598503facf4efba77627edda1c58ec57ebc4ce",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\parse-c4_native",
+      "stderr": ""
+    },
+    {
+      "id": "parse-paid",
+      "seconds": 1.1247899,
+      "exit_code": 0,
+      "child_pid": 9084,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\parse-paid.log",
+      "log_sha256": "dae8228273d100d1cf41a2478c598503facf4efba77627edda1c58ec57ebc4ce",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\parse-paid",
+      "stderr": ""
+    },
+    {
+      "id": "parse-probe",
+      "seconds": 1.1287177,
+      "exit_code": 0,
+      "child_pid": 10484,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\parse-probe.log",
+      "log_sha256": "dae8228273d100d1cf41a2478c598503facf4efba77627edda1c58ec57ebc4ce",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\parse-probe",
+      "stderr": ""
+    },
+    {
+      "id": "parse-catalogue",
+      "seconds": 1.1295347,
+      "exit_code": 0,
+      "child_pid": 37160,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\parse-catalogue.log",
+      "log_sha256": "dae8228273d100d1cf41a2478c598503facf4efba77627edda1c58ec57ebc4ce",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\parse-catalogue",
+      "stderr": ""
+    },
+    {
+      "id": "studio-forward_plus-02",
+      "seconds": 8.6989682,
+      "exit_code": 0,
+      "child_pid": 37556,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\studio-forward_plus-02.log",
+      "log_sha256": "0ea405cbf1fcf02757bc4ba880e3b29b2cc357c4a72343c7e8e0021771975b8e",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\studio-forward_plus-02",
+      "stderr": ""
+    },
+    {
+      "id": "studio-gl_compatibility",
+      "seconds": 8.5839568,
+      "exit_code": 0,
+      "child_pid": 15636,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\studio-gl_compatibility.log",
+      "log_sha256": "3ce95333c083a727a29bac7a80d3cf2c07c81027394ba44a37869b6d05e4c3dc",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\studio-gl_compatibility",
+      "stderr": ""
+    },
+    {
+      "id": "views-after-forward_plus",
+      "seconds": 99.8216048,
+      "exit_code": 0,
+      "child_pid": 21484,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\views-after-forward_plus.log",
+      "log_sha256": "af5c7f2a9b457c2d26483b6f19fa978c4903ac4fca225539f3b0bcf19219daa2",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\views-after-forward_plus",
+      "stderr": ""
+    },
+    {
+      "id": "views-after-gl_compatibility",
+      "seconds": 97.286381,
+      "exit_code": 0,
+      "child_pid": 33592,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\views-after-gl_compatibility.log",
+      "log_sha256": "75cfce67d7a28a46edd7a7d1155f58913ae4cb8da8415d89f9c22ea7b62073c0",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\views-after-gl_compatibility",
+      "stderr": "WARNING: Screen-space ambient occlusion (SSAO) can only be enabled when using the Forward+ renderer.\n   at: environment_set_ssao (servers/rendering/storage/environment_storage.cpp:586)\n   GDScript backtrace (most recent call first):\n       [0] configure (res://art/wildland_atmosphere.gd:23)\n       [1] setup (res://scripts/biome_mood.gd:147)\n       [2] _build_world (res://scripts/sandpit.gd:141)\n       [3] _ready (res://g1/paid.gd:19)\n"
+    },
+    {
+      "id": "views-before-forward_plus",
+      "seconds": 111.517692,
+      "exit_code": 0,
+      "child_pid": 15780,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\views-before-forward_plus.log",
+      "log_sha256": "897e883af3081a1c574538e29bfda4ade02febfc181b8945fac7b4d383dfed94",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\views-before-forward_plus",
+      "stderr": ""
+    },
+    {
+      "id": "views-before-gl_compatibility",
+      "seconds": 108.6231054,
+      "exit_code": 0,
+      "child_pid": 31996,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\views-before-gl_compatibility.log",
+      "log_sha256": "eb84f570e021fba8b08b827d0022d24b590c344cda82cfbb35e03b4a94d4f0fa",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\views-before-gl_compatibility",
+      "stderr": "WARNING: Screen-space ambient occlusion (SSAO) can only be enabled when using the Forward+ renderer.\n   at: environment_set_ssao (servers/rendering/storage/environment_storage.cpp:586)\n   GDScript backtrace (most recent call first):\n       [0] configure (res://art/wildland_atmosphere.gd:23)\n       [1] setup (res://scripts/biome_mood.gd:147)\n       [2] _build_world (res://scripts/sandpit.gd:141)\n       [3] _ready (res://g1/paid.gd:19)\n"
+    },
+    {
+      "id": "b1-rendered-forward_plus",
+      "seconds": 7.4585729,
+      "exit_code": 0,
+      "child_pid": 9436,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\b1-rendered-forward_plus.log",
+      "log_sha256": "e9d8274b9a04b265f6e9af5d1ef51b85b628b46918347c2d9b1b1684c7a90b59",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\b1-rendered-forward_plus",
+      "stderr": ""
+    },
+    {
+      "id": "b1-rendered-gl_compatibility",
+      "seconds": 7.5208964,
+      "exit_code": 0,
+      "child_pid": 2692,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\b1-rendered-gl_compatibility.log",
+      "log_sha256": "af42a6b047d74a0ad0c022e5fdf77934fc08cc76e880dbf1712e0628977b4f66",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\b1-rendered-gl_compatibility",
+      "stderr": ""
+    },
+    {
+      "id": "catalogue-forward_plus",
+      "seconds": 8.8207012,
+      "exit_code": 0,
+      "child_pid": 2384,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\catalogue-forward_plus.log",
+      "log_sha256": "4cfb3077fb4d1d9cd5fdabb7de439516629dd4005b61199530b93f670b3ed116",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\catalogue-forward_plus",
+      "stderr": ""
+    },
+    {
+      "id": "catalogue-gl_compatibility",
+      "seconds": 6.7449771,
+      "exit_code": 0,
+      "child_pid": 33580,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\catalogue-gl_compatibility.log",
+      "log_sha256": "923964d71af409bfedbd374a5d65d1be154c26cf7b763740958aa8248d073fdd",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\catalogue-gl_compatibility",
+      "stderr": ""
+    },
+    {
+      "id": "route-motion",
+      "seconds": 117.6844948,
+      "exit_code": 0,
+      "child_pid": 29080,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\route-motion.log",
+      "log_sha256": "3e797ac7116fd752166baeb9e9fcb853e5e5340f336766a5fc8e82bfe0037fb0",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\route-motion",
+      "stderr": ""
+    },
+    {
+      "id": "studio-final-forward_plus",
+      "seconds": 9.210875,
+      "exit_code": 0,
+      "child_pid": 25080,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\studio-final-forward_plus.log",
+      "log_sha256": "0ea405cbf1fcf02757bc4ba880e3b29b2cc357c4a72343c7e8e0021771975b8e",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\studio-final-forward_plus",
+      "stderr": ""
+    },
+    {
+      "id": "studio-final-gl_compatibility",
+      "seconds": 8.8818117,
+      "exit_code": 0,
+      "child_pid": 4100,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\studio-final-gl_compatibility.log",
+      "log_sha256": "3ce95333c083a727a29bac7a80d3cf2c07c81027394ba44a37869b6d05e4c3dc",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\studio-final-gl_compatibility",
+      "stderr": ""
+    },
+    {
+      "id": "views-before-forward_plus-v02",
+      "seconds": 113.4365991,
+      "exit_code": 0,
+      "child_pid": 35688,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\views-before-forward_plus-v02.log",
+      "log_sha256": "897e883af3081a1c574538e29bfda4ade02febfc181b8945fac7b4d383dfed94",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\views-before-forward_plus-v02",
+      "stderr": ""
+    },
+    {
+      "id": "views-after-forward_plus-v02",
+      "seconds": 100.2752621,
+      "exit_code": 0,
+      "child_pid": 35484,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\views-after-forward_plus-v02.log",
+      "log_sha256": "af5c7f2a9b457c2d26483b6f19fa978c4903ac4fca225539f3b0bcf19219daa2",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\views-after-forward_plus-v02",
+      "stderr": ""
+    },
+    {
+      "id": "views-before-gl_compatibility-v02",
+      "seconds": 109.5849909,
+      "exit_code": 0,
+      "child_pid": 29268,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\views-before-gl_compatibility-v02.log",
+      "log_sha256": "eb84f570e021fba8b08b827d0022d24b590c344cda82cfbb35e03b4a94d4f0fa",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\views-before-gl_compatibility-v02",
+      "stderr": "WARNING: Screen-space ambient occlusion (SSAO) can only be enabled when using the Forward+ renderer.\n   at: environment_set_ssao (servers/rendering/storage/environment_storage.cpp:586)\n   GDScript backtrace (most recent call first):\n       [0] configure (res://art/wildland_atmosphere.gd:23)\n       [1] setup (res://scripts/biome_mood.gd:147)\n       [2] _build_world (res://scripts/sandpit.gd:141)\n       [3] _ready (res://g1/paid.gd:19)\n"
+    },
+    {
+      "id": "views-after-gl_compatibility-v02",
+      "seconds": 98.0225728,
+      "exit_code": 0,
+      "child_pid": 35560,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\views-after-gl_compatibility-v02.log",
+      "log_sha256": "75cfce67d7a28a46edd7a7d1155f58913ae4cb8da8415d89f9c22ea7b62073c0",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\views-after-gl_compatibility-v02",
+      "stderr": "WARNING: Screen-space ambient occlusion (SSAO) can only be enabled when using the Forward+ renderer.\n   at: environment_set_ssao (servers/rendering/storage/environment_storage.cpp:586)\n   GDScript backtrace (most recent call first):\n       [0] configure (res://art/wildland_atmosphere.gd:23)\n       [1] setup (res://scripts/biome_mood.gd:147)\n       [2] _build_world (res://scripts/sandpit.gd:141)\n       [3] _ready (res://g1/paid.gd:19)\n"
+    },
+    {
+      "id": "cost-before-forward_plus",
+      "seconds": 125.8807354,
+      "exit_code": 0,
+      "child_pid": 12328,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\cost-before-forward_plus.log",
+      "log_sha256": "258f7c42d2760c9de7c4aa5a939b24c9f0249060cb8e0f77e36b596649aed247",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\cost-before-forward_plus",
+      "stderr": ""
+    },
+    {
+      "id": "stream-before-forward_plus",
+      "seconds": 122.0870608,
+      "exit_code": 0,
+      "child_pid": 2364,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\stream-before-forward_plus.log",
+      "log_sha256": "3e797ac7116fd752166baeb9e9fcb853e5e5340f336766a5fc8e82bfe0037fb0",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\stream-before-forward_plus",
+      "stderr": ""
+    },
+    {
+      "id": "cost-after-forward_plus",
+      "seconds": 112.4206327,
+      "exit_code": 0,
+      "child_pid": 5300,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\cost-after-forward_plus.log",
+      "log_sha256": "7cff2fef380e3169f18d75c60d84f728bf3c53d3dc5caf42159c73a6a99cb23c",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\cost-after-forward_plus",
+      "stderr": ""
+    },
+    {
+      "id": "stream-after-forward_plus",
+      "seconds": 112.490327,
+      "exit_code": 0,
+      "child_pid": 20452,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\stream-after-forward_plus.log",
+      "log_sha256": "3e797ac7116fd752166baeb9e9fcb853e5e5340f336766a5fc8e82bfe0037fb0",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\stream-after-forward_plus",
+      "stderr": ""
+    },
+    {
+      "id": "cost-before-gl_compatibility",
+      "seconds": 124.5669112,
+      "exit_code": 0,
+      "child_pid": 36396,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\cost-before-gl_compatibility.log",
+      "log_sha256": "07c09c0c494eff78d51cfe4884f0534e56d182f920fdcf859ac54777ddf59f1e",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\cost-before-gl_compatibility",
+      "stderr": "WARNING: Screen-space ambient occlusion (SSAO) can only be enabled when using the Forward+ renderer.\n   at: environment_set_ssao (servers/rendering/storage/environment_storage.cpp:586)\n   GDScript backtrace (most recent call first):\n       [0] configure (res://art/wildland_atmosphere.gd:23)\n       [1] setup (res://scripts/biome_mood.gd:147)\n       [2] _build_world (res://scripts/sandpit.gd:141)\n       [3] _ready (res://g1/paid.gd:19)\n"
+    },
+    {
+      "id": "stream-before-gl_compatibility",
+      "seconds": 117.8423828,
+      "exit_code": 0,
+      "child_pid": 33292,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\stream-before-gl_compatibility.log",
+      "log_sha256": "3a6372a6b7bec0f86c880c1f61a1c91c7aba22398d4131ba021230edcb0d16b5",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\stream-before-gl_compatibility",
+      "stderr": "WARNING: Screen-space ambient occlusion (SSAO) can only be enabled when using the Forward+ renderer.\n   at: environment_set_ssao (servers/rendering/storage/environment_storage.cpp:586)\n   GDScript backtrace (most recent call first):\n       [0] configure (res://art/wildland_atmosphere.gd:23)\n       [1] setup (res://scripts/biome_mood.gd:147)\n       [2] _build_world (res://scripts/sandpit.gd:141)\n       [3] _ready (res://r1/paid.gd:19)\n"
+    },
+    {
+      "id": "cost-after-gl_compatibility",
+      "seconds": 114.783727,
+      "exit_code": 0,
+      "child_pid": 15636,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\cost-after-gl_compatibility.log",
+      "log_sha256": "5ac7a42c500c3626804f46c02cb8ef90cb208f1251c8620a25cf5a9f9b352a64",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\cost-after-gl_compatibility",
+      "stderr": "WARNING: Screen-space ambient occlusion (SSAO) can only be enabled when using the Forward+ renderer.\n   at: environment_set_ssao (servers/rendering/storage/environment_storage.cpp:586)\n   GDScript backtrace (most recent call first):\n       [0] configure (res://art/wildland_atmosphere.gd:23)\n       [1] setup (res://scripts/biome_mood.gd:147)\n       [2] _build_world (res://scripts/sandpit.gd:141)\n       [3] _ready (res://g1/paid.gd:19)\n"
+    },
+    {
+      "id": "stream-after-gl_compatibility",
+      "seconds": 110.3212205,
+      "exit_code": 0,
+      "child_pid": 17484,
+      "log": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\logs\\stream-after-gl_compatibility.log",
+      "log_sha256": "3a6372a6b7bec0f86c880c1f61a1c91c7aba22398d4131ba021230edcb0d16b5",
+      "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\stream-after-gl_compatibility",
+      "stderr": "WARNING: Screen-space ambient occlusion (SSAO) can only be enabled when using the Forward+ renderer.\n   at: environment_set_ssao (servers/rendering/storage/environment_storage.cpp:586)\n   GDScript backtrace (most recent call first):\n       [0] configure (res://art/wildland_atmosphere.gd:23)\n       [1] setup (res://scripts/biome_mood.gd:147)\n       [2] _build_world (res://scripts/sandpit.gd:141)\n       [3] _ready (res://r1/paid.gd:19)\n"
+    }
+  ],
+  "retained_failed_audit": {
+    "id": "source-audit",
+    "child_pid": 33696,
+    "wrapper_pid": 28968,
+    "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\blender-tool\\blender-4.5.9-windows-x64\\blender.exe",
+    "temp": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\source-audit\\temp",
+    "results": [],
+    "start": "2026-09-14T08:52:16.4568509+09:30",
+    "failure": "Fatal log diagnostic; assertions do not override this.",
+    "processes_before": null,
+    "log_sha256": "31ecc626eb2c3a424b866740a9d23e63e131001c67ac62793b3a281195d44115",
+    "exit_code": 1,
+    "benchmark_competitors": [],
+    "seconds": 3.2912762,
+    "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\source-audit",
+    "arguments": [
+      "--background",
+      "--threads",
+      "8",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "D:\\project-wroughtwild-art07-r1\\tools\\wroughtwild-art07-repairs\\r1\\source_audit.py",
+      "--",
+      "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03"
+    ],
+    "localappdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\source-audit\\local"
+  },
+  "retained_failed_studio_parse": {
+    "start": "2026-09-14T09:04:32.3095990+09:30",
+    "temp": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\studio-forward_plus\\temp",
+    "log_sha256": "25c3a5a9c2f86d61ad02e6b056750a72178e4e7d8497e26c87df4b3246e753e9",
+    "results": [],
+    "program": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+    "failure": "Fatal log diagnostic; assertions do not override this.",
+    "processes_before": null,
+    "localappdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\studio-forward_plus\\local",
+    "benchmark_competitors": [],
+    "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\studio-forward_plus",
+    "seconds": 2.2479216,
+    "child_pid": 30284,
+    "arguments": [
+      "--rendering-method",
+      "forward_plus",
+      "--path",
+      "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\runtime\\game",
+      "res://r1/studio.tscn"
+    ],
+    "exit_code": -1,
+    "id": "studio-forward_plus",
+    "wrapper_pid": 13828
+  },
+  "retained_failed_missing_mask": {
+    "log_sha256": "41cba6870c4686c08f32cab0c4dffe1e3877ea3a93db8f12ad94b29561c4f7a5",
+    "localappdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\preserve-packed\\local",
+    "results": [],
+    "processes_before": null,
+    "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\preserve-packed",
+    "child_pid": 15548,
+    "seconds": 1.6885885,
+    "exit_code": 1,
+    "start": "2026-09-14T09:33:35.5100038+09:30",
+    "benchmark_competitors": [],
+    "wrapper_pid": 22760,
+    "id": "preserve-packed",
+    "failure": "Fatal log diagnostic; assertions do not override this.",
+    "temp": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\users\\preserve-packed\\temp",
+    "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\blender-tool\\blender-4.5.9-windows-x64\\blender.exe",
+    "arguments": [
+      "--background",
+      "--threads",
+      "8",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "D:\\project-wroughtwild-art07-r1\\tools\\wroughtwild-art07-repairs\\r1\\preserve_packed.py",
+      "--",
+      "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03"
+    ]
+  },
+  "native": [
+    {
+      "file": "r1-native-b1-after-forward_plus\\native-flow.json",
+      "checks": 83,
+      "wood": 14,
+      "pine": 14,
+      "ash_wood": null
+    },
+    {
+      "file": "r1-native-b1-after-gl_compatibility\\native-flow.json",
+      "checks": 83,
+      "wood": 14,
+      "pine": 14,
+      "ash_wood": null
+    },
+    {
+      "file": "r1-native-b1-after-headless\\native-final-restart.json",
+      "checks": 30,
+      "wood": 14,
+      "pine": 14,
+      "ash_wood": null
+    },
+    {
+      "file": "r1-native-b1-after-headless\\native-flow.json",
+      "checks": 39,
+      "wood": 14,
+      "pine": 14,
+      "ash_wood": null
+    },
+    {
+      "file": "r1-native-b1-after-headless\\native-partial-restart.json",
+      "checks": 30,
+      "wood": 0,
+      "pine": 0,
+      "ash_wood": null
+    },
+    {
+      "file": "r1-native-b1-before-headless\\native-flow.json",
+      "checks": 39,
+      "wood": 14,
+      "pine": 14,
+      "ash_wood": null
+    },
+    {
+      "file": "r1-native-c4-after-headless\\native-final-restart.json",
+      "checks": 46,
+      "wood": null,
+      "pine": null,
+      "ash_wood": 28
+    },
+    {
+      "file": "r1-native-c4-after-headless\\native-flow.json",
+      "checks": 59,
+      "wood": null,
+      "pine": null,
+      "ash_wood": 28
+    },
+    {
+      "file": "r1-native-c4-after-headless\\native-partial-restart.json",
+      "checks": 46,
+      "wood": null,
+      "pine": null,
+      "ash_wood": 0
+    }
+  ],
+  "geography_sha256": "550b2d742314136a71a8c177920059bd245996e744b8722c8ba8c68afbde4a70",
+  "paid_check_counts": {
+    "before": 865,
+    "after": 865
+  },
+  "paid_walk_metres": {
+    "before": 135.078021510504,
+    "after": 135.078021510504
+  },
+  "paid_full_snapshot_comparisons": {
+    "initial": {
+      "full_snapshot_equal": true,
+      "raw_differences": [],
+      "native_ownership_and_geography_equal": true
+    },
+    "paid": {
+      "full_snapshot_equal": false,
+      "raw_differences": [
+        {
+          "path": "stations/2/name",
+          "before": "@StaticBody3D@4310",
+          "after": "@StaticBody3D@4311",
+          "station_key": "station_forge_basic_474500_31000_447500",
+          "classification": "Engine-generated scene name for a newly placed forge. Native ownership key, type, pose, rotation, upgrade and built flag are exactly equal. Save schema/code unchanged."
+        }
+      ],
+      "native_ownership_and_geography_equal": true
+    },
+    "final": {
+      "full_snapshot_equal": false,
+      "raw_differences": [
+        {
+          "path": "stations/2/name",
+          "before": "@StaticBody3D@4310",
+          "after": "@StaticBody3D@4311",
+          "station_key": "station_forge_basic_474500_31000_447500",
+          "classification": "Engine-generated scene name for a newly placed forge. Native ownership key, type, pose, rotation, upgrade and built flag are exactly equal. Save schema/code unchanged."
+        }
+      ],
+      "native_ownership_and_geography_equal": true
+    }
+  },
+  "owner_visual_acceptance": "pending",
+  "ordinary_world_rollout": "outside scope"
+}

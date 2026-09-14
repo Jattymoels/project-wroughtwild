@@ -1,0 +1,85 @@
+{
+  "python_files": [
+    {
+      "path": "tools\\wroughtwild-art07-repairs\\r1\\apply.py",
+      "sha256": "1243bfa5d73e207342d278daae981033491e623da2511054c78e859b228bf19d",
+      "python_syntax": "passed"
+    },
+    {
+      "path": "tools\\wroughtwild-art07-repairs\\r1\\author_jobs.py",
+      "sha256": "ee7d4287e1cdcc1f4ccd135d31188d9d6924da6588146e633975a3d2b8f627e7",
+      "python_syntax": "passed"
+    },
+    {
+      "path": "tools\\wroughtwild-art07-repairs\\r1\\build.py",
+      "sha256": "b60c7a290fa2eeca7c633f94f07252f3b448cfa724f04d22770b54d9c859c290",
+      "python_syntax": "passed"
+    },
+    {
+      "path": "tools\\wroughtwild-art07-repairs\\r1\\collect.py",
+      "sha256": "166040633a425c4ae9fe4a805438fc3538c462d9aee07978c6f4428b1bf6d009",
+      "python_syntax": "passed"
+    },
+    {
+      "path": "tools\\wroughtwild-art07-repairs\\r1\\copy_sources.py",
+      "sha256": "48c148b970e7b7929f6d431f4e495eb25aac4685658c31803b5c0039f065d116",
+      "python_syntax": "passed"
+    },
+    {
+      "path": "tools\\wroughtwild-art07-repairs\\r1\\install.py",
+      "sha256": "bc5e2aec36bb45852dfb3d286d6fa20a866c2ff8a927984011275f46a70d9559",
+      "python_syntax": "passed"
+    },
+    {
+      "path": "tools\\wroughtwild-art07-repairs\\r1\\jobs.py",
+      "sha256": "264871083a4182286f37df99d2168ddb58776935a271b837d28ad4c69aeee0a8",
+      "python_syntax": "passed"
+    },
+    {
+      "path": "tools\\wroughtwild-art07-repairs\\r1\\material_audit.py",
+      "sha256": "41c889581e5e07fb49e1338faa18fbd4a96448b6a6df6f06e0207844c18a6fc8",
+      "python_syntax": "passed"
+    },
+    {
+      "path": "tools\\wroughtwild-art07-repairs\\r1\\measure.py",
+      "sha256": "6e3cd52c8f7ba57f87b7cca6397516611ff93dafb8aa7442d71facc58100686f",
+      "python_syntax": "passed"
+    },
+    {
+      "path": "tools\\wroughtwild-art07-repairs\\r1\\model_costs.py",
+      "sha256": "df098058dca2dca33deb3388f2dd36d123269783007278a0eadf0487b826b5c0",
+      "python_syntax": "passed"
+    },
+    {
+      "path": "tools\\wroughtwild-art07-repairs\\r1\\ownership.py",
+      "sha256": "e10e7cb50d8c5c370be777feb8117cd87cb45bae5094da5276b9ae2dfd31c989",
+      "python_syntax": "passed"
+    },
+    {
+      "path": "tools\\wroughtwild-art07-repairs\\r1\\package.py",
+      "sha256": "977ad046eeb693ab9051f25751cba35d12b731cf298869a38bae5601accac3f6",
+      "python_syntax": "passed"
+    },
+    {
+      "path": "tools\\wroughtwild-art07-repairs\\r1\\present.py",
+      "sha256": "2450bedf2ae91f0917663ed62b7ae0e4144db47334dc4d4bdbfe497245a208aa",
+      "python_syntax": "passed"
+    },
+    {
+      "path": "tools\\wroughtwild-art07-repairs\\r1\\preserve_packed.py",
+      "sha256": "5678f5275d0611cad0d910a4ecd2ef571c227c632c23921277611e8976364cd7",
+      "python_syntax": "passed"
+    },
+    {
+      "path": "tools\\wroughtwild-art07-repairs\\r1\\reopen.py",
+      "sha256": "3d8b3cc4bcc1b50d5a5f517e58ad399c004604e7c8c8614e012a67e98f02bd54",
+      "python_syntax": "passed"
+    },
+    {
+      "path": "tools\\wroughtwild-art07-repairs\\r1\\source_audit.py",
+      "sha256": "a06c37c1e350811feec769883937808f2c245e3a3d1f437f8e259f2ff33f5923",
+      "python_syntax": "passed"
+    }
+  ],
+  "reason": "Final media inclusion in package.py; no tested runtime bytes changed."
+}

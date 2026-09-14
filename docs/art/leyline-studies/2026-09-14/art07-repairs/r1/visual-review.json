@@ -1,0 +1,20 @@
+{
+  "reviewer": "Codex candidate inspection; not owner approval",
+  "owner_visual_acceptance": "pending",
+  "inspected": [
+    "both final symmetric model-pair stands and all 15 crown LOD images per renderer",
+    "altered emission-off/on in both renderers",
+    "all four home/route day-shade-dusk contact sheets",
+    "regional pine and unchanged C4 view",
+    "native full/partial, mid-fall and exhausted frames"
+  ],
+  "observations": [
+    "Broader branching crown silhouettes and greater overlap are visible at unchanged cameras and native positions.",
+    "Original blunt broadleaf ends, strong trunk flare and sparse LOD2 foliage remain visible.",
+    "Shade is dark; Compatibility bark/shadow response differs.",
+    "Altered recess remains visible with emission off.",
+    "Native fall ends in fitted stumps; original full/partial/restart assertions pass."
+  ],
+  "derived_artifact_hashes_verified": 15,
+  "scope": "Candidate model/readability evidence for later owner review; no minimum-hardware or ordinary-world acceptance."
+}

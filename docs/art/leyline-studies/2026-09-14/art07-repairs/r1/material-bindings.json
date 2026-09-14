@@ -1,0 +1,396 @@
+{
+  "exports": [
+    {
+      "file": "broadleaf-a-lod0.glb",
+      "material_properties_texture_bindings_and_sampler_settings_equal": true,
+      "triangle_totals_by_material_equal": true,
+      "samplers": [
+        {
+          "magFilter": 9729,
+          "minFilter": 9987
+        }
+      ],
+      "source_material_names": [
+        "broadleaf bark",
+        "broadleaf twigs",
+        "broadleaf foliage"
+      ],
+      "candidate_material_names": [
+        "broadleaf twigs.001",
+        "broadleaf foliage.001",
+        "broadleaf bark.001"
+      ]
+    },
+    {
+      "file": "broadleaf-a-lod1.glb",
+      "material_properties_texture_bindings_and_sampler_settings_equal": true,
+      "triangle_totals_by_material_equal": true,
+      "samplers": [
+        {
+          "magFilter": 9729,
+          "minFilter": 9987
+        }
+      ],
+      "source_material_names": [
+        "broadleaf bark",
+        "broadleaf twigs",
+        "broadleaf foliage"
+      ],
+      "candidate_material_names": [
+        "broadleaf twigs.002",
+        "broadleaf foliage.002",
+        "broadleaf bark.002"
+      ]
+    },
+    {
+      "file": "broadleaf-a-lod2.glb",
+      "material_properties_texture_bindings_and_sampler_settings_equal": true,
+      "triangle_totals_by_material_equal": true,
+      "samplers": [
+        {
+          "magFilter": 9729,
+          "minFilter": 9987
+        }
+      ],
+      "source_material_names": [
+        "broadleaf bark",
+        "broadleaf twigs",
+        "broadleaf foliage"
+      ],
+      "candidate_material_names": [
+        "broadleaf twigs.003",
+        "broadleaf foliage.003",
+        "broadleaf bark.003"
+      ]
+    },
+    {
+      "file": "broadleaf-altered-lod0.glb",
+      "material_properties_texture_bindings_and_sampler_settings_equal": true,
+      "triangle_totals_by_material_equal": true,
+      "samplers": [
+        {
+          "magFilter": 9729,
+          "minFilter": 9987
+        }
+      ],
+      "source_material_names": [
+        "Deep oak bark",
+        "broadleaf twigs",
+        "broadleaf foliage"
+      ],
+      "candidate_material_names": [
+        "broadleaf twigs.004",
+        "broadleaf foliage.004",
+        "Deep oak bark.001"
+      ]
+    },
+    {
+      "file": "broadleaf-altered-lod1.glb",
+      "material_properties_texture_bindings_and_sampler_settings_equal": true,
+      "triangle_totals_by_material_equal": true,
+      "samplers": [
+        {
+          "magFilter": 9729,
+          "minFilter": 9987
+        }
+      ],
+      "source_material_names": [
+        "Deep oak bark",
+        "broadleaf twigs",
+        "broadleaf foliage"
+      ],
+      "candidate_material_names": [
+        "broadleaf twigs.005",
+        "broadleaf foliage.005",
+        "Deep oak bark.002"
+      ]
+    },
+    {
+      "file": "broadleaf-altered-lod2.glb",
+      "material_properties_texture_bindings_and_sampler_settings_equal": true,
+      "triangle_totals_by_material_equal": true,
+      "samplers": [
+        {
+          "magFilter": 9729,
+          "minFilter": 9987
+        }
+      ],
+      "source_material_names": [
+        "Deep oak bark",
+        "broadleaf twigs",
+        "broadleaf foliage"
+      ],
+      "candidate_material_names": [
+        "broadleaf twigs.006",
+        "broadleaf foliage.006",
+        "Deep oak bark.003"
+      ]
+    },
+    {
+      "file": "broadleaf-b-lod0.glb",
+      "material_properties_texture_bindings_and_sampler_settings_equal": true,
+      "triangle_totals_by_material_equal": true,
+      "samplers": [
+        {
+          "magFilter": 9729,
+          "minFilter": 9987
+        }
+      ],
+      "source_material_names": [
+        "broadleaf bark",
+        "broadleaf twigs",
+        "broadleaf foliage"
+      ],
+      "candidate_material_names": [
+        "broadleaf twigs.007",
+        "broadleaf foliage.007",
+        "broadleaf bark.004"
+      ]
+    },
+    {
+      "file": "broadleaf-b-lod1.glb",
+      "material_properties_texture_bindings_and_sampler_settings_equal": true,
+      "triangle_totals_by_material_equal": true,
+      "samplers": [
+        {
+          "magFilter": 9729,
+          "minFilter": 9987
+        }
+      ],
+      "source_material_names": [
+        "broadleaf bark",
+        "broadleaf twigs",
+        "broadleaf foliage"
+      ],
+      "candidate_material_names": [
+        "broadleaf twigs.008",
+        "broadleaf foliage.008",
+        "broadleaf bark.005"
+      ]
+    },
+    {
+      "file": "broadleaf-b-lod2.glb",
+      "material_properties_texture_bindings_and_sampler_settings_equal": true,
+      "triangle_totals_by_material_equal": true,
+      "samplers": [
+        {
+          "magFilter": 9729,
+          "minFilter": 9987
+        }
+      ],
+      "source_material_names": [
+        "broadleaf bark",
+        "broadleaf twigs",
+        "broadleaf foliage"
+      ],
+      "candidate_material_names": [
+        "broadleaf twigs.009",
+        "broadleaf foliage.009",
+        "broadleaf bark.006"
+      ]
+    },
+    {
+      "file": "broadleaf-root-skirt.glb",
+      "material_properties_texture_bindings_and_sampler_settings_equal": true,
+      "triangle_totals_by_material_equal": true,
+      "samplers": [
+        {
+          "magFilter": 9729,
+          "minFilter": 9987
+        }
+      ],
+      "source_material_names": [
+        "broadleaf bark",
+        "broadleaf cut wood"
+      ],
+      "candidate_material_names": [
+        "broadleaf bark.007",
+        "broadleaf cut wood.001"
+      ]
+    },
+    {
+      "file": "broadleaf-stump.glb",
+      "material_properties_texture_bindings_and_sampler_settings_equal": true,
+      "triangle_totals_by_material_equal": true,
+      "samplers": [
+        {
+          "magFilter": 9729,
+          "minFilter": 9987
+        }
+      ],
+      "source_material_names": [
+        "broadleaf bark",
+        "broadleaf cut wood"
+      ],
+      "candidate_material_names": [
+        "broadleaf bark.008",
+        "broadleaf cut wood.002"
+      ]
+    },
+    {
+      "file": "pine-a-lod0.glb",
+      "material_properties_texture_bindings_and_sampler_settings_equal": true,
+      "triangle_totals_by_material_equal": true,
+      "samplers": [
+        {
+          "magFilter": 9729,
+          "minFilter": 9987
+        }
+      ],
+      "source_material_names": [
+        "pine bark",
+        "pine twigs",
+        "pine foliage"
+      ],
+      "candidate_material_names": [
+        "pine twigs.001",
+        "pine foliage.001",
+        "pine bark.001"
+      ]
+    },
+    {
+      "file": "pine-a-lod1.glb",
+      "material_properties_texture_bindings_and_sampler_settings_equal": true,
+      "triangle_totals_by_material_equal": true,
+      "samplers": [
+        {
+          "magFilter": 9729,
+          "minFilter": 9987
+        }
+      ],
+      "source_material_names": [
+        "pine bark",
+        "pine twigs",
+        "pine foliage"
+      ],
+      "candidate_material_names": [
+        "pine twigs.002",
+        "pine foliage.002",
+        "pine bark.002"
+      ]
+    },
+    {
+      "file": "pine-a-lod2.glb",
+      "material_properties_texture_bindings_and_sampler_settings_equal": true,
+      "triangle_totals_by_material_equal": true,
+      "samplers": [
+        {
+          "magFilter": 9729,
+          "minFilter": 9987
+        }
+      ],
+      "source_material_names": [
+        "pine bark",
+        "pine twigs",
+        "pine foliage"
+      ],
+      "candidate_material_names": [
+        "pine twigs.003",
+        "pine foliage.003",
+        "pine bark.003"
+      ]
+    },
+    {
+      "file": "pine-b-lod0.glb",
+      "material_properties_texture_bindings_and_sampler_settings_equal": true,
+      "triangle_totals_by_material_equal": true,
+      "samplers": [
+        {
+          "magFilter": 9729,
+          "minFilter": 9987
+        }
+      ],
+      "source_material_names": [
+        "pine bark",
+        "pine twigs",
+        "pine foliage"
+      ],
+      "candidate_material_names": [
+        "pine twigs.004",
+        "pine foliage.004",
+        "pine bark.004"
+      ]
+    },
+    {
+      "file": "pine-b-lod1.glb",
+      "material_properties_texture_bindings_and_sampler_settings_equal": true,
+      "triangle_totals_by_material_equal": true,
+      "samplers": [
+        {
+          "magFilter": 9729,
+          "minFilter": 9987
+        }
+      ],
+      "source_material_names": [
+        "pine bark",
+        "pine twigs",
+        "pine foliage"
+      ],
+      "candidate_material_names": [
+        "pine twigs.005",
+        "pine foliage.005",
+        "pine bark.005"
+      ]
+    },
+    {
+      "file": "pine-b-lod2.glb",
+      "material_properties_texture_bindings_and_sampler_settings_equal": true,
+      "triangle_totals_by_material_equal": true,
+      "samplers": [
+        {
+          "magFilter": 9729,
+          "minFilter": 9987
+        }
+      ],
+      "source_material_names": [
+        "pine bark",
+        "pine twigs",
+        "pine foliage"
+      ],
+      "candidate_material_names": [
+        "pine twigs.006",
+        "pine foliage.006",
+        "pine bark.006"
+      ]
+    },
+    {
+      "file": "pine-root-skirt.glb",
+      "material_properties_texture_bindings_and_sampler_settings_equal": true,
+      "triangle_totals_by_material_equal": true,
+      "samplers": [
+        {
+          "magFilter": 9729,
+          "minFilter": 9987
+        }
+      ],
+      "source_material_names": [
+        "pine bark",
+        "pine cut wood"
+      ],
+      "candidate_material_names": [
+        "pine bark.007",
+        "pine cut wood.001"
+      ]
+    },
+    {
+      "file": "pine-stump.glb",
+      "material_properties_texture_bindings_and_sampler_settings_equal": true,
+      "triangle_totals_by_material_equal": true,
+      "samplers": [
+        {
+          "magFilter": 9729,
+          "minFilter": 9987
+        }
+      ],
+      "source_material_names": [
+        "pine bark",
+        "pine cut wood"
+      ],
+      "candidate_material_names": [
+        "pine bark.008",
+        "pine cut wood.002"
+      ]
+    }
+  ],
+  "scope": "Blender may reorder or suffix material names. Actual material properties, decoded image bindings, sampler settings and triangle totals assigned to each material must match the source. This does not suppress exporter warnings."
+}

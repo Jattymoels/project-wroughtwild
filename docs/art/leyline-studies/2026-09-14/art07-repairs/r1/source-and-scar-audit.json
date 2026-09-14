@@ -1,0 +1,137 @@
+{
+  "preserved_originals": [
+    {
+      "kind": "broadleaf",
+      "original_meshes": {
+        "broadleaf branchlets 0 L0": "4737b29ab8fbde94dff90775084ec64cb6c7d498c912e5884e2afd2f29669d63",
+        "broadleaf branchlets 0 L0.001": "a97c2f9b2912cbedfb52c0af796c36cd5753038abda6193ec1ac3c7e11c45fae",
+        "broadleaf branchlets 0 L1": "6f730759efeed0597c97f8e67a6b7cc2bc014cf0ae6234144f873b429a15d846",
+        "broadleaf branchlets 0 L1.001": "e4fa299d47c44c99188704727db499bf613d5df8059d39d574844f15a3924ade",
+        "broadleaf branchlets 0 L2": "4e63d662525139f7c8060a831a1e5796d215c99c3cbb254cf900207491e258e9",
+        "broadleaf branchlets 0 L2.001": "7a2f603256015e9939e2322ccde8c38e014ba23cf7d0b26e828bfa36c3308629",
+        "broadleaf branchlets 1 L0": "49c77833aae6e5e2075b5660857ae387b0cbf04bc67500acdfad8c04db9047e4",
+        "broadleaf branchlets 1 L1": "de5b5adbacb66178cad48a54ce049c0fa9f93e7cf6afc6ba4973c828d65831d6",
+        "broadleaf branchlets 1 L2": "7b50eb6813655048deee0334480cf6966207c80a7b7aa62ab1d78479f21691bf",
+        "broadleaf foliage 0 L0": "fe44f4db0478a84272a13736fdc56fe37567fb838eb3fa640955de9e6a2d2b5b",
+        "broadleaf foliage 0 L0.001": "32ee19b2bb3ca361a75cb4ce4468e54f3ec2bfc9e30d966b377ed9ea6490ba1b",
+        "broadleaf foliage 0 L1": "099dd0393302b3832275437bf3ddf174ca62ae6efd51c51dfc3b32bb75bbc04b",
+        "broadleaf foliage 0 L1.001": "72e81d08159bb2ed5b6a1ad78abd364e060e27abd04ef701bdb6ebdb2cc9ad2a",
+        "broadleaf foliage 0 L2": "2b02be8693e45725eb3d1e98febb5781378402cd8a65baf52c6a82f1bde33dcd",
+        "broadleaf foliage 0 L2.001": "72bac84c104ce13c47825bbc85020e4e563623dc0056adb438723af3e0d1e859",
+        "broadleaf foliage 1 L0": "360aeb343adf774af3e0eadd44871a4da7f74f8e1f4f3fe859e337dcb19ee73b",
+        "broadleaf foliage 1 L1": "3449d6efe2796c82b8207e0fce9e2af7ef0c3872b8913eb0c697b4c08dc38a04",
+        "broadleaf foliage 1 L2": "a1ac9ca38af29b90ac810ba9bbb65274bc9b2f47ad96da86f112104d3490dbcf",
+        "broadleaf inert deadwood": "5bfd050e94baa521b3ee59dcfc1291df11d2eee7c98a6f7d3b5b4c13464daa23",
+        "broadleaf matching stump": "a2552a571694812a55fb8d288fd4c5a76ece10ec426a1b2a811484563dd68b1a",
+        "broadleaf root skirt": "e12f56a71aef25b41627592333aa7032ff23d5f06ebca2aba42d22cd304aca58",
+        "broadleaf trunk L0": "a6bd8878010d89975f8536586a316c31c57e5473d47d36193d1da800223bb567",
+        "broadleaf trunk L1": "ea82c724ca18eae165f7f7d5bbfd9639cd75ae98b86cfb15316f24c04bba023b",
+        "broadleaf trunk L2": "b1e206f532140e826b415049546b428f229d3f748794e591c6abbdfaccf5b072",
+        "Deep oak L0": "c5df6ee40cef3a4f2f6964b7a978aa6e04e86df497c386cc1becfab29bbf89ef",
+        "Deep oak L1": "4a0b5e7935ab1568e4e3888f5ef4afb8bd69af21a5816138a9ccc1e00898d5a9",
+        "Deep oak L2": "3eea08509e96f111dad27ad99602df744ce7ce5680838724e74fe435d2722dd5",
+        "FINISHED broadleaf": "236c151ced125037203f28369e9d9038a76e8a1e1532761ba25fcc679416f571",
+        "FINISHED deep injured oak": "f7ccb6910855f74ccb1422d85e0413b26d51ed8765f1f9d394ceb49bbf57beff",
+        "SOURCE immutable broadleaf": "3596e0d409c0df16fd5174a671114afd9942bfa66b77d2348a83ddeae2b02ea0"
+      },
+      "original_packed_images": {
+        "broadleaf coherent cut grain": "d8373511aac3511225feb942aefaa92fec1395bde24aa6539b0e8da0cd2fbae8",
+        "broadleaf runtime Image_0.001": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1",
+        "broadleaf runtime Image_1.001": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e",
+        "Image_0": "cce5300c7d8f5c3bdf8332ea25c792d2293118824181b3a353b2e1f10d53159f",
+        "Image_1": "241fa20040a49e8c83ff68051d6f08c754b8ad75caa66c8311a6323a0e672595",
+        "Tree scar - core damage travel": "9717d348db27bf7ff6d1e65e23794def303224705ff5c1826d657685c58d64f0"
+      },
+      "exact_source_geometry_uv_and_packed_bytes_retained": true
+    },
+    {
+      "kind": "pine",
+      "original_meshes": {
+        "FINISHED pine": "aaa21c5655de282a4c22fa7e03322fe9f5a93e33f9b4c6a048bfc97f8e68c38b",
+        "pine branchlets 0 L0": "d374b45fba52738cf29337146255aeaf4ef968e587ec8259d353d00ed473f385",
+        "pine branchlets 0 L1": "a084e0a8f44b364d1191aa1a7e62aca05416255ece1f6b59fd056e5883294260",
+        "pine branchlets 0 L2": "ef18649cc90113d5c561a788ff0749960bc50140395a4d53c263e33b51da91cb",
+        "pine branchlets 1 L0": "b2f4312fd546de9ab63d049db7a6e640f2ab478088745d7ed457190413452d8f",
+        "pine branchlets 1 L1": "e006a5454d5dc99a951835e98579739496a9037a0e70ccf9e6a6192f897edd73",
+        "pine branchlets 1 L2": "6d3a2652234fd277ede449b27cb1b0dd38da9a1da9573ea843f7fe0eaad6f4d8",
+        "pine foliage 0 L0": "a0b274baa02aabcffe4397595ba5c49ed34fc52570e00494a5772dacc6600dd3",
+        "pine foliage 0 L1": "2beab5514c50e126c3514a961956e676049bf71751eba68c90b9283ae3da258c",
+        "pine foliage 0 L2": "84f6dd80cd6c8b1fc6759e01287a114e0829276b7df023a432b66801adde98aa",
+        "pine foliage 1 L0": "e3e0018bae18a54332541f58f726706ece6a4069d69139d538344249fcb3d0df",
+        "pine foliage 1 L1": "28c44bae6411f44b30e642bb9fdd26f10c964fc7054257d25a1fa92073680d54",
+        "pine foliage 1 L2": "1e8afd303936fe385ca30a3d58491a7a05f3a730d2f0a56a6f34712f9feec666",
+        "pine inert deadwood": "7ac06418623440ec6120c06066b5bc951e4d4bff9cef874636a35892075e7bad",
+        "pine matching stump": "d58735af011a92dc24d2d120939a5195d28fdef8b8ab775e4820bec7a16141b7",
+        "pine root skirt": "b5018004830388876e708dbdaec710ff90a235cf66559b50a68cafa479f3d654",
+        "pine trunk L0": "9b4519ee1919c5f110b86a79d2838eecbed323156342fe18d6214d724a18a4e5",
+        "pine trunk L1": "10693ff749262235e8799f9e8e9d27677b4dce6266af02b92b338c3cf1983f75",
+        "pine trunk L2": "66a05b4c9cde489d2576501e2b544f6532bad1edc69ab10274fed3abb67f1f09",
+        "SOURCE immutable pine": "a309f5a8c943dcf3d75c5b9dac1a2a4e7ea043d1867eea1ad854d4e5bfb72be2"
+      },
+      "original_packed_images": {
+        "Image_0": "3c50cd50875bf8c62b0c2ccec78e5b31909f02e9070791dce51092e7f0075a08",
+        "Image_1": "ff9afaa5fe4e47ae6ec444b0d8c01fb69f4abf390f3520dc6cd3be98152ebbc1",
+        "pine coherent cut grain": "caf7b2353eb4fb3015b85ff3c1a514be74991245fb0f0ffd932189e7f63deb83",
+        "pine runtime Image_0.001": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6",
+        "pine runtime Image_1.001": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516"
+      },
+      "exact_source_geometry_uv_and_packed_bytes_retained": true
+    }
+  ],
+  "scar_sections": [
+    {
+      "lod": 0,
+      "section": "lower",
+      "samples": 194,
+      "min_m": 0.00021719830692745745,
+      "median_m": 0.0026120254769921303,
+      "max_m": 0.014440017752349377,
+      "scope": "Nearest-surface separation of actual altered export core vertices from its quiet sibling export. Independent decimation prevents treating this as exact signed incision depth."
+    },
+    {
+      "lod": 0,
+      "section": "upper",
+      "samples": 263,
+      "min_m": 0.00022499282204080373,
+      "median_m": 0.008433661423623562,
+      "max_m": 0.04258431866765022,
+      "scope": "Nearest-surface separation of actual altered export core vertices from its quiet sibling export. Independent decimation prevents treating this as exact signed incision depth."
+    },
+    {
+      "lod": 1,
+      "section": "lower",
+      "samples": 75,
+      "min_m": 0.0007896010065451264,
+      "median_m": 0.0037606502883136272,
+      "max_m": 0.020823409780859947,
+      "scope": "Nearest-surface separation of actual altered export core vertices from its quiet sibling export. Independent decimation prevents treating this as exact signed incision depth."
+    },
+    {
+      "lod": 1,
+      "section": "upper",
+      "samples": 125,
+      "min_m": 0.00039231902337633073,
+      "median_m": 0.01181203592568636,
+      "max_m": 0.04845459759235382,
+      "scope": "Nearest-surface separation of actual altered export core vertices from its quiet sibling export. Independent decimation prevents treating this as exact signed incision depth."
+    },
+    {
+      "lod": 2,
+      "section": "lower",
+      "samples": 56,
+      "min_m": 0.0003789140610024333,
+      "median_m": 0.005215178243815899,
+      "max_m": 0.020121736451983452,
+      "scope": "Nearest-surface separation of actual altered export core vertices from its quiet sibling export. Independent decimation prevents treating this as exact signed incision depth."
+    },
+    {
+      "lod": 2,
+      "section": "upper",
+      "samples": 121,
+      "min_m": 0.00039231902337633073,
+      "median_m": 0.01291929092258215,
+      "max_m": 0.024654943495988846,
+      "scope": "Nearest-surface separation of actual altered export core vertices from its quiet sibling export. Independent decimation prevents treating this as exact signed incision depth."
+    }
+  ]
+}

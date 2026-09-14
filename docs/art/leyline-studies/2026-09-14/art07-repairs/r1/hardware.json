@@ -1,0 +1,19 @@
+{
+  "cpu": "AMD Ryzen 9 9950X3D 16-Core Processor",
+  "cores": 16,
+  "logical_processors": 32,
+  "physical_memory_bytes": 33446744064,
+  "gpu": "Each actual Godot report records the selected adapter; not inferred from the setup plan.",
+  "settings": {
+    "viewport": [
+      1440,
+      900
+    ],
+    "msaa": "4x",
+    "vsync": "off",
+    "Godot": "4.5.stable.official.876b29033",
+    "Blender": "4.5.9 LTS",
+    "Blender_CPU_threads": 8
+  },
+  "target_hardware_acceptance": "not claimed; minimum device and budget remain owner-selected"
+}

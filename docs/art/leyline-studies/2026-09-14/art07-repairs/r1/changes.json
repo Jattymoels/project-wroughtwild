@@ -1,0 +1,968 @@
+{
+  "id": "r1",
+  "changed_source_masters": [
+    {
+      "path": "models/broadleaf/broadleaf-master.blend",
+      "original_source_sha256": "bb671f434b1b6021e378c203ab7f8e344b2cbc01c283f5a991ff04ac495672a7",
+      "changed_sha256": "843f8aebca50a8cf914d7d120ac50b32dd69389f7c9fc7a7e3a39dceed8cbd1f",
+      "purpose": "Editable lower-trunk/crown refit retaining exact original source objects, UVs and packed image bytes."
+    },
+    {
+      "path": "models/pine/pine-master.blend",
+      "original_source_sha256": "896e696700be53184a87f0511734c3d802110268f6726e463d1e1a00538a6eb2",
+      "changed_sha256": "3f06f3b7f6de63a97c592e383e9e88823e9bb0172f2ec0c4723a7919983b2c0d",
+      "purpose": "Editable lower-trunk/crown refit retaining exact original source objects, UVs and packed image bytes."
+    }
+  ],
+  "runtime_base": "6bb2e044dcd0bf1788896aa2c19cdf56fee93522",
+  "baseline_manifest_sha256": "fd5c592ef52185cc7d0737840e41af09dbb5bcea36b719539931e156f42865cd",
+  "parent_candidates": [],
+  "delta_base": "unchanged sealed G1 runtime",
+  "files": [
+    {
+      "path": "game/g1/art.gd",
+      "before_sha256": "760d85a59a05fd6445d70f87664c234d195d06394ee5a9717d52702073b2d9c8",
+      "after_sha256": "6d845ffb6642c8010c41195cfb481ded8ba2251a1d17fe787648c5eae74cac06",
+      "functions": [
+        "G1Art.resource"
+      ],
+      "purpose": "Select R1 fitted B1 tree presentation; preserve family choice and source-owner metadata. --r1-before selects unchanged G1 B1 visuals.",
+      "overlaps": [
+        "R2 may change resource loading/dispatch; R8 must merge this one selection hook by function."
+      ]
+    },
+    {
+      "path": "game/r1/assets/broadleaf-a-lod2.glb",
+      "before_sha256": null,
+      "after_sha256": "434c99c68de26c27cf54890eb2903a508f6ff488a0337b7e4cd928698e525929",
+      "functions": [],
+      "purpose": "selected presentation",
+      "overlaps": [],
+      "replaces_presentation_asset": "game/b1/assets/broadleaf-a-lod2.glb",
+      "source_refit": "models/broadleaf/broadleaf-a-lod2.glb"
+    },
+    {
+      "path": "game/r1/assets/broadleaf-a-lod2_broadleaf runtime Image_0.png",
+      "before_sha256": null,
+      "after_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1",
+      "functions": [],
+      "purpose": "selected presentation",
+      "overlaps": [],
+      "replaces_presentation_asset": "game/b1/assets/broadleaf-a-lod2_broadleaf runtime Image_0.png",
+      "source_refit": "models/broadleaf/broadleaf-a-lod2_broadleaf runtime Image_0.png"
+    },
+    {
+      "path": "game/r1/assets/broadleaf-a-lod2_broadleaf runtime Image_1.png",
+      "before_sha256": null,
+      "after_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e",
+      "functions": [],
+      "purpose": "selected presentation",
+      "overlaps": [],
+      "replaces_presentation_asset": "game/b1/assets/broadleaf-a-lod2_broadleaf runtime Image_1.png",
+      "source_refit": "models/broadleaf/broadleaf-a-lod2_broadleaf runtime Image_1.png"
+    },
+    {
+      "path": "game/r1/assets/broadleaf-stump.glb",
+      "before_sha256": null,
+      "after_sha256": "180d2a104d7050522d4d7d068d275e099dbcb0a22d77cb585eec6d46432ca270",
+      "functions": [],
+      "purpose": "selected presentation",
+      "overlaps": [],
+      "replaces_presentation_asset": "game/b1/assets/broadleaf-stump.glb",
+      "source_refit": "models/broadleaf/broadleaf-stump.glb"
+    },
+    {
+      "path": "game/r1/assets/broadleaf-stump_broadleaf coherent cut grain.png",
+      "before_sha256": null,
+      "after_sha256": "d8373511aac3511225feb942aefaa92fec1395bde24aa6539b0e8da0cd2fbae8",
+      "functions": [],
+      "purpose": "selected presentation",
+      "overlaps": [],
+      "replaces_presentation_asset": "game/b1/assets/broadleaf-stump_broadleaf coherent cut grain.png",
+      "source_refit": "models/broadleaf/broadleaf-stump_broadleaf coherent cut grain.png"
+    },
+    {
+      "path": "game/r1/assets/broadleaf-stump_broadleaf runtime Image_0.png",
+      "before_sha256": null,
+      "after_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1",
+      "functions": [],
+      "purpose": "selected presentation",
+      "overlaps": [],
+      "replaces_presentation_asset": "game/b1/assets/broadleaf-stump_broadleaf runtime Image_0.png",
+      "source_refit": "models/broadleaf/broadleaf-stump_broadleaf runtime Image_0.png"
+    },
+    {
+      "path": "game/r1/assets/broadleaf-stump_broadleaf runtime Image_1.png",
+      "before_sha256": null,
+      "after_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e",
+      "functions": [],
+      "purpose": "selected presentation",
+      "overlaps": [],
+      "replaces_presentation_asset": "game/b1/assets/broadleaf-stump_broadleaf runtime Image_1.png",
+      "source_refit": "models/broadleaf/broadleaf-stump_broadleaf runtime Image_1.png"
+    },
+    {
+      "path": "game/r1/assets/pine-a-lod2.glb",
+      "before_sha256": null,
+      "after_sha256": "cdc2f75085595e8545570a442bc38ffde00fccbccc51d0c6c8b07380aee34517",
+      "functions": [],
+      "purpose": "selected presentation",
+      "overlaps": [],
+      "replaces_presentation_asset": "game/b1/assets/pine-a-lod2.glb",
+      "source_refit": "models/pine/pine-a-lod2.glb"
+    },
+    {
+      "path": "game/r1/assets/pine-a-lod2_pine runtime Image_0.png",
+      "before_sha256": null,
+      "after_sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6",
+      "functions": [],
+      "purpose": "selected presentation",
+      "overlaps": [],
+      "replaces_presentation_asset": "game/b1/assets/pine-a-lod2_pine runtime Image_0.png",
+      "source_refit": "models/pine/pine-a-lod2_pine runtime Image_0.png"
+    },
+    {
+      "path": "game/r1/assets/pine-a-lod2_pine runtime Image_1.png",
+      "before_sha256": null,
+      "after_sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516",
+      "functions": [],
+      "purpose": "selected presentation",
+      "overlaps": [],
+      "replaces_presentation_asset": "game/b1/assets/pine-a-lod2_pine runtime Image_1.png",
+      "source_refit": "models/pine/pine-a-lod2_pine runtime Image_1.png"
+    },
+    {
+      "path": "game/r1/assets/pine-stump.glb",
+      "before_sha256": null,
+      "after_sha256": "29e867f79b6fb083bac2a68a636c2dc71dfb78f8632b82af3452cf1b84862f41",
+      "functions": [],
+      "purpose": "selected presentation",
+      "overlaps": [],
+      "replaces_presentation_asset": "game/b1/assets/pine-stump.glb",
+      "source_refit": "models/pine/pine-stump.glb"
+    },
+    {
+      "path": "game/r1/assets/pine-stump_pine coherent cut grain.png",
+      "before_sha256": null,
+      "after_sha256": "caf7b2353eb4fb3015b85ff3c1a514be74991245fb0f0ffd932189e7f63deb83",
+      "functions": [],
+      "purpose": "selected presentation",
+      "overlaps": [],
+      "replaces_presentation_asset": "game/b1/assets/pine-stump_pine coherent cut grain.png",
+      "source_refit": "models/pine/pine-stump_pine coherent cut grain.png"
+    },
+    {
+      "path": "game/r1/assets/pine-stump_pine runtime Image_0.png",
+      "before_sha256": null,
+      "after_sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6",
+      "functions": [],
+      "purpose": "selected presentation",
+      "overlaps": [],
+      "replaces_presentation_asset": "game/b1/assets/pine-stump_pine runtime Image_0.png",
+      "source_refit": "models/pine/pine-stump_pine runtime Image_0.png"
+    },
+    {
+      "path": "game/r1/assets/pine-stump_pine runtime Image_1.png",
+      "before_sha256": null,
+      "after_sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516",
+      "functions": [],
+      "purpose": "selected presentation",
+      "overlaps": [],
+      "replaces_presentation_asset": "game/b1/assets/pine-stump_pine runtime Image_1.png",
+      "source_refit": "models/pine/pine-stump_pine runtime Image_1.png"
+    },
+    {
+      "path": "game/r1/b1_native.gd",
+      "before_sha256": null,
+      "after_sha256": "9ae207b1c6cfa97e562c6ae1873bcbc0e1b86c611fbbeae1ab3b70627f8a9021",
+      "functions": [
+        "check",
+        "_ready",
+        "shot",
+        "finish",
+        "r1_envelope"
+      ],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/b1_native.gd.uid",
+      "before_sha256": null,
+      "after_sha256": "86d5bd3ec9eb06024fc5aac2d47796dade3c35c801f87e991423fd7495c3ae5c",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/b1_native.tscn",
+      "before_sha256": null,
+      "after_sha256": "7167e3ae0bc04b98da9fd077017c6068101d3b4bf56ce31eb7242ffad4bcbe81",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/c4_native.gd",
+      "before_sha256": null,
+      "after_sha256": "fc3fb760931cfa42d14d9c9fa5d27d984f04e92650809df862bc4ef4c234ff1d",
+      "functions": [
+        "check",
+        "_ready",
+        "shot",
+        "finish",
+        "r1_envelope"
+      ],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/c4_native.gd.uid",
+      "before_sha256": null,
+      "after_sha256": "c9e330cf60e5b014b924a07a09432a8d48c18f56385e7cdf896a06ad528f0078",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/c4_native.tscn",
+      "before_sha256": null,
+      "after_sha256": "e48edabaeed0566eddb6928bfca7f1ce60df81374d3a510e0cfa90bf30320a97",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/canopy.gdshader",
+      "before_sha256": null,
+      "after_sha256": "99c56f03157d8d96cb264326c5ac2eae1f45f9cc57b029768b0fad236c31f6ac",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/canopy.gdshader.uid",
+      "before_sha256": null,
+      "after_sha256": "a779317b4214441c7a164058b087ba92075faca1816416cd7ff2ff7f34263224",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/catalogue.gd",
+      "before_sha256": null,
+      "after_sha256": "8518d7bfc9ee360ba5684648d4c8877f0eae6133970d55e52b30e5e17a95417b",
+      "functions": [
+        "_run"
+      ],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/catalogue.tscn",
+      "before_sha256": null,
+      "after_sha256": "85b9584cf6b4838d67fe9e49ba6e4b784646719a7d10086c331000e3d9225ebb",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/native_tree.gd",
+      "before_sha256": null,
+      "after_sha256": "5c3aba95c90d462f01bca6bd7013135de299172d9a997fe16fd3c7cf272587f3",
+      "functions": [
+        "_apply_visual",
+        "_leave_stump"
+      ],
+      "purpose": "Offline lower-trunk fit replaces the B1 per-instance whole-tree squeeze; selected model/stump instantiate at unit scale. Original material handling, native parent rules and owner metadata remain.",
+      "overlaps": [
+        "R2 may optimize R1 resource reuse; geometry/fit contract belongs to R1."
+      ]
+    },
+    {
+      "path": "game/r1/native_tree.gd.uid",
+      "before_sha256": null,
+      "after_sha256": "bcbe5e6c8171a0513e02c29da6168c93a189c2927b875c969317aa4bc857505e",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/paid.gd",
+      "before_sha256": null,
+      "after_sha256": "ce17fbd3a462fa055e403fa73e2d554755ace4f92f688bb8bbbdcfb5f00f1fcb",
+      "functions": [
+        "_ready",
+        "check",
+        "execute",
+        "complete",
+        "blocked_placement",
+        "harvest_and_stream",
+        "walk_route",
+        "_home",
+        "_place",
+        "_piece",
+        "_station",
+        "_aim",
+        "_use_home",
+        "_hits",
+        "_station_stand"
+      ],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/paid.gd.uid",
+      "before_sha256": null,
+      "after_sha256": "39a8f834f85f8357c5e431bb0a5916621ad0e39507b5b3f2ccb2224233270c00",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/paid.tscn",
+      "before_sha256": null,
+      "after_sha256": "cde72a7bf7dec409f0a0a82a0d467650a137fc50aba6d153f9eccbd69b032cea",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/probe.gd",
+      "before_sha256": null,
+      "after_sha256": "25d8848ede8838a0eac5200e2023f26cce45d1744fe3abb6bdef5272506e6ff0",
+      "functions": [
+        "execute"
+      ],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/probe.gd.uid",
+      "before_sha256": null,
+      "after_sha256": "3ccfdc89e37f6b4d8640f58da29753a3e13f5317ef69630ba56d1da3b758349a",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/probe.tscn",
+      "before_sha256": null,
+      "after_sha256": "de0518f401d664ff424e3e2fae9d3c77d4a34bb943be4a81018777bd6422abf1",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/replayed-paid-home.json.previous",
+      "before_sha256": null,
+      "after_sha256": "97fa035e4813bf456202991dbd7ce5617c12c2abd2623309711cc0e37280c412",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/route.gd",
+      "before_sha256": null,
+      "after_sha256": "a5892811383b9fcf7e0b5a65cbe3bb02b6a7b5ae3ee6dd6864d0024471ff6de3",
+      "functions": [
+        "_process",
+        "execute"
+      ],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/route.gd.uid",
+      "before_sha256": null,
+      "after_sha256": "fc1d15043ef044d3627d73d5d8aed767961e2161247b9a680d85e1d81f777aec",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/route.tscn",
+      "before_sha256": null,
+      "after_sha256": "1d9e8ab6fa7891ab360a1726738cc1d55243bf2d139525bade254b9177af73c1",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/settings.json",
+      "before_sha256": null,
+      "after_sha256": "db4763c829977846d9534f10e78a120819d95e7b5616d14cbe8f34d446f3bc77",
+      "functions": [],
+      "purpose": "selected presentation",
+      "overlaps": [],
+      "settings": {
+        "lower_radius_m": 0.343,
+        "clear_height_m": 2.6,
+        "full_crown_height_m": 4.2,
+        "burial_m": {
+          "broadleaf": 0.65,
+          "pine": 0.55
+        },
+        "runtime_lod": 2,
+        "purpose": {
+          "lower_radius_m": "Smooth radial compression approaches 98% of the unchanged 0.35 m half-body width; it keeps the central trunk fuller than a single whole-tree squeeze.",
+          "clear_height_m": "Keep lower visual wood inside that radius through 2.6 m, above the 1.92 m player capsule and 1.68 m eye/work envelope.",
+          "full_crown_height_m": "Smoothly recover unchanged source X/Z above 2.6 m, reaching full branch/crown spread at 4.2 m. Trunk height and source seating stay exact; leaf/branch attachment corrections taper to zero at their existing tips.",
+          "burial_m": "Retain the B1 source's existing root seating. No spawn or ground height changes.",
+          "runtime_lod": "Keep G1's selected far LOD2 in the pilot; ship matching near/middle candidates for source review without new runtime LOD switching."
+        }
+      }
+    },
+    {
+      "path": "game/r1/studio-assets/broadleaf-a-lod0.glb",
+      "before_sha256": null,
+      "after_sha256": "d6d1bd99eaa0d9d23c2b373d6c5ebe91fa2cca7e009c80d333ec24abd58bbeaa",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/broadleaf-a-lod0_broadleaf runtime Image_0.png",
+      "before_sha256": null,
+      "after_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/broadleaf-a-lod0_broadleaf runtime Image_1.png",
+      "before_sha256": null,
+      "after_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/broadleaf-a-lod1.glb",
+      "before_sha256": null,
+      "after_sha256": "ab6973fa4b8401b4c0be438f0ae5a2b6d3a0803c24a921b55507df0f1c270d1d",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/broadleaf-a-lod1_broadleaf runtime Image_0.png",
+      "before_sha256": null,
+      "after_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/broadleaf-a-lod1_broadleaf runtime Image_1.png",
+      "before_sha256": null,
+      "after_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/broadleaf-a-lod2.glb",
+      "before_sha256": null,
+      "after_sha256": "434c99c68de26c27cf54890eb2903a508f6ff488a0337b7e4cd928698e525929",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/broadleaf-a-lod2_broadleaf runtime Image_0.png",
+      "before_sha256": null,
+      "after_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/broadleaf-a-lod2_broadleaf runtime Image_1.png",
+      "before_sha256": null,
+      "after_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/broadleaf-altered-lod0.glb",
+      "before_sha256": null,
+      "after_sha256": "1ae56aff2e7d1984e3ab963158a01df7cefce1d29f36fc3cdf6e0106460d0e6f",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/broadleaf-altered-lod0_broadleaf runtime Image_0.png",
+      "before_sha256": null,
+      "after_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/broadleaf-altered-lod0_broadleaf runtime Image_1.png",
+      "before_sha256": null,
+      "after_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/broadleaf-altered-lod1.glb",
+      "before_sha256": null,
+      "after_sha256": "76ec48e4e45090e76442488050b438c22ca1b38c4a9dfba8f923ce52c67d5314",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/broadleaf-altered-lod1_broadleaf runtime Image_0.png",
+      "before_sha256": null,
+      "after_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/broadleaf-altered-lod1_broadleaf runtime Image_1.png",
+      "before_sha256": null,
+      "after_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/broadleaf-altered-lod2.glb",
+      "before_sha256": null,
+      "after_sha256": "5dae59c492aa0a8f090995087bc503f2f3481e172f20afe6a4226eac30eae4b0",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/broadleaf-altered-lod2_broadleaf runtime Image_0.png",
+      "before_sha256": null,
+      "after_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/broadleaf-altered-lod2_broadleaf runtime Image_1.png",
+      "before_sha256": null,
+      "after_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/broadleaf-b-lod0.glb",
+      "before_sha256": null,
+      "after_sha256": "7da1f5a706a7d384e1dd449d0de7a4578e063ea9f75c6d549bcdb94fced45a47",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/broadleaf-b-lod0_broadleaf runtime Image_0.png",
+      "before_sha256": null,
+      "after_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/broadleaf-b-lod0_broadleaf runtime Image_1.png",
+      "before_sha256": null,
+      "after_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/broadleaf-b-lod1.glb",
+      "before_sha256": null,
+      "after_sha256": "3237baadec1c6d4204df128c9f2907e7287d16e023c904d4b15651dd35fbedf7",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/broadleaf-b-lod1_broadleaf runtime Image_0.png",
+      "before_sha256": null,
+      "after_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/broadleaf-b-lod1_broadleaf runtime Image_1.png",
+      "before_sha256": null,
+      "after_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/broadleaf-b-lod2.glb",
+      "before_sha256": null,
+      "after_sha256": "9774e8ac8ef8b9414f060f366f487cb26beaf4c7f2e8701c512b29931d421589",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/broadleaf-b-lod2_broadleaf runtime Image_0.png",
+      "before_sha256": null,
+      "after_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/broadleaf-b-lod2_broadleaf runtime Image_1.png",
+      "before_sha256": null,
+      "after_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/broadleaf-root-skirt.glb",
+      "before_sha256": null,
+      "after_sha256": "fcec0fd04da810b6e905729466d7a4746071c8b47d5627cd08435b2192d64d98",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/broadleaf-root-skirt_broadleaf coherent cut grain.png",
+      "before_sha256": null,
+      "after_sha256": "d8373511aac3511225feb942aefaa92fec1395bde24aa6539b0e8da0cd2fbae8",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/broadleaf-root-skirt_broadleaf runtime Image_0.png",
+      "before_sha256": null,
+      "after_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/broadleaf-root-skirt_broadleaf runtime Image_1.png",
+      "before_sha256": null,
+      "after_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/broadleaf-stump.glb",
+      "before_sha256": null,
+      "after_sha256": "180d2a104d7050522d4d7d068d275e099dbcb0a22d77cb585eec6d46432ca270",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/broadleaf-stump_broadleaf coherent cut grain.png",
+      "before_sha256": null,
+      "after_sha256": "d8373511aac3511225feb942aefaa92fec1395bde24aa6539b0e8da0cd2fbae8",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/broadleaf-stump_broadleaf runtime Image_0.png",
+      "before_sha256": null,
+      "after_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/broadleaf-stump_broadleaf runtime Image_1.png",
+      "before_sha256": null,
+      "after_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/pine-a-lod0.glb",
+      "before_sha256": null,
+      "after_sha256": "35c3a1cdc5cf0dc07b3cf5563438155bcffd3c8563dfa48100f0f74c9f5dd232",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/pine-a-lod0_pine runtime Image_0.png",
+      "before_sha256": null,
+      "after_sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/pine-a-lod0_pine runtime Image_1.png",
+      "before_sha256": null,
+      "after_sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/pine-a-lod1.glb",
+      "before_sha256": null,
+      "after_sha256": "d659f656904a9e63aef4f2891db4cb7e25706f2db30ad34776ef0e6f0d81768b",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/pine-a-lod1_pine runtime Image_0.png",
+      "before_sha256": null,
+      "after_sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/pine-a-lod1_pine runtime Image_1.png",
+      "before_sha256": null,
+      "after_sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/pine-a-lod2.glb",
+      "before_sha256": null,
+      "after_sha256": "cdc2f75085595e8545570a442bc38ffde00fccbccc51d0c6c8b07380aee34517",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/pine-a-lod2_pine runtime Image_0.png",
+      "before_sha256": null,
+      "after_sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/pine-a-lod2_pine runtime Image_1.png",
+      "before_sha256": null,
+      "after_sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/pine-b-lod0.glb",
+      "before_sha256": null,
+      "after_sha256": "6a8c3b738f126b2553d483d9ab83a67ea6f3e8f77b1302be4d0f1a4607bffdc3",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/pine-b-lod0_pine runtime Image_0.png",
+      "before_sha256": null,
+      "after_sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/pine-b-lod0_pine runtime Image_1.png",
+      "before_sha256": null,
+      "after_sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/pine-b-lod1.glb",
+      "before_sha256": null,
+      "after_sha256": "54513f697219f46769dbd47b72387d2819f86ff0756face434a4efffecb0ab01",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/pine-b-lod1_pine runtime Image_0.png",
+      "before_sha256": null,
+      "after_sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/pine-b-lod1_pine runtime Image_1.png",
+      "before_sha256": null,
+      "after_sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/pine-b-lod2.glb",
+      "before_sha256": null,
+      "after_sha256": "73ee84108fc027c9f3fa5b628ae77e6e31214c08f14b188877fb15a3bdc8e514",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/pine-b-lod2_pine runtime Image_0.png",
+      "before_sha256": null,
+      "after_sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/pine-b-lod2_pine runtime Image_1.png",
+      "before_sha256": null,
+      "after_sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/pine-root-skirt.glb",
+      "before_sha256": null,
+      "after_sha256": "f836373a7668726ed6b1459b8f8477d483d44ba78e9baaeabf2976d38458b1c3",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/pine-root-skirt_pine coherent cut grain.png",
+      "before_sha256": null,
+      "after_sha256": "caf7b2353eb4fb3015b85ff3c1a514be74991245fb0f0ffd932189e7f63deb83",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/pine-root-skirt_pine runtime Image_0.png",
+      "before_sha256": null,
+      "after_sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/pine-root-skirt_pine runtime Image_1.png",
+      "before_sha256": null,
+      "after_sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/pine-stump.glb",
+      "before_sha256": null,
+      "after_sha256": "29e867f79b6fb083bac2a68a636c2dc71dfb78f8632b82af3452cf1b84862f41",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/pine-stump_pine coherent cut grain.png",
+      "before_sha256": null,
+      "after_sha256": "caf7b2353eb4fb3015b85ff3c1a514be74991245fb0f0ffd932189e7f63deb83",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/pine-stump_pine runtime Image_0.png",
+      "before_sha256": null,
+      "after_sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio-assets/pine-stump_pine runtime Image_1.png",
+      "before_sha256": null,
+      "after_sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio.gd",
+      "before_sha256": null,
+      "after_sha256": "57c7918a772ffa44c2fccaeb9d19e1bceca19948fea9adcc10db4ec13a76fa9f",
+      "functions": [
+        "_ready",
+        "shot"
+      ],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio.gd.uid",
+      "before_sha256": null,
+      "after_sha256": "c16a2439dbd9bd95cbe207cff583db40287306a1cb3805082372bd017a12af5a",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/studio.tscn",
+      "before_sha256": null,
+      "after_sha256": "626398fe4d917a49f727f673e14fb1cdd532b2aec008b79c1af4444d5eeba0e8",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/views.gd",
+      "before_sha256": null,
+      "after_sha256": "3d30ca120487bf836f2ca6be6926248f885dfbcd5f877f1d57eb40d3da433bc1",
+      "functions": [
+        "execute",
+        "measure_crowns",
+        "ground_eye"
+      ],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/views.gd.uid",
+      "before_sha256": null,
+      "after_sha256": "dc433e88373f75634d6f289596b662f3c55b2adbb29eda3616a0053ffed44651",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    },
+    {
+      "path": "game/r1/views.tscn",
+      "before_sha256": null,
+      "after_sha256": "93aa7f885701feb343e3c1c4b5308c3cc552c8e8c6c85d27c198d4c0d632729a",
+      "functions": [],
+      "purpose": "inspection/test addition; not used by ordinary pilot play",
+      "overlaps": []
+    }
+  ],
+  "geometry": "B1 broadleaf/pine source-preserving lower-trunk fit and reattached crowns; source Y normalization, root burial and native bodies retained.",
+  "unchanged_context": [
+    "C4 geometry/fit",
+    "G1 settings and visibility distances",
+    "all game/sim/data/native authority",
+    "ground-cover composition",
+    "loading/cache policy"
+  ],
+  "line_endings": "g1/art.gd retains the original mixed line endings (28 CRLF lines); the selection hook adds LF lines. New UTF-8 R1 source/evidence files retain their recorded LF/CRLF bytes, all covered by per-file hashes."
+}

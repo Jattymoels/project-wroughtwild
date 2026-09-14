@@ -1,0 +1,1213 @@
+{
+  "masters": [
+    {
+      "path": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\reopen-packed\\broadleaf-master.blend",
+      "sha256": "843f8aebca50a8cf914d7d120ac50b32dd69389f7c9fc7a7e3a39dceed8cbd1f",
+      "packed_images": [
+        {
+          "name": "broadleaf coherent cut grain",
+          "size": [
+            512,
+            512
+          ],
+          "colour_space": "sRGB",
+          "packed_sha256": "d8373511aac3511225feb942aefaa92fec1395bde24aa6539b0e8da0cd2fbae8"
+        },
+        {
+          "name": "broadleaf coherent cut grain.001",
+          "size": [
+            512,
+            512
+          ],
+          "colour_space": "sRGB",
+          "packed_sha256": "d8373511aac3511225feb942aefaa92fec1395bde24aa6539b0e8da0cd2fbae8"
+        },
+        {
+          "name": "broadleaf coherent cut grain.002",
+          "size": [
+            512,
+            512
+          ],
+          "colour_space": "sRGB",
+          "packed_sha256": "d8373511aac3511225feb942aefaa92fec1395bde24aa6539b0e8da0cd2fbae8"
+        },
+        {
+          "name": "broadleaf runtime Image_0",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "sRGB",
+          "packed_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1"
+        },
+        {
+          "name": "broadleaf runtime Image_0.001",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "sRGB",
+          "packed_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1"
+        },
+        {
+          "name": "broadleaf runtime Image_0.002",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "sRGB",
+          "packed_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1"
+        },
+        {
+          "name": "broadleaf runtime Image_0.003",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "sRGB",
+          "packed_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1"
+        },
+        {
+          "name": "broadleaf runtime Image_0.004",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "sRGB",
+          "packed_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1"
+        },
+        {
+          "name": "broadleaf runtime Image_0.005",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "sRGB",
+          "packed_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1"
+        },
+        {
+          "name": "broadleaf runtime Image_0.006",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "sRGB",
+          "packed_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1"
+        },
+        {
+          "name": "broadleaf runtime Image_0.007",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "sRGB",
+          "packed_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1"
+        },
+        {
+          "name": "broadleaf runtime Image_0.008",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "sRGB",
+          "packed_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1"
+        },
+        {
+          "name": "broadleaf runtime Image_0.009",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "sRGB",
+          "packed_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1"
+        },
+        {
+          "name": "broadleaf runtime Image_0.010",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "sRGB",
+          "packed_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1"
+        },
+        {
+          "name": "broadleaf runtime Image_0.011",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "sRGB",
+          "packed_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1"
+        },
+        {
+          "name": "broadleaf runtime Image_1",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "Non-Color",
+          "packed_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e"
+        },
+        {
+          "name": "broadleaf runtime Image_1.001",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "Non-Color",
+          "packed_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e"
+        },
+        {
+          "name": "broadleaf runtime Image_1.002",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "Non-Color",
+          "packed_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e"
+        },
+        {
+          "name": "broadleaf runtime Image_1.003",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "Non-Color",
+          "packed_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e"
+        },
+        {
+          "name": "broadleaf runtime Image_1.004",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "Non-Color",
+          "packed_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e"
+        },
+        {
+          "name": "broadleaf runtime Image_1.005",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "Non-Color",
+          "packed_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e"
+        },
+        {
+          "name": "broadleaf runtime Image_1.006",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "Non-Color",
+          "packed_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e"
+        },
+        {
+          "name": "broadleaf runtime Image_1.007",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "Non-Color",
+          "packed_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e"
+        },
+        {
+          "name": "broadleaf runtime Image_1.008",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "Non-Color",
+          "packed_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e"
+        },
+        {
+          "name": "broadleaf runtime Image_1.009",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "Non-Color",
+          "packed_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e"
+        },
+        {
+          "name": "broadleaf runtime Image_1.010",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "Non-Color",
+          "packed_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e"
+        },
+        {
+          "name": "broadleaf runtime Image_1.011",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "Non-Color",
+          "packed_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e"
+        },
+        {
+          "name": "Image_0",
+          "size": [
+            2048,
+            2048
+          ],
+          "colour_space": "sRGB",
+          "packed_sha256": "cce5300c7d8f5c3bdf8332ea25c792d2293118824181b3a353b2e1f10d53159f"
+        },
+        {
+          "name": "Image_1",
+          "size": [
+            2048,
+            2048
+          ],
+          "colour_space": "Non-Color",
+          "packed_sha256": "241fa20040a49e8c83ff68051d6f08c754b8ad75caa66c8311a6323a0e672595"
+        },
+        {
+          "name": "Tree scar - core damage travel",
+          "size": [
+            2048,
+            2048
+          ],
+          "colour_space": "Non-Color",
+          "packed_sha256": "9717d348db27bf7ff6d1e65e23794def303224705ff5c1826d657685c58d64f0"
+        }
+      ],
+      "collections": [
+        "ORIGINAL ORIGINAL ORIGINAL ORIGINAL ORIGINAL ORIGINAL ORIGIN",
+        "ORIGINAL ORIGINAL ORIGINAL ORIGINAL ORIGINAL ORIGINAL ORIGINA",
+        "ORIGINAL ORIGINAL ORIGINAL ORIGINAL ORIGINAL ORIGINAL ORIGINAL",
+        "ORIGINAL ORIGINAL ORIGINAL ORIGINAL ORIGINAL ORIGINAL ORIGINAL ",
+        "R1 REFITTED RUNTIME"
+      ]
+    },
+    {
+      "path": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\reopen-packed\\pine-master.blend",
+      "sha256": "3f06f3b7f6de63a97c592e383e9e88823e9bb0172f2ec0c4723a7919983b2c0d",
+      "packed_images": [
+        {
+          "name": "Image_0",
+          "size": [
+            2048,
+            2048
+          ],
+          "colour_space": "sRGB",
+          "packed_sha256": "3c50cd50875bf8c62b0c2ccec78e5b31909f02e9070791dce51092e7f0075a08"
+        },
+        {
+          "name": "Image_1",
+          "size": [
+            2048,
+            2048
+          ],
+          "colour_space": "Non-Color",
+          "packed_sha256": "ff9afaa5fe4e47ae6ec444b0d8c01fb69f4abf390f3520dc6cd3be98152ebbc1"
+        },
+        {
+          "name": "pine coherent cut grain",
+          "size": [
+            512,
+            512
+          ],
+          "colour_space": "sRGB",
+          "packed_sha256": "caf7b2353eb4fb3015b85ff3c1a514be74991245fb0f0ffd932189e7f63deb83"
+        },
+        {
+          "name": "pine coherent cut grain.001",
+          "size": [
+            512,
+            512
+          ],
+          "colour_space": "sRGB",
+          "packed_sha256": "caf7b2353eb4fb3015b85ff3c1a514be74991245fb0f0ffd932189e7f63deb83"
+        },
+        {
+          "name": "pine coherent cut grain.002",
+          "size": [
+            512,
+            512
+          ],
+          "colour_space": "sRGB",
+          "packed_sha256": "caf7b2353eb4fb3015b85ff3c1a514be74991245fb0f0ffd932189e7f63deb83"
+        },
+        {
+          "name": "pine runtime Image_0",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "sRGB",
+          "packed_sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6"
+        },
+        {
+          "name": "pine runtime Image_0.001",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "sRGB",
+          "packed_sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6"
+        },
+        {
+          "name": "pine runtime Image_0.002",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "sRGB",
+          "packed_sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6"
+        },
+        {
+          "name": "pine runtime Image_0.003",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "sRGB",
+          "packed_sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6"
+        },
+        {
+          "name": "pine runtime Image_0.004",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "sRGB",
+          "packed_sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6"
+        },
+        {
+          "name": "pine runtime Image_0.005",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "sRGB",
+          "packed_sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6"
+        },
+        {
+          "name": "pine runtime Image_0.006",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "sRGB",
+          "packed_sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6"
+        },
+        {
+          "name": "pine runtime Image_0.007",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "sRGB",
+          "packed_sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6"
+        },
+        {
+          "name": "pine runtime Image_0.008",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "sRGB",
+          "packed_sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6"
+        },
+        {
+          "name": "pine runtime Image_1",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "Non-Color",
+          "packed_sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516"
+        },
+        {
+          "name": "pine runtime Image_1.001",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "Non-Color",
+          "packed_sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516"
+        },
+        {
+          "name": "pine runtime Image_1.002",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "Non-Color",
+          "packed_sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516"
+        },
+        {
+          "name": "pine runtime Image_1.003",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "Non-Color",
+          "packed_sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516"
+        },
+        {
+          "name": "pine runtime Image_1.004",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "Non-Color",
+          "packed_sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516"
+        },
+        {
+          "name": "pine runtime Image_1.005",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "Non-Color",
+          "packed_sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516"
+        },
+        {
+          "name": "pine runtime Image_1.006",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "Non-Color",
+          "packed_sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516"
+        },
+        {
+          "name": "pine runtime Image_1.007",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "Non-Color",
+          "packed_sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516"
+        },
+        {
+          "name": "pine runtime Image_1.008",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "Non-Color",
+          "packed_sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516"
+        }
+      ],
+      "collections": [
+        "ORIGINAL ORIGINAL ORIGINAL ORIGINAL ORIGINAL ORIGINAL ORIGIN",
+        "ORIGINAL ORIGINAL ORIGINAL ORIGINAL ORIGINAL ORIGINAL ORIGINA",
+        "ORIGINAL ORIGINAL ORIGINAL ORIGINAL ORIGINAL ORIGINAL ORIGINAL",
+        "ORIGINAL ORIGINAL ORIGINAL ORIGINAL ORIGINAL ORIGINAL ORIGINAL ",
+        "R1 REFITTED RUNTIME"
+      ]
+    }
+  ],
+  "exports": [
+    {
+      "file": "broadleaf-a-lod0.glb",
+      "sha256": "d6d1bd99eaa0d9d23c2b373d6c5ebe91fa2cca7e009c80d333ec24abd58bbeaa",
+      "triangles": 219474,
+      "degenerate_triangles": 0,
+      "lower_radius_m": 0.34023062086994915,
+      "bounds_blender_m": [
+        [
+          -4.00299072265625,
+          -2.049156665802002,
+          0.00843413919210434
+        ],
+        [
+          4.223137855529785,
+          4.193358898162842,
+          8.580297470092773
+        ]
+      ],
+      "object_scales": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "leaf_roots": 16219,
+      "max_leaf_to_twig_surface_m": 0.00690882233902812,
+      "branchlets": 580,
+      "max_branchlet_to_trunk_surface_m": 0.00685028126463294
+    },
+    {
+      "file": "broadleaf-a-lod1.glb",
+      "sha256": "ab6973fa4b8401b4c0be438f0ae5a2b6d3a0803c24a921b55507df0f1c270d1d",
+      "triangles": 98032,
+      "degenerate_triangles": 0,
+      "lower_radius_m": 0.33923355170119296,
+      "bounds_blender_m": [
+        [
+          -3.9619698524475098,
+          -2.0205605030059814,
+          0.03348498046398163
+        ],
+        [
+          4.215907573699951,
+          4.195178031921387,
+          8.562625885009766
+        ]
+      ],
+      "object_scales": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "leaf_roots": 16230,
+      "max_leaf_to_twig_surface_m": 0.006990676745772362,
+      "branchlets": 580,
+      "max_branchlet_to_trunk_surface_m": 0.006999144796282053
+    },
+    {
+      "file": "broadleaf-a-lod2.glb",
+      "sha256": "434c99c68de26c27cf54890eb2903a508f6ff488a0337b7e4cd928698e525929",
+      "triangles": 65232,
+      "degenerate_triangles": 0,
+      "lower_radius_m": 0.33897109458442265,
+      "bounds_blender_m": [
+        [
+          -3.9623818397521973,
+          -2.006535053253174,
+          0.30371251702308655
+        ],
+        [
+          4.213953971862793,
+          4.202667236328125,
+          8.562625885009766
+        ]
+      ],
+      "object_scales": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "leaf_roots": 16226,
+      "max_leaf_to_twig_surface_m": 0.006977352779358625,
+      "branchlets": 580,
+      "max_branchlet_to_trunk_surface_m": 0.00696643628180027
+    },
+    {
+      "file": "broadleaf-altered-lod0.glb",
+      "sha256": "1ae56aff2e7d1984e3ab963158a01df7cefce1d29f36fc3cdf6e0106460d0e6f",
+      "triangles": 219473,
+      "degenerate_triangles": 0,
+      "lower_radius_m": 0.34023062086994915,
+      "bounds_blender_m": [
+        [
+          -4.00299072265625,
+          -2.049156665802002,
+          0.00843413919210434
+        ],
+        [
+          4.218193531036377,
+          4.200547218322754,
+          8.580297470092773
+        ]
+      ],
+      "object_scales": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "leaf_roots": 16214,
+      "max_leaf_to_twig_surface_m": 0.00690882233902812,
+      "branchlets": 580,
+      "max_branchlet_to_trunk_surface_m": 0.00685028126463294
+    },
+    {
+      "file": "broadleaf-altered-lod1.glb",
+      "sha256": "76ec48e4e45090e76442488050b438c22ca1b38c4a9dfba8f923ce52c67d5314",
+      "triangles": 98032,
+      "degenerate_triangles": 0,
+      "lower_radius_m": 0.3391823233962928,
+      "bounds_blender_m": [
+        [
+          -3.9619698524475098,
+          -2.0205605030059814,
+          0.03348498046398163
+        ],
+        [
+          4.219415187835693,
+          4.202667236328125,
+          8.562625885009766
+        ]
+      ],
+      "object_scales": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "leaf_roots": 16222,
+      "max_leaf_to_twig_surface_m": 0.006990676745772362,
+      "branchlets": 580,
+      "max_branchlet_to_trunk_surface_m": 0.006999144796282053
+    },
+    {
+      "file": "broadleaf-altered-lod2.glb",
+      "sha256": "5dae59c492aa0a8f090995087bc503f2f3481e172f20afe6a4226eac30eae4b0",
+      "triangles": 65238,
+      "degenerate_triangles": 0,
+      "lower_radius_m": 0.33897109458442265,
+      "bounds_blender_m": [
+        [
+          -3.9623818397521973,
+          -2.006535053253174,
+          0.30371251702308655
+        ],
+        [
+          4.219572067260742,
+          4.202667236328125,
+          8.562625885009766
+        ]
+      ],
+      "object_scales": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "leaf_roots": 16228,
+      "max_leaf_to_twig_surface_m": 0.0069813900627195835,
+      "branchlets": 580,
+      "max_branchlet_to_trunk_surface_m": 0.006993515882641077
+    },
+    {
+      "file": "broadleaf-b-lod0.glb",
+      "sha256": "7da1f5a706a7d384e1dd449d0de7a4578e063ea9f75c6d549bcdb94fced45a47",
+      "triangles": 219474,
+      "degenerate_triangles": 0,
+      "lower_radius_m": 0.34023062086994915,
+      "bounds_blender_m": [
+        [
+          -4.322175025939941,
+          -2.2040019035339355,
+          0.00843413919210434
+        ],
+        [
+          4.320868968963623,
+          4.19644832611084,
+          8.319479942321777
+        ]
+      ],
+      "object_scales": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "leaf_roots": 16219,
+      "max_leaf_to_twig_surface_m": 0.006957718171179295,
+      "branchlets": 580,
+      "max_branchlet_to_trunk_surface_m": 0.006974571384489536
+    },
+    {
+      "file": "broadleaf-b-lod1.glb",
+      "sha256": "3237baadec1c6d4204df128c9f2907e7287d16e023c904d4b15651dd35fbedf7",
+      "triangles": 98032,
+      "degenerate_triangles": 0,
+      "lower_radius_m": 0.33923355170119296,
+      "bounds_blender_m": [
+        [
+          -4.299169540405273,
+          -2.1776113510131836,
+          0.03348498046398163
+        ],
+        [
+          4.3221869468688965,
+          4.190802574157715,
+          8.305931091308594
+        ]
+      ],
+      "object_scales": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "leaf_roots": 16230,
+      "max_leaf_to_twig_surface_m": 0.00690350541844964,
+      "branchlets": 580,
+      "max_branchlet_to_trunk_surface_m": 0.006819190923124552
+    },
+    {
+      "file": "broadleaf-b-lod2.glb",
+      "sha256": "9774e8ac8ef8b9414f060f366f487cb26beaf4c7f2e8701c512b29931d421589",
+      "triangles": 65232,
+      "degenerate_triangles": 0,
+      "lower_radius_m": 0.33897109458442265,
+      "bounds_blender_m": [
+        [
+          -4.294336795806885,
+          -2.1776113510131836,
+          0.30371251702308655
+        ],
+        [
+          4.3202338218688965,
+          4.190802574157715,
+          8.305931091308594
+        ]
+      ],
+      "object_scales": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "leaf_roots": 16219,
+      "max_leaf_to_twig_surface_m": 0.006962689105421305,
+      "branchlets": 580,
+      "max_branchlet_to_trunk_surface_m": 0.006950534880161285
+    },
+    {
+      "file": "broadleaf-root-skirt.glb",
+      "sha256": "fcec0fd04da810b6e905729466d7a4746071c8b47d5627cd08435b2192d64d98",
+      "triangles": 26655,
+      "degenerate_triangles": 0,
+      "lower_radius_m": 0.34023062086994915,
+      "bounds_blender_m": [
+        [
+          -0.33815163373947144,
+          -0.34109053015708923,
+          0.0021446796599775553
+        ],
+        [
+          0.3397957384586334,
+          0.34024491906166077,
+          1.3300000429153442
+        ]
+      ],
+      "object_scales": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "file": "broadleaf-stump.glb",
+      "sha256": "180d2a104d7050522d4d7d068d275e099dbcb0a22d77cb585eec6d46432ca270",
+      "triangles": 25229,
+      "degenerate_triangles": 0,
+      "lower_radius_m": 0.34023062086994915,
+      "bounds_blender_m": [
+        [
+          -0.33815163373947144,
+          -0.34109053015708923,
+          0.0021446796599775553
+        ],
+        [
+          0.3397957384586334,
+          0.34024491906166077,
+          1.25
+        ]
+      ],
+      "object_scales": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "file": "pine-a-lod0.glb",
+      "sha256": "35c3a1cdc5cf0dc07b3cf5563438155bcffd3c8563dfa48100f0f74c9f5dd232",
+      "triangles": 395397,
+      "degenerate_triangles": 0,
+      "lower_radius_m": 0.3407894152922245,
+      "bounds_blender_m": [
+        [
+          -3.1433722972869873,
+          -3.014669179916382,
+          -0.002841588342562318
+        ],
+        [
+          2.997276782989502,
+          2.7693588733673096,
+          9.16031551361084
+        ]
+      ],
+      "object_scales": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "leaf_roots": 24449,
+      "max_leaf_to_twig_surface_m": 0.006989025976508856,
+      "branchlets": 680,
+      "max_branchlet_to_trunk_surface_m": 0.006965294945985079
+    },
+    {
+      "file": "pine-a-lod1.glb",
+      "sha256": "d659f656904a9e63aef4f2891db4cb7e25706f2db30ad34776ef0e6f0d81768b",
+      "triangles": 130597,
+      "degenerate_triangles": 0,
+      "lower_radius_m": 0.34077423552918396,
+      "bounds_blender_m": [
+        [
+          -3.1470906734466553,
+          -2.997020959854126,
+          -0.0003691725432872772
+        ],
+        [
+          2.99003529548645,
+          2.7662758827209473,
+          9.157492637634277
+        ]
+      ],
+      "object_scales": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "leaf_roots": 24457,
+      "max_leaf_to_twig_surface_m": 0.006991330999881029,
+      "branchlets": 680,
+      "max_branchlet_to_trunk_surface_m": 0.006450366694480181
+    },
+    {
+      "file": "pine-a-lod2.glb",
+      "sha256": "cdc2f75085595e8545570a442bc38ffde00fccbccc51d0c6c8b07380aee34517",
+      "triangles": 69637,
+      "degenerate_triangles": 0,
+      "lower_radius_m": 0.3407776488369163,
+      "bounds_blender_m": [
+        [
+          -3.130204200744629,
+          -3.000900983810425,
+          0.012035530060529709
+        ],
+        [
+          2.990265369415283,
+          2.7689731121063232,
+          9.156060218811035
+        ]
+      ],
+      "object_scales": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "leaf_roots": 24454,
+      "max_leaf_to_twig_surface_m": 0.006991095375269651,
+      "branchlets": 680,
+      "max_branchlet_to_trunk_surface_m": 0.006873589940369129
+    },
+    {
+      "file": "pine-b-lod0.glb",
+      "sha256": "6a8c3b738f126b2553d483d9ab83a67ea6f3e8f77b1302be4d0f1a4607bffdc3",
+      "triangles": 395397,
+      "degenerate_triangles": 0,
+      "lower_radius_m": 0.3429999911880094,
+      "bounds_blender_m": [
+        [
+          -3.1321678161621094,
+          -3.0895144939422607,
+          -0.002841588342562318
+        ],
+        [
+          2.9198405742645264,
+          2.832106351852417,
+          9.413354873657227
+        ]
+      ],
+      "object_scales": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "leaf_roots": 24449,
+      "max_leaf_to_twig_surface_m": 0.0069586290046572685,
+      "branchlets": 680,
+      "max_branchlet_to_trunk_surface_m": 0.006823901552706957
+    },
+    {
+      "file": "pine-b-lod1.glb",
+      "sha256": "54513f697219f46769dbd47b72387d2819f86ff0756face434a4efffecb0ab01",
+      "triangles": 130597,
+      "degenerate_triangles": 0,
+      "lower_radius_m": 0.34300001285003195,
+      "bounds_blender_m": [
+        [
+          -3.131777763366699,
+          -3.081435203552246,
+          -0.0003691725432872772
+        ],
+        [
+          2.918347120285034,
+          2.8208234310150146,
+          9.408191680908203
+        ]
+      ],
+      "object_scales": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "leaf_roots": 24450,
+      "max_leaf_to_twig_surface_m": 0.006949373055249453,
+      "branchlets": 680,
+      "max_branchlet_to_trunk_surface_m": 0.006211854517459869
+    },
+    {
+      "file": "pine-b-lod2.glb",
+      "sha256": "73ee84108fc027c9f3fa5b628ae77e6e31214c08f14b188877fb15a3bdc8e514",
+      "triangles": 69637,
+      "degenerate_triangles": 0,
+      "lower_radius_m": 0.34103811271220225,
+      "bounds_blender_m": [
+        [
+          -3.144784450531006,
+          -3.0778486728668213,
+          0.012035530060529709
+        ],
+        [
+          2.904923439025879,
+          2.823094129562378,
+          9.385089874267578
+        ]
+      ],
+      "object_scales": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "leaf_roots": 24457,
+      "max_leaf_to_twig_surface_m": 0.006976922042667866,
+      "branchlets": 680,
+      "max_branchlet_to_trunk_surface_m": 0.006979765836149454
+    },
+    {
+      "file": "pine-root-skirt.glb",
+      "sha256": "f836373a7668726ed6b1459b8f8477d483d44ba78e9baaeabf2976d38458b1c3",
+      "triangles": 74166,
+      "degenerate_triangles": 0,
+      "lower_radius_m": 0.33123576675008615,
+      "bounds_blender_m": [
+        [
+          -0.3391537368297577,
+          -0.33641761541366577,
+          0.0
+        ],
+        [
+          0.3278754651546478,
+          0.3358973562717438,
+          1.0800000429153442
+        ]
+      ],
+      "object_scales": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "file": "pine-stump.glb",
+      "sha256": "29e867f79b6fb083bac2a68a636c2dc71dfb78f8632b82af3452cf1b84862f41",
+      "triangles": 73276,
+      "degenerate_triangles": 0,
+      "lower_radius_m": 0.33123576675008615,
+      "bounds_blender_m": [
+        [
+          -0.3391537368297577,
+          -0.33641761541366577,
+          0.0
+        ],
+        [
+          0.3278754651546478,
+          0.3358973562717438,
+          1.0
+        ]
+      ],
+      "object_scales": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ]
+      ]
+    }
+  ]
+}

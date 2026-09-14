@@ -1,0 +1,18 @@
+{
+  "wave": 1,
+  "start_after": [],
+  "direct_candidate_dependencies": [],
+  "published_original_implementations": {
+    "b1": [
+      "f3236243516fdb60a5ab56387727db88f7b2477f"
+    ],
+    "c4": [
+      "a13d2a36cfa33a175528f9b528f49236cb9939b8",
+      "21fa83b82cfd2d5c687937782663b93b11e0237d"
+    ]
+  },
+  "remote_main": "473ae7604b3841899c29629cf59f8836ed528424\trefs/heads/main",
+  "checkout": "473ae7604b3841899c29629cf59f8836ed528424",
+  "branch": "codex/art07-r1",
+  "note": "Original worker source tips were cherry-picked; published main implementation commits, not raw worker branch ancestry, are checked."
+}

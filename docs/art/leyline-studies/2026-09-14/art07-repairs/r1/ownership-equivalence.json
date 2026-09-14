@@ -1,0 +1,46 @@
+{
+  "full_probe_snapshot_equal": true,
+  "finite_resource_records": 13627,
+  "geography_sha256": "550b2d742314136a71a8c177920059bd245996e744b8722c8ba8c68afbde4a70",
+  "paid_snapshots": {
+    "initial": {
+      "full_snapshot_equal": true,
+      "raw_differences": []
+    },
+    "paid": {
+      "full_snapshot_equal": false,
+      "raw_differences": [
+        {
+          "path": "stations/2/name",
+          "before": "@StaticBody3D@4310",
+          "after": "@StaticBody3D@4311",
+          "station_key": "station_forge_basic_474500_31000_447500",
+          "classification": "Engine-generated scene name for a newly placed forge. Native ownership key, type, pose, rotation, upgrade and built flag are exactly equal. Save schema/code unchanged."
+        }
+      ]
+    },
+    "final": {
+      "full_snapshot_equal": false,
+      "raw_differences": [
+        {
+          "path": "stations/2/name",
+          "before": "@StaticBody3D@4310",
+          "after": "@StaticBody3D@4311",
+          "station_key": "station_forge_basic_474500_31000_447500",
+          "classification": "Engine-generated scene name for a newly placed forge. Native ownership key, type, pose, rotation, upgrade and built flag are exactly equal. Save schema/code unchanged."
+        }
+      ]
+    }
+  },
+  "native_ownership_and_geography_equal": true,
+  "checks_before": 865,
+  "checks_after": 865,
+  "walk_metres_before": 135.078021510504,
+  "walk_metres_after": 135.078021510504,
+  "raw_byte_equality_claimed": false,
+  "original_native_assertions_changed": false,
+  "authority_references": [
+    "game/scripts/save_manager.gd capture(): name and station_key separate fields; apply(): restores both",
+    "game/scripts/station_site.gd: station_key/player_built identify physical ownership; is_built uses station_id and unchanged sim knowledge"
+  ]
+}

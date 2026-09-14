@@ -1,0 +1,2794 @@
+[
+  {
+    "renderer": "forward_plus",
+    "camera": "home-player-height",
+    "eye": "(468.5, 32.68, 431.5)",
+    "target": "(460.5, 33.69, 445.5)",
+    "before_visible_bound_count": 108,
+    "after_visible_bound_count": 114,
+    "before_overlap_pairs": 250,
+    "after_overlap_pairs": 895,
+    "before_sum_overlap_px2": 177872.80548775205,
+    "after_sum_overlap_px2": 2387123.027543069,
+    "matched": [
+      {
+        "id": "wnv6_tree_456_32_462",
+        "family": "wood",
+        "before_width_camera_m": 2.742431640625,
+        "after_width_camera_m": 10.0680541992188,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_441_32_454",
+        "family": "wood",
+        "before_width_camera_m": 2.748291015625,
+        "after_width_camera_m": 10.0907592773438,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_438_32_441",
+        "family": "wood",
+        "before_width_camera_m": 2.67877197265625,
+        "after_width_camera_m": 9.867919921875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_464_32_466",
+        "family": "wood",
+        "before_width_camera_m": 1.98236083984375,
+        "after_width_camera_m": 7.33807373046875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_445_33_464",
+        "family": "wood",
+        "before_width_camera_m": 2.7926025390625,
+        "after_width_camera_m": 10.2667236328125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_438_33_456",
+        "family": "wood",
+        "before_width_camera_m": 2.50848388671875,
+        "after_width_camera_m": 9.25341796875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_450_33_467",
+        "family": "wood",
+        "before_width_camera_m": 2.099609375,
+        "after_width_camera_m": 7.76611328125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_437_33_456",
+        "family": "wood",
+        "before_width_camera_m": 2.59857177734375,
+        "after_width_camera_m": 9.5792236328125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_434_33_446",
+        "family": "wood",
+        "before_width_camera_m": 2.73333740234375,
+        "after_width_camera_m": 10.0335693359375,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_443_33_464",
+        "family": "wood",
+        "before_width_camera_m": 2.73333740234375,
+        "after_width_camera_m": 10.0336303710938,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_433_33_451",
+        "family": "wood",
+        "before_width_camera_m": 1.8709716796875,
+        "after_width_camera_m": 6.93145751953125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_469_32_471",
+        "family": "wood",
+        "before_width_camera_m": 2.52679443359375,
+        "after_width_camera_m": 9.3194580078125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_440_33_471",
+        "family": "wood",
+        "before_width_camera_m": 2.021240234375,
+        "after_width_camera_m": 7.480224609375,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_469_32_477",
+        "family": "wood",
+        "before_width_camera_m": 2.40008544921875,
+        "after_width_camera_m": 8.860107421875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_471_32_479",
+        "family": "wood",
+        "before_width_camera_m": 2.763427734375,
+        "after_width_camera_m": 10.1484985351563,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_424_33_452",
+        "family": "wood",
+        "before_width_camera_m": 2.34368896484375,
+        "after_width_camera_m": 8.5767822265625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_440_33_475",
+        "family": "wood",
+        "before_width_camera_m": 2.55181884765625,
+        "after_width_camera_m": 9.3514404296875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_476_32_478",
+        "family": "wood",
+        "before_width_camera_m": 1.915283203125,
+        "after_width_camera_m": 7.09332275390625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_472_32_480",
+        "family": "wood",
+        "before_width_camera_m": 2.7896728515625,
+        "after_width_camera_m": 10.2586669921875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_421_33_446",
+        "family": "wood",
+        "before_width_camera_m": 2.77789306640625,
+        "after_width_camera_m": 10.2042846679688,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_427_33_465",
+        "family": "wood",
+        "before_width_camera_m": 2.79266357421875,
+        "after_width_camera_m": 10.2662353515625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_421_33_451",
+        "family": "wood",
+        "before_width_camera_m": 2.38079833984375,
+        "after_width_camera_m": 8.71466064453125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_436_33_477",
+        "family": "wood",
+        "before_width_camera_m": 2.58465576171875,
+        "after_width_camera_m": 9.47442626953125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_457_32_485",
+        "family": "wood",
+        "before_width_camera_m": 2.73223876953125,
+        "after_width_camera_m": 10.0293579101563,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_464_32_487",
+        "family": "wood",
+        "before_width_camera_m": 2.75250244140625,
+        "after_width_camera_m": 10.1307983398438,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_465_32_487",
+        "family": "wood",
+        "before_width_camera_m": 2.5128173828125,
+        "after_width_camera_m": 9.2689208984375,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_415_33_450",
+        "family": "wood",
+        "before_width_camera_m": 2.6510009765625,
+        "after_width_camera_m": 9.7681884765625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_421_33_477",
+        "family": "wood",
+        "before_width_camera_m": 2.616943359375,
+        "after_width_camera_m": 9.64556884765625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_415_33_475",
+        "family": "wood",
+        "before_width_camera_m": 2.7841796875,
+        "after_width_camera_m": 10.229248046875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_459_32_499",
+        "family": "wood",
+        "before_width_camera_m": 2.73614501953125,
+        "after_width_camera_m": 10.0731811523438,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_408_33_463",
+        "family": "wood",
+        "before_width_camera_m": 2.5882568359375,
+        "after_width_camera_m": 9.541748046875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_405_33_458",
+        "family": "wood",
+        "before_width_camera_m": 2.46612548828125,
+        "after_width_camera_m": 9.0322265625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_457_32_509",
+        "family": "wood",
+        "before_width_camera_m": 2.785888671875,
+        "after_width_camera_m": 10.236328125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_400_33_471",
+        "family": "wood",
+        "before_width_camera_m": 2.214599609375,
+        "after_width_camera_m": 8.185302734375,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_417_32_496",
+        "family": "wood",
+        "before_width_camera_m": 2.520751953125,
+        "after_width_camera_m": 9.2359619140625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_393_33_457",
+        "family": "wood",
+        "before_width_camera_m": 2.7540283203125,
+        "after_width_camera_m": 10.112548828125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_484_31_508",
+        "family": "wood",
+        "before_width_camera_m": 2.7825927734375,
+        "after_width_camera_m": 10.223388671875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_474_32_512",
+        "family": "wood",
+        "before_width_camera_m": 2.61846923828125,
+        "after_width_camera_m": 9.65118408203125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_449_32_513",
+        "family": "wood",
+        "before_width_camera_m": 1.94256591796875,
+        "after_width_camera_m": 7.19305419921875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_466_32_515",
+        "family": "wood",
+        "before_width_camera_m": 1.902099609375,
+        "after_width_camera_m": 7.045166015625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_451_32_515",
+        "family": "wood",
+        "before_width_camera_m": 2.7877197265625,
+        "after_width_camera_m": 10.2523803710938,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_397_33_481",
+        "family": "wood",
+        "before_width_camera_m": 1.67706298828125,
+        "after_width_camera_m": 6.22265625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_448_32_517",
+        "family": "wood",
+        "before_width_camera_m": 2.59344482421875,
+        "after_width_camera_m": 9.50732421875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_415_32_503",
+        "family": "wood",
+        "before_width_camera_m": 2.70477294921875,
+        "after_width_camera_m": 9.96136474609375,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_397_32_484",
+        "family": "wood",
+        "before_width_camera_m": 2.70135498046875,
+        "after_width_camera_m": 9.91229248046875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_401_32_491",
+        "family": "wood",
+        "before_width_camera_m": 2.561279296875,
+        "after_width_camera_m": 9.44451904296875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_397_32_488",
+        "family": "wood",
+        "before_width_camera_m": 2.790283203125,
+        "after_width_camera_m": 10.2606201171875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_447_32_520",
+        "family": "wood",
+        "before_width_camera_m": 1.85009765625,
+        "after_width_camera_m": 6.8553466796875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_383_32_458",
+        "family": "wood",
+        "before_width_camera_m": 2.742431640625,
+        "after_width_camera_m": 10.068115234375,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_445_32_521",
+        "family": "wood",
+        "before_width_camera_m": 2.4791259765625,
+        "after_width_camera_m": 9.08056640625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_435_32_519",
+        "family": "wood",
+        "before_width_camera_m": 2.078125,
+        "after_width_camera_m": 7.68780517578125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_473_32_523",
+        "family": "wood",
+        "before_width_camera_m": 2.79217529296875,
+        "after_width_camera_m": 10.2659301757813,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_426_31_517",
+        "family": "wood",
+        "before_width_camera_m": 1.6884765625,
+        "after_width_camera_m": 6.2642822265625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_401_32_499",
+        "family": "wood",
+        "before_width_camera_m": 2.38311767578125,
+        "after_width_camera_m": 8.7232666015625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_381_32_466",
+        "family": "wood",
+        "before_width_camera_m": 2.1947021484375,
+        "after_width_camera_m": 8.11285400390625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_399_32_501",
+        "family": "wood",
+        "before_width_camera_m": 2.56512451171875,
+        "after_width_camera_m": 9.40130615234375,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_476_32_526",
+        "family": "wood",
+        "before_width_camera_m": 2.75634765625,
+        "after_width_camera_m": 10.1444091796875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_385_33_481",
+        "family": "wood",
+        "before_width_camera_m": 2.322998046875,
+        "after_width_camera_m": 8.499755859375,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_447_32_527",
+        "family": "wood",
+        "before_width_camera_m": 2.16259765625,
+        "after_width_camera_m": 7.9957275390625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_458_32_528",
+        "family": "wood",
+        "before_width_camera_m": 2.506591796875,
+        "after_width_camera_m": 9.2462158203125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_380_32_472",
+        "family": "wood",
+        "before_width_camera_m": 2.1539306640625,
+        "after_width_camera_m": 7.964111328125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_383_33_480",
+        "family": "wood",
+        "before_width_camera_m": 2.51275634765625,
+        "after_width_camera_m": 9.2689208984375,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_400_32_506",
+        "family": "wood",
+        "before_width_camera_m": 2.6839599609375,
+        "after_width_camera_m": 9.88665771484375,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_380_32_478",
+        "family": "wood",
+        "before_width_camera_m": 2.79254150390625,
+        "after_width_camera_m": 10.2653198242188,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_379_32_476",
+        "family": "wood",
+        "before_width_camera_m": 2.79150390625,
+        "after_width_camera_m": 10.2597045898438,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_463_32_533",
+        "family": "wood",
+        "before_width_camera_m": 2.79217529296875,
+        "after_width_camera_m": 10.2659301757813,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_389_32_498",
+        "family": "wood",
+        "before_width_camera_m": 2.38818359375,
+        "after_width_camera_m": 8.7421875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_450_32_533",
+        "family": "wood",
+        "before_width_camera_m": 2.76544189453125,
+        "after_width_camera_m": 10.1762084960938,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_371_32_465",
+        "family": "wood",
+        "before_width_camera_m": 2.5517578125,
+        "after_width_camera_m": 9.35150146484375,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_371_32_467",
+        "family": "wood",
+        "before_width_camera_m": 2.628173828125,
+        "after_width_camera_m": 9.63751220703125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_454_32_536",
+        "family": "wood",
+        "before_width_camera_m": 2.7672119140625,
+        "after_width_camera_m": 10.1827392578125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_370_32_465",
+        "family": "wood",
+        "before_width_camera_m": 2.7388916015625,
+        "after_width_camera_m": 10.0826416015625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_417_31_526",
+        "family": "wood",
+        "before_width_camera_m": 2.76531982421875,
+        "after_width_camera_m": 10.1559448242188,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_412_31_524",
+        "family": "wood",
+        "before_width_camera_m": 2.53271484375,
+        "after_width_camera_m": 9.28033447265625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_486_32_535",
+        "family": "wood",
+        "before_width_camera_m": 2.43524169921875,
+        "after_width_camera_m": 8.987548828125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_472_32_538",
+        "family": "wood",
+        "before_width_camera_m": 1.84320068359375,
+        "after_width_camera_m": 6.83013916015625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_homev6_3_tree_1",
+        "family": "wood",
+        "before_width_camera_m": 2.77740478515625,
+        "after_width_camera_m": 10.2025146484375,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_385_32_503",
+        "family": "wood",
+        "before_width_camera_m": 2.72015380859375,
+        "after_width_camera_m": 9.9835205078125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_372_32_487",
+        "family": "wood",
+        "before_width_camera_m": 1.7864990234375,
+        "after_width_camera_m": 6.623046875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_388_32_513",
+        "family": "wood",
+        "before_width_camera_m": 2.2288818359375,
+        "after_width_camera_m": 8.237060546875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_448_31_543",
+        "family": "wood",
+        "before_width_camera_m": 2.78680419921875,
+        "after_width_camera_m": 10.2494506835938,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_494_32_539",
+        "family": "wood",
+        "before_width_camera_m": 2.4117431640625,
+        "after_width_camera_m": 8.8297119140625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_388_32_515",
+        "family": "wood",
+        "before_width_camera_m": 2.666748046875,
+        "after_width_camera_m": 9.8245849609375,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_395_31_522",
+        "family": "wood",
+        "before_width_camera_m": 2.74920654296875,
+        "after_width_camera_m": 10.1194458007813,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_381_32_508",
+        "family": "wood",
+        "before_width_camera_m": 2.744140625,
+        "after_width_camera_m": 10.1015625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_366_32_486",
+        "family": "wood",
+        "before_width_camera_m": 2.7894287109375,
+        "after_width_camera_m": 10.2509765625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_468_32_547",
+        "family": "wood",
+        "before_width_camera_m": 2.34344482421875,
+        "after_width_camera_m": 8.65435791015625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_homev6_3_tree_2",
+        "family": "wood",
+        "before_width_camera_m": 2.4144287109375,
+        "after_width_camera_m": 8.83990478515625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_450_30_549",
+        "family": "wood",
+        "before_width_camera_m": 2.7415771484375,
+        "after_width_camera_m": 10.0924682617188,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_390_31_523",
+        "family": "wood",
+        "before_width_camera_m": 2.58837890625,
+        "after_width_camera_m": 9.4881591796875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_403_30_536",
+        "family": "wood",
+        "before_width_camera_m": 2.4530029296875,
+        "after_width_camera_m": 8.98291015625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_470_32_552",
+        "family": "wood",
+        "before_width_camera_m": 2.7540283203125,
+        "after_width_camera_m": 10.1361694335938,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_491_32_548",
+        "family": "wood",
+        "before_width_camera_m": 1.83990478515625,
+        "after_width_camera_m": 6.81793212890625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_391_31_529",
+        "family": "wood",
+        "before_width_camera_m": 2.7762451171875,
+        "after_width_camera_m": 10.1983642578125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_pine_356_33_479",
+        "family": "pine",
+        "before_width_camera_m": 0.981201171875,
+        "after_width_camera_m": 7.355224609375,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_492_32_549",
+        "family": "wood",
+        "before_width_camera_m": 2.63592529296875,
+        "after_width_camera_m": 9.71392822265625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_485_32_551",
+        "family": "wood",
+        "before_width_camera_m": 2.278564453125,
+        "after_width_camera_m": 8.334716796875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_474_32_553",
+        "family": "wood",
+        "before_width_camera_m": 2.3587646484375,
+        "after_width_camera_m": 8.6328125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_367_32_503",
+        "family": "wood",
+        "before_width_camera_m": 2.42132568359375,
+        "after_width_camera_m": 8.93743896484375,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_407_30_541",
+        "family": "wood",
+        "before_width_camera_m": 2.75921630859375,
+        "after_width_camera_m": 10.1544799804688,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_377_32_518",
+        "family": "wood",
+        "before_width_camera_m": 2.61370849609375,
+        "after_width_camera_m": 9.6339111328125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_462_31_556",
+        "family": "wood",
+        "before_width_camera_m": 2.5950927734375,
+        "after_width_camera_m": 9.513427734375,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_412_29_549",
+        "family": "wood",
+        "before_width_camera_m": 2.1239013671875,
+        "after_width_camera_m": 7.854736328125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_464_31_561",
+        "family": "wood",
+        "before_width_camera_m": 2.761962890625,
+        "after_width_camera_m": 10.1429443359375,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_pine_352_33_491",
+        "family": "pine",
+        "before_width_camera_m": 1.04974365234375,
+        "after_width_camera_m": 7.832275390625,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_465_32_562",
+        "family": "wood",
+        "before_width_camera_m": 2.2620849609375,
+        "after_width_camera_m": 8.3580322265625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_363_32_512",
+        "family": "wood",
+        "before_width_camera_m": 2.676025390625,
+        "after_width_camera_m": 9.817138671875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_474_32_562",
+        "family": "wood",
+        "before_width_camera_m": 2.7191162109375,
+        "after_width_camera_m": 9.979736328125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      }
+    ],
+    "scope": "Projected actual imported upper-mesh AABBs, clipped to camera. Conservative geometric overlap, not measured opaque leaf coverage; review the matched rendered images."
+  },
+  {
+    "renderer": "forward_plus",
+    "camera": "route-player-height",
+    "eye": "(447.5, 32.68, 394.5)",
+    "target": "(447.5, 32.68, 384.5)",
+    "before_visible_bound_count": 55,
+    "after_visible_bound_count": 57,
+    "before_overlap_pairs": 38,
+    "after_overlap_pairs": 180,
+    "before_sum_overlap_px2": 115426.77117872238,
+    "after_sum_overlap_px2": 1181880.6565656664,
+    "matched": [
+      {
+        "id": "wnv6_tree_455_31_384",
+        "family": "wood",
+        "before_width_camera_m": 2.74722290039063,
+        "after_width_camera_m": 10.1123046875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_445_31_384",
+        "family": "wood",
+        "before_width_camera_m": 2.74801635742188,
+        "after_width_camera_m": 10.1151123046875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_452_31_375",
+        "family": "wood",
+        "before_width_camera_m": 2.69586181640625,
+        "after_width_camera_m": 9.891845703125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_466_31_371",
+        "family": "wood",
+        "before_width_camera_m": 2.55667114257813,
+        "after_width_camera_m": 9.36990356445313,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_443_37_369",
+        "family": "wood",
+        "before_width_camera_m": 2.70635986328125,
+        "after_width_camera_m": 9.931396484375,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_472_31_368",
+        "family": "wood",
+        "before_width_camera_m": 2.68447875976563,
+        "after_width_camera_m": 9.84884643554688,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_455_40_365",
+        "family": "wood",
+        "before_width_camera_m": 2.12240600585938,
+        "after_width_camera_m": 7.84912109375,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_452_45_355",
+        "family": "wood",
+        "before_width_camera_m": 2.77120971679688,
+        "after_width_camera_m": 10.1786804199219,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_439_46_352",
+        "family": "wood",
+        "before_width_camera_m": 2.76937866210938,
+        "after_width_camera_m": 10.1715393066406,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_415_37_359",
+        "family": "wood",
+        "before_width_camera_m": 1.67514038085938,
+        "after_width_camera_m": 6.2156982421875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_472_46_348",
+        "family": "wood",
+        "before_width_camera_m": 2.791748046875,
+        "after_width_camera_m": 10.2649536132813,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_469_338",
+        "family": "pine",
+        "before_width_camera_m": 1.08648681640625,
+        "after_width_camera_m": 7.93682861328125,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_474_337",
+        "family": "pine",
+        "before_width_camera_m": 1.139404296875,
+        "after_width_camera_m": 8.41033935546875,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_484_335",
+        "family": "pine",
+        "before_width_camera_m": 0.88385009765625,
+        "after_width_camera_m": 6.66720581054688,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_426_325",
+        "family": "pine",
+        "before_width_camera_m": 1.13433837890625,
+        "after_width_camera_m": 8.3873291015625,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_437_320",
+        "family": "pine",
+        "before_width_camera_m": 1.06777954101563,
+        "after_width_camera_m": 7.78768920898438,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_409_48_327",
+        "family": "wood",
+        "before_width_camera_m": 2.78533935546875,
+        "after_width_camera_m": 10.2343444824219,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_461_316",
+        "family": "pine",
+        "before_width_camera_m": 1.008544921875,
+        "after_width_camera_m": 7.32315063476563,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_420_318",
+        "family": "pine",
+        "before_width_camera_m": 0.951385498046875,
+        "after_width_camera_m": 7.1458740234375,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_452_311",
+        "family": "pine",
+        "before_width_camera_m": 1.08169555664063,
+        "after_width_camera_m": 8.05029296875,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_493_322",
+        "family": "pine",
+        "before_width_camera_m": 1.10714721679688,
+        "after_width_camera_m": 8.21939086914063,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_472_312",
+        "family": "pine",
+        "before_width_camera_m": 0.966888427734375,
+        "after_width_camera_m": 7.00100708007813,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_499_325",
+        "family": "pine",
+        "before_width_camera_m": 0.887542724609375,
+        "after_width_camera_m": 6.39248657226563,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_498_321",
+        "family": "pine",
+        "before_width_camera_m": 0.970794677734375,
+        "after_width_camera_m": 7.282470703125,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_406_311",
+        "family": "pine",
+        "before_width_camera_m": 1.13873291015625,
+        "after_width_camera_m": 8.40826416015625,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_508_322",
+        "family": "pine",
+        "before_width_camera_m": 0.9595947265625,
+        "after_width_camera_m": 7.20376586914063,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_486_307",
+        "family": "pine",
+        "before_width_camera_m": 0.9595947265625,
+        "after_width_camera_m": 7.2037353515625,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_460_299",
+        "family": "pine",
+        "before_width_camera_m": 1.05230712890625,
+        "after_width_camera_m": 7.66543579101563,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_432_296",
+        "family": "pine",
+        "before_width_camera_m": 0.87420654296875,
+        "after_width_camera_m": 6.290771484375,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_441_294",
+        "family": "pine",
+        "before_width_camera_m": 0.87774658203125,
+        "after_width_camera_m": 6.62384033203125,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_477_297",
+        "family": "pine",
+        "before_width_camera_m": 1.04641723632813,
+        "after_width_camera_m": 7.61911010742188,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_468_294",
+        "family": "pine",
+        "before_width_camera_m": 0.846710205078125,
+        "after_width_camera_m": 6.40255737304688,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_404_301",
+        "family": "pine",
+        "before_width_camera_m": 1.10809326171875,
+        "after_width_camera_m": 8.11221313476563,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_484_298",
+        "family": "pine",
+        "before_width_camera_m": 0.9864501953125,
+        "after_width_camera_m": 7.15182495117188,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_420_294",
+        "family": "pine",
+        "before_width_camera_m": 1.13027954101563,
+        "after_width_camera_m": 8.36447143554688,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_497_301",
+        "family": "pine",
+        "before_width_camera_m": 1.14031982421875,
+        "after_width_camera_m": 8.40191650390625,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_464_289",
+        "family": "pine",
+        "before_width_camera_m": 1.12640380859375,
+        "after_width_camera_m": 8.26644897460938,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_487_294",
+        "family": "pine",
+        "before_width_camera_m": 1.11941528320313,
+        "after_width_camera_m": 8.29843139648438,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_442_286",
+        "family": "pine",
+        "before_width_camera_m": 0.9576416015625,
+        "after_width_camera_m": 7.18988037109375,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_467_287",
+        "family": "pine",
+        "before_width_camera_m": 1.13815307617188,
+        "after_width_camera_m": 8.375244140625,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_472_288",
+        "family": "pine",
+        "before_width_camera_m": 1.1136474609375,
+        "after_width_camera_m": 8.1583251953125,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_519_310",
+        "family": "pine",
+        "before_width_camera_m": 1.033935546875,
+        "after_width_camera_m": 7.723388671875,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_398_292",
+        "family": "pine",
+        "before_width_camera_m": 1.139404296875,
+        "after_width_camera_m": 8.38916015625,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_424_283",
+        "family": "pine",
+        "before_width_camera_m": 1.13778686523438,
+        "after_width_camera_m": 8.37142944335938,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_455_280",
+        "family": "pine",
+        "before_width_camera_m": 1.08990478515625,
+        "after_width_camera_m": 7.96429443359375,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_406_286",
+        "family": "pine",
+        "before_width_camera_m": 1.0040283203125,
+        "after_width_camera_m": 7.28811645507813,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_415_283",
+        "family": "pine",
+        "before_width_camera_m": 0.983489990234375,
+        "after_width_camera_m": 7.37164306640625,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_447_278",
+        "family": "pine",
+        "before_width_camera_m": 1.134521484375,
+        "after_width_camera_m": 8.38833618164063,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_487_285",
+        "family": "pine",
+        "before_width_camera_m": 0.8765869140625,
+        "after_width_camera_m": 6.61557006835938,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_386_294",
+        "family": "pine",
+        "before_width_camera_m": 1.03939819335938,
+        "after_width_camera_m": 7.56399536132813,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_433_277",
+        "family": "pine",
+        "before_width_camera_m": 0.9320068359375,
+        "after_width_camera_m": 6.73297119140625,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_398_286",
+        "family": "pine",
+        "before_width_camera_m": 1.08761596679688,
+        "after_width_camera_m": 8.09014892578125,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_518_299",
+        "family": "pine",
+        "before_width_camera_m": 1.1302490234375,
+        "after_width_camera_m": 8.30023193359375,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_405_283",
+        "family": "pine",
+        "before_width_camera_m": 1.02484130859375,
+        "after_width_camera_m": 7.4501953125,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      }
+    ],
+    "scope": "Projected actual imported upper-mesh AABBs, clipped to camera. Conservative geometric overlap, not measured opaque leaf coverage; review the matched rendered images."
+  },
+  {
+    "renderer": "forward_plus",
+    "camera": "pine-player-height",
+    "eye": "(288.5, 51.68, 11.5)",
+    "target": "(283.5, 55.0, 4.5)",
+    "before_visible_bound_count": 2,
+    "after_visible_bound_count": 2,
+    "before_overlap_pairs": 0,
+    "after_overlap_pairs": 1,
+    "before_sum_overlap_px2": 0,
+    "after_sum_overlap_px2": 6486.2373046875,
+    "matched": [
+      {
+        "id": "wnv6_pine_283_52_4",
+        "family": "pine",
+        "before_width_camera_m": 1.07688903808594,
+        "after_width_camera_m": 7.86006164550781,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      }
+    ],
+    "scope": "Projected actual imported upper-mesh AABBs, clipped to camera. Conservative geometric overlap, not measured opaque leaf coverage; review the matched rendered images."
+  },
+  {
+    "renderer": "forward_plus",
+    "camera": "ash_wood-player-height",
+    "eye": "(27.5, 45.68, 216.5)",
+    "target": "(22.5, 50.0, 209.5)",
+    "before_visible_bound_count": 4,
+    "after_visible_bound_count": 5,
+    "before_overlap_pairs": 0,
+    "after_overlap_pairs": 2,
+    "before_sum_overlap_px2": 0,
+    "after_sum_overlap_px2": 4250.4880371093805,
+    "matched": [
+      {
+        "id": "wnv6_ash_snag_22_47_209",
+        "family": "ash_wood",
+        "before_width_camera_m": 1.88631439208984,
+        "after_width_camera_m": 1.88631439208984,
+        "before_scale": "(1.0, 1.0, 1.0)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_17_56_134",
+        "family": "wood",
+        "before_width_camera_m": 2.67660140991211,
+        "after_width_camera_m": 9.86026763916016,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_19_56_114",
+        "family": "wood",
+        "before_width_camera_m": 2.78355407714844,
+        "after_width_camera_m": 10.2387313842773,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_34_48_92",
+        "family": "wood",
+        "before_width_camera_m": 2.63223075866699,
+        "after_width_camera_m": 9.65255737304688,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      }
+    ],
+    "scope": "Projected actual imported upper-mesh AABBs, clipped to camera. Conservative geometric overlap, not measured opaque leaf coverage; review the matched rendered images."
+  },
+  {
+    "renderer": "gl_compatibility",
+    "camera": "home-player-height",
+    "eye": "(468.5, 32.68, 431.5)",
+    "target": "(460.5, 33.69, 445.5)",
+    "before_visible_bound_count": 108,
+    "after_visible_bound_count": 114,
+    "before_overlap_pairs": 250,
+    "after_overlap_pairs": 895,
+    "before_sum_overlap_px2": 177872.80548775205,
+    "after_sum_overlap_px2": 2387123.027543069,
+    "matched": [
+      {
+        "id": "wnv6_tree_456_32_462",
+        "family": "wood",
+        "before_width_camera_m": 2.742431640625,
+        "after_width_camera_m": 10.0680541992188,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_441_32_454",
+        "family": "wood",
+        "before_width_camera_m": 2.748291015625,
+        "after_width_camera_m": 10.0907592773438,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_438_32_441",
+        "family": "wood",
+        "before_width_camera_m": 2.67877197265625,
+        "after_width_camera_m": 9.867919921875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_464_32_466",
+        "family": "wood",
+        "before_width_camera_m": 1.98236083984375,
+        "after_width_camera_m": 7.33807373046875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_445_33_464",
+        "family": "wood",
+        "before_width_camera_m": 2.7926025390625,
+        "after_width_camera_m": 10.2667236328125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_438_33_456",
+        "family": "wood",
+        "before_width_camera_m": 2.50848388671875,
+        "after_width_camera_m": 9.25341796875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_450_33_467",
+        "family": "wood",
+        "before_width_camera_m": 2.099609375,
+        "after_width_camera_m": 7.76611328125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_437_33_456",
+        "family": "wood",
+        "before_width_camera_m": 2.59857177734375,
+        "after_width_camera_m": 9.5792236328125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_434_33_446",
+        "family": "wood",
+        "before_width_camera_m": 2.73333740234375,
+        "after_width_camera_m": 10.0335693359375,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_443_33_464",
+        "family": "wood",
+        "before_width_camera_m": 2.73333740234375,
+        "after_width_camera_m": 10.0336303710938,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_433_33_451",
+        "family": "wood",
+        "before_width_camera_m": 1.8709716796875,
+        "after_width_camera_m": 6.93145751953125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_469_32_471",
+        "family": "wood",
+        "before_width_camera_m": 2.52679443359375,
+        "after_width_camera_m": 9.3194580078125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_440_33_471",
+        "family": "wood",
+        "before_width_camera_m": 2.021240234375,
+        "after_width_camera_m": 7.480224609375,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_469_32_477",
+        "family": "wood",
+        "before_width_camera_m": 2.40008544921875,
+        "after_width_camera_m": 8.860107421875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_471_32_479",
+        "family": "wood",
+        "before_width_camera_m": 2.763427734375,
+        "after_width_camera_m": 10.1484985351563,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_424_33_452",
+        "family": "wood",
+        "before_width_camera_m": 2.34368896484375,
+        "after_width_camera_m": 8.5767822265625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_440_33_475",
+        "family": "wood",
+        "before_width_camera_m": 2.55181884765625,
+        "after_width_camera_m": 9.3514404296875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_476_32_478",
+        "family": "wood",
+        "before_width_camera_m": 1.915283203125,
+        "after_width_camera_m": 7.09332275390625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_472_32_480",
+        "family": "wood",
+        "before_width_camera_m": 2.7896728515625,
+        "after_width_camera_m": 10.2586669921875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_421_33_446",
+        "family": "wood",
+        "before_width_camera_m": 2.77789306640625,
+        "after_width_camera_m": 10.2042846679688,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_427_33_465",
+        "family": "wood",
+        "before_width_camera_m": 2.79266357421875,
+        "after_width_camera_m": 10.2662353515625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_421_33_451",
+        "family": "wood",
+        "before_width_camera_m": 2.38079833984375,
+        "after_width_camera_m": 8.71466064453125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_436_33_477",
+        "family": "wood",
+        "before_width_camera_m": 2.58465576171875,
+        "after_width_camera_m": 9.47442626953125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_457_32_485",
+        "family": "wood",
+        "before_width_camera_m": 2.73223876953125,
+        "after_width_camera_m": 10.0293579101563,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_464_32_487",
+        "family": "wood",
+        "before_width_camera_m": 2.75250244140625,
+        "after_width_camera_m": 10.1307983398438,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_465_32_487",
+        "family": "wood",
+        "before_width_camera_m": 2.5128173828125,
+        "after_width_camera_m": 9.2689208984375,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_415_33_450",
+        "family": "wood",
+        "before_width_camera_m": 2.6510009765625,
+        "after_width_camera_m": 9.7681884765625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_421_33_477",
+        "family": "wood",
+        "before_width_camera_m": 2.616943359375,
+        "after_width_camera_m": 9.64556884765625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_415_33_475",
+        "family": "wood",
+        "before_width_camera_m": 2.7841796875,
+        "after_width_camera_m": 10.229248046875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_459_32_499",
+        "family": "wood",
+        "before_width_camera_m": 2.73614501953125,
+        "after_width_camera_m": 10.0731811523438,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_408_33_463",
+        "family": "wood",
+        "before_width_camera_m": 2.5882568359375,
+        "after_width_camera_m": 9.541748046875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_405_33_458",
+        "family": "wood",
+        "before_width_camera_m": 2.46612548828125,
+        "after_width_camera_m": 9.0322265625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_457_32_509",
+        "family": "wood",
+        "before_width_camera_m": 2.785888671875,
+        "after_width_camera_m": 10.236328125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_400_33_471",
+        "family": "wood",
+        "before_width_camera_m": 2.214599609375,
+        "after_width_camera_m": 8.185302734375,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_417_32_496",
+        "family": "wood",
+        "before_width_camera_m": 2.520751953125,
+        "after_width_camera_m": 9.2359619140625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_393_33_457",
+        "family": "wood",
+        "before_width_camera_m": 2.7540283203125,
+        "after_width_camera_m": 10.112548828125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_484_31_508",
+        "family": "wood",
+        "before_width_camera_m": 2.7825927734375,
+        "after_width_camera_m": 10.223388671875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_474_32_512",
+        "family": "wood",
+        "before_width_camera_m": 2.61846923828125,
+        "after_width_camera_m": 9.65118408203125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_449_32_513",
+        "family": "wood",
+        "before_width_camera_m": 1.94256591796875,
+        "after_width_camera_m": 7.19305419921875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_466_32_515",
+        "family": "wood",
+        "before_width_camera_m": 1.902099609375,
+        "after_width_camera_m": 7.045166015625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_451_32_515",
+        "family": "wood",
+        "before_width_camera_m": 2.7877197265625,
+        "after_width_camera_m": 10.2523803710938,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_397_33_481",
+        "family": "wood",
+        "before_width_camera_m": 1.67706298828125,
+        "after_width_camera_m": 6.22265625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_448_32_517",
+        "family": "wood",
+        "before_width_camera_m": 2.59344482421875,
+        "after_width_camera_m": 9.50732421875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_415_32_503",
+        "family": "wood",
+        "before_width_camera_m": 2.70477294921875,
+        "after_width_camera_m": 9.96136474609375,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_397_32_484",
+        "family": "wood",
+        "before_width_camera_m": 2.70135498046875,
+        "after_width_camera_m": 9.91229248046875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_401_32_491",
+        "family": "wood",
+        "before_width_camera_m": 2.561279296875,
+        "after_width_camera_m": 9.44451904296875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_397_32_488",
+        "family": "wood",
+        "before_width_camera_m": 2.790283203125,
+        "after_width_camera_m": 10.2606201171875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_447_32_520",
+        "family": "wood",
+        "before_width_camera_m": 1.85009765625,
+        "after_width_camera_m": 6.8553466796875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_383_32_458",
+        "family": "wood",
+        "before_width_camera_m": 2.742431640625,
+        "after_width_camera_m": 10.068115234375,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_445_32_521",
+        "family": "wood",
+        "before_width_camera_m": 2.4791259765625,
+        "after_width_camera_m": 9.08056640625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_435_32_519",
+        "family": "wood",
+        "before_width_camera_m": 2.078125,
+        "after_width_camera_m": 7.68780517578125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_473_32_523",
+        "family": "wood",
+        "before_width_camera_m": 2.79217529296875,
+        "after_width_camera_m": 10.2659301757813,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_426_31_517",
+        "family": "wood",
+        "before_width_camera_m": 1.6884765625,
+        "after_width_camera_m": 6.2642822265625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_401_32_499",
+        "family": "wood",
+        "before_width_camera_m": 2.38311767578125,
+        "after_width_camera_m": 8.7232666015625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_381_32_466",
+        "family": "wood",
+        "before_width_camera_m": 2.1947021484375,
+        "after_width_camera_m": 8.11285400390625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_399_32_501",
+        "family": "wood",
+        "before_width_camera_m": 2.56512451171875,
+        "after_width_camera_m": 9.40130615234375,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_476_32_526",
+        "family": "wood",
+        "before_width_camera_m": 2.75634765625,
+        "after_width_camera_m": 10.1444091796875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_385_33_481",
+        "family": "wood",
+        "before_width_camera_m": 2.322998046875,
+        "after_width_camera_m": 8.499755859375,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_447_32_527",
+        "family": "wood",
+        "before_width_camera_m": 2.16259765625,
+        "after_width_camera_m": 7.9957275390625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_458_32_528",
+        "family": "wood",
+        "before_width_camera_m": 2.506591796875,
+        "after_width_camera_m": 9.2462158203125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_380_32_472",
+        "family": "wood",
+        "before_width_camera_m": 2.1539306640625,
+        "after_width_camera_m": 7.964111328125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_383_33_480",
+        "family": "wood",
+        "before_width_camera_m": 2.51275634765625,
+        "after_width_camera_m": 9.2689208984375,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_400_32_506",
+        "family": "wood",
+        "before_width_camera_m": 2.6839599609375,
+        "after_width_camera_m": 9.88665771484375,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_380_32_478",
+        "family": "wood",
+        "before_width_camera_m": 2.79254150390625,
+        "after_width_camera_m": 10.2653198242188,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_379_32_476",
+        "family": "wood",
+        "before_width_camera_m": 2.79150390625,
+        "after_width_camera_m": 10.2597045898438,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_463_32_533",
+        "family": "wood",
+        "before_width_camera_m": 2.79217529296875,
+        "after_width_camera_m": 10.2659301757813,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_389_32_498",
+        "family": "wood",
+        "before_width_camera_m": 2.38818359375,
+        "after_width_camera_m": 8.7421875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_450_32_533",
+        "family": "wood",
+        "before_width_camera_m": 2.76544189453125,
+        "after_width_camera_m": 10.1762084960938,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_371_32_465",
+        "family": "wood",
+        "before_width_camera_m": 2.5517578125,
+        "after_width_camera_m": 9.35150146484375,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_371_32_467",
+        "family": "wood",
+        "before_width_camera_m": 2.628173828125,
+        "after_width_camera_m": 9.63751220703125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_454_32_536",
+        "family": "wood",
+        "before_width_camera_m": 2.7672119140625,
+        "after_width_camera_m": 10.1827392578125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_370_32_465",
+        "family": "wood",
+        "before_width_camera_m": 2.7388916015625,
+        "after_width_camera_m": 10.0826416015625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_417_31_526",
+        "family": "wood",
+        "before_width_camera_m": 2.76531982421875,
+        "after_width_camera_m": 10.1559448242188,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_412_31_524",
+        "family": "wood",
+        "before_width_camera_m": 2.53271484375,
+        "after_width_camera_m": 9.28033447265625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_486_32_535",
+        "family": "wood",
+        "before_width_camera_m": 2.43524169921875,
+        "after_width_camera_m": 8.987548828125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_472_32_538",
+        "family": "wood",
+        "before_width_camera_m": 1.84320068359375,
+        "after_width_camera_m": 6.83013916015625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_homev6_3_tree_1",
+        "family": "wood",
+        "before_width_camera_m": 2.77740478515625,
+        "after_width_camera_m": 10.2025146484375,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_385_32_503",
+        "family": "wood",
+        "before_width_camera_m": 2.72015380859375,
+        "after_width_camera_m": 9.9835205078125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_372_32_487",
+        "family": "wood",
+        "before_width_camera_m": 1.7864990234375,
+        "after_width_camera_m": 6.623046875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_388_32_513",
+        "family": "wood",
+        "before_width_camera_m": 2.2288818359375,
+        "after_width_camera_m": 8.237060546875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_448_31_543",
+        "family": "wood",
+        "before_width_camera_m": 2.78680419921875,
+        "after_width_camera_m": 10.2494506835938,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_494_32_539",
+        "family": "wood",
+        "before_width_camera_m": 2.4117431640625,
+        "after_width_camera_m": 8.8297119140625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_388_32_515",
+        "family": "wood",
+        "before_width_camera_m": 2.666748046875,
+        "after_width_camera_m": 9.8245849609375,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_395_31_522",
+        "family": "wood",
+        "before_width_camera_m": 2.74920654296875,
+        "after_width_camera_m": 10.1194458007813,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_381_32_508",
+        "family": "wood",
+        "before_width_camera_m": 2.744140625,
+        "after_width_camera_m": 10.1015625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_366_32_486",
+        "family": "wood",
+        "before_width_camera_m": 2.7894287109375,
+        "after_width_camera_m": 10.2509765625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_468_32_547",
+        "family": "wood",
+        "before_width_camera_m": 2.34344482421875,
+        "after_width_camera_m": 8.65435791015625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_homev6_3_tree_2",
+        "family": "wood",
+        "before_width_camera_m": 2.4144287109375,
+        "after_width_camera_m": 8.83990478515625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_450_30_549",
+        "family": "wood",
+        "before_width_camera_m": 2.7415771484375,
+        "after_width_camera_m": 10.0924682617188,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_390_31_523",
+        "family": "wood",
+        "before_width_camera_m": 2.58837890625,
+        "after_width_camera_m": 9.4881591796875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_403_30_536",
+        "family": "wood",
+        "before_width_camera_m": 2.4530029296875,
+        "after_width_camera_m": 8.98291015625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_470_32_552",
+        "family": "wood",
+        "before_width_camera_m": 2.7540283203125,
+        "after_width_camera_m": 10.1361694335938,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_491_32_548",
+        "family": "wood",
+        "before_width_camera_m": 1.83990478515625,
+        "after_width_camera_m": 6.81793212890625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_391_31_529",
+        "family": "wood",
+        "before_width_camera_m": 2.7762451171875,
+        "after_width_camera_m": 10.1983642578125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_pine_356_33_479",
+        "family": "pine",
+        "before_width_camera_m": 0.981201171875,
+        "after_width_camera_m": 7.355224609375,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_492_32_549",
+        "family": "wood",
+        "before_width_camera_m": 2.63592529296875,
+        "after_width_camera_m": 9.71392822265625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_485_32_551",
+        "family": "wood",
+        "before_width_camera_m": 2.278564453125,
+        "after_width_camera_m": 8.334716796875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_474_32_553",
+        "family": "wood",
+        "before_width_camera_m": 2.3587646484375,
+        "after_width_camera_m": 8.6328125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_367_32_503",
+        "family": "wood",
+        "before_width_camera_m": 2.42132568359375,
+        "after_width_camera_m": 8.93743896484375,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_407_30_541",
+        "family": "wood",
+        "before_width_camera_m": 2.75921630859375,
+        "after_width_camera_m": 10.1544799804688,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_377_32_518",
+        "family": "wood",
+        "before_width_camera_m": 2.61370849609375,
+        "after_width_camera_m": 9.6339111328125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_462_31_556",
+        "family": "wood",
+        "before_width_camera_m": 2.5950927734375,
+        "after_width_camera_m": 9.513427734375,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_412_29_549",
+        "family": "wood",
+        "before_width_camera_m": 2.1239013671875,
+        "after_width_camera_m": 7.854736328125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_464_31_561",
+        "family": "wood",
+        "before_width_camera_m": 2.761962890625,
+        "after_width_camera_m": 10.1429443359375,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_pine_352_33_491",
+        "family": "pine",
+        "before_width_camera_m": 1.04974365234375,
+        "after_width_camera_m": 7.832275390625,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_465_32_562",
+        "family": "wood",
+        "before_width_camera_m": 2.2620849609375,
+        "after_width_camera_m": 8.3580322265625,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_363_32_512",
+        "family": "wood",
+        "before_width_camera_m": 2.676025390625,
+        "after_width_camera_m": 9.817138671875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_474_32_562",
+        "family": "wood",
+        "before_width_camera_m": 2.7191162109375,
+        "after_width_camera_m": 9.979736328125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      }
+    ],
+    "scope": "Projected actual imported upper-mesh AABBs, clipped to camera. Conservative geometric overlap, not measured opaque leaf coverage; review the matched rendered images."
+  },
+  {
+    "renderer": "gl_compatibility",
+    "camera": "route-player-height",
+    "eye": "(447.5, 32.68, 394.5)",
+    "target": "(447.5, 32.68, 384.5)",
+    "before_visible_bound_count": 55,
+    "after_visible_bound_count": 57,
+    "before_overlap_pairs": 38,
+    "after_overlap_pairs": 180,
+    "before_sum_overlap_px2": 115426.77117872238,
+    "after_sum_overlap_px2": 1181880.6565656664,
+    "matched": [
+      {
+        "id": "wnv6_tree_455_31_384",
+        "family": "wood",
+        "before_width_camera_m": 2.74722290039063,
+        "after_width_camera_m": 10.1123046875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_445_31_384",
+        "family": "wood",
+        "before_width_camera_m": 2.74801635742188,
+        "after_width_camera_m": 10.1151123046875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_452_31_375",
+        "family": "wood",
+        "before_width_camera_m": 2.69586181640625,
+        "after_width_camera_m": 9.891845703125,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_466_31_371",
+        "family": "wood",
+        "before_width_camera_m": 2.55667114257813,
+        "after_width_camera_m": 9.36990356445313,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_443_37_369",
+        "family": "wood",
+        "before_width_camera_m": 2.70635986328125,
+        "after_width_camera_m": 9.931396484375,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_472_31_368",
+        "family": "wood",
+        "before_width_camera_m": 2.68447875976563,
+        "after_width_camera_m": 9.84884643554688,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_455_40_365",
+        "family": "wood",
+        "before_width_camera_m": 2.12240600585938,
+        "after_width_camera_m": 7.84912109375,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_452_45_355",
+        "family": "wood",
+        "before_width_camera_m": 2.77120971679688,
+        "after_width_camera_m": 10.1786804199219,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_439_46_352",
+        "family": "wood",
+        "before_width_camera_m": 2.76937866210938,
+        "after_width_camera_m": 10.1715393066406,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_415_37_359",
+        "family": "wood",
+        "before_width_camera_m": 1.67514038085938,
+        "after_width_camera_m": 6.2156982421875,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_472_46_348",
+        "family": "wood",
+        "before_width_camera_m": 2.791748046875,
+        "after_width_camera_m": 10.2649536132813,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_469_338",
+        "family": "pine",
+        "before_width_camera_m": 1.08648681640625,
+        "after_width_camera_m": 7.93682861328125,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_474_337",
+        "family": "pine",
+        "before_width_camera_m": 1.139404296875,
+        "after_width_camera_m": 8.41033935546875,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_484_335",
+        "family": "pine",
+        "before_width_camera_m": 0.88385009765625,
+        "after_width_camera_m": 6.66720581054688,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_426_325",
+        "family": "pine",
+        "before_width_camera_m": 1.13433837890625,
+        "after_width_camera_m": 8.3873291015625,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_437_320",
+        "family": "pine",
+        "before_width_camera_m": 1.06777954101563,
+        "after_width_camera_m": 7.78768920898438,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_409_48_327",
+        "family": "wood",
+        "before_width_camera_m": 2.78533935546875,
+        "after_width_camera_m": 10.2343444824219,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_461_316",
+        "family": "pine",
+        "before_width_camera_m": 1.008544921875,
+        "after_width_camera_m": 7.32315063476563,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_420_318",
+        "family": "pine",
+        "before_width_camera_m": 0.951385498046875,
+        "after_width_camera_m": 7.1458740234375,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_452_311",
+        "family": "pine",
+        "before_width_camera_m": 1.08169555664063,
+        "after_width_camera_m": 8.05029296875,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_493_322",
+        "family": "pine",
+        "before_width_camera_m": 1.10714721679688,
+        "after_width_camera_m": 8.21939086914063,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_472_312",
+        "family": "pine",
+        "before_width_camera_m": 0.966888427734375,
+        "after_width_camera_m": 7.00100708007813,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_499_325",
+        "family": "pine",
+        "before_width_camera_m": 0.887542724609375,
+        "after_width_camera_m": 6.39248657226563,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_498_321",
+        "family": "pine",
+        "before_width_camera_m": 0.970794677734375,
+        "after_width_camera_m": 7.282470703125,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_406_311",
+        "family": "pine",
+        "before_width_camera_m": 1.13873291015625,
+        "after_width_camera_m": 8.40826416015625,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_508_322",
+        "family": "pine",
+        "before_width_camera_m": 0.9595947265625,
+        "after_width_camera_m": 7.20376586914063,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_486_307",
+        "family": "pine",
+        "before_width_camera_m": 0.9595947265625,
+        "after_width_camera_m": 7.2037353515625,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_460_299",
+        "family": "pine",
+        "before_width_camera_m": 1.05230712890625,
+        "after_width_camera_m": 7.66543579101563,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_432_296",
+        "family": "pine",
+        "before_width_camera_m": 0.87420654296875,
+        "after_width_camera_m": 6.290771484375,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_441_294",
+        "family": "pine",
+        "before_width_camera_m": 0.87774658203125,
+        "after_width_camera_m": 6.62384033203125,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_477_297",
+        "family": "pine",
+        "before_width_camera_m": 1.04641723632813,
+        "after_width_camera_m": 7.61911010742188,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_468_294",
+        "family": "pine",
+        "before_width_camera_m": 0.846710205078125,
+        "after_width_camera_m": 6.40255737304688,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_404_301",
+        "family": "pine",
+        "before_width_camera_m": 1.10809326171875,
+        "after_width_camera_m": 8.11221313476563,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_484_298",
+        "family": "pine",
+        "before_width_camera_m": 0.9864501953125,
+        "after_width_camera_m": 7.15182495117188,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_420_294",
+        "family": "pine",
+        "before_width_camera_m": 1.13027954101563,
+        "after_width_camera_m": 8.36447143554688,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_497_301",
+        "family": "pine",
+        "before_width_camera_m": 1.14031982421875,
+        "after_width_camera_m": 8.40191650390625,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_464_289",
+        "family": "pine",
+        "before_width_camera_m": 1.12640380859375,
+        "after_width_camera_m": 8.26644897460938,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_487_294",
+        "family": "pine",
+        "before_width_camera_m": 1.11941528320313,
+        "after_width_camera_m": 8.29843139648438,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_442_286",
+        "family": "pine",
+        "before_width_camera_m": 0.9576416015625,
+        "after_width_camera_m": 7.18988037109375,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_467_287",
+        "family": "pine",
+        "before_width_camera_m": 1.13815307617188,
+        "after_width_camera_m": 8.375244140625,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_472_288",
+        "family": "pine",
+        "before_width_camera_m": 1.1136474609375,
+        "after_width_camera_m": 8.1583251953125,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_519_310",
+        "family": "pine",
+        "before_width_camera_m": 1.033935546875,
+        "after_width_camera_m": 7.723388671875,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_398_292",
+        "family": "pine",
+        "before_width_camera_m": 1.139404296875,
+        "after_width_camera_m": 8.38916015625,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_424_283",
+        "family": "pine",
+        "before_width_camera_m": 1.13778686523438,
+        "after_width_camera_m": 8.37142944335938,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_455_280",
+        "family": "pine",
+        "before_width_camera_m": 1.08990478515625,
+        "after_width_camera_m": 7.96429443359375,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_406_286",
+        "family": "pine",
+        "before_width_camera_m": 1.0040283203125,
+        "after_width_camera_m": 7.28811645507813,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_415_283",
+        "family": "pine",
+        "before_width_camera_m": 0.983489990234375,
+        "after_width_camera_m": 7.37164306640625,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_447_278",
+        "family": "pine",
+        "before_width_camera_m": 1.134521484375,
+        "after_width_camera_m": 8.38833618164063,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_487_285",
+        "family": "pine",
+        "before_width_camera_m": 0.8765869140625,
+        "after_width_camera_m": 6.61557006835938,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_386_294",
+        "family": "pine",
+        "before_width_camera_m": 1.03939819335938,
+        "after_width_camera_m": 7.56399536132813,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_433_277",
+        "family": "pine",
+        "before_width_camera_m": 0.9320068359375,
+        "after_width_camera_m": 6.73297119140625,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_398_286",
+        "family": "pine",
+        "before_width_camera_m": 1.08761596679688,
+        "after_width_camera_m": 8.09014892578125,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_518_299",
+        "family": "pine",
+        "before_width_camera_m": 1.1302490234375,
+        "after_width_camera_m": 8.30023193359375,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_region_rootvault_wildwood_pine_405_283",
+        "family": "pine",
+        "before_width_camera_m": 1.02484130859375,
+        "after_width_camera_m": 7.4501953125,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      }
+    ],
+    "scope": "Projected actual imported upper-mesh AABBs, clipped to camera. Conservative geometric overlap, not measured opaque leaf coverage; review the matched rendered images."
+  },
+  {
+    "renderer": "gl_compatibility",
+    "camera": "pine-player-height",
+    "eye": "(288.5, 51.68, 11.5)",
+    "target": "(283.5, 55.0, 4.5)",
+    "before_visible_bound_count": 2,
+    "after_visible_bound_count": 2,
+    "before_overlap_pairs": 0,
+    "after_overlap_pairs": 1,
+    "before_sum_overlap_px2": 0,
+    "after_sum_overlap_px2": 6486.2373046875,
+    "matched": [
+      {
+        "id": "wnv6_pine_283_52_4",
+        "family": "pine",
+        "before_width_camera_m": 1.07688903808594,
+        "after_width_camera_m": 7.86006164550781,
+        "before_scale": "(0.131399, 1.0, 0.131399)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      }
+    ],
+    "scope": "Projected actual imported upper-mesh AABBs, clipped to camera. Conservative geometric overlap, not measured opaque leaf coverage; review the matched rendered images."
+  },
+  {
+    "renderer": "gl_compatibility",
+    "camera": "ash_wood-player-height",
+    "eye": "(27.5, 45.68, 216.5)",
+    "target": "(22.5, 50.0, 209.5)",
+    "before_visible_bound_count": 4,
+    "after_visible_bound_count": 5,
+    "before_overlap_pairs": 0,
+    "after_overlap_pairs": 2,
+    "before_sum_overlap_px2": 0,
+    "after_sum_overlap_px2": 4250.4880371093805,
+    "matched": [
+      {
+        "id": "wnv6_ash_snag_22_47_209",
+        "family": "ash_wood",
+        "before_width_camera_m": 1.88631439208984,
+        "after_width_camera_m": 1.88631439208984,
+        "before_scale": "(1.0, 1.0, 1.0)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_17_56_134",
+        "family": "wood",
+        "before_width_camera_m": 2.67660140991211,
+        "after_width_camera_m": 9.86026763916016,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_19_56_114",
+        "family": "wood",
+        "before_width_camera_m": 2.78355407714844,
+        "after_width_camera_m": 10.2387313842773,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      },
+      {
+        "id": "wnv6_tree_34_48_92",
+        "family": "wood",
+        "before_width_camera_m": 2.63223075866699,
+        "after_width_camera_m": 9.65255737304688,
+        "before_scale": "(0.269496, 1.0, 0.269496)",
+        "after_scale": "(1.0, 1.0, 1.0)"
+      }
+    ],
+    "scope": "Projected actual imported upper-mesh AABBs, clipped to camera. Conservative geometric overlap, not measured opaque leaf coverage; review the matched rendered images."
+  }
+]

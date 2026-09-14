@@ -1,0 +1,30 @@
+func r1_envelope()->void:
+	# Test-only support plane. The tree and player use their unchanged native bodies.
+	var floor_body:=StaticBody3D.new();var support:=CollisionShape3D.new();var box:=BoxShape3D.new()
+	box.size=Vector3(40,.2,40);support.shape=box;floor_body.add_child(support);add_child(floor_body);floor_body.position.y=-.1
+	for frame in 3:await get_tree().physics_frame
+	for n:ResourceNode in nodes:
+		var body:CollisionShape3D=n.get_node("CollisionShape3D")
+		for h in [.3,.9,1.68,2.5]:
+			var query:=PhysicsRayQueryParameters3D.create(n.position+Vector3(0,h,2),n.position+Vector3(0,h,-2));query.exclude=[player.get_rid()]
+			var hit:=get_world_3d().direct_space_state.intersect_ray(query)
+			check(not hit.is_empty() and hit.collider==n,"R1 native target ray at "+str(h))
+			check(absf(hit.position.z-body.shape.size.z*.5)<.001,"R1 target surface equals native body")
+		var crown_query:=PhysicsRayQueryParameters3D.create(n.position+Vector3(0,5,6),n.position+Vector3(0,5,-6));crown_query.exclude=[player.get_rid()]
+		check(get_world_3d().direct_space_state.intersect_ray(crown_query).is_empty(),"R1 crown adds no collider")
+		player.position=n.position+Vector3(0,1.0,2.5);player.rotation=Vector3.ZERO;player.velocity=Vector3.ZERO
+		player.set_physics_process(true)
+		Input.action_press("move_forward")
+		for frame in 120:await get_tree().physics_frame
+		Input.action_release("move_forward")
+		var stopped:=player.position-n.position
+		check(stopped.z>=body.shape.size.z*.5+.42-.02 and stopped.z<body.shape.size.z*.5+.42+.12,"R1 actual capsule stops at unchanged trunk")
+		Input.action_press("move_right")
+		for frame in 24:await get_tree().physics_frame
+		Input.action_release("move_right");Input.action_press("move_forward")
+		for frame in 90:await get_tree().physics_frame
+		Input.action_release("move_forward")
+		check(player.position.z<n.position.z-1,"R1 actual input walks past trunk under crown")
+		check(player.is_on_floor(),"R1 real capsule remains grounded")
+		player.set_physics_process(false);player.velocity=Vector3.ZERO
+	player.position=Vector3(0,1.1,3)

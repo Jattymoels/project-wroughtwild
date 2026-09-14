@@ -1,0 +1,27 @@
+[
+  {
+    "kind": "broadleaf",
+    "source_master_sha256": "bb671f434b1b6021e378c203ab7f8e344b2cbc01c283f5a991ff04ac495672a7",
+    "authored_master_sha256": "2875458b9670b51395e3699b75482cbb572881d7039b6963030b4744747e2e58",
+    "selected_master": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\models-packed-v2\\broadleaf\\broadleaf-master.blend",
+    "selected_master_sha256": "843f8aebca50a8cf914d7d120ac50b32dd69389f7c9fc7a7e3a39dceed8cbd1f",
+    "packed_byte_restorations": [
+      {
+        "name": "Tree scar - core damage travel",
+        "before_sha256": null,
+        "after_sha256": "9717d348db27bf7ff6d1e65e23794def303224705ff5c1826d657685c58d64f0",
+        "missing_image_restored": true
+      }
+    ],
+    "all_export_bytes_unchanged": true
+  },
+  {
+    "kind": "pine",
+    "source_master_sha256": "896e696700be53184a87f0511734c3d802110268f6726e463d1e1a00538a6eb2",
+    "authored_master_sha256": "5c0d6142cdd4dd0c905c33aa3b140591cc1e9515238ad53e6ef915fb9f5e41ee",
+    "selected_master": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v03\\models-packed-v2\\pine\\pine-master.blend",
+    "selected_master_sha256": "3f06f3b7f6de63a97c592e383e9e88823e9bb0172f2ec0c4723a7919983b2c0d",
+    "packed_byte_restorations": [],
+    "all_export_bytes_unchanged": true
+  }
+]
