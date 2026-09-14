@@ -3,9 +3,10 @@
 The normal game now uses the owner-approved R8 environment, resources,
 construction materials, stations and devices through new-world and Continue
 entry. The existing octagonal/chamfered vocabulary and door poses remain usable.
-Worker delivery is on `codex/mainline-art-a1`, based on
-`026a2c4a43ccb869ca157c7139f6158e50919073`; coordinator integration and push remain
-separate. Owner approval is recorded in [the adoption direction](art-mainline-adoption-2026-09-14.md).
+Worker commit `7b5d60bf71527d8e24c489ad05361ef98e386deb` on
+`codex/mainline-art-a1` was integrated into current main as `35cee73` and
+successfully pushed to `origin/main` on 15 September 2026. Owner approval is
+recorded in [the adoption direction](art-mainline-adoption-2026-09-14.md).
 
 ## Scope and retained limits
 
@@ -87,11 +88,26 @@ this correction. The resumed staged diff/attribute check passes. This is a Git
 classification fix, not a change to mesh geometry or a disabled text assertion.
 
 Only the A1 production allowlist and related documentation are committed.
-Coordinator integration into current main and the ordinary origin/main push
-remain pending. Keep current main's owner guidance and unrelated work intact;
-reuse the passed gameplay checks during integration.
 
-## Play after coordinator integration
+## Main integration and publication
+
+The coordinator cherry-picked the checked worker onto main `41420ff`, producing
+`35cee73`, then successfully pushed `41420ff..35cee73` to `origin/main`.
+There were no intervening main gameplay changes to reconcile. A Git tree
+comparison confirmed the integrated `game/`, `sim/` and `data/` match the checked
+worker; current owner AGENTS.md was preserved and the committed diff check passed.
+The owner's existing dirty capture and save/probe entries remain in place.
+
+The C: main checkout needed its own import of the newly added assets for normal
+launching. One hidden headless editor import completed in **31.01 seconds**,
+exit code 0, with no reported error lines. Private application data and logs are
+under `D:/Wroughtwild/work/mainline-a1-import`; the normal checkout's generated
+imports stay local and are not committed. C: had about **40.8 GB free** afterward.
+The worker's passed gameplay checks were reused; no rendered gameplay check,
+camera matrix, benchmark, package reconstruction or player-save test was repeated.
+The owned import process exited before handoff.
+
+## Play the integrated normal game
 
 ```powershell
 & 'C:/Users/Matty/Godot/Godot_v4.5-stable_win64.exe' --path 'C:/Users/Matty/Dev/project-wroughtwild/game'
