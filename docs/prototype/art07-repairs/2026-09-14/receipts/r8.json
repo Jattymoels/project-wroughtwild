@@ -1,0 +1,1700 @@
+{
+  "id": "r8",
+  "status": "ready_for_integration",
+  "source_commits": [
+    "67865cf44739f9f9f779c36be49042dd77342d5e"
+  ],
+  "runtime_base": "6bb2e044dcd0bf1788896aa2c19cdf56fee93522",
+  "parent_candidates": [
+    {
+      "id": "r2",
+      "status": "published",
+      "source_commit": "ca370f52a20637548da0cf1fd04cdc9dbeb9c440",
+      "receipt_commit": "96853630e714477f6ade849a0323a0af97cb033a",
+      "receipt": "docs/prototype/art07-repairs/2026-09-14/receipts/r2.json",
+      "package": {
+        "path": "D:/project-wroughtwild-art07-r2/build/art07-repairs/r2/v03/handoff",
+        "manifest_sha256": "f5b3ea9559e9f4b76059c7863730b438bdfbe7a6f8f689ae3bae75340cb01ac0",
+        "files": 6411,
+        "bytes": 9091108107,
+        "count_scope": "Payload entries and summed payload bytes; manifest.json is the separately hashed identity file."
+      },
+      "publication_report": "docs/prototype/art07-repairs/2026-09-14/publication-r2.json"
+    },
+    {
+      "id": "r1",
+      "status": "published",
+      "source_commit": "bd91501c8a7b17c9808aa606a10c14f0f46cab0a",
+      "receipt_commit": "2e4de363eb770a475375fdb21fccbca3fbe7e86e",
+      "original_source_commit": "baf781a38e970fef52c47d4faa6a864aa479e60b",
+      "original_receipt_commit": "5a35e6f0a30dc79981571f33a18c7dcff2550e7d",
+      "receipt": "docs/prototype/art07-repairs/2026-09-14/receipts/r1.json",
+      "package": {
+        "path": "D:/project-wroughtwild-art07-r1/build/art07-repairs/r1/v03/handoff",
+        "manifest_sha256": "9c0cd855d03cd5d88df1823538417da776775abd96a732eb7ad94f24a1f02c7e",
+        "files": 5940,
+        "bytes": 5622031314
+      },
+      "publication_report": "docs/prototype/art07-repairs/2026-09-14/publication-r1.json"
+    },
+    {
+      "id": "r3",
+      "status": "published",
+      "source_commit": "7bc9be05397e1492feb8fc98488a84cd3bede75d",
+      "receipt_commit": "ad34112783d233429630921733a38e4beb0a3f03",
+      "original_source_commit": "0d372ae68c7d7b620da27ad7141f9eebae766139",
+      "original_receipt_commit": "22ca7ba702ee9316bca73aa654c25325dbf65988",
+      "receipt": "docs/prototype/art07-repairs/2026-09-14/receipts/r3.json",
+      "package": {
+        "path": "D:/project-wroughtwild-art07-r3/build/art07-repairs/r3/v01/handoff",
+        "manifest_sha256": "6ce1ca7f6a7406041c345e045610197e33f4f6eefe8cdcfb98718a6ee2e502da",
+        "files": 5632,
+        "bytes": 4156251159
+      },
+      "publication_report": "docs/prototype/art07-repairs/2026-09-14/publication-r3.json"
+    },
+    {
+      "id": "r4",
+      "status": "published",
+      "source_commit": "1448b35cc38b3e20b54d8fcbefce82c2d01dcb09",
+      "receipt_commit": "b14c996714378e05dac34bd1a2dd7a7b4579cd74",
+      "original_source_commit": "9cdb6d5b5e2fe96b21fe40f6df96d13d9015c187",
+      "original_receipt_commit": "df07870493d6962b9e8c8d1d64e9948700155820",
+      "receipt": "docs/prototype/art07-repairs/2026-09-14/receipts/r4.json",
+      "package": {
+        "path": "D:/project-wroughtwild-art07-r4/build/art07-repairs/r4/v01/handoff-v02",
+        "manifest_sha256": "acebe2937b819bb2210241b394262b5a19916dec9199184d69d4d9d25dd49541",
+        "files": 747,
+        "bytes": 13305657
+      },
+      "publication_report": "docs/prototype/art07-repairs/2026-09-14/publication-r4.json"
+    },
+    {
+      "id": "r5",
+      "status": "published",
+      "source_commit": "7f658e1c343ff281002e6951258e800667aad18b",
+      "receipt_commit": "c057b9210f60417ef81884a0c2f799bbede37d3d",
+      "original_source_commit": "f4d5ef753e22fe6ef69164db25f768a2a289f248",
+      "original_receipt_commit": "24e14c82437bfca62576a14a328f3fb445fb6f2d",
+      "receipt": "docs/prototype/art07-repairs/2026-09-14/receipts/r5.json",
+      "package": {
+        "path": "D:/project-wroughtwild-art07-r5/build/art07-repairs/r5/v02/handoff",
+        "manifest_sha256": "18a9c2bf4a659373ccd303f8682e3f7553146a25619e736d66c969fb85f7f986",
+        "files": 5444,
+        "bytes": 3931408290
+      },
+      "publication_report": "docs/prototype/art07-repairs/2026-09-14/publication-r5.json"
+    },
+    {
+      "id": "r6",
+      "status": "published",
+      "source_commit": "b483d2027b6c3326dd25483a3f9f2d4f7bcd8c12",
+      "receipt_commit": "5619672bbaf56cc3d7b0f2955ff2a81fdfc54c4a",
+      "original_source_commit": "78ef855ca9cb6ca1f4d16221cca98d53a9d1aa8a",
+      "original_receipt_commit": "f44920e696b5c81b7fa6548e4f86a3c9641fec96",
+      "receipt": "docs/prototype/art07-repairs/2026-09-14/receipts/r6.json",
+      "package": {
+        "path": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\handoff-v01",
+        "manifest_sha256": "e81d8020ece9dfc25da0dd3e30aeaa222333a8b915e5bbda2d1a819000bebb41",
+        "files": 5832,
+        "bytes": 4534284673
+      },
+      "publication_report": "docs/prototype/art07-repairs/2026-09-14/publication-r6.json"
+    },
+    {
+      "id": "r7",
+      "status": "published",
+      "source_commit": "27f8a1f7f6133347a66fedd100ae1d03a8fc3951",
+      "receipt_commit": "eb9029dfe4dac3600546430f1f7e0081e79306df",
+      "original_source_commit": "f293e038d8c6c8cd54a4f84f57a724ae491bb06c",
+      "original_receipt_commit": "2b0af7889b48da90bdfa881cf27942ae9a7e1474",
+      "receipt": "docs/prototype/art07-repairs/2026-09-14/receipts/r7.json",
+      "package": {
+        "path": "D:/project-wroughtwild-art07-r7/build/art07-repairs/r7/v02/handoff-final",
+        "manifest_sha256": "a7bd6777be5fc9426f1912b6b89b6237e3fd96c6df68543331aeeca4e7bc0af0",
+        "files": 5562,
+        "bytes": 4594239829
+      },
+      "publication_report": "docs/prototype/art07-repairs/2026-09-14/publication-r7.json"
+    }
+  ],
+  "delta_base": {
+    "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\sealed",
+    "manifest_sha256": "fd5c592ef52185cc7d0737840e41af09dbb5bcea36b719539931e156f42865cd",
+    "files": 5701,
+    "bytes": 7430015212
+  },
+  "package": {
+    "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\handoff-final",
+    "manifest_sha256": "06dbb6538e4c454db65a00c60737d8e5bbaffbdb3fd0d5c9f0f355d2073c4541",
+    "files": 9890,
+    "bytes": 13437587547
+  },
+  "changes": "changes.json",
+  "findings": {
+    "G2-V01": "R1 canopy candidate integrated; source/native/envelope checks pass; owner visuals pending.",
+    "G2-V02": "R3 material/face/shape candidate integrated with R2 reuse; 273 legal pairs pass; owner visuals pending.",
+    "G2-V03": "R5 eight fitted cabinets integrated; native storage/body unchanged; placement overlap limits remain.",
+    "G2-V04": "R6 material-only ore candidate integrated; raised volume/physical recess remain blocked by decision.",
+    "G2-V05": "R7 retained-anchor candidate integrated; continuous understorey remains unmet; geography proposals unimplemented.",
+    "G2-T01": "R4 eight lifecycle fixes integrated; 44 flow/restore jobs pass with zero observed terminal children/playbacks.",
+    "G2-C01": "R2 exact reuse integrated and measured afresh on the combined candidate; current-device costs only."
+  },
+  "checks": [
+    {
+      "id": "actors-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "5ef7093c2b6e78a40b52ea198379fe92c61451a5350ecbedc1455f8e0a009069",
+      "seconds": 3.4952756
+    },
+    {
+      "id": "actors-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "a144ec21a49b50220397d7b3a0499e6f7e08a406a6d438e302f9ce38f73d0883",
+      "seconds": 3.2633845
+    },
+    {
+      "id": "benchmark-art-forward_plus-01",
+      "exit_code": 0,
+      "log_sha256": "f58386b04bb9563781c6b723d12db22ce434146a49ec715c1bc8350a20045348",
+      "seconds": 83.4359239
+    },
+    {
+      "id": "benchmark-art-forward_plus-02",
+      "exit_code": 0,
+      "log_sha256": "f58386b04bb9563781c6b723d12db22ce434146a49ec715c1bc8350a20045348",
+      "seconds": 83.5272682
+    },
+    {
+      "id": "benchmark-art-forward_plus-03",
+      "exit_code": 0,
+      "log_sha256": "f58386b04bb9563781c6b723d12db22ce434146a49ec715c1bc8350a20045348",
+      "seconds": 83.333708
+    },
+    {
+      "id": "benchmark-art-gl_compatibility-01",
+      "exit_code": 0,
+      "log_sha256": "ad6ab946fb22ef3dd5804af43e8a4849691808197f9626c6f55767b00099b76f",
+      "seconds": 83.8937276
+    },
+    {
+      "id": "benchmark-art-gl_compatibility-02",
+      "exit_code": 0,
+      "log_sha256": "ad6ab946fb22ef3dd5804af43e8a4849691808197f9626c6f55767b00099b76f",
+      "seconds": 83.8456432
+    },
+    {
+      "id": "benchmark-art-gl_compatibility-03",
+      "exit_code": 0,
+      "log_sha256": "ad6ab946fb22ef3dd5804af43e8a4849691808197f9626c6f55767b00099b76f",
+      "seconds": 83.6943905
+    },
+    {
+      "id": "benchmark-baseline-forward_plus-01",
+      "exit_code": 0,
+      "log_sha256": "f58386b04bb9563781c6b723d12db22ce434146a49ec715c1bc8350a20045348",
+      "seconds": 21.8911539
+    },
+    {
+      "id": "benchmark-baseline-forward_plus-02",
+      "exit_code": 0,
+      "log_sha256": "f58386b04bb9563781c6b723d12db22ce434146a49ec715c1bc8350a20045348",
+      "seconds": 21.7940437
+    },
+    {
+      "id": "benchmark-baseline-forward_plus-03",
+      "exit_code": 0,
+      "log_sha256": "f58386b04bb9563781c6b723d12db22ce434146a49ec715c1bc8350a20045348",
+      "seconds": 22.4913533
+    },
+    {
+      "id": "benchmark-baseline-gl_compatibility-01",
+      "exit_code": 0,
+      "log_sha256": "ad6ab946fb22ef3dd5804af43e8a4849691808197f9626c6f55767b00099b76f",
+      "seconds": 25.1256101
+    },
+    {
+      "id": "benchmark-baseline-gl_compatibility-02",
+      "exit_code": 0,
+      "log_sha256": "ad6ab946fb22ef3dd5804af43e8a4849691808197f9626c6f55767b00099b76f",
+      "seconds": 24.9420993
+    },
+    {
+      "id": "benchmark-baseline-gl_compatibility-03",
+      "exit_code": 0,
+      "log_sha256": "ad6ab946fb22ef3dd5804af43e8a4849691808197f9626c6f55767b00099b76f",
+      "seconds": 24.9274078
+    },
+    {
+      "id": "building-combined-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "e602551345b2be8c720721adf90b57941194d5e341b72bc912493dc4ff6cabc0",
+      "seconds": 8.5490239
+    },
+    {
+      "id": "building-combined-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "6bd57db62347959233f7614c0b1c8931b9742e03da00c91d618972957848ff06",
+      "seconds": 8.7061766
+    },
+    {
+      "id": "building-g1-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "d74a8c16de1d8edcd8fa0ea0f8d50e724b91a686e379dc7d44c2efe02a19cb8b",
+      "seconds": 8.3284012
+    },
+    {
+      "id": "building-g1-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "db4b2b5a7fa2a73c2bb104a32e0e72c0f8d7549535e80cfd50f7abe8c8ac6124",
+      "seconds": 8.3786101
+    },
+    {
+      "id": "canopy-b1-final-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "4dea4c394ba4f826846575f5dde398deed9f382c6f2f76d488877338785c5f2c",
+      "seconds": 4.5716435
+    },
+    {
+      "id": "canopy-b1-final-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "d627983093fbd1a8d80403fce80683e2f5590d296da112d4583cf1941a239228",
+      "seconds": 4.8056188
+    },
+    {
+      "id": "canopy-b1-flow-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "13f07f4c6bc9d8077eadd86e5562f603885ff43280f35e50928a19347dc52649",
+      "seconds": 6.1675098
+    },
+    {
+      "id": "canopy-b1-flow-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "ff9f89a110940b5766aeed125ad0c964c963d6a979fc290bf5bf3b6ff1eb69d5",
+      "seconds": 6.2729611
+    },
+    {
+      "id": "canopy-b1-partial-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "f556156d2261e838368d25e9c609e115295530a8c7e0389ca6f177262aedb3cb",
+      "seconds": 4.4879867
+    },
+    {
+      "id": "canopy-b1-partial-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "9e27e29a90401eff895e5e268ad4a40791ea4d64ab9e2a68b47712fc173069dc",
+      "seconds": 4.8983165
+    },
+    {
+      "id": "canopy-c4-final-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "798d6fe7c73d22330e89bc8ae023a62b7b671245b6d3e87856a37ea329dec811",
+      "seconds": 4.4186069
+    },
+    {
+      "id": "canopy-c4-final-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "8eca2fd034936b3bbfcadab01f013dd0d1efdcf5dd7bff220489dc3b184d814c",
+      "seconds": 4.7823671
+    },
+    {
+      "id": "canopy-c4-flow-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "cbeaa2a73365734c9648ca7f99ecb86025e3c893c271f13ff2f29fb2a1646f7f",
+      "seconds": 5.8357652
+    },
+    {
+      "id": "canopy-c4-flow-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "8bf54466f89931b39109e82a48dd179f97cc8bcae95d7e560e896ae641fa6792",
+      "seconds": 5.8869322
+    },
+    {
+      "id": "canopy-c4-partial-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "dd2059b804de5c11390ea71b5261671bec1e6e2112a95d50f59cd4b4e7082ce2",
+      "seconds": 4.4766968
+    },
+    {
+      "id": "canopy-c4-partial-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "2deb101e477ae6c6542c8a78839647fafd4426297316163c839d1c723f8e7d85",
+      "seconds": 4.7755779
+    },
+    {
+      "id": "catalogue-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "c7287dffd5e6381294e69fdc80b019974eaa21784c5e3426f726a6ffc8b04106",
+      "seconds": 7.5140154
+    },
+    {
+      "id": "catalogue-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "e33c56885ba5ebb39c816fb0ef0796ac2fd60a6d497b484aff52a7e84844df28",
+      "seconds": 6.8529552
+    },
+    {
+      "id": "chest-flow-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "40a7b06077a74ba9ec6890c9b0bd8a19ee53ab04e51c887dbfa7ede9d9929e9e",
+      "seconds": 8.6619864
+    },
+    {
+      "id": "chest-flow-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "73d7c4c019137e7468b4a0a869acd271ffa2e554e301057ff6ff806ba5ab62ba",
+      "seconds": 9.1780083
+    },
+    {
+      "id": "chest-restore-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "07bc14316f8523d29026f730593be3d82b2d7fa6b89169fcbf23f8249b9e7e7c",
+      "seconds": 3.9339868
+    },
+    {
+      "id": "chest-restore-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "dfb26180381dd3fa39db1eee249eb22eafb95a9afbf5169007b4b65dc2006ddc",
+      "seconds": 4.281662
+    },
+    {
+      "id": "cleanup-b3-final-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "b2337dbf2cabe9ff81ab0664a25e9b559dd5746dd8e31138bb700480dc203f70",
+      "seconds": 2.4639891
+    },
+    {
+      "id": "cleanup-b3-final-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "340c4fe6d898e7de65b87c9200913f4397892e85fe05006683ed964ebc97af9b",
+      "seconds": 2.8764525
+    },
+    {
+      "id": "cleanup-b3-flow-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "72f2dcc785752cb1bcfcc1b6c343ac5b42c832d45fb6a43d79024e30388697c5",
+      "seconds": 4.8743637
+    },
+    {
+      "id": "cleanup-b3-flow-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "6d9f8b65586d78af8231ffbf6b9240c21c5a723e2987323b1fcb29706115f4bc",
+      "seconds": 5.0717408
+    },
+    {
+      "id": "cleanup-b3-partial-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "0cd51523fa564390c6725ee91fed0d795359bd1862d88c5836df25c2a49e287d",
+      "seconds": 2.5376641
+    },
+    {
+      "id": "cleanup-b3-partial-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "3c2ee856f7aa3d7848933817c160393410846f02684e3ecf955e391f7c1e1227",
+      "seconds": 2.9308976
+    },
+    {
+      "id": "cleanup-c1-final-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "9507665df57085defcd1d02df3b0a00f6514f9c3f2690e8c06a1728f43cf6921",
+      "seconds": 2.5680483
+    },
+    {
+      "id": "cleanup-c1-final-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "021ca4b1d1f449fe8ac5d5d1e1461646cc5d62c0dad81de6edf01e8de61bc7ea",
+      "seconds": 2.9934673
+    },
+    {
+      "id": "cleanup-c1-flow-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "38cdde5d517610ccefb0449ddae97bb3bda91cda8a2053422575b73b56d66e08",
+      "seconds": 7.3446148
+    },
+    {
+      "id": "cleanup-c1-flow-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "56fe6284b2a1ec2ea40e2dd47277fde7b73615fedfdb041ac405033aa91865f1",
+      "seconds": 7.088292
+    },
+    {
+      "id": "cleanup-c1-partial-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "c17ea2cf7d7f3dd62ead9838f5c0dfa2abd84b35326dcb7c8e44d531e3144f8c",
+      "seconds": 2.6239746
+    },
+    {
+      "id": "cleanup-c1-partial-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "c4297b3a4b9c4d82c0a0f883fe4f687833d3d29a3b6ecdbad602442cf3ec076b",
+      "seconds": 3.0061679
+    },
+    {
+      "id": "cleanup-c2-final-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "90e1739de6c3906447fd33184dd91fe299ac37d5f0e997fcd0cb73c86a65408f",
+      "seconds": 2.5446032
+    },
+    {
+      "id": "cleanup-c2-final-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "662219111eddb36b8b0775c1a7dd4b85499f78b57866ef0f54c963a30baf37c8",
+      "seconds": 2.9066653
+    },
+    {
+      "id": "cleanup-c2-flow-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "f693d91d682d9ab78433c58ab4316608305e72eefc96d518f96abc8d9b599fc8",
+      "seconds": 4.0003174
+    },
+    {
+      "id": "cleanup-c2-flow-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "eb4df79c9d1d802a7941f13fae0b41a5819cdeb0e0103f038915ca536d302ff3",
+      "seconds": 3.8721452
+    },
+    {
+      "id": "cleanup-c2-partial-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "7a514e53ba8193ac9f1a90635576f8001338f5cd2bee92b76e5e2079b29dbbf9",
+      "seconds": 2.5543598
+    },
+    {
+      "id": "cleanup-c2-partial-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "0c6ad8938eef491fa21bd451f109382a6471c1743e52f613c3624cb137439eb5",
+      "seconds": 2.916742
+    },
+    {
+      "id": "cleanup-c3-final-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "36626140d9b923b2a71252ad53e428396573512dbcf927562c161127d2c45312",
+      "seconds": 2.4938257
+    },
+    {
+      "id": "cleanup-c3-final-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "50e28f3c3d9fb36f42296fbe8beceab68c25909efdb7fe86ecc9591cf1a2c542",
+      "seconds": 2.9725994
+    },
+    {
+      "id": "cleanup-c3-flow-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "34424dcb5b2172eda652593913b75b3111f7f3f986544569253a770836eb0628",
+      "seconds": 4.2807447
+    },
+    {
+      "id": "cleanup-c3-flow-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "bbc985cabe4736cb12b6bd1698cf06e6f2f5d368981c20a0a43e4b3f43b0f767",
+      "seconds": 4.2332462
+    },
+    {
+      "id": "cleanup-c3-partial-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "2a3517c0cbdc3866d4012bd6c4aad735f9f062346edc6a33f4d1ccb7b010ab84",
+      "seconds": 2.5926794
+    },
+    {
+      "id": "cleanup-c3-partial-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "e5f4c63e4a3f5f65a1264eab97030d6b9227d38bcf3088d7f0fd8eeb9211de17",
+      "seconds": 3.1119284
+    },
+    {
+      "id": "cleanup-c4-final-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "cfbdb5132b9f5ce6fcb26505f3d337a64b9bfd964cedff2e716216361b8a8b6f",
+      "seconds": 2.4393497
+    },
+    {
+      "id": "cleanup-c4-final-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "f5f92f8498e43fb38dc4421b7890375e5d2faed79bb32af9804165d554e1f6cc",
+      "seconds": 2.8264319
+    },
+    {
+      "id": "cleanup-c4-flow-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "9e8064f100b7e369461aa8d4aab3cb24cd498267656b7ebbc538e833f9b7092a",
+      "seconds": 3.8552324
+    },
+    {
+      "id": "cleanup-c4-flow-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "48369c12084d6fcb4dd3668ff3a3fd261abb1c445d22c81e4d6a10577ccf908c",
+      "seconds": 3.9838528
+    },
+    {
+      "id": "cleanup-c4-partial-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "e2dedbc29cb2010ba1967058883609fd0a10a52f6aa6a04dd2631480a3aaafa7",
+      "seconds": 2.4961587
+    },
+    {
+      "id": "cleanup-c4-partial-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "9d74961ac4165012af8f9c3f1e97970017e3ffd2b5075e6807767d420ba09c9d",
+      "seconds": 2.8534924
+    },
+    {
+      "id": "cleanup-e1-flow-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "b86a439de4398a60748aaf9166a1aabdbe2eb9e6dddedd541076fbfa745d05f3",
+      "seconds": 4.0199256
+    },
+    {
+      "id": "cleanup-e1-flow-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "d11a8416d8cdd7f8a8f378f8bbe07d1d1181cecfe851ac0ebdbbd58af2aee8de",
+      "seconds": 3.9205387
+    },
+    {
+      "id": "cleanup-e1-restart-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "d76fa08ae57c457289bd232532b2e904d14ecbeabddf06d3e90d87277d7a9ca5",
+      "seconds": 3.2389195
+    },
+    {
+      "id": "cleanup-e1-restart-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "e639f95612ab59074a1f8dd1c61aae6f5fc028cb2920076ae2daeeeeff956f64",
+      "seconds": 3.404966
+    },
+    {
+      "id": "cleanup-f2-flow-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "31dec1ca9ebd6af4a2ea56c59a302417bd3c71fd90181bb94bba4bf2d8d70f1e",
+      "seconds": 3.4159605
+    },
+    {
+      "id": "cleanup-f2-flow-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "fdda8d7e2a37b63133391b24482b69dea860331f38398aa62340d8a8c8686a59",
+      "seconds": 3.0225081
+    },
+    {
+      "id": "cleanup-f2-restart-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "1d1d494408fe12fdc354f76b50f70b6385817be977e7d1ea4e809d5cfb9477ce",
+      "seconds": 2.9809036
+    },
+    {
+      "id": "cleanup-f2-restart-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "3c030942ac10c92883e5b4863a5f1c77def9c922018ba1a4a9943277e9523835",
+      "seconds": 3.2501366
+    },
+    {
+      "id": "cleanup-f3-depleted-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "52959d16392fa97ede56af1261343e6366d33378eced0392efa98dfcd9083656",
+      "seconds": 3.0755822
+    },
+    {
+      "id": "cleanup-f3-depleted-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "a5b38734ef6ece42defd744e3044764cf7273c8899f40e8353982985b29fd463",
+      "seconds": 3.3946133
+    },
+    {
+      "id": "cleanup-f3-flow-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "c22dc4598e5e58b049bd883d5bf0d60b3905b54f7e05f004672ea9dc9f0fce7d",
+      "seconds": 3.5737494
+    },
+    {
+      "id": "cleanup-f3-flow-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "3b9cb2bccef3bae333163089024570319836f1db8d224e5fe4395a7e244db921",
+      "seconds": 3.2462578
+    },
+    {
+      "id": "cleanup-f3-restart-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "8119f39df7833f31b4559fc11e78f47dac7e217fc379928e9b17f684c60c17ae",
+      "seconds": 2.8304672
+    },
+    {
+      "id": "cleanup-f3-restart-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "666f33a17aab553495317b0c2568bc5827a5bbe4f55a521ef1d6f48e81583ba9",
+      "seconds": 3.1843164
+    },
+    {
+      "id": "comfort-live-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "4709e70bcdfeb22a9fc6cc3b6c070629e79e42bc1abb83e99fd1cf08b8f056b1",
+      "seconds": 63.048331
+    },
+    {
+      "id": "comfort-live-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "2b699ade4361cec185f7f97651795fe435dac9760f8df6768a8910a96893d41f",
+      "seconds": 62.0488402
+    },
+    {
+      "id": "ecology",
+      "exit_code": 0,
+      "log_sha256": "cc793911cd9ae31d882ca3aeeff4159ae32ded8c43b1f40c90662302a14e4eb7",
+      "seconds": 132.1860507
+    },
+    {
+      "id": "extra-c5-final-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "cf5b6a26e90d7f3418ce92bd0f1e74a1103aa0ed7fd38981b0be1d997954508c",
+      "seconds": 2.4902353
+    },
+    {
+      "id": "extra-c5-final-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "d72c5a9cd787b56f66202892ddfcd9fafb1cd9ce400ae2791b50ca6ca50c509c",
+      "seconds": 2.7868303
+    },
+    {
+      "id": "extra-c5-flow-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "3d04c1cfae0d131916e6a863ab4b3426ccb0df06c2e2a182d145f0a87380b884",
+      "seconds": 5.4199175
+    },
+    {
+      "id": "extra-c5-flow-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "5d200cb61477d3c7e520bba13f89e1a6a66ebe3885e74a46c9078c5dfe5b528f",
+      "seconds": 5.4282328
+    },
+    {
+      "id": "extra-c5-partial-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "ac9327d3a8ce6b68933318e4d9add36a9c7987d06c9385e29b35584c0b1eb388",
+      "seconds": 2.4346532
+    },
+    {
+      "id": "extra-c5-partial-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "ee27ae919f85faf9af5ab25aa678ef67e61f0d5befcf05d05719b91ff39c0b5d",
+      "seconds": 2.807617
+    },
+    {
+      "id": "extra-e2-flow-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "a42c0f36088c6fb5aa684ea2d31bb02775deaec6ca626ab8694efce5afea8102",
+      "seconds": 4.5477934
+    },
+    {
+      "id": "extra-e2-flow-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "9e995c405d15a1e2bd86dc3f8ef1473a26e40c66b184b2040c2e0cf0dafb9c9e",
+      "seconds": 4.31363
+    },
+    {
+      "id": "extra-e2-restart-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "af73cda99d8057c13219ab5e2834aa997ee6683970fa0e3f81a349096272e945",
+      "seconds": 3.12507
+    },
+    {
+      "id": "extra-e2-restart-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "20acf9b9112b7820583c0678ccabfa12b0e61bd877eacb1346b7cca0d3301148",
+      "seconds": 3.2169356
+    },
+    {
+      "id": "extra-e3-flow-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "c1e438dd797b8e3df30b032e9d4105b0fea99d451da1db8a93d4036d70e340ed",
+      "seconds": 5.0921261
+    },
+    {
+      "id": "extra-e3-flow-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "9a36cd6c35e598646d3debcde3069a0917215edc9c4c2e762773998ac8188ae7",
+      "seconds": 4.6998636
+    },
+    {
+      "id": "extra-e3-restart-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "2372f2295750d1336d7690760f1c2e8ec5a22a5d7e3f0abcbafa0cfd60de843a",
+      "seconds": 4.2375486
+    },
+    {
+      "id": "extra-e3-restart-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "a8e05fb453b4bb85cfed8c74eb2d338389999bcd3a5f9d635004d2af5c296dad",
+      "seconds": 4.5413878
+    },
+    {
+      "id": "extra-f1-depleted-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "13ba2ef50e052e4ffa4b81928141f27b02611175efd169fa72ddbc0291b968d7",
+      "seconds": 3.2455761
+    },
+    {
+      "id": "extra-f1-depleted-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "678d157a5ba821c9ef2b35d991becc568483dbce0ed06e2645004c06a4b4e454",
+      "seconds": 3.5640719
+    },
+    {
+      "id": "extra-f1-flow-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "78a9fa3c1ce3b2b78faa1fef85cdf52383bce7c02154e6dfa9470d9e6d5385db",
+      "seconds": 3.6179948
+    },
+    {
+      "id": "extra-f1-flow-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "d74d402b88597be43fb786e3b8a8291b4d919638bde1b42b3091b544650a02a6",
+      "seconds": 3.3852693
+    },
+    {
+      "id": "extra-f1-restart-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "9f7006aa7dd7472a0301462f4e0ccbfd1ba27526db06e4686b0f0ae0b6d63aa9",
+      "seconds": 2.9610331
+    },
+    {
+      "id": "extra-f1-restart-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "dbdf56cdc175cb593f1ce13256bdedfa5a055722df240c51418a352cdf1e9f39",
+      "seconds": 3.2709906
+    },
+    {
+      "id": "f4-exhausted-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "7af5f45d3aa4917d196d8345888ae80553ebb7a0572000ab77e94f9687128ae9",
+      "seconds": 56.2600837
+    },
+    {
+      "id": "f4-exhausted-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "552de1f2fa4e668633011f26118fd633d18b54fb3a32d80ed6c2bb1079b5decb",
+      "seconds": 56.6356395
+    },
+    {
+      "id": "f4-flow-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "7e9424c654d487acef0cfc6a19a9d9026886f54956d18ea7f0521549ba792b15",
+      "seconds": 78.4699477
+    },
+    {
+      "id": "f4-flow-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "c063aa0cfe0b9ff75c8b27264ccff22e3ad39dddf4ca421ab5a978d7a72c43b3",
+      "seconds": 77.5201947
+    },
+    {
+      "id": "f4-fractional-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "f9d55fcf2329f18994f2600395cf2e05d5bfc3a81de351bcf33e4ccdb999bf44",
+      "seconds": 57.8029252
+    },
+    {
+      "id": "f4-fractional-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "38de6544b26f5330ee4ddf149596fd91943b14db5f3c7c2bccd1d34177ac4b22",
+      "seconds": 56.4827316
+    },
+    {
+      "id": "full-kit-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "43f7456e6a9096e857c61899c51f62d152b4c1a8115eed9fd97da0c3a457bfb7",
+      "seconds": 159.2875985
+    },
+    {
+      "id": "full-kit-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "a28d839f506bf9935429eb67553ddc489f15d3f58a227aea5945b834c3850454",
+      "seconds": 140.3633709
+    },
+    {
+      "id": "grounding-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "6c2bb00131e7be4e0919b6bb88f4532035b6c296a8556c4462a2882cc86ca624",
+      "seconds": 2.9845728
+    },
+    {
+      "id": "grounding-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "072adccdb1940822d91381ee7417116d6d254382b7fa42cca99f181fecf6872b",
+      "seconds": 3.0189555
+    },
+    {
+      "id": "habitat-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "87d1eb5bee8e9c34b0fbfc6e3a69607f1189b9e14f87ed0961c0cd7672594605",
+      "seconds": 112.3496729
+    },
+    {
+      "id": "habitat-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "7f7b2c69544f1d0b54744e7ead79e3a128ca4e92a1f74ea000fccd7871e496d9",
+      "seconds": 112.1033551
+    },
+    {
+      "id": "import-final-sources",
+      "exit_code": 0,
+      "log_sha256": "1e9d2804070ab9ba721df0e635de73fec97c49cf45ebf86e57b46a47dff35caa",
+      "seconds": 15.3168921
+    },
+    {
+      "id": "import-v01-encoding-final",
+      "exit_code": 0,
+      "log_sha256": "2e30c6e188b904b17a1eadbff68b1c2202a2d72994dcc87f5925df9635389288",
+      "seconds": 4.7804818
+    },
+    {
+      "id": "import",
+      "exit_code": 0,
+      "log_sha256": "f740965cfdda75bea05a74ba84aa000596d71f39551ddc88cc8440b8ee3f058e",
+      "seconds": 78.7059796
+    },
+    {
+      "id": "mesh-envelope-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "7fc2e39eb246621fd701ac422c4413bd5054b2aa21eac3ac5bd5f16918ffe120",
+      "seconds": 2.7422494
+    },
+    {
+      "id": "mesh-envelope-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "0b784430528b3cb23dd3b680a5d8ab2fcbf32d84a2a636e6b57be2bb349cb7f7",
+      "seconds": 2.6392332
+    },
+    {
+      "id": "ore-flow-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "7d79662bb114d807643aa5a2202e71a44de7d6037f22f99b849b71e41124dc1c",
+      "seconds": 34.1421392
+    },
+    {
+      "id": "ore-flow-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "449b6305fe58472e1e817dc76777655f1380ef02224c9121c18fb1154a08fb7b",
+      "seconds": 32.6486017
+    },
+    {
+      "id": "ore-restart-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "3f6eaa40bf5c6185343aa2b4743409a843c9d24bfc34617159ce1be3ae160836",
+      "seconds": 21.1198257
+    },
+    {
+      "id": "ore-restart-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "6b1eabff410e50a88c5ee431739e0a7fa788c2df55b12085ff879e9c50c8c2c2",
+      "seconds": 20.753887
+    },
+    {
+      "id": "paid-art-forward_plus-02",
+      "exit_code": 0,
+      "log_sha256": "ba8e4c7b5ee541152e54f5c3038a57623d69c31893eb4f81fd317c575255010f",
+      "seconds": 97.1980842
+    },
+    {
+      "id": "paid-art-forward_plus-final",
+      "exit_code": 0,
+      "log_sha256": "ba8e4c7b5ee541152e54f5c3038a57623d69c31893eb4f81fd317c575255010f",
+      "seconds": 97.0509917
+    },
+    {
+      "id": "paid-art-gl_compatibility-final",
+      "exit_code": 0,
+      "log_sha256": "1c9a9b9772df964e2f26da009b5f4ab76cc44ff9ef605695efe5143d94ce6873",
+      "seconds": 96.3948642
+    },
+    {
+      "id": "paid-art-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "1c9a9b9772df964e2f26da009b5f4ab76cc44ff9ef605695efe5143d94ce6873",
+      "seconds": 97.9120742
+    },
+    {
+      "id": "paid-baseline-forward_plus-final",
+      "exit_code": 0,
+      "log_sha256": "ba8e4c7b5ee541152e54f5c3038a57623d69c31893eb4f81fd317c575255010f",
+      "seconds": 24.2585576
+    },
+    {
+      "id": "paid-baseline-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "ba8e4c7b5ee541152e54f5c3038a57623d69c31893eb4f81fd317c575255010f",
+      "seconds": 24.4517253
+    },
+    {
+      "id": "paid-baseline-gl_compatibility-final",
+      "exit_code": 0,
+      "log_sha256": "1c9a9b9772df964e2f26da009b5f4ab76cc44ff9ef605695efe5143d94ce6873",
+      "seconds": 26.3621825
+    },
+    {
+      "id": "paid-baseline-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "1c9a9b9772df964e2f26da009b5f4ab76cc44ff9ef605695efe5143d94ce6873",
+      "seconds": 26.6633474
+    },
+    {
+      "id": "paid-restart-art-forward_plus-final",
+      "exit_code": 0,
+      "log_sha256": "010653aadf40f4caabfdc257808a2cdcf43aa15277b5f4b0f481ea542c6b4da0",
+      "seconds": 60.2274584
+    },
+    {
+      "id": "paid-restart-art-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "010653aadf40f4caabfdc257808a2cdcf43aa15277b5f4b0f481ea542c6b4da0",
+      "seconds": 60.6592574
+    },
+    {
+      "id": "paid-restart-art-gl_compatibility-final",
+      "exit_code": 0,
+      "log_sha256": "bbeb3cc17d17d763142115c7201821ee98d40d9baa2d9cefff4efbd74fafc69a",
+      "seconds": 59.3913842
+    },
+    {
+      "id": "paid-restart-art-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "bbeb3cc17d17d763142115c7201821ee98d40d9baa2d9cefff4efbd74fafc69a",
+      "seconds": 60.604352
+    },
+    {
+      "id": "paid-restart-baseline-forward_plus-final",
+      "exit_code": 0,
+      "log_sha256": "010653aadf40f4caabfdc257808a2cdcf43aa15277b5f4b0f481ea542c6b4da0",
+      "seconds": 12.2748187
+    },
+    {
+      "id": "paid-restart-baseline-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "010653aadf40f4caabfdc257808a2cdcf43aa15277b5f4b0f481ea542c6b4da0",
+      "seconds": 12.2731337
+    },
+    {
+      "id": "paid-restart-baseline-gl_compatibility-final",
+      "exit_code": 0,
+      "log_sha256": "bbeb3cc17d17d763142115c7201821ee98d40d9baa2d9cefff4efbd74fafc69a",
+      "seconds": 12.2202473
+    },
+    {
+      "id": "paid-restart-baseline-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "bbeb3cc17d17d763142115c7201821ee98d40d9baa2d9cefff4efbd74fafc69a",
+      "seconds": 12.3520382
+    },
+    {
+      "id": "probe-art-forward_plus-final",
+      "exit_code": 0,
+      "log_sha256": "dc9e87c47c3e9cc51911dec17eeadd0152d1df9ad6456a06cdf830ee83759719",
+      "seconds": 75.640143
+    },
+    {
+      "id": "probe-art-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "dc9e87c47c3e9cc51911dec17eeadd0152d1df9ad6456a06cdf830ee83759719",
+      "seconds": 75.9849694
+    },
+    {
+      "id": "probe-art-gl_compatibility-final",
+      "exit_code": 0,
+      "log_sha256": "4351049e4453443eb33b28d0b3c05e31a7cc171ed039e5067df1d4a401825dbd",
+      "seconds": 73.2597717
+    },
+    {
+      "id": "probe-art-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "4351049e4453443eb33b28d0b3c05e31a7cc171ed039e5067df1d4a401825dbd",
+      "seconds": 73.9987344
+    },
+    {
+      "id": "probe-baseline-forward_plus-final",
+      "exit_code": 0,
+      "log_sha256": "dc9e87c47c3e9cc51911dec17eeadd0152d1df9ad6456a06cdf830ee83759719",
+      "seconds": 26.5327984
+    },
+    {
+      "id": "probe-baseline-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "dc9e87c47c3e9cc51911dec17eeadd0152d1df9ad6456a06cdf830ee83759719",
+      "seconds": 27.2179133
+    },
+    {
+      "id": "probe-baseline-gl_compatibility-final",
+      "exit_code": 0,
+      "log_sha256": "4351049e4453443eb33b28d0b3c05e31a7cc171ed039e5067df1d4a401825dbd",
+      "seconds": 25.5688185
+    },
+    {
+      "id": "probe-baseline-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "4351049e4453443eb33b28d0b3c05e31a7cc171ed039e5067df1d4a401825dbd",
+      "seconds": 26.075867
+    },
+    {
+      "id": "projection-equivalence-clean",
+      "exit_code": 0,
+      "log_sha256": "c2c1739aa5cb703ecf84bd24357e513c35d7429f079890640ad569bb3306b8ee",
+      "seconds": 5.1068627
+    },
+    {
+      "id": "reload-flow-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "e4fba5b4d5d5cb4f39190c4c5ab1bee9beadbc16d3979f0d98531c3385ddf2d5",
+      "seconds": 199.2948433
+    },
+    {
+      "id": "reload-flow-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "1fe8d1171493fb48a061b61bbaf21fc3ee01e7f17b18966cb49eaedbc5e25e7e",
+      "seconds": 196.581717
+    },
+    {
+      "id": "reload-restart-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "ef1bb1506e38b05156817b49497d545c0e6996bdfd5d294ba7bc8cbff6110040",
+      "seconds": 75.8097548
+    },
+    {
+      "id": "reload-restart-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "656c25cb00b85ae0c4ec883e5b35347a74247d2bf6c4631b7961ff49f99f2b92",
+      "seconds": 74.7512868
+    },
+    {
+      "id": "reopen-r1",
+      "exit_code": 0,
+      "log_sha256": "21b79e961ce610d1d6702062d543e6e23ec766f2940a5b0c5871e428ccdae306",
+      "seconds": 19.2643282
+    },
+    {
+      "id": "reopen-r3",
+      "exit_code": 0,
+      "log_sha256": "120211ac9ee7f64e0029d93014220a90ebc7606124a9129e10073df9c584dfb8",
+      "seconds": 1.6025198
+    },
+    {
+      "id": "reopen-r5",
+      "exit_code": 0,
+      "log_sha256": "de93496c44e775488cf56cba70861290f52176f6b8811d59f18327a4d1bfcc04",
+      "seconds": 78.2861975
+    },
+    {
+      "id": "reopen-r6",
+      "exit_code": 0,
+      "log_sha256": "519802a447de06988f55a5f931d7aadc57cdc9c5ec46d4bacdd79e269b234f48",
+      "seconds": 16.9572959
+    },
+    {
+      "id": "reopen-r7",
+      "exit_code": 0,
+      "log_sha256": "fc5a1caf91bb5e15f75bebb3b391ff9e2926ceae1dbfc1da68c057e3e65aa66f",
+      "seconds": 1.5348322
+    },
+    {
+      "id": "smoke-forward_plus-v01-encoding-final",
+      "exit_code": 0,
+      "log_sha256": "d01b9fe361394b36fa7b580a3ba4581305b1176d706ebef5c5496f8a57093b78",
+      "seconds": 64.4839294
+    },
+    {
+      "id": "smoke-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "d01b9fe361394b36fa7b580a3ba4581305b1176d706ebef5c5496f8a57093b78",
+      "seconds": 65.7202055
+    },
+    {
+      "id": "smoke-gl_compatibility-v01-encoding-final",
+      "exit_code": 0,
+      "log_sha256": "91e451cf33e6f1e6c7d935068752c28e6e6d9716e415def2aa290cc5f0ab7114",
+      "seconds": 62.3424711
+    },
+    {
+      "id": "smoke-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "91e451cf33e6f1e6c7d935068752c28e6e6d9716e415def2aa290cc5f0ab7114",
+      "seconds": 63.2577642
+    },
+    {
+      "id": "traversal-art-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "79add6c73a7a50afb1575aebc96ded5ce2c8bb904e9f07db12a76b49450864f7",
+      "seconds": 88.710477
+    },
+    {
+      "id": "traversal-art-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "8be115bb533491b999be97130e1501ef05bec10a68b3e08ce3abe2f931d8c926",
+      "seconds": 86.8708846
+    },
+    {
+      "id": "unit",
+      "exit_code": 0,
+      "log_sha256": "5241537cc8a695f4f71233792bb266e95100d0022a7f4db35c91b957530b1142",
+      "seconds": 7.8049807
+    },
+    {
+      "id": "walk-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "653af544f6c4da18b043c4108f4ab1909461c2e2ab99f60973967c3d71166d3a",
+      "seconds": 92.9807514
+    },
+    {
+      "id": "walk-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "b8d4a8f5894e311724884a8cb4e8e9cf559b643c95e36c962bb5ef17f431b17b",
+      "seconds": 95.5506477
+    },
+    {
+      "id": "import-v02-encoding-final",
+      "exit_code": 0,
+      "log_sha256": "240a22c00cf5685e7ed4149257a883dc45888cc2b97119f2da7b412bc1b96c4d",
+      "seconds": 4.3463601
+    },
+    {
+      "id": "import",
+      "exit_code": 0,
+      "log_sha256": "d08b1f6535aca223efdd64d1d380954155eabaf5fbb7ced99f3367980926f3af",
+      "seconds": 85.3462717
+    },
+    {
+      "id": "original-benchmark-art-forward_plus-01",
+      "exit_code": 0,
+      "log_sha256": "f58386b04bb9563781c6b723d12db22ce434146a49ec715c1bc8350a20045348",
+      "seconds": 115.0192988
+    },
+    {
+      "id": "original-benchmark-art-forward_plus-02",
+      "exit_code": 0,
+      "log_sha256": "f58386b04bb9563781c6b723d12db22ce434146a49ec715c1bc8350a20045348",
+      "seconds": 115.3081783
+    },
+    {
+      "id": "original-benchmark-art-forward_plus-03",
+      "exit_code": 0,
+      "log_sha256": "f58386b04bb9563781c6b723d12db22ce434146a49ec715c1bc8350a20045348",
+      "seconds": 114.4280995
+    },
+    {
+      "id": "original-benchmark-art-gl_compatibility-01",
+      "exit_code": 0,
+      "log_sha256": "ad6ab946fb22ef3dd5804af43e8a4849691808197f9626c6f55767b00099b76f",
+      "seconds": 112.7349922
+    },
+    {
+      "id": "original-benchmark-art-gl_compatibility-02",
+      "exit_code": 0,
+      "log_sha256": "ad6ab946fb22ef3dd5804af43e8a4849691808197f9626c6f55767b00099b76f",
+      "seconds": 112.4030926
+    },
+    {
+      "id": "original-benchmark-art-gl_compatibility-03",
+      "exit_code": 0,
+      "log_sha256": "ad6ab946fb22ef3dd5804af43e8a4849691808197f9626c6f55767b00099b76f",
+      "seconds": 111.6907495
+    },
+    {
+      "id": "original-benchmark-baseline-forward_plus-01",
+      "exit_code": 0,
+      "log_sha256": "f58386b04bb9563781c6b723d12db22ce434146a49ec715c1bc8350a20045348",
+      "seconds": 21.8981772
+    },
+    {
+      "id": "original-benchmark-baseline-forward_plus-02",
+      "exit_code": 0,
+      "log_sha256": "f58386b04bb9563781c6b723d12db22ce434146a49ec715c1bc8350a20045348",
+      "seconds": 21.9183716
+    },
+    {
+      "id": "original-benchmark-baseline-forward_plus-03",
+      "exit_code": 0,
+      "log_sha256": "f58386b04bb9563781c6b723d12db22ce434146a49ec715c1bc8350a20045348",
+      "seconds": 22.2909049
+    },
+    {
+      "id": "original-benchmark-baseline-gl_compatibility-01",
+      "exit_code": 0,
+      "log_sha256": "ad6ab946fb22ef3dd5804af43e8a4849691808197f9626c6f55767b00099b76f",
+      "seconds": 25.1786356
+    },
+    {
+      "id": "original-benchmark-baseline-gl_compatibility-02",
+      "exit_code": 0,
+      "log_sha256": "ad6ab946fb22ef3dd5804af43e8a4849691808197f9626c6f55767b00099b76f",
+      "seconds": 25.2032309
+    },
+    {
+      "id": "original-benchmark-baseline-gl_compatibility-03",
+      "exit_code": 0,
+      "log_sha256": "ad6ab946fb22ef3dd5804af43e8a4849691808197f9626c6f55767b00099b76f",
+      "seconds": 25.1617163
+    },
+    {
+      "id": "original-full-kit-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "43f7456e6a9096e857c61899c51f62d152b4c1a8115eed9fd97da0c3a457bfb7",
+      "seconds": 239.2459496
+    },
+    {
+      "id": "original-full-kit-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "a28d839f506bf9935429eb67553ddc489f15d3f58a227aea5945b834c3850454",
+      "seconds": 212.479605
+    },
+    {
+      "id": "original-traversal-art-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "79add6c73a7a50afb1575aebc96ded5ce2c8bb904e9f07db12a76b49450864f7",
+      "seconds": 123.3035682
+    },
+    {
+      "id": "original-traversal-art-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "8be115bb533491b999be97130e1501ef05bec10a68b3e08ce3abe2f931d8c926",
+      "seconds": 119.8941287
+    },
+    {
+      "id": "original-traversal-baseline-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "79add6c73a7a50afb1575aebc96ded5ce2c8bb904e9f07db12a76b49450864f7",
+      "seconds": 38.2936839
+    },
+    {
+      "id": "original-traversal-baseline-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "8be115bb533491b999be97130e1501ef05bec10a68b3e08ce3abe2f931d8c926",
+      "seconds": 37.9333891
+    },
+    {
+      "id": "smoke-forward_plus-v02-encoding-final",
+      "exit_code": 0,
+      "log_sha256": "d01b9fe361394b36fa7b580a3ba4581305b1176d706ebef5c5496f8a57093b78",
+      "seconds": 95.4485018
+    },
+    {
+      "id": "smoke-forward_plus",
+      "exit_code": 0,
+      "log_sha256": "d01b9fe361394b36fa7b580a3ba4581305b1176d706ebef5c5496f8a57093b78",
+      "seconds": 96.8679495
+    },
+    {
+      "id": "smoke-gl_compatibility-v02-encoding-final",
+      "exit_code": 0,
+      "log_sha256": "91e451cf33e6f1e6c7d935068752c28e6e6d9716e415def2aa290cc5f0ab7114",
+      "seconds": 92.107406
+    },
+    {
+      "id": "smoke-gl_compatibility",
+      "exit_code": 0,
+      "log_sha256": "91e451cf33e6f1e6c7d935068752c28e6e6d9716e415def2aa290cc5f0ab7114",
+      "seconds": 92.808184
+    }
+  ],
+  "post_seal_checks": {
+    "package": {
+      "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\handoff",
+      "manifest_sha256": "f227c382400f0c6329bc1c89eb7498da41e3061b0872ea2a62dad3543db2779b",
+      "files": 9652,
+      "bytes": 13192793436
+    },
+    "application": {
+      "package": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\handoff",
+      "manifest_sha256": "f227c382400f0c6329bc1c89eb7498da41e3061b0872ea2a62dad3543db2779b",
+      "runtime_files": 5673,
+      "all_bytes_match": true,
+      "test_override": true
+    },
+    "all_runtime_bytes_match": true,
+    "runtime_entries_verified": 5673,
+    "all_jobs_passed": true,
+    "checks": [
+      {
+        "results": [],
+        "temp": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\import\\temp",
+        "appdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\import",
+        "child_pid": 29340,
+        "processes_before": null,
+        "exit_code": 0,
+        "log_sha256": "3f6a7488e05ef2f11e81a1452a45d23da17c2eb0f03776c6560b5c7b87cea1fa",
+        "start": "2026-09-14T19:00:08.6402448+09:30",
+        "program": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "wrapper_pid": 42476,
+        "id": "sealed-import",
+        "localappdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\import\\local",
+        "arguments": [
+          "--headless",
+          "--editor",
+          "--path",
+          "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\game",
+          "--import",
+          "--",
+          "--r8-no-mouse-capture"
+        ],
+        "seconds": 79.9510368,
+        "failure": "",
+        "benchmark_competitors": [],
+        "log": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\logs\\sealed-import.log"
+      },
+      {
+        "results": [
+          "G1_PACKAGED_LAUNCH_OK"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\smoke-forward_plus\\temp",
+        "appdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\smoke-forward_plus",
+        "child_pid": 48852,
+        "processes_before": null,
+        "exit_code": 0,
+        "log_sha256": "d01b9fe361394b36fa7b580a3ba4581305b1176d706ebef5c5496f8a57093b78",
+        "start": "2026-09-14T19:01:28.7080461+09:30",
+        "program": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "wrapper_pid": 42476,
+        "id": "sealed-smoke-forward_plus",
+        "localappdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\smoke-forward_plus\\local",
+        "arguments": [
+          "--rendering-method",
+          "forward_plus",
+          "--path",
+          "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\game",
+          "res://g1/play.tscn",
+          "--",
+          "--smoke",
+          "--r8-no-mouse-capture",
+          "--r8-comfort-check"
+        ],
+        "seconds": 64.1396231,
+        "failure": "",
+        "benchmark_competitors": [],
+        "log": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\logs\\sealed-smoke-forward_plus.log"
+      },
+      {
+        "results": [
+          "G1_PACKAGED_LAUNCH_OK"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\smoke-gl_compatibility\\temp",
+        "appdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\smoke-gl_compatibility",
+        "child_pid": 11392,
+        "processes_before": null,
+        "exit_code": 0,
+        "log_sha256": "91e451cf33e6f1e6c7d935068752c28e6e6d9716e415def2aa290cc5f0ab7114",
+        "start": "2026-09-14T19:02:32.8552694+09:30",
+        "program": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "wrapper_pid": 42476,
+        "id": "sealed-smoke-gl_compatibility",
+        "localappdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\smoke-gl_compatibility\\local",
+        "arguments": [
+          "--rendering-method",
+          "gl_compatibility",
+          "--path",
+          "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\game",
+          "res://g1/play.tscn",
+          "--",
+          "--smoke",
+          "--r8-no-mouse-capture",
+          "--r8-comfort-check"
+        ],
+        "seconds": 61.742415,
+        "failure": "",
+        "benchmark_competitors": [],
+        "log": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\logs\\sealed-smoke-gl_compatibility.log"
+      },
+      {
+        "results": [
+          "F4_CHECKS 227 checks, 0 failures"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\f4-forward_plus\\temp",
+        "appdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\f4-forward_plus",
+        "child_pid": 1164,
+        "processes_before": null,
+        "exit_code": 0,
+        "log_sha256": "7e9424c654d487acef0cfc6a19a9d9026886f54956d18ea7f0521549ba792b15",
+        "start": "2026-09-14T19:03:34.6038331+09:30",
+        "program": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "wrapper_pid": 42476,
+        "id": "sealed-f4-flow-forward_plus",
+        "localappdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\f4-forward_plus\\local",
+        "arguments": [
+          "--rendering-method",
+          "forward_plus",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\game",
+          "res://r8/replays/forward_plus/f4-flow.tscn",
+          "--",
+          "--capture",
+          "--r8-no-mouse-capture"
+        ],
+        "seconds": 79.087662,
+        "failure": "",
+        "benchmark_competitors": [],
+        "log": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\logs\\sealed-f4-flow-forward_plus.log"
+      },
+      {
+        "results": [
+          "F4_RESTORE 32 checks, 0 failures"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\f4-forward_plus\\temp",
+        "appdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\f4-forward_plus",
+        "child_pid": 44296,
+        "processes_before": null,
+        "exit_code": 0,
+        "log_sha256": "f9d55fcf2329f18994f2600395cf2e05d5bfc3a81de351bcf33e4ccdb999bf44",
+        "start": "2026-09-14T19:04:53.6992291+09:30",
+        "program": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "wrapper_pid": 42476,
+        "id": "sealed-f4-fractional-forward_plus",
+        "localappdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\f4-forward_plus\\local",
+        "arguments": [
+          "--rendering-method",
+          "forward_plus",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\game",
+          "res://r8/replays/forward_plus/f4-fractional.tscn",
+          "--",
+          "--capture",
+          "--restore",
+          "--r8-no-mouse-capture"
+        ],
+        "seconds": 57.7877992,
+        "failure": "",
+        "benchmark_competitors": [],
+        "log": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\logs\\sealed-f4-fractional-forward_plus.log"
+      },
+      {
+        "results": [
+          "F4_EXHAUSTED-RESTORE 29 checks, 0 failures"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\f4-forward_plus\\temp",
+        "appdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\f4-forward_plus",
+        "child_pid": 37012,
+        "processes_before": null,
+        "exit_code": 0,
+        "log_sha256": "7af5f45d3aa4917d196d8345888ae80553ebb7a0572000ab77e94f9687128ae9",
+        "start": "2026-09-14T19:05:51.4934742+09:30",
+        "program": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "wrapper_pid": 42476,
+        "id": "sealed-f4-exhausted-forward_plus",
+        "localappdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\f4-forward_plus\\local",
+        "arguments": [
+          "--rendering-method",
+          "forward_plus",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\game",
+          "res://r8/replays/forward_plus/f4-exhausted.tscn",
+          "--",
+          "--capture",
+          "--restore-exhausted",
+          "--r8-no-mouse-capture"
+        ],
+        "seconds": 57.0166155,
+        "failure": "",
+        "benchmark_competitors": [],
+        "log": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\logs\\sealed-f4-exhausted-forward_plus.log"
+      },
+      {
+        "results": [
+          "F4_CHECKS 227 checks, 0 failures"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\f4-gl_compatibility\\temp",
+        "appdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\f4-gl_compatibility",
+        "child_pid": 49664,
+        "processes_before": null,
+        "exit_code": 0,
+        "log_sha256": "c063aa0cfe0b9ff75c8b27264ccff22e3ad39dddf4ca421ab5a978d7a72c43b3",
+        "start": "2026-09-14T19:06:48.5168694+09:30",
+        "program": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "wrapper_pid": 42476,
+        "id": "sealed-f4-flow-gl_compatibility",
+        "localappdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\f4-gl_compatibility\\local",
+        "arguments": [
+          "--rendering-method",
+          "gl_compatibility",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\game",
+          "res://r8/replays/gl_compatibility/f4-flow.tscn",
+          "--",
+          "--capture",
+          "--r8-no-mouse-capture"
+        ],
+        "seconds": 77.7968291,
+        "failure": "",
+        "benchmark_competitors": [],
+        "log": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\logs\\sealed-f4-flow-gl_compatibility.log"
+      },
+      {
+        "results": [
+          "F4_RESTORE 32 checks, 0 failures"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\f4-gl_compatibility\\temp",
+        "appdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\f4-gl_compatibility",
+        "child_pid": 4212,
+        "processes_before": null,
+        "exit_code": 0,
+        "log_sha256": "38de6544b26f5330ee4ddf149596fd91943b14db5f3c7c2bccd1d34177ac4b22",
+        "start": "2026-09-14T19:08:06.3210085+09:30",
+        "program": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "wrapper_pid": 42476,
+        "id": "sealed-f4-fractional-gl_compatibility",
+        "localappdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\f4-gl_compatibility\\local",
+        "arguments": [
+          "--rendering-method",
+          "gl_compatibility",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\game",
+          "res://r8/replays/gl_compatibility/f4-fractional.tscn",
+          "--",
+          "--capture",
+          "--restore",
+          "--r8-no-mouse-capture"
+        ],
+        "seconds": 57.0471525,
+        "failure": "",
+        "benchmark_competitors": [],
+        "log": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\logs\\sealed-f4-fractional-gl_compatibility.log"
+      },
+      {
+        "results": [
+          "F4_EXHAUSTED-RESTORE 29 checks, 0 failures"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\f4-gl_compatibility\\temp",
+        "appdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\f4-gl_compatibility",
+        "child_pid": 52336,
+        "processes_before": null,
+        "exit_code": 0,
+        "log_sha256": "552de1f2fa4e668633011f26118fd633d18b54fb3a32d80ed6c2bb1079b5decb",
+        "start": "2026-09-14T19:09:03.3747086+09:30",
+        "program": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "wrapper_pid": 42476,
+        "id": "sealed-f4-exhausted-gl_compatibility",
+        "localappdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\f4-gl_compatibility\\local",
+        "arguments": [
+          "--rendering-method",
+          "gl_compatibility",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\game",
+          "res://r8/replays/gl_compatibility/f4-exhausted.tscn",
+          "--",
+          "--capture",
+          "--restore-exhausted",
+          "--r8-no-mouse-capture"
+        ],
+        "seconds": 56.4806979,
+        "failure": "",
+        "benchmark_competitors": [],
+        "log": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\logs\\sealed-f4-exhausted-gl_compatibility.log"
+      },
+      {
+        "results": [
+          "G1_PROBE 10 checks, 0 failures / map 550b2d742314136a71a8c177920059bd245996e744b8722c8ba8c68afbde4a70"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\probe-art-forward_plus\\temp",
+        "appdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\probe-art-forward_plus",
+        "child_pid": 18528,
+        "processes_before": null,
+        "exit_code": 0,
+        "log_sha256": "dc9e87c47c3e9cc51911dec17eeadd0152d1df9ad6456a06cdf830ee83759719",
+        "start": "2026-09-14T19:09:59.8623955+09:30",
+        "program": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "wrapper_pid": 42476,
+        "id": "sealed-probe-art-forward_plus",
+        "localappdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\probe-art-forward_plus\\local",
+        "arguments": [
+          "--rendering-method",
+          "forward_plus",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\game",
+          "res://r6/probe.tscn",
+          "--",
+          "--output=D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\evidence\\probe-art-forward_plus",
+          "--r8-no-mouse-capture"
+        ],
+        "seconds": 76.0194494,
+        "failure": "",
+        "benchmark_competitors": [],
+        "log": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\logs\\sealed-probe-art-forward_plus.log"
+      },
+      {
+        "results": [
+          "G1_PROBE 10 checks, 0 failures / map 550b2d742314136a71a8c177920059bd245996e744b8722c8ba8c68afbde4a70"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\probe-art-gl_compatibility\\temp",
+        "appdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\probe-art-gl_compatibility",
+        "child_pid": 50216,
+        "processes_before": null,
+        "exit_code": 0,
+        "log_sha256": "4351049e4453443eb33b28d0b3c05e31a7cc171ed039e5067df1d4a401825dbd",
+        "start": "2026-09-14T19:11:15.8880180+09:30",
+        "program": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "wrapper_pid": 42476,
+        "id": "sealed-probe-art-gl_compatibility",
+        "localappdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\probe-art-gl_compatibility\\local",
+        "arguments": [
+          "--rendering-method",
+          "gl_compatibility",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\game",
+          "res://r6/probe.tscn",
+          "--",
+          "--output=D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\evidence\\probe-art-gl_compatibility",
+          "--r8-no-mouse-capture"
+        ],
+        "seconds": 74.5409211,
+        "failure": "",
+        "benchmark_competitors": [],
+        "log": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\logs\\sealed-probe-art-gl_compatibility.log"
+      }
+    ],
+    "generated_additions_outside_runtime_map": [
+      "game/override.cfg"
+    ],
+    "scope": "Fresh baseline prepared and every original hash checked; sealed composite applied with every final hash checked; guarded fresh import, both paid-home launches, both native F4 work/pause/block/fractional/exhausted flows and both final-hook probes passed. Source hashes remain equal after import and testing; generated cache/evidence stays only in this test copy."
+  },
+  "runtime_equivalence": {
+    "initial_seal": {
+      "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\handoff",
+      "manifest_sha256": "f227c382400f0c6329bc1c89eb7498da41e3061b0872ea2a62dad3543db2779b",
+      "files": 9652,
+      "bytes": 13192793436
+    },
+    "tested_runtime": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime",
+    "runtime_map_sha256": "10f336bce7b96a1cc573e1ffff91da7e97b571a706e24d5d79941351cb222684",
+    "runtime_entries": 5673,
+    "every_runtime_file_equal_to_tested_copy": true,
+    "scope": "Final handoff adds post-seal logs, images, checkpoints and repository formatting metadata. Every final runtime byte is exactly the runtime that passed all 11 reconstructed-copy engine checks; no new runtime behavior or assets."
+  },
+  "remaining_limits": [
+    "Owner visual acceptance and independent R9 review pending; ordinary-world rollout outside scope.",
+    "Raised ore volume and physical excavation remain blocked by an unapproved terrain/seat/body decision. R6 is material-only.",
+    "Continuous reference understorey remains unmet inside retained envelopes: published eligible XZ envelope upper bounds are 6.12-8.68 percent. Enlargement/geography proposals remain unimplemented.",
+    "R1 heavy limbs/dark shade/LOD2 sparseness, R3 repeated geometry/dark interiors, R5 floor/wall/open-lid overlaps and R7 fine silhouettes/Compatibility colour need owner review.",
+    "Combined setup improves 34.08 percent in Forward+ and 33.61 percent in Compatibility, with lower texture memory; settled frame medians increase and approximately 451-453 ms traversal stalls remain.",
+    "Current RTX 5090 measurements do not establish minimum-hardware clearance; target hardware and performance budget are unset.",
+    "The first paid walk stalled once; its cause remains unestablished. Later traced and final untraced native walks passed with unchanged route/input/collision assertions. All failures retained.",
+    "Earlier visual/state fixtures predate a documented correction to displayed UTF-8 UI/caption text only. Final imports, paid/restart/probes, measurements and sealed reconstruction use corrected bytes.",
+    "Three reload cycles retain flat texture allocation but Forward+ buffer allocation increases by 6144 bytes per subsequent cycle; bounded measurements do not establish long-session stability.",
+    "Cleanup/reload/traversal checks are bounded. Human first-hour play, manual Escape and long-session leak freedom are not established."
+  ],
+  "owner_visual_acceptance": "pending",
+  "minimum_hardware": "unverified",
+  "ordinary_world_rollout": "outside scope",
+  "r9_input": "docs/art/leyline-studies/2026-09-14/art07-repairs/r8/R9-input.json",
+  "native_dll_sha256": "0e7c4956b6c870f5879e78f54c5830509b7ae37913055543cc3a6d451298e0e1",
+  "publication": "Source committed on codex/art07-r8; receipt commit resolved from history. Main integration and push not performed by worker.",
+  "git_source_proof": {
+    "path": "docs/art/leyline-studies/2026-09-14/art07-repairs/r8/source-commit-proof.json",
+    "sha256": "c7ab330d0f921ceb0594c0d57a5d31aa6bc881a84e1b8c768693c6fa161fb9a1",
+    "scope": "All 49 committed implementation files match the final handoff, allowing only Git LF normalization."
+  }
+}

@@ -1,0 +1,550 @@
+{
+  "id": "r8",
+  "consumer": "r9",
+  "status": "ready_for_independent_review",
+  "runtime_base": "6bb2e044dcd0bf1788896aa2c19cdf56fee93522",
+  "native_dll_sha256": "0e7c4956b6c870f5879e78f54c5830509b7ae37913055543cc3a6d451298e0e1",
+  "source_commits": [
+    "67865cf44739f9f9f779c36be49042dd77342d5e"
+  ],
+  "package": {
+    "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\handoff-final",
+    "manifest_sha256": "06dbb6538e4c454db65a00c60737d8e5bbaffbdb3fd0d5c9f0f355d2073c4541",
+    "files": 9890,
+    "bytes": 13437587547
+  },
+  "parents": [
+    {
+      "id": "r2",
+      "status": "published",
+      "source_commit": "ca370f52a20637548da0cf1fd04cdc9dbeb9c440",
+      "receipt_commit": "96853630e714477f6ade849a0323a0af97cb033a",
+      "receipt": "docs/prototype/art07-repairs/2026-09-14/receipts/r2.json",
+      "package": {
+        "path": "D:/project-wroughtwild-art07-r2/build/art07-repairs/r2/v03/handoff",
+        "manifest_sha256": "f5b3ea9559e9f4b76059c7863730b438bdfbe7a6f8f689ae3bae75340cb01ac0",
+        "files": 6411,
+        "bytes": 9091108107,
+        "count_scope": "Payload entries and summed payload bytes; manifest.json is the separately hashed identity file."
+      },
+      "publication_report": "docs/prototype/art07-repairs/2026-09-14/publication-r2.json"
+    },
+    {
+      "id": "r1",
+      "status": "published",
+      "source_commit": "bd91501c8a7b17c9808aa606a10c14f0f46cab0a",
+      "receipt_commit": "2e4de363eb770a475375fdb21fccbca3fbe7e86e",
+      "original_source_commit": "baf781a38e970fef52c47d4faa6a864aa479e60b",
+      "original_receipt_commit": "5a35e6f0a30dc79981571f33a18c7dcff2550e7d",
+      "receipt": "docs/prototype/art07-repairs/2026-09-14/receipts/r1.json",
+      "package": {
+        "path": "D:/project-wroughtwild-art07-r1/build/art07-repairs/r1/v03/handoff",
+        "manifest_sha256": "9c0cd855d03cd5d88df1823538417da776775abd96a732eb7ad94f24a1f02c7e",
+        "files": 5940,
+        "bytes": 5622031314
+      },
+      "publication_report": "docs/prototype/art07-repairs/2026-09-14/publication-r1.json"
+    },
+    {
+      "id": "r3",
+      "status": "published",
+      "source_commit": "7bc9be05397e1492feb8fc98488a84cd3bede75d",
+      "receipt_commit": "ad34112783d233429630921733a38e4beb0a3f03",
+      "original_source_commit": "0d372ae68c7d7b620da27ad7141f9eebae766139",
+      "original_receipt_commit": "22ca7ba702ee9316bca73aa654c25325dbf65988",
+      "receipt": "docs/prototype/art07-repairs/2026-09-14/receipts/r3.json",
+      "package": {
+        "path": "D:/project-wroughtwild-art07-r3/build/art07-repairs/r3/v01/handoff",
+        "manifest_sha256": "6ce1ca7f6a7406041c345e045610197e33f4f6eefe8cdcfb98718a6ee2e502da",
+        "files": 5632,
+        "bytes": 4156251159
+      },
+      "publication_report": "docs/prototype/art07-repairs/2026-09-14/publication-r3.json"
+    },
+    {
+      "id": "r4",
+      "status": "published",
+      "source_commit": "1448b35cc38b3e20b54d8fcbefce82c2d01dcb09",
+      "receipt_commit": "b14c996714378e05dac34bd1a2dd7a7b4579cd74",
+      "original_source_commit": "9cdb6d5b5e2fe96b21fe40f6df96d13d9015c187",
+      "original_receipt_commit": "df07870493d6962b9e8c8d1d64e9948700155820",
+      "receipt": "docs/prototype/art07-repairs/2026-09-14/receipts/r4.json",
+      "package": {
+        "path": "D:/project-wroughtwild-art07-r4/build/art07-repairs/r4/v01/handoff-v02",
+        "manifest_sha256": "acebe2937b819bb2210241b394262b5a19916dec9199184d69d4d9d25dd49541",
+        "files": 747,
+        "bytes": 13305657
+      },
+      "publication_report": "docs/prototype/art07-repairs/2026-09-14/publication-r4.json"
+    },
+    {
+      "id": "r5",
+      "status": "published",
+      "source_commit": "7f658e1c343ff281002e6951258e800667aad18b",
+      "receipt_commit": "c057b9210f60417ef81884a0c2f799bbede37d3d",
+      "original_source_commit": "f4d5ef753e22fe6ef69164db25f768a2a289f248",
+      "original_receipt_commit": "24e14c82437bfca62576a14a328f3fb445fb6f2d",
+      "receipt": "docs/prototype/art07-repairs/2026-09-14/receipts/r5.json",
+      "package": {
+        "path": "D:/project-wroughtwild-art07-r5/build/art07-repairs/r5/v02/handoff",
+        "manifest_sha256": "18a9c2bf4a659373ccd303f8682e3f7553146a25619e736d66c969fb85f7f986",
+        "files": 5444,
+        "bytes": 3931408290
+      },
+      "publication_report": "docs/prototype/art07-repairs/2026-09-14/publication-r5.json"
+    },
+    {
+      "id": "r6",
+      "status": "published",
+      "source_commit": "b483d2027b6c3326dd25483a3f9f2d4f7bcd8c12",
+      "receipt_commit": "5619672bbaf56cc3d7b0f2955ff2a81fdfc54c4a",
+      "original_source_commit": "78ef855ca9cb6ca1f4d16221cca98d53a9d1aa8a",
+      "original_receipt_commit": "f44920e696b5c81b7fa6548e4f86a3c9641fec96",
+      "receipt": "docs/prototype/art07-repairs/2026-09-14/receipts/r6.json",
+      "package": {
+        "path": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\handoff-v01",
+        "manifest_sha256": "e81d8020ece9dfc25da0dd3e30aeaa222333a8b915e5bbda2d1a819000bebb41",
+        "files": 5832,
+        "bytes": 4534284673
+      },
+      "publication_report": "docs/prototype/art07-repairs/2026-09-14/publication-r6.json"
+    },
+    {
+      "id": "r7",
+      "status": "published",
+      "source_commit": "27f8a1f7f6133347a66fedd100ae1d03a8fc3951",
+      "receipt_commit": "eb9029dfe4dac3600546430f1f7e0081e79306df",
+      "original_source_commit": "f293e038d8c6c8cd54a4f84f57a724ae491bb06c",
+      "original_receipt_commit": "2b0af7889b48da90bdfa881cf27942ae9a7e1474",
+      "receipt": "docs/prototype/art07-repairs/2026-09-14/receipts/r7.json",
+      "package": {
+        "path": "D:/project-wroughtwild-art07-r7/build/art07-repairs/r7/v02/handoff-final",
+        "manifest_sha256": "a7bd6777be5fc9426f1912b6b89b6237e3fd96c6df68543331aeeca4e7bc0af0",
+        "files": 5562,
+        "bytes": 4594239829
+      },
+      "publication_report": "docs/prototype/art07-repairs/2026-09-14/publication-r7.json"
+    }
+  ],
+  "acceptance": {
+    "path": "records/acceptance.json",
+    "sha256": "e7ee023112e2928e61862145eec41d11aafa3578dfff0ecdd4bee1e4e8bbefdd",
+    "required_fresh_jobs": 191
+  },
+  "post_seal": {
+    "package": {
+      "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\handoff",
+      "manifest_sha256": "f227c382400f0c6329bc1c89eb7498da41e3061b0872ea2a62dad3543db2779b",
+      "files": 9652,
+      "bytes": 13192793436
+    },
+    "application": {
+      "package": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\handoff",
+      "manifest_sha256": "f227c382400f0c6329bc1c89eb7498da41e3061b0872ea2a62dad3543db2779b",
+      "runtime_files": 5673,
+      "all_bytes_match": true,
+      "test_override": true
+    },
+    "all_runtime_bytes_match": true,
+    "runtime_entries_verified": 5673,
+    "all_jobs_passed": true,
+    "checks": [
+      {
+        "results": [],
+        "temp": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\import\\temp",
+        "appdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\import",
+        "child_pid": 29340,
+        "processes_before": null,
+        "exit_code": 0,
+        "log_sha256": "3f6a7488e05ef2f11e81a1452a45d23da17c2eb0f03776c6560b5c7b87cea1fa",
+        "start": "2026-09-14T19:00:08.6402448+09:30",
+        "program": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "wrapper_pid": 42476,
+        "id": "sealed-import",
+        "localappdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\import\\local",
+        "arguments": [
+          "--headless",
+          "--editor",
+          "--path",
+          "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\game",
+          "--import",
+          "--",
+          "--r8-no-mouse-capture"
+        ],
+        "seconds": 79.9510368,
+        "failure": "",
+        "benchmark_competitors": [],
+        "log": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\logs\\sealed-import.log"
+      },
+      {
+        "results": [
+          "G1_PACKAGED_LAUNCH_OK"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\smoke-forward_plus\\temp",
+        "appdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\smoke-forward_plus",
+        "child_pid": 48852,
+        "processes_before": null,
+        "exit_code": 0,
+        "log_sha256": "d01b9fe361394b36fa7b580a3ba4581305b1176d706ebef5c5496f8a57093b78",
+        "start": "2026-09-14T19:01:28.7080461+09:30",
+        "program": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "wrapper_pid": 42476,
+        "id": "sealed-smoke-forward_plus",
+        "localappdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\smoke-forward_plus\\local",
+        "arguments": [
+          "--rendering-method",
+          "forward_plus",
+          "--path",
+          "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\game",
+          "res://g1/play.tscn",
+          "--",
+          "--smoke",
+          "--r8-no-mouse-capture",
+          "--r8-comfort-check"
+        ],
+        "seconds": 64.1396231,
+        "failure": "",
+        "benchmark_competitors": [],
+        "log": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\logs\\sealed-smoke-forward_plus.log"
+      },
+      {
+        "results": [
+          "G1_PACKAGED_LAUNCH_OK"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\smoke-gl_compatibility\\temp",
+        "appdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\smoke-gl_compatibility",
+        "child_pid": 11392,
+        "processes_before": null,
+        "exit_code": 0,
+        "log_sha256": "91e451cf33e6f1e6c7d935068752c28e6e6d9716e415def2aa290cc5f0ab7114",
+        "start": "2026-09-14T19:02:32.8552694+09:30",
+        "program": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "wrapper_pid": 42476,
+        "id": "sealed-smoke-gl_compatibility",
+        "localappdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\smoke-gl_compatibility\\local",
+        "arguments": [
+          "--rendering-method",
+          "gl_compatibility",
+          "--path",
+          "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\game",
+          "res://g1/play.tscn",
+          "--",
+          "--smoke",
+          "--r8-no-mouse-capture",
+          "--r8-comfort-check"
+        ],
+        "seconds": 61.742415,
+        "failure": "",
+        "benchmark_competitors": [],
+        "log": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\logs\\sealed-smoke-gl_compatibility.log"
+      },
+      {
+        "results": [
+          "F4_CHECKS 227 checks, 0 failures"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\f4-forward_plus\\temp",
+        "appdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\f4-forward_plus",
+        "child_pid": 1164,
+        "processes_before": null,
+        "exit_code": 0,
+        "log_sha256": "7e9424c654d487acef0cfc6a19a9d9026886f54956d18ea7f0521549ba792b15",
+        "start": "2026-09-14T19:03:34.6038331+09:30",
+        "program": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "wrapper_pid": 42476,
+        "id": "sealed-f4-flow-forward_plus",
+        "localappdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\f4-forward_plus\\local",
+        "arguments": [
+          "--rendering-method",
+          "forward_plus",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\game",
+          "res://r8/replays/forward_plus/f4-flow.tscn",
+          "--",
+          "--capture",
+          "--r8-no-mouse-capture"
+        ],
+        "seconds": 79.087662,
+        "failure": "",
+        "benchmark_competitors": [],
+        "log": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\logs\\sealed-f4-flow-forward_plus.log"
+      },
+      {
+        "results": [
+          "F4_RESTORE 32 checks, 0 failures"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\f4-forward_plus\\temp",
+        "appdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\f4-forward_plus",
+        "child_pid": 44296,
+        "processes_before": null,
+        "exit_code": 0,
+        "log_sha256": "f9d55fcf2329f18994f2600395cf2e05d5bfc3a81de351bcf33e4ccdb999bf44",
+        "start": "2026-09-14T19:04:53.6992291+09:30",
+        "program": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "wrapper_pid": 42476,
+        "id": "sealed-f4-fractional-forward_plus",
+        "localappdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\f4-forward_plus\\local",
+        "arguments": [
+          "--rendering-method",
+          "forward_plus",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\game",
+          "res://r8/replays/forward_plus/f4-fractional.tscn",
+          "--",
+          "--capture",
+          "--restore",
+          "--r8-no-mouse-capture"
+        ],
+        "seconds": 57.7877992,
+        "failure": "",
+        "benchmark_competitors": [],
+        "log": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\logs\\sealed-f4-fractional-forward_plus.log"
+      },
+      {
+        "results": [
+          "F4_EXHAUSTED-RESTORE 29 checks, 0 failures"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\f4-forward_plus\\temp",
+        "appdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\f4-forward_plus",
+        "child_pid": 37012,
+        "processes_before": null,
+        "exit_code": 0,
+        "log_sha256": "7af5f45d3aa4917d196d8345888ae80553ebb7a0572000ab77e94f9687128ae9",
+        "start": "2026-09-14T19:05:51.4934742+09:30",
+        "program": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "wrapper_pid": 42476,
+        "id": "sealed-f4-exhausted-forward_plus",
+        "localappdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\f4-forward_plus\\local",
+        "arguments": [
+          "--rendering-method",
+          "forward_plus",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\game",
+          "res://r8/replays/forward_plus/f4-exhausted.tscn",
+          "--",
+          "--capture",
+          "--restore-exhausted",
+          "--r8-no-mouse-capture"
+        ],
+        "seconds": 57.0166155,
+        "failure": "",
+        "benchmark_competitors": [],
+        "log": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\logs\\sealed-f4-exhausted-forward_plus.log"
+      },
+      {
+        "results": [
+          "F4_CHECKS 227 checks, 0 failures"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\f4-gl_compatibility\\temp",
+        "appdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\f4-gl_compatibility",
+        "child_pid": 49664,
+        "processes_before": null,
+        "exit_code": 0,
+        "log_sha256": "c063aa0cfe0b9ff75c8b27264ccff22e3ad39dddf4ca421ab5a978d7a72c43b3",
+        "start": "2026-09-14T19:06:48.5168694+09:30",
+        "program": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "wrapper_pid": 42476,
+        "id": "sealed-f4-flow-gl_compatibility",
+        "localappdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\f4-gl_compatibility\\local",
+        "arguments": [
+          "--rendering-method",
+          "gl_compatibility",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\game",
+          "res://r8/replays/gl_compatibility/f4-flow.tscn",
+          "--",
+          "--capture",
+          "--r8-no-mouse-capture"
+        ],
+        "seconds": 77.7968291,
+        "failure": "",
+        "benchmark_competitors": [],
+        "log": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\logs\\sealed-f4-flow-gl_compatibility.log"
+      },
+      {
+        "results": [
+          "F4_RESTORE 32 checks, 0 failures"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\f4-gl_compatibility\\temp",
+        "appdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\f4-gl_compatibility",
+        "child_pid": 4212,
+        "processes_before": null,
+        "exit_code": 0,
+        "log_sha256": "38de6544b26f5330ee4ddf149596fd91943b14db5f3c7c2bccd1d34177ac4b22",
+        "start": "2026-09-14T19:08:06.3210085+09:30",
+        "program": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "wrapper_pid": 42476,
+        "id": "sealed-f4-fractional-gl_compatibility",
+        "localappdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\f4-gl_compatibility\\local",
+        "arguments": [
+          "--rendering-method",
+          "gl_compatibility",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\game",
+          "res://r8/replays/gl_compatibility/f4-fractional.tscn",
+          "--",
+          "--capture",
+          "--restore",
+          "--r8-no-mouse-capture"
+        ],
+        "seconds": 57.0471525,
+        "failure": "",
+        "benchmark_competitors": [],
+        "log": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\logs\\sealed-f4-fractional-gl_compatibility.log"
+      },
+      {
+        "results": [
+          "F4_EXHAUSTED-RESTORE 29 checks, 0 failures"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\f4-gl_compatibility\\temp",
+        "appdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\f4-gl_compatibility",
+        "child_pid": 52336,
+        "processes_before": null,
+        "exit_code": 0,
+        "log_sha256": "552de1f2fa4e668633011f26118fd633d18b54fb3a32d80ed6c2bb1079b5decb",
+        "start": "2026-09-14T19:09:03.3747086+09:30",
+        "program": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "wrapper_pid": 42476,
+        "id": "sealed-f4-exhausted-gl_compatibility",
+        "localappdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\f4-gl_compatibility\\local",
+        "arguments": [
+          "--rendering-method",
+          "gl_compatibility",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\game",
+          "res://r8/replays/gl_compatibility/f4-exhausted.tscn",
+          "--",
+          "--capture",
+          "--restore-exhausted",
+          "--r8-no-mouse-capture"
+        ],
+        "seconds": 56.4806979,
+        "failure": "",
+        "benchmark_competitors": [],
+        "log": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\logs\\sealed-f4-exhausted-gl_compatibility.log"
+      },
+      {
+        "results": [
+          "G1_PROBE 10 checks, 0 failures / map 550b2d742314136a71a8c177920059bd245996e744b8722c8ba8c68afbde4a70"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\probe-art-forward_plus\\temp",
+        "appdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\probe-art-forward_plus",
+        "child_pid": 18528,
+        "processes_before": null,
+        "exit_code": 0,
+        "log_sha256": "dc9e87c47c3e9cc51911dec17eeadd0152d1df9ad6456a06cdf830ee83759719",
+        "start": "2026-09-14T19:09:59.8623955+09:30",
+        "program": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "wrapper_pid": 42476,
+        "id": "sealed-probe-art-forward_plus",
+        "localappdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\probe-art-forward_plus\\local",
+        "arguments": [
+          "--rendering-method",
+          "forward_plus",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\game",
+          "res://r6/probe.tscn",
+          "--",
+          "--output=D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\evidence\\probe-art-forward_plus",
+          "--r8-no-mouse-capture"
+        ],
+        "seconds": 76.0194494,
+        "failure": "",
+        "benchmark_competitors": [],
+        "log": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\logs\\sealed-probe-art-forward_plus.log"
+      },
+      {
+        "results": [
+          "G1_PROBE 10 checks, 0 failures / map 550b2d742314136a71a8c177920059bd245996e744b8722c8ba8c68afbde4a70"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\probe-art-gl_compatibility\\temp",
+        "appdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\probe-art-gl_compatibility",
+        "child_pid": 50216,
+        "processes_before": null,
+        "exit_code": 0,
+        "log_sha256": "4351049e4453443eb33b28d0b3c05e31a7cc171ed039e5067df1d4a401825dbd",
+        "start": "2026-09-14T19:11:15.8880180+09:30",
+        "program": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "wrapper_pid": 42476,
+        "id": "sealed-probe-art-gl_compatibility",
+        "localappdata": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\users\\probe-art-gl_compatibility\\local",
+        "arguments": [
+          "--rendering-method",
+          "gl_compatibility",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime\\game",
+          "res://r6/probe.tscn",
+          "--",
+          "--output=D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\evidence\\probe-art-gl_compatibility",
+          "--r8-no-mouse-capture"
+        ],
+        "seconds": 74.5409211,
+        "failure": "",
+        "benchmark_competitors": [],
+        "log": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\logs\\sealed-probe-art-gl_compatibility.log"
+      }
+    ],
+    "generated_additions_outside_runtime_map": [
+      "game/override.cfg"
+    ],
+    "scope": "Fresh baseline prepared and every original hash checked; sealed composite applied with every final hash checked; guarded fresh import, both paid-home launches, both native F4 work/pause/block/fractional/exhausted flows and both final-hook probes passed. Source hashes remain equal after import and testing; generated cache/evidence stays only in this test copy."
+  },
+  "runtime_equivalence": {
+    "initial_seal": {
+      "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\handoff",
+      "manifest_sha256": "f227c382400f0c6329bc1c89eb7498da41e3061b0872ea2a62dad3543db2779b",
+      "files": 9652,
+      "bytes": 13192793436
+    },
+    "tested_runtime": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v03\\runtime",
+    "runtime_map_sha256": "10f336bce7b96a1cc573e1ffff91da7e97b571a706e24d5d79941351cb222684",
+    "runtime_entries": 5673,
+    "every_runtime_file_equal_to_tested_copy": true,
+    "scope": "Final handoff adds post-seal logs, images, checkpoints and repository formatting metadata. Every final runtime byte is exactly the runtime that passed all 11 reconstructed-copy engine checks; no new runtime behavior or assets."
+  },
+  "findings": {
+    "G2-V01": "R1 canopy candidate integrated; source/native/envelope checks pass; owner visuals pending.",
+    "G2-V02": "R3 material/face/shape candidate integrated with R2 reuse; 273 legal pairs pass; owner visuals pending.",
+    "G2-V03": "R5 eight fitted cabinets integrated; native storage/body unchanged; placement overlap limits remain.",
+    "G2-V04": "R6 material-only ore candidate integrated; raised volume/physical recess remain blocked by decision.",
+    "G2-V05": "R7 retained-anchor candidate integrated; continuous understorey remains unmet; geography proposals unimplemented.",
+    "G2-T01": "R4 eight lifecycle fixes integrated; 44 flow/restore jobs pass with zero observed terminal children/playbacks.",
+    "G2-C01": "R2 exact reuse integrated and measured afresh on the combined candidate; current-device costs only."
+  },
+  "remaining_limits": [
+    "Owner visual acceptance and independent R9 review pending; ordinary-world rollout outside scope.",
+    "Raised ore volume and physical excavation remain blocked by an unapproved terrain/seat/body decision. R6 is material-only.",
+    "Continuous reference understorey remains unmet inside retained envelopes: published eligible XZ envelope upper bounds are 6.12-8.68 percent. Enlargement/geography proposals remain unimplemented.",
+    "R1 heavy limbs/dark shade/LOD2 sparseness, R3 repeated geometry/dark interiors, R5 floor/wall/open-lid overlaps and R7 fine silhouettes/Compatibility colour need owner review.",
+    "Combined setup improves 34.08 percent in Forward+ and 33.61 percent in Compatibility, with lower texture memory; settled frame medians increase and approximately 451-453 ms traversal stalls remain.",
+    "Current RTX 5090 measurements do not establish minimum-hardware clearance; target hardware and performance budget are unset.",
+    "The first paid walk stalled once; its cause remains unestablished. Later traced and final untraced native walks passed with unchanged route/input/collision assertions. All failures retained.",
+    "Earlier visual/state fixtures predate a documented correction to displayed UTF-8 UI/caption text only. Final imports, paid/restart/probes, measurements and sealed reconstruction use corrected bytes.",
+    "Three reload cycles retain flat texture allocation but Forward+ buffer allocation increases by 6144 bytes per subsequent cycle; bounded measurements do not establish long-session stability.",
+    "Cleanup/reload/traversal checks are bounded. Human first-hour play, manual Escape and long-session leak freedom are not established."
+  ],
+  "owner_visual_acceptance": "pending",
+  "minimum_hardware": "unverified",
+  "ordinary_world_rollout": "outside scope",
+  "publication": "R8 worker did not publish main. Serial publisher must verify and publish this receipt before R9 source consumption.",
+  "git_source_proof": {
+    "path": "docs/art/leyline-studies/2026-09-14/art07-repairs/r8/source-commit-proof.json",
+    "sha256": "c7ab330d0f921ceb0594c0d57a5d31aa6bc881a84e1b8c768693c6fa161fb9a1",
+    "scope": "All 49 committed implementation files match the final handoff, allowing only Git LF normalization."
+  }
+}

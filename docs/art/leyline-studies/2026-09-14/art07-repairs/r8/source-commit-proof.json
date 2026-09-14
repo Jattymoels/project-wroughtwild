@@ -1,0 +1,352 @@
+{
+  "final_package_manifest_sha256": "06dbb6538e4c454db65a00c60737d8e5bbaffbdb3fd0d5c9f0f355d2073c4541",
+  "files": [
+    {
+      "path": "docs/art/leyline-studies/2026-09-14/art07-repairs/r8/.gitattributes",
+      "index_blob": "e6ed8f77457135c7c0fedffaea6f4a3d51113f81",
+      "index_sha256": "a7cca18b4255c08f568f6de0abe29fc72f0f6c3a3474a9e84a68d879984d0d2a",
+      "sealed_sha256": "a7cca18b4255c08f568f6de0abe29fc72f0f6c3a3474a9e84a68d879984d0d2a",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "docs/art/leyline-studies/2026-09-14/art07-repairs/r8/CHECKS.md",
+      "index_blob": "505f99a71e38542eadc08e547bab1de5d647c44e",
+      "index_sha256": "0bc38c0df6af2214ca4edb7e2aacb90f603d32ca1c734027a9fe4aa199869ff3",
+      "sealed_sha256": "0bc38c0df6af2214ca4edb7e2aacb90f603d32ca1c734027a9fe4aa199869ff3",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "docs/art/leyline-studies/2026-09-14/art07-repairs/r8/DIAGNOSTICS.md",
+      "index_blob": "05b8abf0f9a0d38799b232853d2c3e4bde9d2921",
+      "index_sha256": "d7a58cc242a110ef53b9e4ff4dd20a1ce0b939b778926f18a589c03a05256460",
+      "sealed_sha256": "d7a58cc242a110ef53b9e4ff4dd20a1ce0b939b778926f18a589c03a05256460",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "docs/art/leyline-studies/2026-09-14/art07-repairs/r8/README.md",
+      "index_blob": "03409daee3698c861370ea4cf6ede96d09bd8a9c",
+      "index_sha256": "92d3089db1faa20e2a0ca0f22e527b6448f895c008791cbb458c8d65912f57a3",
+      "sealed_sha256": "92d3089db1faa20e2a0ca0f22e527b6448f895c008791cbb458c8d65912f57a3",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "docs/art/leyline-studies/2026-09-14/art07-repairs/r8/TUNING.md",
+      "index_blob": "8ea87b3a7c3fbccec9c66fa6c9b60e6cee4e2c75",
+      "index_sha256": "901776489dec2f80561beee9820eaf2bcd3cfd78765960742151041000d63b09",
+      "sealed_sha256": "901776489dec2f80561beee9820eaf2bcd3cfd78765960742151041000d63b09",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "docs/art/leyline-studies/2026-09-14/art07-repairs/r8/controller-route.gif",
+      "index_blob": "703fcd541e2ff0ead8f1e025e594ef12143baea7",
+      "index_sha256": "e0248846104787104bc3be2c0263e15215d23077fb983afd2780df9d77e9fc79",
+      "sealed_sha256": "e0248846104787104bc3be2c0263e15215d23077fb983afd2780df9d77e9fc79",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "docs/art/leyline-studies/2026-09-14/art07-repairs/r8/costs.json",
+      "index_blob": "a0674a6fbfd92d27b30f065b9bec1471c6b0858f",
+      "index_sha256": "5949b0870088ef2e8e3b2d26b5d1281a367c28668b6cb51cf4c2156838e1ca38",
+      "sealed_sha256": "5949b0870088ef2e8e3b2d26b5d1281a367c28668b6cb51cf4c2156838e1ca38",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "docs/art/leyline-studies/2026-09-14/art07-repairs/r8/costs.md",
+      "index_blob": "2affd9401718e0d3c7a89ef5b06e24a77309ad66",
+      "index_sha256": "c2191f7f13f48a7b5ee9850a2d1c8f61c7c3c31c34da73ecd4b75a4091cafeaa",
+      "sealed_sha256": "c2191f7f13f48a7b5ee9850a2d1c8f61c7c3c31c34da73ecd4b75a4091cafeaa",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "docs/art/leyline-studies/2026-09-14/art07-repairs/r8/f4-native-work.gif",
+      "index_blob": "83142f2ed9bdd028d11e2e1392d8243bfa9e6743",
+      "index_sha256": "8a2f3442464de17f7e02555b8edca0c6755dc70d8005b55b7417051dc65ad42f",
+      "sealed_sha256": "8a2f3442464de17f7e02555b8edca0c6755dc70d8005b55b7417051dc65ad42f",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "docs/art/leyline-studies/2026-09-14/art07-repairs/r8/image-provenance.json",
+      "index_blob": "0f767593cb9b443ebfe24ff88d13c21b026cc900",
+      "index_sha256": "c399c934a5ccd76b0615c15db424f6497f53186f1d3b082fa5d9cb9c33941b59",
+      "sealed_sha256": "c399c934a5ccd76b0615c15db424f6497f53186f1d3b082fa5d9cb9c33941b59",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "docs/art/leyline-studies/2026-09-14/art07-repairs/r8/inherited-options-lineage.json",
+      "index_blob": "f3ceaffc09af5ae04d3e73a887c1680fb29793a4",
+      "index_sha256": "4753c2af1d1b1813dddc34a190d36ebd53c26edb2d47d6f72aaadd2d1f449f68",
+      "sealed_sha256": "6d5d7d76e5aadd73e185f3485685b75b1d561c54a3fb5cdd24ec2bd686a045f5",
+      "match": "Git LF normalization only"
+    },
+    {
+      "path": "docs/art/leyline-studies/2026-09-14/art07-repairs/r8/inherited-r6-source-options.md",
+      "index_blob": "107085b7f3bf83b2497498a1791905102572769d",
+      "index_sha256": "6f3708c87762c6bee863d1883927c5a8a39ad6c8190cc69bebf8cf6465f9520d",
+      "sealed_sha256": "1edbc08fc45c7cf09dee65ba6eebaba3c1dc0e5ee76ba5306fafdaf03d626b4e",
+      "match": "Git LF normalization only"
+    },
+    {
+      "path": "docs/art/leyline-studies/2026-09-14/art07-repairs/r8/inherited-r7-coverage-options.json",
+      "index_blob": "60218e02bb8a3951108263c1ff19abc4231e90ea",
+      "index_sha256": "98f1cd21a4a03f5daab45eb953285f4ce24f75cabcbbd391ad11f2931d733638",
+      "sealed_sha256": "538eac2caf525058e3c646168e619dcd6897d8234d4ba464facf0097890543c1",
+      "match": "Git LF normalization only"
+    },
+    {
+      "path": "docs/art/leyline-studies/2026-09-14/art07-repairs/r8/overlap-resolutions.diff",
+      "index_blob": "8d0a3033f7f8b5b2887df7a1b533f33e27ac1cc8",
+      "index_sha256": "611c07e87f421eaacc31dea6ca5802d70c5747946c693f3341cce8a18e8ea507",
+      "sealed_sha256": "611c07e87f421eaacc31dea6ca5802d70c5747946c693f3341cce8a18e8ea507",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "docs/art/leyline-studies/2026-09-14/art07-repairs/r8/overlap-resolutions.json",
+      "index_blob": "26fdaa28c181b7707c8ed55884feef9af04c7045",
+      "index_sha256": "dfdf88f96b1eb6208e169954551da31ede0d2c486494b1c811fc6a6dc9f9475a",
+      "sealed_sha256": "dfdf88f96b1eb6208e169954551da31ede0d2c486494b1c811fc6a6dc9f9475a",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "docs/art/leyline-studies/2026-09-14/art07-repairs/r8/reloads.json",
+      "index_blob": "f3c3848549381257d6611317f07212fc8360b460",
+      "index_sha256": "3d6395ad9606bf730183aa149ea9e8347a830f07ad23cf2fd33bb2228051087f",
+      "sealed_sha256": "3d6395ad9606bf730183aa149ea9e8347a830f07ad23cf2fd33bb2228051087f",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "docs/art/leyline-studies/2026-09-14/art07-repairs/r8/traversal-costs.json",
+      "index_blob": "17dd70185b8f541897c22e4060a6dcf898c6b8ef",
+      "index_sha256": "32a23c330c180e39d8b2211a9fbbb29fbd53877c2c79b53415003f2134043a25",
+      "sealed_sha256": "32a23c330c180e39d8b2211a9fbbb29fbd53877c2c79b53415003f2134043a25",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "docs/art/leyline-studies/2026-09-14/art07-repairs/r8/traversal-costs.md",
+      "index_blob": "693aaaeac66e1ac61c75a8b95649dba42296432b",
+      "index_sha256": "e2790ad6f7cbad7746cf1cb06a9ca55601f0d82e9c7eb88132286bec393fb51d",
+      "sealed_sha256": "e2790ad6f7cbad7746cf1cb06a9ca55601f0d82e9c7eb88132286bec393fb51d",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "tools/wroughtwild-art07-repairs/r8/.gitattributes",
+      "index_blob": "e6ed8f77457135c7c0fedffaea6f4a3d51113f81",
+      "index_sha256": "a7cca18b4255c08f568f6de0abe29fc72f0f6c3a3474a9e84a68d879984d0d2a",
+      "sealed_sha256": "a7cca18b4255c08f568f6de0abe29fc72f0f6c3a3474a9e84a68d879984d0d2a",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "tools/wroughtwild-art07-repairs/r8/README.md",
+      "index_blob": "1491f39240fb295453ae62fd810ce80068a22302",
+      "index_sha256": "4b663857c480e7d4e35354c775314023bc504566def6e5ea60ba3b678726e840",
+      "sealed_sha256": "4b663857c480e7d4e35354c775314023bc504566def6e5ea60ba3b678726e840",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "tools/wroughtwild-art07-repairs/r8/acceptance.py",
+      "index_blob": "e22c1c03b48e61786a91ec48ca3d492f4040396b",
+      "index_sha256": "b376bff8b36059b0b58ca026a421d91ca36523d98357a68b325cece8e93b51bf",
+      "sealed_sha256": "b376bff8b36059b0b58ca026a421d91ca36523d98357a68b325cece8e93b51bf",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "tools/wroughtwild-art07-repairs/r8/aliases.py",
+      "index_blob": "ca37c199a0b3797a83eae1dbd3678f55d90368ca",
+      "index_sha256": "95ff904db119ba21cd4c9f729a2e358e1b8a1b87a0c78652d58160ecc3df5edb",
+      "sealed_sha256": "95ff904db119ba21cd4c9f729a2e358e1b8a1b87a0c78652d58160ecc3df5edb",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "tools/wroughtwild-art07-repairs/r8/audit_comparison.py",
+      "index_blob": "fee85043bb0c8931445dc9fc63dc353ba3ca36e5",
+      "index_sha256": "d0520ccd9d18cae1051854be487e6312d99e58a6b357ab2e5cb9cfa87f8335b6",
+      "sealed_sha256": "d0520ccd9d18cae1051854be487e6312d99e58a6b357ab2e5cb9cfa87f8335b6",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "tools/wroughtwild-art07-repairs/r8/audit_composition.py",
+      "index_blob": "d45515e59ed3ce6417252aa0a1ca44175b1705df",
+      "index_sha256": "a250b3cbfed7a36b1968625cf861705392fdbfa44c5c564192e0d718f9e6588f",
+      "sealed_sha256": "a250b3cbfed7a36b1968625cf861705392fdbfa44c5c564192e0d718f9e6588f",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "tools/wroughtwild-art07-repairs/r8/baseline.py",
+      "index_blob": "e14db13dd06cc84e13dd1ee783a60dc71b790bb6",
+      "index_sha256": "061e5b2b48e52e47b6366ab81be39321818e7790ee9674a4e46be3eac7cc2301",
+      "sealed_sha256": "061e5b2b48e52e47b6366ab81be39321818e7790ee9674a4e46be3eac7cc2301",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "tools/wroughtwild-art07-repairs/r8/check_tools.py",
+      "index_blob": "b03fe073a8e31ec24fb0d53a411da124c02b876f",
+      "index_sha256": "b66db7c9f354382c9252b7d86ad95ea3cc2c38c4da1eb8c99ce2a2002e8811d6",
+      "sealed_sha256": "b66db7c9f354382c9252b7d86ad95ea3cc2c38c4da1eb8c99ce2a2002e8811d6",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "tools/wroughtwild-art07-repairs/r8/checks_report.py",
+      "index_blob": "d439a2911b1c47e420c5bb0fca42f8135d483193",
+      "index_sha256": "8dd7b5bfc0acf75c8a8cd6dd351270d6b5f0f21a432d37593308c0f7e6f36e7f",
+      "sealed_sha256": "8dd7b5bfc0acf75c8a8cd6dd351270d6b5f0f21a432d37593308c0f7e6f36e7f",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "tools/wroughtwild-art07-repairs/r8/cleanup_derivatives.py",
+      "index_blob": "5f535ac70a8f3109dcfad997496801af31a89a63",
+      "index_sha256": "91f47f99a55f1cc0081a96ffef318389c9a2d80767de48e2f58e0dd2ed8e90dc",
+      "sealed_sha256": "91f47f99a55f1cc0081a96ffef318389c9a2d80767de48e2f58e0dd2ed8e90dc",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "tools/wroughtwild-art07-repairs/r8/comfort_jobs.py",
+      "index_blob": "8e83fa535c1f51c6d42ce797da672f4e755c5e74",
+      "index_sha256": "8d06d5419f91f8e3dc0c42d1d8aed7c105d2f93896a3328778e1ae0af99114e2",
+      "sealed_sha256": "8d06d5419f91f8e3dc0c42d1d8aed7c105d2f93896a3328778e1ae0af99114e2",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "tools/wroughtwild-art07-repairs/r8/compose.py",
+      "index_blob": "f048c6afb6ed6bf1f165dd4c901ec45f6b60bf6f",
+      "index_sha256": "ae2dc804f1cc9bcead59423ac841824e3072bb0fdc555caf52d8da3d34ae5d05",
+      "sealed_sha256": "ae2dc804f1cc9bcead59423ac841824e3072bb0fdc555caf52d8da3d34ae5d05",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "tools/wroughtwild-art07-repairs/r8/costs.py",
+      "index_blob": "5fe0f7ad70872145c1df92a94226292e42a0abfa",
+      "index_sha256": "d2344fbb49acaf483632ea1e2427ccf9a4f99ed33bc0a03911faac2d265512de",
+      "sealed_sha256": "d2344fbb49acaf483632ea1e2427ccf9a4f99ed33bc0a03911faac2d265512de",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "tools/wroughtwild-art07-repairs/r8/final_player_checks.py",
+      "index_blob": "0a023cd7d2beda99de565a5debe3e124710b697b",
+      "index_sha256": "22a8177af9e343955b31e4d0632489b1e49ada19df04d294be161d24fedd2cbd",
+      "sealed_sha256": "0780bc04aae0f95eb6412b62a33f588138fd57d0e6133dddd9dc179869ddb772",
+      "match": "Git LF normalization only"
+    },
+    {
+      "path": "tools/wroughtwild-art07-repairs/r8/finish.py",
+      "index_blob": "3bbcd8a0ed6da297731420cc2d88f3709dbe49d5",
+      "index_sha256": "0e0263412b264795c00ed2450d960b7553e545701051f8001f42cf75d93473c0",
+      "sealed_sha256": "0e0263412b264795c00ed2450d960b7553e545701051f8001f42cf75d93473c0",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "tools/wroughtwild-art07-repairs/r8/fixtures.py",
+      "index_blob": "1203fc5cb87693829bcc86fc40df2855e7d0271c",
+      "index_sha256": "9c6cfad47daa793d0cbd35c01c1c24d18b61b70aa7d75986854a1c6c011d6997",
+      "sealed_sha256": "9c6cfad47daa793d0cbd35c01c1c24d18b61b70aa7d75986854a1c6c011d6997",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "tools/wroughtwild-art07-repairs/r8/handoff.py",
+      "index_blob": "7219bebbf6632797633dd05d42c13239e233ed97",
+      "index_sha256": "4e7fffd998195a42cdeec5f79ccbeae494315dd0f0d7c785d353e9e468a23164",
+      "sealed_sha256": "4e7fffd998195a42cdeec5f79ccbeae494315dd0f0d7c785d353e9e468a23164",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "tools/wroughtwild-art07-repairs/r8/inspect_inputs.py",
+      "index_blob": "e5b66d703338e500955ad34704506f6df24b1ace",
+      "index_sha256": "c1f432a621e532536b9d626c1711cff8e1be1f9fda9734678eda186a4b3a1507",
+      "sealed_sha256": "c1f432a621e532536b9d626c1711cff8e1be1f9fda9734678eda186a4b3a1507",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "tools/wroughtwild-art07-repairs/r8/job_index.py",
+      "index_blob": "4d7da50f1c605de48ae73b028b52828bc21028c0",
+      "index_sha256": "b85eeec1d5d558d0fcedfe77c44f645fcc54131e43b808ff4e0b1da0aea51406",
+      "sealed_sha256": "b85eeec1d5d558d0fcedfe77c44f645fcc54131e43b808ff4e0b1da0aea51406",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "tools/wroughtwild-art07-repairs/r8/jobs.py",
+      "index_blob": "b04fa05999889ef8a8a0cbf01057fbd08b1fb78f",
+      "index_sha256": "deeb2f4dbe598c0200f47c7f6181dff52c73a09705af15653e185b5441a022ce",
+      "sealed_sha256": "deeb2f4dbe598c0200f47c7f6181dff52c73a09705af15653e185b5441a022ce",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "tools/wroughtwild-art07-repairs/r8/measurement_completion.py",
+      "index_blob": "2d9c65883e7c3a5a43c44a4672787117b43db11d",
+      "index_sha256": "b66d389579d91bba3fe7e10803f09e20005832743189ba0cf0cb47d0c424a9f9",
+      "sealed_sha256": "b66d389579d91bba3fe7e10803f09e20005832743189ba0cf0cb47d0c424a9f9",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "tools/wroughtwild-art07-repairs/r8/play.ps1",
+      "index_blob": "79b8c81e64db0592f1040a9d634777a99e474c5f",
+      "index_sha256": "f0cb48a981b2055be279b209ac046cc29630f16160e76ca942895e217ac74b45",
+      "sealed_sha256": "f0cb48a981b2055be279b209ac046cc29630f16160e76ca942895e217ac74b45",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "tools/wroughtwild-art07-repairs/r8/postseal.py",
+      "index_blob": "aa92e95bfa842534b33ff7a3173fd0630430e5a4",
+      "index_sha256": "a084c9a4d50763d08e4883d927d38a3233c4b7ad056d40f5a87eac9ec67499dd",
+      "sealed_sha256": "dd281c8210b8863ada17892b3e8cb6e51128b3d2107f4e35359cbe93cfe87ec3",
+      "match": "Git LF normalization only"
+    },
+    {
+      "path": "tools/wroughtwild-art07-repairs/r8/receipt.py",
+      "index_blob": "2650bd821b27661e598bd3fe5e36d6031f56e268",
+      "index_sha256": "a79da0e6564010121dd6b5955feafff98a0fe987d2b64926311b848ada5038c6",
+      "sealed_sha256": "a79da0e6564010121dd6b5955feafff98a0fe987d2b64926311b848ada5038c6",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "tools/wroughtwild-art07-repairs/r8/reopen_jobs.py",
+      "index_blob": "f6849460f96e0e2c6f81ec5340363ff616ec8357",
+      "index_sha256": "7a8e26257290378863229fe25d67b98a88d9e3a8c1a72f1f399b87282247e7e2",
+      "sealed_sha256": "7a8e26257290378863229fe25d67b98a88d9e3a8c1a72f1f399b87282247e7e2",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "tools/wroughtwild-art07-repairs/r8/replay.py",
+      "index_blob": "efb9ccf5d3f8b4a182ec1c343a1b1850e10a05ac",
+      "index_sha256": "f6a7032d651cb34ca1bd36ee5ad2d2d71354a750f9082bda5c7bb644a3cd41db",
+      "sealed_sha256": "f6a7032d651cb34ca1bd36ee5ad2d2d71354a750f9082bda5c7bb644a3cd41db",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "tools/wroughtwild-art07-repairs/r8/review_diff.py",
+      "index_blob": "a9dcd3b6decef69f9c040931d6602fcaf22bd629",
+      "index_sha256": "cea0c44734187615eb83a17c1d663dfd2cf3460f6d40f0720f7166a94843b5bd",
+      "sealed_sha256": "cea0c44734187615eb83a17c1d663dfd2cf3460f6d40f0720f7166a94843b5bd",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "tools/wroughtwild-art07-repairs/r8/route_diagnostic.py",
+      "index_blob": "f42ebd3090ef8e838f92d60c2d8a1d3c677d65ed",
+      "index_sha256": "9f08671e10bfedbcaadc08a3ac4a8bbebfcb033920facaa3ba3f472316320cc8",
+      "sealed_sha256": "9f08671e10bfedbcaadc08a3ac4a8bbebfcb033920facaa3ba3f472316320cc8",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "tools/wroughtwild-art07-repairs/r8/stage_sources.py",
+      "index_blob": "9e6fb5913a0ede1454225134969ec348a7356c71",
+      "index_sha256": "654fa796a9374342dbd2f6aea8a02fee92821a52dace32b56b950f18ef9da984",
+      "sealed_sha256": "654fa796a9374342dbd2f6aea8a02fee92821a52dace32b56b950f18ef9da984",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "tools/wroughtwild-art07-repairs/r8/traversal_costs.py",
+      "index_blob": "9b3c5a6c56b10930eca7bad80638e1ddfe462a7f",
+      "index_sha256": "6646e174ea5c55a6034c2839d7744669dbc21f5af03e3c8563cdaac3c395a357",
+      "sealed_sha256": "6646e174ea5c55a6034c2839d7744669dbc21f5af03e3c8563cdaac3c395a357",
+      "match": "Exact bytes"
+    },
+    {
+      "path": "tools/wroughtwild-art07-repairs/r8/visuals.py",
+      "index_blob": "dd91a76dacd908b45bba312acb398c597648d0da",
+      "index_sha256": "c5687903369f19774f29d79619ca59974755777963b1e4e8a45a4411187e996b",
+      "sealed_sha256": "c5687903369f19774f29d79619ca59974755777963b1e4e8a45a4411187e996b",
+      "match": "Exact bytes"
+    }
+  ],
+  "owned_paths_only": true,
+  "all_sources_match_final_handoff": true,
+  "source_commit": "67865cf44739f9f9f779c36be49042dd77342d5e",
+  "all_committed_blobs_match_checked_index": true
+}
