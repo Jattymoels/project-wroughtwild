@@ -1,0 +1,26 @@
+{
+  "seed": 42,
+  "tree": {"source_burial_m": 0.65, "vertical_scale": 1.4, "body_radius_m": 0.392, "crown_start_m": 4.55, "crown_full_m": 6.2, "scar_depth_m": 0.065, "lod_m": [9, 27]},
+  "deadfall": {"length_m": 1.58, "width_m": 0.82, "height_m": 0.60, "bark_layers": 3, "pore_depth_m": 0.011},
+  "wind_tip_m": 0.035,
+  "wind_period_s": 5.5,
+  "pulse_period_s": 4.0,
+  "peak_emission": 2.4,
+  "minimum_light": 0.22,
+  "purpose": {
+    "seed": "Repeatable authored grain, pores and scene placement; independent of gameplay RNG.",
+    "source_burial_m": "Retains B1 source ground seating before the C3 metre transform.",
+    "vertical_scale": "Raises the full crown above the existing 4.5 m trunk envelope.",
+    "body_radius_m": "Keeps lower wood inside the native 0.805 m square at every yaw with a small margin.",
+    "crown_start_m": "Height above the native body where branches can begin broadening.",
+    "crown_full_m": "Smoothly restores the inherited full crown width by this height.",
+    "scar_depth_m": "Cuts new physical root/trunk damage after fitting, so the narrowing cannot erase depth.",
+    "lod_m": "Study distance transitions to simpler crown and bark geometry; discrete, no crossfade.",
+    "deadfall": "Fits the separate native finite bark deposit. Three removable bark sleeves expose the lighter core as 18, 12 and 6 units remain; 11 mm pits provide actual cork porosity.",
+    "wind_tip_m": "Maximum leaf-tip movement with stationary attached petioles.",
+    "wind_period_s": "Slow cosmetic crown motion, paused by the explicit review clock.",
+    "pulse_period_s": "Ambient altered-host life, independent of harvesting or success.",
+    "peak_emission": "Restrained warm energy in physical wounds without a scar lamp or bloom.",
+    "minimum_light": "Faint visible life between peaks; ordinary hosts and recovered material remain unlit."
+  }
+}

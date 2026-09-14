@@ -556,7 +556,7 @@ func _spawn_resource_node(def: Dictionary) -> void:
 	if int(def.get("era", 1)) > current_era:
 		_pending_nodes.append(def)
 		return
-	var node: ResourceNode = RESOURCE_NODE_SCENE.instantiate()
+	var node: ResourceNode = G1Art.resource(RESOURCE_NODE_SCENE,def)
 	node.heat_to_work = int(def.get("heat_to_work", 0))
 	node.tool_item = StringName(String(def.get("tool_item", "")))
 	node.drive_presses = maxi(int(def.get("drive_presses", 1)), 1)

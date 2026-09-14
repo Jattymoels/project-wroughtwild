@@ -1,0 +1,24 @@
+{
+  "normal_strength": 0.35,
+  "stone_tint": [0.83, 0.79, 0.72],
+  "iron_tint": [0.55, 0.49, 0.42],
+  "soot_tint": [0.18, 0.16, 0.14],
+  "manual_amount": 1.0,
+  "firing_amount": 0.8,
+  "held_amount": 0.35,
+  "clinker_gain": 0.65,
+  "scar_gain": 3.0,
+  "scar_wave_per_m": 17.0,
+  "purposes": {
+    "normal_strength": "Reduce inherited shallow surface relief on compact forge parts without changing source maps.",
+    "stone_tint": "Warm weathered masonry tint over the unchanged D5 stone surface.",
+    "iron_tint": "Dark, warm worked iron over the unchanged D6 surface; no new metal ingredient.",
+    "soot_tint": "Darken chamber lining and mortar backing without lighting painted into albedo.",
+    "manual_amount": "Brief intensity while the original successful craft response exists; no new timer.",
+    "firing_amount": "Intensity of a real reserved feeder firing, driven by its native progress.",
+    "held_amount": "Quieter held paid heat while explicit pause, obstruction, trial or distance prevents work.",
+    "clinker_gain": "Bounded emissive response on the cold clinker surface, never a fuel inventory.",
+    "scar_gain": "Buried light remains visible without bloom; adds no point light or gameplay heat.",
+    "scar_wave_per_m": "Spatial variation along the actual fracture; phase uses native progress, never TIME."
+  }
+}

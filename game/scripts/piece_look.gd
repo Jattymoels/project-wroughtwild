@@ -10,6 +10,7 @@ static var _cache: Dictionary = {}
 
 
 static func material_for(sim: WroughtwildSim, family: StringName, role: String="surface") -> Material:
+	if G1Art.enabled(): return G1Materials.material_for(String(family),role)
 	var key := String(family)+":"+role
 	if _cache.has(key):
 		return _cache[key]
@@ -78,6 +79,9 @@ static func swatch_for(family: StringName) -> Color:
 ## Mesh selection is shared by the placed piece, catalogue and placement ghost.
 ## Curated wall/post/beam details fit the existing full and fine envelopes.
 static func mesh_for(shape_id: StringName, form: String, size: Vector3, family: StringName = &"wood") -> Mesh:
+	if G1Art.enabled():
+		var selected: Mesh = G1Art.piece_mesh(String(shape_id),form,String(family))
+		if selected != null: return selected
 	if family in [&"wood",&"pine",&"bog_oak",&"ash_wood",&"resinheart"]:
 		var id := {"half_wall":"wall_panel","half_pillar":"pillar","half_beam":"beam"}.get(String(shape_id),String(shape_id)) as String
 		var reference := {"wall_panel":Vector3(1,1,0.25),"pillar":Vector3(0.3,1,0.3),"beam":Vector3(1,0.4,0.4)}
@@ -93,6 +97,9 @@ static func mesh_for(shape_id: StringName, form: String, size: Vector3, family: 
 
 
 static func apply_to(mesh: MeshInstance3D, form: String, family: StringName, material: Material) -> void:
+	if G1Art.enabled() and R3Materials.enabled() and not form in ["chest","fire"]:
+		R3Materials.apply_to(mesh,family,material)
+		return
 	for i in mesh.get_surface_override_material_count():
 		mesh.set_surface_override_material(i,null)
 	mesh.material_override = material

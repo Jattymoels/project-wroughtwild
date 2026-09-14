@@ -14,6 +14,9 @@ extends Resource
 var _meshes := {}
 
 func mesh_for(id: StringName) -> ArrayMesh:
+	if G1Art.enabled():
+		if id in [&"workbench",&"mason_yard"]: return E1StationArt.mesh_for(id)
+		if id in [&"forge_basic",&"forge_improved"]: return E2ForgeArt.mesh_for(id)
 	var authored := AuthoredAssets.mesh_for(String(id))
 	if authored != null:
 		return AugmentationDetail.station_mesh(id,authored)

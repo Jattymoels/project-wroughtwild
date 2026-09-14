@@ -1,0 +1,151 @@
+{
+  "source_sha256": "6165314bec6143e66a1fc4f7bd32ef9d582ea743bb854fc9819f25c8cdd83eb2",
+  "source_body": [
+    1.5,
+    1.1,
+    1.5
+  ],
+  "post_body": [
+    0.65,
+    1.18,
+    0.55
+  ],
+  "port_height": 1.18,
+  "lod_triangles": [
+    36000,
+    16000,
+    8000
+  ],
+  "scar": {
+    "mask_size": 2048,
+    "core_half_width": 0.006,
+    "damage_half_width": 0.022,
+    "recess_metres": 0.003,
+    "period_seconds": 4.5,
+    "minimum_light": 0.25,
+    "peak_emission": 4.0,
+    "colour_srgb": [
+      0.24,
+      0.53,
+      1.0
+    ],
+    "paths": [
+      {
+        "axis": "top",
+        "points": [
+          [
+            -0.5,
+            -0.12
+          ],
+          [
+            -0.37,
+            -0.2
+          ],
+          [
+            -0.24,
+            -0.22
+          ],
+          [
+            -0.09,
+            -0.29
+          ],
+          [
+            0.08,
+            -0.28
+          ],
+          [
+            0.23,
+            -0.2
+          ],
+          [
+            0.4,
+            -0.12
+          ],
+          [
+            0.53,
+            0.04
+          ]
+        ],
+        "width": 1.0,
+        "offset": 0.0
+      },
+      {
+        "axis": "top",
+        "points": [
+          [
+            -0.09,
+            -0.29
+          ],
+          [
+            -0.16,
+            -0.36
+          ],
+          [
+            -0.12,
+            -0.44
+          ]
+        ],
+        "width": 0.55,
+        "offset": 0.37
+      },
+      {
+        "axis": "front",
+        "points": [
+          [
+            -0.43,
+            0.2
+          ],
+          [
+            -0.29,
+            0.26
+          ],
+          [
+            -0.12,
+            0.27
+          ],
+          [
+            0.04,
+            0.3
+          ],
+          [
+            0.18,
+            0.28
+          ],
+          [
+            0.3,
+            0.32
+          ],
+          [
+            0.43,
+            0.39
+          ]
+        ],
+        "width": 0.65,
+        "offset": 0.0
+      }
+    ]
+  },
+  "presentation": {
+    "source_ready_gain": 0.65,
+    "source_work_gain": 0.85,
+    "claim_gain": 0.3,
+    "camera_fov": 48.0,
+    "release_seconds": 0.65
+  },
+  "purpose": {
+    "source_body": "Existing source collider in Godot XYZ metres; all detail levels remain inside it.",
+    "post_body": "Existing compact Blue Delay collider. No saved placement or body changes.",
+    "port_height": "Existing Blue signal endpoint at 1.18 m.",
+    "lod_triangles": "Near/mid/far reduction targets; record achieved counts and inspect silhouette without waiving physical checks.",
+    "scar": "6 mm half-core, 22 mm damaged margin and up to 3 mm recess in the opaque slate. Cool blue light has no Frost or gameplay effect.",
+    "paths": "Inspected Blender top XY/front XZ surface paths. Only selected compression fractures carry light.",
+    "period_seconds": "Natural host lingers in one fracture, then moves onward over 4.5 seconds. The device uses actual native delay instead.",
+    "minimum_light": "25% ambient floor keeps the narrow natural scar visible between crests.",
+    "peak_emission": "Peak 4.0, checked in both renderers with bloom disabled.",
+    "source_ready_gain": "Subdued ready-source pulse, zero after exhaustion or during blocked reformation.",
+    "source_work_gain": "Brighter after actual manual extraction progress, without inventing a work timer.",
+    "claim_gain": "Quiet exposed-mineral light while native claim or carried count is positive.",
+    "camera_fov": "48-degree isolated review camera; not player-camera tuning.",
+    "release_seconds": "0.65 second passage only when a native pending request expires in an active tick; refusal still consumes that request. Cancel, rewire and reload do not trigger it."
+  }
+}

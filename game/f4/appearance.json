@@ -1,0 +1,15 @@
+{
+ "description": "F4 presentation only. No gameplay energy, stock or clock comes from these values.",
+ "timber_tint": [0.62,0.52,0.40],
+ "timber_tint_purpose": "Earthier handled timber while preserving predecessor grain maps.",
+ "normal_strength": 0.35,
+ "normal_strength_purpose": "Bounded shared wood and iron surface relief.",
+ "stored_glow": 0.12,
+ "stored_glow_purpose": "Quiet static tissue light proportional to actual stored drive or remaining source stock.",
+ "working_glow": 0.65,
+ "working_glow_purpose": "Narrow internal movement only during an existing reserved firing; phase is native cycle progress.",
+ "wave_per_route": 12.0,
+ "wave_per_route_purpose": "Travel spacing along the inherited geometric scar; there is no shader clock.",
+ "manual_detail_levels": ["near","middle","far"],
+ "detail_purpose": "Explicit inspection candidates; Ventlung far retains the published 8500-triangle middle mesh. No world distance policy."
+}

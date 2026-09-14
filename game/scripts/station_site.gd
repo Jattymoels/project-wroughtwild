@@ -125,6 +125,7 @@ func refresh_visual(sim: WroughtwildSim) -> void:
 		_mesh.mesh = look.mesh_for(current_station_id(sim))
 		_mesh.material_override = null if AuthoredAssets.mesh_for(String(current_station_id(sim))) != null else ArtGeometry.material()
 		_mesh.position = Vector3.ZERO
+		if G1Art.enabled() and station_id == &"forge_basic": E2ForgeArt.mount(self)
 		if String(station_id).begins_with("forge_"):
 			if light==null:
 				light = OmniLight3D.new()

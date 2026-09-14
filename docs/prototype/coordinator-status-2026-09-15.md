@@ -53,7 +53,7 @@ this coordination document's own commit, not a reset target.
 | Living Frontier | Waves 1–7 and INT-18A are implemented on main: four-colour extraction/devices, laboratories, two protected terrain changes, human finale and captured challenges. | Still uses the existing opt-in campaign launch/policy. A continuous fresh campaign and ordinary-startup adoption decision remain distinct from this art port. Do not schedule LF3–7 again from older queue text. |
 | INT-01–08 improvements | Clarity, home placement/hauling, audio, workshop usability, combat feedback, save recovery, streaming, controls and portable export have implementation records. | Targeted owner feedback; investigate reported defects. Other-machine play and broad final regression wait for the chosen playtest phase. |
 | Existing normal-game art | Earlier authored environment/building/station assets and older articulated animal art load through the ordinary game. | This is not the complete R8/latest fauna kit. |
-| R8 environment/placeables | All 26 original ART-07 deliveries and R1–R8 are published as source/handoff work. R8 combines nature, materials, resources, buildings, stations and devices. Owner approved integration with known issues. | **A1: install its production assets and adapters into ordinary game paths.** Publication alone did not do that. |
+| R8 environment/placeables | All 26 original ART-07 deliveries and R1–R8 are published as source/handoff work. R8 combines nature, materials, resources, buildings, stations and devices. Owner approved integration with known issues. | **A1 implemented and checked on the worker branch; coordinator main integration/push pending.** [Result and playtest](mainline-art-a1-result-2026-09-15.md). |
 | Finished fauna | ART-01 boar and ART-03 wolf/stag are visually approved with rigs/clips; retain the liked moth. ART-05 supplies an existing native boar adapter example. R8 preserves the older actor set. | **A2: fit latest approved finished fauna to current native actors and clocks.** Reuse completed assets/adapter work; do not regenerate designs. ART-05's seed-77 route restriction is not a production policy. |
 | Six replacement mobs | Approved ART-06C surfaces/models exist for porcupine Archer, ram Husk, crane Shrieker, beetle Crawler, six-legged nymph Lurker and tortoise Knight. | Real rigging, weighting, locomotion/attack presentation and runtime integration, one complete enemy role per slice. Static models are not playable replacements. |
 | Later art/world ambition | Later-era physical augmentation, remaining boss/host art and Reclaimed Frontier references/direction are recorded. | Future scoped production/design. Reclaimed Frontier means living, rolling terrain years after impact, vegetation reclaiming damage and surviving pulsing cracks; no new generator/save rule is selected. |
@@ -67,7 +67,7 @@ to their own future decision/bug work; art adoption must not silently decide the
 
 ## Immediate execution order
 
-1. **A1 — R8 in the normal game.** Environment, building/resource materials,
+1. **A1 — checked worker delivery; integrate into main.** Environment, building/resource materials,
    stations and devices, preserving current world/campaign/save rules and octagonal
    support. [Exact worker prompt and workspace](mainline-art-a1-worker-2026-09-15.md).
 2. **A2 — finished fauna adoption.** Boar, wolf, stag and preserved moth; current
@@ -94,17 +94,19 @@ art. PLAY-01–04 remain open until actual fixes/feedback establish otherwise.
 
 Setup found about 400 MB free on C:. The attempted new checkout there failed
 and Git removed it; A1 uses `D:/project-wroughtwild-mainline-art-a1` instead.
-D: has ample space, but this linked worktree's Git objects and the owner main
-checkout remain on C:. New asset staging/main integration may require more C:
-space or a separately agreed depot relocation. Do not delete retained packages
-or saves to make room automatically.
+That capacity warning is historical: subsequent owner cleanup reports about
+42 GB free on C: and 1.18 TB on D:. Git metadata and the owner depot stay on C:;
+A1 retains its prepared D: path. Follow current storage guidance without moving
+active worktrees or deleting retained packages/saves.
 
 Every worker returns: what changed in play; material limits/open issues; checks
 actually run and elapsed verification time; exact commits; and a short launch/
 playtest recipe. The coordinator reuses that evidence, integrates only the slice,
 and separately reports local main commit and successful origin/main push.
-Combined worker/coordinator review stays within ten minutes and three focused
-jobs on one renderer. No parent package reconstruction, broad matrices or R9 rerun.
+Current owner guidance removes the hard time cutoff for routine completion.
+Reuse passed evidence, keep checks focused (normally three jobs and one renderer),
+and finish ordinary commits/integration/pushes. No parent package reconstruction,
+broad matrices or R9 rerun.
 
 Current normal-game entry is `game/project.godot` → `res://scenes/sandpit.tscn`.
 Godot on this machine is `C:/Users/Matty/Godot/Godot_v4.5-stable_win64.exe`.
@@ -112,7 +114,8 @@ The existing R8 preview launcher is still only a preview:
 `build/art-playtest/Play-Art-Preview.cmd`; its private state is
 `build/art-playtest/user/ART07G1/`. Preserve that state for PLAY-01/03.
 
-This coordination slice changes no gameplay and runs no engine/Blender jobs.
-Its checks are repository/worktree state and patch equivalence, selected document/
-runtime wiring inspection, and a small handoff link/diff/setup check. It does not
-claim the adoption, performance fixes or replacement rigs are complete.
+The original coordination setup used repository/worktree inspection and a small
+handoff check. A1 now has [passed production import and gameplay checks](mainline-art-a1-result-2026-09-15.md)
+on its worker branch. Reuse those results for main integration under the current
+owner workflow. Main integration/push remain pending; performance fixes and
+replacement rigs remain separate work.

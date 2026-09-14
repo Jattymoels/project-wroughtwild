@@ -1,0 +1,2 @@
+# External glTF mesh buffers are binary; preserve their exact bytes.
+*.bin binary

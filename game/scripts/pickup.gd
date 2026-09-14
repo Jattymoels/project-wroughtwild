@@ -149,6 +149,7 @@ func _ready() -> void:
 	_mesh.position = Vector3(0, 0.12, 0)
 	add_child(_mesh)
 	_bob_phase = randf() * TAU
+	if G1Art.enabled() and kind == "material" and family in ["lanternheart","stormglass"]: load("res://f1/visuals.gd").recovered(self)
 
 
 func _physics_process(delta: float) -> void:

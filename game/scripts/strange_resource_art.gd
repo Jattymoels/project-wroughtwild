@@ -48,6 +48,12 @@ static func part(parent: Node3D, id: String, child_name: String, at: Vector3 = V
 	return instance
 
 static func attach(node: ResourceNode) -> void:
+	if G1Art.enabled() and node.visual in [&"pullstone",&"ventlung"]:
+		load("res://f3/visuals.gd").attach_source(node)
+		return
+	if G1Art.enabled() and node.visual in [&"lanternheart",&"stormglass"]:
+		load("res://f1/visuals.gd").attach_source(node)
+		return
 	var existing:=node.get_node_or_null("StrangeCore")
 	if existing!=null: existing.free()
 	var root:=Node3D.new()
@@ -77,9 +83,21 @@ static func attach(node: ResourceNode) -> void:
 	collider.position=Vector3.UP*shape.size.y*.5
 	if node.presentation_label.is_empty(): node.presentation_label=LABELS.get(String(node.visual),"")
 	core.set_meta("rest_position",core.position)
+	if G1Art.enabled() and node.visual==&"thrumroot": load("res://f2/art.gd").attach_source(node)
 	update(node,float(node.drive_progress)/float(maxi(node.drive_presses,1)))
 
 static func update(node: ResourceNode, progress: float, depleted: bool = false) -> void:
+	if G1Art.enabled() and node.visual==&"thrumroot":
+		load("res://f2/art.gd").source_state(node,depleted)
+		return
+	if G1Art.enabled() and node.visual in [&"pullstone",&"ventlung"]:
+		var f3root := node.get_node_or_null("StrangeCore")
+		if f3root != null: f3root.source_state(node,progress,depleted)
+		return
+	if G1Art.enabled() and node.visual in [&"lanternheart",&"stormglass"]:
+		var f1root := node.get_node_or_null("StrangeCore")
+		if f1root != null: f1root.source_state(node,progress,depleted)
+		return
 	var root:=node.get_node_or_null("StrangeCore") as Node3D
 	if root==null: return
 	var core:=root.get_node("Core") as Node3D
@@ -118,6 +136,12 @@ static func _light(parent: Node3D) -> OmniLight3D:
 	return light
 
 static func fixture_visual(kind: String) -> Node3D:
+	if G1Art.enabled():
+		if kind in ["cargo_winch","winch_landing","cargo_basket"]: return load("res://f2/art.gd").fixture(kind)
+		if kind == "pressure_feeder": return F4Art.visual("feeder")
+		if kind in ["white_connection","blue_delay","green_junction","red_heat_buffer"]: return G1Colours.fixture(kind)
+	if G1Art.enabled() and kind in ["magnetic_sorter","ventlung_bellows"]: return load("res://f3/visuals.gd").fitted(kind)
+	if G1Art.enabled() and kind in ["lantern_lamp","stormglass_lever"]: return load("res://f1/visuals.gd").fitted(kind)
 	var root:=Node3D.new()
 	root.name="StrangeFixtureVisual"
 	match kind:

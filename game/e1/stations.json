@@ -1,0 +1,16 @@
+{
+  "seed": 42,
+  "body_m": [0.96, 2.0, 0.96],
+  "levels": ["near", "middle", "far"],
+  "worktop_m": 1.04,
+  "wear_depth_m": 0.009,
+  "normal_strength": 0.4,
+  "controls": {
+    "seed": "Repeatable cosmetic chips and tool wear; independent of gameplay RNG.",
+    "body_m": "Read-only native placement and collision envelope, including air above the workface.",
+    "worktop_m": "Horizontal working surface remains close to existing completion-fleck mounts.",
+    "wear_depth_m": "Real recessed ordinary tool cuts; these stations have no magical scars or pulse.",
+    "normal_strength": "D4/D5 surface microrelief strength, separate from physical tool cuts.",
+    "levels": "Authored detail candidates; runtime distance selection remains the integration owner's decision."
+  }
+}

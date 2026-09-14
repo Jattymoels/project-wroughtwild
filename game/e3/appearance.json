@@ -1,0 +1,24 @@
+{
+  "seed": 42,
+  "lid_angle_degrees": 78,
+  "lid_speed_radians": 3.8,
+  "lid_pivot_godot": [0, 0.09, -0.354],
+  "plank_gap_m": 0.004,
+  "worked_edge_m": 0.003,
+  "ash_start_fraction": 0.70,
+  "ember_recess_m": 0.012,
+  "ember_gain": 2.0,
+  "normal_strength": 0.45,
+  "controls": {
+    "seed": "Repeatable board wear and fuel shapes; never gameplay RNG.",
+    "lid_angle_degrees": "Visible opening while the unchanged chest body remains the interaction target.",
+    "lid_speed_radians": "Cosmetic hinge travel speed following the actual chest panel.",
+    "lid_pivot_godot": "Rear pin axis in metres relative to the native lattice pose.",
+    "plank_gap_m": "Visible backed joinery grooves between separate fitted boards.",
+    "worked_edge_m": "Small physical wear bevel; does not enlarge the native body.",
+    "ash_start_fraction": "Fraction of the existing burn duration when inert ash becomes visible, before native removal.",
+    "ember_recess_m": "Depth of real split fuel channels containing combustion light; these are not magical scars.",
+    "ember_gain": "Local combustion emission only, driven by remaining paid fuel and existing heat.",
+    "normal_strength": "Restrained inherited grain and worked-metal microrelief."
+  }
+}

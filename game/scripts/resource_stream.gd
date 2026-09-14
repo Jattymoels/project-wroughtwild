@@ -117,7 +117,7 @@ func materialise(id: String) -> ResourceNode:
 	# Retain the packed scene: instantiated nodes do not retain the source
 	# PackedScene, so a local load can otherwise reread it for every arrival.
 	if _resource_scene == null: _resource_scene = load("res://scenes/resource_node.tscn")
-	var node: ResourceNode = _resource_scene.instantiate()
+	var node: ResourceNode = G1Art.resource(_resource_scene,record)
 	node.name=id
 	for field in ["resource_id","habitat_id","presentation_label","remaining_units","units_per_harvest","heat_to_work","tool_item","drive_presses","drive_progress","wedge_set","cracked","visual"]:
 		if record.has(field): node.set(field,record[field])

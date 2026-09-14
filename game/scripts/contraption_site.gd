@@ -204,6 +204,7 @@ func _physics_process(delta: float) -> void:
 		var current: Dictionary = sim.contraption_state(machine_key)
 		if bool(current.get("pending_request",false)):
 			var result := sim.contraption_request_tick(machine_key,delta,signal_space())
+			if G1Art.enabled() and not sim.contraption_state(machine_key).pending_request: _visual.blue_released()
 			if not sim.contraption_state(machine_key).pending_request and _panel!=null: _panel.refresh_if_open(String(result.message))
 		_delay_refresh_left -= delta
 	if kind == "cargo_winch":
@@ -238,12 +239,14 @@ func refresh_from_sim(feeder_geometry: Dictionary = {}) -> void:
 		_last_arrivals = int(record.get("completed_trips", 0))
 		if _panel != null:
 			_panel.refresh_if_open("The basket has arrived. Collect the haul at its endpoint.")
+	if G1Art.enabled() and kind in ["lantern_lamp","stormglass_lever"] and _visual.has_method("apply_state"): _visual.apply_state(record)
+	if G1Art.enabled() and kind in ["magnetic_sorter","ventlung_bellows"] and _visual.has_method("apply_state"): _visual.apply_state(record)
 	if kind == "lantern_lamp":
 		var on: bool = record.get("lamp_on", true)
 		var light := _visual.get_node_or_null("WarmInterior") as OmniLight3D
 		if light != null: light.visible = on
 		var heart := _visual.get_node_or_null("Heart") as Node3D
-		if heart != null: heart.visible = on
+		if heart != null: heart.visible = true if G1Art.enabled() else on
 		if _receiver != null: _receiver.visible = on or _highlighted
 	if kind == "cargo_winch":
 		var drum := _visual.get_node_or_null("Drum") as Node3D
@@ -281,6 +284,7 @@ func refresh_from_sim(feeder_geometry: Dictionary = {}) -> void:
 		var second := find_site(get_tree(),String(record.get("second_link","")))
 		_show_connection(_branch_cable,second.cable_anchor() if second!=null else Vector3.INF,cable_anchor(),LOOK.cable_radius_m)
 	_refresh_span(record)
+	if G1Art.enabled() and kind == "cargo_winch": load("res://f2/art.gd").energy(_visual,float(record.energy)/float(sim.contraption_config().energy_capacity),float(record.progress),bool(record.moving))
 	_last_state = record
 
 
@@ -573,6 +577,7 @@ func _refresh_feeder(record: Dictionary, geometry: Dictionary = {}) -> void:
 	_show_connection(_feeder_pipe,forge.global_position+Vector3.UP*LOOK.feeder_link_height_m if forge!=null else Vector3.INF)
 	var pocket:=PressurePocket.find_source(get_tree(),String(record.get("source_id","")),get_parent())
 	_show_connection(_pressure_pipe,pocket.connection_anchor() if pocket!=null else Vector3.INF)
+	if G1Art.enabled(): F4Art.refresh_feeder(self,record,active,paused,progress)
 	var changed:=int(record.get("completed_cycles",0))!=_last_cycles
 	var status_key:=str(active)+str(paused)+String(status.message)
 	var state_changed := changed or status_key != _last_feeder_status

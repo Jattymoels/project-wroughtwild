@@ -130,6 +130,7 @@ func _build_world(seed_value: int) -> void:
 		return
 	LeylineSource.build(self,terrain)
 	FrontierSites.build(self,terrain)
+	if G1Art.enabled(): G1Environment.install(self)
 	mob_packs.setup(terrain, seed_value)
 
 	var spawn := terrain.surface_position(terrain.map["spawn_x"], terrain.map["spawn_z"])

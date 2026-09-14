@@ -347,7 +347,7 @@ func _apply_prepared(player: WroughtwildPlayer, data: Dictionary, prepared: Dict
 				if candidate.name == entry["name"]:
 					node = candidate
 			if node == null:
-				node = RESOURCE_NODE_SCENE.instantiate()
+				node = G1Art.resource(RESOURCE_NODE_SCENE,entry)
 				node.name = entry["name"]
 				node.resource_id=String(entry.get("resource_id",entry["name"]))
 				node.habitat_id=String(entry.get("habitat_id",""))
@@ -430,6 +430,9 @@ func _apply_prepared(player: WroughtwildPlayer, data: Dictionary, prepared: Dict
 		player.hud.refresh()
 	# Release only publication's own stop, after terrain, placed bodies, trial
 	# state and loose ownership are all installed. Every refusal keeps it.
+	if G1Art.enabled():
+		for pocket in root.get_tree().get_nodes_in_group("pressure_pockets"):
+			if root.is_ancestor_of(pocket): pocket.refresh_visual()
 	player.finish_world_recovery()
 	player.central_ending_save_pending=false
 	player.experiment_save_pending=false

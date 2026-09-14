@@ -1,0 +1,26 @@
+{
+  "version": 1, "seed": 42, "face_size_px": 1024, "edge_size_px": 512,
+  "controls": {
+    "seed": "Repeatable irregularity; never gameplay RNG.",
+    "face_size_px/edge_size_px": "Near-view surface and cut-edge resolution.",
+    "tile_metres/edge_metres": "Physical repeat in U/V; fine pieces crop at the same density.",
+    "colour": "Unlit sRGB host colour, without photographed shadows.",
+    "roughness": "Dry versus fused surface response; no emission.",
+    "relief_m": "Normal-map microrelief only; no structural scar or collision change.",
+    "courses/columns": "Course layout that repeats on whole metre module boundaries.",
+    "fossils": "Uneven partial and whole shell impressions per 2 m repeat.",
+    "opacity": "Fixed glass visibility; alpha blend only on the pane, opaque frame.",
+    "frame_width_m/muntin_width_m/pane_depth_fraction": "Existing native fixed-window dimensions, read-only reference."
+  },
+  "window": {"frame_width_m": 0.075, "muntin_width_m": 0.026, "pane_depth_fraction": 0.24},
+  "families": [
+    {"id":"stone","name":"Dressed stone","colour":[133,132,123],"tile_metres":[2,1],"edge_metres":[1,1],"roughness":0.87,"relief_m":0.0012,"courses":4,"columns":4,"purpose":"Regular dressed courses, restrained chipped bedding and tool grain."},
+    {"id":"fieldstone","name":"Rough fieldstone","colour":[115,116,103],"tile_metres":[2,1],"edge_metres":[1,1],"roughness":0.93,"relief_m":0.002,"courses":3,"columns":5,"purpose":"Varied dry contacts, rounded irregular stones and lichen remnants; low forms only."},
+    {"id":"slate","name":"Layered slate","colour":[66,75,81],"tile_metres":[2,1],"edge_metres":[1,0.25],"roughness":0.78,"relief_m":0.0014,"courses":7,"columns":5,"purpose":"Cleaved blue-grey faces and thin chipped edge laminations."},
+    {"id":"shellstone","name":"Fossil shellstone","colour":[188,174,141],"tile_metres":[2,2],"edge_metres":[1,1],"roughness":0.89,"relief_m":0.0011,"courses":5,"columns":4,"fossils":37,"purpose":"Warm cut rock with irregular broken shell fragments and occasional whole impressions."},
+    {"id":"rustclay_brick","name":"Fired rustclay","colour":[149,77,49],"tile_metres":[1,1],"edge_metres":[1,1],"roughness":0.85,"relief_m":0.0009,"courses":8,"columns":4,"purpose":"Staggered red-brown fired courses, firing patches and narrow pale joints."},
+    {"id":"vitrified_basalt","name":"Fused basalt","colour":[48,49,48],"tile_metres":[1,1],"edge_metres":[1,1],"roughness":0.75,"relief_m":0.001,"courses":3,"columns":3,"purpose":"Broken glossy fused islands in a heavy matte body; no burning cracks."},
+    {"id":"cinderglass","name":"Smoky fixed glass","colour":[98,113,111],"tile_metres":[1,1],"edge_metres":[0.5,0.5],"roughness":0.24,"relief_m":0.00016,"opacity":0.72,"purpose":"Smoky streaks, modest normal distortion and a complete opaque integral mineral frame."},
+    {"id":"charcoal","name":"Charcoal fuel","colour":[39,38,36],"tile_metres":[0.25,0.25],"edge_metres":[0.25,0.25],"roughness":0.94,"relief_m":0.001,"purpose":"Angular black porous chunks, retained wood fissures and light ash; fuel only."}
+  ]
+}

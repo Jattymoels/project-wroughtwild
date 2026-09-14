@@ -65,6 +65,7 @@ func _ready() -> void:
 	_label.no_depth_test = false
 	add_child(_label)
 	refresh()
+	if G1Art.enabled(): G1Colours.mount_source(self)
 
 func _box(parent: Node3D, size: Vector3, at: Vector3, colour: Color) -> MeshInstance3D:
 	var mesh := MeshInstance3D.new()

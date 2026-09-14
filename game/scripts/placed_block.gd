@@ -112,6 +112,7 @@ func _build() -> void:
 	_swing(open)
 	if is_fire():
 		_light_fire()
+	if G1Art.enabled(): E3HomeArt.mount(self)
 
 
 ## The fuel decides the burn (worldgen.json fire_setting fuels, by the

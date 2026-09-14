@@ -51,25 +51,28 @@ func _ready() -> void:
 	collider.shape=box
 	collider.position.y=box.size.y*.5
 	add_child(collider)
-	var hearth:=MeshInstance3D.new()
-	hearth.name="OldHearth"
-	hearth.mesh=AuthoredAssets.mesh_for("forge_basic")
-	# An old craft remnant, never a StationSite or a free functioning forge.
-	hearth.scale=Vector3.ONE*LOOK.pocket_hearth_scale
-	add_child(hearth)
-	var casing:=StrangeResourceArt.part(self,"vent_case","SplitCasing",LOOK.pocket_casing_offset)
-	casing.scale=Vector3.ONE*LOOK.pocket_casing_scale
-	_membrane=StrangeResourceArt.part(self,"ventlung","PressureMembrane",LOOK.pocket_casing_offset)
-	_membrane.scale=Vector3.ONE*LOOK.pocket_membrane_scale
-	_membrane.material_override=FINISH.surface("pressure")
-	var inlay:=MeshInstance3D.new()
-	inlay.name="ImpactInlay"
-	inlay.mesh=AuthoredAssets.mesh_for("cataclysm_augmentation_inlay")
-	inlay.position=LOOK.pocket_inlay_offset
-	inlay.scale=LOOK.pocket_inlay_scale
-	add_child(inlay)
-	_finish=FINISH.build("pressure")
-	add_child(_finish)
+	if G1Art.enabled():
+		F4Art.mount_pocket(self)
+	else:
+		var hearth:=MeshInstance3D.new()
+		hearth.name="OldHearth"
+		hearth.mesh=AuthoredAssets.mesh_for("forge_basic")
+		# An old craft remnant, never a StationSite or a free functioning forge.
+		hearth.scale=Vector3.ONE*LOOK.pocket_hearth_scale
+		add_child(hearth)
+		var casing:=StrangeResourceArt.part(self,"vent_case","SplitCasing",LOOK.pocket_casing_offset)
+		casing.scale=Vector3.ONE*LOOK.pocket_casing_scale
+		_membrane=StrangeResourceArt.part(self,"ventlung","PressureMembrane",LOOK.pocket_casing_offset)
+		_membrane.scale=Vector3.ONE*LOOK.pocket_membrane_scale
+		_membrane.material_override=FINISH.surface("pressure")
+		var inlay:=MeshInstance3D.new()
+		inlay.name="ImpactInlay"
+		inlay.mesh=AuthoredAssets.mesh_for("cataclysm_augmentation_inlay")
+		inlay.position=LOOK.pocket_inlay_offset
+		inlay.scale=LOOK.pocket_inlay_scale
+		add_child(inlay)
+		_finish=FINISH.build("pressure")
+		add_child(_finish)
 	refresh_visual()
 
 
@@ -114,11 +117,12 @@ func refresh_visual() -> void:
 	if _membrane==null:return
 	var state:=source_state()
 	var fraction:=float(state.get("remaining",0))/maxf(1,float(state.get("capacity",1)))
-	_membrane.scale=Vector3(1,lerpf(.4,1,fraction),1)*LOOK.pocket_membrane_scale
+	_membrane.scale=Vector3(1,lerpf(.4,1,fraction),1)*(1.0 if G1Art.enabled() else LOOK.pocket_membrane_scale)
 	# An empty source remains an inspectable old hearth. Hover never revives its
 	# membrane or luminous stock promise, and cannot change the native ledger.
 	_membrane.visible=fraction>0
-	if _finish!=null:FINISH.set_state(_finish,fraction,0,_highlighted)
+	if G1Art.enabled(): F4Art.refresh_pocket(self,fraction)
+	elif _finish!=null:FINISH.set_state(_finish,fraction,0,_highlighted)
 
 
 func connection_anchor() -> Vector3:

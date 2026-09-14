@@ -1,0 +1,41 @@
+{
+  "ids": [
+    "iron_vein",
+    "copper_vein",
+    "tin_vein",
+    "ember_iron_vein",
+    "silver_vein"
+  ],
+  "shader": {
+    "grain_repeats_m": 1.7,
+    "normal_detail_m": 0.006,
+    "stock_transition_m": 0.025,
+    "spent_tint": 0.6,
+    "pulse_period_s": 3.5
+  },
+  "purposes": {
+    "ids": "Map existing ore presentation families, including native ember_vein, without changing stable resource IDs.",
+    "grain_repeats_m": "Reuse the C5 shared stone maps at their existing world-scale grain.",
+    "normal_detail_m": "Fine shading relief only; no vertex displacement, depth offset or new solid volume.",
+    "stock_transition_m": "Soften the boundary between remaining mineral and worked host over 2.5 cm; position uses current native units / full definition units.",
+    "spent_tint": "Darken worked host while removing its mineral; keeps the entire unchanged picking ribbon visually present.",
+    "pulse_period_s": "Retain C5's pause-aware native-heat pulse period; cold ore never emits except native hover feedback.",
+    "material_finish": "Mineral blend 0.88 and source-grain multiplier 0.55 + 1.8*stone.r retain granular detail. Source scar darkening 0.72 distinguishes cracks. Native heat/hover emission retains C5 amplitudes; atlas row edges use half-texel clamps to avoid adjacent-state bleed. No height displacement or additional surface."
+  },
+  "projection": {
+    "source_bounds_godot_m": [
+      -1.25,
+      1.25,
+      -0.4,
+      0.4,
+      0,
+      0.52
+    ],
+    "pixels_per_state": [
+      512,
+      128
+    ],
+    "states": 10,
+    "purpose": "Preserve the original C5 top-surface mineral/scar fields; two states per existing ore. Adapt only texture coordinates to the native 3 m by 0.48 m ribbon."
+  }
+}

@@ -47,7 +47,7 @@ func material() -> StandardMaterial3D:
 func mesh_for(kind: String, variant: int) -> ArrayMesh:
 	var authored := AuthoredAssets.mesh_for(kind)
 	if authored != null:
-		return authored
+		return R7Cover.habitat(kind,variant,authored)
 	var key := kind+str(variant)
 	if _meshes.has(key):
 		return _meshes[key]

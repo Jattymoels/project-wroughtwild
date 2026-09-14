@@ -1,0 +1,24 @@
+{
+  "version":1,"seed":42,"face_size_px":1024,"edge_size_px":512,
+  "controls":{
+    "seed":"Fixes authored irregularities for repeatable rebuilds.",
+    "face_size_px":"Near-view surface resolution; all maps are power-of-two PNGs.",
+    "tile_metres":"Physical width U and length V of one repeat; fine pieces crop at the same density.",
+    "rings":"Annual growth bands across the sawn face.",
+    "warp":"Deviation from straight growth: restrained pine, stronger resinheart.",
+    "knots":"Closed dark knot centres per face; no holes.",
+    "relief_m":"Normal-only fine relief in metres; no collision change or magical scars.",
+    "roughness":"Dry versus burnished response; never emission.",
+    "courses/stakes":"Horizontal reed courses / vertical supports per 0.4 m tile.",
+    "pores":"Coarse closed cork pores per 0.3 m tile."
+  },
+  "families":[
+    {"id":"wood","name":"Timber","colour":[126,91,55],"tile_metres":[0.5,2.0],"edge_metres":[0.5,0.5],"rings":10,"warp":1.0,"knots":2,"roughness":0.78,"relief_m":0.00065,"purpose":"Warm broad growth, torn fibres and irregular transverse tool chatter."},
+    {"id":"pine","name":"Pine","colour":[196,170,122],"tile_metres":[0.5,2.0],"edge_metres":[0.5,0.5],"rings":15,"warp":0.32,"knots":3,"roughness":0.73,"relief_m":0.0004,"purpose":"Pale long grain, small dark knots and lighter end grain."},
+    {"id":"bog_oak","name":"Bog oak","colour":[61,48,36],"tile_metres":[0.5,2.0],"edge_metres":[0.5,0.5],"rings":20,"warp":0.65,"knots":1,"roughness":0.66,"relief_m":0.0007,"purpose":"Dense nearly black brown grain with water-dark elongated pores."},
+    {"id":"ash_wood","name":"Ash wood","colour":[174,167,151],"tile_metres":[0.5,2.0],"edge_metres":[0.5,0.5],"rings":12,"warp":0.8,"knots":1,"roughness":0.85,"relief_m":0.00085,"purpose":"Silvered bone-pale fibres retaining warm wood beneath weathering."},
+    {"id":"resinheart","name":"Resinheart","colour":[147,86,35],"tile_metres":[0.5,2.0],"edge_metres":[0.5,0.5],"rings":9,"warp":1.6,"knots":2,"roughness":0.7,"relief_m":0.0005,"purpose":"Strong amber growth, dense end rings and non-emissive resin pockets."},
+    {"id":"woven_reed","name":"Woven reed","colour":[153,124,73],"tile_metres":[0.4,0.4],"edge_metres":[0.4,0.4],"roughness":0.86,"relief_m":0.0018,"courses":16,"stakes":8,"purpose":"Alternating over-under bundles with opaque dark backing and bundled cut edges."},
+    {"id":"corkbark","name":"Corkbark","colour":[155,116,70],"tile_metres":[0.3,0.3],"edge_metres":[0.3,0.3],"roughness":0.91,"relief_m":0.0013,"pores":240,"purpose":"Irregular coarse closed pores and stratified cut edges."}
+  ]
+}

@@ -500,7 +500,7 @@ static func _mesh_for(kind: String) -> Mesh:
 	return result
 
 static func _batch(parent: Node3D, terrain: Terrain, kind: String, transforms: Array) -> void:
-	var mesh:=_mesh_for(kind)
+	var mesh:=R7Cover.regional(kind,_mesh_for(kind))
 	if mesh==null or transforms.is_empty(): return
 	var tiles: Dictionary={}
 	for transform: Transform3D in transforms:
@@ -531,7 +531,7 @@ static func _batch(parent: Node3D, terrain: Terrain, kind: String, transforms: A
 		instance.visibility_range_end=ECOLOGY.canopy_distance_m if canopy else ECOLOGY.middle_distance_m if middle else ECOLOGY.understory_distance_m
 		instance.visibility_range_end_margin=12
 		if not canopy and not middle: instance.cast_shadow=GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-		instance.material_override=_material(kind)
+		instance.material_override=null if mesh.has_meta("r7_composition") else _material(kind)
 		instance.set_meta("mesh_kind",kind)
 		instance.set_meta("world_transforms",poses)
 		instance.set_meta("anchor_bounds",Rect2(Vector2(tile)*ECOLOGY.batch_width_m,Vector2.ONE*ECOLOGY.batch_width_m))

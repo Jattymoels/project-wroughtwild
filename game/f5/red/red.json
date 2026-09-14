@@ -1,0 +1,37 @@
+{
+  "source_sha256": "605ba13c594a0173243c1f8145958cd3c1cc6234ba74ca5358aeffd8165fe70e",
+  "source_body": [1.5, 1.1, 1.5],
+  "buffer_body": [1.0, 1.2, 1.0],
+  "port_height": 0.85,
+  "lod_triangles": [42000, 12000, 2500],
+  "scar": {
+    "mask_size": 2048,
+    "core_half_width": 0.006,
+    "damage_half_width": 0.023,
+    "recess_metres": 0.003,
+    "period_seconds": 4.0,
+    "minimum_light": 0.25,
+    "peak_emission": 3.4,
+    "colour_srgb": [1.0, 0.24, 0.035],
+    "paths": [
+      {"axis": "top", "points": [[-0.57,-0.19],[-0.41,-0.22],[-0.30,-0.15],[-0.17,-0.045],[0.025,0.085],[0.22,0.12],[0.48,0.14]], "width":1.0, "offset":0.0},
+      {"axis": "top", "points": [[0.025,0.085],[0.115,0.225],[0.16,0.32],[0.22,0.415]], "width":0.55, "offset":0.5},
+      {"axis": "front", "points": [[-0.46,0.12],[-0.37,0.22],[-0.39,0.33],[-0.25,0.42],[-0.20,0.49]], "width":0.7, "offset":0.0}
+    ]
+  },
+  "presentation": {"source_ready_gain":0.60, "source_work_gain":0.80, "claim_gain":0.30, "stored_gain":0.40, "working_gain":1.0, "camera_fov":48.0},
+  "purpose": {
+    "source_body": "Existing source collider, Godot XYZ metres; no placement-rule change.",
+    "buffer_body": "Existing buffer collider; all authored housing and fittings stay inside it.",
+    "port_height": "Preserves the existing thermal endpoint at 0.85 m above the fixture base.",
+    "lod_triangles": "Near/mid/far geometric detail targets; compare visible slab edges before adoption.",
+    "scar": "UV-attached 6 mm half-core in 23 mm damaged margins; 3 mm maximum additional incision. A four-second ambient breath is separate from native progress.",
+    "paths": "Inspected top XY and front XZ projections in Blender metres. Branch tips taper mostly dark.",
+    "source_ready_gain": "Subdued ready-source light; exhausted/obstructed formation has zero ready gain.",
+    "source_work_gain": "A slightly stronger core after real manual extraction steps, without animating fake timed labour.",
+    "claim_gain": "Quiet exposed mineral light on the actual source-owned claim, removed only after collection.",
+    "stored_gain": "Steady heat proportional to native stored plus reserved heat; storage never runs a work pulse.",
+    "working_gain": "Travel appears only when native firing time advances; pause, obstruction and idle stop it.",
+    "camera_fov": "48-degree review framing. Art review only, not player-camera tuning."
+  }
+}

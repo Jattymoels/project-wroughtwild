@@ -83,6 +83,9 @@ func cover_density(x: int, z: int) -> float:
 	return lerpf(cover_sparse_multiplier, cover_dense_multiplier, patch)
 
 func cover_mesh(entry: Dictionary) -> ArrayMesh:
+	if G1Art.enabled():
+		var candidate: ArrayMesh=G1Environment.cover_mesh(entry)
+		if candidate!=null: return candidate
 	# Include the palette: meadow and hills share a kind but not a colour.
 	var key := str(entry)
 	if _meshes.has(key):

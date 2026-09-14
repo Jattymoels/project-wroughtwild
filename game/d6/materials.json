@@ -1,0 +1,23 @@
+{
+  "seed": 42,
+  "resolution": 1024,
+  "repeat_metres": 0.5,
+  "controls": {
+    "seed": "Repeatable original periodic hammer and wear fields; no gameplay RNG.",
+    "resolution": "Texture detail per shared family set; all inspection meshes reuse it.",
+    "repeat_metres": "Half metre physical repeat; fine samples crop the same texel density.",
+    "albedo": "Neutral sRGB metal reflectance; no lighting or emission painted in.",
+    "roughness": "Broad reflection width survives after small hammer marks mip away.",
+    "hammer_mm": "Shallow tangent-normal hammer relief, not structural or magical damage.",
+    "seam_tint": "Protected oxide/patina/tarnish on physical joint recesses.",
+    "seam_metallic": "Oxide reduces metallic response only at protected joints.",
+    "rivet_radius_m": "Silhouette and manufacturing identity of fasteners, kept within proxy envelope.",
+    "bevel_m": "Worked arris width, inside original bounds."
+  },
+  "families": [
+    {"id":"iron", "name":"IRON / hammered", "albedo":[0.28,0.29,0.285], "roughness":0.64, "hammer_mm":0.22, "seam_tint":[0.34,0.24,0.16], "seam_metallic":0.22, "rivet_radius_m":0.029, "bevel_m":0.004, "detail":"Broad domed rivets, overlapping strap and uneven hammer scale"},
+    {"id":"bronze", "name":"BRONZE / cast", "albedo":[0.52,0.38,0.22], "roughness":0.44, "hammer_mm":0.14, "seam_tint":[0.18,0.34,0.25], "seam_metallic":0.18, "rivet_radius_m":0.025, "bevel_m":0.006, "detail":"Rounded cast collar, paired bosses and dark green protected patina"},
+    {"id":"steel", "name":"STEEL / dressed", "albedo":[0.48,0.51,0.53], "roughness":0.30, "hammer_mm":0.045, "seam_tint":[0.22,0.24,0.27], "seam_metallic":0.55, "rivet_radius_m":0.018, "bevel_m":0.0015, "detail":"Narrow straight splice, flush hex fasteners, directional dressing and tight edges"},
+    {"id":"silver", "name":"SILVER / planished", "albedo":[0.72,0.71,0.67], "roughness":0.23, "hammer_mm":0.075, "seam_tint":[0.19,0.17,0.16], "seam_metallic":0.32, "rivet_radius_m":0.014, "bevel_m":0.003, "detail":"Soft planished surface, small peened pins and twin chased joint bands"}
+  ]
+}

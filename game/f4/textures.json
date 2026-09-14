@@ -1,0 +1,354 @@
+{
+  "Charcoal": [
+    {
+      "node": "Image Texture",
+      "image": "d5_charcoal_face_albedo.png",
+      "sha256": "61f64fc9b7afe2995381c010954c37b4041ef7b5a38705314623fa340d6cc15c",
+      "bytes": 429648,
+      "size": [
+        1024,
+        1024
+      ],
+      "colorspace": "sRGB"
+    },
+    {
+      "node": "Image Texture.001",
+      "image": "d5_charcoal_face_normal.png",
+      "sha256": "bed82d8a26d70f0b032c661439160892832d180dd24e240e9b95019d4c63a817",
+      "bytes": 985721,
+      "size": [
+        1024,
+        1024
+      ],
+      "colorspace": "Non-Color"
+    },
+    {
+      "node": "Image Texture.002",
+      "image": "d5_charcoal_face_orm.png",
+      "sha256": "fed79f78318c2d3865df61c5dbe2d7f7407e555ef9209e82d6deccf1dd64f5d1",
+      "bytes": 172964,
+      "size": [
+        1024,
+        1024
+      ],
+      "colorspace": "Non-Color"
+    }
+  ],
+  "D4 Timber": [
+    {
+      "node": "Image Texture",
+      "image": "d4_wood_face_albedo",
+      "sha256": "60495f38ed2f8660102a40e5c209943e552b955af3c45afd19f6790a8ecee6fc",
+      "bytes": 1011162,
+      "size": [
+        1024,
+        1024
+      ],
+      "colorspace": "sRGB"
+    },
+    {
+      "node": "Image Texture.001",
+      "image": "d4_wood_face_orm",
+      "sha256": "6a67ec454cf5890288470c8156230b6bdc3dc24dbd5c8ec55bb8db075fb56262",
+      "bytes": 248137,
+      "size": [
+        1024,
+        1024
+      ],
+      "colorspace": "Non-Color"
+    },
+    {
+      "node": "Image Texture.002",
+      "image": "d4_wood_face_normal",
+      "sha256": "eaa132c2296ad62b996941cecbd335248f490327712ce84d6973d3a0652c2bba",
+      "bytes": 895013,
+      "size": [
+        1024,
+        1024
+      ],
+      "colorspace": "Non-Color"
+    }
+  ],
+  "D4 Timber cut end": [
+    {
+      "node": "Image Texture",
+      "image": "d4_wood_edge_albedo",
+      "sha256": "f9782d735584a82c04a495cff356d8d5246fa22d2bd109749851d048a264d22f",
+      "bytes": 364572,
+      "size": [
+        512,
+        512
+      ],
+      "colorspace": "sRGB"
+    },
+    {
+      "node": "Image Texture.001",
+      "image": "d4_wood_edge_orm",
+      "sha256": "ef7c46f9df51147cabf82b27a611e7a2adbcb66e5e85e579d03f4ab6f1e9cdee",
+      "bytes": 116664,
+      "size": [
+        512,
+        512
+      ],
+      "colorspace": "Non-Color"
+    },
+    {
+      "node": "Image Texture.002",
+      "image": "d4_wood_edge_normal",
+      "sha256": "6b5e0e3c710ea44a646a3cce9fd31b3a41bd88a06cd6c0fa845e49097e23eb06",
+      "bytes": 368969,
+      "size": [
+        512,
+        512
+      ],
+      "colorspace": "Non-Color"
+    }
+  ],
+  "D6 Iron": [
+    {
+      "node": "Image Texture",
+      "image": "d6_iron_albedo",
+      "sha256": "0c5be94f2d761836257a1c9f26990107753e383bfec4c7dcaba69c7730d95e74",
+      "bytes": 375882,
+      "size": [
+        1024,
+        1024
+      ],
+      "colorspace": "sRGB"
+    },
+    {
+      "node": "Image Texture.001",
+      "image": "d6_iron_orm",
+      "sha256": "48f97b675ed8da71ce41fc1709c64e2bd7086458eded07497d856a85d4195d73",
+      "bytes": 275897,
+      "size": [
+        1024,
+        1024
+      ],
+      "colorspace": "Non-Color"
+    },
+    {
+      "node": "Image Texture.002",
+      "image": "d6_iron_normal",
+      "sha256": "fd31cdeea7994d987a88e128aa3f588074817eba92a7b1121ec5a9d932da0fb6",
+      "bytes": 234257,
+      "size": [
+        1024,
+        1024
+      ],
+      "colorspace": "Non-Color"
+    }
+  ],
+  "f3_ventlung_skin": [
+    {
+      "node": "Image Texture",
+      "image": "Image_0",
+      "sha256": "147408a5bfc8ea9d2f7541f9a518779d05fe19cff85d367cefb64629c54dceb0",
+      "bytes": 9952208,
+      "size": [
+        2048,
+        2048
+      ],
+      "colorspace": "sRGB"
+    },
+    {
+      "node": "Image Texture.001",
+      "image": "Image_1",
+      "sha256": "cc2973cfe663defc5476fa429f286a3c2bb619408f9369d6cb15a7b4d3162736",
+      "bytes": 6862503,
+      "size": [
+        2048,
+        2048
+      ],
+      "colorspace": "Non-Color"
+    }
+  ],
+  "f3_ventlung_skin.001": [
+    {
+      "node": "Image Texture",
+      "image": "Image_0.001",
+      "sha256": "147408a5bfc8ea9d2f7541f9a518779d05fe19cff85d367cefb64629c54dceb0",
+      "bytes": 9952208,
+      "size": [
+        2048,
+        2048
+      ],
+      "colorspace": "sRGB"
+    },
+    {
+      "node": "Image Texture.001",
+      "image": "Image_1.001",
+      "sha256": "cc2973cfe663defc5476fa429f286a3c2bb619408f9369d6cb15a7b4d3162736",
+      "bytes": 6862503,
+      "size": [
+        2048,
+        2048
+      ],
+      "colorspace": "Non-Color"
+    }
+  ],
+  "f3_ventlung_skin.002": [
+    {
+      "node": "Image Texture",
+      "image": "Image_0.002",
+      "sha256": "147408a5bfc8ea9d2f7541f9a518779d05fe19cff85d367cefb64629c54dceb0",
+      "bytes": 9952208,
+      "size": [
+        2048,
+        2048
+      ],
+      "colorspace": "sRGB"
+    },
+    {
+      "node": "Image Texture.001",
+      "image": "Image_1.002",
+      "sha256": "cc2973cfe663defc5476fa429f286a3c2bb619408f9369d6cb15a7b4d3162736",
+      "bytes": 6862503,
+      "size": [
+        2048,
+        2048
+      ],
+      "colorspace": "Non-Color"
+    }
+  ],
+  "Iron": [
+    {
+      "node": "Image Texture",
+      "image": "d6_iron_albedo.png",
+      "sha256": "0c5be94f2d761836257a1c9f26990107753e383bfec4c7dcaba69c7730d95e74",
+      "bytes": 375882,
+      "size": [
+        1024,
+        1024
+      ],
+      "colorspace": "sRGB"
+    },
+    {
+      "node": "Image Texture.001",
+      "image": "d6_iron_normal.png",
+      "sha256": "fd31cdeea7994d987a88e128aa3f588074817eba92a7b1121ec5a9d932da0fb6",
+      "bytes": 234257,
+      "size": [
+        1024,
+        1024
+      ],
+      "colorspace": "Non-Color"
+    },
+    {
+      "node": "Image Texture.002",
+      "image": "d6_iron_orm.png",
+      "sha256": "48f97b675ed8da71ce41fc1709c64e2bd7086458eded07497d856a85d4195d73",
+      "bytes": 275897,
+      "size": [
+        1024,
+        1024
+      ],
+      "colorspace": "Non-Color"
+    }
+  ],
+  "Soot": [
+    {
+      "node": "Image Texture",
+      "image": "d6_iron_albedo.png",
+      "sha256": "0c5be94f2d761836257a1c9f26990107753e383bfec4c7dcaba69c7730d95e74",
+      "bytes": 375882,
+      "size": [
+        1024,
+        1024
+      ],
+      "colorspace": "sRGB"
+    },
+    {
+      "node": "Image Texture.001",
+      "image": "d6_iron_normal.png",
+      "sha256": "fd31cdeea7994d987a88e128aa3f588074817eba92a7b1121ec5a9d932da0fb6",
+      "bytes": 234257,
+      "size": [
+        1024,
+        1024
+      ],
+      "colorspace": "Non-Color"
+    },
+    {
+      "node": "Image Texture.002",
+      "image": "d6_iron_orm.png",
+      "sha256": "48f97b675ed8da71ce41fc1709c64e2bd7086458eded07497d856a85d4195d73",
+      "bytes": 275897,
+      "size": [
+        1024,
+        1024
+      ],
+      "colorspace": "Non-Color"
+    }
+  ],
+  "Stone": [
+    {
+      "node": "Image Texture",
+      "image": "d5_stone_edge_albedo.png",
+      "sha256": "623710a501ec8ec1d88c17714bd336fe425145feb837141a7ef168f49e7fe729",
+      "bytes": 238655,
+      "size": [
+        512,
+        512
+      ],
+      "colorspace": "sRGB"
+    },
+    {
+      "node": "Image Texture.001",
+      "image": "d5_stone_edge_normal.png",
+      "sha256": "b5b8030ac49a449c8e5639b8892e1cdda548605d75fb39638d7effd568e28220",
+      "bytes": 159753,
+      "size": [
+        512,
+        512
+      ],
+      "colorspace": "Non-Color"
+    },
+    {
+      "node": "Image Texture.002",
+      "image": "d5_stone_edge_orm.png",
+      "sha256": "acd9dc1692d0cd658519f75d04cf112c462db61a04835e80e96d2eafbb88aaee",
+      "bytes": 61549,
+      "size": [
+        512,
+        512
+      ],
+      "colorspace": "Non-Color"
+    }
+  ],
+  "Thrumroot bark": [
+    {
+      "node": "Image Texture",
+      "image": "d4_bog_oak_face_albedo",
+      "sha256": "056dc44268f0c97ae97ec65941550560bd92a2c15ce5cf349d86b2ab969c16a5",
+      "bytes": 791900,
+      "size": [
+        1024,
+        1024
+      ],
+      "colorspace": "sRGB"
+    },
+    {
+      "node": "Image Texture.001",
+      "image": "d4_bog_oak_face_orm",
+      "sha256": "a318662c51429bdc4ebeb097564af11efb177fe82dcae8efbfb623961fc2ffee",
+      "bytes": 266635,
+      "size": [
+        1024,
+        1024
+      ],
+      "colorspace": "Non-Color"
+    },
+    {
+      "node": "Image Texture.002",
+      "image": "d4_bog_oak_face_normal",
+      "sha256": "8e6ebb2aea21f8efb382aeeaabe37e63a5a62c93b9977fe2feba8f10f3cb9b08",
+      "bytes": 961223,
+      "size": [
+        1024,
+        1024
+      ],
+      "colorspace": "Non-Color"
+    }
+  ]
+}

@@ -200,7 +200,7 @@ func _capture_mouse() -> void:
 			_release_mouse()
 			return
 	if DisplayServer.get_name() != "headless":
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if "--r8-no-mouse-capture" in OS.get_cmdline_user_args() else Input.MOUSE_MODE_CAPTURED
 
 
 func _release_mouse() -> void:
@@ -841,6 +841,12 @@ func _apply_work(node: ResourceNode, result: Dictionary, hit: Dictionary = {}) -
 	var granted: int = int(result.get("granted", 0))
 	if granted <= 0 and not result.has("text") and not result.get("struck", false):
 		return
+	if G1Art.enabled() and node.visual in [&"lanternheart",&"stormglass"]:
+		var f1source := node.get_node_or_null("StrangeCore")
+		if f1source != null: f1source.accepted_source_work()
+	if G1Art.enabled() and node.visual in [&"pullstone",&"ventlung"]:
+		var f3source := node.get_node_or_null("StrangeCore")
+		if f3source != null: f3source.accepted_source_work()
 	# Accepted action results own the sound, not animation/stock refreshes.
 	# The scene owns the tail so a depleted node cannot cut its release short.
 	InteractionSound.play(world_root(), hit.get("position", node.global_position),
