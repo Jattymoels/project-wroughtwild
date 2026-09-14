@@ -1,0 +1,3336 @@
+{
+  "checked_jobs": [
+    {
+      "group": "surface",
+      "id": "import-r6",
+      "seconds": 8.3752165,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\logs\\import-r6.log",
+      "log_sha256": "fcef1a5567d16dd5464ab0ff0fbfe2196f7e971ddc837f11765f192201e7ee9a",
+      "exit_code": 0
+    },
+    {
+      "group": "surface",
+      "id": "surface-forward_plus",
+      "seconds": 37.8401239,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\logs\\surface-forward_plus.log",
+      "log_sha256": "18733b79be2acf79b2b4a485d57ce9641633537aa03cd28931cf931b3299a16d",
+      "exit_code": 0
+    },
+    {
+      "group": "surface",
+      "id": "surface-forward_plus-restart",
+      "seconds": 22.4386849,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\logs\\surface-forward_plus-restart.log",
+      "log_sha256": "20ded91ad385eed74d2bcb54868c831dbed3a9da003ac371e6eed562e9185fa0",
+      "exit_code": 0
+    },
+    {
+      "group": "surface",
+      "id": "surface-gl_compatibility",
+      "seconds": 35.2799984,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\logs\\surface-gl_compatibility.log",
+      "log_sha256": "25484b7e03a4409569b67d864bd3764f7b240925f05089e8b0b9d3b40a57d495",
+      "exit_code": 0
+    },
+    {
+      "group": "surface",
+      "id": "surface-gl_compatibility-restart",
+      "seconds": 20.8490156,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\logs\\surface-gl_compatibility-restart.log",
+      "log_sha256": "fe5b9d37e0ddb66538b9cb44891a5389610e833d7312bb0092120b46ae00c87b",
+      "exit_code": 0
+    },
+    {
+      "group": "c5",
+      "id": "c5-forward_plus-flow",
+      "seconds": 9.2912189,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\c5-v03\\logs\\c5-forward_plus-flow.log",
+      "log_sha256": "4471b06068882937282ebf43d1a2cbcd1f455f1143997477860cad16b934a355",
+      "exit_code": 0
+    },
+    {
+      "group": "c5",
+      "id": "c5-forward_plus-partial",
+      "seconds": 2.9471444,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\c5-v03\\logs\\c5-forward_plus-partial.log",
+      "log_sha256": "552ec0bd24527a0075736d6910b4528170f5592184bc07f1da72d3339bbe87a1",
+      "exit_code": 0
+    },
+    {
+      "group": "c5",
+      "id": "c5-forward_plus-final",
+      "seconds": 2.8425226,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\c5-v03\\logs\\c5-forward_plus-final.log",
+      "log_sha256": "d78718119ae56357fe8c06567186e1636dca970117d6e327810e32b632fdb69b",
+      "exit_code": 0
+    },
+    {
+      "group": "c5",
+      "id": "c5-gl_compatibility-flow",
+      "seconds": 9.170191,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\c5-v03\\logs\\c5-gl_compatibility-flow.log",
+      "log_sha256": "33be7f48d086d56a32ede8377b162d4888aac8f386f43a28aac1df9f9780660a",
+      "exit_code": 0
+    },
+    {
+      "group": "c5",
+      "id": "c5-gl_compatibility-partial",
+      "seconds": 2.6741802,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\c5-v03\\logs\\c5-gl_compatibility-partial.log",
+      "log_sha256": "18c91170ff8626b561d1a0cc42c11f0b209614a5d638c8f424646526d7a3295b",
+      "exit_code": 0
+    },
+    {
+      "group": "c5",
+      "id": "c5-gl_compatibility-final",
+      "seconds": 2.6046688,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\c5-v03\\logs\\c5-gl_compatibility-final.log",
+      "log_sha256": "02ee769ee69c807037dcba18c8c3ea71279a1f672f6811938fb56436ff81c7d1",
+      "exit_code": 0
+    },
+    {
+      "group": "probe",
+      "id": "baseline-forward_plus",
+      "seconds": 27.2465406,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\probe-v04\\logs\\baseline-forward_plus.log",
+      "log_sha256": "bac82bfa9d8dcf43d677a50152f1fae6f9522286f4aae385aa38fa5120c2fde2",
+      "exit_code": 0
+    },
+    {
+      "group": "probe",
+      "id": "art-forward_plus",
+      "seconds": 105.1916142,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\probe-v04\\logs\\art-forward_plus.log",
+      "log_sha256": "bac82bfa9d8dcf43d677a50152f1fae6f9522286f4aae385aa38fa5120c2fde2",
+      "exit_code": 0
+    },
+    {
+      "group": "probe",
+      "id": "baseline-gl_compatibility",
+      "seconds": 25.6438489,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\probe-v04\\logs\\baseline-gl_compatibility.log",
+      "log_sha256": "37e14a200c01d3896d77e4c956e8590c3b9ddca9fc9bb94e0831d32f1ed305b4",
+      "exit_code": 0
+    },
+    {
+      "group": "probe",
+      "id": "art-gl_compatibility",
+      "seconds": 102.1595073,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\probe-v04\\logs\\art-gl_compatibility.log",
+      "log_sha256": "37e14a200c01d3896d77e4c956e8590c3b9ddca9fc9bb94e0831d32f1ed305b4",
+      "exit_code": 0
+    },
+    {
+      "group": "benchmark",
+      "id": "baseline-forward_plus",
+      "seconds": 7.2520717,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\benchmark-v01\\logs\\baseline-forward_plus.log",
+      "log_sha256": "01eeb709a0196200d248135ced0f41ce517bfbb60dc58533569600c8effd5586",
+      "exit_code": 0
+    },
+    {
+      "group": "benchmark",
+      "id": "art-forward_plus",
+      "seconds": 7.4860185,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\benchmark-v01\\logs\\art-forward_plus.log",
+      "log_sha256": "8a748980906e7a19a871d9772ca07190ebc40efdb587011f55791cc825c65f0e",
+      "exit_code": 0
+    },
+    {
+      "group": "benchmark",
+      "id": "baseline-gl_compatibility",
+      "seconds": 7.5142688,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\benchmark-v01\\logs\\baseline-gl_compatibility.log",
+      "log_sha256": "0f498b53318d33fea7dd11535ea08fd9df2af5b3978c83a3b9200bc9df65842e",
+      "exit_code": 0
+    },
+    {
+      "group": "benchmark",
+      "id": "art-gl_compatibility",
+      "seconds": 7.5791346,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\benchmark-v01\\logs\\art-gl_compatibility.log",
+      "log_sha256": "49577eecdf894124674d3028c819cecd404c9b0e585f9f6fdc6afa00c06aa290",
+      "exit_code": 0
+    },
+    {
+      "group": "reopen",
+      "id": "pack",
+      "seconds": 32.118862,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\reopen-v03\\logs\\pack.log",
+      "log_sha256": "e71684834b94a09706f2b1eae48e009580a0d72a3859f51b6c7dcc43c9d28555",
+      "exit_code": 0
+    },
+    {
+      "group": "reopen",
+      "id": "reopen",
+      "seconds": 17.3491621,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\reopen-v03\\logs\\reopen.log",
+      "log_sha256": "5fe77ffcb501c57aa3101a1b7017d9b6ea48caf025beabe12009faf4762ab539",
+      "exit_code": 0
+    }
+  ],
+  "surfaces": {
+    "forward_plus": {
+      "art": true,
+      "checks": 4528,
+      "failures": 0,
+      "geography_sha256": "fce60b41847468af36d484b4e07f3125f5f39833eab1a653eef331e8c74f4aae",
+      "gpu": "NVIDIA GeForce RTX 5090",
+      "inventory": {
+        "copper_vein": 8,
+        "ember_iron_vein": 6,
+        "iron_vein": 8,
+        "silver_vein": 6,
+        "tin_vein": 6
+      },
+      "motion": [
+        {
+          "frame": 0,
+          "grounded": true,
+          "position": [
+            514.783325195313,
+            30.960147857666,
+            448.700012207031
+          ]
+        },
+        {
+          "frame": 5,
+          "grounded": true,
+          "position": [
+            515.199890136719,
+            30.960147857666,
+            448.700012207031
+          ]
+        },
+        {
+          "frame": 10,
+          "grounded": true,
+          "position": [
+            515.866394042969,
+            30.960147857666,
+            448.700012207031
+          ]
+        },
+        {
+          "frame": 15,
+          "grounded": true,
+          "position": [
+            516.532897949219,
+            31.041259765625,
+            448.700012207031
+          ]
+        },
+        {
+          "frame": 20,
+          "grounded": true,
+          "position": [
+            517.162170410156,
+            31.1909770965576,
+            448.698120117188
+          ]
+        },
+        {
+          "frame": 25,
+          "grounded": true,
+          "position": [
+            517.678833007813,
+            31.4963665008545,
+            448.691314697266
+          ]
+        },
+        {
+          "frame": 30,
+          "grounded": false,
+          "position": [
+            518.345336914063,
+            31.9247417449951,
+            448.691314697266
+          ]
+        },
+        {
+          "frame": 35,
+          "grounded": true,
+          "position": [
+            518.345336914063,
+            31.9073886871338,
+            448.691314697266
+          ]
+        },
+        {
+          "frame": 40,
+          "grounded": true,
+          "position": [
+            518.345336914063,
+            31.9073886871338,
+            448.691314697266
+          ]
+        },
+        {
+          "frame": 45,
+          "grounded": true,
+          "position": [
+            518.345336914063,
+            31.9073886871338,
+            448.691314697266
+          ]
+        },
+        {
+          "frame": 50,
+          "grounded": true,
+          "position": [
+            518.345336914063,
+            31.9073886871338,
+            448.691314697266
+          ]
+        },
+        {
+          "frame": 55,
+          "grounded": true,
+          "position": [
+            518.345336914063,
+            31.9073886871338,
+            448.691314697266
+          ]
+        },
+        {
+          "frame": 60,
+          "grounded": true,
+          "position": [
+            518.345336914063,
+            31.9073886871338,
+            448.691314697266
+          ]
+        },
+        {
+          "frame": 65,
+          "grounded": true,
+          "position": [
+            518.345336914063,
+            31.9073886871338,
+            448.691314697266
+          ]
+        },
+        {
+          "frame": 70,
+          "grounded": true,
+          "position": [
+            518.345336914063,
+            31.9073886871338,
+            448.691314697266
+          ]
+        },
+        {
+          "frame": 75,
+          "grounded": true,
+          "position": [
+            518.345336914063,
+            31.9073886871338,
+            448.691314697266
+          ]
+        },
+        {
+          "frame": 80,
+          "grounded": true,
+          "position": [
+            518.345336914063,
+            31.9073886871338,
+            448.691314697266
+          ]
+        },
+        {
+          "frame": 85,
+          "grounded": true,
+          "position": [
+            518.345336914063,
+            31.9073886871338,
+            448.691314697266
+          ]
+        },
+        {
+          "frame": 90,
+          "grounded": true,
+          "position": [
+            518.345336914063,
+            31.9073886871338,
+            448.691314697266
+          ]
+        },
+        {
+          "frame": 95,
+          "grounded": true,
+          "position": [
+            518.345336914063,
+            31.9073886871338,
+            448.691314697266
+          ]
+        },
+        {
+          "frame": 100,
+          "grounded": true,
+          "position": [
+            518.345336914063,
+            31.9073886871338,
+            448.691314697266
+          ]
+        },
+        {
+          "frame": 105,
+          "grounded": true,
+          "position": [
+            518.345336914063,
+            31.9073886871338,
+            448.691314697266
+          ]
+        },
+        {
+          "frame": 110,
+          "grounded": true,
+          "position": [
+            518.345336914063,
+            31.9073886871338,
+            448.691314697266
+          ]
+        },
+        {
+          "frame": 115,
+          "grounded": true,
+          "position": [
+            518.345336914063,
+            31.9073886871338,
+            448.691314697266
+          ]
+        },
+        {
+          "frame": 120,
+          "grounded": true,
+          "position": [
+            518.345336914063,
+            31.9073886871338,
+            448.691314697266
+          ]
+        },
+        {
+          "frame": 125,
+          "grounded": true,
+          "position": [
+            518.345336914063,
+            31.9073886871338,
+            448.691314697266
+          ]
+        },
+        {
+          "frame": 130,
+          "grounded": true,
+          "position": [
+            518.345336914063,
+            31.9073886871338,
+            448.691314697266
+          ]
+        },
+        {
+          "frame": 135,
+          "grounded": true,
+          "position": [
+            518.345336914063,
+            31.9073886871338,
+            448.691314697266
+          ]
+        },
+        {
+          "frame": 140,
+          "grounded": true,
+          "position": [
+            518.345336914063,
+            31.9073886871338,
+            448.691314697266
+          ]
+        },
+        {
+          "frame": 145,
+          "grounded": true,
+          "position": [
+            518.345336914063,
+            31.9073886871338,
+            448.691314697266
+          ]
+        }
+      ],
+      "msaa": "4x",
+      "renderer": "forward_plus",
+      "rows": [
+        {
+          "excavated": {
+            "geometry_sha256": "bb826d6895427fd9bd86577c7d8359f4295de96587db51d38b7767564a84214c",
+            "height_range_m": 1.08069998025894,
+            "max_lift_error_m": 4.42199707031236e-05,
+            "triangles": 144
+          },
+          "geometry_sha256": "b3969459606eb1ffa581773cc3a690451712d0ef55518d68fb4ce30891dadebe",
+          "height_range_m": 0.130699999630451,
+          "id": "wnv6_iron_vein_516_30_447",
+          "kind": "iron_vein",
+          "max_lift_error_m": 4.42199707031236e-05,
+          "position": [
+            516.5,
+            30.0,
+            447.5
+          ],
+          "triangles": 144
+        },
+        {
+          "excavated": {
+            "geometry_sha256": "e4263d0a03087a742d317e2455e844fa3d7a942c37a21ed7fb8f5e8a4f097724",
+            "height_range_m": 1.11629998683929,
+            "max_lift_error_m": 5.01937866210951e-05,
+            "triangles": 144
+          },
+          "geometry_sha256": "e18334e6afc1bbad21cf7d7c9c00e7196a95d9033b38b9036d3aa219af641e3c",
+          "height_range_m": 0.146099992096424,
+          "id": "wnv6_copper_vein_86_14_867",
+          "kind": "copper_vein",
+          "max_lift_error_m": 3.97033691406264e-05,
+          "position": [
+            86.5,
+            14.0,
+            867.5
+          ],
+          "triangles": 144
+        },
+        {
+          "excavated": {
+            "geometry_sha256": "76be29872009a6f568434aabc67f2303214ef6b6530677fedef7e28b28e78ce9",
+            "height_range_m": 0.951999954879284,
+            "max_lift_error_m": 0.000100261688232423,
+            "triangles": 144
+          },
+          "geometry_sha256": "35c5cf3bd7e0468023ccdbf008de2ed141193cf5643059f95656196f70442fab",
+          "height_range_m": 0.130699999630451,
+          "id": "wnv6_tin_vein_200_5_324",
+          "kind": "tin_vein",
+          "max_lift_error_m": 4.2087554931642e-05,
+          "position": [
+            200.5,
+            5.0,
+            324.5
+          ],
+          "triangles": 144
+        },
+        {
+          "excavated": {
+            "geometry_sha256": "3d6cd527038a9c6cf6e7c7f0847143b7443abbd40d3f4461bb6edeaa5e17ba30",
+            "height_range_m": 0.951699964702129,
+            "max_lift_error_m": 6.25915527343764e-05,
+            "triangles": 144
+          },
+          "geometry_sha256": "2a9e24dd40963729901ff75857db5b132ddb7b3812df57c3f5c57a23240a3a97",
+          "height_range_m": 0.146099992096424,
+          "id": "wnv6_ember_iron_vein_436_33_737",
+          "kind": "ember_iron_vein",
+          "max_lift_error_m": 4.80346679687486e-05,
+          "position": [
+            436.5,
+            33.0,
+            737.5
+          ],
+          "triangles": 144
+        },
+        {
+          "excavated": {
+            "geometry_sha256": "d89d8ddb859f7ea11be3797f4211e8ea919096ef0ebea21c7bc261d7e35574c5",
+            "height_range_m": 0.950799994170666,
+            "max_lift_error_m": 0.000157958984375001,
+            "triangles": 144
+          },
+          "geometry_sha256": "06eb9343b6f80904ad90b88c8ab3c8a7fcfb050ec9a16ccde13e8fb8f87a761d",
+          "height_range_m": 0.0,
+          "id": "wnv6_region_glasswind_uplands_silver_vein_707_570",
+          "kind": "silver_vein",
+          "max_lift_error_m": 1.55639648437636e-06,
+          "position": [
+            707.5,
+            45.0,
+            570.5
+          ],
+          "triangles": 144
+        }
+      ],
+      "samples": [],
+      "scope": "Harness-paced native generated sites, native work and voxel excavation; no inventory grants or authored terrain substitution.",
+      "viewport": "(1280, 720)",
+      "vsync": "off"
+    },
+    "gl_compatibility": {
+      "art": true,
+      "checks": 4528,
+      "failures": 0,
+      "geography_sha256": "fce60b41847468af36d484b4e07f3125f5f39833eab1a653eef331e8c74f4aae",
+      "gpu": "NVIDIA GeForce RTX 5090",
+      "inventory": {
+        "copper_vein": 8,
+        "ember_iron_vein": 6,
+        "iron_vein": 8,
+        "silver_vein": 6,
+        "tin_vein": 6
+      },
+      "motion": [
+        {
+          "frame": 0,
+          "grounded": true,
+          "position": [
+            514.783325195313,
+            30.960147857666,
+            448.700012207031
+          ]
+        },
+        {
+          "frame": 5,
+          "grounded": true,
+          "position": [
+            515.199890136719,
+            30.960147857666,
+            448.700012207031
+          ]
+        },
+        {
+          "frame": 10,
+          "grounded": true,
+          "position": [
+            515.783081054688,
+            30.960147857666,
+            448.700012207031
+          ]
+        },
+        {
+          "frame": 15,
+          "grounded": true,
+          "position": [
+            516.449584960938,
+            31.0246448516846,
+            448.700012207031
+          ]
+        },
+        {
+          "frame": 20,
+          "grounded": true,
+          "position": [
+            517.097290039063,
+            31.1526794433594,
+            448.698944091797
+          ]
+        },
+        {
+          "frame": 25,
+          "grounded": true,
+          "position": [
+            517.616333007813,
+            31.4587783813477,
+            448.692291259766
+          ]
+        },
+        {
+          "frame": 30,
+          "grounded": false,
+          "position": [
+            518.262023925781,
+            31.9274635314941,
+            448.691314697266
+          ]
+        },
+        {
+          "frame": 35,
+          "grounded": true,
+          "position": [
+            518.594360351563,
+            31.9549598693848,
+            448.691558837891
+          ]
+        },
+        {
+          "frame": 40,
+          "grounded": true,
+          "position": [
+            518.594360351563,
+            31.9549598693848,
+            448.691558837891
+          ]
+        },
+        {
+          "frame": 45,
+          "grounded": true,
+          "position": [
+            518.594360351563,
+            31.9549598693848,
+            448.691558837891
+          ]
+        },
+        {
+          "frame": 50,
+          "grounded": true,
+          "position": [
+            518.594360351563,
+            31.9549598693848,
+            448.691558837891
+          ]
+        },
+        {
+          "frame": 55,
+          "grounded": true,
+          "position": [
+            518.594360351563,
+            31.9549598693848,
+            448.691558837891
+          ]
+        },
+        {
+          "frame": 60,
+          "grounded": true,
+          "position": [
+            518.594360351563,
+            31.9549598693848,
+            448.691558837891
+          ]
+        },
+        {
+          "frame": 65,
+          "grounded": true,
+          "position": [
+            518.594360351563,
+            31.9549598693848,
+            448.691558837891
+          ]
+        },
+        {
+          "frame": 70,
+          "grounded": true,
+          "position": [
+            518.594360351563,
+            31.9549598693848,
+            448.691558837891
+          ]
+        },
+        {
+          "frame": 75,
+          "grounded": true,
+          "position": [
+            518.594360351563,
+            31.9549598693848,
+            448.691558837891
+          ]
+        },
+        {
+          "frame": 80,
+          "grounded": true,
+          "position": [
+            518.594360351563,
+            31.9549598693848,
+            448.691558837891
+          ]
+        },
+        {
+          "frame": 85,
+          "grounded": true,
+          "position": [
+            518.594360351563,
+            31.9549598693848,
+            448.691558837891
+          ]
+        },
+        {
+          "frame": 90,
+          "grounded": true,
+          "position": [
+            518.594360351563,
+            31.9549598693848,
+            448.691558837891
+          ]
+        },
+        {
+          "frame": 95,
+          "grounded": true,
+          "position": [
+            518.594360351563,
+            31.9549598693848,
+            448.691558837891
+          ]
+        },
+        {
+          "frame": 100,
+          "grounded": true,
+          "position": [
+            518.594360351563,
+            31.9549598693848,
+            448.691558837891
+          ]
+        },
+        {
+          "frame": 105,
+          "grounded": true,
+          "position": [
+            518.594360351563,
+            31.9549598693848,
+            448.691558837891
+          ]
+        },
+        {
+          "frame": 110,
+          "grounded": true,
+          "position": [
+            518.594360351563,
+            31.9549598693848,
+            448.691558837891
+          ]
+        },
+        {
+          "frame": 115,
+          "grounded": true,
+          "position": [
+            518.594360351563,
+            31.9549598693848,
+            448.691558837891
+          ]
+        },
+        {
+          "frame": 120,
+          "grounded": true,
+          "position": [
+            518.594360351563,
+            31.9549598693848,
+            448.691558837891
+          ]
+        },
+        {
+          "frame": 125,
+          "grounded": true,
+          "position": [
+            518.594360351563,
+            31.9549598693848,
+            448.691558837891
+          ]
+        },
+        {
+          "frame": 130,
+          "grounded": true,
+          "position": [
+            518.594360351563,
+            31.9549598693848,
+            448.691558837891
+          ]
+        },
+        {
+          "frame": 135,
+          "grounded": true,
+          "position": [
+            518.594360351563,
+            31.9549598693848,
+            448.691558837891
+          ]
+        },
+        {
+          "frame": 140,
+          "grounded": true,
+          "position": [
+            518.594360351563,
+            31.9549598693848,
+            448.691558837891
+          ]
+        },
+        {
+          "frame": 145,
+          "grounded": true,
+          "position": [
+            518.594360351563,
+            31.9549598693848,
+            448.691558837891
+          ]
+        }
+      ],
+      "msaa": "4x",
+      "renderer": "gl_compatibility",
+      "rows": [
+        {
+          "excavated": {
+            "geometry_sha256": "bb826d6895427fd9bd86577c7d8359f4295de96587db51d38b7767564a84214c",
+            "height_range_m": 1.08069998025894,
+            "max_lift_error_m": 4.42199707031236e-05,
+            "triangles": 144
+          },
+          "geometry_sha256": "b3969459606eb1ffa581773cc3a690451712d0ef55518d68fb4ce30891dadebe",
+          "height_range_m": 0.130699999630451,
+          "id": "wnv6_iron_vein_516_30_447",
+          "kind": "iron_vein",
+          "max_lift_error_m": 4.42199707031236e-05,
+          "position": [
+            516.5,
+            30.0,
+            447.5
+          ],
+          "triangles": 144
+        },
+        {
+          "excavated": {
+            "geometry_sha256": "e4263d0a03087a742d317e2455e844fa3d7a942c37a21ed7fb8f5e8a4f097724",
+            "height_range_m": 1.11629998683929,
+            "max_lift_error_m": 5.01937866210951e-05,
+            "triangles": 144
+          },
+          "geometry_sha256": "e18334e6afc1bbad21cf7d7c9c00e7196a95d9033b38b9036d3aa219af641e3c",
+          "height_range_m": 0.146099992096424,
+          "id": "wnv6_copper_vein_86_14_867",
+          "kind": "copper_vein",
+          "max_lift_error_m": 3.97033691406264e-05,
+          "position": [
+            86.5,
+            14.0,
+            867.5
+          ],
+          "triangles": 144
+        },
+        {
+          "excavated": {
+            "geometry_sha256": "76be29872009a6f568434aabc67f2303214ef6b6530677fedef7e28b28e78ce9",
+            "height_range_m": 0.951999954879284,
+            "max_lift_error_m": 0.000100261688232423,
+            "triangles": 144
+          },
+          "geometry_sha256": "35c5cf3bd7e0468023ccdbf008de2ed141193cf5643059f95656196f70442fab",
+          "height_range_m": 0.130699999630451,
+          "id": "wnv6_tin_vein_200_5_324",
+          "kind": "tin_vein",
+          "max_lift_error_m": 4.2087554931642e-05,
+          "position": [
+            200.5,
+            5.0,
+            324.5
+          ],
+          "triangles": 144
+        },
+        {
+          "excavated": {
+            "geometry_sha256": "3d6cd527038a9c6cf6e7c7f0847143b7443abbd40d3f4461bb6edeaa5e17ba30",
+            "height_range_m": 0.951699964702129,
+            "max_lift_error_m": 6.25915527343764e-05,
+            "triangles": 144
+          },
+          "geometry_sha256": "2a9e24dd40963729901ff75857db5b132ddb7b3812df57c3f5c57a23240a3a97",
+          "height_range_m": 0.146099992096424,
+          "id": "wnv6_ember_iron_vein_436_33_737",
+          "kind": "ember_iron_vein",
+          "max_lift_error_m": 4.80346679687486e-05,
+          "position": [
+            436.5,
+            33.0,
+            737.5
+          ],
+          "triangles": 144
+        },
+        {
+          "excavated": {
+            "geometry_sha256": "d89d8ddb859f7ea11be3797f4211e8ea919096ef0ebea21c7bc261d7e35574c5",
+            "height_range_m": 0.950799994170666,
+            "max_lift_error_m": 0.000157958984375001,
+            "triangles": 144
+          },
+          "geometry_sha256": "06eb9343b6f80904ad90b88c8ab3c8a7fcfb050ec9a16ccde13e8fb8f87a761d",
+          "height_range_m": 0.0,
+          "id": "wnv6_region_glasswind_uplands_silver_vein_707_570",
+          "kind": "silver_vein",
+          "max_lift_error_m": 1.55639648437636e-06,
+          "position": [
+            707.5,
+            45.0,
+            570.5
+          ],
+          "triangles": 144
+        }
+      ],
+      "samples": [],
+      "scope": "Harness-paced native generated sites, native work and voxel excavation; no inventory grants or authored terrain substitution.",
+      "viewport": "(1280, 720)",
+      "vsync": "off"
+    }
+  },
+  "c5_checks": {
+    "forward_plus": {
+      "flow": {
+        "checks": 178,
+        "failures": 0,
+        "inventory": {
+          "copper_vein": 8,
+          "ember_iron_vein": 6,
+          "iron_vein": 8,
+          "silver_vein": 6,
+          "tin_vein": 6
+        },
+        "mode": "flow",
+        "scope": "Authored fixture using current ResourceNode, native inventory, player work/pickup and SaveManager. No normal campaign or ordinary-world art adoption."
+      },
+      "partial": {
+        "checks": 66,
+        "failures": 0,
+        "inventory": {
+          "copper_vein": 2,
+          "ember_iron_vein": 2,
+          "iron_vein": 2,
+          "silver_vein": 2,
+          "tin_vein": 2
+        },
+        "mode": "partial",
+        "scope": "Authored fixture using current ResourceNode, native inventory, player work/pickup and SaveManager. No normal campaign or ordinary-world art adoption."
+      },
+      "final": {
+        "checks": 52,
+        "failures": 0,
+        "inventory": {
+          "copper_vein": 8,
+          "ember_iron_vein": 6,
+          "iron_vein": 8,
+          "silver_vein": 6,
+          "tin_vein": 6
+        },
+        "mode": "final",
+        "scope": "Authored fixture using current ResourceNode, native inventory, player work/pickup and SaveManager. No normal campaign or ordinary-world art adoption."
+      }
+    },
+    "gl_compatibility": {
+      "flow": {
+        "checks": 178,
+        "failures": 0,
+        "inventory": {
+          "copper_vein": 8,
+          "ember_iron_vein": 6,
+          "iron_vein": 8,
+          "silver_vein": 6,
+          "tin_vein": 6
+        },
+        "mode": "flow",
+        "scope": "Authored fixture using current ResourceNode, native inventory, player work/pickup and SaveManager. No normal campaign or ordinary-world art adoption."
+      },
+      "partial": {
+        "checks": 66,
+        "failures": 0,
+        "inventory": {
+          "copper_vein": 2,
+          "ember_iron_vein": 2,
+          "iron_vein": 2,
+          "silver_vein": 2,
+          "tin_vein": 2
+        },
+        "mode": "partial",
+        "scope": "Authored fixture using current ResourceNode, native inventory, player work/pickup and SaveManager. No normal campaign or ordinary-world art adoption."
+      },
+      "final": {
+        "checks": 52,
+        "failures": 0,
+        "inventory": {
+          "copper_vein": 8,
+          "ember_iron_vein": 6,
+          "iron_vein": 8,
+          "silver_vein": 6,
+          "tin_vein": 6
+        },
+        "mode": "final",
+        "scope": "Authored fixture using current ResourceNode, native inventory, player work/pickup and SaveManager. No normal campaign or ordinary-world art adoption."
+      }
+    }
+  },
+  "costs": [
+    {
+      "renderer": "forward_plus",
+      "kind": "iron_vein",
+      "baseline": {
+        "draw_calls": 78.0,
+        "kind": "iron_vein",
+        "median_ms": 0.439,
+        "p95_ms": 0.816,
+        "samples": 240,
+        "texture_bytes": 101858304.0,
+        "visible_primitives": 65423.0,
+        "worst_ms": 2.045
+      },
+      "candidate": {
+        "draw_calls": 78.0,
+        "kind": "iron_vein",
+        "median_ms": 0.448,
+        "p95_ms": 0.801,
+        "samples": 240,
+        "texture_bytes": 132450304.0,
+        "visible_primitives": 144617.0,
+        "worst_ms": 2.054
+      }
+    },
+    {
+      "renderer": "forward_plus",
+      "kind": "copper_vein",
+      "baseline": {
+        "draw_calls": 100.0,
+        "kind": "copper_vein",
+        "median_ms": 0.453,
+        "p95_ms": 0.82,
+        "samples": 240,
+        "texture_bytes": 101858304.0,
+        "visible_primitives": 190156.0,
+        "worst_ms": 1.824
+      },
+      "candidate": {
+        "draw_calls": 100.0,
+        "kind": "copper_vein",
+        "median_ms": 0.455,
+        "p95_ms": 0.779,
+        "samples": 240,
+        "texture_bytes": 132450304.0,
+        "visible_primitives": 190156.0,
+        "worst_ms": 1.619
+      }
+    },
+    {
+      "renderer": "forward_plus",
+      "kind": "tin_vein",
+      "baseline": {
+        "draw_calls": 108.0,
+        "kind": "tin_vein",
+        "median_ms": 0.461,
+        "p95_ms": 0.774,
+        "samples": 240,
+        "texture_bytes": 101858304.0,
+        "visible_primitives": 241464.0,
+        "worst_ms": 1.475
+      },
+      "candidate": {
+        "draw_calls": 108.0,
+        "kind": "tin_vein",
+        "median_ms": 0.461,
+        "p95_ms": 0.828,
+        "samples": 240,
+        "texture_bytes": 132450304.0,
+        "visible_primitives": 241464.0,
+        "worst_ms": 1.638
+      }
+    },
+    {
+      "renderer": "forward_plus",
+      "kind": "ember_iron_vein",
+      "baseline": {
+        "draw_calls": 121.0,
+        "kind": "ember_iron_vein",
+        "median_ms": 0.434,
+        "p95_ms": 0.816,
+        "samples": 240,
+        "texture_bytes": 101858304.0,
+        "visible_primitives": 102237.0,
+        "worst_ms": 8.587
+      },
+      "candidate": {
+        "draw_calls": 121.0,
+        "kind": "ember_iron_vein",
+        "median_ms": 0.439,
+        "p95_ms": 0.797,
+        "samples": 240,
+        "texture_bytes": 132450304.0,
+        "visible_primitives": 136422.0,
+        "worst_ms": 1.566
+      }
+    },
+    {
+      "renderer": "forward_plus",
+      "kind": "silver_vein",
+      "baseline": {
+        "draw_calls": 92.0,
+        "kind": "silver_vein",
+        "median_ms": 0.458,
+        "p95_ms": 0.832,
+        "samples": 240,
+        "texture_bytes": 101858304.0,
+        "visible_primitives": 121098.0,
+        "worst_ms": 1.536
+      },
+      "candidate": {
+        "draw_calls": 92.0,
+        "kind": "silver_vein",
+        "median_ms": 0.459,
+        "p95_ms": 0.803,
+        "samples": 240,
+        "texture_bytes": 132450304.0,
+        "visible_primitives": 130344.0,
+        "worst_ms": 1.786
+      }
+    },
+    {
+      "renderer": "gl_compatibility",
+      "kind": "iron_vein",
+      "baseline": {
+        "draw_calls": 78.0,
+        "kind": "iron_vein",
+        "median_ms": 0.705,
+        "p95_ms": 1.153,
+        "samples": 240,
+        "texture_bytes": 36910455.0,
+        "visible_primitives": 65423.0,
+        "worst_ms": 2.341
+      },
+      "candidate": {
+        "draw_calls": 78.0,
+        "kind": "iron_vein",
+        "median_ms": 0.709,
+        "p95_ms": 1.11,
+        "samples": 240,
+        "texture_bytes": 61377222.0,
+        "visible_primitives": 144617.0,
+        "worst_ms": 2.772
+      }
+    },
+    {
+      "renderer": "gl_compatibility",
+      "kind": "copper_vein",
+      "baseline": {
+        "draw_calls": 100.0,
+        "kind": "copper_vein",
+        "median_ms": 0.652,
+        "p95_ms": 1.182,
+        "samples": 240,
+        "texture_bytes": 36910455.0,
+        "visible_primitives": 190156.0,
+        "worst_ms": 1.787
+      },
+      "candidate": {
+        "draw_calls": 100.0,
+        "kind": "copper_vein",
+        "median_ms": 0.658,
+        "p95_ms": 1.093,
+        "samples": 240,
+        "texture_bytes": 61377222.0,
+        "visible_primitives": 190156.0,
+        "worst_ms": 2.016
+      }
+    },
+    {
+      "renderer": "gl_compatibility",
+      "kind": "tin_vein",
+      "baseline": {
+        "draw_calls": 108.0,
+        "kind": "tin_vein",
+        "median_ms": 0.654,
+        "p95_ms": 1.142,
+        "samples": 240,
+        "texture_bytes": 36910455.0,
+        "visible_primitives": 241464.0,
+        "worst_ms": 1.804
+      },
+      "candidate": {
+        "draw_calls": 108.0,
+        "kind": "tin_vein",
+        "median_ms": 0.65,
+        "p95_ms": 1.133,
+        "samples": 240,
+        "texture_bytes": 61377222.0,
+        "visible_primitives": 241464.0,
+        "worst_ms": 1.98
+      }
+    },
+    {
+      "renderer": "gl_compatibility",
+      "kind": "ember_iron_vein",
+      "baseline": {
+        "draw_calls": 121.0,
+        "kind": "ember_iron_vein",
+        "median_ms": 0.726,
+        "p95_ms": 1.227,
+        "samples": 240,
+        "texture_bytes": 36910455.0,
+        "visible_primitives": 102237.0,
+        "worst_ms": 2.297
+      },
+      "candidate": {
+        "draw_calls": 121.0,
+        "kind": "ember_iron_vein",
+        "median_ms": 0.703,
+        "p95_ms": 1.122,
+        "samples": 240,
+        "texture_bytes": 61377222.0,
+        "visible_primitives": 136422.0,
+        "worst_ms": 2.203
+      }
+    },
+    {
+      "renderer": "gl_compatibility",
+      "kind": "silver_vein",
+      "baseline": {
+        "draw_calls": 92.0,
+        "kind": "silver_vein",
+        "median_ms": 0.71,
+        "p95_ms": 1.164,
+        "samples": 240,
+        "texture_bytes": 36910455.0,
+        "visible_primitives": 121098.0,
+        "worst_ms": 1.743
+      },
+      "candidate": {
+        "draw_calls": 92.0,
+        "kind": "silver_vein",
+        "median_ms": 0.699,
+        "p95_ms": 1.119,
+        "samples": 240,
+        "texture_bytes": 61377222.0,
+        "visible_primitives": 130344.0,
+        "worst_ms": 2.264
+      }
+    }
+  ],
+  "full_probe_comparison": [
+    {
+      "renderer": "forward_plus",
+      "geography_sha256": "550b2d742314136a71a8c177920059bd245996e744b8722c8ba8c68afbde4a70",
+      "snapshot_keys": [
+        "blocks",
+        "contraptions",
+        "leylines",
+        "loot_kill_counter",
+        "player",
+        "resource_nodes",
+        "schema_version",
+        "sim",
+        "stations",
+        "world_drops",
+        "world_profile",
+        "world_seed"
+      ],
+      "entire_snapshot_equal": true,
+      "resources": 13627
+    },
+    {
+      "renderer": "gl_compatibility",
+      "geography_sha256": "550b2d742314136a71a8c177920059bd245996e744b8722c8ba8c68afbde4a70",
+      "snapshot_keys": [
+        "blocks",
+        "contraptions",
+        "leylines",
+        "loot_kill_counter",
+        "player",
+        "resource_nodes",
+        "schema_version",
+        "sim",
+        "stations",
+        "world_drops",
+        "world_profile",
+        "world_seed"
+      ],
+      "entire_snapshot_equal": true,
+      "resources": 13627
+    }
+  ],
+  "hardware": {
+    "gpu": [
+      {
+        "Name": "NVIDIA GeForce RTX 5090",
+        "DriverVersion": "32.0.15.9186",
+        "VideoModeDescription": "2560 x 1440 x 4294967296 colors"
+      },
+      {
+        "Name": "AMD Radeon(TM) Graphics",
+        "DriverVersion": "32.0.21045.5002",
+        "VideoModeDescription": "3840 x 2160 x 4294967296 colors"
+      }
+    ],
+    "os": "Microsoft Windows 11 Home",
+    "memory_bytes": 33446744064,
+    "cpu": [
+      {
+        "Name": "AMD Ryzen 9 9950X3D 16-Core Processor          ",
+        "NumberOfCores": 16,
+        "NumberOfLogicalProcessors": 32
+      }
+    ]
+  },
+  "images": [
+    {
+      "name": "iron_vein-full-player-forward.png",
+      "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-forward_plus\\iron_vein-full-player.png",
+      "sha256": "66c3aa7ed5844a17cf26002bebfeea90f4d2dd5383612a2f017d02b13d0ca205",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "kind": "unmodified native engine still"
+    },
+    {
+      "name": "iron_vein-partial-close-forward.png",
+      "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-forward_plus\\iron_vein-partial-close.png",
+      "sha256": "b563ca481dcec7c3ed79a4afa2431ce10e89217da04f82109e9459c5332bc86f",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "kind": "unmodified native engine still"
+    },
+    {
+      "name": "copper_vein-excavated-close-forward.png",
+      "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-forward_plus\\copper_vein-excavated-close.png",
+      "sha256": "8aa09c460919bcb67b99abb8b40afc5a625899942ae07f0a0475147c60b0c5ec",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "kind": "unmodified native engine still"
+    },
+    {
+      "name": "ember_iron_vein-full-close-forward.png",
+      "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-forward_plus\\ember_iron_vein-full-close.png",
+      "sha256": "cd6a3ae3ef7c4014ceee01ed062782d199aca00d4bc4759f9d9668e3db665b44",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "kind": "unmodified native engine still"
+    },
+    {
+      "name": "fallback-iron-forward.png",
+      "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\c5-v03\\c5-forward_plus-flow\\iron_vein-full-player.png",
+      "sha256": "6188bf70a40610bde25983af9717d5abfa7808cbce76247fdc71e9934df18a9d",
+      "dimensions": [
+        1152,
+        648
+      ],
+      "kind": "unmodified native engine still"
+    },
+    {
+      "name": "iron_vein-full-player-compatibility.png",
+      "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-gl_compatibility\\iron_vein-full-player.png",
+      "sha256": "5a228fa335789deb2bb43acab6f8f2bf477d312625eb716c25e582d4d46ab5ca",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "kind": "unmodified native engine still"
+    },
+    {
+      "name": "iron_vein-partial-close-compatibility.png",
+      "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-gl_compatibility\\iron_vein-partial-close.png",
+      "sha256": "c0bc479e3856fdd077a2fc2ad423e15f6fff2fb2c68ac0bd55639befdc0f4742",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "kind": "unmodified native engine still"
+    },
+    {
+      "name": "copper_vein-excavated-close-compatibility.png",
+      "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-gl_compatibility\\copper_vein-excavated-close.png",
+      "sha256": "733c9868a05b05b33b5b7314fb0b8af807fd368221b141b53ec7e1fed6989e00",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "kind": "unmodified native engine still"
+    },
+    {
+      "name": "ember_iron_vein-full-close-compatibility.png",
+      "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-gl_compatibility\\ember_iron_vein-full-close.png",
+      "sha256": "94968e598573c35c052038bc2dde0be30ead211ac3cc653e05c0c90bf5cd0efc",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "kind": "unmodified native engine still"
+    },
+    {
+      "name": "fallback-iron-compatibility.png",
+      "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\c5-v03\\c5-gl_compatibility-flow\\iron_vein-full-player.png",
+      "sha256": "346e9fd93696232295ff5edce2ae992e9e928e86afbb340e2070d1fcd52200a4",
+      "dimensions": [
+        1152,
+        648
+      ],
+      "kind": "unmodified native engine still"
+    },
+    {
+      "name": "native-walk.gif",
+      "sha256": "cfbbae4f7a0b4bd1e380181f90893dc20dd670e8ecbad2404c36bb245d6ecce0",
+      "kind": "Illustrative 12 fps playback of actual input/controller frames sampled every five harness iterations. Native physics also advances while screenshots are captured; playback is not a real-time clock.",
+      "frames": [
+        {
+          "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-forward_plus\\motion-000.png",
+          "sha256": "118034464cc3503275227f9fd81691ecdf2ebb8a42d98b141f9c9fdeedc8bb3b"
+        },
+        {
+          "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-forward_plus\\motion-001.png",
+          "sha256": "a0fc64a6730aa2aaeec5330f402e60f3f5c876432f043a3665328c47078b9a67"
+        },
+        {
+          "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-forward_plus\\motion-002.png",
+          "sha256": "396315a98dc4fc0ed89e36333fc9a9308d8aee9df10ad7a927a80630d87411e1"
+        },
+        {
+          "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-forward_plus\\motion-003.png",
+          "sha256": "e65da51ad8cdb7ffbcb9d0a06b81de745e02065fdf68187fad9fd356fc312c97"
+        },
+        {
+          "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-forward_plus\\motion-004.png",
+          "sha256": "36d45ba7381107dfb83125babc7d2945d9f7a423099d598f85cddff0bbb6c050"
+        },
+        {
+          "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-forward_plus\\motion-005.png",
+          "sha256": "964f7feca4dff1e9c0bf795c1c29bf040bf30377c4c4a0e52d9d6dd4d1c2a27c"
+        },
+        {
+          "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-forward_plus\\motion-006.png",
+          "sha256": "f7b95e0ce8bf9fb2963fd469cb5276cc8b39e0649a683397117d39c74dbec2af"
+        },
+        {
+          "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-forward_plus\\motion-007.png",
+          "sha256": "b321008888618734a4d5a1dd7c8e72793eba6ca261188dcbaddee7d9fe745295"
+        },
+        {
+          "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-forward_plus\\motion-008.png",
+          "sha256": "b321008888618734a4d5a1dd7c8e72793eba6ca261188dcbaddee7d9fe745295"
+        },
+        {
+          "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-forward_plus\\motion-009.png",
+          "sha256": "b321008888618734a4d5a1dd7c8e72793eba6ca261188dcbaddee7d9fe745295"
+        },
+        {
+          "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-forward_plus\\motion-010.png",
+          "sha256": "b321008888618734a4d5a1dd7c8e72793eba6ca261188dcbaddee7d9fe745295"
+        },
+        {
+          "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-forward_plus\\motion-011.png",
+          "sha256": "b321008888618734a4d5a1dd7c8e72793eba6ca261188dcbaddee7d9fe745295"
+        },
+        {
+          "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-forward_plus\\motion-012.png",
+          "sha256": "b321008888618734a4d5a1dd7c8e72793eba6ca261188dcbaddee7d9fe745295"
+        },
+        {
+          "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-forward_plus\\motion-013.png",
+          "sha256": "b321008888618734a4d5a1dd7c8e72793eba6ca261188dcbaddee7d9fe745295"
+        },
+        {
+          "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-forward_plus\\motion-014.png",
+          "sha256": "b321008888618734a4d5a1dd7c8e72793eba6ca261188dcbaddee7d9fe745295"
+        },
+        {
+          "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-forward_plus\\motion-015.png",
+          "sha256": "b321008888618734a4d5a1dd7c8e72793eba6ca261188dcbaddee7d9fe745295"
+        },
+        {
+          "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-forward_plus\\motion-016.png",
+          "sha256": "b321008888618734a4d5a1dd7c8e72793eba6ca261188dcbaddee7d9fe745295"
+        },
+        {
+          "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-forward_plus\\motion-017.png",
+          "sha256": "b321008888618734a4d5a1dd7c8e72793eba6ca261188dcbaddee7d9fe745295"
+        },
+        {
+          "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-forward_plus\\motion-018.png",
+          "sha256": "b321008888618734a4d5a1dd7c8e72793eba6ca261188dcbaddee7d9fe745295"
+        },
+        {
+          "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-forward_plus\\motion-019.png",
+          "sha256": "b321008888618734a4d5a1dd7c8e72793eba6ca261188dcbaddee7d9fe745295"
+        },
+        {
+          "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-forward_plus\\motion-020.png",
+          "sha256": "b321008888618734a4d5a1dd7c8e72793eba6ca261188dcbaddee7d9fe745295"
+        },
+        {
+          "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-forward_plus\\motion-021.png",
+          "sha256": "b321008888618734a4d5a1dd7c8e72793eba6ca261188dcbaddee7d9fe745295"
+        },
+        {
+          "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-forward_plus\\motion-022.png",
+          "sha256": "b321008888618734a4d5a1dd7c8e72793eba6ca261188dcbaddee7d9fe745295"
+        },
+        {
+          "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-forward_plus\\motion-023.png",
+          "sha256": "b321008888618734a4d5a1dd7c8e72793eba6ca261188dcbaddee7d9fe745295"
+        },
+        {
+          "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-forward_plus\\motion-024.png",
+          "sha256": "b321008888618734a4d5a1dd7c8e72793eba6ca261188dcbaddee7d9fe745295"
+        },
+        {
+          "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-forward_plus\\motion-025.png",
+          "sha256": "b321008888618734a4d5a1dd7c8e72793eba6ca261188dcbaddee7d9fe745295"
+        },
+        {
+          "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-forward_plus\\motion-026.png",
+          "sha256": "b321008888618734a4d5a1dd7c8e72793eba6ca261188dcbaddee7d9fe745295"
+        },
+        {
+          "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-forward_plus\\motion-027.png",
+          "sha256": "b321008888618734a4d5a1dd7c8e72793eba6ca261188dcbaddee7d9fe745295"
+        },
+        {
+          "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-forward_plus\\motion-028.png",
+          "sha256": "b321008888618734a4d5a1dd7c8e72793eba6ca261188dcbaddee7d9fe745295"
+        },
+        {
+          "source": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\surface-forward_plus\\motion-029.png",
+          "sha256": "b321008888618734a4d5a1dd7c8e72793eba6ca261188dcbaddee7d9fe745295"
+        }
+      ]
+    }
+  ],
+  "master_reopen": {
+    "master": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\sources\\r6-surface-master-v03.blend",
+    "blender": "4.5.9 LTS",
+    "meshes": [
+      {
+        "name": "boulder-full",
+        "vertices": 5034,
+        "triangles": 11999,
+        "dimensions_blender_m": [
+          1.3447867631912231,
+          1.0827679634094238,
+          0.9216009378433228
+        ]
+      },
+      {
+        "name": "copper_vein-cold",
+        "vertices": 63619,
+        "triangles": 127252,
+        "dimensions_blender_m": [
+          2.486663818359375,
+          0.7800047397613525,
+          0.4880000054836273
+        ]
+      },
+      {
+        "name": "copper_vein-cracked",
+        "vertices": 63619,
+        "triangles": 127252,
+        "dimensions_blender_m": [
+          2.486663818359375,
+          0.7800047397613525,
+          0.4880000054836273
+        ]
+      },
+      {
+        "name": "copper_vein-u2-cold",
+        "vertices": 11593,
+        "triangles": 23183,
+        "dimensions_blender_m": [
+          0.6299999952316284,
+          0.5938034057617188,
+          0.28462666273117065
+        ]
+      },
+      {
+        "name": "copper_vein-u2-cold-lod0",
+        "vertices": 2989,
+        "triangles": 5976,
+        "dimensions_blender_m": [
+          0.630325436592102,
+          0.5934433937072754,
+          0.28430625796318054
+        ]
+      },
+      {
+        "name": "copper_vein-u2-cold-lod1",
+        "vertices": 1289,
+        "triangles": 2576,
+        "dimensions_blender_m": [
+          0.630325436592102,
+          0.5932445526123047,
+          0.28532055020332336
+        ]
+      },
+      {
+        "name": "copper_vein-u2-cold-lod2",
+        "vertices": 439,
+        "triangles": 876,
+        "dimensions_blender_m": [
+          0.6276734471321106,
+          0.5858056545257568,
+          0.2832675576210022
+        ]
+      },
+      {
+        "name": "copper_vein-u2-cracked",
+        "vertices": 11551,
+        "triangles": 23099,
+        "dimensions_blender_m": [
+          0.6299999952316284,
+          0.5938034057617188,
+          0.2652634084224701
+        ]
+      },
+      {
+        "name": "copper_vein-u2-cracked-lod0",
+        "vertices": 2989,
+        "triangles": 5976,
+        "dimensions_blender_m": [
+          0.630325436592102,
+          0.5934433937072754,
+          0.2653716206550598
+        ]
+      },
+      {
+        "name": "copper_vein-u2-cracked-lod1",
+        "vertices": 1289,
+        "triangles": 2576,
+        "dimensions_blender_m": [
+          0.630325436592102,
+          0.5932445526123047,
+          0.26454925537109375
+        ]
+      },
+      {
+        "name": "copper_vein-u2-cracked-lod2",
+        "vertices": 439,
+        "triangles": 876,
+        "dimensions_blender_m": [
+          0.6276734471321106,
+          0.585806131362915,
+          0.26563483476638794
+        ]
+      },
+      {
+        "name": "copper_vein-u4-cold",
+        "vertices": 28702,
+        "triangles": 57406,
+        "dimensions_blender_m": [
+          1.2400000095367432,
+          0.7419276833534241,
+          0.4371856451034546
+        ]
+      },
+      {
+        "name": "copper_vein-u4-cold-lod0",
+        "vertices": 2986,
+        "triangles": 5975,
+        "dimensions_blender_m": [
+          1.2403866052627563,
+          0.7429152727127075,
+          0.4371379017829895
+        ]
+      },
+      {
+        "name": "copper_vein-u4-cold-lod1",
+        "vertices": 1286,
+        "triangles": 2574,
+        "dimensions_blender_m": [
+          1.2382951974868774,
+          0.7373617887496948,
+          0.4371379017829895
+        ]
+      },
+      {
+        "name": "copper_vein-u4-cold-lod2",
+        "vertices": 436,
+        "triangles": 874,
+        "dimensions_blender_m": [
+          1.2383265495300293,
+          0.7238779067993164,
+          0.43541595339775085
+        ]
+      },
+      {
+        "name": "copper_vein-u4-cracked",
+        "vertices": 28712,
+        "triangles": 57426,
+        "dimensions_blender_m": [
+          1.2400000095367432,
+          0.7419276833534241,
+          0.4371856451034546
+        ]
+      },
+      {
+        "name": "copper_vein-u4-cracked-lod0",
+        "vertices": 2986,
+        "triangles": 5974,
+        "dimensions_blender_m": [
+          1.2403866052627563,
+          0.7429152727127075,
+          0.4371379017829895
+        ]
+      },
+      {
+        "name": "copper_vein-u4-cracked-lod1",
+        "vertices": 1286,
+        "triangles": 2574,
+        "dimensions_blender_m": [
+          1.2382951974868774,
+          0.7373617887496948,
+          0.4371379017829895
+        ]
+      },
+      {
+        "name": "copper_vein-u4-cracked-lod2",
+        "vertices": 436,
+        "triangles": 874,
+        "dimensions_blender_m": [
+          1.2394683361053467,
+          0.7238779067993164,
+          0.43541595339775085
+        ]
+      },
+      {
+        "name": "copper_vein-u6-cold",
+        "vertices": 49647,
+        "triangles": 99296,
+        "dimensions_blender_m": [
+          1.850000023841858,
+          0.7800047397613525,
+          0.4880000054836273
+        ]
+      },
+      {
+        "name": "copper_vein-u6-cold-lod0",
+        "vertices": 2986,
+        "triangles": 5974,
+        "dimensions_blender_m": [
+          1.850342035293579,
+          0.7799723148345947,
+          0.48843082785606384
+        ]
+      },
+      {
+        "name": "copper_vein-u6-cold-lod1",
+        "vertices": 1286,
+        "triangles": 2574,
+        "dimensions_blender_m": [
+          1.8479042053222656,
+          0.775792121887207,
+          0.48811817169189453
+        ]
+      },
+      {
+        "name": "copper_vein-u6-cold-lod2",
+        "vertices": 436,
+        "triangles": 874,
+        "dimensions_blender_m": [
+          1.8412041664123535,
+          0.764398992061615,
+          0.4901377558708191
+        ]
+      },
+      {
+        "name": "copper_vein-u6-cracked",
+        "vertices": 49649,
+        "triangles": 99300,
+        "dimensions_blender_m": [
+          1.850000023841858,
+          0.7800047397613525,
+          0.4880000054836273
+        ]
+      },
+      {
+        "name": "copper_vein-u6-cracked-lod0",
+        "vertices": 2986,
+        "triangles": 5974,
+        "dimensions_blender_m": [
+          1.847887396812439,
+          0.7799723148345947,
+          0.48843082785606384
+        ]
+      },
+      {
+        "name": "copper_vein-u6-cracked-lod1",
+        "vertices": 1286,
+        "triangles": 2574,
+        "dimensions_blender_m": [
+          1.8479042053222656,
+          0.775792121887207,
+          0.48811817169189453
+        ]
+      },
+      {
+        "name": "copper_vein-u6-cracked-lod2",
+        "vertices": 436,
+        "triangles": 874,
+        "dimensions_blender_m": [
+          1.8412041664123535,
+          0.764398992061615,
+          0.48954713344573975
+        ]
+      },
+      {
+        "name": "copper_vein-u8-cold",
+        "vertices": 63619,
+        "triangles": 127252,
+        "dimensions_blender_m": [
+          2.486663818359375,
+          0.7800047397613525,
+          0.4880000054836273
+        ]
+      },
+      {
+        "name": "copper_vein-u8-cold-lod0",
+        "vertices": 2980,
+        "triangles": 5974,
+        "dimensions_blender_m": [
+          2.485529899597168,
+          0.7778612375259399,
+          0.48843082785606384
+        ]
+      },
+      {
+        "name": "copper_vein-u8-cold-lod1",
+        "vertices": 1280,
+        "triangles": 2574,
+        "dimensions_blender_m": [
+          2.482332229614258,
+          0.7654573917388916,
+          0.48811817169189453
+        ]
+      },
+      {
+        "name": "copper_vein-u8-cold-lod2",
+        "vertices": 430,
+        "triangles": 874,
+        "dimensions_blender_m": [
+          2.478618621826172,
+          0.764398992061615,
+          0.48392245173454285
+        ]
+      },
+      {
+        "name": "copper_vein-u8-cracked",
+        "vertices": 63619,
+        "triangles": 127252,
+        "dimensions_blender_m": [
+          2.486663818359375,
+          0.7800047397613525,
+          0.4880000054836273
+        ]
+      },
+      {
+        "name": "copper_vein-u8-cracked-lod0",
+        "vertices": 2980,
+        "triangles": 5974,
+        "dimensions_blender_m": [
+          2.485529899597168,
+          0.7778612375259399,
+          0.48843082785606384
+        ]
+      },
+      {
+        "name": "copper_vein-u8-cracked-lod1",
+        "vertices": 1280,
+        "triangles": 2574,
+        "dimensions_blender_m": [
+          2.482332229614258,
+          0.7654573917388916,
+          0.48811817169189453
+        ]
+      },
+      {
+        "name": "copper_vein-u8-cracked-lod2",
+        "vertices": 430,
+        "triangles": 874,
+        "dimensions_blender_m": [
+          2.478618621826172,
+          0.7632526159286499,
+          0.48954713344573975
+        ]
+      },
+      {
+        "name": "ember_iron_vein-cold",
+        "vertices": 63619,
+        "triangles": 127252,
+        "dimensions_blender_m": [
+          2.482102394104004,
+          0.7799999713897705,
+          0.4880213141441345
+        ]
+      },
+      {
+        "name": "ember_iron_vein-cracked",
+        "vertices": 63619,
+        "triangles": 127252,
+        "dimensions_blender_m": [
+          2.482102394104004,
+          0.7799999713897705,
+          0.4880213141441345
+        ]
+      },
+      {
+        "name": "ember_iron_vein-u2-cold",
+        "vertices": 17183,
+        "triangles": 34355,
+        "dimensions_blender_m": [
+          0.8333481550216675,
+          0.6745322346687317,
+          0.3395948112010956
+        ]
+      },
+      {
+        "name": "ember_iron_vein-u2-cold-lod0",
+        "vertices": 2992,
+        "triangles": 5974,
+        "dimensions_blender_m": [
+          0.8336416482925415,
+          0.672776997089386,
+          0.3400179445743561
+        ]
+      },
+      {
+        "name": "ember_iron_vein-u2-cold-lod1",
+        "vertices": 1292,
+        "triangles": 2574,
+        "dimensions_blender_m": [
+          0.8338459730148315,
+          0.6720348596572876,
+          0.3402469754219055
+        ]
+      },
+      {
+        "name": "ember_iron_vein-u2-cold-lod2",
+        "vertices": 442,
+        "triangles": 874,
+        "dimensions_blender_m": [
+          0.8308876752853394,
+          0.6711550951004028,
+          0.34020403027534485
+        ]
+      },
+      {
+        "name": "ember_iron_vein-u2-cracked",
+        "vertices": 17183,
+        "triangles": 34355,
+        "dimensions_blender_m": [
+          0.8333481550216675,
+          0.6745322346687317,
+          0.3395948112010956
+        ]
+      },
+      {
+        "name": "ember_iron_vein-u2-cracked-lod0",
+        "vertices": 2992,
+        "triangles": 5974,
+        "dimensions_blender_m": [
+          0.8336416482925415,
+          0.672776997089386,
+          0.3400179445743561
+        ]
+      },
+      {
+        "name": "ember_iron_vein-u2-cracked-lod1",
+        "vertices": 1292,
+        "triangles": 2574,
+        "dimensions_blender_m": [
+          0.8338459730148315,
+          0.6720348596572876,
+          0.3402469754219055
+        ]
+      },
+      {
+        "name": "ember_iron_vein-u2-cracked-lod2",
+        "vertices": 442,
+        "triangles": 874,
+        "dimensions_blender_m": [
+          0.8308876752853394,
+          0.6711550951004028,
+          0.34020403027534485
+        ]
+      },
+      {
+        "name": "ember_iron_vein-u4-cold",
+        "vertices": 42205,
+        "triangles": 84412,
+        "dimensions_blender_m": [
+          1.6466814279556274,
+          0.7799999713897705,
+          0.4880213141441345
+        ]
+      },
+      {
+        "name": "ember_iron_vein-u4-cold-lod0",
+        "vertices": 2986,
+        "triangles": 5974,
+        "dimensions_blender_m": [
+          1.6471333503723145,
+          0.779451847076416,
+          0.48898187279701233
+        ]
+      },
+      {
+        "name": "ember_iron_vein-u4-cold-lod1",
+        "vertices": 1286,
+        "triangles": 2574,
+        "dimensions_blender_m": [
+          1.6445143222808838,
+          0.7735927104949951,
+          0.48775672912597656
+        ]
+      },
+      {
+        "name": "ember_iron_vein-u4-cold-lod2",
+        "vertices": 436,
+        "triangles": 874,
+        "dimensions_blender_m": [
+          1.6440460681915283,
+          0.768702507019043,
+          0.4886232614517212
+        ]
+      },
+      {
+        "name": "ember_iron_vein-u4-cracked",
+        "vertices": 42205,
+        "triangles": 84412,
+        "dimensions_blender_m": [
+          1.6466814279556274,
+          0.7799999713897705,
+          0.4880213141441345
+        ]
+      },
+      {
+        "name": "ember_iron_vein-u4-cracked-lod0",
+        "vertices": 2986,
+        "triangles": 5974,
+        "dimensions_blender_m": [
+          1.6471333503723145,
+          0.779451847076416,
+          0.48898187279701233
+        ]
+      },
+      {
+        "name": "ember_iron_vein-u4-cracked-lod1",
+        "vertices": 1286,
+        "triangles": 2574,
+        "dimensions_blender_m": [
+          1.6445143222808838,
+          0.7735927104949951,
+          0.48775672912597656
+        ]
+      },
+      {
+        "name": "ember_iron_vein-u4-cracked-lod2",
+        "vertices": 436,
+        "triangles": 874,
+        "dimensions_blender_m": [
+          1.6440460681915283,
+          0.768702507019043,
+          0.4886232614517212
+        ]
+      },
+      {
+        "name": "ember_iron_vein-u6-cold",
+        "vertices": 63619,
+        "triangles": 127252,
+        "dimensions_blender_m": [
+          2.482102394104004,
+          0.7799999713897705,
+          0.4880213141441345
+        ]
+      },
+      {
+        "name": "ember_iron_vein-u6-cold-lod0",
+        "vertices": 2980,
+        "triangles": 5974,
+        "dimensions_blender_m": [
+          2.4798073768615723,
+          0.7778559923171997,
+          0.4884284734725952
+        ]
+      },
+      {
+        "name": "ember_iron_vein-u6-cold-lod1",
+        "vertices": 1280,
+        "triangles": 2574,
+        "dimensions_blender_m": [
+          2.477264881134033,
+          0.7729282975196838,
+          0.48926764726638794
+        ]
+      },
+      {
+        "name": "ember_iron_vein-u6-cold-lod2",
+        "vertices": 430,
+        "triangles": 874,
+        "dimensions_blender_m": [
+          2.4868736267089844,
+          0.7612457275390625,
+          0.4899936020374298
+        ]
+      },
+      {
+        "name": "ember_iron_vein-u6-cracked",
+        "vertices": 63619,
+        "triangles": 127252,
+        "dimensions_blender_m": [
+          2.482102394104004,
+          0.7799999713897705,
+          0.4880213141441345
+        ]
+      },
+      {
+        "name": "ember_iron_vein-u6-cracked-lod0",
+        "vertices": 2980,
+        "triangles": 5974,
+        "dimensions_blender_m": [
+          2.4798073768615723,
+          0.7778559923171997,
+          0.4884284734725952
+        ]
+      },
+      {
+        "name": "ember_iron_vein-u6-cracked-lod1",
+        "vertices": 1280,
+        "triangles": 2574,
+        "dimensions_blender_m": [
+          2.477264881134033,
+          0.7729282975196838,
+          0.48926764726638794
+        ]
+      },
+      {
+        "name": "ember_iron_vein-u6-cracked-lod2",
+        "vertices": 430,
+        "triangles": 874,
+        "dimensions_blender_m": [
+          2.4868736267089844,
+          0.7612457275390625,
+          0.4899936020374298
+        ]
+      },
+      {
+        "name": "FINISHED repaired closed host",
+        "vertices": 63738,
+        "triangles": 127496,
+        "dimensions_blender_m": [
+          2.9435954093933105,
+          2.9851112365722656,
+          1.784701943397522
+        ]
+      },
+      {
+        "name": "intact-reference-copper_vein",
+        "vertices": 63619,
+        "triangles": 127252,
+        "dimensions_blender_m": [
+          2.4800000190734863,
+          0.7799999713897705,
+          0.4880000054836273
+        ]
+      },
+      {
+        "name": "intact-reference-ember_iron_vein",
+        "vertices": 63619,
+        "triangles": 127252,
+        "dimensions_blender_m": [
+          2.4800000190734863,
+          0.7799999713897705,
+          0.4880000054836273
+        ]
+      },
+      {
+        "name": "intact-reference-iron_vein",
+        "vertices": 63619,
+        "triangles": 127252,
+        "dimensions_blender_m": [
+          2.4800000190734863,
+          0.7799999713897705,
+          0.4880000054836273
+        ]
+      },
+      {
+        "name": "intact-reference-silver_vein",
+        "vertices": 63619,
+        "triangles": 127252,
+        "dimensions_blender_m": [
+          2.4800000190734863,
+          0.7799999713897705,
+          0.4880000054836273
+        ]
+      },
+      {
+        "name": "intact-reference-tin_vein",
+        "vertices": 63619,
+        "triangles": 127252,
+        "dimensions_blender_m": [
+          2.4800000190734863,
+          0.7799999713897705,
+          0.4880000054836273
+        ]
+      },
+      {
+        "name": "iron_vein-cold",
+        "vertices": 63619,
+        "triangles": 127252,
+        "dimensions_blender_m": [
+          2.48118257522583,
+          0.7800179719924927,
+          0.4880000054836273
+        ]
+      },
+      {
+        "name": "iron_vein-u2-cold",
+        "vertices": 11575,
+        "triangles": 23147,
+        "dimensions_blender_m": [
+          0.6300030946731567,
+          0.5948954820632935,
+          0.284628689289093
+        ]
+      },
+      {
+        "name": "iron_vein-u2-cold-lod0",
+        "vertices": 2989,
+        "triangles": 5976,
+        "dimensions_blender_m": [
+          0.6302257776260376,
+          0.5948547720909119,
+          0.2842894494533539
+        ]
+      },
+      {
+        "name": "iron_vein-u2-cold-lod1",
+        "vertices": 1289,
+        "triangles": 2576,
+        "dimensions_blender_m": [
+          0.6302672624588013,
+          0.5946061611175537,
+          0.2853279113769531
+        ]
+      },
+      {
+        "name": "iron_vein-u2-cold-lod2",
+        "vertices": 439,
+        "triangles": 876,
+        "dimensions_blender_m": [
+          0.627869188785553,
+          0.5860776901245117,
+          0.2852511703968048
+        ]
+      },
+      {
+        "name": "iron_vein-u4-cold",
+        "vertices": 28703,
+        "triangles": 57403,
+        "dimensions_blender_m": [
+          1.2400031089782715,
+          0.7422224283218384,
+          0.4371878504753113
+        ]
+      },
+      {
+        "name": "iron_vein-u4-cold-lod0",
+        "vertices": 2988,
+        "triangles": 5976,
+        "dimensions_blender_m": [
+          1.2402349710464478,
+          0.742748498916626,
+          0.43714001774787903
+        ]
+      },
+      {
+        "name": "iron_vein-u4-cold-lod1",
+        "vertices": 1288,
+        "triangles": 2575,
+        "dimensions_blender_m": [
+          1.2380598783493042,
+          0.7385843992233276,
+          0.43714001774787903
+        ]
+      },
+      {
+        "name": "iron_vein-u4-cold-lod2",
+        "vertices": 438,
+        "triangles": 875,
+        "dimensions_blender_m": [
+          1.2416399717330933,
+          0.7363932132720947,
+          0.4440826177597046
+        ]
+      },
+      {
+        "name": "iron_vein-u6-cold",
+        "vertices": 49630,
+        "triangles": 99259,
+        "dimensions_blender_m": [
+          1.8500031232833862,
+          0.7800179719924927,
+          0.4880000054836273
+        ]
+      },
+      {
+        "name": "iron_vein-u6-cold-lod0",
+        "vertices": 2987,
+        "triangles": 5975,
+        "dimensions_blender_m": [
+          1.8503741025924683,
+          0.7799888253211975,
+          0.48843082785606384
+        ]
+      },
+      {
+        "name": "iron_vein-u6-cold-lod1",
+        "vertices": 1287,
+        "triangles": 2574,
+        "dimensions_blender_m": [
+          1.847872257232666,
+          0.7820497751235962,
+          0.48843082785606384
+        ]
+      },
+      {
+        "name": "iron_vein-u6-cold-lod2",
+        "vertices": 437,
+        "triangles": 874,
+        "dimensions_blender_m": [
+          1.8443589210510254,
+          0.7659077048301697,
+          0.4897969663143158
+        ]
+      },
+      {
+        "name": "iron_vein-u8-cold",
+        "vertices": 63619,
+        "triangles": 127252,
+        "dimensions_blender_m": [
+          2.48118257522583,
+          0.7800179719924927,
+          0.4880000054836273
+        ]
+      },
+      {
+        "name": "iron_vein-u8-cold-lod0",
+        "vertices": 2980,
+        "triangles": 5974,
+        "dimensions_blender_m": [
+          2.4807019233703613,
+          0.777880072593689,
+          0.48843082785606384
+        ]
+      },
+      {
+        "name": "iron_vein-u8-cold-lod1",
+        "vertices": 1280,
+        "triangles": 2574,
+        "dimensions_blender_m": [
+          2.4796042442321777,
+          0.7745528221130371,
+          0.4870513677597046
+        ]
+      },
+      {
+        "name": "iron_vein-u8-cold-lod2",
+        "vertices": 430,
+        "triangles": 874,
+        "dimensions_blender_m": [
+          2.471259593963623,
+          0.7659077048301697,
+          0.48550015687942505
+        ]
+      },
+      {
+        "name": "REVIEW copper_vein-u2-cracked",
+        "vertices": 11551,
+        "triangles": 23099,
+        "dimensions_blender_m": [
+          0.6299999952316284,
+          0.5938034057617188,
+          0.2652634084224701
+        ]
+      },
+      {
+        "name": "REVIEW copper_vein-u6-cold",
+        "vertices": 49647,
+        "triangles": 99296,
+        "dimensions_blender_m": [
+          1.850000023841858,
+          0.7800047397613525,
+          0.4880000054836273
+        ]
+      },
+      {
+        "name": "REVIEW copper_vein-u8-cold",
+        "vertices": 63619,
+        "triangles": 127252,
+        "dimensions_blender_m": [
+          2.486663818359375,
+          0.7800047397613525,
+          0.4880000054836273
+        ]
+      },
+      {
+        "name": "REVIEW ember_iron_vein-u2-cracked",
+        "vertices": 17183,
+        "triangles": 34355,
+        "dimensions_blender_m": [
+          0.8333481550216675,
+          0.6745322346687317,
+          0.3395948112010956
+        ]
+      },
+      {
+        "name": "REVIEW ember_iron_vein-u4-cold",
+        "vertices": 42205,
+        "triangles": 84412,
+        "dimensions_blender_m": [
+          1.6466814279556274,
+          0.7799999713897705,
+          0.4880213141441345
+        ]
+      },
+      {
+        "name": "REVIEW ember_iron_vein-u6-cold",
+        "vertices": 63619,
+        "triangles": 127252,
+        "dimensions_blender_m": [
+          2.482102394104004,
+          0.7799999713897705,
+          0.4880213141441345
+        ]
+      },
+      {
+        "name": "REVIEW iron_vein-u2-cold",
+        "vertices": 11575,
+        "triangles": 23147,
+        "dimensions_blender_m": [
+          0.6300030946731567,
+          0.5948954820632935,
+          0.284628689289093
+        ]
+      },
+      {
+        "name": "REVIEW iron_vein-u6-cold",
+        "vertices": 49630,
+        "triangles": 99259,
+        "dimensions_blender_m": [
+          1.8500031232833862,
+          0.7800179719924927,
+          0.4880000054836273
+        ]
+      },
+      {
+        "name": "REVIEW iron_vein-u8-cold",
+        "vertices": 63619,
+        "triangles": 127252,
+        "dimensions_blender_m": [
+          2.48118257522583,
+          0.7800179719924927,
+          0.4880000054836273
+        ]
+      },
+      {
+        "name": "REVIEW silver_vein-u2-cracked",
+        "vertices": 17190,
+        "triangles": 34370,
+        "dimensions_blender_m": [
+          0.8333333730697632,
+          0.6761993169784546,
+          0.33954575657844543
+        ]
+      },
+      {
+        "name": "REVIEW silver_vein-u4-cold",
+        "vertices": 42200,
+        "triangles": 84402,
+        "dimensions_blender_m": [
+          1.6466666460037231,
+          0.7799999713897705,
+          0.4880000054836273
+        ]
+      },
+      {
+        "name": "REVIEW silver_vein-u6-cold",
+        "vertices": 63619,
+        "triangles": 127252,
+        "dimensions_blender_m": [
+          2.4800004959106445,
+          0.7799999713897705,
+          0.4880000054836273
+        ]
+      },
+      {
+        "name": "REVIEW tin_vein-u2-cracked",
+        "vertices": 17187,
+        "triangles": 34363,
+        "dimensions_blender_m": [
+          0.8333346843719482,
+          0.6758571863174438,
+          0.3395753502845764
+        ]
+      },
+      {
+        "name": "REVIEW tin_vein-u4-cold",
+        "vertices": 42209,
+        "triangles": 84419,
+        "dimensions_blender_m": [
+          1.6466679573059082,
+          0.7800062894821167,
+          0.4880000054836273
+        ]
+      },
+      {
+        "name": "REVIEW tin_vein-u6-cold",
+        "vertices": 63619,
+        "triangles": 127252,
+        "dimensions_blender_m": [
+          2.480003833770752,
+          0.7800062894821167,
+          0.4880000054836273
+        ]
+      },
+      {
+        "name": "silver_vein-cold",
+        "vertices": 63619,
+        "triangles": 127252,
+        "dimensions_blender_m": [
+          2.4800004959106445,
+          0.7799999713897705,
+          0.4880000054836273
+        ]
+      },
+      {
+        "name": "silver_vein-cracked",
+        "vertices": 63619,
+        "triangles": 127252,
+        "dimensions_blender_m": [
+          2.4800004959106445,
+          0.7799999713897705,
+          0.4880000054836273
+        ]
+      },
+      {
+        "name": "silver_vein-u2-cold",
+        "vertices": 17192,
+        "triangles": 34374,
+        "dimensions_blender_m": [
+          0.8333333730697632,
+          0.6761993169784546,
+          0.33954575657844543
+        ]
+      },
+      {
+        "name": "silver_vein-u2-cold-lod0",
+        "vertices": 2992,
+        "triangles": 5974,
+        "dimensions_blender_m": [
+          0.8335853815078735,
+          0.6739473342895508,
+          0.339220255613327
+        ]
+      },
+      {
+        "name": "silver_vein-u2-cold-lod1",
+        "vertices": 1292,
+        "triangles": 2574,
+        "dimensions_blender_m": [
+          0.833829402923584,
+          0.674056887626648,
+          0.339220255613327
+        ]
+      },
+      {
+        "name": "silver_vein-u2-cold-lod2",
+        "vertices": 442,
+        "triangles": 874,
+        "dimensions_blender_m": [
+          0.8308166265487671,
+          0.6706490516662598,
+          0.339220255613327
+        ]
+      },
+      {
+        "name": "silver_vein-u2-cracked",
+        "vertices": 17190,
+        "triangles": 34370,
+        "dimensions_blender_m": [
+          0.8333333730697632,
+          0.6761993169784546,
+          0.33954575657844543
+        ]
+      },
+      {
+        "name": "silver_vein-u2-cracked-lod0",
+        "vertices": 2992,
+        "triangles": 5974,
+        "dimensions_blender_m": [
+          0.8335853815078735,
+          0.6747990250587463,
+          0.339220255613327
+        ]
+      },
+      {
+        "name": "silver_vein-u2-cracked-lod1",
+        "vertices": 1292,
+        "triangles": 2574,
+        "dimensions_blender_m": [
+          0.833829402923584,
+          0.674056887626648,
+          0.339220255613327
+        ]
+      },
+      {
+        "name": "silver_vein-u2-cracked-lod2",
+        "vertices": 442,
+        "triangles": 874,
+        "dimensions_blender_m": [
+          0.8309472799301147,
+          0.6706490516662598,
+          0.339220255613327
+        ]
+      },
+      {
+        "name": "silver_vein-u4-cold",
+        "vertices": 42200,
+        "triangles": 84402,
+        "dimensions_blender_m": [
+          1.6466666460037231,
+          0.7799999713897705,
+          0.4880000054836273
+        ]
+      },
+      {
+        "name": "silver_vein-u4-cold-lod0",
+        "vertices": 2986,
+        "triangles": 5974,
+        "dimensions_blender_m": [
+          1.6471067667007446,
+          0.779451847076416,
+          0.4889793395996094
+        ]
+      },
+      {
+        "name": "silver_vein-u4-cold-lod1",
+        "vertices": 1286,
+        "triangles": 2574,
+        "dimensions_blender_m": [
+          1.6443170309066772,
+          0.7773407101631165,
+          0.48857277631759644
+        ]
+      },
+      {
+        "name": "silver_vein-u4-cold-lod2",
+        "vertices": 436,
+        "triangles": 874,
+        "dimensions_blender_m": [
+          1.64121675491333,
+          0.768702507019043,
+          0.4883665144443512
+        ]
+      },
+      {
+        "name": "silver_vein-u4-cracked",
+        "vertices": 42200,
+        "triangles": 84402,
+        "dimensions_blender_m": [
+          1.6466666460037231,
+          0.7799999713897705,
+          0.4880000054836273
+        ]
+      },
+      {
+        "name": "silver_vein-u4-cracked-lod0",
+        "vertices": 2986,
+        "triangles": 5974,
+        "dimensions_blender_m": [
+          1.6471011638641357,
+          0.7794522047042847,
+          0.4889793395996094
+        ]
+      },
+      {
+        "name": "silver_vein-u4-cracked-lod1",
+        "vertices": 1286,
+        "triangles": 2574,
+        "dimensions_blender_m": [
+          1.64434015750885,
+          0.773593008518219,
+          0.48857277631759644
+        ]
+      },
+      {
+        "name": "silver_vein-u4-cracked-lod2",
+        "vertices": 436,
+        "triangles": 874,
+        "dimensions_blender_m": [
+          1.6416295766830444,
+          0.768702507019043,
+          0.48859086632728577
+        ]
+      },
+      {
+        "name": "silver_vein-u6-cold",
+        "vertices": 63619,
+        "triangles": 127252,
+        "dimensions_blender_m": [
+          2.4800004959106445,
+          0.7799999713897705,
+          0.4880000054836273
+        ]
+      },
+      {
+        "name": "silver_vein-u6-cold-lod0",
+        "vertices": 2980,
+        "triangles": 5974,
+        "dimensions_blender_m": [
+          2.4809765815734863,
+          0.7778559923171997,
+          0.48843082785606384
+        ]
+      },
+      {
+        "name": "silver_vein-u6-cold-lod1",
+        "vertices": 1280,
+        "triangles": 2574,
+        "dimensions_blender_m": [
+          2.4814093112945557,
+          0.7729282975196838,
+          0.4886532127857208
+        ]
+      },
+      {
+        "name": "silver_vein-u6-cold-lod2",
+        "vertices": 430,
+        "triangles": 874,
+        "dimensions_blender_m": [
+          2.4695987701416016,
+          0.7676548957824707,
+          0.49168986082077026
+        ]
+      },
+      {
+        "name": "silver_vein-u6-cracked",
+        "vertices": 63619,
+        "triangles": 127252,
+        "dimensions_blender_m": [
+          2.4800004959106445,
+          0.7799999713897705,
+          0.4880000054836273
+        ]
+      },
+      {
+        "name": "silver_vein-u6-cracked-lod0",
+        "vertices": 2980,
+        "triangles": 5974,
+        "dimensions_blender_m": [
+          2.4809765815734863,
+          0.7778559923171997,
+          0.48843082785606384
+        ]
+      },
+      {
+        "name": "silver_vein-u6-cracked-lod1",
+        "vertices": 1280,
+        "triangles": 2574,
+        "dimensions_blender_m": [
+          2.4814093112945557,
+          0.7729282975196838,
+          0.4886532127857208
+        ]
+      },
+      {
+        "name": "silver_vein-u6-cracked-lod2",
+        "vertices": 430,
+        "triangles": 874,
+        "dimensions_blender_m": [
+          2.4695987701416016,
+          0.7628957629203796,
+          0.4861582815647125
+        ]
+      },
+      {
+        "name": "SOURCE approved reduced quiet rock",
+        "vertices": 26485,
+        "triangles": 54996,
+        "dimensions_blender_m": [
+          2.832306146621704,
+          2.9261789321899414,
+          1.6012333631515503
+        ]
+      },
+      {
+        "name": "SOURCE untouched normalized ART02 rock",
+        "vertices": 222597,
+        "triangles": 287700,
+        "dimensions_blender_m": [
+          2.831543445587158,
+          2.9250733852386475,
+          1.5999999046325684
+        ]
+      },
+      {
+        "name": "tin_vein-cold",
+        "vertices": 63619,
+        "triangles": 127252,
+        "dimensions_blender_m": [
+          2.480003833770752,
+          0.7800062894821167,
+          0.4880000054836273
+        ]
+      },
+      {
+        "name": "tin_vein-cracked",
+        "vertices": 63619,
+        "triangles": 127252,
+        "dimensions_blender_m": [
+          2.480003833770752,
+          0.7800062894821167,
+          0.4880000054836273
+        ]
+      },
+      {
+        "name": "tin_vein-u2-cold",
+        "vertices": 17189,
+        "triangles": 34367,
+        "dimensions_blender_m": [
+          0.8333346843719482,
+          0.6758571863174438,
+          0.3395753502845764
+        ]
+      },
+      {
+        "name": "tin_vein-u2-cold-lod0",
+        "vertices": 2993,
+        "triangles": 5976,
+        "dimensions_blender_m": [
+          0.8335893750190735,
+          0.6762420535087585,
+          0.3392447233200073
+        ]
+      },
+      {
+        "name": "tin_vein-u2-cold-lod1",
+        "vertices": 1293,
+        "triangles": 2575,
+        "dimensions_blender_m": [
+          0.8338170051574707,
+          0.6762420535087585,
+          0.3392447233200073
+        ]
+      },
+      {
+        "name": "tin_vein-u2-cold-lod2",
+        "vertices": 443,
+        "triangles": 875,
+        "dimensions_blender_m": [
+          0.830810546875,
+          0.6802258491516113,
+          0.3392447233200073
+        ]
+      },
+      {
+        "name": "tin_vein-u2-cracked",
+        "vertices": 17187,
+        "triangles": 34363,
+        "dimensions_blender_m": [
+          0.8333346843719482,
+          0.6758571863174438,
+          0.3395753502845764
+        ]
+      },
+      {
+        "name": "tin_vein-u2-cracked-lod0",
+        "vertices": 2993,
+        "triangles": 5976,
+        "dimensions_blender_m": [
+          0.8335893750190735,
+          0.6762420535087585,
+          0.3392447233200073
+        ]
+      },
+      {
+        "name": "tin_vein-u2-cracked-lod1",
+        "vertices": 1293,
+        "triangles": 2575,
+        "dimensions_blender_m": [
+          0.8338170051574707,
+          0.6762420535087585,
+          0.3392447233200073
+        ]
+      },
+      {
+        "name": "tin_vein-u2-cracked-lod2",
+        "vertices": 443,
+        "triangles": 875,
+        "dimensions_blender_m": [
+          0.8309534192085266,
+          0.6802258491516113,
+          0.3392447233200073
+        ]
+      },
+      {
+        "name": "tin_vein-u4-cold",
+        "vertices": 42209,
+        "triangles": 84419,
+        "dimensions_blender_m": [
+          1.6466679573059082,
+          0.7800062894821167,
+          0.4880000054836273
+        ]
+      },
+      {
+        "name": "tin_vein-u4-cold-lod0",
+        "vertices": 2987,
+        "triangles": 5975,
+        "dimensions_blender_m": [
+          1.6471140384674072,
+          0.7794603705406189,
+          0.4889792203903198
+        ]
+      },
+      {
+        "name": "tin_vein-u4-cold-lod1",
+        "vertices": 1287,
+        "triangles": 2575,
+        "dimensions_blender_m": [
+          1.6446564197540283,
+          0.7773492336273193,
+          0.48857250809669495
+        ]
+      },
+      {
+        "name": "tin_vein-u4-cold-lod2",
+        "vertices": 437,
+        "triangles": 875,
+        "dimensions_blender_m": [
+          1.6443164348602295,
+          0.7687310576438904,
+          0.48836806416511536
+        ]
+      },
+      {
+        "name": "tin_vein-u4-cracked",
+        "vertices": 42209,
+        "triangles": 84419,
+        "dimensions_blender_m": [
+          1.6466679573059082,
+          0.7800062894821167,
+          0.4880000054836273
+        ]
+      },
+      {
+        "name": "tin_vein-u4-cracked-lod0",
+        "vertices": 2987,
+        "triangles": 5975,
+        "dimensions_blender_m": [
+          1.6471140384674072,
+          0.7794603705406189,
+          0.4889792203903198
+        ]
+      },
+      {
+        "name": "tin_vein-u4-cracked-lod1",
+        "vertices": 1287,
+        "triangles": 2575,
+        "dimensions_blender_m": [
+          1.644639253616333,
+          0.7736011743545532,
+          0.48857250809669495
+        ]
+      },
+      {
+        "name": "tin_vein-u4-cracked-lod2",
+        "vertices": 437,
+        "triangles": 875,
+        "dimensions_blender_m": [
+          1.6447417736053467,
+          0.761268138885498,
+          0.48859235644340515
+        ]
+      },
+      {
+        "name": "tin_vein-u6-cold",
+        "vertices": 63619,
+        "triangles": 127252,
+        "dimensions_blender_m": [
+          2.480003833770752,
+          0.7800062894821167,
+          0.4880000054836273
+        ]
+      },
+      {
+        "name": "tin_vein-u6-cold-lod0",
+        "vertices": 2980,
+        "triangles": 5974,
+        "dimensions_blender_m": [
+          2.4811172485351562,
+          0.7776294946670532,
+          0.4884306490421295
+        ]
+      },
+      {
+        "name": "tin_vein-u6-cold-lod1",
+        "vertices": 1280,
+        "triangles": 2574,
+        "dimensions_blender_m": [
+          2.479098320007324,
+          0.7650288343429565,
+          0.4881179630756378
+        ]
+      },
+      {
+        "name": "tin_vein-u6-cold-lod2",
+        "vertices": 430,
+        "triangles": 874,
+        "dimensions_blender_m": [
+          2.4836373329162598,
+          0.7588766813278198,
+          0.4901878237724304
+        ]
+      },
+      {
+        "name": "tin_vein-u6-cracked",
+        "vertices": 63619,
+        "triangles": 127252,
+        "dimensions_blender_m": [
+          2.480003833770752,
+          0.7800062894821167,
+          0.4880000054836273
+        ]
+      },
+      {
+        "name": "tin_vein-u6-cracked-lod0",
+        "vertices": 2980,
+        "triangles": 5974,
+        "dimensions_blender_m": [
+          2.4811172485351562,
+          0.7776294946670532,
+          0.4884306490421295
+        ]
+      },
+      {
+        "name": "tin_vein-u6-cracked-lod1",
+        "vertices": 1280,
+        "triangles": 2574,
+        "dimensions_blender_m": [
+          2.479098320007324,
+          0.7650288343429565,
+          0.4881179630756378
+        ]
+      },
+      {
+        "name": "tin_vein-u6-cracked-lod2",
+        "vertices": 430,
+        "triangles": 874,
+        "dimensions_blender_m": [
+          2.4836373329162598,
+          0.7538539171218872,
+          0.48348331451416016
+        ]
+      }
+    ],
+    "geometry_signatures": {
+      "boulder-full": "cb9354f6a1c9697b7d73ed51b32768a65b71a2713d59e23564d33dbd1ea909df",
+      "copper_vein-cold": "bd3adf00f860540b892b1eb0c34da2fd6ac960372dc4ad23375efa013171d4e4",
+      "copper_vein-cracked": "8f2735d86e767a29d6b741f40d77f7de12aad25d1cc6f417d1eaa9d27641f8d4",
+      "copper_vein-u2-cold": "f5afe6f915276e7aa9d4cbafea53351dd2474daa6856fb28ada386715dd0be4d",
+      "copper_vein-u2-cold-lod0": "fefd6f3110fd717b304e5a23c12100f001360357d3c80d9e244e61b591aebd86",
+      "copper_vein-u2-cold-lod1": "5c135d7460a1c40b0bb9b3472bf829b239dc40c5726a31ccaa3607b6636f6918",
+      "copper_vein-u2-cold-lod2": "fcac88822b9bd7ae697f55ac7ee6b73025b72f6366a7b54e9a1dace7870109dd",
+      "copper_vein-u2-cracked": "e0ef7b98377b9c0ce690728767c7d72e0ebfbc45a9cfd9a6b653ce121907f8a7",
+      "copper_vein-u2-cracked-lod0": "c71d37128347a7e1893b2c71cabaf3c9fee792152c4f39c357f26e4385b96c21",
+      "copper_vein-u2-cracked-lod1": "2a3ae9ea9a25d92c9afcb08618577400804693d6cef35bfc2e53d3ae6d101386",
+      "copper_vein-u2-cracked-lod2": "30c44edd08a731086ec55e6ac979c6c0b9defe9489effd2b6fe98f7178e3cc95",
+      "copper_vein-u4-cold": "b0f2040bf8670e55b101afd675c0a765cd917f3330c18e68a82e15729b781827",
+      "copper_vein-u4-cold-lod0": "416a026318239bdedf4ac167e53c699822018dd7805389ac14bb82d3243814f4",
+      "copper_vein-u4-cold-lod1": "991ac677b47d0e568d27e6a04b762e7be7ccc935260368679e3c36683a99a83e",
+      "copper_vein-u4-cold-lod2": "5428fd1ef3ac6c925a5902b7b71482e4e46db12b2ff34c3fb50395960d66eec4",
+      "copper_vein-u4-cracked": "00414951afc0ab0a3b8aca3c2f681d71c8de8f0a53b510aea696438f72d47da2",
+      "copper_vein-u4-cracked-lod0": "270a0dd47c48444d4c8cf25f33dd3afba88beef971ac360b8881e50e530eb07c",
+      "copper_vein-u4-cracked-lod1": "22d7c8ede29f107771322be82f4e14585c4bf7df6c38b4c3347d85ed0ce69178",
+      "copper_vein-u4-cracked-lod2": "5f4f12b1084e320c6e844817a4370f2caf72d5d69c4828106118cf496958dd1d",
+      "copper_vein-u6-cold": "81d1f4535cdb9fc5acebf9609f930004f0249c38990969a227393ccfba9a39ed",
+      "copper_vein-u6-cold-lod0": "c9f66988d277b17d912cc00d3e2a7efd64ceede49aef8bd0cdd3db4ee54c571c",
+      "copper_vein-u6-cold-lod1": "920ef196572f98b22ca2d46048ef48a84404e69408e0dea3f0bd183e928305d0",
+      "copper_vein-u6-cold-lod2": "eb254df34e0ef7d98637ffedc59433e203e016062cd04f3b534bc10786908e88",
+      "copper_vein-u6-cracked": "459ccef8bc6f8aeb8ef1de796b8d9ca88914bfa1a5fd12a3a7519798a237560e",
+      "copper_vein-u6-cracked-lod0": "1b581867045b5242900ddd6ce6cd27e6eaeb7990679da829acecb204791e5de4",
+      "copper_vein-u6-cracked-lod1": "3513780fdc8ada6d7c7b51177356e8e78f8da99ceb0c5cbf15ab08abcada5dc8",
+      "copper_vein-u6-cracked-lod2": "a2ed2aae69e06fc0c7d751c167ccf9a61d2b61feb0940c3597da97a887015478",
+      "copper_vein-u8-cold": "bd3adf00f860540b892b1eb0c34da2fd6ac960372dc4ad23375efa013171d4e4",
+      "copper_vein-u8-cold-lod0": "29de10a62ff2d8ba2a985e436884b873d5af7322d646bbe2d9259f1f9992e2d1",
+      "copper_vein-u8-cold-lod1": "a936f2b2bbc468157c1bf3b9b9e5485fe594ec0f89b2185dabf9cd2c4eb64c4f",
+      "copper_vein-u8-cold-lod2": "ca53093ecc2006287768ed64cc0e9876ad4d1b24e69e90b366f02066ad311978",
+      "copper_vein-u8-cracked": "8f2735d86e767a29d6b741f40d77f7de12aad25d1cc6f417d1eaa9d27641f8d4",
+      "copper_vein-u8-cracked-lod0": "584e2c8f9d1410c60486019490425d52022f4baf976ed9e484b0e8e733a1a27e",
+      "copper_vein-u8-cracked-lod1": "02affb01dd89c7343e3a2809b10b242e620941a4cf4d41a32c0d8ca8cd523bcd",
+      "copper_vein-u8-cracked-lod2": "0e77fb4fe192c48b158fec7f0400d1aa931d23cfa71d1b483060bd799f34f83a",
+      "ember_iron_vein-cold": "66c27f669370062451e3cab66cf7473e335c8e5adeb344ca753dd643d8fda2d1",
+      "ember_iron_vein-cracked": "66c27f669370062451e3cab66cf7473e335c8e5adeb344ca753dd643d8fda2d1",
+      "ember_iron_vein-u2-cold": "3d1408415870a166b6c8503fb3a5713ca8fbe18db4ca6d0ab7c33ddc37143699",
+      "ember_iron_vein-u2-cold-lod0": "c3ccfbe645cc9a23c5a9bf7bb78d7286ca8e96bb3c1c8056194ca502d26a8fa4",
+      "ember_iron_vein-u2-cold-lod1": "76a734289c1e1451dcecdeaca53822a7c99e10b1ebf147856ff936c5baa2cd27",
+      "ember_iron_vein-u2-cold-lod2": "2c675b9bb8115e50d99762784d7ff778c12ab7e23d17f6b7ed949016e4f920e2",
+      "ember_iron_vein-u2-cracked": "3d1408415870a166b6c8503fb3a5713ca8fbe18db4ca6d0ab7c33ddc37143699",
+      "ember_iron_vein-u2-cracked-lod0": "c3ccfbe645cc9a23c5a9bf7bb78d7286ca8e96bb3c1c8056194ca502d26a8fa4",
+      "ember_iron_vein-u2-cracked-lod1": "76a734289c1e1451dcecdeaca53822a7c99e10b1ebf147856ff936c5baa2cd27",
+      "ember_iron_vein-u2-cracked-lod2": "2c675b9bb8115e50d99762784d7ff778c12ab7e23d17f6b7ed949016e4f920e2",
+      "ember_iron_vein-u4-cold": "6daeb0f8ac6df28a4769d26aa75f816055b0cbdc511748f3d42178db811b0ce6",
+      "ember_iron_vein-u4-cold-lod0": "f6bebe25cdf11baed66a906935b9be35a2e99e12669e549928324a7f4dadbc0a",
+      "ember_iron_vein-u4-cold-lod1": "e5108656879f006f4ededa14b142c452bbd61eb84893490d25028d1571ad25b8",
+      "ember_iron_vein-u4-cold-lod2": "fe320973ab5ef8c88a6d323d5ace8576c830b95e8e6bb3ceb89b6fd6f9dae54a",
+      "ember_iron_vein-u4-cracked": "6daeb0f8ac6df28a4769d26aa75f816055b0cbdc511748f3d42178db811b0ce6",
+      "ember_iron_vein-u4-cracked-lod0": "f6bebe25cdf11baed66a906935b9be35a2e99e12669e549928324a7f4dadbc0a",
+      "ember_iron_vein-u4-cracked-lod1": "e5108656879f006f4ededa14b142c452bbd61eb84893490d25028d1571ad25b8",
+      "ember_iron_vein-u4-cracked-lod2": "fe320973ab5ef8c88a6d323d5ace8576c830b95e8e6bb3ceb89b6fd6f9dae54a",
+      "ember_iron_vein-u6-cold": "66c27f669370062451e3cab66cf7473e335c8e5adeb344ca753dd643d8fda2d1",
+      "ember_iron_vein-u6-cold-lod0": "71f275cb96718db0fcf0de6729d03bc1e5929a0b21fa8990d84360b40f522523",
+      "ember_iron_vein-u6-cold-lod1": "28bd476654ed17e126325b9680ee233aabd0fd126305f79e787e49ecb85bab4e",
+      "ember_iron_vein-u6-cold-lod2": "f2ef3fb504b7f50d87767cd8b82385cb5ef7f189580cdbf23e354af1dff2b553",
+      "ember_iron_vein-u6-cracked": "66c27f669370062451e3cab66cf7473e335c8e5adeb344ca753dd643d8fda2d1",
+      "ember_iron_vein-u6-cracked-lod0": "71f275cb96718db0fcf0de6729d03bc1e5929a0b21fa8990d84360b40f522523",
+      "ember_iron_vein-u6-cracked-lod1": "28bd476654ed17e126325b9680ee233aabd0fd126305f79e787e49ecb85bab4e",
+      "ember_iron_vein-u6-cracked-lod2": "f2ef3fb504b7f50d87767cd8b82385cb5ef7f189580cdbf23e354af1dff2b553",
+      "FINISHED repaired closed host": "0fcf562473183e64126f43651806b464fab3e35ddabde53d53008392998f0c11",
+      "intact-reference-copper_vein": "9493cec4dba602f35c8487d03baacb6cf58a03f02ecc8b7e7aa8e3e2967cbde9",
+      "intact-reference-ember_iron_vein": "bcbc8657b9ee9ccc6e0fe6f1bc61308a16ee767ce56eb5684f80ea23c0020ff2",
+      "intact-reference-iron_vein": "c30db45aae5bb86296c0864c96baf744dae71896be69419383f2146a123cc097",
+      "intact-reference-silver_vein": "0a6bb572d9f72809e0247ae6e90d43486a839b6da6a8e0dacbf90b805b6bf464",
+      "intact-reference-tin_vein": "64266a3e1b13eca7972ad0546cbef8103ee5c324ecbe4f5f113b737e00e8c6e2",
+      "iron_vein-cold": "38cfed565daf83b12a2c43119b943470fdaf3ffedf7c6cc0415e0a957ffb1888",
+      "iron_vein-u2-cold": "8819af7aedd686acb290bed3962c86c66d3792a3a31a2fb5e7335a747e892c14",
+      "iron_vein-u2-cold-lod0": "ecfe2f1f102fe4a844cbff805c610b7929677cc50a2836afd793dafec8de780f",
+      "iron_vein-u2-cold-lod1": "bc26028b8707ac4790495173ef852ea005ff87994616376a3b3b46c711404eee",
+      "iron_vein-u2-cold-lod2": "68c68dc1e93ea5b68551dc5ac48690f842e013a60569bc6b3b0ff3744b5754d2",
+      "iron_vein-u4-cold": "ca3ee4029736b18b990642bf1232862ab1892e915d9fdcf52f832a125bc55992",
+      "iron_vein-u4-cold-lod0": "ff5ffee001a53d3ca0fe4c11b9d0aebb7a2d097b5d5ec591684ea7ec2d2f5493",
+      "iron_vein-u4-cold-lod1": "5cfee62eeefb35d25c7f322c325d4397ce817885adba4257147408a9b4f5d244",
+      "iron_vein-u4-cold-lod2": "01454417ac9e32af0d9f526a7381e30f18e77f4e0188c76a4defdb3606ee3725",
+      "iron_vein-u6-cold": "11d0b2bc8e14bc94957c5d04161085bd1c2cc739ce0abac6bc330ad399918dbb",
+      "iron_vein-u6-cold-lod0": "aa883e91dc15c2aced7313c236269a81dd9fbd557db7b911245dedc6f667d591",
+      "iron_vein-u6-cold-lod1": "67a246a914c2c03adf12c4d83afb8ce0574bf83338ed2d8c1a72e3d5a89f7cc5",
+      "iron_vein-u6-cold-lod2": "625e477fae013dbba19592bc1031d071c7d6fa58866eba9cf5e97f38eadecafd",
+      "iron_vein-u8-cold": "38cfed565daf83b12a2c43119b943470fdaf3ffedf7c6cc0415e0a957ffb1888",
+      "iron_vein-u8-cold-lod0": "c19dde33b2a202fc07123378c7166b88f356dab2d6ce369537211b2446261932",
+      "iron_vein-u8-cold-lod1": "62ea04e4e8b0c4f26b8085e6d8529ba34c8a1afb72fe227bc7211cd98fb690ca",
+      "iron_vein-u8-cold-lod2": "1168e512ea4d83fbd45bce2ec4b6d86867c7a0f106a288c5d6f2f7eceddce183",
+      "REVIEW copper_vein-u2-cracked": "ee19b03b029732e11c9339bd4f02e936afa3213ea924b72379a6d4044cfb163a",
+      "REVIEW copper_vein-u6-cold": "836abb2c899c5863cc8763e587a78486f047385280cf67ddfb0551820e406bdd",
+      "REVIEW copper_vein-u8-cold": "f94105c8582ce3a302ebb2dc4d9f330a1b6ce2b7452b480cb07bd0f188b53121",
+      "REVIEW ember_iron_vein-u2-cracked": "f5e0f225ee553a07d8a2e67a49d904043fe14b179e4d494ec16d210dae3c7230",
+      "REVIEW ember_iron_vein-u4-cold": "d5560853d92a57a73a30abd7fe822d8ad6f69177f03e7059ec528b8271e8955b",
+      "REVIEW ember_iron_vein-u6-cold": "cd33b5ed04f0c86a55c07cb492728b1d5863019943089f1c6e262e664b380c06",
+      "REVIEW iron_vein-u2-cold": "a2b0409da5e5720caddb1b4a99701e35a80140f4cb7ac87f6fe453da88e72267",
+      "REVIEW iron_vein-u6-cold": "2c6a5dac49257deb9732fa31766382669894214b99c04193492479d9b0c1ceca",
+      "REVIEW iron_vein-u8-cold": "712531db793994d01adbd7abaaf265575ba74f2e6ed547cc6397e1452f7398ac",
+      "REVIEW silver_vein-u2-cracked": "cbeae58d920c0d5e6366502f197bd9558d9a3beb3fb8e5392265fe4f5aff53d1",
+      "REVIEW silver_vein-u4-cold": "2fa8af198cf7f44e6b5082eb90d4833e5e49edb0f4bf442864f637df8bc2b192",
+      "REVIEW silver_vein-u6-cold": "04e0b59179956d9d54c5e38610db29b79e2be2d20439fe951d9f60bff2bcc617",
+      "REVIEW tin_vein-u2-cracked": "7098f4b2e4722f6eabe8fb7de8d497a8f0d00391972490b8ca5cdd96f1cadfb0",
+      "REVIEW tin_vein-u4-cold": "5101d0bdd9d26e38d341c8d8a75cfe44545d464ee0a9c37d2cbdd8c30442c628",
+      "REVIEW tin_vein-u6-cold": "4691b69677b1efbd90c1c78834ccdeaf0babf51153de0da50722e9bee0302b18",
+      "silver_vein-cold": "20ea796bd8fc0011dc6009dcbe8c6237ea20449ff15ca279b9dddcc577448a51",
+      "silver_vein-cracked": "48a8a521c801220abce2cd807c253ea8067fd02e6a333cf814c0e82c9a09fa32",
+      "silver_vein-u2-cold": "95321e54dcd915822edf0051ed4e81d4d749db7e29949df91771290287952784",
+      "silver_vein-u2-cold-lod0": "e3b47ebe79ade9c615aa893f25bc0896e31bdcdb460d65dc222d38b83035fe35",
+      "silver_vein-u2-cold-lod1": "8dd0e93cfb4e7b6336ea5441244025247619b283380d2e9fd58bd0e2dea3fda5",
+      "silver_vein-u2-cold-lod2": "30a546f2e7a6f7cb6f06139d4a9fc39d0faf052e48f7c6295c79970e612d7a9e",
+      "silver_vein-u2-cracked": "ac6be8f5cbfc2253373ac241c795f8e2a5bf19711205acbb1e4b196b6d8181c8",
+      "silver_vein-u2-cracked-lod0": "01d9175753e9fb14abc378f2c3b37c9ee3790500c60fb90d0fecdc5496ac1d39",
+      "silver_vein-u2-cracked-lod1": "c3b22664e020a49b1781c87bf6a331a7e8ddf50cfe23d310641634d06ce17aae",
+      "silver_vein-u2-cracked-lod2": "d71ed747749d889ac8061cf3a5ef92c0d00e44b55406babe7fc29da5f46228cd",
+      "silver_vein-u4-cold": "e226fc56a51e8c21d26f40682579b593cb5e820e7b10c27bf7091b665f845909",
+      "silver_vein-u4-cold-lod0": "8f0cc49f0500124fa5121356a22f6faa1555af35f3a67f72edc4fea55cdd197f",
+      "silver_vein-u4-cold-lod1": "87425c5995c07b062a7c0f0e319855e98efb284fc78443b6eac39ae0b78170f1",
+      "silver_vein-u4-cold-lod2": "de19498c355e57e08747076ec5c50cee9dbad980fef9531d945141f295c26fe4",
+      "silver_vein-u4-cracked": "6d9e4cb21a4353b676e5b7acdd9fb642d413eeb28043b5e83991c4162fdceb62",
+      "silver_vein-u4-cracked-lod0": "8c3dff3a33389c3c5c19cf204d7ceacdf89c97f367557c59b4c5ec748a862b02",
+      "silver_vein-u4-cracked-lod1": "d6d180d3395d05a831817da45efec08eec9b19be881da696a32012df97f3e72a",
+      "silver_vein-u4-cracked-lod2": "2e447a5f514fa93721c53097ed8d1da36b64d31c861ea92bc8e772d597ee4520",
+      "silver_vein-u6-cold": "20ea796bd8fc0011dc6009dcbe8c6237ea20449ff15ca279b9dddcc577448a51",
+      "silver_vein-u6-cold-lod0": "d6b5a712fb19fd60062c85947f72ef60dcbe2fc07760049de97f50b941e5ba99",
+      "silver_vein-u6-cold-lod1": "1d1a1088d7c5739150c1e72a8969b84d51cdfa9d09c8e9040bdbec9626eb23d9",
+      "silver_vein-u6-cold-lod2": "2cee5943e043c096b3ef974c523f7c8bd55877100775ed4d9c6646b840cb040d",
+      "silver_vein-u6-cracked": "48a8a521c801220abce2cd807c253ea8067fd02e6a333cf814c0e82c9a09fa32",
+      "silver_vein-u6-cracked-lod0": "7738ee5c5d33fe8ebfc7f6c5ccf50610cdef0f5d40217f085e8a1a0e7dced6ef",
+      "silver_vein-u6-cracked-lod1": "cd4affc594726cf5821319d7a9451dd6022c21bf424234d8612ddaf24bd64bb6",
+      "silver_vein-u6-cracked-lod2": "25e8589a91e18db8db8896538877feefa4dca64a4eebc6abd83181cb87a1f628",
+      "SOURCE approved reduced quiet rock": "53bfbed7d0238b7fd313b810e5415075cdb5319542c73da4c96716b6f1e3908d",
+      "SOURCE untouched normalized ART02 rock": "a407e1457d52157f8bd669288d69ce802074c30c2fffe874afaf1f767bd62d1f",
+      "tin_vein-cold": "4691b69677b1efbd90c1c78834ccdeaf0babf51153de0da50722e9bee0302b18",
+      "tin_vein-cracked": "f0d78f8f123758af72be681bc1806c2b74c891b3fe965d2d69db706292ffb70b",
+      "tin_vein-u2-cold": "7dd12380fcb760278c0c0a8f0b14ea324a17eb3c00b837f89b642ee430206241",
+      "tin_vein-u2-cold-lod0": "8cba8e76efe8d19eb1d758f19a14f6fdd396ee3dc2750a956b83bd2675fb5204",
+      "tin_vein-u2-cold-lod1": "6215842e65a9dc98ff8d5f725bf73ade8da5afc4e6bdf9a57cb819f6d074f512",
+      "tin_vein-u2-cold-lod2": "2451b8e053c2d45658632582f26682caa1bedc04a296e0c7c90eec0e292c2ab7",
+      "tin_vein-u2-cracked": "f1709153df0190c294f0c7f2a7634e20fa4cc7823773e7b5de302242a5a7bde0",
+      "tin_vein-u2-cracked-lod0": "83ce396de8f9f1941f3d7e68fac5392e58c01f400ef0f2d8c98ea2b5a1744a62",
+      "tin_vein-u2-cracked-lod1": "2b864b811a2de2129e7728e3431bc504ada807a28411bf9c3a2f83f7b5025dd1",
+      "tin_vein-u2-cracked-lod2": "fa5c3c300af41e1dbb58b11f48c2031e3e1bbdb0aabe29b01372d9e3cf9a6a2d",
+      "tin_vein-u4-cold": "0f78ac811f42762bb82f62cfbd9bbbfec14aea9532a0ba9d3f6d6b6fc069f46f",
+      "tin_vein-u4-cold-lod0": "e36b3d2c4a467a59de2328a97c8d38f6155e5ab29240ae5de70ad7cb049acd33",
+      "tin_vein-u4-cold-lod1": "32c6c29c48ab70782fd0b96b534e74c57c7afdae6a5106f1079ec7999cbbb9cb",
+      "tin_vein-u4-cold-lod2": "75284d04d7819a724a44285e942405d734229900f2ccd3267c1c9284953b077e",
+      "tin_vein-u4-cracked": "4df2d91b79fe0608d3ce918930d3a89693c642b85f4aee917a41c4219a186f38",
+      "tin_vein-u4-cracked-lod0": "46c31b4d47e77c7d9a6cad7a3fb4522d59e802a9a93ec45932c74b9f74eb07c2",
+      "tin_vein-u4-cracked-lod1": "8ae9f161e9b7a132ad070f4996982dead9154690670b334298a6411276da9e31",
+      "tin_vein-u4-cracked-lod2": "49970aafcdcb5073f1c26864e0315f5bd7cc30d9003b87cf98671ed33f9a0f15",
+      "tin_vein-u6-cold": "4691b69677b1efbd90c1c78834ccdeaf0babf51153de0da50722e9bee0302b18",
+      "tin_vein-u6-cold-lod0": "82407b11c1db019a81d233a393bbd67e55c65594e6bd8fb2252f5e41bdfd5530",
+      "tin_vein-u6-cold-lod1": "8133da5e0bd01084799d7123598301379c8c8e5d6cfcce898de36e552bccc81b",
+      "tin_vein-u6-cold-lod2": "b493fe1702febb5b1522ca3797d86693651672d120402fbc55b9d71ce9da258b",
+      "tin_vein-u6-cracked": "f0d78f8f123758af72be681bc1806c2b74c891b3fe965d2d69db706292ffb70b",
+      "tin_vein-u6-cracked-lod0": "7fe31a970001ec143ff413c6812199e6fa27432a58db79fb3483ca574a334e9c",
+      "tin_vein-u6-cracked-lod1": "01e40cd4a962d6b08a9f1edb374209a4fb7217554a567ae221c5758e2d4953bf",
+      "tin_vein-u6-cracked-lod2": "fc1554af1d83d758c72e85f208083b352871dc4eaa08b5455ccd6072f7b73727"
+    },
+    "original_geometry_and_poses_equal": true,
+    "images": [
+      {
+        "name": "C5 retained shared linear ORM",
+        "size": [
+          1024,
+          1024
+        ],
+        "packed": true,
+        "has_data": true
+      },
+      {
+        "name": "C5 shared periodic stone albedo",
+        "size": [
+          1024,
+          1024
+        ],
+        "packed": true,
+        "has_data": true
+      },
+      {
+        "name": "Image_0",
+        "size": [
+          2048,
+          2048
+        ],
+        "packed": true,
+        "has_data": true
+      },
+      {
+        "name": "Image_0.001",
+        "size": [
+          1024,
+          1024
+        ],
+        "packed": true,
+        "has_data": true
+      },
+      {
+        "name": "Image_1",
+        "size": [
+          2048,
+          2048
+        ],
+        "packed": true,
+        "has_data": true
+      },
+      {
+        "name": "Image_1.001",
+        "size": [
+          1024,
+          1024
+        ],
+        "packed": true,
+        "has_data": true
+      },
+      {
+        "name": "R6 C5 surface fields - mineral scar height coverage",
+        "size": [
+          512,
+          1280
+        ],
+        "packed": true,
+        "has_data": true
+      }
+    ],
+    "changed_master": "Added packed projected field atlas and editable controls; source geometry untouched.",
+    "scope": "R6 packed master reopened in a separate Blender process. Original geometry plus source-derived surface fields; no raised faceted mesh."
+  },
+  "limits": [
+    "Current RTX 5090 measurements only; no minimum-hardware clearance.",
+    "Harness-paced native acquisition and inspection sites; no continuous campaign or owner visual acceptance.",
+    "No raised ore volume or new collision/terrain seat is approved on faceted terrain."
+  ]
+}
