@@ -32,6 +32,9 @@ record the reused worker checks and the short headless main asset import.
 A2 is integrated and pushed on main as `27e742d`.
 The [A2 result](mainline-fauna-a2-result-2026-09-15.md)
 records the finished fauna, native checks and the small missing C3 shader repair.
+PLAY-01's causal seam-projection improvement is integrated and pushed as `d396d9e`.
+The [movement result](play01-movement-result-2026-09-15.md) records the measured
+short-route benefit, delayed decoration tradeoff and still-open underground lag.
 The inventory below preserves the original coordination inspection.
 
 At inspection, local main, origin/main and the live GitHub main all point to
@@ -86,9 +89,9 @@ to their own future decision/bug work; art adoption must not silently decide the
    support. [Exact worker prompt and workspace](mainline-art-a1-worker-2026-09-15.md).
 2. **A2 — completed on main and pushed.** Boar, wolf, stag and preserved moth; current
    enemy IDs, bodies, attack clocks, statuses, drops and passive habits remain.
-   [Worker result](mainline-fauna-a2-result-2026-09-15.md); integrate and push the returned commit before the six unfinished replacement rigs.
+   [Published result](mainline-fauna-a2-result-2026-09-15.md); finished-fauna adoption is complete.
    [Prepared worker prompt and D: workspace](mainline-fauna-a2-worker-2026-09-15.md).
-3. **PLAY-01 — checked worker ready for main integration.** Stone-seam decoration
+3. **PLAY-01 — causal improvement integrated and pushed.** Stone-seam decoration
    now shares the resource work budget; the representative worst walking frame
    fell from 188 to 45 ms. **PLAY-03 — underground lag remains open.** The owner
    clarified that access is not the issue. A current-code cave sample did not
@@ -96,6 +99,7 @@ to their own future decision/bug work; art adoption must not silently decide the
    [Prepared movement worker and D: workspace](play01-movement-worker-2026-09-15.md).
 4. **PLAY-02 — canopy completeness.** Inspect the reported missing portions and
    distance transitions; fix the demonstrated geometry/material/detail fault.
+   [Prepared canopy worker and D: workspace](play02-canopy-worker-2026-09-15.md).
 5. **Remaining mob production**, one existing enemy role per rig/animation/runtime
    slice. Deferred owner playtesting does not hold this up. Physical era variants
    and boss art retain explicit backlog entries.
@@ -106,7 +110,7 @@ to their own future decision/bug work; art adoption must not silently decide the
 
 R9 is stopped throughout this sequence. No additional visual approval, baseline
 comparison, performance clearance or independent review is required for approved
-art. PLAY-01 has a checked causal improvement awaiting integration and owner
+art. PLAY-01 has a published causal improvement awaiting owner
 comfort feedback; PLAY-02/03/04 remain open. PLAY-03 is lag underground, not access.
 
 The retained preview log also records three signal-lifetime errors in
@@ -145,5 +149,6 @@ handoff check. A1 now has [passed production import and gameplay checks](mainlin
 from its worker, reused during completed main integration. Main's assets were
 prepared with one 31-second hidden headless import. A2's worker evidence was
 also reused, followed by a six-second headless import on main. Both adoption
-slices are integrated and pushed; movement/terrain fixes, canopy completeness
-and replacement rigs remain the next work.
+slices and the demonstrated PLAY-01 seam-stall fix are integrated and pushed.
+Underground lag remains unconfirmed; canopy completeness and replacement rigs
+can proceed while owner feedback is deferred.

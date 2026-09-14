@@ -7,9 +7,10 @@ Wave 7, and thirty apparently unmerged art branches have equivalent patches on
 main. [A1's approved R8 runtime art is now integrated and pushed on main as
 `35cee73`](mainline-art-a1-result-2026-09-15.md). [A2 finished fauna](mainline-fauna-a2-result-2026-09-15.md)
 is integrated and pushed as `27e742d`. [PLAY-01/03 movement and underground work](play01-movement-worker-2026-09-15.md)
-now has a [checked seam-arrival fix for integration](play01-movement-result-2026-09-15.md).
+has a [published seam-arrival fix on main as `d396d9e`](play01-movement-result-2026-09-15.md).
 PLAY-03 remains significant underground lag, not an access defect (owner correction
-during this worker). Canopy completeness follows. R9 stays stopped.
+during this worker). [Canopy completeness is the next prepared slice](play02-canopy-worker-2026-09-15.md).
+R9 stays stopped.
 
 The owner currently cannot playtest and has approved continued prototype work
 until told otherwise. Human feedback remains deferred; it does not block the

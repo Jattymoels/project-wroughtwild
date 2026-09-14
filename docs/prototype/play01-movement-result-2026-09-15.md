@@ -161,9 +161,17 @@ No additional run is required for ordinary coordinator integration of unchanged 
 
 ## Integration and ordinary play
 
-This is a checked worker delivery for main integration. The exact worker commit
-is returned with the handoff. No main integration or remote push was performed by
-this worker. The coordinator can cherry-pick that commit and reuse these checks.
+Worker commit `a0635d1fb7f81d1cb9150f2cf3c78d8cc3e797e8` was integrated onto main
+`4cec607` as `d396d9e`, and the ordinary `4cec607..d396d9e` push to origin/main
+succeeded. There were no intervening gameplay changes. The coordinator verified
+that the integrated game/simulation/tuning exactly match the checked commit and
+that current owner guidance was preserved; the committed diff check passed.
+
+The worker's geometry/lifecycle and Continue checks and validated movement trace
+were reused. No engine run, asset import, camera test or benchmark was repeated
+during integration: this slice changes existing scripts and introduces no new
+production asset/import dependency. Original diagnostic failures and corrected
+offline validation remain in the worker's D: evidence. Owner playtesting is deferred.
 
 After integration, launch the normal game:
 
@@ -175,4 +183,5 @@ Use Continue or start a normal world; no PLAY01 flag is needed. Walk through a
 resource-rich area, then try the cave/dug location that previously became slow.
 Save and Continue normally. Existing LF campaigns keep their usual
 `--living-frontier-wave7` launch option. PLAY-03 remains the underground-lag
-follow-up; canopy completeness and the six approved rigs remain the next art work.
+follow-up; [canopy completeness](play02-canopy-worker-2026-09-15.md) and the six
+approved rigs remain the next art work.

@@ -21,9 +21,9 @@ start the runtime merge, new workers or another R9 review as part of writing it.
 
 | ID | Owner observation | Follow-up |
 | --- | --- | --- |
-| PLAY-01 | Very laggy through repeated little interruptions/judder, rather than delayed input. Stuttering was too much for comfortable play. | Highest-priority performance follow-up after adoption. Investigate frame-time spikes during ordinary movement; average FPS alone does not describe the complaint. Cause is unconfirmed. |
+| PLAY-01 | Very laggy through repeated little interruptions/judder, rather than delayed input. Stuttering was too much for comfortable play. | A demonstrated stone-seam projection stall is fixed on main as `d396d9e`; representative worst frame improved from 188 to 45 ms. Other stalls and owner comfort feedback remain open. |
 | PLAY-02 | Tree canopies look as though some parts have not been created. | Inspect the apparent missing/incomplete canopy portions at player height and across distance changes. Geometry, material visibility and detail switching are possibilities to inspect, not diagnosed causes. |
-| PLAY-03 | The player accidentally went underground; lag immediately became much worse. | Investigate unintended below-terrain access and the additional stuttering there. Exact location/reproduction and cause are unknown. Preserve the player's save; do not assume normal intended underground travel. |
+| PLAY-03 | Significant lag underground; owner clarified that access underground is not the defect. | Still open: one current-code cave sample did not reproduce sustained slowdown. Exact affected location/reproduction and cause are unknown. Preserve legitimate caves/digging and the player's state. |
 | PLAY-04 | Most new stations were not interacted with yet; the owner intends to try them in a later playtest. | Station usability remains unreviewed by the owner. Existing automated evidence is not a substitute for that feedback. |
 
 **Owner correction, 15 September 2026:** PLAY-03 concerns significant lag while

@@ -42,9 +42,13 @@ Record owner playtesting as deferred; do not claim the owner has personally trie
 or liked an unplayed result. Known bugs remain open until fixed, and unavailable
 feedback is not evidence that an issue passed. Preserve saves, progression and
 existing gameplay rules. The current priorities are finished fauna adoption,
-reported stuttering/underground access, canopy completeness, then the remaining
-replacement-mob rigs in small playable slices. Deferred owner station/campaign
+reported stuttering/significant underground lag, canopy completeness, then the
+remaining replacement-mob rigs in small playable slices. Deferred owner station/campaign
 feedback does not hold up this sequence. R9 remains stopped.
+
+The owner clarified in the movement worker on 15 September that PLAY-03 is
+significant lag underground, not difficulty or unintended access underground.
+Preserve legitimate cave/digging behavior; do not invent an access restriction.
 
 ### Build the look, feel and atmosphere through playable iterations
 
