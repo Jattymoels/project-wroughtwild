@@ -1,0 +1,568 @@
+{
+  "models": {
+    "boar": {
+      "source": "build/art05/red-route-handoff/game/art05/assets/boar-mid.glb",
+      "source_sha256": "60326aebe458b50e9782d57e00b4834b9fa23d10fd02356b7a6d94eddbf68b76",
+      "bytes": 7147108,
+      "triangles": 64983,
+      "clips": [
+        "idle",
+        "walk",
+        "root",
+        "turn",
+        "windup",
+        "release"
+      ],
+      "scar": {
+        "half_width_metres": 0.016,
+        "core_half_width_metres": 0.0045,
+        "recess_metres": 0.004,
+        "projection_step_metres": 0.012,
+        "mask_size": 2048,
+        "peak_emission": 3.2,
+        "minimum_light": 0.25,
+        "period_seconds": 4.0,
+        "crest_width": 0.18,
+        "colour": [
+          1.0,
+          0.12,
+          0.012
+        ],
+        "paths": [
+          {
+            "name": "left_shield",
+            "side": -1,
+            "width": 1.0,
+            "offset": 0.0,
+            "points": [
+              [
+                0.08,
+                1.04
+              ],
+              [
+                0.15,
+                0.99
+              ],
+              [
+                0.12,
+                0.92
+              ],
+              [
+                0.22,
+                0.86
+              ],
+              [
+                0.18,
+                0.8
+              ],
+              [
+                0.27,
+                0.73
+              ],
+              [
+                0.25,
+                0.65
+              ],
+              [
+                0.32,
+                0.58
+              ]
+            ]
+          },
+          {
+            "name": "left_rear_branch",
+            "side": -1,
+            "width": 0.7,
+            "offset": 0.33,
+            "points": [
+              [
+                0.22,
+                0.86
+              ],
+              [
+                0.05,
+                0.84
+              ],
+              [
+                -0.01,
+                0.78
+              ],
+              [
+                -0.12,
+                0.75
+              ],
+              [
+                -0.18,
+                0.68
+              ],
+              [
+                -0.27,
+                0.69
+              ]
+            ]
+          },
+          {
+            "name": "left_forward_branch",
+            "side": -1,
+            "width": 0.65,
+            "offset": 0.18,
+            "points": [
+              [
+                0.15,
+                0.99
+              ],
+              [
+                0.28,
+                0.98
+              ],
+              [
+                0.31,
+                0.91
+              ],
+              [
+                0.39,
+                0.87
+              ],
+              [
+                0.4,
+                0.8
+              ]
+            ]
+          },
+          {
+            "name": "right_shield",
+            "side": 1,
+            "width": 0.9,
+            "offset": 0.1,
+            "points": [
+              [
+                0.1,
+                1.05
+              ],
+              [
+                0.13,
+                0.99
+              ],
+              [
+                0.21,
+                0.95
+              ],
+              [
+                0.18,
+                0.88
+              ],
+              [
+                0.25,
+                0.83
+              ],
+              [
+                0.21,
+                0.75
+              ],
+              [
+                0.29,
+                0.69
+              ],
+              [
+                0.28,
+                0.59
+              ]
+            ]
+          },
+          {
+            "name": "right_branch",
+            "side": 1,
+            "width": 0.6,
+            "offset": 0.38,
+            "points": [
+              [
+                0.18,
+                0.88
+              ],
+              [
+                0.03,
+                0.86
+              ],
+              [
+                -0.05,
+                0.78
+              ],
+              [
+                -0.14,
+                0.81
+              ],
+              [
+                -0.23,
+                0.75
+              ]
+            ]
+          }
+        ]
+      },
+      "maps": {
+        "base": "boar-base.png",
+        "orm": "boar-orm.png",
+        "normal": "boar-normal.png",
+        "scar": "boar-scar.png"
+      }
+    },
+    "wolf": {
+      "source": "build/fauna-art03/fauna-handoff/wolf/review/wolf-mid.glb",
+      "source_sha256": "8fa25055d7f41076dc1d651e99aec049656ee7e8dfe3383498b31efb933e1df1",
+      "bytes": 5479852,
+      "triangles": 62147,
+      "clips": [
+        "idle",
+        "walk",
+        "root",
+        "turn",
+        "jaw",
+        "windup",
+        "release"
+      ],
+      "scar": {
+        "half_width_metres": 0.018,
+        "core_half_width_metres": 0.005,
+        "recess_metres": 0.005,
+        "projection_step_metres": 0.012,
+        "mask_size": 2048,
+        "peak_emission": 2.8,
+        "minimum_light": 0.22,
+        "period_seconds": 4.0,
+        "crest_width": 0.2,
+        "colour": [
+          0.19,
+          0.56,
+          0.75
+        ],
+        "paths": [
+          {
+            "name": "left_shoulder",
+            "side": -1,
+            "width": 1,
+            "offset": 0,
+            "points": [
+              [
+                0.16,
+                0.98
+              ],
+              [
+                0.21,
+                0.91
+              ],
+              [
+                0.18,
+                0.85
+              ],
+              [
+                0.23,
+                0.78
+              ],
+              [
+                0.2,
+                0.73
+              ],
+              [
+                0.26,
+                0.67
+              ],
+              [
+                0.24,
+                0.6
+              ]
+            ]
+          },
+          {
+            "name": "left_flank",
+            "side": -1,
+            "width": 0.7,
+            "offset": 0.25,
+            "points": [
+              [
+                0.23,
+                0.78
+              ],
+              [
+                0.08,
+                0.75
+              ],
+              [
+                0.03,
+                0.68
+              ],
+              [
+                -0.08,
+                0.67
+              ],
+              [
+                -0.13,
+                0.6
+              ]
+            ]
+          },
+          {
+            "name": "right_shoulder",
+            "side": 1,
+            "width": 0.95,
+            "offset": 0.1,
+            "points": [
+              [
+                0.14,
+                0.97
+              ],
+              [
+                0.21,
+                0.91
+              ],
+              [
+                0.18,
+                0.85
+              ],
+              [
+                0.25,
+                0.8
+              ],
+              [
+                0.22,
+                0.73
+              ],
+              [
+                0.28,
+                0.66
+              ],
+              [
+                0.26,
+                0.62
+              ]
+            ]
+          },
+          {
+            "name": "right_flank",
+            "side": 1,
+            "width": 0.6,
+            "offset": 0.3,
+            "points": [
+              [
+                0.22,
+                0.73
+              ],
+              [
+                0.08,
+                0.76
+              ],
+              [
+                0.02,
+                0.7
+              ],
+              [
+                -0.07,
+                0.72
+              ],
+              [
+                -0.16,
+                0.65
+              ]
+            ]
+          }
+        ]
+      },
+      "maps": {
+        "base": "wolf-base.png",
+        "orm": "wolf-orm.png",
+        "normal": "wolf-normal.png",
+        "scar": "wolf-scar.png"
+      }
+    },
+    "stag": {
+      "source": "build/fauna-art03/fauna-handoff/stag/review/stag-mid.glb",
+      "source_sha256": "4aec6038f26af7fe77df3c0ef255b07c0e68daf2f0c41af8568a16c16521bfb2",
+      "bytes": 6040368,
+      "triangles": 68257,
+      "clips": [
+        "idle",
+        "walk",
+        "graze",
+        "turn"
+      ],
+      "scar": {
+        "half_width_metres": 0.025,
+        "core_half_width_metres": 0.006,
+        "recess_metres": 0.006,
+        "projection_step_metres": 0.016,
+        "mask_size": 2048,
+        "peak_emission": 2.8,
+        "minimum_light": 0.22,
+        "period_seconds": 4.0,
+        "crest_width": 0.2,
+        "colour": [
+          0.7,
+          0.32,
+          0.04
+        ],
+        "paths": [
+          {
+            "name": "left_neck",
+            "side": -1,
+            "width": 1,
+            "offset": 0,
+            "points": [
+              [
+                0.74,
+                1.93
+              ],
+              [
+                0.69,
+                1.85
+              ],
+              [
+                0.72,
+                1.78
+              ],
+              [
+                0.63,
+                1.72
+              ],
+              [
+                0.65,
+                1.65
+              ],
+              [
+                0.56,
+                1.59
+              ],
+              [
+                0.55,
+                1.5
+              ],
+              [
+                0.5,
+                1.42
+              ],
+              [
+                0.51,
+                1.32
+              ]
+            ]
+          },
+          {
+            "name": "left_shoulder",
+            "side": -1,
+            "width": 0.7,
+            "offset": 0.25,
+            "points": [
+              [
+                0.65,
+                1.65
+              ],
+              [
+                0.47,
+                1.68
+              ],
+              [
+                0.39,
+                1.62
+              ],
+              [
+                0.27,
+                1.64
+              ],
+              [
+                0.18,
+                1.56
+              ],
+              [
+                0.08,
+                1.56
+              ]
+            ]
+          },
+          {
+            "name": "right_neck",
+            "side": 1,
+            "width": 1,
+            "offset": 0.15,
+            "points": [
+              [
+                0.74,
+                1.93
+              ],
+              [
+                0.69,
+                1.85
+              ],
+              [
+                0.72,
+                1.78
+              ],
+              [
+                0.63,
+                1.72
+              ],
+              [
+                0.65,
+                1.65
+              ],
+              [
+                0.56,
+                1.59
+              ],
+              [
+                0.55,
+                1.5
+              ],
+              [
+                0.5,
+                1.42
+              ],
+              [
+                0.51,
+                1.32
+              ]
+            ]
+          },
+          {
+            "name": "right_shoulder",
+            "side": 1,
+            "width": 0.7,
+            "offset": 0.25,
+            "points": [
+              [
+                0.65,
+                1.65
+              ],
+              [
+                0.47,
+                1.68
+              ],
+              [
+                0.39,
+                1.62
+              ],
+              [
+                0.27,
+                1.64
+              ],
+              [
+                0.18,
+                1.56
+              ],
+              [
+                0.08,
+                1.56
+              ]
+            ]
+          }
+        ]
+      },
+      "maps": {
+        "base": "stag-base.png",
+        "orm": "stag-orm.png",
+        "normal": "stag-normal.png",
+        "scar": "stag-scar.png"
+      }
+    }
+  },
+  "texture_limit": 2048,
+  "import_fps": 100,
+  "note": "Selected mid meshes; exact geometry/skin/clip buffers, shared external maps. No generated master or preview bootstrap."
+}

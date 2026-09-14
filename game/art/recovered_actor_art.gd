@@ -1,7 +1,7 @@
 class_name RecoveredActorArt
 extends RefCounted
 ## Reviewed Blender skins: legacy parts and selected articulated animal rigs.
-## Imported AnimationPlayers are never installed: combat remains the only clock.
+## Legacy procedural rigs and finished manually sampled clips share native clocks.
 const LOOK = preload("res://art/augmentation_look.tres")
 const SKIN_WEIGHT_UNITS := 65535
 static var _catalog: Dictionary = {}
@@ -48,6 +48,7 @@ static func refresh_material(actor: Enemy) -> void:
 	var id := String(actor.enemy_id)
 	if not actor.visual_id.is_empty(): id = actor.visual_id
 	if not definitions().has(id) or int(definitions()[id].get("rig_version",1))!=2: return
+	if definitions()[id].has("finished"): return
 	if not _materials.has(id): return
 	if actor.is_frozen() or actor._flash_left>0.0 or actor.burning_left>0.0 or actor.bleeding_left>0.0:
 		actor._material.emission_texture=null

@@ -369,7 +369,19 @@
       "source": "art/blender/augmented-beasts-v01.blend",
       "sha256": "f28d7edc26bfa6b633d4c42fef82047af1efa94586e3a44e14bd139ff1b89eef",
       "geometry_sha256": "7e907540e534929f6de9de15c9722148925f3cc49efb6fb9f73992e26df14371",
-      "radial_overhang_m": 1.0143198932303412
+      "radial_overhang_m": 1.0143198932303412,
+      "finished": {
+        "family": "boar",
+        "stride_m": 1.25,
+        "idle_clip": "root",
+        "cull_margin_m": 0.5,
+        "purposes": {
+          "family": "Approved ART-01/03 rig, clips and maps; existing native alias selects this family.",
+          "stride_m": "Horizontal travel per walk cycle in pre-family/elite scale; cosmetic foot cadence only.",
+          "idle_clip": "Delivered rooting/sniffing/browsing pose while the native actor is idle.",
+          "cull_margin_m": "Extra visible bounds for moving feet, muzzle and crown; no collision change."
+        }
+      }
     },
     "cinder_archer": {
       "source": "build/blender-study/90bcf4757796420fb8a292277d964158/cinder_archer.glb",
@@ -805,7 +817,19 @@
       "source": "art/blender/augmented-beasts-v01.blend",
       "sha256": "ec2cded39e9414591991be589608235d20884ff96c020e4bcbc33a6cdd0f0354",
       "geometry_sha256": "65e3716d7c5302b90c6cf543e20fd19ed0480ee0cdba31bf6ad191234285f0bf",
-      "radial_overhang_m": 1.1078693434398694
+      "radial_overhang_m": 1.1078693434398694,
+      "finished": {
+        "family": "wolf",
+        "stride_m": 1.5,
+        "idle_clip": "root",
+        "cull_margin_m": 0.5,
+        "purposes": {
+          "family": "Approved ART-01/03 rig, clips and maps; existing native alias selects this family.",
+          "stride_m": "Horizontal travel per walk cycle in pre-family/elite scale; cosmetic foot cadence only.",
+          "idle_clip": "Delivered rooting/sniffing/browsing pose while the native actor is idle.",
+          "cull_margin_m": "Extra visible bounds for moving feet, muzzle and crown; no collision change."
+        }
+      }
     },
     "stone_husk": {
       "source": "build/blender-study/90bcf4757796420fb8a292277d964158/stone_husk.glb",
@@ -2359,7 +2383,19 @@
       "source": "art/blender/augmented-beasts-v01.blend",
       "sha256": "9148f6e059967f251fbb239da02569564904a3878407adaa882028e0ad54e7a7",
       "geometry_sha256": "792eb918e8f580cb86334219f9aef5ee8101f67fd1c2c2c3f66d862bb1ea9a04",
-      "radial_overhang_m": 0.9534890081846769
+      "radial_overhang_m": 0.9534890081846769,
+      "finished": {
+        "family": "stag",
+        "stride_m": 1.5,
+        "idle_clip": "graze",
+        "cull_margin_m": 0.5,
+        "purposes": {
+          "family": "Approved ART-01/03 rig, clips and maps; existing native alias selects this family.",
+          "stride_m": "Horizontal travel per walk cycle in pre-family/elite scale; cosmetic foot cadence only.",
+          "idle_clip": "Delivered rooting/sniffing/browsing pose while the native actor is idle.",
+          "cull_margin_m": "Extra visible bounds for moving feet, muzzle and crown; no collision change."
+        }
+      }
     },
     "forge_tyrant": {
       "source": "build/blender-study/90bcf4757796420fb8a292277d964158/forge_tyrant.glb",

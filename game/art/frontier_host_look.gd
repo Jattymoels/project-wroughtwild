@@ -12,6 +12,7 @@ var actor: Enemy
 var clock := 0.0
 var tell: MeshInstance3D
 var scar: ShaderMaterial
+var finished_scar := false
 var phase_label: Label3D
 var tell_material: StandardMaterial3D
 ## Head lowering is a quiet rooting/grazing pose over the retained authored rig.
@@ -29,8 +30,12 @@ static func attach(host: Enemy) -> void:
 
 func _build() -> void:
 	var colour: Color = PALETTE[actor.influence]
+	var motion := actor._mesh.get_node_or_null("Motion") as CreatureMotion
+	if motion != null and motion.finished != null:
+		scar = motion.finished.material
+		finished_scar = true
 	var source: StandardMaterial3D = RecoveredActorArt._materials.get(actor.visual_id)
-	if source != null and source.emission_texture != null:
+	if source != null and source.emission_texture != null and not RecoveredActorArt.definitions().get(actor.visual_id, {}).has("finished"):
 		scar = ShaderMaterial.new()
 		scar.shader = SCAR
 		scar.set_shader_parameter("scar_mask", source.emission_texture)
@@ -101,7 +106,7 @@ func _physics_process(delta: float) -> void:
 					if String(motion._authored.rig[i].motion) == "head":
 						var angle := graze_radians if actor.influence == "white" else root_radians
 						motion.rig.set_bone_pose_rotation(i,Quaternion.from_euler(Vector3(angle*(.65+.35*sin(clock)),0,0)))
-	if scar != null:
+	if scar != null and not finished_scar:
 		var weight := (sin(clock*TAU/pulse_seconds)+1.0)*.5
 		scar.set_shader_parameter("strength", lerpf(scar_low, scar_high, weight))
 	if tell != null:

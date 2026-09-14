@@ -16,11 +16,13 @@ var _mesh: MeshInstance3D
 var _points: PackedVector3Array
 var _authored: Dictionary = {}
 var _wing_phase := 0.0
+var finished: FinishedFauna
 
 static func attach(mesh: MeshInstance3D, owner_actor: Node3D, actor_role: String) -> CreatureMotion:
 	var previous := mesh.get_node_or_null("Motion")
 	if previous != null:
 		previous.free()
+	mesh.layers = 1
 	RecoveredActorArt.apply(mesh,owner_actor,actor_role)
 	var motion := CreatureMotion.new()
 	motion.name = "Motion"
@@ -35,6 +37,15 @@ func _configure() -> void:
 	_points = LOOK.pivots(role)
 	var id := String(_mesh.get_meta("authored_actor_id",""))
 	var definition: Dictionary = RecoveredActorArt.definitions().get(id,{})
+	if definition.has("finished"):
+		finished = FinishedFauna.new()
+		finished.name = "FinishedFauna"
+		add_child(finished)
+		finished.setup(_mesh, actor, definition.finished)
+		rig = finished.rig
+		_previous = actor.global_position
+		actor.attack_released.connect(released)
+		return
 	if int(definition.get("rig_version",1))==2:
 		_authored=definition
 		_points=PackedVector3Array()
@@ -97,6 +108,11 @@ func _physics_process(delta: float) -> void:
 ## A freeze holds the exact current pose; stagger cancels the attack follow-through.
 func sample(delta: float, travel: float, windup: float=0.0, inhale: float=0.0,
 		frozen: bool=false, stagger: bool=false) -> void:
+	if finished != null:
+		if frozen or stagger or actor.life <= 0.0: release_left = 0.0
+		finished.sample(delta, travel, windup, frozen, stagger, release_left)
+		release_left = maxf(0.0, release_left-delta)
+		return
 	if frozen:
 		release_left = 0.0
 		return

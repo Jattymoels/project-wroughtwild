@@ -29,6 +29,9 @@ merely because a historical checkbox still says human review pending.
 Current adoption update: A1 is integrated on main as `35cee73` and successfully
 pushed to `origin/main`. The [result and normal-game playtest steps](mainline-art-a1-result-2026-09-15.md)
 record the reused worker checks and the short headless main asset import.
+A2 is now checked on `codex/mainline-fauna-a2`, ready for coordinator integration;
+main integration and push remain pending. The [A2 result](mainline-fauna-a2-result-2026-09-15.md)
+records the finished fauna, native checks and the small missing C3 shader repair.
 The inventory below preserves the original coordination inspection.
 
 At inspection, local main, origin/main and the live GitHub main all point to
@@ -65,7 +68,7 @@ this coordination document's own commit, not a reset target.
 | INT-01–08 improvements | Clarity, home placement/hauling, audio, workshop usability, combat feedback, save recovery, streaming, controls and portable export have implementation records. | Targeted owner feedback; investigate reported defects. Other-machine play and broad final regression wait for the chosen playtest phase. |
 | Existing normal-game art | A1 now supplies the approved R8 environment, resources, building materials, stations and devices through normal new-world and Continue entry. Older articulated animal art remains. | Latest finished fauna adoption is A2; reported playtest issues remain open. |
 | R8 environment/placeables | All 26 original ART-07 deliveries and R1–R8 are published as source/handoff work; their selected production runtime is now adopted on main. | **A1 integrated and pushed as `35cee73`.** [Result and playtest](mainline-art-a1-result-2026-09-15.md). |
-| Finished fauna | ART-01 boar and ART-03 wolf/stag are visually approved with rigs/clips; retain the liked moth. ART-05 supplies an existing native boar adapter example. R8 preserves the older actor set. | **A2: fit latest approved finished fauna to current native actors and clocks.** Reuse completed assets/adapter work; do not regenerate designs. ART-05's seed-77 route restriction is not a production policy. |
+| Finished fauna | ART-01 boar and ART-03 wolf/stag are visually approved with rigs/clips; retain the liked moth. ART-05 supplies an existing native boar adapter example. R8 preserves the older actor set. | **A2 worker complete and checked; main integration/push pending.** Finished boar/wolf/stag and existing LF aliases use native clocks; moth retained. [Result](mainline-fauna-a2-result-2026-09-15.md). |
 | Six replacement mobs | Approved ART-06C surfaces/models exist for porcupine Archer, ram Husk, crane Shrieker, beetle Crawler, six-legged nymph Lurker and tortoise Knight. | Real rigging, weighting, locomotion/attack presentation and runtime integration, one complete enemy role per slice. Static models are not playable replacements. |
 | Later art/world ambition | Later-era physical augmentation, remaining boss/host art and Reclaimed Frontier references/direction are recorded. | Future scoped production/design. Reclaimed Frontier means living, rolling terrain years after impact, vegetation reclaiming damage and surviving pulsing cracks; no new generator/save rule is selected. |
 | Broader game ambition | Class halls, substantial outpost/transport progression, larger production networks and richer late-game content remain longer-term design. | Choose only what the current prototype loop demonstrates it needs. Multiplayer, infinite generation and broad factory/trading systems remain outside scope. |
@@ -81,9 +84,9 @@ to their own future decision/bug work; art adoption must not silently decide the
 1. **A1 — completed on main and pushed.** Environment, building/resource materials,
    stations and devices, preserving current world/campaign/save rules and octagonal
    support. [Exact worker prompt and workspace](mainline-art-a1-worker-2026-09-15.md).
-2. **A2 — finished fauna adoption.** Boar, wolf, stag and preserved moth; current
+2. **A2 — checked worker ready for integration.** Boar, wolf, stag and preserved moth; current
    enemy IDs, bodies, attack clocks, statuses, drops and passive habits remain.
-   Complete the ready-art adoption before the six unfinished replacement rigs.
+   [Worker result](mainline-fauna-a2-result-2026-09-15.md); integrate and push the returned commit before the six unfinished replacement rigs.
    [Prepared worker prompt and D: workspace](mainline-fauna-a2-worker-2026-09-15.md).
 3. **PLAY-01/03 — movement comfort and underground access.** Diagnose ordinary
    frame spikes and the accidental below-terrain transition/worse lag. Preserve
