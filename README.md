@@ -28,6 +28,11 @@ creature concept sheets with modelling notes. The selected creatures now have an
 
 ## Current phase
 
+The [current whole-project coordination sheet](docs/prototype/coordinator-status-2026-09-15.md)
+distinguishes implemented gameplay, ready art adoption, remaining production and
+owner playtest questions. It includes the first mainline art worker handoff;
+historical slice summaries below remain evidence, not an instruction to repeat work.
+
 [Living Frontier Wave 7](docs/prototype/living-frontier-wave7-2026-09-09.md)
 opens captured Central's saved offers and tiers with optional Crossfire or
 Relentless pressure and exact material/equipment/core previews. Settings commit

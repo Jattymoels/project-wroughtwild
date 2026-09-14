@@ -1,5 +1,13 @@
 # Wroughtwild intensive queue
 
+Current coordination, 15 September 2026: see the [whole-project inventory and
+immediate sequence](coordinator-status-2026-09-15.md) and [A1 worker prompt](mainline-art-a1-worker-2026-09-15.md).
+The older entries below preserve history: Living Frontier is implemented through
+Wave 7, and thirty apparently unmerged art branches have equivalent patches on
+main. The outstanding adoption is runtime wiring/assets, not re-merging those
+branches. A1 brings in R8; A2 brings in finished fauna; the reported playtest
+issues follow. R9 stays stopped.
+
 Updated: 14 September 2026 (owner played R8 and authorises mainline adoption with stutter, canopy and underground issues recorded; R9 stopped; Reclaimed Frontier remains future work). Owner: Matty. Delivery: Codex.
 
 The owner asked to keep track of the seven intensives discussed after the Wide
