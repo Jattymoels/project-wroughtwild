@@ -40,12 +40,14 @@ attachments, a chat summary or a contact sheet alone to recover this direction.
 
 ## Position in the work queue
 
-Finish R9's independent review, resolve any confirmed adoption blockers or accept
-documented limitations, and integrate the accepted ART-07 kit into the main game.
-Then scope this terrain/ecology intensive using that integrated kit and actual
-R9 findings. This is not an extra condition for the current art integration and
-does not redirect a running R9 task. The six separate ART-06C rig/adoption items
-remain their own work; they need not hold up environment planning.
+Follow the [owner's mainline adoption handoff](art-mainline-adoption-2026-09-14.md):
+integrate the delivered ART-07 kit with known limitations recorded, then address
+the actual playtest reports of stuttering, incomplete-looking canopies and
+accidental underground access/worse lag. R9 is stopped and is not a prerequisite.
+Then scope this terrain/ecology intensive using the integrated kit and relevant
+available findings. This is not an extra condition for current art integration.
+The six separate ART-06C rig/adoption items remain their own work; they need not
+hold up environment planning.
 
 The user has approved adding this future work and its sentiment to the durable
 backlog. They have not selected a new generator profile, map size, live growth

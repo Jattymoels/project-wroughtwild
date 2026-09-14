@@ -1,5 +1,16 @@
 # Decision Registry
 
+Owner playtest and mainline direction, 14 September 2026: after playing R8, the
+owner explicitly authorises putting all completed art work into mainline with
+known issues recorded. The preview was fun, but severe judder/stuttering,
+apparently incomplete canopies and accidental underground access with worse lag
+need follow-up. Most stations remain untested by the owner. The
+[coordinator handoff](../prototype/art-mainline-adoption-2026-09-14.md) records
+scope, asset status, feedback and execution order. Adopt the delivered kit now;
+the reported performance/cosmetic issues and stopped R9 are not pre-adoption
+gates. Six approved replacement mobs still need actual rig/animation/integration
+work. Preserve current gameplay/saves and ordinary new-world/Continue entry.
+
 Owner workflow and integration correction, 14 September 2026: this is a spare-time
 prototype. Requested art/features should enter the normal game once the owner
 approves the visuals/aesthetics or relevant behavior. That approval includes

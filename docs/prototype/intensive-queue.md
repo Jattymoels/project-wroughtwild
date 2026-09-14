@@ -1,6 +1,6 @@
 # Wroughtwild intensive queue
 
-Updated: 14 September 2026 (R1–R8 published; R9 stopped; owner-approved art is authorised for game integration with proportionate checks; Reclaimed Frontier remains future work). Owner: Matty. Delivery: Codex.
+Updated: 14 September 2026 (owner played R8 and authorises mainline adoption with stutter, canopy and underground issues recorded; R9 stopped; Reclaimed Frontier remains future work). Owner: Matty. Delivery: Codex.
 
 The owner asked to keep track of the seven intensives discussed after the Wide
 Frontier pass and make a plan for the first one. This is the current planning
@@ -9,6 +9,16 @@ Recording an idea here does not mark it implemented or approve unspecified new
 game rules. Existing accepted work items and decisions remain authoritative.
 
 ## Current art priority — nature, world feel and all existing placeables
+
+**Current authorised work:** [Art mainline adoption and owner playtest follow-up](art-mainline-adoption-2026-09-14.md).
+The owner found the R8 preview fun and explicitly asks for all completed art to
+enter mainline now, with severe judder, incomplete-looking tree canopies and
+accidental underground access/worse lag noted for follow-up. Most stations have
+not yet been tried. This accepts the delivered kit for prototype integration
+with known limitations and supersedes the historical pending-approval/gate
+language below. First adopt finished work into the normal game; then address
+the reported issues and complete the six approved mob rigs/animations. R9 stays
+stopped. A new coordinator will supply bounded implementation prompts and setup.
 
 **Owner integration policy, 14 September 2026:** requested art/features belong in
 the game once the owner approves the visuals/aesthetics or relevant behavior.
@@ -95,8 +105,9 @@ mountain settings retain different recovery patterns. The
 [six unchanged images, per-image caveats and owner wording](../art/references/environment/2026-09-14-reclaimed-frontier/README.md)
 are durable influences on feel, not exact style, crater count or map targets.
 
-Sequence: complete R9 and accepted ART-07 main-game integration, then scope this
-terrain/biome-composition work against the adopted assets and actual performance.
+Sequence: adopt the completed ART-07 work into main and follow up the owner's
+playtest issues, then scope this terrain/biome-composition work against the
+adopted assets and actual performance. R9 remains stopped and is not a prerequisite.
 It does not add another condition to the current art integration or extend R9.
 R7's retained placement limits leave continuous ground cover unmet; this future
 pass addresses landform and ecological composition beyond individual asset finish.
