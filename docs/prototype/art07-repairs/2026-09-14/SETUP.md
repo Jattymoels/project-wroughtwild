@@ -6,9 +6,9 @@ by this setup. Reuse a prepared directory; do not create another checkout inside
 The initial [setup record](workspaces.json) distinguishes actual preparation from
 future planned paths. Later worktrees are created only after their wave gates pass.
 
-Published repair candidates: [R1](publication-r1.md) [R2](publication-r2.md).
+Published repair candidates: [R1](publication-r1.md) [R2](publication-r2.md) [R3](publication-r3.md).
 The initial setup flags remain historical; [deliveries.json](deliveries.json)
-is the current readiness record. Wave 2 still waits for R3, R4 publication.
+is the current readiness record. Wave 2 still waits for R4 publication.
 
 The owner depot is `C:/Users/Matty/Dev/project-wroughtwild`. D: was chosen because
 C: had about 5 GiB free while D: had about 1.3 TiB when preparing the pack. No old

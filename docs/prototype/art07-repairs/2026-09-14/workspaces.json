@@ -112,6 +112,22 @@
         "waves": 4,
         "reading_files": 35,
         "local_links": 31
+      },
+      "current_delivery": {
+        "status": "published",
+        "source_commit": "7bc9be05397e1492feb8fc98488a84cd3bede75d",
+        "receipt_commit": "ad34112783d233429630921733a38e4beb0a3f03",
+        "original_source_commit": "0d372ae68c7d7b620da27ad7141f9eebae766139",
+        "original_receipt_commit": "22ca7ba702ee9316bca73aa654c25325dbf65988",
+        "receipt": "docs/prototype/art07-repairs/2026-09-14/receipts/r3.json",
+        "package": {
+          "path": "D:/project-wroughtwild-art07-r3/build/art07-repairs/r3/v01/handoff",
+          "manifest_sha256": "6ce1ca7f6a7406041c345e045610197e33f4f6eefe8cdcfb98718a6ee2e502da",
+          "files": 5632,
+          "bytes": 4156251159
+        },
+        "publication_report": "docs/prototype/art07-repairs/2026-09-14/publication-r3.json",
+        "publisher_runtime": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\runtime"
       }
     },
     {

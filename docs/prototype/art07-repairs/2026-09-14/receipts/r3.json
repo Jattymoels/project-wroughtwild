@@ -1376,5 +1376,18 @@
     "& 'C:/Users/Matty/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' -B tools/wroughtwild-art07-repairs/workspace.py prepare --id r3 --version v02",
     "& 'C:/Users/Matty/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' -B tools/wroughtwild-art07-repairs/r3/install.py --version v02 --check-base",
     "& 'C:/Users/Matty/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' -B tools/wroughtwild-art07-repairs/r3/install.py --version v02"
-  ]
+  ],
+  "publication": {
+    "method": "scoped cherry-pick",
+    "previous_main": "3eb0319a84399116c1b1fcdab7728be55f895b9f",
+    "original_implementation_commit": "0d372ae68c7d7b620da27ad7141f9eebae766139",
+    "original_receipt_commit": "22ca7ba702ee9316bca73aa654c25325dbf65988",
+    "implementation_commit": "7bc9be05397e1492feb8fc98488a84cd3bede75d",
+    "receipt_commit": "ad34112783d233429630921733a38e4beb0a3f03",
+    "worker_tree_content_match": "All owned paths have identical Git blob IDs",
+    "destination": "origin/main at https://github.com/Jattymoels/project-wroughtwild.git",
+    "ref": "refs/heads/main",
+    "publisher_verification": "docs/prototype/art07-repairs/2026-09-14/publication-r3.json",
+    "push": "Accompanying publication commit; remote-tip result verified and reported separately."
+  }
 }

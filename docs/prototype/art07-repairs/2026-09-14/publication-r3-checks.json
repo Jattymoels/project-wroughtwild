@@ -1,0 +1,60 @@
+{
+  "result": "PASS",
+  "validators": [
+    {
+      "command": [
+        "C:\\Users\\Matty\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "tools/wroughtwild-art07-repairs/dispatch.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"result\": \"PASS\",\n  \"worker_prompts\": 9,\n  \"publisher_prompts\": 1,\n  \"exclusive_git_outputs\": 36,\n  \"findings_owned_once\": 7,\n  \"waves\": 4,\n  \"reading_files\": 35,\n  \"local_links\": 56\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "C:\\Users\\Matty\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "tools/wroughtwild-world-design/session_plan.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"result\": \"PASS\",\n  \"production_slices\": 26,\n  \"worker_prompts\": 26,\n  \"publisher_prompts\": 1,\n  \"catalogue_entries_owned_once\": 131,\n  \"coverage\": {\n    \"resource_nodes\": 22,\n    \"nature_support\": 33,\n    \"shapes\": 26,\n    \"materials\": 19,\n    \"devices\": 15,\n    \"fauna_presentation\": 16\n  },\n  \"dependency_edges\": 60,\n  \"required_reading_files\": 43,\n  \"local_links\": 192,\n  \"initially_ready\": [\n    \"b1\",\n    \"b2\",\n    \"b3\",\n    \"d1\",\n    \"d4\",\n    \"d5\",\n    \"d6\",\n    \"f5\"\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "C:\\Users\\Matty\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "tools/wroughtwild-world-design/catalogue.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"result\": \"PASS\",\n  \"shapes\": 26,\n  \"materials\": 19,\n  \"kits\": 14,\n  \"upgrades\": 1,\n  \"finite_resource_types\": 22,\n  \"supporting_art_roles\": 33,\n  \"actor_ids\": 16,\n  \"grid_m\": 1.0,\n  \"lattice_divisions\": 2,\n  \"normal_profiles_kits\": 10,\n  \"living_frontier_supported_profiles_kits\": 14,\n  \"legal_material_shape_pairs\": 273,\n  \"station_body_m\": [\n    0.96,\n    2.0,\n    0.96\n  ],\n  \"scope\": \"Concept coverage only. Profile/era/unlock gates still apply; no new rules or universal kit availability.\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "C:\\Users\\Matty\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "tools/wroughtwild-world-design/verify_art.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"result\": \"PASS\",\n  \"pngs\": 6,\n  \"selected_boards\": 5,\n  \"superseded_framing_board\": 1,\n  \"exact_prompts\": 6,\n  \"generated_original_copies_checked\": 6,\n  \"edit_parent_links\": 1,\n  \"unchanged_mood_reference\": 1,\n  \"local_links_checked\": 28\n}\n",
+      "stderr": ""
+    }
+  ],
+  "delivery_ancestry_and_manifest_identity": "PASS",
+  "unrelated_checkout_entries_preserved": 49,
+  "publication_owned_paths": [
+    "docs/prototype/art07-repairs/2026-09-14/receipts/r3.json",
+    "docs/prototype/art07-repairs/2026-09-14/receipts/r3.md",
+    "docs/prototype/art07-repairs/2026-09-14/publication-r3.json",
+    "docs/prototype/art07-repairs/2026-09-14/publication-r3.md",
+    "docs/prototype/art07-repairs/2026-09-14/publication-r3-checks.json",
+    "docs/prototype/art07-repairs/2026-09-14/deliveries.json",
+    "docs/prototype/art07-repairs/2026-09-14/workspaces.json",
+    "docs/prototype/art07-repairs/2026-09-14/SETUP.md",
+    "docs/prototype/intensive-queue.md"
+  ],
+  "whitespace": "PASS",
+  "publisher_preflight_note": ""
+}

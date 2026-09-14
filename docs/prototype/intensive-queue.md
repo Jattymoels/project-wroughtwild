@@ -386,3 +386,8 @@ needs its own bounded follow-up.
 
 [R1 passed publisher verification](art07-repairs/2026-09-14/publication-r1.md).
 G2-V01: partial; isolated canopy fit is technically verified, with visual acceptance and combined R8/R9 review pending. Wave 2 still waits for R3, R4 publication.
+
+### ART-07R3 publication, 14 September 2026
+
+[R3 passed publisher verification](art07-repairs/2026-09-14/publication-r3.md).
+G2-V02: partial; isolated directional material candidate is technically verified, with owner and combined R8/R9 acceptance pending. Wave 2 still waits for R4 publication.

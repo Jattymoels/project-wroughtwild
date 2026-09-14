@@ -1,0 +1,2120 @@
+{
+  "id": "r3",
+  "date": "2026-09-14",
+  "status": "verified_and_integrated",
+  "integration": {
+    "method": "scoped cherry-pick",
+    "previous_main": "3eb0319a84399116c1b1fcdab7728be55f895b9f",
+    "original_implementation_commit": "0d372ae68c7d7b620da27ad7141f9eebae766139",
+    "original_receipt_commit": "22ca7ba702ee9316bca73aa654c25325dbf65988",
+    "implementation_commit": "7bc9be05397e1492feb8fc98488a84cd3bede75d",
+    "receipt_commit": "ad34112783d233429630921733a38e4beb0a3f03",
+    "worker_tree_content_match": "All owned paths have identical Git blob IDs",
+    "destination": "https://github.com/Jattymoels/project-wroughtwild.git",
+    "ref": "refs/heads/main"
+  },
+  "package": {
+    "path": "D:/project-wroughtwild-art07-r3/build/art07-repairs/r3/v01/handoff",
+    "manifest_sha256": "6ce1ca7f6a7406041c345e045610197e33f4f6eefe8cdcfb98718a6ee2e502da",
+    "files": 5632,
+    "bytes": 4156251159
+  },
+  "outcome": "R3 binds retained building face, cut-edge and endgrain maps along actual members, roof slopes and mineral surfaces. Original geometry, maps, collision and all 273 legal shape/material pairs remain.",
+  "verification": "Full G1/G2/D4/D5/D6 input hashes and the exact submitted seal were verified. The publisher applied the 12 declared files to fresh v02 after hashing all 4,787 original entries, reopened the three packed masters, and replayed both material inspections, catalogues, native payment/refusal transactions and their restores, plus paid-home construction and separate-process restores in both renderers. Fresh persistent-state fingerprints are compared.",
+  "static_verification": {
+    "result": "PASS",
+    "original_implementation": "0d372ae68c7d7b620da27ad7141f9eebae766139",
+    "original_receipt": "22ca7ba702ee9316bca73aa654c25325dbf65988",
+    "package": {
+      "path": "D:/project-wroughtwild-art07-r3/build/art07-repairs/r3/v01/handoff",
+      "manifest_sha256": "6ce1ca7f6a7406041c345e045610197e33f4f6eefe8cdcfb98718a6ee2e502da",
+      "files": 5632,
+      "bytes": 4156251159
+    },
+    "owned_files": [
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r3/README.md",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r3/covering-edge-close-daylight.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r3/glass-sorting-axis-after.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r3/glass-sorting-axis-before.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r3/glass-sorting-axis-compatibility.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r3/metal-joins-eye-after.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r3/metal-joins-eye-before.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r3/metric-10cm.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r3/octagon-triangles-eye-daylight.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r3/paid-exterior-eye-daylight-after.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r3/paid-exterior-eye-daylight-before.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r3/paid-exterior-eye-dusk-after.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r3/paid-exterior-eye-dusk-before.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r3/paid-interior-close-daylight-after.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r3/paid-interior-close-daylight-before.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r3/paid-interior-close-dusk-after.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r3/paid-interior-close-dusk-before.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r3/paid-native-walk.gif",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r3/provenance.json",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r3/roofs-rotations-close-after.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r3/roofs-rotations-close-before.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r3/roofs-rotations-close-compatibility.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r3/slate-cut-close-after.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r3/slate-cut-close-before.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r3/slate-cut-close-compatibility.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r3/wood-end-close-after.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r3/wood-end-close-before.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r3/wood-end-close-compatibility.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r3/wood-joins-eye-dusk.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r3/wood-joins-eye-shade.png",
+      "docs/prototype/art07-repairs/2026-09-14/receipts/r3.json",
+      "docs/prototype/art07-repairs/2026-09-14/receipts/r3.md",
+      "tools/wroughtwild-art07-repairs/r3/README.md",
+      "tools/wroughtwild-art07-repairs/r3/collect.py",
+      "tools/wroughtwild-art07-repairs/r3/curate.py",
+      "tools/wroughtwild-art07-repairs/r3/fingerprints.py",
+      "tools/wroughtwild-art07-repairs/r3/glass.gdshader",
+      "tools/wroughtwild-art07-repairs/r3/home.gd",
+      "tools/wroughtwild-art07-repairs/r3/home.tscn",
+      "tools/wroughtwild-art07-repairs/r3/inspection.gd",
+      "tools/wroughtwild-art07-repairs/r3/inspection.tscn",
+      "tools/wroughtwild-art07-repairs/r3/install.py",
+      "tools/wroughtwild-art07-repairs/r3/make_jobs.py",
+      "tools/wroughtwild-art07-repairs/r3/make_report.py",
+      "tools/wroughtwild-art07-repairs/r3/materials.gd",
+      "tools/wroughtwild-art07-repairs/r3/opaque.gdshader",
+      "tools/wroughtwild-art07-repairs/r3/reopen.py",
+      "tools/wroughtwild-art07-repairs/r3/retain_inputs.py",
+      "tools/wroughtwild-art07-repairs/r3/run-batch.ps1",
+      "tools/wroughtwild-art07-repairs/r3/seal.py",
+      "tools/wroughtwild-art07-repairs/r3/settings.json",
+      "tools/wroughtwild-art07-repairs/r3/surface.gdshaderinc",
+      "tools/wroughtwild-art07-repairs/r3/verify.py"
+    ],
+    "sealed_recipe_matches": [
+      {
+        "path": "tools/wroughtwild-art07-repairs/r3/README.md",
+        "sealed": "reconstruction/README.md",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r3/collect.py",
+        "sealed": "reconstruction/collect.py",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r3/curate.py",
+        "sealed": "reconstruction/curate.py",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r3/fingerprints.py",
+        "sealed": "reconstruction/fingerprints.py",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r3/glass.gdshader",
+        "sealed": "reconstruction/glass.gdshader",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r3/home.gd",
+        "sealed": "reconstruction/home.gd",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r3/home.tscn",
+        "sealed": "reconstruction/home.tscn",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r3/inspection.gd",
+        "sealed": "reconstruction/inspection.gd",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r3/inspection.tscn",
+        "sealed": "reconstruction/inspection.tscn",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r3/install.py",
+        "sealed": "reconstruction/install.py",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r3/make_jobs.py",
+        "sealed": "reconstruction/make_jobs.py",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r3/make_report.py",
+        "sealed": "reconstruction/make_report.py",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r3/materials.gd",
+        "sealed": "reconstruction/materials.gd",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r3/opaque.gdshader",
+        "sealed": "reconstruction/opaque.gdshader",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r3/reopen.py",
+        "sealed": "reconstruction/reopen.py",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r3/retain_inputs.py",
+        "sealed": "reconstruction/retain_inputs.py",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r3/run-batch.ps1",
+        "sealed": "reconstruction/run-batch.ps1",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r3/seal.py",
+        "sealed": "reconstruction/seal.py",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r3/settings.json",
+        "sealed": "reconstruction/settings.json",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r3/surface.gdshaderinc",
+        "sealed": "reconstruction/surface.gdshaderinc",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r3/verify.py",
+        "sealed": "reconstruction/verify.py",
+        "match": "exact or CRLF-normalized"
+      }
+    ],
+    "worker_log_receipts": [
+      {
+        "id": "bench01-benchmark-home-g1-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 118.9540998,
+        "log_sha256": "5d8e048725c276c56bbd7716f6a5083f3dac2622378223b5a81b319b37b10895"
+      },
+      {
+        "id": "bench01-benchmark-home-g1-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 115.6899679,
+        "log_sha256": "1db71cbc5c7a1f40282c7a836c47c6e7ceb075d6cc00c2eedb7c0b5714a28228"
+      },
+      {
+        "id": "bench01-benchmark-home-r3-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 115.782442,
+        "log_sha256": "5d8e048725c276c56bbd7716f6a5083f3dac2622378223b5a81b319b37b10895"
+      },
+      {
+        "id": "bench01-benchmark-home-r3-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 114.9435417,
+        "log_sha256": "1db71cbc5c7a1f40282c7a836c47c6e7ceb075d6cc00c2eedb7c0b5714a28228"
+      },
+      {
+        "id": "bench01-benchmark-inspection-g1-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 11.2574552,
+        "log_sha256": "ee6ee7fdacdccb3a33c45a6600292dce648ab951f7acefe24e8ae7081e74579a"
+      },
+      {
+        "id": "bench01-benchmark-inspection-g1-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 14.3458304,
+        "log_sha256": "a20166857b358d01fdc84235827a1d14c42ba12838e3808f0e20e4eef4ac32ff"
+      },
+      {
+        "id": "bench01-benchmark-inspection-r3-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 9.3136897,
+        "log_sha256": "d9455ef530e2fbec06cf9faa23d3ae1c24290e230130923c9c33360d5b0f8c7f"
+      },
+      {
+        "id": "bench01-benchmark-inspection-r3-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 14.2654319,
+        "log_sha256": "6baf8c45b24409cce53a9ae4a540f93afecacb25f210f17c96c8062e4c489e0d"
+      },
+      {
+        "id": "import",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 71.5775811,
+        "log_sha256": "88f6ff9ad348f16e4e5a38e40f3a1e7ef1da1a4ab9cd6964c1f2cb282e94b7aa"
+      },
+      {
+        "id": "packed-source-reopen-01",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.5182878,
+        "log_sha256": "e1f745c54bb37bcb03b45165b19662fcfeed0f519543680dd63085225b0343c6"
+      },
+      {
+        "id": "pass01-catalogue-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 8.801181,
+        "log_sha256": "4cfb3077fb4d1d9cd5fdabb7de439516629dd4005b61199530b93f670b3ed116"
+      },
+      {
+        "id": "pass01-catalogue-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 7.056678,
+        "log_sha256": "923964d71af409bfedbd374a5d65d1be154c26cf7b763740958aa8248d073fdd"
+      },
+      {
+        "id": "pass01-g1-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 7.7073008,
+        "log_sha256": "ee6ee7fdacdccb3a33c45a6600292dce648ab951f7acefe24e8ae7081e74579a"
+      },
+      {
+        "id": "pass01-g1-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 7.7901711,
+        "log_sha256": "a20166857b358d01fdc84235827a1d14c42ba12838e3808f0e20e4eef4ac32ff"
+      },
+      {
+        "id": "pass01-paid-g1-forward_plus",
+        "exit_code": 1,
+        "failure": "Nonzero process exit.",
+        "seconds": 115.3275459,
+        "log_sha256": "ccf4193473b27bbcfc15e68c39ead79bf1710613ff690d8f016f049e3e644124"
+      },
+      {
+        "id": "pass01-r3-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 7.8318705,
+        "log_sha256": "d9455ef530e2fbec06cf9faa23d3ae1c24290e230130923c9c33360d5b0f8c7f"
+      },
+      {
+        "id": "pass01-r3-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 8.3460365,
+        "log_sha256": "6baf8c45b24409cce53a9ae4a540f93afecacb25f210f17c96c8062e4c489e0d"
+      },
+      {
+        "id": "pass01-transactions-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 7.373832,
+        "log_sha256": "ba6b82a4b0ba02202e889858bfe163f737e085b61d52c83542e755c6b8cc2fed"
+      },
+      {
+        "id": "pass01-transactions-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 6.6325096,
+        "log_sha256": "ee7d85c6286168be86129619c8c2f6e550b43d745c86dc0ecda541e3c0a6222e"
+      },
+      {
+        "id": "pass01-transactions-restore-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 3.7847849,
+        "log_sha256": "8cd8a869c08b1e405eab69c7e00c693657bffbebdd19bb4fb709ae75d0a41b5f"
+      },
+      {
+        "id": "pass01-transactions-restore-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 4.0064476,
+        "log_sha256": "f5468b174804a07f88ff75e29f9e588a0c6cbcd804630e19df6a1af6793a7d35"
+      },
+      {
+        "id": "pass02-g1-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 7.92097,
+        "log_sha256": "ee6ee7fdacdccb3a33c45a6600292dce648ab951f7acefe24e8ae7081e74579a"
+      },
+      {
+        "id": "pass02-g1-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 8.2680234,
+        "log_sha256": "a20166857b358d01fdc84235827a1d14c42ba12838e3808f0e20e4eef4ac32ff"
+      },
+      {
+        "id": "pass02-import",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 5.5845583,
+        "log_sha256": "cc4150a51b55e712e633b1a29d73f3299a6c0196f39dad3b4abaa167af28a3f1"
+      },
+      {
+        "id": "pass02-paid-g1-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 113.3499827,
+        "log_sha256": "c0eb50e02c2504d8a22c5eb194e63eaaff929251dbdeb3ff57e479dd091d817b"
+      },
+      {
+        "id": "pass02-paid-g1-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 110.4219125,
+        "log_sha256": "6c885fa5f9afb821c099b9eea219fcf93be4f22151454d10ef67c36b5e29bafe"
+      },
+      {
+        "id": "pass02-paid-r3-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 112.7187429,
+        "log_sha256": "c0eb50e02c2504d8a22c5eb194e63eaaff929251dbdeb3ff57e479dd091d817b"
+      },
+      {
+        "id": "pass02-paid-r3-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 109.5085095,
+        "log_sha256": "6c885fa5f9afb821c099b9eea219fcf93be4f22151454d10ef67c36b5e29bafe"
+      },
+      {
+        "id": "pass02-r3-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 9.3316809,
+        "log_sha256": "d9455ef530e2fbec06cf9faa23d3ae1c24290e230130923c9c33360d5b0f8c7f"
+      },
+      {
+        "id": "pass02-r3-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 9.1320376,
+        "log_sha256": "6baf8c45b24409cce53a9ae4a540f93afecacb25f210f17c96c8062e4c489e0d"
+      },
+      {
+        "id": "pass02-restore-g1-forward_plus",
+        "exit_code": 1,
+        "failure": "Nonzero process exit.",
+        "seconds": 106.673028,
+        "log_sha256": "a2d690612825b6c3fd6db15fe912de0434b932bc81b97b824b982413658d2c0b"
+      },
+      {
+        "id": "pass02-restore-g1-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 103.7286508,
+        "log_sha256": "522c3b3405418830dd8536c3852e63aea628be04e07ee6ea152cb6f3b92071cb"
+      },
+      {
+        "id": "pass02-restore-r3-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 107.3209453,
+        "log_sha256": "d2c237ac44e4de12de7726fb5a5f84f020f92ac6fd3fece3df5036d5326b3a77"
+      },
+      {
+        "id": "pass02-restore-r3-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 103.6501133,
+        "log_sha256": "522c3b3405418830dd8536c3852e63aea628be04e07ee6ea152cb6f3b92071cb"
+      },
+      {
+        "id": "pass03-import",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 4.0706111,
+        "log_sha256": "cc4150a51b55e712e633b1a29d73f3299a6c0196f39dad3b4abaa167af28a3f1"
+      },
+      {
+        "id": "pass03-restore-g1-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 106.1557184,
+        "log_sha256": "d2c237ac44e4de12de7726fb5a5f84f020f92ac6fd3fece3df5036d5326b3a77"
+      },
+      {
+        "id": "pass04-import",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 4.0786435,
+        "log_sha256": "cc4150a51b55e712e633b1a29d73f3299a6c0196f39dad3b4abaa167af28a3f1"
+      },
+      {
+        "id": "smoke-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 97.6322626,
+        "log_sha256": "a6457489dd615c57f47571067cb821b47a0330f90c95b3e27d339454e8509772"
+      },
+      {
+        "id": "smoke-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 91.1982348,
+        "log_sha256": "bcc5dd1c40549a72a960cfa2758068943fe9d3f7b5717a2024a4851ad364bbc0"
+      }
+    ],
+    "changes": {
+      "id": "r3",
+      "delta_base": {
+        "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\sealed",
+        "manifest_sha256": "fd5c592ef52185cc7d0737840e41af09dbb5bcea36b719539931e156f42865cd",
+        "files": 5701,
+        "bytes": 7430015212
+      },
+      "runtime_base": "6bb2e044dcd0bf1788896aa2c19cdf56fee93522",
+      "files": [
+        {
+          "path": "game/g1/materials.gd",
+          "before_sha256": "6531f7b0a254b33b47db2b2da541c49e5c356c1900f440462a83e22a8e3c56ca",
+          "after_sha256": "437ed97b51d894626544925f7916180badcd23882da8ab677ce3753c4ca4ccd3",
+          "functions": [
+            "G1Materials.material_for"
+          ],
+          "purpose": "Route retained construction to R3 material mapping; --r3-baseline restores the sealed G1 appearance.",
+          "overlaps": [
+            "R2: reconcile shared G1 material/cache and mesh dispatch changes against the common baseline."
+          ],
+          "replacement_asset": null
+        },
+        {
+          "path": "game/g1/art.gd",
+          "before_sha256": "760d85a59a05fd6445d70f87664c234d195d06394ee5a9717d52702073b2d9c8",
+          "after_sha256": "67c4d26e4c3e937de20e3549f41d8b120238e54e4bc45891c1dcfefb949b888c",
+          "functions": [
+            "G1Art.piece_mesh"
+          ],
+          "purpose": "Route retained construction to R3 material mapping; --r3-baseline restores the sealed G1 appearance.",
+          "overlaps": [
+            "R2: reconcile shared G1 material/cache and mesh dispatch changes against the common baseline."
+          ],
+          "replacement_asset": null
+        },
+        {
+          "path": "game/scripts/piece_look.gd",
+          "before_sha256": "da7bf01efe29428aec51880dc4517a301c33ddcc648a012af6b26dc9570f618b",
+          "after_sha256": "3a0959be349b2e80036de5d51727218d0d01b88541e8b06a6d6e53819063956a",
+          "functions": [
+            "PieceLook.apply_to"
+          ],
+          "purpose": "Route retained construction to R3 material mapping; --r3-baseline restores the sealed G1 appearance.",
+          "overlaps": [
+            "R2: reconcile shared G1 material/cache and mesh dispatch changes against the common baseline."
+          ],
+          "replacement_asset": null
+        },
+        {
+          "path": "game/r3/glass.gdshader",
+          "before_sha256": null,
+          "after_sha256": "c56f47bd21468f910aae2540190f27da277bc09c9a7bff922fc84e9b8f8d3d40",
+          "functions": [],
+          "settings": [],
+          "purpose": "R3 retained-map material implementation",
+          "overlaps": [],
+          "replacement_asset": null
+        },
+        {
+          "path": "game/r3/home.gd",
+          "before_sha256": null,
+          "after_sha256": "079cd4382e7a722c77d3b9fea1321543c474c7ae49b78fe25e82544b7e5248f1",
+          "functions": [
+            "execute"
+          ],
+          "settings": [],
+          "purpose": "Labelled native inspection or real paid-home evidence harness; never an ordinary-world entry point.",
+          "overlaps": [],
+          "replacement_asset": null
+        },
+        {
+          "path": "game/r3/home.tscn",
+          "before_sha256": null,
+          "after_sha256": "15be17d1c61918c15131dd93a93152e7e4d341717e38dad7f17f27e0cc37a4e6",
+          "functions": [],
+          "settings": [],
+          "purpose": "Labelled native inspection or real paid-home evidence harness; never an ordinary-world entry point.",
+          "overlaps": [],
+          "replacement_asset": null
+        },
+        {
+          "path": "game/r3/inspection.gd",
+          "before_sha256": null,
+          "after_sha256": "d0ba19f256a3144fbcae57e6e6902fba5da17dc08a5fea2e1d4243ab5f4dcdc2",
+          "functions": [
+            "check",
+            "_run",
+            "_put",
+            "_set_light",
+            "_cost",
+            "_measure"
+          ],
+          "settings": [],
+          "purpose": "Labelled native inspection or real paid-home evidence harness; never an ordinary-world entry point.",
+          "overlaps": [],
+          "replacement_asset": null
+        },
+        {
+          "path": "game/r3/inspection.tscn",
+          "before_sha256": null,
+          "after_sha256": "b7acfb44e0549b01ec40b744cb3758077b6fa73cf7161ef0ae7b94f5cf1b22be",
+          "functions": [],
+          "settings": [],
+          "purpose": "Labelled native inspection or real paid-home evidence harness; never an ordinary-world entry point.",
+          "overlaps": [],
+          "replacement_asset": null
+        },
+        {
+          "path": "game/r3/materials.gd",
+          "before_sha256": null,
+          "after_sha256": "a3489c9687272b7e703ccbd293dfbafc9d3e699bcaa49166f58472aee990df9c",
+          "functions": [
+            "enabled",
+            "_load_families",
+            "material_for",
+            "apply_to",
+            "binding_inventory"
+          ],
+          "settings": [],
+          "purpose": "R3 retained-map material implementation",
+          "overlaps": [],
+          "replacement_asset": null
+        },
+        {
+          "path": "game/r3/opaque.gdshader",
+          "before_sha256": null,
+          "after_sha256": "ec5cc4ab9338091fdd39024858e6fc64df93976fdb16d6ea9463a46d899a47ae",
+          "functions": [],
+          "settings": [],
+          "purpose": "R3 retained-map material implementation",
+          "overlaps": [],
+          "replacement_asset": null
+        },
+        {
+          "path": "game/r3/settings.json",
+          "before_sha256": null,
+          "after_sha256": "77b649f74fb9da2aef94ceb90bfcdbc8e770c2e28c79a40824d5ab4b02527de8",
+          "functions": [],
+          "settings": [
+            "normal_strength",
+            "frame_shade",
+            "end_normal_threshold",
+            "board_width_m",
+            "board_phase_texels",
+            "face_resolution_px",
+            "recess_min_m",
+            "recess_edge_guard_m",
+            "door_rails_y_m",
+            "door_rail_half_width_m",
+            "coarse_rail_width_m",
+            "fine_rail_width_m",
+            "panel_frame_width_m",
+            "window_frame_width_m",
+            "seam_roughness_add",
+            "projection_axis_threshold",
+            "roof_face_min_up",
+            "alternate_axis_threshold",
+            "recess_face_threshold",
+            "inspection_grid_m",
+            "inspection_line_fraction"
+          ],
+          "purpose": "R3 retained-map material implementation",
+          "overlaps": [],
+          "replacement_asset": null
+        },
+        {
+          "path": "game/r3/surface.gdshaderinc",
+          "before_sha256": null,
+          "after_sha256": "67e056d00c45c5d34078cebcc4949943383a23d89306758fbbf88d2560cdc04e",
+          "functions": [
+            "vertex",
+            "fragment"
+          ],
+          "settings": [
+            "face_albedo",
+            "edge_albedo",
+            "face_normal",
+            "edge_normal",
+            "face_orm",
+            "edge_orm",
+            "face_repeat",
+            "edge_repeat",
+            "family_kind",
+            "grain_axis",
+            "half_size",
+            "slab",
+            "broad_sides",
+            "roof",
+            "roof_topology",
+            "moving_member",
+            "integral_frame",
+            "all_edge",
+            "door",
+            "rail_width",
+            "frame_width",
+            "shade",
+            "normal_strength",
+            "frame_shade",
+            "end_normal_threshold",
+            "board_width_m",
+            "board_phase_texels",
+            "face_resolution_px",
+            "recess_min_m",
+            "seam_roughness_add",
+            "recess_edge_guard_m",
+            "door_rails_y",
+            "door_rail_half_width_m",
+            "seam_tint",
+            "seam_metallic",
+            "pane_opacity",
+            "projection_axis_threshold",
+            "roof_face_min_up",
+            "alternate_axis_threshold",
+            "recess_face_threshold",
+            "inspection_grid_m",
+            "inspection_line_fraction",
+            "inspection"
+          ],
+          "purpose": "R3 retained-map material implementation",
+          "overlaps": [],
+          "replacement_asset": null
+        }
+      ],
+      "authored_maps_added": 0,
+      "authored_maps_removed": 0,
+      "authored_geometry_replaced": 0,
+      "note": "Only shading and dispatch. PNG/GLB bytes, triangle/vertex/index arrays, collisions, game rules and paid checkpoint remain untouched."
+    },
+    "scope": "Exact worker ancestry, exclusive Git paths, source/sealed recipe agreement, Python parsing, whitespace and all retained runner-log hashes. Full input/package payload verification is executed separately before fresh application."
+  },
+  "fresh_verification": {
+    "result": "PASS",
+    "runtime": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\runtime",
+    "source_files_verified": 4796,
+    "fresh_jobs": [
+      {
+        "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\import\\local",
+        "arguments": [
+          "--headless",
+          "--editor",
+          "--path",
+          "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\runtime\\game",
+          "--import"
+        ],
+        "log_sha256": "88f6ff9ad348f16e4e5a38e40f3a1e7ef1da1a4ab9cd6964c1f2cb282e94b7aa",
+        "seconds": 71.5681828,
+        "results": [],
+        "failure": "",
+        "id": "import",
+        "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\import\\temp",
+        "child_pid": 35468,
+        "wrapper_pid": 35940,
+        "processes_before": null,
+        "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\import",
+        "exit_code": 0,
+        "benchmark_competitors": [],
+        "start": "2026-09-14T12:15:58.5034392+09:30"
+      },
+      {
+        "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\publisher-packed-reopen\\local",
+        "arguments": [
+          "--background",
+          "--factory-startup",
+          "--python",
+          "D:\\project-wroughtwild-art07-r3\\tools\\wroughtwild-art07-repairs\\r3\\reopen.py",
+          "--",
+          "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\masters",
+          "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\packed-reopen"
+        ],
+        "log_sha256": "6457c5884dc0caa70de1f8b62ce2edb7312c536ebb11cf9696e869acc8babe2d",
+        "seconds": 1.7526651,
+        "results": [],
+        "failure": "",
+        "id": "publisher-packed-reopen",
+        "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\blender-tool\\blender-4.5.9-windows-x64\\blender.exe",
+        "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\publisher-packed-reopen\\temp",
+        "child_pid": 24140,
+        "wrapper_pid": 35940,
+        "processes_before": null,
+        "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\publisher-packed-reopen",
+        "exit_code": 0,
+        "benchmark_competitors": [],
+        "start": "2026-09-14T12:17:10.1575263+09:30"
+      },
+      {
+        "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\pass02-r3-forward_plus\\local",
+        "arguments": [
+          "--rendering-method",
+          "forward_plus",
+          "--path",
+          "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\runtime\\game",
+          "res://r3/inspection.tscn",
+          "--",
+          "--run-id=pass02-r3-forward_plus"
+        ],
+        "log_sha256": "d9455ef530e2fbec06cf9faa23d3ae1c24290e230130923c9c33360d5b0f8c7f",
+        "seconds": 8.8483353,
+        "results": [
+          "R3_INSPECTION 469 checks, 0 failures, 91 retained pieces"
+        ],
+        "failure": "",
+        "id": "pass02-r3-forward_plus",
+        "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\pass02-r3-forward_plus\\temp",
+        "child_pid": 35456,
+        "wrapper_pid": 35940,
+        "processes_before": null,
+        "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\pass02-r3-forward_plus",
+        "exit_code": 0,
+        "benchmark_competitors": [],
+        "start": "2026-09-14T12:17:11.9168164+09:30"
+      },
+      {
+        "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\pass02-r3-gl_compatibility\\local",
+        "arguments": [
+          "--rendering-method",
+          "gl_compatibility",
+          "--path",
+          "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\runtime\\game",
+          "res://r3/inspection.tscn",
+          "--",
+          "--run-id=pass02-r3-gl_compatibility"
+        ],
+        "log_sha256": "6baf8c45b24409cce53a9ae4a540f93afecacb25f210f17c96c8062e4c489e0d",
+        "seconds": 8.9809468,
+        "results": [
+          "R3_INSPECTION 469 checks, 0 failures, 91 retained pieces"
+        ],
+        "failure": "",
+        "id": "pass02-r3-gl_compatibility",
+        "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\pass02-r3-gl_compatibility\\temp",
+        "child_pid": 29600,
+        "wrapper_pid": 35940,
+        "processes_before": null,
+        "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\pass02-r3-gl_compatibility",
+        "exit_code": 0,
+        "benchmark_competitors": [],
+        "start": "2026-09-14T12:17:20.7710336+09:30"
+      },
+      {
+        "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\pass01-catalogue-forward_plus\\local",
+        "arguments": [
+          "--rendering-method",
+          "forward_plus",
+          "--path",
+          "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\runtime\\game",
+          "res://g1/catalogue.tscn",
+          "--",
+          "--run-id=pass01-catalogue-forward_plus"
+        ],
+        "log_sha256": "4cfb3077fb4d1d9cd5fdabb7de439516629dd4005b61199530b93f670b3ed116",
+        "seconds": 7.9578676,
+        "results": [
+          "G1_CATALOGUE 1861 checks, 0 failures; 273 legal pairs"
+        ],
+        "failure": "",
+        "id": "pass01-catalogue-forward_plus",
+        "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\pass01-catalogue-forward_plus\\temp",
+        "child_pid": 6804,
+        "wrapper_pid": 35940,
+        "processes_before": null,
+        "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\pass01-catalogue-forward_plus",
+        "exit_code": 0,
+        "benchmark_competitors": [],
+        "start": "2026-09-14T12:17:29.7574621+09:30"
+      },
+      {
+        "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\pass01-catalogue-gl_compatibility\\local",
+        "arguments": [
+          "--rendering-method",
+          "gl_compatibility",
+          "--path",
+          "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\runtime\\game",
+          "res://g1/catalogue.tscn",
+          "--",
+          "--run-id=pass01-catalogue-gl_compatibility"
+        ],
+        "log_sha256": "923964d71af409bfedbd374a5d65d1be154c26cf7b763740958aa8248d073fdd",
+        "seconds": 7.0187133,
+        "results": [
+          "G1_CATALOGUE 1861 checks, 0 failures; 273 legal pairs"
+        ],
+        "failure": "",
+        "id": "pass01-catalogue-gl_compatibility",
+        "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\pass01-catalogue-gl_compatibility\\temp",
+        "child_pid": 5504,
+        "wrapper_pid": 35940,
+        "processes_before": null,
+        "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\pass01-catalogue-gl_compatibility",
+        "exit_code": 0,
+        "benchmark_competitors": [],
+        "start": "2026-09-14T12:17:37.7220491+09:30"
+      },
+      {
+        "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\pass01-transactions-forward_plus\\local",
+        "arguments": [
+          "--rendering-method",
+          "forward_plus",
+          "--path",
+          "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\runtime\\game",
+          "res://tests/placement_transactions.tscn",
+          "--",
+          "--run-id=pass01-transactions-forward_plus"
+        ],
+        "log_sha256": "ba6b82a4b0ba02202e889858bfe163f737e085b61d52c83542e755c6b8cc2fed",
+        "seconds": 6.9005817,
+        "results": [
+          "PLACEMENT_TRANSACTIONS 470 checks, 0 failures"
+        ],
+        "failure": "",
+        "id": "pass01-transactions-forward_plus",
+        "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\pass01-transactions-forward_plus\\temp",
+        "child_pid": 31312,
+        "wrapper_pid": 35940,
+        "processes_before": null,
+        "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\pass01-transactions-forward_plus",
+        "exit_code": 0,
+        "benchmark_competitors": [],
+        "start": "2026-09-14T12:17:44.7458649+09:30"
+      },
+      {
+        "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\pass01-transactions-forward_plus\\local",
+        "arguments": [
+          "--rendering-method",
+          "forward_plus",
+          "--path",
+          "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\runtime\\game",
+          "res://tests/placement_transactions.tscn",
+          "--",
+          "--placement-restore-only",
+          "--run-id=pass01-transactions-restore-forward_plus"
+        ],
+        "log_sha256": "8cd8a869c08b1e405eab69c7e00c693657bffbebdd19bb4fb709ae75d0a41b5f",
+        "seconds": 3.8389915,
+        "results": [
+          "PLACEMENT_RESTART 60 checks, 0 failures"
+        ],
+        "failure": "",
+        "id": "pass01-transactions-restore-forward_plus",
+        "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\pass01-transactions-forward_plus\\temp",
+        "child_pid": 34264,
+        "wrapper_pid": 35940,
+        "processes_before": null,
+        "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\pass01-transactions-forward_plus",
+        "exit_code": 0,
+        "benchmark_competitors": [],
+        "start": "2026-09-14T12:17:51.6501566+09:30"
+      },
+      {
+        "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\pass01-transactions-gl_compatibility\\local",
+        "arguments": [
+          "--rendering-method",
+          "gl_compatibility",
+          "--path",
+          "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\runtime\\game",
+          "res://tests/placement_transactions.tscn",
+          "--",
+          "--run-id=pass01-transactions-gl_compatibility"
+        ],
+        "log_sha256": "ee7d85c6286168be86129619c8c2f6e550b43d745c86dc0ecda541e3c0a6222e",
+        "seconds": 6.4372917,
+        "results": [
+          "PLACEMENT_TRANSACTIONS 470 checks, 0 failures"
+        ],
+        "failure": "",
+        "id": "pass01-transactions-gl_compatibility",
+        "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\pass01-transactions-gl_compatibility\\temp",
+        "child_pid": 8232,
+        "wrapper_pid": 35940,
+        "processes_before": null,
+        "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\pass01-transactions-gl_compatibility",
+        "exit_code": 0,
+        "benchmark_competitors": [],
+        "start": "2026-09-14T12:17:55.4954715+09:30"
+      },
+      {
+        "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\pass01-transactions-gl_compatibility\\local",
+        "arguments": [
+          "--rendering-method",
+          "gl_compatibility",
+          "--path",
+          "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\runtime\\game",
+          "res://tests/placement_transactions.tscn",
+          "--",
+          "--placement-restore-only",
+          "--run-id=pass01-transactions-restore-gl_compatibility"
+        ],
+        "log_sha256": "f5468b174804a07f88ff75e29f9e588a0c6cbcd804630e19df6a1af6793a7d35",
+        "seconds": 4.0361499,
+        "results": [
+          "PLACEMENT_RESTART 60 checks, 0 failures"
+        ],
+        "failure": "",
+        "id": "pass01-transactions-restore-gl_compatibility",
+        "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\pass01-transactions-gl_compatibility\\temp",
+        "child_pid": 34260,
+        "wrapper_pid": 35940,
+        "processes_before": null,
+        "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\pass01-transactions-gl_compatibility",
+        "exit_code": 0,
+        "benchmark_competitors": [],
+        "start": "2026-09-14T12:18:01.9389671+09:30"
+      },
+      {
+        "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\pass02-paid-r3-forward_plus\\local",
+        "arguments": [
+          "--rendering-method",
+          "forward_plus",
+          "--path",
+          "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\runtime\\game",
+          "res://r3/home.tscn",
+          "--",
+          "--run-id=pass02-paid-r3-forward_plus"
+        ],
+        "log_sha256": "c0eb50e02c2504d8a22c5eb194e63eaaff929251dbdeb3ff57e479dd091d817b",
+        "seconds": 114.7173683,
+        "results": [
+          "R3_PAID_HOME 18 checks, 0 failures, restore=false"
+        ],
+        "failure": "",
+        "id": "pass02-paid-r3-forward_plus",
+        "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\pass02-paid-r3-forward_plus\\temp",
+        "child_pid": 34004,
+        "wrapper_pid": 35940,
+        "processes_before": null,
+        "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\pass02-paid-r3-forward_plus",
+        "exit_code": 0,
+        "benchmark_competitors": [],
+        "start": "2026-09-14T12:18:05.9807640+09:30"
+      },
+      {
+        "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\pass02-paid-r3-forward_plus\\local",
+        "arguments": [
+          "--rendering-method",
+          "forward_plus",
+          "--path",
+          "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\runtime\\game",
+          "res://r3/home.tscn",
+          "--",
+          "--r3-restore",
+          "--run-id=pass02-restore-r3-forward_plus"
+        ],
+        "log_sha256": "d2c237ac44e4de12de7726fb5a5f84f020f92ac6fd3fece3df5036d5326b3a77",
+        "seconds": 107.7214678,
+        "results": [
+          "R3_PAID_HOME 9 checks, 0 failures, restore=true"
+        ],
+        "failure": "",
+        "id": "pass02-restore-r3-forward_plus",
+        "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\pass02-paid-r3-forward_plus\\temp",
+        "child_pid": 35372,
+        "wrapper_pid": 35940,
+        "processes_before": null,
+        "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\pass02-paid-r3-forward_plus",
+        "exit_code": 0,
+        "benchmark_competitors": [],
+        "start": "2026-09-14T12:20:00.7048079+09:30"
+      },
+      {
+        "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\pass02-paid-r3-gl_compatibility\\local",
+        "arguments": [
+          "--rendering-method",
+          "gl_compatibility",
+          "--path",
+          "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\runtime\\game",
+          "res://r3/home.tscn",
+          "--",
+          "--run-id=pass02-paid-r3-gl_compatibility"
+        ],
+        "log_sha256": "6c885fa5f9afb821c099b9eea219fcf93be4f22151454d10ef67c36b5e29bafe",
+        "seconds": 110.197885,
+        "results": [
+          "R3_PAID_HOME 18 checks, 0 failures, restore=false"
+        ],
+        "failure": "",
+        "id": "pass02-paid-r3-gl_compatibility",
+        "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\pass02-paid-r3-gl_compatibility\\temp",
+        "child_pid": 3232,
+        "wrapper_pid": 35940,
+        "processes_before": null,
+        "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\pass02-paid-r3-gl_compatibility",
+        "exit_code": 0,
+        "benchmark_competitors": [],
+        "start": "2026-09-14T12:21:48.4315165+09:30"
+      },
+      {
+        "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\pass02-paid-r3-gl_compatibility\\local",
+        "arguments": [
+          "--rendering-method",
+          "gl_compatibility",
+          "--path",
+          "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\runtime\\game",
+          "res://r3/home.tscn",
+          "--",
+          "--r3-restore",
+          "--run-id=pass02-restore-r3-gl_compatibility"
+        ],
+        "log_sha256": "522c3b3405418830dd8536c3852e63aea628be04e07ee6ea152cb6f3b92071cb",
+        "seconds": 103.6361779,
+        "results": [
+          "R3_PAID_HOME 9 checks, 0 failures, restore=true"
+        ],
+        "failure": "",
+        "id": "pass02-restore-r3-gl_compatibility",
+        "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\pass02-paid-r3-gl_compatibility\\temp",
+        "child_pid": 36880,
+        "wrapper_pid": 35940,
+        "processes_before": null,
+        "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\users\\pass02-paid-r3-gl_compatibility",
+        "exit_code": 0,
+        "benchmark_competitors": [],
+        "start": "2026-09-14T12:23:38.6360281+09:30"
+      }
+    ],
+    "additional_proof": {
+      "reproduced_worker_evidence": {
+        "result": "PASS",
+        "material_geometry_comparisons": [
+          "pass02-forward-comparison.json",
+          "pass02-compatibility-comparison.json"
+        ],
+        "recalculated_costs": [
+          {
+            "scene": "inspection",
+            "renderer": "forward_plus",
+            "matched_cases": 33,
+            "draw_delta_range": [
+              -19,
+              0
+            ],
+            "primitive_delta": 0,
+            "median_ms_delta_range": [
+              -0.044999999999999984,
+              -0.007000000000000006
+            ],
+            "p95_ms_delta_range": [
+              -0.29,
+              -0.0030000000000000027
+            ]
+          },
+          {
+            "scene": "home",
+            "renderer": "forward_plus",
+            "matched_cases": 6,
+            "draw_delta_range": [
+              0,
+              0
+            ],
+            "primitive_delta": 0,
+            "median_ms_delta_range": [
+              -0.016999999999999904,
+              0.07800000000000029
+            ],
+            "p95_ms_delta_range": [
+              -0.01100000000000012,
+              0.08099999999999996
+            ]
+          },
+          {
+            "scene": "inspection",
+            "renderer": "gl_compatibility",
+            "matched_cases": 33,
+            "draw_delta_range": [
+              -16,
+              0
+            ],
+            "primitive_delta": 0,
+            "median_ms_delta_range": [
+              -0.04400000000000004,
+              0.02100000000000002
+            ],
+            "p95_ms_delta_range": [
+              -0.07599999999999996,
+              0.05500000000000005
+            ]
+          },
+          {
+            "scene": "home",
+            "renderer": "gl_compatibility",
+            "matched_cases": 6,
+            "draw_delta_range": [
+              0,
+              1
+            ],
+            "primitive_delta": 0,
+            "median_ms_delta_range": [
+              -0.11099999999999977,
+              0.02200000000000024
+            ],
+            "p95_ms_delta_range": [
+              -0.17900000000000027,
+              0.06100000000000083
+            ]
+          }
+        ],
+        "persistent_fingerprints": [
+          {
+            "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-repair-publication-rest-2026-09-14\\reproduced-r3-paid-compatibility-fingerprints.json",
+            "sha256": "f4593b2bb0396e0f88a720f46e6c1631381dec2bb93e2bdfa12d6ce8a8682889"
+          },
+          {
+            "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-repair-publication-rest-2026-09-14\\reproduced-r3-paid-cross-renderer-fingerprints.json",
+            "sha256": "5113ae46d738570409d725b05e4134002967f0158c1e76631c8b55cfdacdcf56"
+          },
+          {
+            "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-repair-publication-rest-2026-09-14\\reproduced-r3-paid-forward-fingerprints.json",
+            "sha256": "74a448090ce2aece5751d2d8c630dc41e5e1cd9d0c9220f7eaa4ccd62827e219"
+          },
+          {
+            "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-repair-publication-rest-2026-09-14\\reproduced-r3-restore-g1-compatibility-fingerprints.json",
+            "sha256": "c023d4099b75d06e7853eb70a6d0601f7c73ef2898586824fb210b8a74b3b3bd"
+          },
+          {
+            "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-repair-publication-rest-2026-09-14\\reproduced-r3-restore-g1-forward-fingerprints.json",
+            "sha256": "fc91602aa3e95f126c6bb936a32c7d0db76776abb30c255d48ba03167f053a76"
+          },
+          {
+            "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-repair-publication-rest-2026-09-14\\reproduced-r3-restore-r3-compatibility-fingerprints.json",
+            "sha256": "e781ee9ba5f909ba3fc93a5c7d19eff79a1e5e93a34060372fb33dca28e02b6b"
+          },
+          {
+            "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-repair-publication-rest-2026-09-14\\reproduced-r3-restore-r3-forward-fingerprints.json",
+            "sha256": "23bf77eb0200322db1e05cd9502db3aaccde3568fc9ef935edc5841c03fd21a9"
+          }
+        ]
+      },
+      "fresh_geometry_and_persistent_state": {
+        "result": "PASS",
+        "packed_master_report": {
+          "blender": "4.5.9 LTS",
+          "masters": [
+            {
+              "master": "d4_materials.blend",
+              "sha256": "b93a03545d5102594a068b9b1735ccfef7ac1301dc36123f2a8c82bdf546ccba",
+              "images": [
+                {
+                  "name": "d4_ash_wood_edge_albedo.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "sRGB"
+                },
+                {
+                  "name": "d4_ash_wood_edge_normal.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d4_ash_wood_edge_orm.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d4_ash_wood_face_albedo.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "sRGB"
+                },
+                {
+                  "name": "d4_ash_wood_face_normal.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d4_ash_wood_face_orm.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d4_bog_oak_edge_albedo.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "sRGB"
+                },
+                {
+                  "name": "d4_bog_oak_edge_normal.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d4_bog_oak_edge_orm.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d4_bog_oak_face_albedo.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "sRGB"
+                },
+                {
+                  "name": "d4_bog_oak_face_normal.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d4_bog_oak_face_orm.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d4_corkbark_edge_albedo.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "sRGB"
+                },
+                {
+                  "name": "d4_corkbark_edge_normal.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d4_corkbark_edge_orm.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d4_corkbark_face_albedo.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "sRGB"
+                },
+                {
+                  "name": "d4_corkbark_face_normal.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d4_corkbark_face_orm.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d4_pine_edge_albedo.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "sRGB"
+                },
+                {
+                  "name": "d4_pine_edge_normal.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d4_pine_edge_orm.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d4_pine_face_albedo.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "sRGB"
+                },
+                {
+                  "name": "d4_pine_face_normal.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d4_pine_face_orm.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d4_resinheart_edge_albedo.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "sRGB"
+                },
+                {
+                  "name": "d4_resinheart_edge_normal.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d4_resinheart_edge_orm.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d4_resinheart_face_albedo.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "sRGB"
+                },
+                {
+                  "name": "d4_resinheart_face_normal.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d4_resinheart_face_orm.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d4_wood_edge_albedo.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "sRGB"
+                },
+                {
+                  "name": "d4_wood_edge_normal.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d4_wood_edge_orm.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d4_wood_face_albedo.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "sRGB"
+                },
+                {
+                  "name": "d4_wood_face_normal.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d4_wood_face_orm.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d4_woven_reed_edge_albedo.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "sRGB"
+                },
+                {
+                  "name": "d4_woven_reed_edge_normal.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d4_woven_reed_edge_orm.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d4_woven_reed_face_albedo.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "sRGB"
+                },
+                {
+                  "name": "d4_woven_reed_face_normal.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d4_woven_reed_face_orm.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                }
+              ],
+              "triangles_in_original_master": 314
+            },
+            {
+              "master": "d5_materials.blend",
+              "sha256": "126bac7abab517d87b77d279b8934e2c2a8741e52d6a9518a61b488c7ae68cb8",
+              "images": [
+                {
+                  "name": "d5_charcoal_edge_albedo.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "sRGB"
+                },
+                {
+                  "name": "d5_charcoal_edge_normal.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d5_charcoal_edge_orm.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d5_charcoal_face_albedo.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "sRGB"
+                },
+                {
+                  "name": "d5_charcoal_face_normal.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d5_charcoal_face_orm.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d5_cinderglass_edge_albedo.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "sRGB"
+                },
+                {
+                  "name": "d5_cinderglass_edge_normal.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d5_cinderglass_edge_orm.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d5_cinderglass_face_albedo.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "sRGB"
+                },
+                {
+                  "name": "d5_cinderglass_face_normal.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d5_cinderglass_face_orm.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d5_fieldstone_edge_albedo.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "sRGB"
+                },
+                {
+                  "name": "d5_fieldstone_edge_normal.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d5_fieldstone_edge_orm.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d5_fieldstone_face_albedo.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "sRGB"
+                },
+                {
+                  "name": "d5_fieldstone_face_normal.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d5_fieldstone_face_orm.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d5_rustclay_brick_edge_albedo.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "sRGB"
+                },
+                {
+                  "name": "d5_rustclay_brick_edge_normal.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d5_rustclay_brick_edge_orm.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d5_rustclay_brick_face_albedo.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "sRGB"
+                },
+                {
+                  "name": "d5_rustclay_brick_face_normal.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d5_rustclay_brick_face_orm.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d5_shellstone_edge_albedo.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "sRGB"
+                },
+                {
+                  "name": "d5_shellstone_edge_normal.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d5_shellstone_edge_orm.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d5_shellstone_face_albedo.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "sRGB"
+                },
+                {
+                  "name": "d5_shellstone_face_normal.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d5_shellstone_face_orm.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d5_slate_edge_albedo.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "sRGB"
+                },
+                {
+                  "name": "d5_slate_edge_normal.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d5_slate_edge_orm.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d5_slate_face_albedo.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "sRGB"
+                },
+                {
+                  "name": "d5_slate_face_normal.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d5_slate_face_orm.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d5_stone_edge_albedo.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "sRGB"
+                },
+                {
+                  "name": "d5_stone_edge_normal.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d5_stone_edge_orm.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d5_stone_face_albedo.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "sRGB"
+                },
+                {
+                  "name": "d5_stone_face_normal.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d5_stone_face_orm.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d5_vitrified_basalt_edge_albedo.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "sRGB"
+                },
+                {
+                  "name": "d5_vitrified_basalt_edge_normal.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d5_vitrified_basalt_edge_orm.png",
+                  "width": 512,
+                  "height": 512,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d5_vitrified_basalt_face_albedo.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "sRGB"
+                },
+                {
+                  "name": "d5_vitrified_basalt_face_normal.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d5_vitrified_basalt_face_orm.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                }
+              ],
+              "triangles_in_original_master": 1762
+            },
+            {
+              "master": "d6_materials.blend",
+              "sha256": "b2a7113fba5ba96ba5de7cababe3b0f45e3220f8e5026d7f207f215c899499e5",
+              "images": [
+                {
+                  "name": "d6_bronze_albedo.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "sRGB"
+                },
+                {
+                  "name": "d6_bronze_normal.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d6_bronze_orm.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d6_iron_albedo.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "sRGB"
+                },
+                {
+                  "name": "d6_iron_normal.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d6_iron_orm.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d6_silver_albedo.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "sRGB"
+                },
+                {
+                  "name": "d6_silver_normal.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d6_silver_orm.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d6_steel_albedo.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "sRGB"
+                },
+                {
+                  "name": "d6_steel_normal.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                },
+                {
+                  "name": "d6_steel_orm.png",
+                  "width": 1024,
+                  "height": 1024,
+                  "packed": true,
+                  "colour_space": "Non-Color"
+                }
+              ],
+              "triangles_in_original_master": 13620
+            }
+          ],
+          "scope": "Fresh reopen of unchanged D4/D5/D6 packed material sources. No geometry or map reauthoring; R3 changes runtime binding only."
+        },
+        "material_geometry": [
+          {
+            "baseline": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\handoff\\evidence\\r3-pass02-g1-forward_plus-g1-forward_plus\\report.json",
+            "candidate": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\runtime\\evidence\\r3-pass02-r3-forward_plus-candidate-forward_plus\\report.json",
+            "renderer": "forward_plus",
+            "gpu": "NVIDIA GeForce RTX 5090",
+            "matching_cameras": true,
+            "matching_geometry": true,
+            "matching_geography": false,
+            "cost_before": {
+              "buffer_bytes": 24351344,
+              "draw_calls": 11,
+              "primitives": 42104,
+              "texture_bytes": 385524224,
+              "video_bytes": 434523024
+            },
+            "cost_after": {
+              "buffer_bytes": 24360656,
+              "draw_calls": 11,
+              "primitives": 2200,
+              "texture_bytes": 423319040,
+              "video_bytes": 472330512
+            }
+          },
+          {
+            "baseline": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\handoff\\evidence\\r3-pass02-g1-gl_compatibility-g1-gl_compatibility\\report.json",
+            "candidate": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\runtime\\evidence\\r3-pass02-r3-gl_compatibility-candidate-gl_compatibility\\report.json",
+            "renderer": "gl_compatibility",
+            "gpu": "NVIDIA GeForce RTX 5090",
+            "matching_cameras": true,
+            "matching_geometry": true,
+            "matching_geography": false,
+            "cost_before": {
+              "buffer_bytes": 22811868,
+              "draw_calls": 367,
+              "primitives": 42104,
+              "texture_bytes": 218347857,
+              "video_bytes": 241159725
+            },
+            "cost_after": {
+              "buffer_bytes": 22811868,
+              "draw_calls": 37,
+              "primitives": 2200,
+              "texture_bytes": 246659382,
+              "video_bytes": 269471250
+            }
+          }
+        ],
+        "persistent_state_comparisons": [
+          {
+            "baseline": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\runtime\\evidence\\r3-home-pass02-paid-r3-forward_plus-candidate-forward_plus\\report.json",
+            "candidate": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\runtime\\evidence\\r3-home-pass02-restore-r3-forward_plus-candidate-forward_plus\\report.json",
+            "geography_sha256": "550b2d742314136a71a8c177920059bd245996e744b8722c8ba8c68afbde4a70",
+            "canonicalization": "Parse native JSON and sort resource/station records; omit only auto-generated station scene-node name. All persistent identities, addresses, quantities, work, progression and positions remain exact.",
+            "stages": {
+              "final->initial": {
+                "sha256": "541484722ce7615dddaf51d1103da857fa0c8821a687861c2cfecff5372e14ca",
+                "fields": {
+                  "blocks": "8b8a2167a77128135c703f51126027c1db7eca8cf1bd88d8e3e4ef93a5a958a0",
+                  "contraptions": "c84285ffe24620a915300948528461c6c4fc864b0f8bc72135b00d702fb302dc",
+                  "leylines": "0147e312950d39137e10ba3aadb4729972efd2f3177117b1e1986595a995c438",
+                  "loot_kill_counter": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+                  "player": "1cc8fe990b3e1dde04358cf91f43c96fdd2ee5e1feb9a3109b3123716a167efc",
+                  "resource_nodes": "d45ce017dc0a6c7fae2dca8674b9020694ec48e77e65cca7c8220f44b311cb36",
+                  "schema_version": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+                  "sim": "b65d676a4bf909a14904af9b690cc3d33e4ab6d0e8018e19e03c105c8d85a622",
+                  "stations": "91b8b3255d5495aaa8288984cdac74d77e37060934b13aeb3a064f332568e69b",
+                  "world_drops": "24c4f8486ed77a02e0d880efd21553349ff003dd9c8d2b3e5371834f8fcf66fd",
+                  "world_profile": "8b2d16e8347ad720172d15b90e0b5865d75696764bbe5fe361db55e6f34a74e8",
+                  "world_seed": "a88a7902cb4ef697ba0b6759c50e8c10297ff58f942243de19b984841bfe1f73"
+                }
+              }
+            }
+          },
+          {
+            "baseline": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\runtime\\evidence\\r3-home-pass02-paid-r3-gl_compatibility-candidate-gl_compatibility\\report.json",
+            "candidate": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\runtime\\evidence\\r3-home-pass02-restore-r3-gl_compatibility-candidate-gl_compatibility\\report.json",
+            "geography_sha256": "550b2d742314136a71a8c177920059bd245996e744b8722c8ba8c68afbde4a70",
+            "canonicalization": "Parse native JSON and sort resource/station records; omit only auto-generated station scene-node name. All persistent identities, addresses, quantities, work, progression and positions remain exact.",
+            "stages": {
+              "final->initial": {
+                "sha256": "541484722ce7615dddaf51d1103da857fa0c8821a687861c2cfecff5372e14ca",
+                "fields": {
+                  "blocks": "8b8a2167a77128135c703f51126027c1db7eca8cf1bd88d8e3e4ef93a5a958a0",
+                  "contraptions": "c84285ffe24620a915300948528461c6c4fc864b0f8bc72135b00d702fb302dc",
+                  "leylines": "0147e312950d39137e10ba3aadb4729972efd2f3177117b1e1986595a995c438",
+                  "loot_kill_counter": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+                  "player": "1cc8fe990b3e1dde04358cf91f43c96fdd2ee5e1feb9a3109b3123716a167efc",
+                  "resource_nodes": "d45ce017dc0a6c7fae2dca8674b9020694ec48e77e65cca7c8220f44b311cb36",
+                  "schema_version": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+                  "sim": "b65d676a4bf909a14904af9b690cc3d33e4ab6d0e8018e19e03c105c8d85a622",
+                  "stations": "91b8b3255d5495aaa8288984cdac74d77e37060934b13aeb3a064f332568e69b",
+                  "world_drops": "24c4f8486ed77a02e0d880efd21553349ff003dd9c8d2b3e5371834f8fcf66fd",
+                  "world_profile": "8b2d16e8347ad720172d15b90e0b5865d75696764bbe5fe361db55e6f34a74e8",
+                  "world_seed": "a88a7902cb4ef697ba0b6759c50e8c10297ff58f942243de19b984841bfe1f73"
+                }
+              }
+            }
+          },
+          {
+            "baseline": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\runtime\\evidence\\r3-home-pass02-paid-r3-forward_plus-candidate-forward_plus\\report.json",
+            "candidate": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v02\\runtime\\evidence\\r3-home-pass02-paid-r3-gl_compatibility-candidate-gl_compatibility\\report.json",
+            "geography_sha256": "550b2d742314136a71a8c177920059bd245996e744b8722c8ba8c68afbde4a70",
+            "canonicalization": "Parse native JSON and sort resource/station records; omit only auto-generated station scene-node name. All persistent identities, addresses, quantities, work, progression and positions remain exact.",
+            "stages": {
+              "initial->initial": {
+                "sha256": "2fe1ad3fa6b4581996b94b451d7d05c5d135c11281517f76f70bbf4ef1001aba",
+                "fields": {
+                  "blocks": "8b8a2167a77128135c703f51126027c1db7eca8cf1bd88d8e3e4ef93a5a958a0",
+                  "contraptions": "c84285ffe24620a915300948528461c6c4fc864b0f8bc72135b00d702fb302dc",
+                  "leylines": "0147e312950d39137e10ba3aadb4729972efd2f3177117b1e1986595a995c438",
+                  "loot_kill_counter": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+                  "player": "1cc8fe990b3e1dde04358cf91f43c96fdd2ee5e1feb9a3109b3123716a167efc",
+                  "resource_nodes": "d45ce017dc0a6c7fae2dca8674b9020694ec48e77e65cca7c8220f44b311cb36",
+                  "schema_version": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+                  "sim": "892bac3a3a160646466af4678bc7391c53262a4dd526727a3693f59fc7a809cc",
+                  "stations": "4fd38a76da509ebdc1380bf33e9ac3eaa63f270973e1046fb56f568e88cf75b9",
+                  "world_drops": "24c4f8486ed77a02e0d880efd21553349ff003dd9c8d2b3e5371834f8fcf66fd",
+                  "world_profile": "8b2d16e8347ad720172d15b90e0b5865d75696764bbe5fe361db55e6f34a74e8",
+                  "world_seed": "a88a7902cb4ef697ba0b6759c50e8c10297ff58f942243de19b984841bfe1f73"
+                }
+              },
+              "final->final": {
+                "sha256": "541484722ce7615dddaf51d1103da857fa0c8821a687861c2cfecff5372e14ca",
+                "fields": {
+                  "blocks": "8b8a2167a77128135c703f51126027c1db7eca8cf1bd88d8e3e4ef93a5a958a0",
+                  "contraptions": "c84285ffe24620a915300948528461c6c4fc864b0f8bc72135b00d702fb302dc",
+                  "leylines": "0147e312950d39137e10ba3aadb4729972efd2f3177117b1e1986595a995c438",
+                  "loot_kill_counter": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+                  "player": "1cc8fe990b3e1dde04358cf91f43c96fdd2ee5e1feb9a3109b3123716a167efc",
+                  "resource_nodes": "d45ce017dc0a6c7fae2dca8674b9020694ec48e77e65cca7c8220f44b311cb36",
+                  "schema_version": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+                  "sim": "b65d676a4bf909a14904af9b690cc3d33e4ab6d0e8018e19e03c105c8d85a622",
+                  "stations": "91b8b3255d5495aaa8288984cdac74d77e37060934b13aeb3a064f332568e69b",
+                  "world_drops": "24c4f8486ed77a02e0d880efd21553349ff003dd9c8d2b3e5371834f8fcf66fd",
+                  "world_profile": "8b2d16e8347ad720172d15b90e0b5865d75696764bbe5fe361db55e6f34a74e8",
+                  "world_seed": "a88a7902cb4ef697ba0b6759c50e8c10297ff58f942243de19b984841bfe1f73"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "scope": "Fresh publisher cache/state and separate-process native checks. Verification runs are not repeated benchmark or long-session claims."
+  },
+  "visual_review": "Publisher inspected actual timber endgrain and octagonal/chamfer/triangle material views. Owner visual acceptance remains pending; the evidence is labelled catalogue inspection, separate from real paid-home replay.",
+  "finding": "G2-V02: partial; isolated directional material candidate is technically verified, with owner and combined R8/R9 acceptance pending.",
+  "remaining_limits": "R8 must reconcile G1Materials.material_for, G1Art.piece_mesh and PieceLook.apply_to with R2. Preserve accurate per-piece shape identity when meshes are reused. Edge maps increase loaded textures (worker paid-home values about 4 MiB Forward+ and 3 MiB Compatibility); timings are current-machine observations. Glass retains opacity 0.72 and attenuates heavily through multiple layers; no refraction is supplied. Native transaction screenshots share the original fixed directory; renderer-specific logs and checkpoints remain separate.",
+  "worker_remaining_limits": [
+    "Owner visual acceptance and independent combined R8/R9 review remain pending; this is an R3 integration candidate.",
+    "R2 overlaps game/g1/materials.gd:G1Materials.material_for, game/g1/art.gd:G1Art.piece_mesh and game/scripts/piece_look.gd:PieceLook.apply_to. Merge the baseline-relative hooks; do not copy a whole peer runtime. Preserve per-piece shape identity if a shared mesh can represent different IDs.",
+    "Original geometry/grooves, material map repetition and the dark source paid interior remain. No new shape, body, recipe, roof gate, scatter, seat, canopy or ground-cover rule was introduced.",
+    "Cinderglass retains source opacity 0.72; several layers attenuate heavily and no refraction is supplied. Fixed front/back/axis and perpendicular-pane comparisons exist in both renderers.",
+    "Current RTX 5090 measurements do not establish minimum-hardware acceptance or a performance budget. Loaded construction edge textures and per-shape material cache entries increase.",
+    "The unchanged original transaction harness uses one fixed screenshot directory, so retained transaction screenshots are the later Compatibility output; independent logs and private restart checkpoints exist for both renderers.",
+    "The GIF is illustrative native-controller playback approaching a closed saved door, not a timing recording or a claim of walking through that door.",
+    "Two failed fixture attempts and unlaunched GPU deferrals are retained as history, not candidate acceptance evidence. Use the successful pass02 candidate paid checkpoints, with the explicit pass03 baseline Forward+ restore where indicated.",
+    "The checked engine batch used the earlier 45-second acquisition wait. The final owned wrapper offers one continuous finite 900-second acquisition wait; its syntax passed. All engine/Blender launches used the same unchanged shared runner and mutex.",
+    "Ordinary-world rollout and main integration/publication are outside this worker task."
+  ],
+  "publisher_audit": {
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-repair-publication-rest-2026-09-14\\r3-publisher-audit.py",
+    "sha256": "4457dfd18fe05091ef83910f2cefceec8b6dd6a62877a15e39a7ff1068919034"
+  },
+  "publication": "These notes accompany an ordinary non-force push to approved origin/main. Actual remote-tip verification is retained separately after that push.",
+  "runtime_adoption": "Publication makes the isolated candidate available. R8 composes runtime hooks; ordinary-world rollout is not included."
+}
