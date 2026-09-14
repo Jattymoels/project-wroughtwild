@@ -443,3 +443,13 @@ All seven repairs now compose in one sealed retained-world runtime, with origina
 native/save boundaries and a verified automatic-test mouse opt-out. Setup and
 texture memory improve; settled-frame cost, traversal stalls and recorded visual
 limits remain. R9 follows as a new independent review; no rollout is authorized.
+
+### ART-07 repair wave 4 ready, 14 September 2026
+
+[R9 setup and full prompt](art07-repairs/2026-09-14/SETUP.md#ready-wave-4--14-september-2026)
+are ready in D:/project-wroughtwild-art07-r9. Use a new independent task that
+implemented none of R1–R8. A fresh final R8 runtime is prepared and every copied
+byte verified, with separate test mouse-comfort settings. The reviewer independently
+verifies complete inputs before execution. No worker task or engine was launched.
+Seven-finding review, owner visuals and target hardware remain open; no ordinary-world
+rollout is implied.

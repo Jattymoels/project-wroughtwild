@@ -1,9 +1,9 @@
 # Worktree and runtime setup
 
-Start with [the plan](README.md). R1–R8 are checked and published. R9 is the next
-independent review; its actual worktree preparation is recorded separately.
-No worker task was launched by publication. [Workspaces](workspaces.json) preserves
-historical setup and current delivery records.
+Start with [the plan](README.md). **R9 is ready for a new independent review task**
+that implemented none of R1–R8. Its worktree and fresh final R8 runtime
+are prepared below. R1–R8 are checked and published. Setup launched no worker
+task or engine. [Workspaces](workspaces.json) records the actual preparation.
 
 Published repair candidates: [R1](publication-r1.md) [R2](publication-r2.md) [R3](publication-r3.md) [R4](publication-r4.md) [R5](publication-r5.md) [R6](publication-r6.md) [R7](publication-r7.md) [R8](publication-r8.md).
 The initial setup flags remain historical; [deliveries.json](deliveries.json) is
@@ -23,7 +23,63 @@ Installed tools (verify before launch):
 | Godot | Copied pinned executable under each version's `runtime/engine/` |
 | Raw source packages | Exact paths and hashes in [inputs.json](inputs.json) |
 
+## Ready wave 4 — 14 September 2026
+
+Use [the full R9 prompt](prompts/R9.md) in `D:/project-wroughtwild-art07-r9`,
+branch `codex/art07-r9`, in a **new task that implemented none of R1–R8**.
+The worktree was created from verified published main `292b3a4f4d489c5192ef3b555bd0efc1bd5e8c67`.
+
+The fresh `build/art07-repairs/r9/v01/runtime` is the combined final R8 candidate:
+5,673 files / 3,858,561,423 bytes, pinned native DLL, no inherited Godot cache.
+The publisher independently rehashed every copied file. A separately verified
+test-only no-focus override is also copied; generated smoke jobs include the
+mouse-capture opt-out. No engine or R9 task has run.
+
+Consume the exact final R8 package in [deliveries](deliveries.json),
+[publisher verification](publication-r8.md) and the
+[checked R9 input](../../../art/leyline-studies/2026-09-14/art07-repairs/r8/R9-input.json).
+Its manifest SHA-256 is `06dbb6538e4c454db65a00c60737d8e5bbaffbdb3fd0d5c9f0f355d2073c4541`;
+9,890 payload files / 13,437,587,547 bytes. Never run or import the immutable seal.
+
+The coordinator corrected shared preparation for R8's nested runtime layout.
+The runtime map must equal the sealed manifest entries before copying; every
+copied byte is checked. Reuse this verified candidate after independent input
+verification. If another version is needed, the assigned workspace.py prepare
+now handles R9 correctly. Inherited R8 replay helpers restrict writes to R8:
+any R9 derivative must retain strict R9 guards and original assertions. Keep
+common/parent helpers and peer worktrees unchanged. Normal-play copies exclude
+the test-only override; ordinary rollout is outside this review.
+For a fresh R1 source reopen, copy the declared models into a new input root with
+an empty evidence directory; copying historical reopen outputs trips its correct
+fresh-output guard. The publisher retains this failed attempt and checked retry.
+R3/R5 reopen output directories must also be absent when their verifiers start;
+create only their parent directory. Do not precreate the leaf destinations.
+
+Review all seven findings independently. In particular:
+
+- Recheck native payments/work, saved geography, all 273 legal building pairs
+  including octagonal/chamfer/triangle forms, and all 16 original actors.
+- Reproduce matched setup/residency, settled and first-use costs. R8's reported
+  setup/memory gains coexist with higher settled frame times, roughly 451–453 ms
+  traversal stalls and small bounded reload buffer growth. Target hardware is unset.
+- Keep heavy/dark canopy, chest clearances, flat ore surfaces and sparse understorey
+  explicit. Raised ore/body changes and larger plant envelopes remain unapproved
+  proposals. Review the unexplained first paid-walk stall; later passes do not
+  establish its cause or long-session stability.
+- Preserve the original native comparison's treatment of generated station names:
+  persistent station keys, ownership, poses and every gameplay field must match.
+- Use R8's tested mouse-capture opt-out plus startup no-focus override for automated
+  rendered checks. Real-renderer grounding is required; dummy MultiMesh readback
+  cannot prove placement. Keep Blender background and all jobs serialized/private.
+
+Report technical, visual and cost findings separately, with a short summary of what
+R9 achieved. Produce bounded follow-up prompts where needed; perform review only.
+Owner visual acceptance, target-device clearance and ordinary-world rollout remain
+separate decisions. [Wave-4 setup checks](wave4-setup-checks.json) record preparation.
+
 ## Ready wave 3 — 14 September 2026
+
+Historical setup: R8 is now completed, checked and published.
 
 Use [the complete R8 prompt](prompts/R8.md) in `D:/project-wroughtwild-art07-r8`,
 on branch `codex/art07-r8`. R1–R7 are all checked and published. This setup was

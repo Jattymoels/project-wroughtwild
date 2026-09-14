@@ -1,0 +1,100 @@
+{
+  "result": "PASS",
+  "created_from_verified_remote": "292b3a4f4d489c5192ef3b555bd0efc1bd5e8c67",
+  "prepared_workspaces": [
+    {
+      "id": "r9",
+      "branch": "codex/art07-r9",
+      "worktree": "D:/project-wroughtwild-art07-r9",
+      "setup_base": "292b3a4f4d489c5192ef3b555bd0efc1bd5e8c67",
+      "state": "workspace_and_final_r8_runtime_prepared; independent_review_not_started",
+      "runtime": "D:/project-wroughtwild-art07-r9/build/art07-repairs/r9/v01/runtime",
+      "prepared_receipt": "D:/project-wroughtwild-art07-r9/build/art07-repairs/r9/v01/prepared.json",
+      "prepared_receipt_sha256": "9fd99ca769e18ccd72e74fde2bf9b27ef9faee8af7257fd5f73d0796886ce0fd",
+      "copied_files": 5673,
+      "copied_bytes": 3858561423,
+      "test_support": {
+        "game/override.cfg": {
+          "source_path": "test-support/override.cfg",
+          "bytes": 157,
+          "sha256": "7c9d62d56e99c7a8f06022aef893f3545ef1717061b2c5d1ca6f1abc93aa1cfd"
+        }
+      },
+      "cache_inherited": false,
+      "engine_launched": false,
+      "git_clean": true,
+      "worktree_dispatch_validator": {
+        "arguments": [
+          "tools/wroughtwild-art07-repairs/dispatch.py"
+        ],
+        "exit_code": 0,
+        "stdout": "{\n  \"result\": \"PASS\",\n  \"worker_prompts\": 9,\n  \"publisher_prompts\": 1,\n  \"exclusive_git_outputs\": 36,\n  \"findings_owned_once\": 7,\n  \"waves\": 4,\n  \"reading_files\": 35,\n  \"local_links\": 100\n}\n",
+        "stderr": ""
+      },
+      "candidate_dependencies": [
+        "r8"
+      ],
+      "wave_gate": [
+        "r8"
+      ],
+      "r8_input": {
+        "status": "published",
+        "source_commit": "67865cf44739f9f9f779c36be49042dd77342d5e",
+        "receipt_commit": "7a5bc56936f1565cd94c450e6ca36ae1ccdbde15",
+        "receipt": "docs/prototype/art07-repairs/2026-09-14/receipts/r8.json",
+        "package": {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\handoff-final",
+          "manifest_sha256": "06dbb6538e4c454db65a00c60737d8e5bbaffbdb3fd0d5c9f0f355d2073c4541",
+          "files": 9890,
+          "bytes": 13437587547
+        },
+        "publication_report": "docs/prototype/art07-repairs/2026-09-14/publication-r8.json"
+      },
+      "reviewer_requirement": "New task that implemented none of R1–R8; coordinator has launched no task.",
+      "payload_verification": "R9-specific shared setup correction verifies the nested final runtime map against the seal, then hashes every copied file. Publisher independently rechecks all bytes and native DLL. Separate verified no-focus override and generated smoke opt-out preserve mouse comfort. Review worker still independently verifies full dependency/source lineage before execution."
+    }
+  ],
+  "validators": [
+    {
+      "arguments": [
+        "tools/wroughtwild-art07-repairs/dispatch.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"result\": \"PASS\",\n  \"worker_prompts\": 9,\n  \"publisher_prompts\": 1,\n  \"exclusive_git_outputs\": 36,\n  \"findings_owned_once\": 7,\n  \"waves\": 4,\n  \"reading_files\": 35,\n  \"local_links\": 105\n}\n",
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "tools/wroughtwild-world-design/session_plan.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"result\": \"PASS\",\n  \"production_slices\": 26,\n  \"worker_prompts\": 26,\n  \"publisher_prompts\": 1,\n  \"catalogue_entries_owned_once\": 131,\n  \"coverage\": {\n    \"resource_nodes\": 22,\n    \"nature_support\": 33,\n    \"shapes\": 26,\n    \"materials\": 19,\n    \"devices\": 15,\n    \"fauna_presentation\": 16\n  },\n  \"dependency_edges\": 60,\n  \"required_reading_files\": 43,\n  \"local_links\": 192,\n  \"initially_ready\": [\n    \"b1\",\n    \"b2\",\n    \"b3\",\n    \"d1\",\n    \"d4\",\n    \"d5\",\n    \"d6\",\n    \"f5\"\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "tools/wroughtwild-world-design/catalogue.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"result\": \"PASS\",\n  \"shapes\": 26,\n  \"materials\": 19,\n  \"kits\": 14,\n  \"upgrades\": 1,\n  \"finite_resource_types\": 22,\n  \"supporting_art_roles\": 33,\n  \"actor_ids\": 16,\n  \"grid_m\": 1.0,\n  \"lattice_divisions\": 2,\n  \"normal_profiles_kits\": 10,\n  \"living_frontier_supported_profiles_kits\": 14,\n  \"legal_material_shape_pairs\": 273,\n  \"station_body_m\": [\n    0.96,\n    2.0,\n    0.96\n  ],\n  \"scope\": \"Concept coverage only. Profile/era/unlock gates still apply; no new rules or universal kit availability.\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "tools/wroughtwild-world-design/verify_art.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"result\": \"PASS\",\n  \"pngs\": 6,\n  \"selected_boards\": 5,\n  \"superseded_framing_board\": 1,\n  \"exact_prompts\": 6,\n  \"generated_original_copies_checked\": 6,\n  \"edit_parent_links\": 1,\n  \"unchanged_mood_reference\": 1,\n  \"local_links_checked\": 28\n}\n",
+      "stderr": ""
+    }
+  ],
+  "unrelated_checkout_entries_preserved": 49,
+  "setup_engine_launches": 0,
+  "worker_tasks_created": 0,
+  "owned_paths": [
+    "docs/prototype/art07-repairs/2026-09-14/SETUP.md",
+    "docs/prototype/art07-repairs/2026-09-14/workspaces.json",
+    "docs/prototype/art07-repairs/2026-09-14/wave4-setup-checks.json",
+    "docs/prototype/intensive-queue.md"
+  ]
+}
