@@ -75,6 +75,32 @@ For copied/older project worktrees, read this section from the current owner dep
 at `C:/Users/Matty/Dev/project-wroughtwild/AGENTS.md` before applying an old prompt.
 The owner can explicitly choose a larger scope/budget for a particular task.
 
+## Storage discipline — owner cleanup request, 15 September 2026
+
+Keep the active owner depot at `C:/Users/Matty/Dev/project-wroughtwild` and
+preserve its Git metadata, task paths and remote-access tooling. Do not relocate
+an active checkout or change app/remote settings as part of storage cleanup.
+
+Use `D:/Wroughtwild/work/<slice>` for new explicitly prepared worker worktrees
+and their large build/import/render outputs. Existing D: worktrees keep their
+paths. Use `D:/Wroughtwild/source-art` for newly archived approved source art,
+`D:/Wroughtwild/releases` for retained playable packages, and
+`D:/Wroughtwild/archive` for compact historical records. These are local storage,
+not an off-device backup. Do not copy the entire parent package for each review.
+
+Keep approved editable masters, selected runtime assets, recipes/manifests,
+current unresolved-issue evidence, and player saves. For future completed work,
+retain a current playable package and one useful previous package plus selected
+screenshots/clips and short reports. Remove confirmed disposable review copies,
+failed scratch outputs and unused import caches after identifying their retained
+source and checking that no active task uses them. Do not delete by age or file
+extension alone; ignored build folders can contain unique art and Git worktrees.
+Never prune registered worktrees or unique source packages as generic cache cleanup.
+
+See `docs/prototype/storage-retention-2026-09-15.md` for the cleanup boundary and
+retained archive. Historical publication reports may refer to disposable copies
+that were removed; canonical handoffs remain at their original paths.
+
 ## Required reading order
 
 Before planning or editing:
