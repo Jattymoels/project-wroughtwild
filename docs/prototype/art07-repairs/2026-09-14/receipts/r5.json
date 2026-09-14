@@ -1,0 +1,445 @@
+{
+  "id": "r5",
+  "status": "ready_for_integration",
+  "source_commits": [
+    "f4d5ef753e22fe6ef69164db25f768a2a289f248"
+  ],
+  "runtime_base": "6bb2e044dcd0bf1788896aa2c19cdf56fee93522",
+  "parent_candidates": [],
+  "delta_base": "fd5c592ef52185cc7d0737840e41af09dbb5bcea36b719539931e156f42865cd",
+  "package": {
+    "path": "D:/project-wroughtwild-art07-r5/build/art07-repairs/r5/v02/handoff",
+    "manifest_sha256": "18a9c2bf4a659373ccd303f8682e3f7553146a25619e736d66c969fb85f7f986",
+    "files": 5444,
+    "bytes": 3931408290
+  },
+  "changes": "changes.json",
+  "findings": {
+    "G2-V03": "Authored cabinet/feet candidate clears visible broad-cabinet seating across measured floors and retained flat terrain; concealed feet and existing wall/ceiling limits explicitly recorded; independent owner/R8/R9 review pending."
+  },
+  "checks": [
+    {
+      "name": "wave_readiness_and_inputs",
+      "result": "pass",
+      "details": "Published R1-R4 source/receipt commits are ancestors of inspected a3aab16; package payloads fully rehashed before consumption and at finish.",
+      "before": "evidence/preflight/full-input-verification.txt",
+      "after": "evidence/candidate/full-input-verification-final.txt"
+    },
+    {
+      "name": "packed_source_reopen_and_exports",
+      "result": "pass",
+      "packed_images": 42,
+      "families": 8,
+      "independent_glb_imports": 16,
+      "source_sha256": "55392f9725c07e8005facdefbc22f4534bd8fb4df78de6a67a22a06347a84382",
+      "report": "evidence/reopen/reopen.json",
+      "details": "Closed/open bounds, exact source/lid/texture hashes, manifold positive-volume solids and nondegenerate triangles pass."
+    },
+    {
+      "name": "fresh_import_and_launch",
+      "result": "pass",
+      "variants": [
+        "baseline",
+        "candidate"
+      ],
+      "renderers": [
+        "forward_plus",
+        "gl_compatibility"
+      ],
+      "details": "Both prepared variants ran their generated guarded import/smoke jobs; final candidate includes the changed body exports before import."
+    },
+    {
+      "name": "paired_native_fixture_cases",
+      "result": "pass",
+      "paired_cases": 24,
+      "details": "Exact native pose/body/hinge/key/capacity, paid ownership, refused unpaid/duplicate placement, actual E targeting, deposit/withdrawal, natural open/close; 294 candidate capture assertions per renderer."
+    },
+    {
+      "name": "fresh_process_restore",
+      "result": "pass",
+      "checks_per_renderer": 32,
+      "details": "Separate processes load twice; 12 exact paid chest owners, 37 stored units each, complete saved block/native records equal before/after."
+    },
+    {
+      "name": "retained_world",
+      "result": "pass",
+      "paired_cases": 8,
+      "support_samples_per_case": 9,
+      "candidate_checks_per_renderer": 65,
+      "terrain_sha256": "5a97c79b202521cc73939916944a02a30dd1b56e04b71e96be490259ff0440de",
+      "details": "Original paid home and three supplied-stock paid terrain probes retain exact poses/body/geography and native source/work/machine ledgers."
+    },
+    {
+      "name": "selected_job_results",
+      "result": "pass",
+      "jobs": 24,
+      "candidate_assertions": 1280,
+      "baseline_assertions": 1080,
+      "details": "All selected jobs exit 0; log hashes verified. Earlier failed attempts remain in the seal.",
+      "record": "evidence/selected/results.json"
+    },
+    {
+      "name": "runtime_preservation",
+      "result": "pass",
+      "original_entries": 4787,
+      "changed_original_entries": 9,
+      "exact_unchanged_entries": 4778,
+      "details": "Only eight chest body GLBs and eight semantic geometry rows change; all native/game/data/other original files remain byte-exact. Four R5 fixture files are separately declared."
+    },
+    {
+      "name": "measured_costs",
+      "result": "pass",
+      "samples_per_run": 300,
+      "details": "Independent settled benchmarks without captures, imports or generation; empty competitor lists.",
+      "costs": [
+        {
+          "variant": "baseline02",
+          "renderer": "forward_plus",
+          "draws": 170.0,
+          "p50_ms": 0.464,
+          "p95_ms": 0.834,
+          "primitives": 231458.0,
+          "samples": 300,
+          "texture_bytes": 459915776.0,
+          "worst_ms": 1.232
+        },
+        {
+          "variant": "candidate",
+          "renderer": "forward_plus",
+          "draws": 170.0,
+          "p50_ms": 0.467,
+          "p95_ms": 0.831,
+          "primitives": 247010.0,
+          "samples": 300,
+          "texture_bytes": 459915776.0,
+          "worst_ms": 1.23
+        },
+        {
+          "variant": "baseline02",
+          "renderer": "gl_compatibility",
+          "draws": 234.0,
+          "p50_ms": 0.876,
+          "p95_ms": 1.264,
+          "primitives": 231458.0,
+          "samples": 300,
+          "texture_bytes": 272763190.0,
+          "worst_ms": 1.77
+        },
+        {
+          "variant": "candidate",
+          "renderer": "gl_compatibility",
+          "draws": 234.0,
+          "p50_ms": 0.867,
+          "p95_ms": 1.353,
+          "primitives": 247010.0,
+          "samples": 300,
+          "texture_bytes": 272763190.0,
+          "worst_ms": 1.752
+        }
+      ]
+    },
+    {
+      "name": "full_seal_and_reconstruction",
+      "result": "pass",
+      "manifest": "18a9c2bf4a659373ccd303f8682e3f7553146a25619e736d66c969fb85f7f986",
+      "reconstruction": {
+        "status": "pass",
+        "runtime_entries": 4787,
+        "applied_delta_files": 9,
+        "package_manifest_sha256": "18a9c2bf4a659373ccd303f8682e3f7553146a25619e736d66c969fb85f7f986",
+        "reconstructed_runtime": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v03\\runtime",
+        "comparison": "All 4787 original runtime entries exactly match the engine-tested v02 candidate after applying only nine declared deltas; v03 was not engine-run."
+      }
+    },
+    {
+      "name": "owned_source_checks",
+      "result": "pass",
+      "details": "Python AST/JSON parsing, staged git diff --check, owned-path validation and generated-binary exclusions passed for implementation commit."
+    }
+  ],
+  "remaining_limits": [
+    "Owner visual acceptance remains pending; R8 integration and R9 review remain separate. Ordinary-world rollout is outside scope.",
+    "Full slabs conceal 0.125 m of narrow feet and fine slabs conceal 0.0625 m; zero visible broad-cabinet intersection is not zero total mesh penetration.",
+    "The visual cabinet/feet envelope is 1 x 0.55 x 0.8 m, inside the unchanged 1 x 0.7 x 0.8 m native storage/body box. Under-cabinet voids remain solid to native collision; visual cavity size does not change 960-unit capacity.",
+    "Rear-wall AABB overlap remains 0.025 m closed / 0.095433 m open in depth; low-ceiling open-lid overlap remains. No sweep refusal or placement tolerance rule is introduced.",
+    "Retained LF3/77 terrain checks cover three flat locations near home plus its existing paid floor chest. Arbitrary slopes, edges and unsupported placements are unmeasured.",
+    "Preservation of all 273 legal pairs is established by exact original game/data/native hashes; only the eight chest families and affected fixture flows are freshly exercised here.",
+    "Explicit supplied inspection stock and capture-paced motion do not establish a human first-hour journey. GIFs begin partway through opening and reset to their first real sample; closing is asserted separately.",
+    "One 300-frame benchmark per variant/backend on RTX 5090 is not minimum-hardware, long-session, GPU-time or statistical performance acceptance. Compatibility p95 rises 1.264 to 1.353 ms.",
+    "R5 consumes the common G2/G1 visual baseline only; R8 must reconcile replacement body GLBs with R2 texture-storage work and must not overwrite independent repairs with this entire runtime.",
+    "The fresh v03 application was byte-verified against every original runtime entry of tested v02; it was not imported or engine-run. Fresh engine import/restart evidence is from v02."
+  ],
+  "owner_visual_acceptance": "pending",
+  "ordinary_world_rollout": "outside scope",
+  "worktree": "D:/project-wroughtwild-art07-r5",
+  "branch": "codex/art07-r5",
+  "inspected_published_checkout": "a3aab16f7220d6ccc37cb17a54a164a84bf524b6",
+  "wave_gates": {
+    "r1": {
+      "published_source_commit": "bd91501c8a7b17c9808aa606a10c14f0f46cab0a",
+      "published_receipt_commit": "2e4de363eb770a475375fdb21fccbca3fbe7e86e",
+      "package": {
+        "path": "D:/project-wroughtwild-art07-r1/build/art07-repairs/r1/v03/handoff",
+        "manifest_sha256": "9c0cd855d03cd5d88df1823538417da776775abd96a732eb7ad94f24a1f02c7e",
+        "files": 5940,
+        "bytes": 5622031314
+      },
+      "consumed_delta": false
+    },
+    "r2": {
+      "published_source_commit": "ca370f52a20637548da0cf1fd04cdc9dbeb9c440",
+      "published_receipt_commit": "96853630e714477f6ade849a0323a0af97cb033a",
+      "package": {
+        "path": "D:/project-wroughtwild-art07-r2/build/art07-repairs/r2/v03/handoff",
+        "manifest_sha256": "f5b3ea9559e9f4b76059c7863730b438bdfbe7a6f8f689ae3bae75340cb01ac0",
+        "files": 6411,
+        "bytes": 9091108107,
+        "count_scope": "Payload entries and summed payload bytes; manifest.json is the separately hashed identity file."
+      },
+      "consumed_delta": false
+    },
+    "r3": {
+      "published_source_commit": "7bc9be05397e1492feb8fc98488a84cd3bede75d",
+      "published_receipt_commit": "ad34112783d233429630921733a38e4beb0a3f03",
+      "package": {
+        "path": "D:/project-wroughtwild-art07-r3/build/art07-repairs/r3/v01/handoff",
+        "manifest_sha256": "6ce1ca7f6a7406041c345e045610197e33f4f6eefe8cdcfb98718a6ee2e502da",
+        "files": 5632,
+        "bytes": 4156251159
+      },
+      "consumed_delta": false
+    },
+    "r4": {
+      "published_source_commit": "1448b35cc38b3e20b54d8fcbefce82c2d01dcb09",
+      "published_receipt_commit": "b14c996714378e05dac34bd1a2dd7a7b4579cd74",
+      "package": {
+        "path": "D:/project-wroughtwild-art07-r4/build/art07-repairs/r4/v01/handoff-v02",
+        "manifest_sha256": "acebe2937b819bb2210241b394262b5a19916dec9199184d69d4d9d25dd49541",
+        "files": 747,
+        "bytes": 13305657
+      },
+      "consumed_delta": false
+    }
+  },
+  "runtime_source": {
+    "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\sealed",
+    "manifest_sha256": "fd5c592ef52185cc7d0737840e41af09dbb5bcea36b719539931e156f42865cd",
+    "files": 5701,
+    "bytes": 7430015212
+  },
+  "source_package": {
+    "files": 2204,
+    "bytes": 406834328,
+    "manifest_sha256": "b3a06254c13e48c3c60f613ec161dacb3c4a8e3b554036d25ff1dcb21cda6bc7",
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\v10\\handoff",
+    "publication_report": "docs/prototype/art07-production/publication-2026-09-12.json",
+    "verification": "verified in this publication preflight; fresh checks and integration recorded in publication report"
+  },
+  "native_sha256": "0e7c4956b6c870f5879e78f54c5830509b7ae37913055543cc3a6d451298e0e1",
+  "authored_controls": {
+    "source_bottom_m": -0.5,
+    "candidate_bottom_m": -0.225,
+    "fixed_upper_body_m": 0.06,
+    "foot_bottom_m": -0.35,
+    "foot_x_m": 0.4,
+    "foot_depth_m": 0.29,
+    "foot_width_m": 0.08,
+    "foot_joint_overlap_m": 0.02,
+    "controls": {
+      "source_bottom_m": "Measured inherited authored base relative to the unchanged native lattice pose.",
+      "candidate_bottom_m": "Cabinet underside clears the ordinary slab top (0.125 m above its lattice plane) without moving the native seat or lid.",
+      "fixed_upper_body_m": "Upper rim and hinge attachment remain exact above this height; lower boards compress linearly below it.",
+      "foot_bottom_m": "Feet reach the nominal flat support plane at unchanged native pose Y=0.35; full/fine slabs conceal part or all of their 0.125 m exposed length.",
+      "foot_x_m": "Symmetrical inset foot centres along the chest width, within the original body.",
+      "foot_depth_m": "Symmetrical inset foot centres along the chest depth, within the original body.",
+      "foot_width_m": "Small same-family feet give visible grounded contacts without broad cabinet/floor intersections.",
+      "foot_joint_overlap_m": "Feet enter the cabinet base by 20 mm so their supporting joints stay connected."
+    }
+  },
+  "actual_runtime_changes": [
+    {
+      "path": "game/assets/authored/e3/chest_ash_wood_body.glb",
+      "before_sha256": "df9493902abd3abaeaab8681919c672b3ee6a1e45a0ed81ca9db5f184504eeab",
+      "after_sha256": "82a0e35fef1fcd90a4a6eec3fa94ac0a16e9547a0fddfdff988e57c4e9ee54cb",
+      "functions_or_settings": "Authored lower cabinet vertex fit, four inset same-family feet and their metric UVs",
+      "purpose": "Cabinet raised clear of full/fine slab surfaces, with four inset feet reaching nominal ground; fixed rim/hinge/lid",
+      "overlaps": [
+        "R2 may change imported texture storage; reconcile asset replacement against that parent rather than copying the whole runtime."
+      ],
+      "before_bytes": 5111312,
+      "after_bytes": 5175168,
+      "replacement_asset": "runtime/game/assets/authored/e3/chest_ash_wood_body.glb",
+      "classification": "authored_visual"
+    },
+    {
+      "path": "game/assets/authored/e3/chest_bog_oak_body.glb",
+      "before_sha256": "3db4f9c73028c36a967e405d612ec803f0a16d997a424d7a43918b3417975088",
+      "after_sha256": "11d9d57499ae21676d52f9719b518a00bc45d2e73bcb780381d5ab32f9a1a83f",
+      "functions_or_settings": "Authored lower cabinet vertex fit, four inset same-family feet and their metric UVs",
+      "purpose": "Cabinet raised clear of full/fine slab surfaces, with four inset feet reaching nominal ground; fixed rim/hinge/lid",
+      "overlaps": [
+        "R2 may change imported texture storage; reconcile asset replacement against that parent rather than copying the whole runtime."
+      ],
+      "before_bytes": 4631592,
+      "after_bytes": 4695448,
+      "replacement_asset": "runtime/game/assets/authored/e3/chest_bog_oak_body.glb",
+      "classification": "authored_visual"
+    },
+    {
+      "path": "game/assets/authored/e3/chest_bronze_body.glb",
+      "before_sha256": "5c3854d4b1b5e5d53662f60bfd286f438266ea8c44acd575e7b235a440287f45",
+      "after_sha256": "7468f8f1c6a97ef148b3d5cbf4c8b56166301726e74a010e074fefa5fc4abdd6",
+      "functions_or_settings": "Authored lower cabinet vertex fit, four inset same-family feet and their metric UVs",
+      "purpose": "Cabinet raised clear of full/fine slab surfaces, with four inset feet reaching nominal ground; fixed rim/hinge/lid",
+      "overlaps": [
+        "R2 may change imported texture storage; reconcile asset replacement against that parent rather than copying the whole runtime."
+      ],
+      "before_bytes": 1566732,
+      "after_bytes": 1630588,
+      "replacement_asset": "runtime/game/assets/authored/e3/chest_bronze_body.glb",
+      "classification": "authored_visual"
+    },
+    {
+      "path": "game/assets/authored/e3/chest_iron_body.glb",
+      "before_sha256": "760cef9d9df6f2ea9b3aeddb3120aa47a012f29abc0438fc26193c4dafc7646f",
+      "after_sha256": "b64cb98d765e44ab18676bd86b861d943d6af91f5e84674180bbcd4c37861814",
+      "functions_or_settings": "Authored lower cabinet vertex fit, four inset same-family feet and their metric UVs",
+      "purpose": "Cabinet raised clear of full/fine slab surfaces, with four inset feet reaching nominal ground; fixed rim/hinge/lid",
+      "overlaps": [
+        "R2 may change imported texture storage; reconcile asset replacement against that parent rather than copying the whole runtime."
+      ],
+      "before_bytes": 1545240,
+      "after_bytes": 1609100,
+      "replacement_asset": "runtime/game/assets/authored/e3/chest_iron_body.glb",
+      "classification": "authored_visual"
+    },
+    {
+      "path": "game/assets/authored/e3/chest_pine_body.glb",
+      "before_sha256": "a1b582c31161af17e873e0006dabed794da4e4a3963398bac4bd1e9d0c0f9e73",
+      "after_sha256": "19a83c6f9811826a67aa6aeb8ced2fdd0d945a5e328dd285d5c6ec3d7a4dd74d",
+      "functions_or_settings": "Authored lower cabinet vertex fit, four inset same-family feet and their metric UVs",
+      "purpose": "Cabinet raised clear of full/fine slab surfaces, with four inset feet reaching nominal ground; fixed rim/hinge/lid",
+      "overlaps": [
+        "R2 may change imported texture storage; reconcile asset replacement against that parent rather than copying the whole runtime."
+      ],
+      "before_bytes": 4668216,
+      "after_bytes": 4732072,
+      "replacement_asset": "runtime/game/assets/authored/e3/chest_pine_body.glb",
+      "classification": "authored_visual"
+    },
+    {
+      "path": "game/assets/authored/e3/chest_resinheart_body.glb",
+      "before_sha256": "88a5b4243bfe8c3a648402ed65e728e3ea0cf505cd515a3ae1700d376980e488",
+      "after_sha256": "00992c740cde547c279e8c4039d5014ec534d47d859adbfb2b83394c06aab9ce",
+      "functions_or_settings": "Authored lower cabinet vertex fit, four inset same-family feet and their metric UVs",
+      "purpose": "Cabinet raised clear of full/fine slab surfaces, with four inset feet reaching nominal ground; fixed rim/hinge/lid",
+      "overlaps": [
+        "R2 may change imported texture storage; reconcile asset replacement against that parent rather than copying the whole runtime."
+      ],
+      "before_bytes": 4664032,
+      "after_bytes": 4727888,
+      "replacement_asset": "runtime/game/assets/authored/e3/chest_resinheart_body.glb",
+      "classification": "authored_visual"
+    },
+    {
+      "path": "game/assets/authored/e3/chest_steel_body.glb",
+      "before_sha256": "3f25bf0a91fc231ab29d65cadad5acaf0f83af5e829428470045e1286b2865e5",
+      "after_sha256": "a879a3a3677fb056ff4a11a817b9a6ed03734dd6275fd68817ab4f9379e9310d",
+      "functions_or_settings": "Authored lower cabinet vertex fit, four inset same-family feet and their metric UVs",
+      "purpose": "Cabinet raised clear of full/fine slab surfaces, with four inset feet reaching nominal ground; fixed rim/hinge/lid",
+      "overlaps": [
+        "R2 may change imported texture storage; reconcile asset replacement against that parent rather than copying the whole runtime."
+      ],
+      "before_bytes": 1534568,
+      "after_bytes": 1598428,
+      "replacement_asset": "runtime/game/assets/authored/e3/chest_steel_body.glb",
+      "classification": "authored_visual"
+    },
+    {
+      "path": "game/assets/authored/e3/chest_wood_body.glb",
+      "before_sha256": "ad086415e1e4397ae958d573fc49176ed897f8b87643a42948d4de55abaf1f1c",
+      "after_sha256": "6fbf3decd1853445580c122e7bc1b9d2a35ecc258a8b5006e4f97e7182ee3231",
+      "functions_or_settings": "Authored lower cabinet vertex fit, four inset same-family feet and their metric UVs",
+      "purpose": "Cabinet raised clear of full/fine slab surfaces, with four inset feet reaching nominal ground; fixed rim/hinge/lid",
+      "overlaps": [
+        "R2 may change imported texture storage; reconcile asset replacement against that parent rather than copying the whole runtime."
+      ],
+      "before_bytes": 4742268,
+      "after_bytes": 4806124,
+      "replacement_asset": "runtime/game/assets/authored/e3/chest_wood_body.glb",
+      "classification": "authored_visual"
+    },
+    {
+      "path": "game/e3/geometry.json",
+      "before_sha256": "4207f6920afd2b7b72188a9d8190a5788e298af0a6e637da9f621746e9336ea6",
+      "after_sha256": "e3d787b627bb9963e7fb7388a5adc3dfc946a5b5ed7586e8d72addd956bfffcd",
+      "functions_or_settings": "Eight chest body measured bounds; body triangle counts include four source-derived feet; lid/fuel rows retain their values",
+      "purpose": "Record changed exported source measurements",
+      "overlaps": [],
+      "before_bytes": 10319,
+      "after_bytes": 14463,
+      "replacement_asset": "runtime/game/e3/geometry.json",
+      "classification": "source_measurement_metadata"
+    }
+  ],
+  "fixture_only_files": [
+    {
+      "path": "game/r5/review.gd",
+      "after_sha256": "3d43fb2c1b5d8deadd3b6c5d0c522114e700c5cc6e183fc62f21bf99c8cd0467",
+      "purpose": "R5-only native capture/restore/cost/retained-terrain review fixture; not an ordinary-world adoption.",
+      "overlaps": []
+    },
+    {
+      "path": "game/r5/review.tscn",
+      "after_sha256": "184e843253b4380644bc6d31220abc2410388353a64a6f4046d07a899c0ac784",
+      "purpose": "R5-only native capture/restore/cost/retained-terrain review fixture; not an ordinary-world adoption.",
+      "overlaps": []
+    },
+    {
+      "path": "game/r5/terrain_review.gd",
+      "after_sha256": "3462344ed0785afb307e36a48b7fc0f95f3d3c40c4566f93aad972efaf6e5ed2",
+      "purpose": "R5-only native capture/restore/cost/retained-terrain review fixture; not an ordinary-world adoption.",
+      "overlaps": []
+    },
+    {
+      "path": "game/r5/terrain_review.tscn",
+      "after_sha256": "d7b1ee378dd04bc7ac2e66e9589ed29609102fcb58dc03f3f96fc93cc0650c8a",
+      "purpose": "R5-only native capture/restore/cost/retained-terrain review fixture; not an ordinary-world adoption.",
+      "overlaps": []
+    }
+  ],
+  "hardware": {
+    "time": "2026-09-14T12:59:12.7646386+09:30",
+    "cpu": [
+      {
+        "Name": "AMD Ryzen 9 9950X3D 16-Core Processor          ",
+        "NumberOfCores": 16,
+        "NumberOfLogicalProcessors": 32
+      }
+    ],
+    "gpu": [
+      {
+        "Name": "NVIDIA GeForce RTX 5090",
+        "DriverVersion": "32.0.15.9186",
+        "VideoModeDescription": "2560 x 1440 x 4294967296 colors"
+      },
+      {
+        "Name": "AMD Radeon(TM) Graphics",
+        "DriverVersion": "32.0.21045.5002",
+        "VideoModeDescription": "3840 x 2160 x 4294967296 colors"
+      }
+    ],
+    "memory_bytes": 33446744064,
+    "os": {
+      "Caption": "Microsoft Windows 11 Home",
+      "Version": "10.0.26200",
+      "BuildNumber": "26200"
+    }
+  },
+  "diagnostics": {
+    "selected": "Only the inherited SSAO requires Forward+ warning in original/candidate Compatibility smoke and terrain jobs; no other selected warning/error/leak/orphan diagnostic.",
+    "earlier_attempts": "Retained front-wall ray, ledger type, terrain scene parent and outside-house ray harness failures; initial open-view cropping corrected in selected frames. Empty GPU deferrals launched no child and exposed an unchanged-runner missing-log error. No assertions relaxed; no peer interrupted.",
+    "automatic_approval_rejections": []
+  },
+  "publication": "Local R5 implementation/receipt commits only; no main integration or push."
+}
