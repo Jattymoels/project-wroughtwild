@@ -1,6 +1,6 @@
 # Wroughtwild intensive queue
 
-Updated: 14 September 2026 (all 26 original ART-07 deliveries complete; R2 repair published; other repair and acceptance gates remain open). Owner: Matty. Delivery: Codex.
+Updated: 14 September 2026 (all 26 original ART-07 deliveries complete; R1–R4 repairs published; R5–R7 prepared; integration and acceptance gates remain open). Owner: Matty. Delivery: Codex.
 
 The owner asked to keep track of the seven intensives discussed after the Wide
 Frontier pass and make a plan for the first one. This is the current planning
@@ -39,8 +39,8 @@ runtime copies prepare the first four; no repair task is launched by setup.
 setup improves about 35%, with 441/499 MiB less loaded texture memory. Publisher
 source/visual checks and a fresh two-renderer native reload/restart pass. G2-C01
 remains partial pending combined R8/R9 and target-device acceptance; streaming
-spikes and baseline retirement diagnostics remain. Wave 2 waits for checked
-publication of R1, R3 and R4 as well.
+spikes and baseline retirement diagnostics remain. At R2 publication, wave 2 still
+awaited R1, R3 and R4; those candidates are now published.
 
 The owner visually approved ART-06C with “Perfect”, then asked to start
 designing all nature assets and the world's feel against the original full
@@ -395,4 +395,14 @@ G2-V02: partial; isolated directional material candidate is technically verified
 ### ART-07R4 publication, 14 September 2026
 
 [R4 passed publisher verification](art07-repairs/2026-09-14/publication-r4.md).
-G2-T01: technically resolved for the eight measured fixture exit paths. Ordinary-game shutdown, manual Escape and long-session behaviour remain outside that result. R1–R4 are checked and published; the wave-2 dependency gate is clear. Worktree preparation is recorded below once executed.
+G2-T01: technically resolved for the eight measured fixture exit paths. Ordinary-game
+shutdown, manual Escape and long-session behaviour remain outside that result.
+R1–R4 are checked and published; the wave-2 dependency gate is clear. Completed
+worktree preparation is recorded below.
+
+### ART-07 repair wave 2 ready, 14 September 2026
+
+R1–R4 have checked published candidates. [R5–R7 setup and full prompts](art07-repairs/2026-09-14/SETUP.md#ready-wave-2--14-september-2026)
+are ready in their dedicated D: worktrees with fresh verified baseline runtimes.
+No worker tasks were launched. R8 waits for R5–R7 publication; R9 follows R8.
+Owner visual acceptance, combined costs and target-device acceptance remain open.

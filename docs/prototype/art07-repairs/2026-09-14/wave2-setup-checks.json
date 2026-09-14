@@ -1,0 +1,133 @@
+{
+  "result": "PASS",
+  "created_from_verified_remote": "40dc044a97b28cab7b48b8a37260976b2581989d",
+  "prepared_workspaces": [
+    {
+      "id": "r5",
+      "branch": "codex/art07-r5",
+      "worktree": "D:/project-wroughtwild-art07-r5",
+      "setup_base": "40dc044a97b28cab7b48b8a37260976b2581989d",
+      "state": "workspace_and_runtime_prepared; implementation_not_started",
+      "runtime": "D:/project-wroughtwild-art07-r5/build/art07-repairs/r5/v01/runtime",
+      "prepared_receipt": "D:/project-wroughtwild-art07-r5/build/art07-repairs/r5/v01/prepared.json",
+      "prepared_receipt_sha256": "48d6c5d08fe6697835dc587d48bf5003c9931f40f391af08abcd4da41cfc610d",
+      "copied_files": 4787,
+      "copied_bytes": 3438257458,
+      "import_smoke_jobs": "D:/project-wroughtwild-art07-r5/build/art07-repairs/r5/v01/import-smoke.json",
+      "payload_verification": "The unchanged copy helper hashed every copied runtime entry. Publisher verified final exact file set and DLL identity. Extra source/dependency payloads must be fully verified by the consuming worker.",
+      "cache_inherited": false,
+      "engine_launched": false,
+      "git_clean": true,
+      "worktree_dispatch_validator": {
+        "exit_code": 0,
+        "stdout": "{\n  \"result\": \"PASS\",\n  \"worker_prompts\": 9,\n  \"publisher_prompts\": 1,\n  \"exclusive_git_outputs\": 36,\n  \"findings_owned_once\": 7,\n  \"waves\": 4,\n  \"reading_files\": 35,\n  \"local_links\": 64\n}\n"
+      },
+      "candidate_dependencies": [],
+      "wave_gate": [
+        "r1",
+        "r2",
+        "r3",
+        "r4"
+      ]
+    },
+    {
+      "id": "r6",
+      "branch": "codex/art07-r6",
+      "worktree": "D:/project-wroughtwild-art07-r6",
+      "setup_base": "40dc044a97b28cab7b48b8a37260976b2581989d",
+      "state": "workspace_and_runtime_prepared; implementation_not_started",
+      "runtime": "D:/project-wroughtwild-art07-r6/build/art07-repairs/r6/v01/runtime",
+      "prepared_receipt": "D:/project-wroughtwild-art07-r6/build/art07-repairs/r6/v01/prepared.json",
+      "prepared_receipt_sha256": "29a21498ce8a6f0f4ff4737c707776114866e27e734da6b85553a1f96f6587c5",
+      "copied_files": 4787,
+      "copied_bytes": 3438257458,
+      "import_smoke_jobs": "D:/project-wroughtwild-art07-r6/build/art07-repairs/r6/v01/import-smoke.json",
+      "payload_verification": "The unchanged copy helper hashed every copied runtime entry. Publisher verified final exact file set and DLL identity. Extra source/dependency payloads must be fully verified by the consuming worker.",
+      "cache_inherited": false,
+      "engine_launched": false,
+      "git_clean": true,
+      "worktree_dispatch_validator": {
+        "exit_code": 0,
+        "stdout": "{\n  \"result\": \"PASS\",\n  \"worker_prompts\": 9,\n  \"publisher_prompts\": 1,\n  \"exclusive_git_outputs\": 36,\n  \"findings_owned_once\": 7,\n  \"waves\": 4,\n  \"reading_files\": 35,\n  \"local_links\": 64\n}\n"
+      },
+      "candidate_dependencies": [],
+      "wave_gate": [
+        "r1",
+        "r2",
+        "r3",
+        "r4"
+      ]
+    },
+    {
+      "id": "r7",
+      "branch": "codex/art07-r7",
+      "worktree": "D:/project-wroughtwild-art07-r7",
+      "setup_base": "40dc044a97b28cab7b48b8a37260976b2581989d",
+      "state": "workspace_and_runtime_prepared; implementation_not_started",
+      "runtime": "D:/project-wroughtwild-art07-r7/build/art07-repairs/r7/v01/runtime",
+      "prepared_receipt": "D:/project-wroughtwild-art07-r7/build/art07-repairs/r7/v01/prepared.json",
+      "prepared_receipt_sha256": "6356be12e161f968a660945c6c1a6b4035381945a907558af55a83e254fa692f",
+      "copied_files": 4787,
+      "copied_bytes": 3438257458,
+      "import_smoke_jobs": "D:/project-wroughtwild-art07-r7/build/art07-repairs/r7/v01/import-smoke.json",
+      "payload_verification": "The unchanged copy helper hashed every copied runtime entry. Publisher verified final exact file set and DLL identity. Extra source/dependency payloads must be fully verified by the consuming worker.",
+      "cache_inherited": false,
+      "engine_launched": false,
+      "git_clean": true,
+      "worktree_dispatch_validator": {
+        "exit_code": 0,
+        "stdout": "{\n  \"result\": \"PASS\",\n  \"worker_prompts\": 9,\n  \"publisher_prompts\": 1,\n  \"exclusive_git_outputs\": 36,\n  \"findings_owned_once\": 7,\n  \"waves\": 4,\n  \"reading_files\": 35,\n  \"local_links\": 64\n}\n"
+      },
+      "candidate_dependencies": [
+        "r1"
+      ],
+      "wave_gate": [
+        "r1",
+        "r2",
+        "r3",
+        "r4"
+      ]
+    }
+  ],
+  "validators": [
+    {
+      "command": "tools/wroughtwild-art07-repairs/dispatch.py",
+      "exit_code": 0,
+      "stdout": "{\n  \"result\": \"PASS\",\n  \"worker_prompts\": 9,\n  \"publisher_prompts\": 1,\n  \"exclusive_git_outputs\": 36,\n  \"findings_owned_once\": 7,\n  \"waves\": 4,\n  \"reading_files\": 35,\n  \"local_links\": 68\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": "tools/wroughtwild-world-design/session_plan.py",
+      "exit_code": 0,
+      "stdout": "{\n  \"result\": \"PASS\",\n  \"production_slices\": 26,\n  \"worker_prompts\": 26,\n  \"publisher_prompts\": 1,\n  \"catalogue_entries_owned_once\": 131,\n  \"coverage\": {\n    \"resource_nodes\": 22,\n    \"nature_support\": 33,\n    \"shapes\": 26,\n    \"materials\": 19,\n    \"devices\": 15,\n    \"fauna_presentation\": 16\n  },\n  \"dependency_edges\": 60,\n  \"required_reading_files\": 43,\n  \"local_links\": 192,\n  \"initially_ready\": [\n    \"b1\",\n    \"b2\",\n    \"b3\",\n    \"d1\",\n    \"d4\",\n    \"d5\",\n    \"d6\",\n    \"f5\"\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": "tools/wroughtwild-world-design/catalogue.py",
+      "exit_code": 0,
+      "stdout": "{\n  \"result\": \"PASS\",\n  \"shapes\": 26,\n  \"materials\": 19,\n  \"kits\": 14,\n  \"upgrades\": 1,\n  \"finite_resource_types\": 22,\n  \"supporting_art_roles\": 33,\n  \"actor_ids\": 16,\n  \"grid_m\": 1.0,\n  \"lattice_divisions\": 2,\n  \"normal_profiles_kits\": 10,\n  \"living_frontier_supported_profiles_kits\": 14,\n  \"legal_material_shape_pairs\": 273,\n  \"station_body_m\": [\n    0.96,\n    2.0,\n    0.96\n  ],\n  \"scope\": \"Concept coverage only. Profile/era/unlock gates still apply; no new rules or universal kit availability.\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": "tools/wroughtwild-world-design/verify_art.py",
+      "exit_code": 0,
+      "stdout": "{\n  \"result\": \"PASS\",\n  \"pngs\": 6,\n  \"selected_boards\": 5,\n  \"superseded_framing_board\": 1,\n  \"exact_prompts\": 6,\n  \"generated_original_copies_checked\": 6,\n  \"edit_parent_links\": 1,\n  \"unchanged_mood_reference\": 1,\n  \"local_links_checked\": 28\n}\n",
+      "stderr": ""
+    }
+  ],
+  "unrelated_checkout_entries_preserved": 49,
+  "setup_engine_launches": 0,
+  "worker_tasks_created": 0,
+  "owned_paths": [
+    "docs/prototype/art07-repairs/2026-09-14/workspaces.json",
+    "docs/prototype/art07-repairs/2026-09-14/SETUP.md",
+    "docs/prototype/art07-repairs/2026-09-14/wave2-setup-checks.json",
+    "docs/prototype/intensive-queue.md"
+  ],
+  "later_gates": "R8 requires R1–R7 published; R9 requires R8 and an independent task.",
+  "final_document_link_check": {
+    "exit_code": 0,
+    "stdout": "{\n  \"result\": \"PASS\",\n  \"worker_prompts\": 9,\n  \"publisher_prompts\": 1,\n  \"exclusive_git_outputs\": 36,\n  \"findings_owned_once\": 7,\n  \"waves\": 4,\n  \"reading_files\": 35,\n  \"local_links\": 68\n}\n",
+    "note": "After matching the R6 title to its prompt and clarifying historical queue wording."
+  }
+}

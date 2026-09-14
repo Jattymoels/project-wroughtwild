@@ -1,14 +1,14 @@
 # Worktree and runtime setup
 
-Start with [the plan](README.md). The prepared first wave is R1–R4; use one task
-per listed working directory and paste its full prompt. No worker task is launched
-by this setup. Reuse a prepared directory; do not create another checkout inside it.
-The initial [setup record](workspaces.json) distinguishes actual preparation from
-future planned paths. Later worktrees are created only after their wave gates pass.
+Start with [the plan](README.md). The next ready wave is **R5–R7**; R1–R4
+have checked published candidates. Use one task per listed directory and paste
+its full prompt. Reuse these prepared directories. No worker task was launched
+by setup. [Workspaces](workspaces.json) preserves the initial records and current
+delivery/setup state. R8 and R9 remain gated.
 
 Published repair candidates: [R1](publication-r1.md) [R2](publication-r2.md) [R3](publication-r3.md) [R4](publication-r4.md).
 The initial setup flags remain historical; [deliveries.json](deliveries.json)
-is the current readiness record. R1–R4 are checked and published; the wave-2 dependency gate is clear. Worktree preparation is recorded below once executed.
+is the current readiness record. R1–R4 are checked and published; the wave-2 dependency gate is clear. R5–R7 worktrees and fresh baseline runtime copies are now prepared below.
 
 The owner depot is `C:/Users/Matty/Dev/project-wroughtwild`. D: was chosen because
 C: had about 5 GiB free while D: had about 1.3 TiB when preparing the pack. No old
@@ -23,6 +23,27 @@ Installed tools (verify before launch):
 | Blender 4.5.9 | `C:/Users/Matty/Dev/project-wroughtwild/build/blender-tool/blender-4.5.9-windows-x64/blender.exe` |
 | Godot | Copied pinned executable under each version's `runtime/engine/` |
 | Raw source packages | Exact paths and hashes in [inputs.json](inputs.json) |
+
+## Ready wave 2 — 14 September 2026
+
+| Full prompt | Assignment | Prepared working directory |
+| --- | --- | --- |
+| [R5](prompts/R5.md) | Correct chest visual seating | `D:/project-wroughtwild-art07-r5` |
+| [R6](prompts/R6.md) | Resolve faceted-ore visual coverage | `D:/project-wroughtwild-art07-r6` |
+| [R7](prompts/R7.md) | Compose fuller habitat at retained anchors | `D:/project-wroughtwild-art07-r7` |
+
+Created from published main `40dc044a97b28cab7b48b8a37260976b2581989d`. Each has a verified
+`build/art07-repairs/<id>/v01/runtime`, with 4,787 copied entries and 3,438,257,458
+bytes, a pinned native DLL, fresh import/smoke specifications and no inherited cache.
+Setup has started no engine and implemented no repair. Source masters and predecessor
+packages remain in their immutable locations until the worker verifies and consumes
+them. R7 must apply the published R1 canopy delta deliberately; its prepared runtime
+is the common G1 baseline. R5/R6 consume their assigned sources independently.
+
+Paste the complete fenced prompt from the link into a task opened in its listed
+directory. R5, R6 and R7 may work independently, sharing the existing serial GPU
+guard. After all three are checked and published, release R8; R9 follows R8 in an
+independent task. [Wave-2 setup checks](wave2-setup-checks.json) record execution.
 
 ## Worker entry
 
