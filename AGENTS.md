@@ -2,7 +2,7 @@
 
 These instructions apply to every AI-assisted change in this repository.
 
-## Prototype work limits — owner correction, 14 September 2026
+## Prototype workflow — owner corrections, 14–15 September 2026
 
 ### Approved work belongs in the game
 
@@ -29,51 +29,58 @@ comparison requirements and target-device/performance gates for owner-approved
 work. It does not retroactively mark every candidate visually approved. Record
 the actual owner approval and integrate within that scope without asking again.
 
-### Keep verification proportionate
+### Build the look, feel and atmosphere through playable iterations
 
-This is a spare-time game prototype. The owner rejected the multi-hour R9 review
-and its repeated testing/analysis. These limits supersede older exhaustive evidence,
-benchmark, packaging and publisher requirements throughout this repository.
+This is a one-person, spare-time indie prototype. The owner clarified on
+15 September 2026 that early slices should establish the game's look, feel and
+atmosphere, get that work into play, and improve it over successive iterations.
+Perfection and exhaustive technical proof are not completion criteria for these
+slices. Give player experience and meaningful progress priority over minor polish.
 
-- Default review/verification budget: **10 minutes total wall time per task**.
-  For review-only tasks this includes reading, analysis, setup, imports, copies,
-  hashing, tests, renders and reporting. For implementation tasks it covers the
-  combined verification work. Retries, new versions, processes, compaction,
-  delegation and publisher follow-up do not reset the budget or justify repeating
-  the worker's passed checks. Track elapsed time and reserve time to report.
-- Before checking, name the concrete risk and choose at most **three focused
+The earlier ten-minute rule was intended to stop substantial end-to-end pipeline
+reviews, repeated baseline comparisons and large live-camera test matrices.
+**There is no hard ten-minute cutoff or permission gate for routine completion.**
+Do not stop a nearly finished slice to request a few more minutes for a focused
+diagnostic, small fix, Git check, commit, integration or push. This clarification
+supersedes time caps, countdowns and remaining allowances in older prompts,
+handoffs, SETUP files and copied worktrees. It does not authorise broad review waves.
+
+- Before checking, name the concrete risk. Default to at most **three focused
   verification jobs**, on **one renderer** (Forward+ unless the change concerns
-  Compatibility). A matrix hidden inside one job still counts as a matrix.
-  Documentation-only work needs a small link/syntax/diff check, not game tests.
-- Reuse applicable passed evidence for unchanged inputs. Do not default to
-  rehashing/repacking multi-GB parents, rebuilding fresh copies, reopening all
-  Blender masters, both-renderer matrices, every seed/material/light combination,
-  repeated benchmarks, soak tests or recursive independent reviews.
-- Run another check only for a concrete changed behavior or observed failure,
-  within the same budget. Preserve failures; never weaken assertions, suppress
-  diagnostics or claim an unrun check passed. Fixing a review harness does not
-  justify restarting the whole review. Stop once there is enough evidence for
-  the scoped prototype decision.
-- If a necessary check cannot fit, **stop and report** the result available,
-  exact unverified risk, proposed next check and estimated additional time.
-  Obtain explicit owner approval before spending more time. An older prompt's
-  blanket requirement is not approval to exceed this limit. Do not make every
-  minor omission a question or blocker; label low-impact gaps and finish.
-- At the deadline launch no more jobs and safely cancel only owned testing
-  processes where possible. Preserve artifacts and report incomplete checks.
-  Never leave background testing running after declaring the task stopped.
-- Only concrete reproducible gameplay/save failures or an observed inability to
-  load/use the work should stop an integration. Do not proactively search for
-  performance blockers; performance tuning follows owner playtesting. Cosmetic gaps, exhaustive coverage,
-  unmeasured hardware and hypothetical future risks are limitations by default.
-  Prefer a playable iteration and owner feedback. No unsolicited repair waves.
-- Handoffs should be concise: achieved behavior, checks actually run, real
-  blockers/limits, and commit/push outcome. Review-only tasks reuse existing
-  packages and need no new sealed runtime, source archive or exhaustive report.
+  Compatibility). A matrix hidden inside one job is still a matrix. Use a short
+  load/use smoke and checks directly relevant to changed behavior. Documentation
+  changes need a small link/syntax/diff check, not game tests.
+- Reuse applicable passed evidence for unchanged inputs, including the worker's
+  checks during coordinator integration. Do not default to rehashing/repacking
+  multi-GB parents, rebuilding fresh copies, reopening all Blender masters,
+  both-renderer matrices, every seed/material/light/camera combination, repeated
+  benchmarks, soak tests or recursive independent reviews. R9 stays stopped.
+- Run another focused check only for a concrete changed behavior or observed
+  failure. Fixing a review harness or diagnostic-output issue does not justify
+  restarting the review. Stop checking once there is enough evidence to deliver
+  the scoped playable change. Never weaken assertions, suppress diagnostics or
+  claim an unrun check passed.
+- Keep small cosmetic issues in the backlog. For example, an odd-looking floor
+  slab beneath a chest does not warrant an extended investigation or hold up
+  an otherwise usable art slice. Record it and let owner playtesting establish
+  its priority. Address minor polish in a later pass unless it is the requested
+  focus or materially harms the intended look, feel or atmosphere.
+- Only concrete gameplay/save failures or an observed inability to load/use the
+  work should block integration. Preserve saves, ownership and game rules.
+  Investigate reported movement discomfort and other real playtest problems;
+  do not turn hypothetical performance risk or minor visual imperfections into
+  new adoption gates. Unmeasured hardware and exhaustive coverage are limitations.
+- If checking starts expanding into substantial new investigation, narrow it,
+  report the actual uncertainty and deliver the usable slice. Seek direction for
+  materially expanded scope or a missing consequential design decision, not
+  merely because a clock expired. No unsolicited repair or review waves.
+- Complete ordinary authorised commits, integration and pushes with a concise
+  handoff: achieved gameplay, checks actually run, remaining issues and publication
+  outcome. Do not require a new sealed runtime, source archive or exhaustive report.
+  End owned test processes before handing back; leave no testing running silently.
 
 For copied/older project worktrees, read this section from the current owner depot
 at `C:/Users/Matty/Dev/project-wroughtwild/AGENTS.md` before applying an old prompt.
-The owner can explicitly choose a larger scope/budget for a particular task.
 
 ## Storage discipline — owner cleanup request, 15 September 2026
 

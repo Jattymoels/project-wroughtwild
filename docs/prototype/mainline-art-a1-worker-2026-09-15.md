@@ -14,7 +14,8 @@ The owner starts this worker manually. Do not create another task or reviewer.
 - Put new test logs/private APPDATA under the worker's ignored `build/a1/`.
   Do not run the input package or overwrite its files.
 - Coordinator setup records the actual base, setup duration and native-DLL reuse
-  in the worker's ignored `build/a1/SETUP.md`. Count that setup time in A1's verification budget.
+  in the worker's ignored `build/a1/SETUP.md`. Its old countdown is superseded by
+  the owner's 15 September clarification in the current depot's AGENTS.md.
 - C: had only about 400 MB free at setup; a full checkout there failed and Git
   removed it. D: has ample space. This linked worktree still stores Git objects
   in the C: owner depot: check capacity before staging large new assets. Preserve
@@ -97,10 +98,12 @@ Use no more than three focused jobs, with Forward+ as the sole rendered backend:
    callbacks, checking restoration does not create work, stock or rewards.
 
 Reuse existing fixture setup/evidence; no all-seed, all-material, actor or
-renderer matrices. Imports, setup and review count inside the **ten-minute total
-verification budget across worker and coordinator**. Reserve a minute for the
-coordinator's integration/diff check. Record actual elapsed time and stop owned
-tests at the limit; report anything unverified rather than restarting the budget.
+renderer matrices. The owner removed the hard ten-minute cutoff on 15 September:
+finish focused diagnostics, small fixes, Git checks and delivery without asking
+for a token extension. Reuse the passed worker checks during integration. Keep
+verification proportionate and report unverified limits; do not restart gameplay
+checks to resolve a delivery-script issue. Early look, feel and atmosphere matter
+more than minor polish. Broad pipeline/baseline/camera reviews remain out of scope.
 
 Automated runs must not capture the desktop mouse. Port the existing
 `--r8-no-mouse-capture` test-only branch from R8 to current player code, verify

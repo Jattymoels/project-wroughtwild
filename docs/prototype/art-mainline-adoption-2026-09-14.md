@@ -128,17 +128,19 @@ Read current owner [AGENTS.md](../../AGENTS.md), including from older D: worktre
 Use its required reading order, then only the specifications for the active
 slice. The current owner approval outranks historical exclusion boilerplate.
 
-- Ten minutes total review/verification per task, including setup and analysis
-  for review-only tasks; at most three focused jobs on one renderer. This is a
-  ceiling, not a target. Worker/publisher reviews do not reset it.
+- Owner clarification, 15 September: no hard ten-minute cutoff or permission
+  gate for routine diagnostics, small fixes or finishing delivery. Prioritise
+  playable look, feel and atmosphere, then iterate. Default to three focused
+  jobs on one renderer; broad pipeline, baseline and camera matrices remain
+  out of scope. Minor visual polish should not delay an otherwise usable slice.
 - Reuse passed evidence for unchanged code. Short load/use checks and directly
   relevant changed-behaviour checks suffice for adoption. No pre-adoption baseline
   comparisons, both-renderer matrices, all-seed/material checks, exhaustive
   hashing/repacking, soak tests or independent R9 clearance.
 - Performance investigation is now justified by actual PLAY-01/03 feedback.
   Keep it focused and separate from an adoption approval gate. Broad end-to-end
-  work waits for the owner's chosen phase. Stop and report when the check budget
-  is exhausted; do not silently extend it or leave tests running.
+  work waits for the owner's chosen phase. Stop expanding checks once there is
+  enough evidence for the playable slice; report limits and leave no tests running.
 - Use headless/background engine and Blender processes when appropriate, and
   the existing no-focus/mouse-capture opt-out for automated rendered checks.
   Do not seize the owner's cursor or foreground while they use their computer.
