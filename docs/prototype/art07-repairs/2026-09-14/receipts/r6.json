@@ -1,0 +1,328 @@
+{
+  "id": "r6",
+  "status": "ready_for_integration",
+  "source_commits": [
+    "78ef855ca9cb6ca1f4d16221cca98d53a9d1aa8a"
+  ],
+  "runtime_base": "6bb2e044dcd0bf1788896aa2c19cdf56fee93522",
+  "parent_candidates": [],
+  "delta_base": "Common G1 seal fd5c592ef52185cc7d0737840e41af09dbb5bcea36b719539931e156f42865cd",
+  "package": {
+    "path": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\handoff-v01",
+    "manifest_sha256": "e81d8020ece9dfc25da0dd3e30aeaa222333a8b915e5bbda2d1a819000bebb41",
+    "files": 5832,
+    "bytes": 4534284673
+  },
+  "changes": "changes.json",
+  "findings": {
+    "G2-V04": "Candidate material-only coverage for all five native faceted ore families, with exact native surface/body/stock and retained C5 fallback. Independent owner visual review pending."
+  },
+  "checks": [
+    {
+      "group": "surface",
+      "id": "import-r6",
+      "seconds": 8.3752165,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\logs\\import-r6.log",
+      "log_sha256": "fcef1a5567d16dd5464ab0ff0fbfe2196f7e971ddc837f11765f192201e7ee9a",
+      "exit_code": 0
+    },
+    {
+      "group": "surface",
+      "id": "surface-forward_plus",
+      "seconds": 37.8401239,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\logs\\surface-forward_plus.log",
+      "log_sha256": "18733b79be2acf79b2b4a485d57ce9641633537aa03cd28931cf931b3299a16d",
+      "exit_code": 0
+    },
+    {
+      "group": "surface",
+      "id": "surface-forward_plus-restart",
+      "seconds": 22.4386849,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\logs\\surface-forward_plus-restart.log",
+      "log_sha256": "20ded91ad385eed74d2bcb54868c831dbed3a9da003ac371e6eed562e9185fa0",
+      "exit_code": 0
+    },
+    {
+      "group": "surface",
+      "id": "surface-gl_compatibility",
+      "seconds": 35.2799984,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\logs\\surface-gl_compatibility.log",
+      "log_sha256": "25484b7e03a4409569b67d864bd3764f7b240925f05089e8b0b9d3b40a57d495",
+      "exit_code": 0
+    },
+    {
+      "group": "surface",
+      "id": "surface-gl_compatibility-restart",
+      "seconds": 20.8490156,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\surface-v05\\logs\\surface-gl_compatibility-restart.log",
+      "log_sha256": "fe5b9d37e0ddb66538b9cb44891a5389610e833d7312bb0092120b46ae00c87b",
+      "exit_code": 0
+    },
+    {
+      "group": "c5",
+      "id": "c5-forward_plus-flow",
+      "seconds": 9.2912189,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\c5-v03\\logs\\c5-forward_plus-flow.log",
+      "log_sha256": "4471b06068882937282ebf43d1a2cbcd1f455f1143997477860cad16b934a355",
+      "exit_code": 0
+    },
+    {
+      "group": "c5",
+      "id": "c5-forward_plus-partial",
+      "seconds": 2.9471444,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\c5-v03\\logs\\c5-forward_plus-partial.log",
+      "log_sha256": "552ec0bd24527a0075736d6910b4528170f5592184bc07f1da72d3339bbe87a1",
+      "exit_code": 0
+    },
+    {
+      "group": "c5",
+      "id": "c5-forward_plus-final",
+      "seconds": 2.8425226,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\c5-v03\\logs\\c5-forward_plus-final.log",
+      "log_sha256": "d78718119ae56357fe8c06567186e1636dca970117d6e327810e32b632fdb69b",
+      "exit_code": 0
+    },
+    {
+      "group": "c5",
+      "id": "c5-gl_compatibility-flow",
+      "seconds": 9.170191,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\c5-v03\\logs\\c5-gl_compatibility-flow.log",
+      "log_sha256": "33be7f48d086d56a32ede8377b162d4888aac8f386f43a28aac1df9f9780660a",
+      "exit_code": 0
+    },
+    {
+      "group": "c5",
+      "id": "c5-gl_compatibility-partial",
+      "seconds": 2.6741802,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\c5-v03\\logs\\c5-gl_compatibility-partial.log",
+      "log_sha256": "18c91170ff8626b561d1a0cc42c11f0b209614a5d638c8f424646526d7a3295b",
+      "exit_code": 0
+    },
+    {
+      "group": "c5",
+      "id": "c5-gl_compatibility-final",
+      "seconds": 2.6046688,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\c5-v03\\logs\\c5-gl_compatibility-final.log",
+      "log_sha256": "02ee769ee69c807037dcba18c8c3ea71279a1f672f6811938fb56436ff81c7d1",
+      "exit_code": 0
+    },
+    {
+      "group": "probe",
+      "id": "baseline-forward_plus",
+      "seconds": 27.2465406,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\probe-v04\\logs\\baseline-forward_plus.log",
+      "log_sha256": "bac82bfa9d8dcf43d677a50152f1fae6f9522286f4aae385aa38fa5120c2fde2",
+      "exit_code": 0
+    },
+    {
+      "group": "probe",
+      "id": "art-forward_plus",
+      "seconds": 105.1916142,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\probe-v04\\logs\\art-forward_plus.log",
+      "log_sha256": "bac82bfa9d8dcf43d677a50152f1fae6f9522286f4aae385aa38fa5120c2fde2",
+      "exit_code": 0
+    },
+    {
+      "group": "probe",
+      "id": "baseline-gl_compatibility",
+      "seconds": 25.6438489,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\probe-v04\\logs\\baseline-gl_compatibility.log",
+      "log_sha256": "37e14a200c01d3896d77e4c956e8590c3b9ddca9fc9bb94e0831d32f1ed305b4",
+      "exit_code": 0
+    },
+    {
+      "group": "probe",
+      "id": "art-gl_compatibility",
+      "seconds": 102.1595073,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\probe-v04\\logs\\art-gl_compatibility.log",
+      "log_sha256": "37e14a200c01d3896d77e4c956e8590c3b9ddca9fc9bb94e0831d32f1ed305b4",
+      "exit_code": 0
+    },
+    {
+      "group": "benchmark",
+      "id": "baseline-forward_plus",
+      "seconds": 7.2520717,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\benchmark-v01\\logs\\baseline-forward_plus.log",
+      "log_sha256": "01eeb709a0196200d248135ced0f41ce517bfbb60dc58533569600c8effd5586",
+      "exit_code": 0
+    },
+    {
+      "group": "benchmark",
+      "id": "art-forward_plus",
+      "seconds": 7.4860185,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\benchmark-v01\\logs\\art-forward_plus.log",
+      "log_sha256": "8a748980906e7a19a871d9772ca07190ebc40efdb587011f55791cc825c65f0e",
+      "exit_code": 0
+    },
+    {
+      "group": "benchmark",
+      "id": "baseline-gl_compatibility",
+      "seconds": 7.5142688,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\benchmark-v01\\logs\\baseline-gl_compatibility.log",
+      "log_sha256": "0f498b53318d33fea7dd11535ea08fd9df2af5b3978c83a3b9200bc9df65842e",
+      "exit_code": 0
+    },
+    {
+      "group": "benchmark",
+      "id": "art-gl_compatibility",
+      "seconds": 7.5791346,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\benchmark-v01\\logs\\art-gl_compatibility.log",
+      "log_sha256": "49577eecdf894124674d3028c819cecd404c9b0e585f9f6fdc6afa00c06aa290",
+      "exit_code": 0
+    },
+    {
+      "group": "reopen",
+      "id": "pack",
+      "seconds": 32.118862,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\reopen-v03\\logs\\pack.log",
+      "log_sha256": "e71684834b94a09706f2b1eae48e009580a0d72a3859f51b6c7dcc43c9d28555",
+      "exit_code": 0
+    },
+    {
+      "group": "reopen",
+      "id": "reopen",
+      "seconds": 17.3491621,
+      "log": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\runs\\reopen-v03\\logs\\reopen.log",
+      "log_sha256": "5fe77ffcb501c57aa3101a1b7017d9b6ea48caf025beabe12009faf4762ab539",
+      "exit_code": 0
+    }
+  ],
+  "preservation": {
+    "runtime_base": "6bb2e044dcd0bf1788896aa2c19cdf56fee93522",
+    "prepared_checkout_commit": "40dc044a97b28cab7b48b8a37260976b2581989d",
+    "inspected_published_main": "a3aab16f7220d6ccc37cb17a54a164a84bf524b6",
+    "branch": "codex/art07-r6",
+    "original_entries_checked": 4787,
+    "original_entries_unchanged": 4785,
+    "changed_original_entries": [
+      {
+        "path": "game/c5/native_resource.gd",
+        "before_sha256": "409700551c1795980669c80525dd4a2a78b3be4f792cfc7f4e4773744de6e9ac",
+        "after_sha256": "1cf3c85ff46fb0e3604f55e87ee1451679a56766cf59bc3cd39678645216b11f"
+      },
+      {
+        "path": "game/g1/art.gd",
+        "before_sha256": "760d85a59a05fd6445d70f87664c234d195d06394ee5a9717d52702073b2d9c8",
+        "after_sha256": "52b22e6638859cffb415deda37c2963446ca9e861b17253e0f9c7825f33c6bd0"
+      }
+    ],
+    "wave_release": [
+      {
+        "id": "r1",
+        "published_source_commit": "bd91501c8a7b17c9808aa606a10c14f0f46cab0a",
+        "package": {
+          "path": "D:/project-wroughtwild-art07-r1/build/art07-repairs/r1/v03/handoff",
+          "manifest_sha256": "9c0cd855d03cd5d88df1823538417da776775abd96a732eb7ad94f24a1f02c7e",
+          "files": 5940,
+          "bytes": 5622031314
+        }
+      },
+      {
+        "id": "r2",
+        "published_source_commit": "ca370f52a20637548da0cf1fd04cdc9dbeb9c440",
+        "package": {
+          "path": "D:/project-wroughtwild-art07-r2/build/art07-repairs/r2/v03/handoff",
+          "manifest_sha256": "f5b3ea9559e9f4b76059c7863730b438bdfbe7a6f8f689ae3bae75340cb01ac0",
+          "files": 6411,
+          "bytes": 9091108107,
+          "count_scope": "Payload entries and summed payload bytes; manifest.json is the separately hashed identity file."
+        }
+      },
+      {
+        "id": "r3",
+        "published_source_commit": "7bc9be05397e1492feb8fc98488a84cd3bede75d",
+        "package": {
+          "path": "D:/project-wroughtwild-art07-r3/build/art07-repairs/r3/v01/handoff",
+          "manifest_sha256": "6ce1ca7f6a7406041c345e045610197e33f4f6eefe8cdcfb98718a6ee2e502da",
+          "files": 5632,
+          "bytes": 4156251159
+        }
+      },
+      {
+        "id": "r4",
+        "published_source_commit": "1448b35cc38b3e20b54d8fcbefce82c2d01dcb09",
+        "package": {
+          "path": "D:/project-wroughtwild-art07-r4/build/art07-repairs/r4/v01/handoff-v02",
+          "manifest_sha256": "acebe2937b819bb2210241b394262b5a19916dec9199184d69d4d9d25dd49541",
+          "files": 747,
+          "bytes": 13305657
+        }
+      }
+    ],
+    "parent_candidates_consumed": [],
+    "probe_original_assertion_lines": 4,
+    "probe_assertions_and_original_scene_hierarchy_preserved": true,
+    "new_runtime_files": {
+      "c5-surface-fields.png": {
+        "sha256": "213d88f508dc2f3d5313d78c8c27286fea009f0537f5b44124956f0df6025dbf",
+        "bytes": 293516
+      },
+      "c5_native_review.gd": {
+        "sha256": "c081812a2b380e09e978051ec30fe73c1a479f4456c7b9c22d03ea91859f8343",
+        "bytes": 11912
+      },
+      "c5_native_review.tscn": {
+        "sha256": "9dd1fc8a4d9dd1614fbc1de38472c3b38396e468d6f660c43994bdbadfe07c3f",
+        "bytes": 160
+      },
+      "probe.gd": {
+        "sha256": "07457ca45618bbd8a9652ec9e75757a558b97198a2e2c6d64f7a10425bf3cc6d",
+        "bytes": 1529
+      },
+      "probe.tscn": {
+        "sha256": "3298ae734543192bef0126c37b2b2b0f2043be51ebd9b8b24a41173ba5df6d76",
+        "bytes": 242
+      },
+      "projection.json": {
+        "sha256": "6f070560569c975ea38f05597908e17d23942ffb1d2c212047f347800c429b3c",
+        "bytes": 4993
+      },
+      "review.gd": {
+        "sha256": "88ee78820cfc0d1f53dce9763ee9cc2726da530476669677a5644b4f717ddb81",
+        "bytes": 16893
+      },
+      "review.tscn": {
+        "sha256": "7d37ffa156693485c52a464b43dd1f2589046f4e010f6db4c811930f7dcd6d8f",
+        "bytes": 150
+      },
+      "surface.gd": {
+        "sha256": "a6005ad7005c6fa7110cfbeb6fcf820e4dc1486274eca69254e37f9e67b3ec4c",
+        "bytes": 1295
+      },
+      "surface.gdshader": {
+        "sha256": "09dd6e7558c4db05d95be989defbd6c23d7d959bb5ef10a71c69bd2913b3b2d4",
+        "bytes": 2935
+      },
+      "surface.json": {
+        "sha256": "e38dd199f1732727e070d2e4456ebbdafe98a5a18392e789617bff1dc1c3a896",
+        "bytes": 1736
+      }
+    },
+    "scope": "All original native, data, normal scripts, asset and save payload bytes retained except the two named isolated presentation scripts. Full source payload verification is recorded separately."
+  },
+  "master": [
+    {
+      "path": "evidence/sources/r6-surface-master-v03.blend",
+      "sha256": "240a7684cbd2c198ae4e6aec91549c254104de221af7108e4c60a9117d739d13",
+      "changes": "Original C5 mesh geometry preserved; packed projected vertex-field atlas and editable R6 controls added."
+    }
+  ],
+  "reconstruction": {
+    "path": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\reconstruction-v01",
+    "package_manifest_sha256": "e81d8020ece9dfc25da0dd3e30aeaa222333a8b915e5bbda2d1a819000bebb41",
+    "runtime_files": 4798,
+    "runtime_bytes": 3438593931,
+    "runtime_bytes_equal": true,
+    "scope": "Exact file set and every reconstructed runtime byte hash compared with the immutable seal after applying the verified baseline-relative delta."
+  },
+  "remaining_limits": [
+    "Current RTX 5090 measurements only; no minimum-hardware clearance.",
+    "Harness-paced native acquisition and inspection sites; no continuous campaign or owner visual acceptance.",
+    "No raised ore volume or new collision/terrain seat is approved on faceted terrain.",
+    "Physically recessed altered scars and the raised C5 silhouette are unapproved on the retained thin ribbon; they require a terrain seating/excavation/body decision.",
+    "Five generated inspection sites are not an exhaustive all-site support survey. Earlier native edge support-ray failure is retained with the other failed fixture attempts.",
+    "R8 must merge C5 changes with R2 resource reuse and retain independent R1/R7 resource dispatch changes. No parent repair runtime delta was consumed."
+  ],
+  "owner_visual_acceptance": "pending",
+  "ordinary_world_rollout": "outside scope"
+}
