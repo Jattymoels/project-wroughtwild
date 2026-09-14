@@ -1,7 +1,7 @@
 {
-  "status": "R1–R4 candidates are published. Wave 2 R5–R7 worktrees and fresh baseline runtime copies are prepared; no worker task launched by the coordinator.",
+  "status": "R1–R7 candidates checked and published. R8 worktree and fresh common baseline runtime are prepared; no worker task launched by setup.",
   "created_from_published_commit": "173ab4eeb4eac97f3dd2869c50e765bba0cfb40a",
-  "metadata_note": "Idle prepared branches may receive a documentation-only fast-forward to the published final setup record; setup_base records the actual original copy/checkout commit. Per-row setup state, engine/cache and clean flags describe initial preparation only; current_delivery records later publication where present. Wave-2 setup_base and prepared receipts retain the actual copy base; a later documentation-only fast-forward may add this final setup record. Top-level engine/task launch counts refer to setup only, not worker or publisher verification.",
+  "metadata_note": "Idle prepared branches may receive a documentation-only fast-forward to the published final setup record; setup_base records the actual original copy/checkout commit. Per-row setup state, engine/cache and clean flags describe initial preparation only; current_delivery records later publication where present. Wave-2 setup_base and prepared receipts retain the actual copy base; a later documentation-only fast-forward may add this final setup record. Top-level engine/task launch counts refer to setup only, not worker or publisher verification. Wave-3 setup_base and prepared receipt preserve the actual baseline-copy commit; a documentation-only fast-forward may add the final setup record. No engine or worker task is launched by wave-3 setup.",
   "workspaces": [
     {
       "id": "r1",
@@ -306,9 +306,52 @@
         "publication_report": "docs/prototype/art07-repairs/2026-09-14/publication-r7.json",
         "publisher_runtime": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v03\\runtime"
       }
+    },
+    {
+      "id": "r8",
+      "branch": "codex/art07-r8",
+      "worktree": "D:/project-wroughtwild-art07-r8",
+      "setup_base": "e58efe3ea5451024c95a07bf8250ca2ecb119df1",
+      "state": "workspace_and_runtime_prepared; implementation_not_started",
+      "runtime": "D:/project-wroughtwild-art07-r8/build/art07-repairs/r8/v01/runtime",
+      "prepared_receipt": "D:/project-wroughtwild-art07-r8/build/art07-repairs/r8/v01/prepared.json",
+      "prepared_receipt_sha256": "2d0a917f6c793556fbad7c64fc12aa326f8f4c423248d10dbaaf9f76e554f289",
+      "copied_files": 4787,
+      "copied_bytes": 3438257458,
+      "import_smoke_jobs": "D:/project-wroughtwild-art07-r8/build/art07-repairs/r8/v01/import-smoke.json",
+      "payload_verification": "Unchanged workspace helper hashes every copied baseline entry. Publisher verified exact file set and native DLL. R8 must verify all repair/source inputs before deliberate delta composition.",
+      "cache_inherited": false,
+      "engine_launched": false,
+      "git_clean": true,
+      "worktree_dispatch_validator": {
+        "arguments": [
+          "tools/wroughtwild-art07-repairs/dispatch.py"
+        ],
+        "stdout": "{\n  \"result\": \"PASS\",\n  \"worker_prompts\": 9,\n  \"publisher_prompts\": 1,\n  \"exclusive_git_outputs\": 36,\n  \"findings_owned_once\": 7,\n  \"waves\": 4,\n  \"reading_files\": 35,\n  \"local_links\": 90\n}\n",
+        "stderr": "",
+        "exit_code": 0
+      },
+      "candidate_dependencies": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6",
+        "r7"
+      ],
+      "wave_gate": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6",
+        "r7"
+      ]
     }
   ],
-  "later_waves": "R8 and R9 remain planned only. R8 requires published R1–R7; independent R9 requires R8.",
+  "later_waves": "R9 remains planned only; it requires published R8 and an independent task that implemented none of R1–R8.",
   "task_launches": 0,
   "engine_launches": 0
 }

@@ -1,8 +1,10 @@
 # Worktree and runtime setup
 
-Start with [the plan](README.md). R1–R7 are checked published candidates. R8 dependency gates are clear; its actual workspace setup is recorded separately once prepared. R9 waits for published R8 and must be an independent task.
-No worker task was launched by publication. [Workspaces](workspaces.json)
-preserves historical preparation and current delivery state.
+Start with [the plan](README.md). The next ready slice is **R8**, which combines
+the seven checked and published candidates. Its real worktree and fresh baseline
+runtime are prepared below. R9 remains gated on R8 and requires an independent
+task. No worker task has been launched by setup. [Workspaces](workspaces.json)
+preserves the historical preparation and current delivery records.
 
 Published repair candidates: [R1](publication-r1.md) [R2](publication-r2.md) [R3](publication-r3.md) [R4](publication-r4.md) [R5](publication-r5.md) [R6](publication-r6.md) [R7](publication-r7.md).
 The initial setup flags remain historical; [deliveries.json](deliveries.json)
@@ -22,7 +24,56 @@ Installed tools (verify before launch):
 | Godot | Copied pinned executable under each version's `runtime/engine/` |
 | Raw source packages | Exact paths and hashes in [inputs.json](inputs.json) |
 
+## Ready wave 3 — 14 September 2026
+
+Use [the complete R8 prompt](prompts/R8.md) in `D:/project-wroughtwild-art07-r8`,
+on branch `codex/art07-r8`. R1–R7 are all checked and published. This setup was
+created from verified published main `e58efe3ea5451024c95a07bf8250ca2ecb119df1`.
+
+The prepared `build/art07-repairs/r8/v01/runtime` is the common G1 baseline:
+4,787 files, 3,438,257,458 bytes, verified native DLL and no inherited cache.
+No candidate delta has been applied and no engine has run in this directory.
+The worker must rehash the seven exact packages in deliveries.json before
+composing the final runtime. [Wave-3 setup checks](wave3-setup-checks.json)
+record the actual preparation and validators.
+
+Integration must account for these recorded overlaps and limits:
+
+- R7 already consumed the 105-file R1 parent delta. Apply that ancestry once.
+- Merge R2 resource reuse and image aliases with R3 building face/end/edge
+  bindings, R5's eight replacement chest bodies, R6's C5 material/state hooks,
+  and R7's consumed shrub albedo/ORM. Verify final bindings and resource dispatch.
+- Preserve R4's ten-file fixture cleanup delta when composing review harnesses.
+  Keep R7's successful normal-resource-graph grounding bootstrap and the retained
+  direct-start failure evidence until separately resolved. Its grounding checks
+  need a real renderer: the publisher confirmed that the pinned headless dummy
+  renderer returns identity MultiMesh transforms. Use a startup no-focus window
+  and preserve all native assertions; see publication-r7.json for the diagnostic.
+- R7 fresh saves retain the same native state but differ in two engine-generated
+  station scene names. Preserve raw evidence and stable station key/type/pose/
+  ownership checks; do not claim fresh byte identity. Its generated previous
+  checkpoint is a rotated test output, not an immutable authored source.
+- G2 visual findings remain partial where recorded: canopy/colour quality,
+  chest feet and lid clearances, flat ore surfaces, and unmet continuous
+  understorey. R6 raised geometry and R7 larger envelopes/new roots remain
+  proposals. Do not implement new body or geography rules to close those rows.
+- Recheck all 273 building pairs, including octagonal/chamfer/triangle uses,
+  F4 fractional/exhausted recovery, finite stock and native paid ownership.
+  Remeasure R2 setup/residency on the combined result; isolated wins do not
+  establish final cost or target-hardware acceptance.
+
+Follow AGENTS.md's desktop-comfort preference and completion-summary format:
+background Blender, headless checks where suitable, verified test-only mouse
+capture opt-out/non-focusing windows for rendered jobs, and explicit notice if
+foreground interaction is unavoidable. Preserve ordinary play controls and
+benchmark conditions. Finish with a short summary of what R8 achieved.
+
+Run R8 only. R9 is prepared after checked R8 publication, in an independent task.
+No ordinary-world rollout or ART-06C rig adoption is included.
+
 ## Ready wave 2 — 14 September 2026
+
+Historical setup: R5–R7 are now completed, checked and published.
 
 | Full prompt | Assignment | Prepared working directory |
 | --- | --- | --- |

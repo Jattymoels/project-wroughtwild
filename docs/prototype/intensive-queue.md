@@ -426,3 +426,12 @@ G2-V04: partial; technically verified surface-material candidate, with owner vis
 [R7 passed publisher verification](art07-repairs/2026-09-14/publication-r7.md).
 R7 composes leafier shrubs, layered fern/grass groups and rooted sway at existing decorative anchors. It keeps their original envelopes, IDs, poses, clearing masks and visibility distances, while retaining the published R1 canopy and native world/save state.
 G2-V05: partial; bounded local composition is technically verified. Continuous reference understorey is unmet, with owner and combined R8/R9 review pending. R1–R7 are checked published candidates. R8 dependency gates are clear; its actual workspace setup is recorded separately once prepared. R9 waits for published R8 and must be an independent task.
+
+### ART-07 repair wave 3 ready, 14 September 2026
+
+R1–R7 are checked and published. [R8 setup and full prompt](art07-repairs/2026-09-14/SETUP.md#ready-wave-3--14-september-2026)
+are ready in D:/project-wroughtwild-art07-r8 with a fresh verified common runtime.
+No worker task or engine was launched by setup. R8 owns explicit delta composition
+and combined verification; R9 follows independently after R8 publication.
+Owner visual acceptance, unselected body/geography options and target-device
+clearance remain open.
