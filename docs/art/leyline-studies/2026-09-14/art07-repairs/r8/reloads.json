@@ -1,0 +1,106 @@
+{
+  "forward_plus": {
+    "flow_checks": 43,
+    "restart_checks": 14,
+    "cycles": [
+      {
+        "cycle": 1,
+        "cost": {
+          "buffer_bytes_total_loaded": 238386674,
+          "mesh_instances_including_multimesh_and_hidden": 28463,
+          "scene_unique_indices": 2535420,
+          "scene_unique_meshes_including_hidden": 1623,
+          "scene_unique_surfaces": 2001,
+          "scene_unique_triangles": 2597749,
+          "scene_unique_vertices": 6636334,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 958215680,
+          "video_bytes_total_loaded": 1248923728
+        }
+      },
+      {
+        "cycle": 2,
+        "cost": {
+          "buffer_bytes_total_loaded": 238392818,
+          "mesh_instances_including_multimesh_and_hidden": 28463,
+          "scene_unique_indices": 2535420,
+          "scene_unique_meshes_including_hidden": 1623,
+          "scene_unique_surfaces": 2001,
+          "scene_unique_triangles": 2597749,
+          "scene_unique_vertices": 6636334,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 958215680,
+          "video_bytes_total_loaded": 1248931920
+        }
+      },
+      {
+        "cycle": 3,
+        "cost": {
+          "buffer_bytes_total_loaded": 238398962,
+          "mesh_instances_including_multimesh_and_hidden": 28463,
+          "scene_unique_indices": 2535420,
+          "scene_unique_meshes_including_hidden": 1623,
+          "scene_unique_surfaces": 2001,
+          "scene_unique_triangles": 2597749,
+          "scene_unique_vertices": 6636334,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 958215680,
+          "video_bytes_total_loaded": 1248940112
+        }
+      }
+    ],
+    "scope": "Three bounded native focus/read cycles. Allocation counters are retained; incidental duration fields are not isolated cost benchmarks."
+  },
+  "gl_compatibility": {
+    "flow_checks": 43,
+    "restart_checks": 14,
+    "cycles": [
+      {
+        "cycle": 1,
+        "cost": {
+          "buffer_bytes_total_loaded": 224806798,
+          "mesh_instances_including_multimesh_and_hidden": 28463,
+          "scene_unique_indices": 2535420,
+          "scene_unique_meshes_including_hidden": 1623,
+          "scene_unique_surfaces": 2001,
+          "scene_unique_triangles": 2597749,
+          "scene_unique_vertices": 6636334,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 888505244,
+          "video_bytes_total_loaded": 1113312042
+        }
+      },
+      {
+        "cycle": 2,
+        "cost": {
+          "buffer_bytes_total_loaded": 224806798,
+          "mesh_instances_including_multimesh_and_hidden": 28463,
+          "scene_unique_indices": 2535420,
+          "scene_unique_meshes_including_hidden": 1623,
+          "scene_unique_surfaces": 2001,
+          "scene_unique_triangles": 2597749,
+          "scene_unique_vertices": 6636334,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 888505244,
+          "video_bytes_total_loaded": 1113312042
+        }
+      },
+      {
+        "cycle": 3,
+        "cost": {
+          "buffer_bytes_total_loaded": 224806798,
+          "mesh_instances_including_multimesh_and_hidden": 28463,
+          "scene_unique_indices": 2535420,
+          "scene_unique_meshes_including_hidden": 1623,
+          "scene_unique_surfaces": 2001,
+          "scene_unique_triangles": 2597749,
+          "scene_unique_vertices": 6636334,
+          "scope": "Backend total loaded texture/buffer/video allocations, plus all live scene geometry including hidden resource stages, LODs and MultiMesh references. Buffer totals include caches and non-geometry renderer buffers; triangle count is unique live-scene base meshes, not multiplied by instances.",
+          "texture_bytes_total_loaded": 888505244,
+          "video_bytes_total_loaded": 1113312042
+        }
+      }
+    ],
+    "scope": "Three bounded native focus/read cycles. Allocation counters are retained; incidental duration fields are not isolated cost benchmarks."
+  }
+}

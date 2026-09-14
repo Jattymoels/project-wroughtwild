@@ -1,0 +1,4 @@
+* text=auto eol=lf
+*.gif binary
+# Unified diff context prefixes are syntax, not indentation errors.
+*.diff -whitespace

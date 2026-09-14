@@ -1,0 +1,2862 @@
+{
+  "matched_pairs": [
+    {
+      "renderer": "forward_plus",
+      "view": "paid-home",
+      "lighting": "day",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-forward_plus-original-full-kit-forward_plus\\paid-home-day.png",
+          "sha256": "2448a358f3edab75dc418eae259f9900ec9f284707a4ee824a19c7e174d312f0",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-forward_plus-r8-full-kit\\paid-home-day.png",
+          "sha256": "fd2c0ebac61a4285afed27bae3fd45cdbe923ba9a61c177bb62e268dbb0dc42d",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 776,
+      "before_geometry": {
+        "base_triangles": 2623210,
+        "surfaces": 2025,
+        "unique_meshes": 1646,
+        "vertices": 6663404
+      },
+      "after_geometry": {
+        "base_triangles": 2705296,
+        "surfaces": 2061,
+        "unique_meshes": 1652,
+        "vertices": 6769702
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "paid-home",
+      "lighting": "dusk",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-forward_plus-original-full-kit-forward_plus\\paid-home-dusk.png",
+          "sha256": "12fb314a5c709e0760475e216b2cd06c9ddbec21937c493741f629dd5da5f360",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-forward_plus-r8-full-kit\\paid-home-dusk.png",
+          "sha256": "006f26907946ef5ee0c3f2ea06c7543f09894aa023a4bb5d7b2ea65df018617a",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 776,
+      "before_geometry": {
+        "base_triangles": 2623210,
+        "surfaces": 2025,
+        "unique_meshes": 1646,
+        "vertices": 6663404
+      },
+      "after_geometry": {
+        "base_triangles": 2705296,
+        "surfaces": 2061,
+        "unique_meshes": 1652,
+        "vertices": 6769702
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "paid-interior",
+      "lighting": "day",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-forward_plus-original-full-kit-forward_plus\\paid-interior-day.png",
+          "sha256": "2a2a445c944453dea6e9b3e301fff3ae1a59368eef6568ce6989008a8f2a8a6f",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-forward_plus-r8-full-kit\\paid-interior-day.png",
+          "sha256": "4d8e183ff21dea8ad180c127abe2705116ce338e331a8970fbf0e3fc14499bc3",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 776,
+      "before_geometry": {
+        "base_triangles": 2623210,
+        "surfaces": 2025,
+        "unique_meshes": 1646,
+        "vertices": 6663404
+      },
+      "after_geometry": {
+        "base_triangles": 2705296,
+        "surfaces": 2061,
+        "unique_meshes": 1652,
+        "vertices": 6769702
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "paid-interior",
+      "lighting": "dusk",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-forward_plus-original-full-kit-forward_plus\\paid-interior-dusk.png",
+          "sha256": "d73825db09d33f3bc66d646f554760462d8b9cc1e8e07ece0bc0e8560999fbe8",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-forward_plus-r8-full-kit\\paid-interior-dusk.png",
+          "sha256": "86091b0b3b2f604ab9e1f9beae6eb919acb5b4e79784126ee8d6c53b81e2db9e",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 776,
+      "before_geometry": {
+        "base_triangles": 2623210,
+        "surfaces": 2025,
+        "unique_meshes": 1646,
+        "vertices": 6663404
+      },
+      "after_geometry": {
+        "base_triangles": 2705296,
+        "surfaces": 2061,
+        "unique_meshes": 1652,
+        "vertices": 6769702
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "paid-workshop",
+      "lighting": "day",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-forward_plus-original-full-kit-forward_plus\\paid-workshop-day.png",
+          "sha256": "ca781cccaa921553264895e91414610b5806f3998e3c53e301bc828338075441",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-forward_plus-r8-full-kit\\paid-workshop-day.png",
+          "sha256": "e2fba89ef09fb73b209c3f74830dcf0d271081832dcbc41d90d9a0d42b67f2e1",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 807,
+      "before_geometry": {
+        "base_triangles": 2657830,
+        "surfaces": 2043,
+        "unique_meshes": 1656,
+        "vertices": 6767264
+      },
+      "after_geometry": {
+        "base_triangles": 2739916,
+        "surfaces": 2079,
+        "unique_meshes": 1662,
+        "vertices": 6873562
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "paid-workshop",
+      "lighting": "dusk",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-forward_plus-original-full-kit-forward_plus\\paid-workshop-dusk.png",
+          "sha256": "368fd3093bfb6c471b424e4d98c2464594caa31e8e62563fe9463f4b674c988a",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-forward_plus-r8-full-kit\\paid-workshop-dusk.png",
+          "sha256": "e4cd866cb3deb74cbe80ec4c9c012c1816d649406a438fa27ab0e7e56469791a",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 807,
+      "before_geometry": {
+        "base_triangles": 2657830,
+        "surfaces": 2043,
+        "unique_meshes": 1656,
+        "vertices": 6767264
+      },
+      "after_geometry": {
+        "base_triangles": 2739916,
+        "surfaces": 2079,
+        "unique_meshes": 1662,
+        "vertices": 6873562
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "source-trail",
+      "lighting": "day",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-forward_plus-original-full-kit-forward_plus\\source-trail-day.png",
+          "sha256": "6e1022322e8f61555130952587f3964f2cf933b46efb3293d13829f94d21b51b",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-forward_plus-r8-full-kit\\source-trail-day.png",
+          "sha256": "de18393d2e417e5fd1f322b2bb56aa74fce8fa9569ad458434baa3fa901c1663",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 822,
+      "before_geometry": {
+        "base_triangles": 2573734,
+        "surfaces": 1992,
+        "unique_meshes": 1627,
+        "vertices": 6514976
+      },
+      "after_geometry": {
+        "base_triangles": 2655820,
+        "surfaces": 2028,
+        "unique_meshes": 1633,
+        "vertices": 6621274
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "source-trail",
+      "lighting": "dusk",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-forward_plus-original-full-kit-forward_plus\\source-trail-dusk.png",
+          "sha256": "78f7681d0ed399347399b0845d03e21647972552bf2c9040e22f34ceb0ea896f",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-forward_plus-r8-full-kit\\source-trail-dusk.png",
+          "sha256": "db6ee201cb235ed9d1ec53393f0cf7e3e1addf7e1f72067c93a14a34b72a86fc",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 822,
+      "before_geometry": {
+        "base_triangles": 2573734,
+        "surfaces": 1992,
+        "unique_meshes": 1627,
+        "vertices": 6514976
+      },
+      "after_geometry": {
+        "base_triangles": 2655820,
+        "surfaces": 2028,
+        "unique_meshes": 1633,
+        "vertices": 6621274
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "red_home_margin",
+      "lighting": "day",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-forward_plus-original-full-kit-forward_plus\\red_home_margin-day.png",
+          "sha256": "292219e17f19f419ea2c1a692802619fb5754373f48a7544d4ea56bc0a69c31a",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-forward_plus-r8-full-kit\\red_home_margin-day.png",
+          "sha256": "6cb9f372c5224f49a33e279b93650293d387c73098adcd7c44822600296d992a",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 852,
+      "before_geometry": {
+        "base_triangles": 2674818,
+        "surfaces": 2047,
+        "unique_meshes": 1652,
+        "vertices": 6818228
+      },
+      "after_geometry": {
+        "base_triangles": 2756904,
+        "surfaces": 2083,
+        "unique_meshes": 1658,
+        "vertices": 6924526
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "red_home_margin",
+      "lighting": "dusk",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-forward_plus-original-full-kit-forward_plus\\red_home_margin-dusk.png",
+          "sha256": "8d3525337264c81872874aef2d48377b8efbfe44306a24f74eaf64c45aa9292b",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-forward_plus-r8-full-kit\\red_home_margin-dusk.png",
+          "sha256": "1a0b933f27cff8b845b5237205b549dfd667ff3100714122aab5e3b926406266",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 852,
+      "before_geometry": {
+        "base_triangles": 2674818,
+        "surfaces": 2047,
+        "unique_meshes": 1652,
+        "vertices": 6818228
+      },
+      "after_geometry": {
+        "base_triangles": 2756904,
+        "surfaces": 2083,
+        "unique_meshes": 1658,
+        "vertices": 6924526
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "white_home_margin",
+      "lighting": "day",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-forward_plus-original-full-kit-forward_plus\\white_home_margin-day.png",
+          "sha256": "5c510427b5385031e5e5b7a8e40e47d6948c50c17ac2b55b31bb5a6083aa1956",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-forward_plus-r8-full-kit\\white_home_margin-day.png",
+          "sha256": "8a53bb40225f78384ecc66699b5e5e4632f35255671b259ff8df9a242965a442",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 846,
+      "before_geometry": {
+        "base_triangles": 2376632,
+        "surfaces": 2012,
+        "unique_meshes": 1657,
+        "vertices": 6461395
+      },
+      "after_geometry": {
+        "base_triangles": 2458718,
+        "surfaces": 2048,
+        "unique_meshes": 1663,
+        "vertices": 6567693
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "white_home_margin",
+      "lighting": "dusk",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-forward_plus-original-full-kit-forward_plus\\white_home_margin-dusk.png",
+          "sha256": "d04b5ad3f303a96e06a3792743a48e4f3c2a765a39f9c6e1cacd2cb96c9737c4",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-forward_plus-r8-full-kit\\white_home_margin-dusk.png",
+          "sha256": "1149a0bca92e58cc007525aa18fd2ee0f8c0b27b476ed45dbb3974b9f58bef96",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 846,
+      "before_geometry": {
+        "base_triangles": 2376632,
+        "surfaces": 2012,
+        "unique_meshes": 1657,
+        "vertices": 6461395
+      },
+      "after_geometry": {
+        "base_triangles": 2458718,
+        "surfaces": 2048,
+        "unique_meshes": 1663,
+        "vertices": 6567693
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "blue_home_margin",
+      "lighting": "day",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-forward_plus-original-full-kit-forward_plus\\blue_home_margin-day.png",
+          "sha256": "96ff3bc6f2590d3978f1c227048a1b2054a0dc319213289b814ce7a035875f46",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-forward_plus-r8-full-kit\\blue_home_margin-day.png",
+          "sha256": "09544d612618ef93ab1030d2c202b2a72a19aebc77ad0e57b91222d33af34f8c",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 945,
+      "before_geometry": {
+        "base_triangles": 2539177,
+        "surfaces": 2003,
+        "unique_meshes": 1676,
+        "vertices": 6493585
+      },
+      "after_geometry": {
+        "base_triangles": 2621263,
+        "surfaces": 2039,
+        "unique_meshes": 1682,
+        "vertices": 6599883
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "blue_home_margin",
+      "lighting": "dusk",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-forward_plus-original-full-kit-forward_plus\\blue_home_margin-dusk.png",
+          "sha256": "98ed9c7a8b137a70aea607654f05679be097a4b9d969ca90358c0f3891c096e1",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-forward_plus-r8-full-kit\\blue_home_margin-dusk.png",
+          "sha256": "736ff14c9485cfa8fbd483f67f605bb3b4e45d22f311e075917024e65ae42824",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 945,
+      "before_geometry": {
+        "base_triangles": 2539177,
+        "surfaces": 2003,
+        "unique_meshes": 1676,
+        "vertices": 6493585
+      },
+      "after_geometry": {
+        "base_triangles": 2621263,
+        "surfaces": 2039,
+        "unique_meshes": 1682,
+        "vertices": 6599883
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "green_home_margin",
+      "lighting": "day",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-forward_plus-original-full-kit-forward_plus\\green_home_margin-day.png",
+          "sha256": "73a76c5c67deccdbe58cefd656b65c181118a26a943886fdbf5fa66d7dc275a6",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-forward_plus-r8-full-kit\\green_home_margin-day.png",
+          "sha256": "4f11665a0f82a45cdbf5c4eaf5530dfb3e53444c5ae5d72a308724a8ad186974",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 928,
+      "before_geometry": {
+        "base_triangles": 2479521,
+        "surfaces": 2030,
+        "unique_meshes": 1679,
+        "vertices": 6559905
+      },
+      "after_geometry": {
+        "base_triangles": 2561607,
+        "surfaces": 2066,
+        "unique_meshes": 1685,
+        "vertices": 6666203
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "green_home_margin",
+      "lighting": "dusk",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-forward_plus-original-full-kit-forward_plus\\green_home_margin-dusk.png",
+          "sha256": "6a5fc463516e31d7220462a58336e9f03dd0223de065d08f10e4ac171a81b701",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-forward_plus-r8-full-kit\\green_home_margin-dusk.png",
+          "sha256": "3df2d9f610c8dbb4d567a3ec401f413040368676c74d050439af65e5f1da61c8",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 928,
+      "before_geometry": {
+        "base_triangles": 2479521,
+        "surfaces": 2030,
+        "unique_meshes": 1679,
+        "vertices": 6559905
+      },
+      "after_geometry": {
+        "base_triangles": 2561607,
+        "surfaces": 2066,
+        "unique_meshes": 1685,
+        "vertices": 6666203
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "regional-pine",
+      "lighting": "day",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-forward_plus-original-full-kit-forward_plus\\regional-pine-day.png",
+          "sha256": "75718380dc7b4fa43d49728a4fd0c8c7e96a698ad74ee74dd48d411cc112811e",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-forward_plus-r8-full-kit\\regional-pine-day.png",
+          "sha256": "73009175f7efcd3192c031daadc4cb5a92fc8ef4e1c565fcc5bd9f665fef6f95",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 261,
+      "before_geometry": {
+        "base_triangles": 1126091,
+        "surfaces": 1195,
+        "unique_meshes": 1034,
+        "vertices": 2709484
+      },
+      "after_geometry": {
+        "base_triangles": 1208285,
+        "surfaces": 1232,
+        "unique_meshes": 1040,
+        "vertices": 2815962
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "regional-pine",
+      "lighting": "dusk",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-forward_plus-original-full-kit-forward_plus\\regional-pine-dusk.png",
+          "sha256": "da08b7d0479b876fe6058869485757665021591aac3f86afe585e74532e41187",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-forward_plus-r8-full-kit\\regional-pine-dusk.png",
+          "sha256": "1adffa6019da95821da63fac9b3410c9cb3fd5a4d21ca3f80d3b23dad8656f6d",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 261,
+      "before_geometry": {
+        "base_triangles": 1126091,
+        "surfaces": 1195,
+        "unique_meshes": 1034,
+        "vertices": 2709484
+      },
+      "after_geometry": {
+        "base_triangles": 1208285,
+        "surfaces": 1232,
+        "unique_meshes": 1040,
+        "vertices": 2815962
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "regional-bog_oak",
+      "lighting": "day",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-forward_plus-original-full-kit-forward_plus\\regional-bog_oak-day.png",
+          "sha256": "3237c92d27c64738571734984cc121e514db1f56f971962cac8c5cfef811dff2",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-forward_plus-r8-full-kit\\regional-bog_oak-day.png",
+          "sha256": "6efdd34cee580a62f59d316ca71e19b054180fb2e188ce0b2b10948014d6db31",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 554,
+      "before_geometry": {
+        "base_triangles": 1730890,
+        "surfaces": 1354,
+        "unique_meshes": 1215,
+        "vertices": 3808749
+      },
+      "after_geometry": {
+        "base_triangles": 1812760,
+        "surfaces": 1389,
+        "unique_meshes": 1220,
+        "vertices": 3914687
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "regional-bog_oak",
+      "lighting": "dusk",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-forward_plus-original-full-kit-forward_plus\\regional-bog_oak-dusk.png",
+          "sha256": "e88987362cc9f834bd7d6a822f62c275f727d042e3d1b776fec8378e6fbc0f2e",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-forward_plus-r8-full-kit\\regional-bog_oak-dusk.png",
+          "sha256": "981f695ccb435e206f3ef26377189fe3fdae63bc2214a0ce83c6f9d6843ff9c0",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 554,
+      "before_geometry": {
+        "base_triangles": 1730890,
+        "surfaces": 1354,
+        "unique_meshes": 1215,
+        "vertices": 3808749
+      },
+      "after_geometry": {
+        "base_triangles": 1812760,
+        "surfaces": 1389,
+        "unique_meshes": 1220,
+        "vertices": 3914687
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "regional-raw_clay",
+      "lighting": "day",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-forward_plus-original-full-kit-forward_plus\\regional-raw_clay-day.png",
+          "sha256": "322054c44e4eb3bce46598da40babcd2b5e26645f4d19e4a6e6ce44b36626a5d",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-forward_plus-r8-full-kit\\regional-raw_clay-day.png",
+          "sha256": "e42a7b6d5391f3962dbe83d8b4ace4eeec0542172e642cb459951be30d47c84b",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 377,
+      "before_geometry": {
+        "base_triangles": 1674854,
+        "surfaces": 1267,
+        "unique_meshes": 1164,
+        "vertices": 3430484
+      },
+      "after_geometry": {
+        "base_triangles": 1756724,
+        "surfaces": 1302,
+        "unique_meshes": 1169,
+        "vertices": 3536422
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "regional-raw_clay",
+      "lighting": "dusk",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-forward_plus-original-full-kit-forward_plus\\regional-raw_clay-dusk.png",
+          "sha256": "a1382570c630e14f825625c764c090a0f5cf5dc9d4541a416dad2b743d323324",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-forward_plus-r8-full-kit\\regional-raw_clay-dusk.png",
+          "sha256": "76c555d26ba5c2b12e32d21450e32e73d46b95797256a736c86edfb07623c91a",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 377,
+      "before_geometry": {
+        "base_triangles": 1674854,
+        "surfaces": 1267,
+        "unique_meshes": 1164,
+        "vertices": 3430484
+      },
+      "after_geometry": {
+        "base_triangles": 1756724,
+        "surfaces": 1302,
+        "unique_meshes": 1169,
+        "vertices": 3536422
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "regional-raw_reed",
+      "lighting": "day",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-forward_plus-original-full-kit-forward_plus\\regional-raw_reed-day.png",
+          "sha256": "05e554690b09b669b9237ff349fdebdf652c0884a69559c20debfab29d02f63c",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-forward_plus-r8-full-kit\\regional-raw_reed-day.png",
+          "sha256": "351fa100bb31c642c58e2113de00e55cbb42c44a2163da6730246990fd04a00e",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 402,
+      "before_geometry": {
+        "base_triangles": 1694029,
+        "surfaces": 1284,
+        "unique_meshes": 1177,
+        "vertices": 3488009
+      },
+      "after_geometry": {
+        "base_triangles": 1775899,
+        "surfaces": 1319,
+        "unique_meshes": 1182,
+        "vertices": 3593947
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "regional-raw_reed",
+      "lighting": "dusk",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-forward_plus-original-full-kit-forward_plus\\regional-raw_reed-dusk.png",
+          "sha256": "1d94443a4a642c1597418d11e3e3e8a2a3df221090c172b2a6d821b9d0dfdc1d",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-forward_plus-r8-full-kit\\regional-raw_reed-dusk.png",
+          "sha256": "a5a315c9995f4ae85c971ad836c09472171537876c021c09cb6d76d59c46e147",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 402,
+      "before_geometry": {
+        "base_triangles": 1694029,
+        "surfaces": 1284,
+        "unique_meshes": 1177,
+        "vertices": 3488009
+      },
+      "after_geometry": {
+        "base_triangles": 1775899,
+        "surfaces": 1319,
+        "unique_meshes": 1182,
+        "vertices": 3593947
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "regional-resinheart_log",
+      "lighting": "day",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-forward_plus-original-full-kit-forward_plus\\regional-resinheart_log-day.png",
+          "sha256": "a8db85b1e2787d8a2dbb3dcf9c9b32625ebd155333b053851ec5eacc1f94a400",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-forward_plus-r8-full-kit\\regional-resinheart_log-day.png",
+          "sha256": "6d3054944673793deeb3918892891d4973e3f062c738262ee7d7c9a6f2ebaf49",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 723,
+      "before_geometry": {
+        "base_triangles": 2302886,
+        "surfaces": 1574,
+        "unique_meshes": 1438,
+        "vertices": 4985080
+      },
+      "after_geometry": {
+        "base_triangles": 2384756,
+        "surfaces": 1609,
+        "unique_meshes": 1443,
+        "vertices": 5091018
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "regional-resinheart_log",
+      "lighting": "dusk",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-forward_plus-original-full-kit-forward_plus\\regional-resinheart_log-dusk.png",
+          "sha256": "29d742816039fe7490fe9536e0d52451e528c3f898e0829d7129a0de447a7485",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-forward_plus-r8-full-kit\\regional-resinheart_log-dusk.png",
+          "sha256": "6e939c18261f18b3433719aca0b77631ea02a3f2b6922a6022dea1d01eb57879",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 723,
+      "before_geometry": {
+        "base_triangles": 2302886,
+        "surfaces": 1574,
+        "unique_meshes": 1438,
+        "vertices": 4985080
+      },
+      "after_geometry": {
+        "base_triangles": 2384756,
+        "surfaces": 1609,
+        "unique_meshes": 1443,
+        "vertices": 5091018
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "regional-raw_corkbark",
+      "lighting": "day",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-forward_plus-original-full-kit-forward_plus\\regional-raw_corkbark-day.png",
+          "sha256": "eb199317e02583badbe8586ebd20e9ac5f70a1849596ceb6d621bbb6e77e343e",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-forward_plus-r8-full-kit\\regional-raw_corkbark-day.png",
+          "sha256": "f224f63de2fdc1a5f811f0ba5999ef11c714898373b7e390cef2330625625afa",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 763,
+      "before_geometry": {
+        "base_triangles": 2361457,
+        "surfaces": 1615,
+        "unique_meshes": 1467,
+        "vertices": 5160793
+      },
+      "after_geometry": {
+        "base_triangles": 2443327,
+        "surfaces": 1650,
+        "unique_meshes": 1472,
+        "vertices": 5266731
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "regional-raw_corkbark",
+      "lighting": "dusk",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-forward_plus-original-full-kit-forward_plus\\regional-raw_corkbark-dusk.png",
+          "sha256": "7ca74d30b27ab8315376239a2a7a3c9d78eca9a49515257e5c79eb5a3d3d14c9",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-forward_plus-r8-full-kit\\regional-raw_corkbark-dusk.png",
+          "sha256": "5ef58ff852d14070dbe1ab4dd7dc9010229c819638f56334d23da94127f20ba3",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 763,
+      "before_geometry": {
+        "base_triangles": 2361457,
+        "surfaces": 1615,
+        "unique_meshes": 1467,
+        "vertices": 5160793
+      },
+      "after_geometry": {
+        "base_triangles": 2443327,
+        "surfaces": 1650,
+        "unique_meshes": 1472,
+        "vertices": 5266731
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "regional-ash_wood",
+      "lighting": "day",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-forward_plus-original-full-kit-forward_plus\\regional-ash_wood-day.png",
+          "sha256": "8eba0c34780dff82c9e5bb0d6e72371a347b056e17f384cece56c7cedceef417",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-forward_plus-r8-full-kit\\regional-ash_wood-day.png",
+          "sha256": "a742cff2a66681643f93df7d616c9f9de1144cc7b2ebed4cc14551ac64347a9a",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 300,
+      "before_geometry": {
+        "base_triangles": 1208342,
+        "surfaces": 1266,
+        "unique_meshes": 1107,
+        "vertices": 2973908
+      },
+      "after_geometry": {
+        "base_triangles": 1286720,
+        "surfaces": 1301,
+        "unique_meshes": 1112,
+        "vertices": 3086747
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "forward_plus",
+      "view": "regional-ash_wood",
+      "lighting": "dusk",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-forward_plus-original-full-kit-forward_plus\\regional-ash_wood-dusk.png",
+          "sha256": "f9e7517133894e17ae0c8697db79b6705c1f2f916cb8a267c3ae5e9b2708d2a0",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-forward_plus-r8-full-kit\\regional-ash_wood-dusk.png",
+          "sha256": "9d0e2b93b9f3fd994a84efb08ebe184b8a459d32786216a3452bd0228949a86b",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 300,
+      "before_geometry": {
+        "base_triangles": 1208342,
+        "surfaces": 1266,
+        "unique_meshes": 1107,
+        "vertices": 2973908
+      },
+      "after_geometry": {
+        "base_triangles": 1286720,
+        "surfaces": 1301,
+        "unique_meshes": 1112,
+        "vertices": 3086747
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "paid-home",
+      "lighting": "day",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-gl_compatibility-original-full-kit-gl_compatibility\\paid-home-day.png",
+          "sha256": "f9adb8470b69f84cbd463caf40b4db8e45ca66610c7d080f1f7b4f67ee7dd752",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-gl_compatibility-r8-full-kit\\paid-home-day.png",
+          "sha256": "9c9b6973c7967124790ce679564b729d0caf8ecbc1a17a2541af92671f772fd0",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 776,
+      "before_geometry": {
+        "base_triangles": 2623210,
+        "surfaces": 2025,
+        "unique_meshes": 1646,
+        "vertices": 6663404
+      },
+      "after_geometry": {
+        "base_triangles": 2705296,
+        "surfaces": 2061,
+        "unique_meshes": 1652,
+        "vertices": 6769702
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "paid-home",
+      "lighting": "dusk",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-gl_compatibility-original-full-kit-gl_compatibility\\paid-home-dusk.png",
+          "sha256": "50345c4b016ba87c449b8d6043627ee7c439954274659eb6a63633dc263f49ab",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-gl_compatibility-r8-full-kit\\paid-home-dusk.png",
+          "sha256": "020737da5192b123c915e7132cb4b2ac2614698377593d66f2d01f6f9a0aa30c",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 776,
+      "before_geometry": {
+        "base_triangles": 2623210,
+        "surfaces": 2025,
+        "unique_meshes": 1646,
+        "vertices": 6663404
+      },
+      "after_geometry": {
+        "base_triangles": 2705296,
+        "surfaces": 2061,
+        "unique_meshes": 1652,
+        "vertices": 6769702
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "paid-interior",
+      "lighting": "day",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-gl_compatibility-original-full-kit-gl_compatibility\\paid-interior-day.png",
+          "sha256": "7ebf50560a1f6a7c34422e90e327b171813cec2cac88153294e37264ec520a43",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-gl_compatibility-r8-full-kit\\paid-interior-day.png",
+          "sha256": "f0720c2cb9e83a5b2f766ba4e664af7a6f48488cf10a05dc6ebbece3e5edc1c7",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 776,
+      "before_geometry": {
+        "base_triangles": 2623210,
+        "surfaces": 2025,
+        "unique_meshes": 1646,
+        "vertices": 6663404
+      },
+      "after_geometry": {
+        "base_triangles": 2705296,
+        "surfaces": 2061,
+        "unique_meshes": 1652,
+        "vertices": 6769702
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "paid-interior",
+      "lighting": "dusk",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-gl_compatibility-original-full-kit-gl_compatibility\\paid-interior-dusk.png",
+          "sha256": "13231e7903f194316e20489f94d3913f8bc62ec029bdb07b40a148b910510a2b",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-gl_compatibility-r8-full-kit\\paid-interior-dusk.png",
+          "sha256": "2274ba960739e818d9763668b8cfe88aae2df598f8abb4d2bad3f782618a6678",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 776,
+      "before_geometry": {
+        "base_triangles": 2623210,
+        "surfaces": 2025,
+        "unique_meshes": 1646,
+        "vertices": 6663404
+      },
+      "after_geometry": {
+        "base_triangles": 2705296,
+        "surfaces": 2061,
+        "unique_meshes": 1652,
+        "vertices": 6769702
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "paid-workshop",
+      "lighting": "day",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-gl_compatibility-original-full-kit-gl_compatibility\\paid-workshop-day.png",
+          "sha256": "31805fb0a9746c1b07436cf8fdb905f84c672535725f5b9a03ad2abd959066e7",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-gl_compatibility-r8-full-kit\\paid-workshop-day.png",
+          "sha256": "ee67131900f0b1eabaea38827ec2d0862708725da8099353d7f053cf13567227",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 807,
+      "before_geometry": {
+        "base_triangles": 2657830,
+        "surfaces": 2043,
+        "unique_meshes": 1656,
+        "vertices": 6767264
+      },
+      "after_geometry": {
+        "base_triangles": 2739916,
+        "surfaces": 2079,
+        "unique_meshes": 1662,
+        "vertices": 6873562
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "paid-workshop",
+      "lighting": "dusk",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-gl_compatibility-original-full-kit-gl_compatibility\\paid-workshop-dusk.png",
+          "sha256": "4b5c5439eaf1ee369b0a4630196dcfb1960dc735dbf01890c7d0fd0c74d732c5",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-gl_compatibility-r8-full-kit\\paid-workshop-dusk.png",
+          "sha256": "0b63ba069a2576aa972f69fbd364210211979cd5a918f2150e3ab0c6286a4891",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 807,
+      "before_geometry": {
+        "base_triangles": 2657830,
+        "surfaces": 2043,
+        "unique_meshes": 1656,
+        "vertices": 6767264
+      },
+      "after_geometry": {
+        "base_triangles": 2739916,
+        "surfaces": 2079,
+        "unique_meshes": 1662,
+        "vertices": 6873562
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "source-trail",
+      "lighting": "day",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-gl_compatibility-original-full-kit-gl_compatibility\\source-trail-day.png",
+          "sha256": "6336979c0cb768bd04e00305487aa7ed6a0626842663674eb99c840a69ad06fc",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-gl_compatibility-r8-full-kit\\source-trail-day.png",
+          "sha256": "11d9da2fed99396d61628f20ccff32dae511416987b1b44ca845589f6eb7e57e",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 822,
+      "before_geometry": {
+        "base_triangles": 2573734,
+        "surfaces": 1992,
+        "unique_meshes": 1627,
+        "vertices": 6514976
+      },
+      "after_geometry": {
+        "base_triangles": 2655820,
+        "surfaces": 2028,
+        "unique_meshes": 1633,
+        "vertices": 6621274
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "source-trail",
+      "lighting": "dusk",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-gl_compatibility-original-full-kit-gl_compatibility\\source-trail-dusk.png",
+          "sha256": "37b7be9d7f0e9c16c4a3141049b07fea236ef9457386a2d61829c0b32f487452",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-gl_compatibility-r8-full-kit\\source-trail-dusk.png",
+          "sha256": "c778d1d03dc72074c964a9cb04c9eff4892546c3f181c47a3c0257d3c0d48f5d",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 822,
+      "before_geometry": {
+        "base_triangles": 2573734,
+        "surfaces": 1992,
+        "unique_meshes": 1627,
+        "vertices": 6514976
+      },
+      "after_geometry": {
+        "base_triangles": 2655820,
+        "surfaces": 2028,
+        "unique_meshes": 1633,
+        "vertices": 6621274
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "red_home_margin",
+      "lighting": "day",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-gl_compatibility-original-full-kit-gl_compatibility\\red_home_margin-day.png",
+          "sha256": "f20330c03ecfc6dea8964cb3ac6da6bbfe8c59eb7bb1e0e324108deaecef12df",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-gl_compatibility-r8-full-kit\\red_home_margin-day.png",
+          "sha256": "51143b152d427c33b604f0fb7b4c1bdd7fd60dc3f7ba5dacb0afd7b2f1f77b04",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 852,
+      "before_geometry": {
+        "base_triangles": 2674818,
+        "surfaces": 2047,
+        "unique_meshes": 1652,
+        "vertices": 6818228
+      },
+      "after_geometry": {
+        "base_triangles": 2756904,
+        "surfaces": 2083,
+        "unique_meshes": 1658,
+        "vertices": 6924526
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "red_home_margin",
+      "lighting": "dusk",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-gl_compatibility-original-full-kit-gl_compatibility\\red_home_margin-dusk.png",
+          "sha256": "63dc54fdf5ef1c13cacabe5dbb99721e2a7ad32641be8d50eea744859da0632a",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-gl_compatibility-r8-full-kit\\red_home_margin-dusk.png",
+          "sha256": "31269aa2b0a03492e19c405918da75c693dbe9dea3fc70d1a3c0312b971a8c54",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 852,
+      "before_geometry": {
+        "base_triangles": 2674818,
+        "surfaces": 2047,
+        "unique_meshes": 1652,
+        "vertices": 6818228
+      },
+      "after_geometry": {
+        "base_triangles": 2756904,
+        "surfaces": 2083,
+        "unique_meshes": 1658,
+        "vertices": 6924526
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "white_home_margin",
+      "lighting": "day",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-gl_compatibility-original-full-kit-gl_compatibility\\white_home_margin-day.png",
+          "sha256": "fab8db29e68cd6aee1a9b828f850f22f4eace7d1b52f76f4cfe30f852fcccd2a",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-gl_compatibility-r8-full-kit\\white_home_margin-day.png",
+          "sha256": "b3d996814e4f8f23aa166f2f7cd0cbd64af633f9c5694f8b61e5c8572a3d027e",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 846,
+      "before_geometry": {
+        "base_triangles": 2376632,
+        "surfaces": 2012,
+        "unique_meshes": 1657,
+        "vertices": 6461395
+      },
+      "after_geometry": {
+        "base_triangles": 2458718,
+        "surfaces": 2048,
+        "unique_meshes": 1663,
+        "vertices": 6567693
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "white_home_margin",
+      "lighting": "dusk",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-gl_compatibility-original-full-kit-gl_compatibility\\white_home_margin-dusk.png",
+          "sha256": "025548437708aab1d06d44c5d735a0eb1be52d49e71060ad5c2b890e564893f6",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-gl_compatibility-r8-full-kit\\white_home_margin-dusk.png",
+          "sha256": "617eea509598350a7c89236cd22af3c2396967db9b5f375f3ff0e1fd5c518f3a",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 846,
+      "before_geometry": {
+        "base_triangles": 2376632,
+        "surfaces": 2012,
+        "unique_meshes": 1657,
+        "vertices": 6461395
+      },
+      "after_geometry": {
+        "base_triangles": 2458718,
+        "surfaces": 2048,
+        "unique_meshes": 1663,
+        "vertices": 6567693
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "blue_home_margin",
+      "lighting": "day",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-gl_compatibility-original-full-kit-gl_compatibility\\blue_home_margin-day.png",
+          "sha256": "062fd329149ba25201b62b65123044fbbe4edd987419c0c5f2ae57dd0f22a6a9",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-gl_compatibility-r8-full-kit\\blue_home_margin-day.png",
+          "sha256": "3ce8071009173f36f7604a23463119a2f68a36d1d86a5ada7e32f6ea0112a232",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 945,
+      "before_geometry": {
+        "base_triangles": 2539177,
+        "surfaces": 2003,
+        "unique_meshes": 1676,
+        "vertices": 6493585
+      },
+      "after_geometry": {
+        "base_triangles": 2621263,
+        "surfaces": 2039,
+        "unique_meshes": 1682,
+        "vertices": 6599883
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "blue_home_margin",
+      "lighting": "dusk",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-gl_compatibility-original-full-kit-gl_compatibility\\blue_home_margin-dusk.png",
+          "sha256": "4afafacb79ef5c5c8280cdad01aa0e45aa8f296f450c80509276591380d0cd80",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-gl_compatibility-r8-full-kit\\blue_home_margin-dusk.png",
+          "sha256": "c979692ca43029614fda4aefd54ca7de748fda075223ece03e3293dae6440095",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 945,
+      "before_geometry": {
+        "base_triangles": 2539177,
+        "surfaces": 2003,
+        "unique_meshes": 1676,
+        "vertices": 6493585
+      },
+      "after_geometry": {
+        "base_triangles": 2621263,
+        "surfaces": 2039,
+        "unique_meshes": 1682,
+        "vertices": 6599883
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "green_home_margin",
+      "lighting": "day",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-gl_compatibility-original-full-kit-gl_compatibility\\green_home_margin-day.png",
+          "sha256": "2bf0ee726688bac5e3e64787f69bc4f994c838b2ff8ec84f59413cc85ee66092",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-gl_compatibility-r8-full-kit\\green_home_margin-day.png",
+          "sha256": "17ba772e8f4d278b2f3a3ab8aecf86b917911314c72b275d1a2eaee5eddd6616",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 928,
+      "before_geometry": {
+        "base_triangles": 2479521,
+        "surfaces": 2030,
+        "unique_meshes": 1679,
+        "vertices": 6559905
+      },
+      "after_geometry": {
+        "base_triangles": 2561607,
+        "surfaces": 2066,
+        "unique_meshes": 1685,
+        "vertices": 6666203
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "green_home_margin",
+      "lighting": "dusk",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-gl_compatibility-original-full-kit-gl_compatibility\\green_home_margin-dusk.png",
+          "sha256": "3fa3543f8479d465d4946eb29b97baad320ac8de75f0201ecd76a675407685bb",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-gl_compatibility-r8-full-kit\\green_home_margin-dusk.png",
+          "sha256": "0e908ca72058667c8f58e848d28ec94668002b6975f873a26b87b1562ea5f654",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 928,
+      "before_geometry": {
+        "base_triangles": 2479521,
+        "surfaces": 2030,
+        "unique_meshes": 1679,
+        "vertices": 6559905
+      },
+      "after_geometry": {
+        "base_triangles": 2561607,
+        "surfaces": 2066,
+        "unique_meshes": 1685,
+        "vertices": 6666203
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "regional-pine",
+      "lighting": "day",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-gl_compatibility-original-full-kit-gl_compatibility\\regional-pine-day.png",
+          "sha256": "991beb03d0d867631f8c10882857c5d0366a89e12b54e9ec4b21c33c17aa60bf",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-gl_compatibility-r8-full-kit\\regional-pine-day.png",
+          "sha256": "a8f372542aa26475f9d9b8e5ceb3f315f5eb289bfee5c72b42adb834e474ab13",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 261,
+      "before_geometry": {
+        "base_triangles": 1126091,
+        "surfaces": 1195,
+        "unique_meshes": 1034,
+        "vertices": 2709484
+      },
+      "after_geometry": {
+        "base_triangles": 1208285,
+        "surfaces": 1232,
+        "unique_meshes": 1040,
+        "vertices": 2815962
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "regional-pine",
+      "lighting": "dusk",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-gl_compatibility-original-full-kit-gl_compatibility\\regional-pine-dusk.png",
+          "sha256": "5262c2ed072b266d2a8e3d5acb7e70051bfb12d59ee5f687f575d13309bfbd26",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-gl_compatibility-r8-full-kit\\regional-pine-dusk.png",
+          "sha256": "2c14ed52426fc9c6c2976db0c4882de3301863911b0e1ccc164223a085d2dc64",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 261,
+      "before_geometry": {
+        "base_triangles": 1126091,
+        "surfaces": 1195,
+        "unique_meshes": 1034,
+        "vertices": 2709484
+      },
+      "after_geometry": {
+        "base_triangles": 1208285,
+        "surfaces": 1232,
+        "unique_meshes": 1040,
+        "vertices": 2815962
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "regional-bog_oak",
+      "lighting": "day",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-gl_compatibility-original-full-kit-gl_compatibility\\regional-bog_oak-day.png",
+          "sha256": "5f855efdfffaeb7a4b901521521dade47f5a2c24b54d206bf6520dbf47dfb835",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-gl_compatibility-r8-full-kit\\regional-bog_oak-day.png",
+          "sha256": "008c1fe0e4bfe78847420b2016695b99accb8f4f2283ae8225c69bcd08e4e2f3",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 554,
+      "before_geometry": {
+        "base_triangles": 1730890,
+        "surfaces": 1354,
+        "unique_meshes": 1215,
+        "vertices": 3808749
+      },
+      "after_geometry": {
+        "base_triangles": 1812760,
+        "surfaces": 1389,
+        "unique_meshes": 1220,
+        "vertices": 3914687
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "regional-bog_oak",
+      "lighting": "dusk",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-gl_compatibility-original-full-kit-gl_compatibility\\regional-bog_oak-dusk.png",
+          "sha256": "c63a9642f6426ae412cb74a63d348184f415d2dd359a994b812f8e2d0e818919",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-gl_compatibility-r8-full-kit\\regional-bog_oak-dusk.png",
+          "sha256": "ce6952eaf78142d3810512b65cddcb6539c42b52b501f6892d3443a558f02563",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 554,
+      "before_geometry": {
+        "base_triangles": 1730890,
+        "surfaces": 1354,
+        "unique_meshes": 1215,
+        "vertices": 3808749
+      },
+      "after_geometry": {
+        "base_triangles": 1812760,
+        "surfaces": 1389,
+        "unique_meshes": 1220,
+        "vertices": 3914687
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "regional-raw_clay",
+      "lighting": "day",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-gl_compatibility-original-full-kit-gl_compatibility\\regional-raw_clay-day.png",
+          "sha256": "ba344205ecee8974534abc2b55e975a7e5fdbb4ea75676497a8fd41070b8e2dd",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-gl_compatibility-r8-full-kit\\regional-raw_clay-day.png",
+          "sha256": "7f5c964f1b2292e845041f9288425b0a15a38940b5dc8f2695f406c488298595",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 377,
+      "before_geometry": {
+        "base_triangles": 1674854,
+        "surfaces": 1267,
+        "unique_meshes": 1164,
+        "vertices": 3430484
+      },
+      "after_geometry": {
+        "base_triangles": 1756724,
+        "surfaces": 1302,
+        "unique_meshes": 1169,
+        "vertices": 3536422
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "regional-raw_clay",
+      "lighting": "dusk",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-gl_compatibility-original-full-kit-gl_compatibility\\regional-raw_clay-dusk.png",
+          "sha256": "600530e9da59fd24d25289a6fe133dc5c373fea43750538b8c6027b5fbfe5cbc",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-gl_compatibility-r8-full-kit\\regional-raw_clay-dusk.png",
+          "sha256": "1eeeab3c3f7a16d9895da60b66e2aab54f8c611773ebdb0cb725832ed2ccc0d1",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 377,
+      "before_geometry": {
+        "base_triangles": 1674854,
+        "surfaces": 1267,
+        "unique_meshes": 1164,
+        "vertices": 3430484
+      },
+      "after_geometry": {
+        "base_triangles": 1756724,
+        "surfaces": 1302,
+        "unique_meshes": 1169,
+        "vertices": 3536422
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "regional-raw_reed",
+      "lighting": "day",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-gl_compatibility-original-full-kit-gl_compatibility\\regional-raw_reed-day.png",
+          "sha256": "7e4a8495e9d4537fcdf450f05f001a2e871a88376b8cc44cc2a860da1982af31",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-gl_compatibility-r8-full-kit\\regional-raw_reed-day.png",
+          "sha256": "c4676a43d319ca39e115c3d3897ff989279a4810bc0eb586e4ff4e9e4aace64f",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 402,
+      "before_geometry": {
+        "base_triangles": 1694029,
+        "surfaces": 1284,
+        "unique_meshes": 1177,
+        "vertices": 3488009
+      },
+      "after_geometry": {
+        "base_triangles": 1775899,
+        "surfaces": 1319,
+        "unique_meshes": 1182,
+        "vertices": 3593947
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "regional-raw_reed",
+      "lighting": "dusk",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-gl_compatibility-original-full-kit-gl_compatibility\\regional-raw_reed-dusk.png",
+          "sha256": "be94fa9076118e18346b3d017df1fb5e36f20a8a790bbd0bbae516ee9a3d672b",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-gl_compatibility-r8-full-kit\\regional-raw_reed-dusk.png",
+          "sha256": "5142e4f31752f90e7ca5044d6864ff840cecba8bfe2dba3c04c7a6f56edfa00e",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 402,
+      "before_geometry": {
+        "base_triangles": 1694029,
+        "surfaces": 1284,
+        "unique_meshes": 1177,
+        "vertices": 3488009
+      },
+      "after_geometry": {
+        "base_triangles": 1775899,
+        "surfaces": 1319,
+        "unique_meshes": 1182,
+        "vertices": 3593947
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "regional-resinheart_log",
+      "lighting": "day",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-gl_compatibility-original-full-kit-gl_compatibility\\regional-resinheart_log-day.png",
+          "sha256": "3e70f754f9420b088a32e65d2d7504b7fc1acb9122042538ca306518d43a0eec",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-gl_compatibility-r8-full-kit\\regional-resinheart_log-day.png",
+          "sha256": "3b0fbe3c307152a62d0c692436b9b4fecac9ce15731dfffe6e77aee7caa6a3dd",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 723,
+      "before_geometry": {
+        "base_triangles": 2302886,
+        "surfaces": 1574,
+        "unique_meshes": 1438,
+        "vertices": 4985080
+      },
+      "after_geometry": {
+        "base_triangles": 2384756,
+        "surfaces": 1609,
+        "unique_meshes": 1443,
+        "vertices": 5091018
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "regional-resinheart_log",
+      "lighting": "dusk",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-gl_compatibility-original-full-kit-gl_compatibility\\regional-resinheart_log-dusk.png",
+          "sha256": "02539742a714319c276136a4731849c493d35ac7ec6fd8f73d9fb66ff62e701f",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-gl_compatibility-r8-full-kit\\regional-resinheart_log-dusk.png",
+          "sha256": "9599d8fa0c7c813dceda0ae4da92ae1191e70ed635226b31f3a1114e18a4b095",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 723,
+      "before_geometry": {
+        "base_triangles": 2302886,
+        "surfaces": 1574,
+        "unique_meshes": 1438,
+        "vertices": 4985080
+      },
+      "after_geometry": {
+        "base_triangles": 2384756,
+        "surfaces": 1609,
+        "unique_meshes": 1443,
+        "vertices": 5091018
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "regional-raw_corkbark",
+      "lighting": "day",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-gl_compatibility-original-full-kit-gl_compatibility\\regional-raw_corkbark-day.png",
+          "sha256": "dfe22ee318e8d719aac7f0617a62167a6339bdb39c812363797ebd742b7a26cd",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-gl_compatibility-r8-full-kit\\regional-raw_corkbark-day.png",
+          "sha256": "46ec9e589f3aea62188d0bd270646c3d6244340ec11580a9961a45b08345635e",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 763,
+      "before_geometry": {
+        "base_triangles": 2361457,
+        "surfaces": 1615,
+        "unique_meshes": 1467,
+        "vertices": 5160793
+      },
+      "after_geometry": {
+        "base_triangles": 2443327,
+        "surfaces": 1650,
+        "unique_meshes": 1472,
+        "vertices": 5266731
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "regional-raw_corkbark",
+      "lighting": "dusk",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-gl_compatibility-original-full-kit-gl_compatibility\\regional-raw_corkbark-dusk.png",
+          "sha256": "9ff1d265f1687f22b0f4c7637c654a7b9f72ae26224ad2889a312ab213ea1931",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-gl_compatibility-r8-full-kit\\regional-raw_corkbark-dusk.png",
+          "sha256": "cc16fb877e029f9a9f3cedd95fcf1d4002c7bad33a6dd67d917fe74fe77df20c",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 763,
+      "before_geometry": {
+        "base_triangles": 2361457,
+        "surfaces": 1615,
+        "unique_meshes": 1467,
+        "vertices": 5160793
+      },
+      "after_geometry": {
+        "base_triangles": 2443327,
+        "surfaces": 1650,
+        "unique_meshes": 1472,
+        "vertices": 5266731
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "regional-ash_wood",
+      "lighting": "day",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-gl_compatibility-original-full-kit-gl_compatibility\\regional-ash_wood-day.png",
+          "sha256": "a6f6d395a38cc802cddd696ac40e33784d9421fb2768d1785c0c20a5e7a51a62",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-gl_compatibility-r8-full-kit\\regional-ash_wood-day.png",
+          "sha256": "49b1f085bdb39f29ec7f17eb3397a306b54f17dd9b9d53e29c05e370fc36f245",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 300,
+      "before_geometry": {
+        "base_triangles": 1208342,
+        "surfaces": 1266,
+        "unique_meshes": 1107,
+        "vertices": 2973908
+      },
+      "after_geometry": {
+        "base_triangles": 1286720,
+        "surfaces": 1301,
+        "unique_meshes": 1112,
+        "vertices": 3086747
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    },
+    {
+      "renderer": "gl_compatibility",
+      "view": "regional-ash_wood",
+      "lighting": "dusk",
+      "images": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v02\\runtime\\evidence\\views-art-gl_compatibility-original-full-kit-gl_compatibility\\regional-ash_wood-dusk.png",
+          "sha256": "85b996f9d4a050c0e933cb2607a8fa5b0e635cc4e0a103234f404cc15116f7e6",
+          "dimensions": [
+            1440,
+            900
+          ]
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\views-art-gl_compatibility-r8-full-kit\\regional-ash_wood-dusk.png",
+          "sha256": "e05722e49b144d14e0cd8df65d27267a205d87385cec01c817fbc318f7f00985",
+          "dimensions": [
+            1440,
+            900
+          ]
+        }
+      ],
+      "native_resource_states_equal": true,
+      "resources": 300,
+      "before_geometry": {
+        "base_triangles": 1208342,
+        "surfaces": 1266,
+        "unique_meshes": 1107,
+        "vertices": 2973908
+      },
+      "after_geometry": {
+        "base_triangles": 1286720,
+        "surfaces": 1301,
+        "unique_meshes": 1112,
+        "vertices": 3086747
+      },
+      "scope": "Matched camera and exact native pose/stock/work. Repaired visual geometry intentionally differs; raw per-part geometry and pose digests remain in each report."
+    }
+  ],
+  "previews": [
+    {
+      "path": "D:\\project-wroughtwild-art07-r8\\docs\\art\\leyline-studies\\2026-09-14\\art07-repairs\\r8\\f4-native-work.gif",
+      "sha256": "8a2f3442464de17f7e02555b8edca0c6755dc70d8005b55b7417051dc65ad42f",
+      "encoded_frames": 60,
+      "input_frames": 60,
+      "dimensions": [
+        800,
+        450
+      ],
+      "frame_duration_ms": 100,
+      "sources": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-000.png",
+          "sha256": "66147f1e85813622b9a08494ccafab07deb60239ee29114bb6b4b63332b3eb5e"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-001.png",
+          "sha256": "33e0f2f36b6b46890d7430ac0fb91933619eb0a83b8c89c5195194307d93add6"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-002.png",
+          "sha256": "e98ab6b8bb4341e0ee8a42a52dc8e279921f11b369419f6a0dbff3bb62b42e64"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-003.png",
+          "sha256": "25ac4e52bf8a5401dfc3da09498ff5adb222e45d322599035621042af0074d11"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-004.png",
+          "sha256": "67ecbf32ca0e356af182273606a8c4e1cbca71544dca8743b257c0c5a19a361b"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-005.png",
+          "sha256": "ca0a90085c334deb7b66607dee60cc9e49700af47bee216ba8c386d3734a415a"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-006.png",
+          "sha256": "28520af0876bb8fbead6c4da48d3d4729d859665e21b5f8c9f412253f1fbd0b1"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-007.png",
+          "sha256": "71cd154a46aac89aac91a56ac77bd952491a132374ba5c9945d7c406353b05c5"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-008.png",
+          "sha256": "b8b1a17326a20abdf77d4586181ceb7efc69157f2e6e58b74ad512966fdbfe96"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-009.png",
+          "sha256": "b88d1a65c78efd00f8a10d59818181edd8cd408d30cffe6a9d736e8e8ae99fee"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-010.png",
+          "sha256": "fcbaaa4b23976c35d0ec85067eb6a4293b122f49f93143b0692970fa7471e06c"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-011.png",
+          "sha256": "f8edc37801421f60b2f9732f85ba8c7f18dc8a317639f9ba5bd30ca9b775504d"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-012.png",
+          "sha256": "064d134bf7001e1fb760290c021ba87252577c0d8a6e32fa6fea44e9ff7fb4d4"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-013.png",
+          "sha256": "ceb599d1d3c2906e3a0ae4bdfbcd2178c97be5cd552da07d8a2191ff757b9bf9"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-014.png",
+          "sha256": "45ba6d36d2671189a81bb8de3d26f4892249091d6be25a671f414ab9713f71ba"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-015.png",
+          "sha256": "e9f2f25e82fe826ef29dee2ad12f9890943dcb18fa4a462e4f9a01347104a9a7"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-016.png",
+          "sha256": "0e50eb6713a5c2f574dae28c9669034d6a2003cae22b06e178b565f13df1ce4b"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-017.png",
+          "sha256": "ec61839f7f6145661cbb5c7981ac0c45636616ec45e4293ecb7bfba6ec972ce8"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-018.png",
+          "sha256": "1858fa1ad5fdfcfed189bb29a32ffffb3134e12bed4cba09bcfe6b4f90310cee"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-019.png",
+          "sha256": "61bdac14621eeba300040605a36340f88d5fa0266d30dfd94f3de3257b2dcb90"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-020.png",
+          "sha256": "12e7ffd761260ab4c486663e2d699f9e91ec36fa1576e41db17aa5940f02c645"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-021.png",
+          "sha256": "7a97e92c01e03c58b1d07ce639e8d2340d560899f5f642a47a73a0353f5fa469"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-022.png",
+          "sha256": "9a199c775bad88b38a9958416b33404287bdc29e1e3d2190dbeba75b85288953"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-023.png",
+          "sha256": "0d110c56623d51965f863a769654e0b2181e3cccd925e25e240a49e9dc80273f"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-024.png",
+          "sha256": "0ae0f55e1d28d3128f27a6bd8faf12233f499e29a9b51242201bdc06305b790b"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-025.png",
+          "sha256": "88b8d0d5ea1279c2b07fb05ed9084070d54a4652f6989cd60a0a0475bed65276"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-026.png",
+          "sha256": "403ecf00667a6a243b96946a902cb5969cc81ee51e37f2a014d19661244e7766"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-027.png",
+          "sha256": "27689ee8413149b3725e95cc06672c19982171cf86ff0e7f0e937c01ce55f076"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-028.png",
+          "sha256": "d9745c655f2c861bf612c4993b7fb9f7c9bce9a43c2817671bfe0d72b5d16dd1"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-029.png",
+          "sha256": "a54deadad83add388902c18a56375ee21ac9222e18f775a02f6af278c927a917"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-030.png",
+          "sha256": "9154f69e730903e0a55fb761440ce28ab2724c9eee2d4f9f0bfae35f47b41fe4"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-031.png",
+          "sha256": "4517179e413d129205abb1100d12df316fbfb4144069d5d79f0fca1dc0d9947e"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-032.png",
+          "sha256": "7f062faa531945b69964dfdcdfbaf087b30864dc09759352a332418b0bb7275b"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-033.png",
+          "sha256": "01ca540c34bb82b93501b53ab7f8b95712cc54ce536c9402736b4e26943890f4"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-034.png",
+          "sha256": "619f5414f140654fb1da89638205e19917880c33d4b1022aa1d214cb24dbf679"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-035.png",
+          "sha256": "73ce08214c243482920d89f3b76e35ffdb902a058ca156037992d76b54e2f118"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-036.png",
+          "sha256": "b3548baf1de569484200093f66dbe4607aa10d73b8866532110c35869198e6e7"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-037.png",
+          "sha256": "21cbff0a6c4eefa4c5f7796324f67ccf0b69bb711f3f6aca68fc338225936647"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-038.png",
+          "sha256": "8f4de34d57cf1a8d3c6e83a773bae22acf70a7d631084414243becee600538b7"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-039.png",
+          "sha256": "c1b654b4abcc67c313dc27beae0485de7236cc5b8148dca4125837e0ecbd652d"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-040.png",
+          "sha256": "5e6eeb7a257a0eb3b1b2e543ecc0155d602869c0e8d60e72ea43630eb83d7dcd"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-041.png",
+          "sha256": "e2faea49dea57f551e0d008f78d256b3c26934cdea94f1b50953830a1d079a55"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-042.png",
+          "sha256": "e1028943c58b5d3cc2aa35d927eaab522e87bd07e00d700aadf68ad014b9ae6b"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-043.png",
+          "sha256": "03fe583accf5af88086b7d2aa92476dd380f1ad08cdfe294863b2acbc6f9e97b"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-044.png",
+          "sha256": "d3828e254da1293f4a35760df247ebb882126561b2ea4f290212ee7cd1512a13"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-045.png",
+          "sha256": "4fd1161b213066112b6af01dd226c88dc4cb2c96cb741c72fc3359a9f15add32"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-046.png",
+          "sha256": "cabcaf0ab7437fd8cacd24b465ee5b50fb8f58cd10c517683011b28db91b507d"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-047.png",
+          "sha256": "2c050f197ef92590bf06275479a317874bfca230787cdd57fb4a4b7bb66f119a"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-048.png",
+          "sha256": "502f0406265136b69c380b637c2cafcbeb09e2da669d4affd1f93222adba81a5"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-049.png",
+          "sha256": "f14f2301fb6d52067f9583f56f8a6d4237baf259813b22292a44c5ce8e69b9c3"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-050.png",
+          "sha256": "23e1a0571b26966d5146250c2dc0b5c6d39aee55e9c288ccac458bb99d21c19a"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-051.png",
+          "sha256": "378d354b64c104834e13a3511f5560494104ef87117acca65ec88c86e056c172"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-052.png",
+          "sha256": "d9257edab79ed5ade2a6e835e1839dfeca78fb3e6119a17ee5f2bb6d2af58f0c"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-053.png",
+          "sha256": "71c9ef5e66a005875bd3563f3a723e812ea916a01dc9d73d20406dc134c4be47"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-054.png",
+          "sha256": "8c37083e0267859b82a71a83b2efa3355100f3283d1dda52fe8646bd880a7dff"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-055.png",
+          "sha256": "1bdf5d235ddfd560b407a8908446998762318357095f7be13453f7c3bee0ea23"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-056.png",
+          "sha256": "9eeaf52ab3a77d874f7ba80c74a3a4832ea762fd032bec6fb45fe21ffb9dc143"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-057.png",
+          "sha256": "602e51e486401488ecf67ec558335e84c3d6fb404eebd65f111dee62496133d2"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-058.png",
+          "sha256": "00e0874deba31ec22c6bb366ce09d1b9cdee663e1a6d77adbaedee32821101f5"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\r8-f4\\forward_plus\\flow\\forward_plus\\motion-059.png",
+          "sha256": "03d2f59215f94af90008e34a10af6ab21215903722224db3efe6a1ed4d86dca8"
+        }
+      ],
+      "scope": "Actual native engine frames, resized/quantized for an illustrative looping preview. Playback timing is not a real-time performance measurement."
+    },
+    {
+      "path": "D:\\project-wroughtwild-art07-r8\\docs\\art\\leyline-studies\\2026-09-14\\art07-repairs\\r8\\controller-route.gif",
+      "sha256": "e0248846104787104bc3be2c0263e15215d23077fb983afd2780df9d77e9fc79",
+      "encoded_frames": 77,
+      "input_frames": 77,
+      "dimensions": [
+        800,
+        500
+      ],
+      "frame_duration_ms": 80,
+      "sources": [
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0000.png",
+          "sha256": "b7ac7171f1b31aea6b2703c955eb4947c68436295d4c31b2ff1b04b789bc4c96"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0001.png",
+          "sha256": "e00b50b5026d91c7d24a54d5415171f10bd1de70e77fb5ff2a973eec100b557e"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0002.png",
+          "sha256": "b9c323aafe344b4424a984efd4edea2cc267d4e97010ca234b34072c16733040"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0003.png",
+          "sha256": "306a293991a010ebaa9a8084d833c9e6c70f5a8af222a0c54a949b598cf7ec70"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0004.png",
+          "sha256": "82d05a201f610c9f11666b4fd72fce78c09e9eba297220082c124dd98ca59d17"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0005.png",
+          "sha256": "98191ff32380a0ee8689e58f475d777c66ab70d7cf40cc583ff321cacaf19a9c"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0006.png",
+          "sha256": "fb1524f52b2cf5e2d1340ae64e993778bb5d0f740fd0cd0d06706c0cad77fd18"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0007.png",
+          "sha256": "88495c46e94cb394c1195c24469cf9f231af952630a47244a8a5cd2c34ed286b"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0008.png",
+          "sha256": "64c2fcb07da6ef7d5b89dc87ad1e11d7509f3fa7956ed635833765a0b95074d2"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0009.png",
+          "sha256": "5aa871884ff10360a2681f7726029cd0a8ef3d0cc84444889a04fe46ac860979"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0010.png",
+          "sha256": "5d4903dd4109d1c26f3e27b58a34c2cc3ad613578d17f70cdc19b5293c20c2fd"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0011.png",
+          "sha256": "77b62de0b67f7a2c5bee6195cd4ba07adb976ade3549040a9eb29ad3168f85fb"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0012.png",
+          "sha256": "beeb45113aa75693b8ba376b261f681342a9a849dbbf3d1839449c2e7b40f28e"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0013.png",
+          "sha256": "7ddec7708b3e56c620908a269706f980bc55dfc398516d0e80729edfd7635e3a"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0014.png",
+          "sha256": "c549b836dcd4c5f32a8ca93544f5b9392a53cf8570c01da7a01130d8de88eced"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0015.png",
+          "sha256": "2c1a1b0b65ebe6643d3d026ed1efc51a03fde1def28fbb82d920db49fa61ec21"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0016.png",
+          "sha256": "37a70aecc00f16949de0c1882d63216a9d6deb965f5bf03e5341b1bd322ced9b"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0017.png",
+          "sha256": "17dfbefcbfdab48cb182813952e3bbfc8dbe21242aba37c41bb07c898cc085bc"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0018.png",
+          "sha256": "e054f5314cf1ed6914c4441dfa26500d34fdbf83315f7c020dc7769f69a754da"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0019.png",
+          "sha256": "c43b9661f8eb34584b9fdf73ea2177ae3ce062e6d4c214fcc4b2ee7fbfbf79db"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0020.png",
+          "sha256": "bce985ca800f7d04b3a18e710ff81309896e508bda4f84c2a24c89b67a3f160e"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0021.png",
+          "sha256": "5efc14ba626d22f27e5b7dee1397cbeb2dab1e3ed4532e0d75eb415443d044fb"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0022.png",
+          "sha256": "4470eb712fab8e6e83a483fc738e5588d061a05f69a862916225ee1170f30120"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0023.png",
+          "sha256": "769ec68d2e7fddf3b201e44902a1ebf964b4fe7adc6ec9f5a0c07f519bb95760"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0024.png",
+          "sha256": "87074bbe51b411d21ae1e02b32038eac7d340d6c51419a204bd75a4b46a36247"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0025.png",
+          "sha256": "f54db7bcf7c9f3c76e426f2bc6c0964e6addab95fd9d5930f87f5a7f3179b75e"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0026.png",
+          "sha256": "ec82a33c5a091d96b498a09d86eeaa40aff088031311770120dd5ec24bb67d26"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0027.png",
+          "sha256": "879bd73f1ee95ba34b45a2b5c168c47f8829a57dcc7dc572fa48278db2854b35"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0028.png",
+          "sha256": "c07ecbca354bfcce62d6dab9e19f8403c6c2c1ee0c296beb58d4d744a7015bbc"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0029.png",
+          "sha256": "9d0ed1ac6d5b8cd1fe3703310210ec1b02aee56e24baa749846887afbb89c012"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0030.png",
+          "sha256": "abf23f06820dad478cf9435c8a137ea2d3aaa19318fb2418af982879d098bb67"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0031.png",
+          "sha256": "66b2de33daa237e0bf14a3482bc4301d2ffe6c28fa3fedafceb324cf3657ccf7"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0032.png",
+          "sha256": "74563602026321780ed766b4a4f034ea0bab02657512081f8848d88dca2a85a4"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0033.png",
+          "sha256": "494bcd91484e37ef282c99cb6716f56a884657a3d7a5e4405d280eeda9968d34"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0034.png",
+          "sha256": "03698afc01589d7f76d43dbdc121134104bcc97a69d1cd94a06ec0ed0bfd45bc"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0035.png",
+          "sha256": "fb7ab6115fc610a7d7b87ca6f2f4fc0c1e60ba75b37e7d8191e0254d6a27d852"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0036.png",
+          "sha256": "f7f9eaef02732d1831777ed5fe3448da03f778633d463b09cd93f2a47c9bf339"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0037.png",
+          "sha256": "6f3f1119e3c22c13baf801b870796731d9f28a54ade1c2841811a87ba4ec82db"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0038.png",
+          "sha256": "9a340ed70dfd990d5b8b0020c58c13b41e7aa7ea5acb50833c3ec75ec6a6ad3e"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0039.png",
+          "sha256": "945909414e6392aa72505b6d2cd46d92866ee5f1232a05589a0abc8e21f5f7ed"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0040.png",
+          "sha256": "b6d6d89cb1daa8638c6bcbe730a62c5c01eded76398754a7a455e10b01829dd5"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0041.png",
+          "sha256": "9c2784934fea1f7863e5823cd1f1b8d56aa92a547d3b20a97124683f3ab31af2"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0042.png",
+          "sha256": "512bcbc090ba4799db75ed7aef58654d01a9e99a9727eeccd9cd263fc7738f45"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0043.png",
+          "sha256": "3d58e48939c32c6cb51d2e711c460eacbbca24de04e50edd83062945c28c3e4f"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0044.png",
+          "sha256": "797f28234d4f0848cb296bc9cdaf3fff0809c9b5c2ef3f0f556ba135547e4aef"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0045.png",
+          "sha256": "607a768da8f76f84d21d30c42c7c077947d57ad7c3dfbbb84878d831fd3c9ee4"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0046.png",
+          "sha256": "cfb74723733de4611db7806d6a1db9a0055de78ac50b929b4a5b2605aa7daf78"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0047.png",
+          "sha256": "ae908095fa3705f45d45bf057012a2e71b1b6c6fb2666b0eacd6a439caba8bce"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0048.png",
+          "sha256": "16af6acc84bd092a621ae4d92706f8c9f1cf70a403dafc807ddf9a704f9713e5"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0049.png",
+          "sha256": "80d110c66bc7fbcfaa0a490f87141132521ddf688b7f95f337a6fae27dba501c"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0050.png",
+          "sha256": "46884f6b20d45c9e45d891c37afb4aceba2cf3ddd3b38bb6e01d17271cf7a946"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0051.png",
+          "sha256": "a7c275595920e4cab0d95ce063eba34c44a4e21062bb2fde75d095820be4e552"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0052.png",
+          "sha256": "861a8cbc33a442416f52bbd22b52e2994ef9f07d9590ca25c18acbd20332b074"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0053.png",
+          "sha256": "559562b340e0a97edd2665d5dcc6b3055a32ebbd146ab9d5aab7fe93fd911511"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0054.png",
+          "sha256": "699404f4b22a906a5efe665e1e8ea573632926a0ad647e9436a6efdf2ce879e9"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0055.png",
+          "sha256": "27e1563eeca50f13345c69efa34a78659af94d9578485633c8ba064915f6c964"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0056.png",
+          "sha256": "28ab40c907f55d2e7dc99eff1ef7814f863ee932b31838d1a01384346eada960"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0057.png",
+          "sha256": "1b62e6778616dc49cae8b740a6642413295c336dabd0d0a0650ca1335392cf8f"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0058.png",
+          "sha256": "55f523c6a0dd8fbd04ea9315b0aaa1201152886293ec38c831df385c570f07a9"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0059.png",
+          "sha256": "b24d1c7d9b0d67b33c9e251b35f30dabb3b28db339f5d975c9a2c0d84a2f4f57"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0060.png",
+          "sha256": "d0954d07380dc83f2b74ec666f3a6abfa894ddcd893d14c8dd15268c79321297"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0061.png",
+          "sha256": "ddc7e73d4bdf3e91637ec1aa0ceb300e10ab42d26f3ee92ec8a3e0d425251179"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0062.png",
+          "sha256": "067efdd587c4871cfcb8e128a3b5de3377f363ed83bf50038d911c91abcd1b11"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0063.png",
+          "sha256": "15e0b664dcdf65bf01a9ce3009ee154ff513e5c69fecfb68dc86f84ffa894e4d"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0064.png",
+          "sha256": "ed9e8a13bf65c785e988c196ee0aeaf5974b82178eeb873159aac2b554d36849"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0065.png",
+          "sha256": "c7ada3f91b7df86ab1760e7231d75ffcebabdd95d06720e52a35fdd388d183f7"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0066.png",
+          "sha256": "a80eda1e7d935ee30b49654a1a2881d320bed983522ff3ba9ec9397a34633d14"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0067.png",
+          "sha256": "8790715c82b369d4a6c16cf7bb3b571540b76085fc871d8812a8ea37c284dc0c"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0068.png",
+          "sha256": "498304fbc576592c748995ffbc465702b8156ecac456b79710de9ce11f2a272f"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0069.png",
+          "sha256": "5f2ef9accd97d9bbae52481d7598ce59c22b41ea7f9aa89f5e6751f7a6782dd6"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0070.png",
+          "sha256": "98f2e23e6ee7343976f79ebe9785a23fc0c56e387a2067d0e8e76ddd46340aaf"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0071.png",
+          "sha256": "5ba691e46d523a23f6b4938ef34779b9f9241178d3ac1591360d98385df70699"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0072.png",
+          "sha256": "a58161c3253a57b81abff758e9ce6ba45ee79be9e5e946b02c3c77cf938a3067"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0073.png",
+          "sha256": "56d31fb92b0242c812340d396195ec8ece241b205ae309ce551781bf8ed33217"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0074.png",
+          "sha256": "77edd7516cee57cab51ff1f47c11b9c6d539dcebcf895300d8640700d6018ab0"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0075.png",
+          "sha256": "aa50b1a039f9868812eea55f9e2a9d23cd3eee549e78d8dc016f88fbee916dfb"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\runtime\\evidence\\paid-art-forward_plus-r8-walk-forward_plus\\walk\\0076.png",
+          "sha256": "3552a2b6d2a5bfedc7d4ceae37043cb1daa0b3534ecb664595494f02b8c58763"
+        }
+      ],
+      "scope": "Actual native engine frames, resized/quantized for an illustrative looping preview. Playback timing is not a real-time performance measurement."
+    }
+  ]
+}

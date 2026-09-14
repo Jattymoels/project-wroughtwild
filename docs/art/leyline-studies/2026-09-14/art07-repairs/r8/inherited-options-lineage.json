@@ -1,0 +1,16 @@
+[
+  {
+    "source": "D:\\project-wroughtwild-art07-r8\\docs\\art\\leyline-studies\\2026-09-14\\art07-repairs\\r6\\source-options.md",
+    "copied_to": "inherited-r6-source-options.md",
+    "sha256": "1edbc08fc45c7cf09dee65ba6eebaba3c1dc0e5ee76ba5306fafdaf03d626b4e",
+    "git_source_commit": "b483d2027b6c3326dd25483a3f9f2d4f7bcd8c12",
+    "scope": "Published predecessor measurements/proposals, copied exactly. Not new R8 measurements or approved rule changes."
+  },
+  {
+    "source": "D:\\project-wroughtwild-art07-r8\\docs\\art\\leyline-studies\\2026-09-14\\art07-repairs\\r7\\retained-coverage-limit.json",
+    "copied_to": "inherited-r7-coverage-options.json",
+    "sha256": "538eac2caf525058e3c646168e619dcd6897d8234d4ba464facf0097890543c1",
+    "git_source_commit": "27f8a1f7f6133347a66fedd100ae1d03a8fc3951",
+    "scope": "Published predecessor measurements/proposals, copied exactly. Not new R8 measurements or approved rule changes."
+  }
+]

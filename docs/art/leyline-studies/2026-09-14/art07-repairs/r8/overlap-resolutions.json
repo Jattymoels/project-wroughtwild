@@ -1,0 +1,44 @@
+[
+  {
+    "path": "game/g1/art.gd",
+    "comparison_owner": "g1",
+    "before": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\sealed\\game\\g1\\art.gd",
+    "before_sha256": "760d85a59a05fd6445d70f87664c234d195d06394ee5a9717d52702073b2d9c8",
+    "after_sha256": "6216ab5b828bb1530cd313ef8ef934a84fcfccc2227ad95a8b03ad90eb033aaa"
+  },
+  {
+    "path": "game/g1/materials.gd",
+    "comparison_owner": "g1",
+    "before": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\sealed\\game\\g1\\materials.gd",
+    "before_sha256": "6531f7b0a254b33b47db2b2da541c49e5c356c1900f440462a83e22a8e3c56ca",
+    "after_sha256": "bc594da356f6f9c6227c8dd5b9924c138fa8be18a97b1826fd76f278e31f264c"
+  },
+  {
+    "path": "game/scripts/player.gd",
+    "comparison_owner": "g1",
+    "before": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\sealed\\game\\scripts\\player.gd",
+    "before_sha256": "6faade01579a663ebdefa630d3757e2d4b639d073df1f8555eb4c6153f506198",
+    "after_sha256": "d424e49952b025767cf741d618656f35a7c213217380e000769d4f1ec33366c9"
+  },
+  {
+    "path": "game/r3/materials.gd",
+    "comparison_owner": "r3",
+    "before": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\handoff\\runtime\\game\\r3\\materials.gd",
+    "before_sha256": "a3489c9687272b7e703ccbd293dfbafc9d3e699bcaa49166f58472aee990df9c",
+    "after_sha256": "92a0cca4777dfa931182948edeec880cb0ea85dd69cd87f9495b27061aa812c5"
+  },
+  {
+    "path": "game/r6/surface.gd",
+    "comparison_owner": "r6",
+    "before": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\handoff-v01\\game\\r6\\surface.gd",
+    "before_sha256": "a6005ad7005c6fa7110cfbeb6fcf820e4dc1486274eca69254e37f9e67b3ec4c",
+    "after_sha256": "517744d4a268b09adc32f6a6aa9e5c1fed1684eda4887875fd526b233046ca85"
+  },
+  {
+    "path": "game/r7/cover.gd",
+    "comparison_owner": "r7",
+    "before": "D:\\project-wroughtwild-art07-r7\\build\\art07-repairs\\r7\\v02\\handoff-final\\game\\r7\\cover.gd",
+    "before_sha256": "2f75a524ca8c48acf62afa4f6219999a9b89a89420c0b2e6a5ad7244b5f59db2",
+    "after_sha256": "48f2e90c1b1bd08c8632ec0a588e7ae0eec024d1bf9cbc99ca5ac249bf860438"
+  }
+]

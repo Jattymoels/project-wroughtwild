@@ -1,0 +1,138 @@
+--- g1:game/g1/art.gd
++++ r8:game/g1/art.gd
+@@ -17,6 +17,7 @@
+ 	elif id in D2.IDS:mesh=D2.mesh_for(id)
+ 	elif id in D3.IDS:mesh=D3.mesh_for(id,family)
+ 	if mesh!=null:
++		mesh.set_meta("r3_shape",id)
+ 		# Keep a valid base material behind each live per-instance family override.
+ 		# It also remains valid while the preview releases its override at exit.
+ 		for i in mesh.get_surface_count():
+@@ -35,11 +36,12 @@
+ 	elif visual in ["clay_bank","reed_bed"]: script="c1/native_resource"
+ 	elif visual in ["slate_seam","shellstone_seam"]: script="c2/native_resource"
+ 	elif visual in ["resinheart_tree","corkbark_deadfall"]: script="c3/native_resource"
+-	elif visual in ["iron_vein","copper_vein","tin_vein","ember_iron_vein","silver_vein"]:script="c5/native_resource"
+-	# C5's raised bodies are only for the source's fallback review. The native
+-	# faceted ore ribbon remains exact in this game's generated geography.
++	elif visual in ["iron_vein","copper_vein","tin_vein","ember_iron_vein","ember_vein","silver_vein"]:script="c5/native_resource"
++	# C5 retains fallback bodies; R6 shades the exact native faceted ribbon.
+ 	if not script.is_empty():
++		if script=="b1/native_tree" and not "--r1-before" in OS.get_cmdline_user_args():
++			script="r1/native_tree"
+ 		node.set_script(load("res://"+script+".gd"))
+-		node.set_meta("g1_source",script.split("/")[0])
+-		if script=="b1/native_tree": node.source_kind="pine" if family=="pine" else "broadleaf"
++		node.set_meta("g1_source","b1" if script=="r1/native_tree" else script.split("/")[0])
++		if script in ["b1/native_tree","r1/native_tree"]: node.source_kind="pine" if family=="pine" else "broadleaf"
+ 	return node
+--- g1:game/g1/materials.gd
++++ r8:game/g1/materials.gd
+@@ -6,6 +6,7 @@
+ static var settings:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://g1/settings.json"))
+ 
+ static func material_for(family: String, role: String) -> Material:
++	if R3Materials.enabled(): return R3Materials.material_for(family,role)
+ 	if families.is_empty():
+ 		for id in ["d4","d5","d6"]:
+ 			var cfg: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://"+id+"/materials.json"))
+@@ -18,11 +19,11 @@
+ 	var stem: String="res://"+entry.slice+"/textures/"+entry.slice+"_"+family+("" if entry.slice=="d6" else "_face")
+ 	var mat:=StandardMaterial3D.new()
+ 	mat.resource_name="G1 "+key
+-	mat.albedo_texture=load(stem+"_albedo.png")
++	mat.albedo_texture=R2Resources.resource(stem+"_albedo.png")
+ 	mat.normal_enabled=true
+-	mat.normal_texture=load(stem+"_normal.png")
++	mat.normal_texture=R2Resources.resource(stem+"_normal.png")
+ 	mat.normal_scale=float(settings.material_normal_strength)
+-	mat.roughness_texture=load(stem+"_orm.png")
++	mat.roughness_texture=R2Resources.resource(stem+"_orm.png")
+ 	mat.roughness_texture_channel=BaseMaterial3D.TEXTURE_CHANNEL_GREEN
+ 	mat.metallic=1.0 if entry.slice=="d6" else 0.0
+ 	if entry.slice=="d6":
+@@ -39,3 +40,5 @@
+ 		mat.albedo_color.a=float(row.get("opacity",.48))
+ 	cache[key]=mat
+ 	return mat
++
++const R2Resources=preload("res://r2/resources.gd")
+--- g1:game/scripts/player.gd
++++ r8:game/scripts/player.gd
+@@ -200,7 +200,7 @@
+ 			_release_mouse()
+ 			return
+ 	if DisplayServer.get_name() != "headless":
+-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
++		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if "--r8-no-mouse-capture" in OS.get_cmdline_user_args() else Input.MOUSE_MODE_CAPTURED
+ 
+ 
+ func _release_mouse() -> void:
+--- r3:game/r3/materials.gd
++++ r8:game/r3/materials.gd
+@@ -36,8 +36,8 @@
+ 	mat.shader = glass_shader if pane else opaque_shader
+ 	var stem := "res://"+slice+"/textures/"+slice+"_"+family
+ 	for map in ["albedo", "normal", "orm"]:
+-		mat.set_shader_parameter("face_"+map, load(stem+("" if slice=="d6" else "_face")+"_"+map+".png"))
+-		mat.set_shader_parameter("edge_"+map, load(stem+("" if slice=="d6" else "_edge")+"_"+map+".png"))
++		mat.set_shader_parameter("face_"+map, R2Resources.resource(stem+("" if slice=="d6" else "_face")+"_"+map+".png"))
++		mat.set_shader_parameter("edge_"+map, R2Resources.resource(stem+("" if slice=="d6" else "_edge")+"_"+map+".png"))
+ 	var face: Array = row.get("tile_metres", [0.5,0.5])
+ 	var edge: Array = row.get("edge_metres", face)
+ 	mat.set_shader_parameter("face_repeat", Vector2(face[0],face[1]))
+@@ -96,3 +96,5 @@
+ 		for texture: Texture2D in textures:
+ 			if texture!=null:paths[texture.resource_path]={"width":texture.get_width(),"height":texture.get_height()}
+ 	return {"cached_materials":active.size(),"unique_original_image_bindings":paths.size(),"images":paths,"scope":"G1 construction material cache only; backend totals separately include world assets and renderer allocations."}
++
++const R2Resources=preload("res://r2/resources.gd")
+--- r6:game/r6/surface.gd
++++ r8:game/r6/surface.gd
+@@ -3,10 +3,10 @@
+ static func attach(node: ResourceNode, row: Dictionary) -> ShaderMaterial:
+ 	var cfg: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://r6/surface.json"))
+ 	var mat := ShaderMaterial.new()
+-	mat.shader = load("res://r6/surface.gdshader")
+-	mat.set_shader_parameter("albedo_map", load("res://c5/textures/rock-albedo.png"))
+-	mat.set_shader_parameter("orm_map", load("res://c5/textures/rock-orm.png"))
+-	mat.set_shader_parameter("source_fields", load("res://r6/c5-surface-fields.png"))
++	mat.shader = R2Resources.resource("res://r6/surface.gdshader")
++	mat.set_shader_parameter("albedo_map", R2Resources.resource("res://c5/textures/rock-albedo.png"))
++	mat.set_shader_parameter("orm_map", R2Resources.resource("res://c5/textures/rock-orm.png"))
++	mat.set_shader_parameter("source_fields", R2Resources.resource("res://r6/c5-surface-fields.png"))
+ 	for key in ["host_tint", "mineral_colour"]:
+ 		var rgb: Array = row.host_tint if key == "host_tint" else row.colour
+ 		mat.set_shader_parameter(key, Vector3(rgb[0], rgb[1], rgb[2]))
+@@ -21,3 +21,5 @@
+ 	mesh.material_override = mat
+ 	node._own_materials.append(mat)
+ 	return mat
++
++const R2Resources=preload("res://r2/resources.gd")
+--- r7:game/r7/cover.gd
++++ r8:game/r7/cover.gd
+@@ -28,7 +28,7 @@
+     return base if group.is_empty() else compose("regional/"+kind,group,base.get_aabb())
+ static func source(role:String)->ArrayMesh:
+     if source_meshes.has(role):return source_meshes[role]
+-    var root:Node3D=load("res://b2/assets/"+role+"-lod%d.glb"%int(settings.lod)).instantiate()
++    var root:Node3D=R2Resources.resource("res://b2/assets/"+role+"-lod%d.glb"%int(settings.lod)).instantiate()
+     var out:=ArrayMesh.new();AuthoredAssets._collect(root,Transform3D.IDENTITY,out);root.free()
+     source_meshes[role]=out
+     return out
+@@ -65,7 +65,7 @@
+     meshes[key]=out
+     return out
+ static func material_for(old:Material,root_y:float)->ShaderMaterial:
+-    var mat:=ShaderMaterial.new();mat.shader=load("res://r7/surface.gdshader")
++    var mat:=ShaderMaterial.new();mat.shader=R2Resources.resource("res://r7/surface.gdshader")
+     mat.set_shader_parameter("leaf_normal_up_mix",float(settings.leaf_normal_up_mix))
+     mat.set_shader_parameter("leaf_backlight",float(settings.leaf_backlight))
+     mat.set_shader_parameter("root_base_y",root_y)
+@@ -85,3 +85,5 @@
+     return mat
+ static func tick(time:float)->void:
+     for mat in materials:mat.set_shader_parameter("clock_seconds",time)
++
++const R2Resources=preload("res://r2/resources.gd")
