@@ -29,6 +29,23 @@ comparison requirements and target-device/performance gates for owner-approved
 work. It does not retroactively mark every candidate visually approved. Record
 the actual owner approval and integrate within that scope without asking again.
 
+### Standing approval while owner playtesting is deferred
+
+On 15 September 2026 the owner said: "assume I can't playtest right but approve
+everything until I say otherwise." Treat the agreed prototype sequence and its
+ordinary implementation, art/presentation choices, integration and checked pushes
+as approved until the owner changes direction. Continue useful scoped work without
+waiting for a playtest, another visual approval or a routine permission request.
+Make reasonable choices within the existing design and report them with the slice.
+
+Record owner playtesting as deferred; do not claim the owner has personally tried
+or liked an unplayed result. Known bugs remain open until fixed, and unavailable
+feedback is not evidence that an issue passed. Preserve saves, progression and
+existing gameplay rules. The current priorities are finished fauna adoption,
+reported stuttering/underground access, canopy completeness, then the remaining
+replacement-mob rigs in small playable slices. Deferred owner station/campaign
+feedback does not hold up this sequence. R9 remains stopped.
+
 ### Build the look, feel and atmosphere through playable iterations
 
 This is a one-person, spare-time indie prototype. The owner clarified on

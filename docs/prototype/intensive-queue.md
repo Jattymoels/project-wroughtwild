@@ -8,6 +8,11 @@ main. [A1's approved R8 runtime art is now integrated and pushed on main as
 `35cee73`](mainline-art-a1-result-2026-09-15.md). A2 brings in finished fauna; the reported
 playtest issues follow. R9 stays stopped.
 
+The owner currently cannot playtest and has approved continued prototype work
+until told otherwise. A2's [worker prompt and D: workspace](mainline-fauna-a2-worker-2026-09-15.md)
+are prepared. Human feedback remains deferred; it does not block adoption, the
+reported movement/terrain fixes or subsequent mob-production slices.
+
 Updated: 14 September 2026 (owner played R8 and authorises mainline adoption with stutter, canopy and underground issues recorded; R9 stopped; Reclaimed Frontier remains future work). Owner: Matty. Delivery: Codex.
 
 The owner asked to keep track of the seven intensives discussed after the Wide

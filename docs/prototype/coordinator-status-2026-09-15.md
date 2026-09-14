@@ -13,6 +13,12 @@ worker active at a time. The owner starts worker sessions from supplied prompts;
 the coordinator brings completed, checked commits into main and pushes normally.
 Do not automatically launch workers, independent reviewers or repair waves.
 
+The owner cannot currently playtest and on 15 September granted standing approval
+for the agreed prototype work until told otherwise. Continue ordinary implementation,
+presentation choices, integration and checked pushes without another visual approval.
+Owner playtesting is deferred feedback, not a gate; never record unplayed work as
+personally tested by the owner. The worker-start workflow above remains available.
+
 Track four different kinds of remaining work: implementation, integration,
 reported bugs and playtest questions. A checked implementation can be in the game
 while feel/balance feedback remains open. Do not restart a completed intensive
@@ -78,18 +84,20 @@ to their own future decision/bug work; art adoption must not silently decide the
 2. **A2 — finished fauna adoption.** Boar, wolf, stag and preserved moth; current
    enemy IDs, bodies, attack clocks, statuses, drops and passive habits remain.
    Complete the ready-art adoption before the six unfinished replacement rigs.
+   [Prepared worker prompt and D: workspace](mainline-fauna-a2-worker-2026-09-15.md).
 3. **PLAY-01/03 — movement comfort and underground access.** Diagnose ordinary
    frame spikes and the accidental below-terrain transition/worse lag. Preserve
    the owner's preview save. Use a short representative trace/reproduction;
    do not assume streaming, collision, shaders or geometry is the cause.
 4. **PLAY-02 — canopy completeness.** Inspect the reported missing portions and
    distance transitions; fix the demonstrated geometry/material/detail fault.
-5. **Focused owner playtest.** Try the new stations and one useful home/workshop
-   task. Then choose a fresh campaign/combat session when wanted. Feed findings
-   into the existing INT-01–08/LF backlog rather than commissioning blanket reviews.
-6. **Remaining mob production**, then select a Reclaimed Frontier scope using
-   the preserved references and actual playtest experience. Physical era variants
+5. **Remaining mob production**, one existing enemy role per rig/animation/runtime
+   slice. Deferred owner playtesting does not hold this up. Physical era variants
    and boss art retain explicit backlog entries.
+6. **Owner playtest when available.** Try the new stations and a useful home/workshop
+   task, then a fresh campaign/combat session. Feed findings into the existing
+   INT-01–08/LF backlog. Keep Reclaimed Frontier references for a later scoped
+   landscape iteration; do not launch blanket reviews while awaiting feedback.
 
 R9 is stopped throughout this sequence. No additional visual approval, baseline
 comparison, performance clearance or independent review is required for approved
