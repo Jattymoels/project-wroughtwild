@@ -6,6 +6,10 @@ by this setup. Reuse a prepared directory; do not create another checkout inside
 The initial [setup record](workspaces.json) distinguishes actual preparation from
 future planned paths. Later worktrees are created only after their wave gates pass.
 
+R2 now has a [verified publication](publication-r2.md). The initial setup flags
+remain historical; [deliveries.json](deliveries.json) is the current readiness
+record. R5-R7 still require R1, R3 and R4 publication as well.
+
 The owner depot is `C:/Users/Matty/Dev/project-wroughtwild`. D: was chosen because
 C: had about 5 GiB free while D: had about 1.3 TiB when preparing the pack. No old
 packages/caches were deleted. Each copied base runtime is about 3.44 GB before

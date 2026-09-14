@@ -1,6 +1,6 @@
 # Wroughtwild intensive queue
 
-Updated: 14 September 2026 (all 26 original ART-07 deliveries complete; G2 visual/cost handbacks remain open). Owner: Matty. Delivery: Codex.
+Updated: 14 September 2026 (all 26 original ART-07 deliveries complete; R2 repair published; other repair and acceptance gates remain open). Owner: Matty. Delivery: Codex.
 
 The owner asked to keep track of the seven intensives discussed after the Wide
 Frontier pass and make a plan for the first one. This is the current planning
@@ -34,6 +34,13 @@ The owner requested the recommended repair plan, prompts and setup. The
 (canopy, loading/residency, material joins and cleanup), then R5–R7, R8 combined
 integration and R9 independent review. Separate D: workspaces and verified
 runtime copies prepare the first four; no repair task is launched by setup.
+
+[R2 is checked and published](art07-repairs/2026-09-14/publication-r2.md): median
+setup improves about 35%, with 441/499 MiB less loaded texture memory. Publisher
+source/visual checks and a fresh two-renderer native reload/restart pass. G2-C01
+remains partial pending combined R8/R9 and target-device acceptance; streaming
+spikes and baseline retirement diagnostics remain. Wave 2 waits for checked
+publication of R1, R3 and R4 as well.
 
 The owner visually approved ART-06C with “Perfect”, then asked to start
 designing all nature assets and the world's feel against the original full

@@ -1,7 +1,7 @@
 {
-  "status": "First-wave R1–R4 worktrees and fresh runtime copies prepared and verified. No repair implementation or worker task launched.",
+  "status": "Historical first-wave setup retained below; R2 has a verified published candidate. Current delivery readiness is in deliveries.json.",
   "created_from_published_commit": "173ab4eeb4eac97f3dd2869c50e765bba0cfb40a",
-  "metadata_note": "Idle prepared branches may receive a documentation-only fast-forward to the published final setup record; setup_base records the actual original copy/checkout commit.",
+  "metadata_note": "Idle prepared branches may receive a documentation-only fast-forward to the published final setup record; setup_base records the actual original copy/checkout commit. Per-row setup state, engine/cache and clean flags describe initial preparation only; current_delivery records later publication where present.",
   "workspaces": [
     {
       "id": "r1",
@@ -55,6 +55,20 @@
         "waves": 4,
         "reading_files": 35,
         "local_links": 31
+      },
+      "current_delivery": {
+        "status": "published",
+        "source_commit": "ca370f52a20637548da0cf1fd04cdc9dbeb9c440",
+        "receipt_commit": "96853630e714477f6ade849a0323a0af97cb033a",
+        "package": {
+          "path": "D:/project-wroughtwild-art07-r2/build/art07-repairs/r2/v03/handoff",
+          "manifest_sha256": "f5b3ea9559e9f4b76059c7863730b438bdfbe7a6f8f689ae3bae75340cb01ac0",
+          "files": 6411,
+          "bytes": 9091108107,
+          "count_scope": "Payload entries and summed payload bytes; manifest.json is the separately hashed identity file."
+        },
+        "publisher_runtime": "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v05\\runtime",
+        "publication_report": "docs/prototype/art07-repairs/2026-09-14/publication-r2.json"
       }
     },
     {

@@ -1,0 +1,514 @@
+{
+  "id": "r2",
+  "date": "2026-09-14",
+  "status": "verified_and_integrated",
+  "owner_report": "R2 is done",
+  "integration": {
+    "method": "fast-forward",
+    "previous_main": "473ae7604b3841899c29629cf59f8836ed528424",
+    "implementation_commit": "ca370f52a20637548da0cf1fd04cdc9dbeb9c440",
+    "receipt_commit": "96853630e714477f6ade849a0323a0af97cb033a",
+    "integrated_source_tip": "96853630e714477f6ade849a0323a0af97cb033a",
+    "destination": "https://github.com/Jattymoels/project-wroughtwild.git",
+    "ref": "refs/heads/main",
+    "publication": "This record accompanies the ordinary non-force publication commit. The publisher verifies the remote tip after pushing and reports that separately."
+  },
+  "package": {
+    "path": "D:/project-wroughtwild-art07-r2/build/art07-repairs/r2/v03/handoff",
+    "manifest_sha256": "f5b3ea9559e9f4b76059c7863730b438bdfbe7a6f8f689ae3bae75340cb01ac0",
+    "files": 6411,
+    "bytes": 9091108107,
+    "count_scope": "Payload entries and summed payload bytes; manifest.json is the separately hashed identity file."
+  },
+  "source_verification": {
+    "runtime_source": {
+      "files": 5701,
+      "bytes": 7430015212,
+      "manifest_sha256": "fd5c592ef52185cc7d0737840e41af09dbb5bcea36b719539931e156f42865cd"
+    },
+    "g2_review": {
+      "files": 772,
+      "bytes": 594208921,
+      "manifest_sha256": "49827ac3fe3522a92cb74eecdf60cd857e1157b08f5d57f2d273c617606e93a1"
+    },
+    "result": "Full payload hashes rechecked before publisher consumption. Fresh 4787-file G1 copy hashed, complete R2 6411-file seal verified, and all 293 declared changes applied after full baseline hash checks."
+  },
+  "static_verification": {
+    "result": "PASS",
+    "base": "473ae7604b3841899c29629cf59f8836ed528424",
+    "source_commits": [
+      "ca370f52a20637548da0cf1fd04cdc9dbeb9c440",
+      "96853630e714477f6ade849a0323a0af97cb033a"
+    ],
+    "owned_files": [
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r2/APPLICATION.md",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r2/CHECKS.md",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r2/DIAGNOSTICS.md",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r2/METHOD.md",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r2/OBSERVATIONS.md",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r2/README.md",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r2/costs.json",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r2/costs.md",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r2/post-seal-verification.json",
+      "docs/prototype/art07-repairs/2026-09-14/receipts/r2.json",
+      "docs/prototype/art07-repairs/2026-09-14/receipts/r2.md",
+      "tools/wroughtwild-art07-repairs/r2/audit.py",
+      "tools/wroughtwild-art07-repairs/r2/check_jobs.py",
+      "tools/wroughtwild-art07-repairs/r2/checkpoint.py",
+      "tools/wroughtwild-art07-repairs/r2/collect_checks.py",
+      "tools/wroughtwild-art07-repairs/r2/controls.py",
+      "tools/wroughtwild-art07-repairs/r2/disk_audit.py",
+      "tools/wroughtwild-art07-repairs/r2/evidence.py",
+      "tools/wroughtwild-art07-repairs/r2/handoff.py",
+      "tools/wroughtwild-art07-repairs/r2/install_checks.py",
+      "tools/wroughtwild-art07-repairs/r2/install_views.py",
+      "tools/wroughtwild-art07-repairs/r2/inventory.gd.txt",
+      "tools/wroughtwild-art07-repairs/r2/material_keys.py",
+      "tools/wroughtwild-art07-repairs/r2/measure.py",
+      "tools/wroughtwild-art07-repairs/r2/motion.py",
+      "tools/wroughtwild-art07-repairs/r2/native_renderers.py",
+      "tools/wroughtwild-art07-repairs/r2/profile.gd",
+      "tools/wroughtwild-art07-repairs/r2/profile_install.py",
+      "tools/wroughtwild-art07-repairs/r2/projection_checks.gd",
+      "tools/wroughtwild-art07-repairs/r2/queue.ps1",
+      "tools/wroughtwild-art07-repairs/r2/reloads.gd",
+      "tools/wroughtwild-art07-repairs/r2/replays.py",
+      "tools/wroughtwild-art07-repairs/r2/source.py",
+      "tools/wroughtwild-art07-repairs/r2/summarize.py",
+      "tools/wroughtwild-art07-repairs/r2/texture_inventory.gd.txt",
+      "tools/wroughtwild-art07-repairs/r2/traversal.py",
+      "tools/wroughtwild-art07-repairs/r2/verify_harness.py",
+      "tools/wroughtwild-art07-repairs/r2/verify_native.py"
+    ],
+    "package": {
+      "path": "D:/project-wroughtwild-art07-r2/build/art07-repairs/r2/v03/handoff",
+      "manifest_sha256": "f5b3ea9559e9f4b76059c7863730b438bdfbe7a6f8f689ae3bae75340cb01ac0",
+      "files": 6411,
+      "bytes": 9091108107,
+      "count_scope": "Payload entries and summed payload bytes; manifest.json is the separately hashed identity file."
+    },
+    "production_modified": 238,
+    "production_added": 2,
+    "lossless_interchange_derivatives": 226,
+    "equivalent_texture_aliases": 723,
+    "worker_jobs_verified": 110,
+    "retained_failed_attempts": 7,
+    "paired_fresh_observations": 24,
+    "recomputed_costs": {
+      "forward_plus": {
+        "setup_seconds": {
+          "G1": [
+            91.559,
+            90.662,
+            92.245
+          ],
+          "R2": [
+            58.487,
+            58.781,
+            58.742
+          ],
+          "G1-off": [
+            11.681,
+            11.607,
+            11.576
+          ],
+          "R2-off": [
+            11.677,
+            11.626,
+            11.609
+          ]
+        },
+        "reduction_percent": 35.84246223746437,
+        "texture_saved_mib": 440.6943359375
+      },
+      "gl_compatibility": {
+        "setup_seconds": {
+          "G1": [
+            86.889,
+            87.13,
+            87.223
+          ],
+          "R2": [
+            56.874,
+            56.68,
+            56.785
+          ],
+          "G1-off": [
+            11.186,
+            11.086,
+            11.125
+          ],
+          "R2-off": [
+            11.428,
+            11.249,
+            11.135
+          ]
+        },
+        "reduction_percent": 34.82726959715367,
+        "texture_saved_mib": 498.66658782958984
+      }
+    },
+    "matched_image_pairs": 60,
+    "byte_identical_image_pairs": 59,
+    "python_syntax_files": 21,
+    "commit_content_proof": [
+      {
+        "path": "docs/art/leyline-studies/2026-09-14/art07-repairs/r2/APPLICATION.md",
+        "byte_identical": true
+      },
+      {
+        "path": "docs/art/leyline-studies/2026-09-14/art07-repairs/r2/CHECKS.md",
+        "byte_identical": true
+      },
+      {
+        "path": "docs/art/leyline-studies/2026-09-14/art07-repairs/r2/DIAGNOSTICS.md",
+        "byte_identical": true
+      },
+      {
+        "path": "docs/art/leyline-studies/2026-09-14/art07-repairs/r2/METHOD.md",
+        "byte_identical": true
+      },
+      {
+        "path": "docs/art/leyline-studies/2026-09-14/art07-repairs/r2/OBSERVATIONS.md",
+        "byte_identical": true
+      },
+      {
+        "path": "docs/art/leyline-studies/2026-09-14/art07-repairs/r2/README.md",
+        "byte_identical": true
+      },
+      {
+        "path": "docs/art/leyline-studies/2026-09-14/art07-repairs/r2/costs.json",
+        "byte_identical": true
+      },
+      {
+        "path": "docs/art/leyline-studies/2026-09-14/art07-repairs/r2/costs.md",
+        "byte_identical": true
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r2/audit.py",
+        "byte_identical": false
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r2/check_jobs.py",
+        "byte_identical": true
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r2/checkpoint.py",
+        "byte_identical": true
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r2/collect_checks.py",
+        "byte_identical": false
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r2/controls.py",
+        "byte_identical": false
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r2/disk_audit.py",
+        "byte_identical": false
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r2/evidence.py",
+        "byte_identical": true
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r2/handoff.py",
+        "byte_identical": true
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r2/install_checks.py",
+        "byte_identical": false
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r2/install_views.py",
+        "byte_identical": false
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r2/inventory.gd.txt",
+        "byte_identical": false
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r2/material_keys.py",
+        "byte_identical": false
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r2/measure.py",
+        "byte_identical": true
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r2/motion.py",
+        "byte_identical": true
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r2/native_renderers.py",
+        "byte_identical": false
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r2/profile.gd",
+        "byte_identical": false
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r2/profile_install.py",
+        "byte_identical": false
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r2/projection_checks.gd",
+        "byte_identical": true
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r2/queue.ps1",
+        "byte_identical": false
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r2/reloads.gd",
+        "byte_identical": true
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r2/replays.py",
+        "byte_identical": true
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r2/source.py",
+        "byte_identical": false
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r2/summarize.py",
+        "byte_identical": true
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r2/texture_inventory.gd.txt",
+        "byte_identical": true
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r2/traversal.py",
+        "byte_identical": false
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r2/verify_harness.py",
+        "byte_identical": true
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r2/verify_native.py",
+        "byte_identical": false
+      }
+    ],
+    "scope": "Publisher independently recomputed source preservation, alias import identity, actual job-log identities, paired costs, image/geometry comparison and assertion-preservation checks from the unchanged seal. Fresh publisher engine runs recorded separately."
+  },
+  "fresh_verification": {
+    "result": "PASS",
+    "runtime": "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v05\\runtime",
+    "fresh_jobs": [
+      {
+        "child_pid": 33532,
+        "localappdata": "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v05\\users\\import\\local",
+        "wrapper_pid": 11068,
+        "failure": "",
+        "id": "import",
+        "temp": "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v05\\users\\import\\temp",
+        "exit_code": 0,
+        "processes_before": null,
+        "start": "2026-09-14T11:37:03.7258598+09:30",
+        "benchmark_competitors": [],
+        "log_sha256": "2f386d32e4859935c798b330deffbc48ce897378965f9985e845ba0674f0daad",
+        "arguments": [
+          "--headless",
+          "--editor",
+          "--path",
+          "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v05\\runtime\\game",
+          "--import"
+        ],
+        "program": "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v05\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "appdata": "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v05\\users\\import",
+        "seconds": 61.736057,
+        "results": []
+      },
+      {
+        "child_pid": 35100,
+        "localappdata": "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v05\\users\\reloads-paced-forward_plus\\local",
+        "wrapper_pid": 11068,
+        "failure": "",
+        "id": "reload-release-forward_plus-b",
+        "temp": "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v05\\users\\reloads-paced-forward_plus\\temp",
+        "exit_code": 0,
+        "processes_before": null,
+        "start": "2026-09-14T11:38:05.5583989+09:30",
+        "benchmark_competitors": [],
+        "log_sha256": "f7fa77273c5f4ee6c9f8ab44fda5f298fcd6c4cb5640b01575cde98984618669",
+        "arguments": [
+          "--rendering-method",
+          "forward_plus",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v05\\runtime\\game",
+          "res://r2/reloads.tscn"
+        ],
+        "program": "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v05\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "appdata": "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v05\\users\\reloads-paced-forward_plus",
+        "seconds": 198.4065712,
+        "results": [
+          "R2_RELOAD_CHECKS 43 checks, 0 failures"
+        ]
+      },
+      {
+        "child_pid": 32412,
+        "localappdata": "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v05\\users\\reloads-paced-forward_plus\\local",
+        "wrapper_pid": 11068,
+        "failure": "",
+        "id": "reload-restart-forward_plus-b",
+        "temp": "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v05\\users\\reloads-paced-forward_plus\\temp",
+        "exit_code": 0,
+        "processes_before": null,
+        "start": "2026-09-14T11:41:23.9681297+09:30",
+        "benchmark_competitors": [],
+        "log_sha256": "e4879c231289311a4a2c0f38d6c2f612038673b60ade4d73326ddb3844ec80c6",
+        "arguments": [
+          "--rendering-method",
+          "forward_plus",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v05\\runtime\\game",
+          "res://r2/reloads.tscn",
+          "--",
+          "--r2-restart"
+        ],
+        "program": "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v05\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "appdata": "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v05\\users\\reloads-paced-forward_plus",
+        "seconds": 76.0655698,
+        "results": [
+          "R2_RELOAD_CHECKS 14 checks, 0 failures"
+        ]
+      },
+      {
+        "child_pid": 33300,
+        "localappdata": "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v05\\users\\reloads-paced-gl_compatibility\\local",
+        "wrapper_pid": 11068,
+        "failure": "",
+        "id": "reload-release-gl_compatibility-b",
+        "temp": "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v05\\users\\reloads-paced-gl_compatibility\\temp",
+        "exit_code": 0,
+        "processes_before": null,
+        "start": "2026-09-14T11:42:40.0402632+09:30",
+        "benchmark_competitors": [],
+        "log_sha256": "63ad5e9b3a31bb1f28ce28cc78499607054e92fda9258e364e1a9a1eeb966706",
+        "arguments": [
+          "--rendering-method",
+          "gl_compatibility",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v05\\runtime\\game",
+          "res://r2/reloads.tscn"
+        ],
+        "program": "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v05\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "appdata": "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v05\\users\\reloads-paced-gl_compatibility",
+        "seconds": 188.7930876,
+        "results": [
+          "R2_RELOAD_CHECKS 43 checks, 0 failures"
+        ]
+      },
+      {
+        "child_pid": 8164,
+        "localappdata": "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v05\\users\\reloads-paced-gl_compatibility\\local",
+        "wrapper_pid": 11068,
+        "failure": "",
+        "id": "reload-restart-gl_compatibility-b",
+        "temp": "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v05\\users\\reloads-paced-gl_compatibility\\temp",
+        "exit_code": 0,
+        "processes_before": null,
+        "start": "2026-09-14T11:45:48.8394560+09:30",
+        "benchmark_competitors": [],
+        "log_sha256": "7832729c6784a79407884a34897320974894de646898dfd3a849231df58e411b",
+        "arguments": [
+          "--rendering-method",
+          "gl_compatibility",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v05\\runtime\\game",
+          "res://r2/reloads.tscn",
+          "--",
+          "--r2-restart"
+        ],
+        "program": "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v05\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "appdata": "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v05\\users\\reloads-paced-gl_compatibility",
+        "seconds": 72.4191673,
+        "results": [
+          "R2_RELOAD_CHECKS 14 checks, 0 failures"
+        ]
+      }
+    ],
+    "restart_reports": [
+      {
+        "backend": "forward_plus",
+        "flow_checks": 43,
+        "restart_checks": 14,
+        "native_owner_fields_exact": 6,
+        "flow_sha256": "763c68eded1a20b400712179d395a79db2bee18b2c291be13e95ad68def700dc",
+        "restart_sha256": "e40edb87ffe8359466a8d48fa68ca8ec331ce6e213743109adc9eb27400b8db6"
+      },
+      {
+        "backend": "gl_compatibility",
+        "flow_checks": 43,
+        "restart_checks": 14,
+        "native_owner_fields_exact": 6,
+        "flow_sha256": "ffd98c77aedf4ce343e788f27852083d686c6dc506fecdff3bfa8302b1c5a632",
+        "restart_sha256": "10dae007b3f101d81bf4ffc50ceac6c96f6613578bf996919ca2badd12292a43"
+      }
+    ],
+    "source_files_exact_after_engine": 4842,
+    "application_record_sha256": "e26052b8a39988b06e30434c4c807094d0278fa770b9cd8f513b0aaf0e86d3aa",
+    "spec_provenance": {
+      "source_spec": "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v03\\reload-rendered-paced-jobs.json",
+      "source_sha256": "3ff10fee2d1fadbee4745d5d357c177afac86dff16901432168258e1318b93f4",
+      "fresh_spec": "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v05\\publisher-reopen-restart.json",
+      "fresh_spec_sha256": "7bfb3ee95755116ce0fd4761b11f85031fd3b47ae696fd1e9976532f0a19e31b",
+      "scope": "Publisher replay: fresh import and unchanged R2 native reload/release and separate-process restart in both backends. Only version paths changed."
+    },
+    "scope": "Fresh publisher cache-free import, three native reload cycles, partial work/re-entry/exhaustion and separate-process restart on both renderers; exact source audit afterward. These are verification runs, not new performance benchmarks."
+  },
+  "visual_inspection": {
+    "actual_images": [
+      "evidence/v01/runtime/evidence/views-art-forward_plus-views-art-forward_plus/paid-home-day.png",
+      "evidence/v03/runtime/evidence/views-art-forward_plus-views-art-forward_plus/paid-home-day.png",
+      "evidence/v03/runtime/evidence/views-art-gl_compatibility-views-art-gl_compatibility/paid-home-day.png"
+    ],
+    "result": "Actual matched Forward+ home views visually agree; Compatibility reviewed. Publisher recomputed all 60 image/geometry comparisons. Existing compressed trees and generic building treatment remain the other repairs' responsibility. Owner visual acceptance remains pending."
+  },
+  "findings": {
+    "G2-C01": {
+      "status": "partial",
+      "result": "Isolated loading/residency repair technically verified: setup about 35% faster and loaded textures reduced by 440.69/498.67 MiB. Combined R8/R9 and target-device acceptance remain open."
+    }
+  },
+  "remaining_limits": [
+    "Target-device acceptance unverified until the owner selects a device and actual tests run; current RTX 5090 costs are not a minimum-hardware budget.",
+    "Owner visual acceptance pending; isolated candidate does not clear the combined R8 result or ordinary rollout.",
+    "Immediate same-frame retirement retains a material-null error in both unchanged G1 and R2; the failed dummy/Forward+ logs remain. Frame-paced passes are not a claimed lifecycle repair.",
+    "After reload, Forward+ R2 buffers are 303696 bytes above G1; both add 6144 bytes per later cycle. Compatibility buffers match. Three cycles do not establish leak freedom.",
+    "Traversal still has streaming spikes (single-run R2 maxima 437.400 ms Forward+ and 456.368 ms Compatibility). These tails are not repeatability bands or budget acceptance.",
+    "Imports are single separate observations; OS/global driver caches were not flushed. Benchmark groups were sequential rather than randomly interleaved.",
+    "All duplicate PNG disk bytes remain. Production runtime is 85513 bytes larger; loaded allocation savings are not disk savings.",
+    "No Blender geometry regeneration or edited packed-master claim; all 31 original master files are retained with verified lineage."
+  ],
+  "wave_2": {
+    "released": false,
+    "missing_published_candidates": [
+      "r1",
+      "r3",
+      "r4"
+    ],
+    "rule": "All R1-R4 must be checked and published before R5-R7 setup/dispatch."
+  },
+  "publisher_verifier": {
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-repair-publication-r2-2026-09-14\\audit.py",
+    "sha256": "7709331f52a499add996cffd4c2c8971db2421388b18b32e3426443a7df7854c",
+    "commands": [
+      "python -B build/art07-repair-publication-r2-2026-09-14/audit.py static",
+      "python -B build/art07-repair-publication-r2-2026-09-14/audit.py fresh"
+    ]
+  },
+  "validation": "Final dispatch/session-plan/catalogue/art and scope checks recorded in publication-r2-checks.json."
+}
