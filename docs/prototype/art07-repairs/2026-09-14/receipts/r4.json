@@ -1,0 +1,552 @@
+{
+  "id": "r4",
+  "status": "ready_for_integration",
+  "source_commits": [
+    "9cdb6d5b5e2fe96b21fe40f6df96d13d9015c187"
+  ],
+  "runtime_base": "6bb2e044dcd0bf1788896aa2c19cdf56fee93522",
+  "parent_candidates": [],
+  "delta_base": "fd5c592ef52185cc7d0737840e41af09dbb5bcea36b719539931e156f42865cd",
+  "package": {
+    "path": "D:/project-wroughtwild-art07-r4/build/art07-repairs/r4/v01/handoff-v02",
+    "manifest_sha256": "acebe2937b819bb2210241b394262b5a19916dec9199184d69d4d9d25dd49541",
+    "files": 747,
+    "bytes": 13305657
+  },
+  "changes": "changes.json",
+  "findings": {
+    "G2-T01": "Fixture-only candidate repair verified in eight original cases and all affected restarts; independent owner/R8 review pending."
+  },
+  "checks": [
+    {
+      "name": "readiness",
+      "result": "pass",
+      "details": "Existing codex/art07-r4 worktree reused; published main 473ae7604b3841899c29629cf59f8836ed528424 inspected. Wave 1 and R4 have no predecessor dependencies. Prepared v01 pin and copied runtime hashes verified."
+    },
+    {
+      "name": "full_input_hashes",
+      "result": "pass",
+      "packages": 10,
+      "before": "evidence/verify-before.txt",
+      "after": "evidence/verify-after.txt"
+    },
+    {
+      "name": "unchanged_original_reproduction",
+      "result": "pass",
+      "fixtures": 8,
+      "details": "Verbose AudioStreamWAV/AudioStreamPlaybackWAV leak evidence in all eight unchanged cases; all clean and leaking repeats retained."
+    },
+    {
+      "name": "object_id_attribution",
+      "result": "pass",
+      "fixtures": 8,
+      "evidence": "evidence/attribution.json",
+      "details": "Exact leaking IDs matched to cue/player parent within the same observed process; C1 buffered repeats all reproduced."
+    },
+    {
+      "name": "final_native_matrix",
+      "result": "pass",
+      "fresh_processes": 22,
+      "unchanged_assertions": 18156,
+      "warnings": 0,
+      "objectdb_leaks": 0,
+      "orphan_string_names": 0,
+      "logs": "logs/after-final/",
+      "details": "Eight flows plus fourteen partial/final/restart/depleted fresh-process restores; finite stock, paid ownership and saved identity assertions unchanged."
+    },
+    {
+      "name": "e1_deferred_ui",
+      "result": "pass",
+      "log": "logs/after-final/e1-restart.log",
+      "details": "132 unchanged restore checks; process_frame waiters 1 before drain, 0 before node free; normal shutdown with no orphan StringNames."
+    },
+    {
+      "name": "bounded_lifecycle",
+      "result": "pass",
+      "iterations": 12,
+      "assertions": 156,
+      "seconds": 7.024718,
+      "after_release": {
+        "cached_action_clips": 6,
+        "nodes": 4,
+        "objects": 1811,
+        "orphans": 0,
+        "resources": 240,
+        "static_bytes": 104026460
+      },
+      "observed_playbacks_alive": 0,
+      "logs": [
+        "logs/soak-before.log",
+        "logs/soak-after-final.log"
+      ],
+      "details": "All repaired cycles release to 1811 objects, 240 resources, 4 nodes, 0 orphans. Shared six-clip cache retained."
+    },
+    {
+      "name": "native_render",
+      "result": "pass",
+      "fresh_processes": 3,
+      "assertions": 86,
+      "pngs": 47,
+      "motion_frames": 42,
+      "resolution": [
+        1280,
+        720
+      ],
+      "renderer": "gl_compatibility",
+      "gpu": "NVIDIA GeForce RTX 5090",
+      "logs": "logs/render-after/",
+      "provenance": "evidence/capture-provenance.json"
+    },
+    {
+      "name": "import_and_reopen",
+      "result": "pass",
+      "logs": [
+        "logs/import.log",
+        "logs/smoke-forward_plus.log",
+        "logs/smoke-gl_compatibility.log"
+      ],
+      "details": "Generated import-smoke jobs ran in the prepared private runtime before fixture edits."
+    },
+    {
+      "name": "normal_files_and_runtime_preservation",
+      "result": "pass",
+      "normal_files": 1385,
+      "original_runtime_entries": 4787,
+      "changed_original_entries": 8,
+      "unexpected_changes": 0,
+      "evidence": [
+        "evidence/preservation-final.json",
+        "evidence/preservation-final-runtime.json"
+      ],
+      "details": "Only the eight declared review finish functions differ among original runtime entries; normal files and saves have no added, missing or changed entry."
+    },
+    {
+      "name": "source_scope",
+      "result": "pass",
+      "fixture_only_files": 10,
+      "reusable_runtime_files": 0,
+      "evidence": "evidence/source-checks.json",
+      "details": "All original assertions and bytes outside the eight finish functions are identical; two helper masters are terminal-newline-equivalent to exact engine-tested copies."
+    },
+    {
+      "name": "tool_checks",
+      "result": "pass",
+      "evidence": "evidence/tool-checks-final.json",
+      "details": "Python AST, PowerShell parser, staged git diff --check and no unstaged changes pass."
+    },
+    {
+      "name": "exact_package",
+      "result": "pass",
+      "path": "D:/project-wroughtwild-art07-r4/build/art07-repairs/r4/v01/handoff-v02",
+      "manifest_sha256": "acebe2937b819bb2210241b394262b5a19916dec9199184d69d4d9d25dd49541",
+      "files": 747,
+      "bytes": 13305657
+    }
+  ],
+  "remaining_limits": [
+    "Owner visual acceptance and independent R8 integration review remain pending; no ordinary-world rollout.",
+    "Fixture-only cleanup: no reusable InteractionSound, PCM cache, gameplay, simulation, save, data, mesh, body, recipe, scatter or geography change.",
+    "Automatic successful fixture completion is covered; manual Escape exits and ordinary-game shutdown are unchanged and unmeasured.",
+    "The repaired accelerated exercise lasts 7.024718 seconds over 12 cycles; it is not a long-session, process-RSS, VRAM, minimum-hardware or frame-time acceptance result.",
+    "Both reference and repaired release counts are stable. Reference observes seven pending playbacks and retains seven WeakRef observers at sampling; it also exits cleanly. The 14-object count difference is not 14 proven permanent leaks.",
+    "C3 uses original models/LOD selection and posed native work. Its 47 fresh PNGs and 42-frame fall sequence are not human playtime or owner art approval.",
+    "Verbose render logs retain NVAPI_EXECUTABLE_ALREADY_IN_USE(code -167); Compatibility import smoke retains the SSAO/Forward+ feature warning. No diagnostics were suppressed or reclassified as expected invalid input.",
+    "Final helper masters remove one terminal blank line from the engine-tested source copies. Executable bytes are identical after terminal CR/LF trimming; no new engine run is claimed for formatting alone. The first seal and staged whitespace failure are retained.",
+    "No peer candidate was consumed. R8 must reconcile review-file overlaps at the eight finish functions; guarded application rejects before-hash mismatches. The application recipe was not executed against R8.",
+    "Original source packages remain external immutable prerequisites; the final candidate contains exact changed-source masters and evidence, not a duplicate full runtime."
+  ],
+  "owner_visual_acceptance": "pending",
+  "ordinary_world_rollout": "outside scope",
+  "worktree": "D:/project-wroughtwild-art07-r4",
+  "branch": "codex/art07-r4",
+  "inspected_published_main": "473ae7604b3841899c29629cf59f8836ed528424",
+  "consumed_inputs": {
+    "runtime_source": {
+      "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\sealed",
+      "manifest_sha256": "fd5c592ef52185cc7d0737840e41af09dbb5bcea36b719539931e156f42865cd",
+      "files": 5701,
+      "bytes": 7430015212
+    },
+    "g2_review": {
+      "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v02\\handoff",
+      "manifest_sha256": "49827ac3fe3522a92cb74eecdf60cd857e1157b08f5d57f2d273c617606e93a1",
+      "files": 772,
+      "bytes": 594208921
+    },
+    "source_index": {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\docs\\prototype\\art07-production\\g1-inputs-2026-09-12.json",
+      "sha256": "eb39916df348f51dae7643692becaa5340ff9bfede2ed38f5b0ecdfb21ee5fef"
+    },
+    "source_packages": {
+      "b3": {
+        "commits": [
+          "a01c6cedb4e30f4acff3db4b80fea6f3e7712baa",
+          "c37be9a753cf433e4d0f5d9a5142c76956fcfb50"
+        ],
+        "published_commits": null,
+        "package": {
+          "files": 1541,
+          "bytes": 693973744,
+          "manifest_sha256": "b53961b58ddf4720ec51f77adfe1e87860890f4c3d9b68ec3f6de27102b39321",
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\handoff-v02",
+          "publication_report": "docs/prototype/art07-production/publication-2026-09-11.json",
+          "verification": "rehash of published canonical package for G1 readiness"
+        },
+        "worker_tip": "c37be9a753cf433e4d0f5d9a5142c76956fcfb50"
+      },
+      "c1": {
+        "commits": [
+          "717acc168716ead4d893055e46e280ce4869af6f",
+          "e840e4cc039ed754c9da4ce1a910a24b5a1521fb"
+        ],
+        "published_commits": null,
+        "package": {
+          "files": 2331,
+          "bytes": 1260213978,
+          "manifest_sha256": "e733692b99f61cadf17e7e3d3382834b558aa21c9817597a801eba877104c6f6",
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c1\\worktree\\build\\art07\\c1\\v01\\handoff-v01",
+          "publication_report": "docs/prototype/art07-production/publication-2026-09-11-batch4.json",
+          "verification": "rehash of published canonical package for G1 readiness"
+        },
+        "worker_tip": "e840e4cc039ed754c9da4ce1a910a24b5a1521fb"
+      },
+      "c2": {
+        "commits": [
+          "2eab0b8e4ce5fcd7d886dcde88d7e9c7928a2226",
+          "baafb6e85a3038f532d698536e804bb980a4d6c0"
+        ],
+        "published_commits": null,
+        "package": {
+          "files": 2248,
+          "bytes": 789060004,
+          "manifest_sha256": "5bc63bc7e83bc8406942d0d5bc8fa6c9e6e605876f4249b9762cbae3f15504fd",
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c2\\worktree\\build\\art07\\c2\\v01\\handoff-v01",
+          "publication_report": "docs/prototype/art07-production/publication-2026-09-11-batch4.json",
+          "verification": "rehash of published canonical package for G1 readiness"
+        },
+        "worker_tip": "baafb6e85a3038f532d698536e804bb980a4d6c0"
+      },
+      "c3": {
+        "commits": [
+          "ce8e98971a6c5eaf8f825cb00409b910ea14b1ac",
+          "50a166814238c3caf019d884de645a0f14d2c034"
+        ],
+        "published_commits": null,
+        "package": {
+          "files": 1733,
+          "bytes": 957686134,
+          "manifest_sha256": "110a3a8dc1dc4fe4de4f5385f55405d4e6bac77b050229f7ce8e604869fff1da",
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\oldgrowth-handoff-v02",
+          "publication_report": "docs/prototype/art07-production/publication-2026-09-11-batch4.json",
+          "verification": "rehash of published canonical package for G1 readiness"
+        },
+        "worker_tip": "50a166814238c3caf019d884de645a0f14d2c034"
+      },
+      "c4": {
+        "commits": [
+          "310b11dfbaf8fefa5e42fb2d904473475f8fe7ac",
+          "69d26a5fa27190a5b0870deac0d80a3d12859df4"
+        ],
+        "published_commits": null,
+        "package": {
+          "files": 2253,
+          "bytes": 1304222141,
+          "manifest_sha256": "0b37d8e749a4eefc17042374226df1d14b5dad84b5769e65a9a47a3ba1c7a724",
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\handoff-v03",
+          "publication_report": "docs/prototype/art07-production/publication-2026-09-11-batch4.json",
+          "verification": "rehash of published canonical package for G1 readiness"
+        },
+        "worker_tip": "69d26a5fa27190a5b0870deac0d80a3d12859df4"
+      },
+      "e1": {
+        "commits": [
+          "7ef65f2dcbd731c8ab89ab9539ee6f135bf2daaf",
+          "5976dfcea4bd3722a957921b599f362f4d60a49f"
+        ],
+        "published_commits": null,
+        "package": {
+          "files": 1866,
+          "bytes": 265904623,
+          "manifest_sha256": "e5ea047846fff53c72c225c4a88bec04ac9aea77bc9635a3fd238670b8948da6",
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e1\\worktree\\build\\art07\\e1\\v03\\e1-handoff-v02",
+          "publication_report": "docs/prototype/art07-production/publication-2026-09-12.json",
+          "verification": "verified in this publication preflight; fresh checks and integration recorded in publication report"
+        },
+        "worker_tip": "5976dfcea4bd3722a957921b599f362f4d60a49f"
+      },
+      "f2": {
+        "commits": [
+          "1ec2fcc536013c482292366d31aeb5fe60b44b11",
+          "405e603f789ae1aab3cc84c916257afcd79270a3"
+        ],
+        "published_commits": null,
+        "package": {
+          "files": 1830,
+          "bytes": 808257227,
+          "manifest_sha256": "0a182b3cb25c5815497cf79645ff1be7769cf1d9d012572bfbbb0a8116d0d9cd",
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\f2\\worktree\\build\\art07\\f2\\v04\\handoff",
+          "publication_report": "docs/prototype/art07-production/publication-2026-09-11-batch5.json",
+          "verification": "verified in this publication preflight"
+        },
+        "worker_tip": "405e603f789ae1aab3cc84c916257afcd79270a3"
+      },
+      "f3": {
+        "commits": [
+          "a62427ecf5914aaf0e9e823a271d765e9e06d307",
+          "ba604aa6abb7ef73597b35b9c50afe29d3b458c5"
+        ],
+        "published_commits": null,
+        "package": {
+          "files": 1369,
+          "bytes": 974850525,
+          "manifest_sha256": "0bdfa7b9f39b2f79e67fe0fa6adfa5a27f89188418e29e52de2fa91471d73dd8",
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\f3\\worktree\\build\\art07\\f3\\v28\\handoff",
+          "publication_report": "docs/prototype/art07-production/publication-2026-09-11-batch5.json",
+          "verification": "verified in this publication preflight"
+        },
+        "worker_tip": "ba604aa6abb7ef73597b35b9c50afe29d3b458c5"
+      }
+    }
+  },
+  "changed_runtime_files": [
+    {
+      "path": "game/b3/native_review.gd",
+      "classification": "fixture_only",
+      "before_sha256": "996be77212ed9cf1bf2f7077b93d55df98c615bbc3aaa8357a7f882505e5356f",
+      "after_sha256": "3e48b7119bf95b36eb847b12e46bb4be4475f16607d1ada5b01da9b2327bcdb3",
+      "before_bytes": 11698,
+      "after_bytes": 11749,
+      "functions": [
+        "finish"
+      ],
+      "purpose": "Dispose completed fixture descendants and retire owned audio before normal quit; existing checks and work/restore logic unchanged.",
+      "master": "changed-source/game/b3/native_review.gd",
+      "overlaps": [],
+      "settings": []
+    },
+    {
+      "path": "game/c1/native_review.gd",
+      "classification": "fixture_only",
+      "before_sha256": "3d4cf3f176f7b1675604bcc4201f2fcdc34d68e5e702a0c29a20f7a5b11c4bc2",
+      "after_sha256": "b4ee29c6a979de3ddf05d7be04382a78a6fdec31b04a1622c4612f423a5594c9",
+      "before_bytes": 8166,
+      "after_bytes": 8217,
+      "functions": [
+        "finish"
+      ],
+      "purpose": "Dispose completed fixture descendants and retire owned audio before normal quit; existing checks and work/restore logic unchanged.",
+      "master": "changed-source/game/c1/native_review.gd",
+      "overlaps": [],
+      "settings": []
+    },
+    {
+      "path": "game/c2/native_review.gd",
+      "classification": "fixture_only",
+      "before_sha256": "8f1ba26a50659d7037ab1a8d620db6c645aed43b0308c0fa6f4b5b4ef76cd61d",
+      "after_sha256": "8992285fd78029ace166ccf92736ec84f30fc269c042c638d7e9731a1a1c71e6",
+      "before_bytes": 8682,
+      "after_bytes": 8732,
+      "functions": [
+        "finish"
+      ],
+      "purpose": "Dispose completed fixture descendants and retire owned audio before normal quit; existing checks and work/restore logic unchanged.",
+      "master": "changed-source/game/c2/native_review.gd",
+      "overlaps": [],
+      "settings": []
+    },
+    {
+      "path": "game/c3/native_review.gd",
+      "classification": "fixture_only",
+      "before_sha256": "0cdb4fabd5aac08c3ec0f14d858506504eb3a42696d0954f3634f4e189caf6d0",
+      "after_sha256": "71d1f9f60e2b8ff9d9f983d4df368113bcf93c446cde3fc073cd29cf5a63ddc7",
+      "before_bytes": 8642,
+      "after_bytes": 8693,
+      "functions": [
+        "finish"
+      ],
+      "purpose": "Dispose completed fixture descendants and retire owned audio before normal quit; existing checks and work/restore logic unchanged.",
+      "master": "changed-source/game/c3/native_review.gd",
+      "overlaps": [],
+      "settings": []
+    },
+    {
+      "path": "game/c4/native_review.gd",
+      "classification": "fixture_only",
+      "before_sha256": "ae1217f45631b695bb7a189d18cc212de4f7698b7e1e81105b91ec44f89f155c",
+      "after_sha256": "2301218a528a2f9c4b1dce632985e94d5917a3df3d7c5bd3d4677a274663f484",
+      "before_bytes": 7099,
+      "after_bytes": 7150,
+      "functions": [
+        "finish"
+      ],
+      "purpose": "Dispose completed fixture descendants and retire owned audio before normal quit; existing checks and work/restore logic unchanged.",
+      "master": "changed-source/game/c4/native_review.gd",
+      "overlaps": [],
+      "settings": []
+    },
+    {
+      "path": "game/e1/review.gd",
+      "classification": "fixture_only",
+      "before_sha256": "58452b6800ba2db1cf504cb558798aac655315f259530abf80a0580c45f01ec6",
+      "after_sha256": "db6458c3c66c2becdee4ecc0f3a55b98df084f5acf860739c1812f5f11d7b728",
+      "before_bytes": 16972,
+      "after_bytes": 16934,
+      "functions": [
+        "finish_e1"
+      ],
+      "purpose": "Dispose completed fixture descendants and retire owned audio before normal quit; existing checks and work/restore logic unchanged.",
+      "master": "changed-source/game/e1/review.gd",
+      "overlaps": [],
+      "settings": []
+    },
+    {
+      "path": "game/f2/review.gd",
+      "classification": "fixture_only",
+      "before_sha256": "9614eaf827262e1d35f7489c4c91ed0ef07db81e591c3aa24785e13344a51d9a",
+      "after_sha256": "803834ee71587ff00b9e9407c5a2d117bdf8a36afab1933fa1bc3e4fe1f33c7d",
+      "before_bytes": 19216,
+      "after_bytes": 19266,
+      "functions": [
+        "_done"
+      ],
+      "purpose": "Dispose completed fixture descendants and retire owned audio before normal quit; existing checks and work/restore logic unchanged.",
+      "master": "changed-source/game/f2/review.gd",
+      "overlaps": [],
+      "settings": []
+    },
+    {
+      "path": "game/f3/review.gd",
+      "classification": "fixture_only",
+      "before_sha256": "a4a942744b1072448820bb08a9e8e6adf621f86b49a07b1c0943541abdce60eb",
+      "after_sha256": "32dcdf821706a09bfd057d3adc163b7eb496a50a829b13b02d6811b23c046f6e",
+      "before_bytes": 22266,
+      "after_bytes": 22316,
+      "functions": [
+        "finish"
+      ],
+      "purpose": "Dispose completed fixture descendants and retire owned audio before normal quit; existing checks and work/restore logic unchanged.",
+      "master": "changed-source/game/f3/review.gd",
+      "overlaps": [],
+      "settings": []
+    },
+    {
+      "path": "game/r4/fixture_cleanup.gd",
+      "classification": "fixture_only",
+      "before_sha256": null,
+      "after_sha256": "ee1cf70100c25b5882646ec4ea0b0c48cb275309435fdfa92c5528d72350e0ec",
+      "before_bytes": 0,
+      "after_bytes": 3866,
+      "functions": [
+        "dispose",
+        "finish",
+        "counts",
+        "_alive"
+      ],
+      "purpose": "Owned test-scene teardown and diagnostic controls only.",
+      "master": "changed-source/game/r4/fixture_cleanup.gd",
+      "overlaps": [],
+      "settings": []
+    },
+    {
+      "path": "game/r4/cleanup_options.gd",
+      "classification": "fixture_only",
+      "before_sha256": null,
+      "after_sha256": "7a841bb8a9cb34eff8b7afe0b4f50b2b30fbbf1a5fc0ebf54bb15dcd89588347",
+      "before_bytes": 0,
+      "after_bytes": 709,
+      "functions": [
+        "PREDISPOSE_FRAMES",
+        "MIX_PASSES",
+        "MAIN_FRAMES",
+        "POLL_SLEEP_MS",
+        "TIMEOUT_SECONDS",
+        "SOAK_ITERATIONS"
+      ],
+      "purpose": "Owned test-scene teardown and diagnostic controls only.",
+      "master": "changed-source/game/r4/cleanup_options.gd",
+      "overlaps": [],
+      "settings": [
+        {
+          "name": "PREDISPOSE_FRAMES",
+          "before": null,
+          "after": 3,
+          "purpose": "Let queued two-frame UI layout callbacks finish while their owned controls exist."
+        },
+        {
+          "name": "MIX_PASSES",
+          "before": null,
+          "after": 2,
+          "purpose": "Observe two real mixer progress events after stopping owned voices."
+        },
+        {
+          "name": "MAIN_FRAMES",
+          "before": null,
+          "after": 2,
+          "purpose": "Allow deferred node frees and main-thread audio retirement; also the final release sample delay."
+        },
+        {
+          "name": "POLL_SLEEP_MS",
+          "before": null,
+          "after": 1,
+          "purpose": "Yield CPU so accelerated headless frames do not starve the mixer."
+        },
+        {
+          "name": "TIMEOUT_SECONDS",
+          "before": null,
+          "after": 2.0,
+          "purpose": "Fail visibly if owned playback cannot retire; a timeout is never success."
+        },
+        {
+          "name": "SOAK_ITERATIONS",
+          "before": null,
+          "after": 12,
+          "purpose": "Bound the diagnostic create/work/restore/dispose exercise; no long-session claim."
+        }
+      ]
+    }
+  ],
+  "reusable_runtime_changes": [],
+  "expected_invalid_input_warnings": {
+    "affected_native_matrix": [],
+    "scope": "G2's unrelated invalid-input/save-recovery diagnostics were not replayed or reclassified; original reports remain preserved."
+  },
+  "hardware": {
+    "captured": "2026-09-14T08:02:56.8614114+09:30",
+    "os": {
+      "Caption": "Microsoft Windows 11 Home",
+      "Version": "10.0.26200",
+      "BuildNumber": "26200"
+    },
+    "cpu": [
+      {
+        "Name": "AMD Ryzen 9 9950X3D 16-Core Processor          ",
+        "NumberOfCores": 16,
+        "NumberOfLogicalProcessors": 32
+      }
+    ],
+    "display": [
+      {
+        "Name": "NVIDIA GeForce RTX 5090",
+        "DriverVersion": "32.0.15.9186",
+        "VideoModeDescription": "2560 x 1440 x 4294967296 colors"
+      },
+      {
+        "Name": "AMD Radeon(TM) Graphics",
+        "DriverVersion": "32.0.21045.5002",
+        "VideoModeDescription": null
+      }
+    ],
+    "memory_bytes": 33446744064
+  },
+  "cleanup_seconds": {
+    "samples": 22,
+    "min": 0.097903,
+    "median": 0.1380025,
+    "max": 0.18531
+  },
+  "publication": {
+    "worker_main_integration": false,
+    "worker_push": false,
+    "receipt_commit": "Resolve from Git history after this receipt is committed."
+  }
+}
