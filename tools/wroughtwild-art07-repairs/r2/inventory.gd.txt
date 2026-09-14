@@ -1,0 +1,34 @@
+## Review-only inventory, outside every benchmark window.
+var r2_mesh_digests:Dictionary={}
+func r2_digest(mesh:Mesh)->String:
+	var id:=mesh.get_instance_id()
+	if r2_mesh_digests.has(id):return r2_mesh_digests[id]
+	var hash:=HashingContext.new();hash.start(HashingContext.HASH_SHA256)
+	for s in mesh.get_surface_count():hash.update(var_to_bytes(mesh.surface_get_arrays(s)))
+	var result:=hash.finish().hex_encode();r2_mesh_digests[id]=result;return result
+func r2_inventory()->Dictionary:
+	var meshes:Dictionary={};var resources:Array=[]
+	for node in find_children("*","Node3D",true,false):
+		if node is MeshInstance3D and node.mesh!=null:meshes[node.mesh.get_instance_id()]=node.mesh
+		if node is MultiMeshInstance3D and node.multimesh!=null and node.multimesh.mesh!=null:meshes[node.multimesh.mesh.get_instance_id()]=node.multimesh.mesh
+		if node.has_meta("b3_source_mesh"):
+			var source:Mesh=node.get_meta("b3_source_mesh");meshes[source.get_instance_id()]=source
+	for cache:Dictionary in [AuthoredAssets._meshes,G1Environment.cover_cache,G1Art.D1.cache,G1Art.D2.cache,G1Art.D3.cache,E1StationArt.meshes,E2ForgeArt.meshes,E3HomeArt.meshes]:
+		for value in cache.values():
+			if value is Mesh:meshes[value.get_instance_id()]=value
+	var environment:=get_node_or_null("G1Environment")
+	if environment!=null and environment.adapter!=null:
+		for value in environment.adapter.meshes.values():meshes[value.get_instance_id()]=value
+	for node:ResourceNode in get_tree().get_nodes_in_group("resources"):
+		var parts:Array=[]
+		for part in node.find_children("*","MeshInstance3D",true,false):
+			if part.mesh!=null:parts.append({"path":str(node.get_path_to(part)),"pose":str(part.transform),"visible":part.visible,"arrays_sha256":r2_digest(part.mesh)})
+		resources.append({"id":node.resource_id,"position":str(node.position),"stock":node.remaining_units,"work":node.drive_progress,"parts":parts})
+	resources.sort_custom(func(a,b):return a.id<b.id)
+	var triangles:=0;var vertices:=0;var surfaces:=0
+	for mesh:Mesh in meshes.values():
+		surfaces+=mesh.get_surface_count()
+		for s in mesh.get_surface_count():
+			var arrays:=mesh.surface_get_arrays(s);var vc:int=arrays[Mesh.ARRAY_VERTEX].size();var ic:int=arrays[Mesh.ARRAY_INDEX].size() if arrays[Mesh.ARRAY_INDEX]!=null else 0
+			vertices+=vc;triangles+=(ic if ic>0 else vc)/3
+	return {"resources":resources,"geometry":{"unique_meshes":meshes.size(),"base_triangles":triangles,"vertices":vertices,"surfaces":surfaces},"scope":"Unique base geometry reachable through scene nodes (including hidden stages), retained B3 source metadata, and explicit AuthoredAssets, D1-D3, E1-E3, G1 cover and C6 LOD caches. Imported alternate index-LOD triangles are not added to base triangles. Backend buffer allocations separately include renderer internals."}

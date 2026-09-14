@@ -1,0 +1,16 @@
+func texture_inventory()->Array:
+	var materials:Dictionary={};var textures:Dictionary={}
+	for node in find_children("*","MeshInstance3D",true,false):
+		if node.mesh==null:continue
+		for s in node.mesh.get_surface_count():
+			for material in [node.mesh.surface_get_material(s),node.get_active_material(s)]:
+				if material!=null:materials[material.get_instance_id()]=material
+	for material:Material in materials.values():
+		for property:Dictionary in material.get_property_list():
+			if int(property.type)!=TYPE_OBJECT:continue
+			var value=material.get(property.name)
+			if value is Texture2D:
+				var key:int=value.get_instance_id()
+				if not textures.has(key):textures[key]={"path":value.resource_path,"width":value.get_width(),"height":value.get_height(),"material_references":0}
+				textures[key].material_references+=1
+	return textures.values()
