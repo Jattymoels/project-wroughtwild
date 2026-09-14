@@ -243,7 +243,23 @@
         "r2",
         "r3",
         "r4"
-      ]
+      ],
+      "current_delivery": {
+        "status": "published",
+        "source_commit": "b483d2027b6c3326dd25483a3f9f2d4f7bcd8c12",
+        "receipt_commit": "5619672bbaf56cc3d7b0f2955ff2a81fdfc54c4a",
+        "original_source_commit": "78ef855ca9cb6ca1f4d16221cca98d53a9d1aa8a",
+        "original_receipt_commit": "f44920e696b5c81b7fa6548e4f86a3c9641fec96",
+        "receipt": "docs/prototype/art07-repairs/2026-09-14/receipts/r6.json",
+        "package": {
+          "path": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v01\\handoff-v01",
+          "manifest_sha256": "e81d8020ece9dfc25da0dd3e30aeaa222333a8b915e5bbda2d1a819000bebb41",
+          "files": 5832,
+          "bytes": 4534284673
+        },
+        "publication_report": "docs/prototype/art07-repairs/2026-09-14/publication-r6.json",
+        "publisher_runtime": "D:\\project-wroughtwild-art07-r6\\build\\art07-repairs\\r6\\v02\\runtime"
+      }
     },
     {
       "id": "r7",

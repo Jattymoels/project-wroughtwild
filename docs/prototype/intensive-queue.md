@@ -414,3 +414,9 @@ All eight chest cabinets now clear the measured supports while native storage,
 placement and lid authority remain exact. G2-V03 is partial: concealed feet,
 existing lid overlaps and owner acceptance remain. R8 waits for checked R6/R7
 publication; no combined runtime or ordinary-world rollout was released.
+
+### ART-07R6 publication, 14 September 2026
+
+[R6 passed publisher verification](art07-repairs/2026-09-14/publication-r6.md).
+R6 adds ore-specific mineral, cracking and depletion detail to all five native faceted ore surfaces. It preserves the original thin terrain ribbon, picking triangles, finite yield, excavation and saved state; the raised authored fallback remains unchanged.
+G2-V04: partial; technically verified surface-material candidate, with owner visual acceptance and combined R8/R9 review pending. R8 still waits for checked R7 publication.

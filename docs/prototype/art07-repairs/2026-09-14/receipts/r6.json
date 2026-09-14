@@ -324,5 +324,18 @@
     "R8 must merge C5 changes with R2 resource reuse and retain independent R1/R7 resource dispatch changes. No parent repair runtime delta was consumed."
   ],
   "owner_visual_acceptance": "pending",
-  "ordinary_world_rollout": "outside scope"
+  "ordinary_world_rollout": "outside scope",
+  "publication": {
+    "method": "scoped cherry-pick",
+    "previous_main": "eb2218b2db5b25b3f419e91bef848651ec1102f7",
+    "original_implementation_commit": "78ef855ca9cb6ca1f4d16221cca98d53a9d1aa8a",
+    "original_receipt_commit": "f44920e696b5c81b7fa6548e4f86a3c9641fec96",
+    "implementation_commit": "b483d2027b6c3326dd25483a3f9f2d4f7bcd8c12",
+    "receipt_commit": "5619672bbaf56cc3d7b0f2955ff2a81fdfc54c4a",
+    "worker_tree_content_match": "All owned Git blobs identical",
+    "destination": "origin/main at https://github.com/Jattymoels/project-wroughtwild.git",
+    "ref": "refs/heads/main",
+    "publisher_verification": "docs/prototype/art07-repairs/2026-09-14/publication-r6.json",
+    "push": "Accompanying publication commit; remote-tip result verified separately."
+  }
 }

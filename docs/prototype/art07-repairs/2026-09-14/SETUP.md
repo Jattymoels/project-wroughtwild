@@ -1,15 +1,12 @@
 # Worktree and runtime setup
 
-Start with [the plan](README.md). Wave 2 has been released and R5 is now checked
-and published. R6 and R7 remain the next publication gates; reuse their prepared
-directories for the existing tasks. R8 and R9 remain gated. [Workspaces](workspaces.json)
+Start with [the plan](README.md). R8 still waits for checked R7 publication.
+No worker task was launched by publication. [Workspaces](workspaces.json)
 preserves historical preparation and current delivery state.
 
-Published repair candidates: [R1](publication-r1.md) [R2](publication-r2.md)
-[R3](publication-r3.md) [R4](publication-r4.md) [R5](publication-r5.md).
+Published repair candidates: [R1](publication-r1.md) [R2](publication-r2.md) [R3](publication-r3.md) [R4](publication-r4.md) [R5](publication-r5.md) [R6](publication-r6.md).
 The initial setup flags remain historical; [deliveries.json](deliveries.json)
-is the current readiness record. R8 starts only after R6 and R7 are also checked
-and published. No new worker task was launched by this publication.
+is the current readiness record.
 
 The owner depot is `C:/Users/Matty/Dev/project-wroughtwild`. D: was chosen because
 C: had about 5 GiB free while D: had about 1.3 TiB when preparing the pack. No old
