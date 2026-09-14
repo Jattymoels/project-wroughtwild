@@ -1,0 +1,1380 @@
+{
+  "id": "r3",
+  "status": "ready_for_integration",
+  "source_commits": [
+    "0d372ae68c7d7b620da27ad7141f9eebae766139"
+  ],
+  "worktree": "D:/project-wroughtwild-art07-r3",
+  "branch": "codex/art07-r3",
+  "inspected_published_main_base": "473ae7604b3841899c29629cf59f8836ed528424",
+  "prepared_record_checkout": "173ab4eeb4eac97f3dd2869c50e765bba0cfb40a",
+  "runtime_base": "6bb2e044dcd0bf1788896aa2c19cdf56fee93522",
+  "parent_candidates": [],
+  "wave": 1,
+  "wave_release": "Released under plan.json; no direct candidate dependencies or predecessor receipts for R3. A prepared directory was not treated as dependency completion.",
+  "delta_base": "G2 v01 sealed G1 common baseline at D:/project-wroughtwild-art07-g2/build/art07/g2/v01/sealed; manifest fd5c592ef52185cc7d0737840e41af09dbb5bcea36b719539931e156f42865cd",
+  "package": {
+    "path": "D:/project-wroughtwild-art07-r3/build/art07-repairs/r3/v01/handoff",
+    "manifest_sha256": "6ce1ca7f6a7406041c345e045610197e33f4f6eefe8cdcfb98718a6ee2e502da",
+    "files": 5632,
+    "bytes": 4156251159
+  },
+  "changes": "changes.json",
+  "changes_sha256": "935c637baa12fcaa7e3d4e13ae9cea1e646a1dc89c029704ad089b915b19ac9a",
+  "findings": {
+    "G2-V02": "candidate repair; independent review pending"
+  },
+  "input_packages": [
+    {
+      "id": "runtime_source",
+      "path": "D:/project-wroughtwild-art07-g2/build/art07/g2/v01/sealed",
+      "manifest_sha256": "fd5c592ef52185cc7d0737840e41af09dbb5bcea36b719539931e156f42865cd",
+      "files": 5701,
+      "bytes": 7430015212,
+      "runtime_base": "6bb2e044dcd0bf1788896aa2c19cdf56fee93522"
+    },
+    {
+      "id": "g2_review",
+      "path": "D:/project-wroughtwild-art07-g2/build/art07/g2/v02/handoff",
+      "manifest_sha256": "49827ac3fe3522a92cb74eecdf60cd857e1157b08f5d57f2d273c617606e93a1",
+      "files": 772,
+      "bytes": 594208921
+    },
+    {
+      "id": "d4",
+      "path": "C:/Users/Matty/Dev/project-wroughtwild-art07-d4/build/art07/d4/h04",
+      "manifest_sha256": "aaa0316f108cdb1de0ed27cc3a40fac7a07574497c14486e88b18fa73dfbda59",
+      "files": 196,
+      "bytes": 117145245,
+      "source_base": "56ce6bbe343012205690cf669491372958b80662"
+    },
+    {
+      "id": "d5",
+      "path": "C:/Users/Matty/Dev/project-wroughtwild/build/art07/d5/worktree/build/art07/d5/v03/d5-handoff",
+      "manifest_sha256": "79532aa924414715fbbde0bf714280fd75d40c9f21cc62cb44c0ce12c3834844",
+      "files": 290,
+      "bytes": 104432660,
+      "source_base": "f00d4b76274ef2a73c3b6f4a275d2bd3ca0f958d"
+    },
+    {
+      "id": "d6",
+      "path": "C:/Users/Matty/Dev/project-wroughtwild/build/art07/d6/worktree/build/art07/d6/v04/handoff",
+      "manifest_sha256": "8d82eb36775959f41905e579e36d737caa4a8512ed504d679ab49652301338a7",
+      "files": 78,
+      "bytes": 29858504,
+      "source_base": "f00d4b76274ef2a73c3b6f4a275d2bd3ca0f958d"
+    }
+  ],
+  "input_hash_results": {
+    "path": "input-hash-results.json",
+    "sha256": "611b693e6833be19f88f3f386510862e2f9ad54044a7c626d6dda09c68294dc3",
+    "verified_entries": 7037
+  },
+  "runtime_delta": [
+    {
+      "path": "game/g1/materials.gd",
+      "before_sha256": "6531f7b0a254b33b47db2b2da541c49e5c356c1900f440462a83e22a8e3c56ca",
+      "after_sha256": "437ed97b51d894626544925f7916180badcd23882da8ab677ce3753c4ca4ccd3",
+      "functions": [
+        "G1Materials.material_for"
+      ],
+      "purpose": "Route retained construction to R3 material mapping; --r3-baseline restores the sealed G1 appearance.",
+      "overlaps": [
+        "R2: reconcile shared G1 material/cache and mesh dispatch changes against the common baseline."
+      ],
+      "replacement_asset": null
+    },
+    {
+      "path": "game/g1/art.gd",
+      "before_sha256": "760d85a59a05fd6445d70f87664c234d195d06394ee5a9717d52702073b2d9c8",
+      "after_sha256": "67c4d26e4c3e937de20e3549f41d8b120238e54e4bc45891c1dcfefb949b888c",
+      "functions": [
+        "G1Art.piece_mesh"
+      ],
+      "purpose": "Route retained construction to R3 material mapping; --r3-baseline restores the sealed G1 appearance.",
+      "overlaps": [
+        "R2: reconcile shared G1 material/cache and mesh dispatch changes against the common baseline."
+      ],
+      "replacement_asset": null
+    },
+    {
+      "path": "game/scripts/piece_look.gd",
+      "before_sha256": "da7bf01efe29428aec51880dc4517a301c33ddcc648a012af6b26dc9570f618b",
+      "after_sha256": "3a0959be349b2e80036de5d51727218d0d01b88541e8b06a6d6e53819063956a",
+      "functions": [
+        "PieceLook.apply_to"
+      ],
+      "purpose": "Route retained construction to R3 material mapping; --r3-baseline restores the sealed G1 appearance.",
+      "overlaps": [
+        "R2: reconcile shared G1 material/cache and mesh dispatch changes against the common baseline."
+      ],
+      "replacement_asset": null
+    },
+    {
+      "path": "game/r3/glass.gdshader",
+      "before_sha256": null,
+      "after_sha256": "c56f47bd21468f910aae2540190f27da277bc09c9a7bff922fc84e9b8f8d3d40",
+      "functions": [],
+      "settings": [],
+      "purpose": "R3 retained-map material implementation",
+      "overlaps": [],
+      "replacement_asset": null
+    },
+    {
+      "path": "game/r3/home.gd",
+      "before_sha256": null,
+      "after_sha256": "079cd4382e7a722c77d3b9fea1321543c474c7ae49b78fe25e82544b7e5248f1",
+      "functions": [
+        "execute"
+      ],
+      "settings": [],
+      "purpose": "Labelled native inspection or real paid-home evidence harness; never an ordinary-world entry point.",
+      "overlaps": [],
+      "replacement_asset": null
+    },
+    {
+      "path": "game/r3/home.tscn",
+      "before_sha256": null,
+      "after_sha256": "15be17d1c61918c15131dd93a93152e7e4d341717e38dad7f17f27e0cc37a4e6",
+      "functions": [],
+      "settings": [],
+      "purpose": "Labelled native inspection or real paid-home evidence harness; never an ordinary-world entry point.",
+      "overlaps": [],
+      "replacement_asset": null
+    },
+    {
+      "path": "game/r3/inspection.gd",
+      "before_sha256": null,
+      "after_sha256": "d0ba19f256a3144fbcae57e6e6902fba5da17dc08a5fea2e1d4243ab5f4dcdc2",
+      "functions": [
+        "check",
+        "_run",
+        "_put",
+        "_set_light",
+        "_cost",
+        "_measure"
+      ],
+      "settings": [],
+      "purpose": "Labelled native inspection or real paid-home evidence harness; never an ordinary-world entry point.",
+      "overlaps": [],
+      "replacement_asset": null
+    },
+    {
+      "path": "game/r3/inspection.tscn",
+      "before_sha256": null,
+      "after_sha256": "b7acfb44e0549b01ec40b744cb3758077b6fa73cf7161ef0ae7b94f5cf1b22be",
+      "functions": [],
+      "settings": [],
+      "purpose": "Labelled native inspection or real paid-home evidence harness; never an ordinary-world entry point.",
+      "overlaps": [],
+      "replacement_asset": null
+    },
+    {
+      "path": "game/r3/materials.gd",
+      "before_sha256": null,
+      "after_sha256": "a3489c9687272b7e703ccbd293dfbafc9d3e699bcaa49166f58472aee990df9c",
+      "functions": [
+        "enabled",
+        "_load_families",
+        "material_for",
+        "apply_to",
+        "binding_inventory"
+      ],
+      "settings": [],
+      "purpose": "R3 retained-map material implementation",
+      "overlaps": [],
+      "replacement_asset": null
+    },
+    {
+      "path": "game/r3/opaque.gdshader",
+      "before_sha256": null,
+      "after_sha256": "ec5cc4ab9338091fdd39024858e6fc64df93976fdb16d6ea9463a46d899a47ae",
+      "functions": [],
+      "settings": [],
+      "purpose": "R3 retained-map material implementation",
+      "overlaps": [],
+      "replacement_asset": null
+    },
+    {
+      "path": "game/r3/settings.json",
+      "before_sha256": null,
+      "after_sha256": "77b649f74fb9da2aef94ceb90bfcdbc8e770c2e28c79a40824d5ab4b02527de8",
+      "functions": [],
+      "settings": [
+        "normal_strength",
+        "frame_shade",
+        "end_normal_threshold",
+        "board_width_m",
+        "board_phase_texels",
+        "face_resolution_px",
+        "recess_min_m",
+        "recess_edge_guard_m",
+        "door_rails_y_m",
+        "door_rail_half_width_m",
+        "coarse_rail_width_m",
+        "fine_rail_width_m",
+        "panel_frame_width_m",
+        "window_frame_width_m",
+        "seam_roughness_add",
+        "projection_axis_threshold",
+        "roof_face_min_up",
+        "alternate_axis_threshold",
+        "recess_face_threshold",
+        "inspection_grid_m",
+        "inspection_line_fraction"
+      ],
+      "purpose": "R3 retained-map material implementation",
+      "overlaps": [],
+      "replacement_asset": null
+    },
+    {
+      "path": "game/r3/surface.gdshaderinc",
+      "before_sha256": null,
+      "after_sha256": "67e056d00c45c5d34078cebcc4949943383a23d89306758fbbf88d2560cdc04e",
+      "functions": [
+        "vertex",
+        "fragment"
+      ],
+      "settings": [
+        "face_albedo",
+        "edge_albedo",
+        "face_normal",
+        "edge_normal",
+        "face_orm",
+        "edge_orm",
+        "face_repeat",
+        "edge_repeat",
+        "family_kind",
+        "grain_axis",
+        "half_size",
+        "slab",
+        "broad_sides",
+        "roof",
+        "roof_topology",
+        "moving_member",
+        "integral_frame",
+        "all_edge",
+        "door",
+        "rail_width",
+        "frame_width",
+        "shade",
+        "normal_strength",
+        "frame_shade",
+        "end_normal_threshold",
+        "board_width_m",
+        "board_phase_texels",
+        "face_resolution_px",
+        "recess_min_m",
+        "seam_roughness_add",
+        "recess_edge_guard_m",
+        "door_rails_y",
+        "door_rail_half_width_m",
+        "seam_tint",
+        "seam_metallic",
+        "pane_opacity",
+        "projection_axis_threshold",
+        "roof_face_min_up",
+        "alternate_axis_threshold",
+        "recess_face_threshold",
+        "inspection_grid_m",
+        "inspection_line_fraction",
+        "inspection"
+      ],
+      "purpose": "R3 retained-map material implementation",
+      "overlaps": [],
+      "replacement_asset": null
+    }
+  ],
+  "checks": [
+    {
+      "id": "import",
+      "exit_code": 0,
+      "seconds": 71.5775811,
+      "results": [],
+      "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--headless",
+        "--editor",
+        "--path",
+        "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\game",
+        "--import"
+      ],
+      "log": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\handoff\\logs\\import.log",
+      "log_sha256": "88f6ff9ad348f16e4e5a38e40f3a1e7ef1da1a4ab9cd6964c1f2cb282e94b7aa",
+      "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\import",
+      "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\import\\local",
+      "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\import\\temp",
+      "processes_before": null,
+      "benchmark_competitors": []
+    },
+    {
+      "id": "smoke-forward_plus",
+      "exit_code": 0,
+      "seconds": 97.6322626,
+      "results": [
+        "G1_PACKAGED_LAUNCH_OK"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--path",
+        "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\game",
+        "res://g1/play.tscn",
+        "--",
+        "--smoke"
+      ],
+      "log": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\handoff\\logs\\smoke-forward_plus.log",
+      "log_sha256": "a6457489dd615c57f47571067cb821b47a0330f90c95b3e27d339454e8509772",
+      "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\smoke-forward_plus",
+      "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\smoke-forward_plus\\local",
+      "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\smoke-forward_plus\\temp",
+      "processes_before": null,
+      "benchmark_competitors": []
+    },
+    {
+      "id": "smoke-gl_compatibility",
+      "exit_code": 0,
+      "seconds": 91.1982348,
+      "results": [
+        "G1_PACKAGED_LAUNCH_OK"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--path",
+        "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\game",
+        "res://g1/play.tscn",
+        "--",
+        "--smoke"
+      ],
+      "log": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\handoff\\logs\\smoke-gl_compatibility.log",
+      "log_sha256": "bcc5dd1c40549a72a960cfa2758068943fe9d3f7b5717a2024a4851ad364bbc0",
+      "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\smoke-gl_compatibility",
+      "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\smoke-gl_compatibility\\local",
+      "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\smoke-gl_compatibility\\temp",
+      "processes_before": null,
+      "benchmark_competitors": []
+    },
+    {
+      "id": "pass04-import",
+      "exit_code": 0,
+      "seconds": 4.0786435,
+      "results": [],
+      "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--headless",
+        "--editor",
+        "--path",
+        "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\game",
+        "--import"
+      ],
+      "log": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\handoff\\logs\\pass04-import.log",
+      "log_sha256": "cc4150a51b55e712e633b1a29d73f3299a6c0196f39dad3b4abaa167af28a3f1",
+      "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass04-import",
+      "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass04-import\\local",
+      "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass04-import\\temp",
+      "processes_before": null,
+      "benchmark_competitors": []
+    },
+    {
+      "id": "packed-source-reopen-01",
+      "exit_code": 0,
+      "seconds": 1.5182878,
+      "results": [],
+      "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\blender-tool\\blender-4.5.9-windows-x64\\blender.exe",
+      "arguments": [
+        "--background",
+        "--threads",
+        "8",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "D:\\project-wroughtwild-art07-r3\\tools\\wroughtwild-art07-repairs\\r3\\reopen.py",
+        "--",
+        "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\masters",
+        "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\packed-reopen-01"
+      ],
+      "log": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\handoff\\logs\\packed-source-reopen-01.log",
+      "log_sha256": "e1f745c54bb37bcb03b45165b19662fcfeed0f519543680dd63085225b0343c6",
+      "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\packed-source-reopen-01",
+      "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\packed-source-reopen-01\\local",
+      "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\packed-source-reopen-01\\temp",
+      "processes_before": null,
+      "benchmark_competitors": []
+    },
+    {
+      "id": "pass02-g1-forward_plus",
+      "exit_code": 0,
+      "seconds": 7.92097,
+      "results": [
+        "R3_INSPECTION 458 checks, 0 failures, 91 retained pieces"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--path",
+        "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\game",
+        "res://r3/inspection.tscn",
+        "--",
+        "--r3-baseline",
+        "--run-id=pass02-g1-forward_plus"
+      ],
+      "log": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\handoff\\logs\\pass02-g1-forward_plus.log",
+      "log_sha256": "ee6ee7fdacdccb3a33c45a6600292dce648ab951f7acefe24e8ae7081e74579a",
+      "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass02-g1-forward_plus",
+      "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass02-g1-forward_plus\\local",
+      "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass02-g1-forward_plus\\temp",
+      "processes_before": null,
+      "benchmark_competitors": []
+    },
+    {
+      "id": "pass02-r3-forward_plus",
+      "exit_code": 0,
+      "seconds": 9.3316809,
+      "results": [
+        "R3_INSPECTION 469 checks, 0 failures, 91 retained pieces"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--path",
+        "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\game",
+        "res://r3/inspection.tscn",
+        "--",
+        "--run-id=pass02-r3-forward_plus"
+      ],
+      "log": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\handoff\\logs\\pass02-r3-forward_plus.log",
+      "log_sha256": "d9455ef530e2fbec06cf9faa23d3ae1c24290e230130923c9c33360d5b0f8c7f",
+      "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass02-r3-forward_plus",
+      "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass02-r3-forward_plus\\local",
+      "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass02-r3-forward_plus\\temp",
+      "processes_before": null,
+      "benchmark_competitors": []
+    },
+    {
+      "id": "pass01-catalogue-forward_plus",
+      "exit_code": 0,
+      "seconds": 8.801181,
+      "results": [
+        "G1_CATALOGUE 1861 checks, 0 failures; 273 legal pairs"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--path",
+        "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\game",
+        "res://g1/catalogue.tscn",
+        "--",
+        "--run-id=pass01-catalogue-forward_plus"
+      ],
+      "log": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\handoff\\logs\\pass01-catalogue-forward_plus.log",
+      "log_sha256": "4cfb3077fb4d1d9cd5fdabb7de439516629dd4005b61199530b93f670b3ed116",
+      "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass01-catalogue-forward_plus",
+      "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass01-catalogue-forward_plus\\local",
+      "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass01-catalogue-forward_plus\\temp",
+      "processes_before": null,
+      "benchmark_competitors": []
+    },
+    {
+      "id": "pass01-transactions-forward_plus",
+      "exit_code": 0,
+      "seconds": 7.373832,
+      "results": [
+        "PLACEMENT_TRANSACTIONS 470 checks, 0 failures"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--path",
+        "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\game",
+        "res://tests/placement_transactions.tscn",
+        "--",
+        "--run-id=pass01-transactions-forward_plus"
+      ],
+      "log": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\handoff\\logs\\pass01-transactions-forward_plus.log",
+      "log_sha256": "ba6b82a4b0ba02202e889858bfe163f737e085b61d52c83542e755c6b8cc2fed",
+      "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass01-transactions-forward_plus",
+      "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass01-transactions-forward_plus\\local",
+      "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass01-transactions-forward_plus\\temp",
+      "processes_before": null,
+      "benchmark_competitors": []
+    },
+    {
+      "id": "pass01-transactions-restore-forward_plus",
+      "exit_code": 0,
+      "seconds": 3.7847849,
+      "results": [
+        "PLACEMENT_RESTART 60 checks, 0 failures"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--path",
+        "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\game",
+        "res://tests/placement_transactions.tscn",
+        "--",
+        "--placement-restore-only",
+        "--run-id=pass01-transactions-restore-forward_plus"
+      ],
+      "log": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\handoff\\logs\\pass01-transactions-restore-forward_plus.log",
+      "log_sha256": "8cd8a869c08b1e405eab69c7e00c693657bffbebdd19bb4fb709ae75d0a41b5f",
+      "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass01-transactions-forward_plus",
+      "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass01-transactions-forward_plus\\local",
+      "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass01-transactions-forward_plus\\temp",
+      "processes_before": null,
+      "benchmark_competitors": []
+    },
+    {
+      "id": "pass02-paid-g1-forward_plus",
+      "exit_code": 0,
+      "seconds": 113.3499827,
+      "results": [
+        "R3_PAID_HOME 18 checks, 0 failures, restore=false"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--path",
+        "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\game",
+        "res://r3/home.tscn",
+        "--",
+        "--r3-baseline",
+        "--run-id=pass02-paid-g1-forward_plus"
+      ],
+      "log": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\handoff\\logs\\pass02-paid-g1-forward_plus.log",
+      "log_sha256": "c0eb50e02c2504d8a22c5eb194e63eaaff929251dbdeb3ff57e479dd091d817b",
+      "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass02-paid-g1-forward_plus",
+      "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass02-paid-g1-forward_plus\\local",
+      "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass02-paid-g1-forward_plus\\temp",
+      "processes_before": null,
+      "benchmark_competitors": []
+    },
+    {
+      "id": "pass03-restore-g1-forward_plus",
+      "exit_code": 0,
+      "seconds": 106.1557184,
+      "results": [
+        "R3_PAID_HOME 9 checks, 0 failures, restore=true"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--path",
+        "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\game",
+        "res://r3/home.tscn",
+        "--",
+        "--r3-baseline",
+        "--r3-restore",
+        "--run-id=pass03-restore-g1-forward_plus"
+      ],
+      "log": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\handoff\\logs\\pass03-restore-g1-forward_plus.log",
+      "log_sha256": "d2c237ac44e4de12de7726fb5a5f84f020f92ac6fd3fece3df5036d5326b3a77",
+      "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass02-paid-g1-forward_plus",
+      "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass02-paid-g1-forward_plus\\local",
+      "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass02-paid-g1-forward_plus\\temp",
+      "processes_before": null,
+      "benchmark_competitors": []
+    },
+    {
+      "id": "bench01-benchmark-inspection-g1-forward_plus",
+      "exit_code": 0,
+      "seconds": 11.2574552,
+      "results": [
+        "R3_INSPECTION 458 checks, 0 failures, 91 retained pieces"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--path",
+        "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\game",
+        "res://r3/inspection.tscn",
+        "--",
+        "--benchmark",
+        "--r3-baseline",
+        "--run-id=bench01-benchmark-inspection-g1-forward_plus"
+      ],
+      "log": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\handoff\\logs\\bench01-benchmark-inspection-g1-forward_plus.log",
+      "log_sha256": "ee6ee7fdacdccb3a33c45a6600292dce648ab951f7acefe24e8ae7081e74579a",
+      "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\bench01-benchmark-inspection-g1-forward_plus",
+      "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\bench01-benchmark-inspection-g1-forward_plus\\local",
+      "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\bench01-benchmark-inspection-g1-forward_plus\\temp",
+      "processes_before": null,
+      "benchmark_competitors": []
+    },
+    {
+      "id": "bench01-benchmark-home-g1-forward_plus",
+      "exit_code": 0,
+      "seconds": 118.9540998,
+      "results": [
+        "R3_PAID_HOME 7 checks, 0 failures, restore=false"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--path",
+        "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\game",
+        "res://r3/home.tscn",
+        "--",
+        "--benchmark",
+        "--r3-baseline",
+        "--run-id=bench01-benchmark-home-g1-forward_plus"
+      ],
+      "log": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\handoff\\logs\\bench01-benchmark-home-g1-forward_plus.log",
+      "log_sha256": "5d8e048725c276c56bbd7716f6a5083f3dac2622378223b5a81b319b37b10895",
+      "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\bench01-benchmark-home-g1-forward_plus",
+      "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\bench01-benchmark-home-g1-forward_plus\\local",
+      "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\bench01-benchmark-home-g1-forward_plus\\temp",
+      "processes_before": null,
+      "benchmark_competitors": []
+    },
+    {
+      "id": "pass02-paid-r3-forward_plus",
+      "exit_code": 0,
+      "seconds": 112.7187429,
+      "results": [
+        "R3_PAID_HOME 18 checks, 0 failures, restore=false"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--path",
+        "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\game",
+        "res://r3/home.tscn",
+        "--",
+        "--run-id=pass02-paid-r3-forward_plus"
+      ],
+      "log": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\handoff\\logs\\pass02-paid-r3-forward_plus.log",
+      "log_sha256": "c0eb50e02c2504d8a22c5eb194e63eaaff929251dbdeb3ff57e479dd091d817b",
+      "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass02-paid-r3-forward_plus",
+      "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass02-paid-r3-forward_plus\\local",
+      "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass02-paid-r3-forward_plus\\temp",
+      "processes_before": null,
+      "benchmark_competitors": []
+    },
+    {
+      "id": "pass02-restore-r3-forward_plus",
+      "exit_code": 0,
+      "seconds": 107.3209453,
+      "results": [
+        "R3_PAID_HOME 9 checks, 0 failures, restore=true"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--path",
+        "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\game",
+        "res://r3/home.tscn",
+        "--",
+        "--r3-restore",
+        "--run-id=pass02-restore-r3-forward_plus"
+      ],
+      "log": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\handoff\\logs\\pass02-restore-r3-forward_plus.log",
+      "log_sha256": "d2c237ac44e4de12de7726fb5a5f84f020f92ac6fd3fece3df5036d5326b3a77",
+      "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass02-paid-r3-forward_plus",
+      "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass02-paid-r3-forward_plus\\local",
+      "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass02-paid-r3-forward_plus\\temp",
+      "processes_before": null,
+      "benchmark_competitors": []
+    },
+    {
+      "id": "bench01-benchmark-inspection-r3-forward_plus",
+      "exit_code": 0,
+      "seconds": 9.3136897,
+      "results": [
+        "R3_INSPECTION 469 checks, 0 failures, 91 retained pieces"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--path",
+        "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\game",
+        "res://r3/inspection.tscn",
+        "--",
+        "--benchmark",
+        "--run-id=bench01-benchmark-inspection-r3-forward_plus"
+      ],
+      "log": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\handoff\\logs\\bench01-benchmark-inspection-r3-forward_plus.log",
+      "log_sha256": "d9455ef530e2fbec06cf9faa23d3ae1c24290e230130923c9c33360d5b0f8c7f",
+      "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\bench01-benchmark-inspection-r3-forward_plus",
+      "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\bench01-benchmark-inspection-r3-forward_plus\\local",
+      "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\bench01-benchmark-inspection-r3-forward_plus\\temp",
+      "processes_before": null,
+      "benchmark_competitors": []
+    },
+    {
+      "id": "bench01-benchmark-home-r3-forward_plus",
+      "exit_code": 0,
+      "seconds": 115.782442,
+      "results": [
+        "R3_PAID_HOME 7 checks, 0 failures, restore=false"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--path",
+        "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\game",
+        "res://r3/home.tscn",
+        "--",
+        "--benchmark",
+        "--run-id=bench01-benchmark-home-r3-forward_plus"
+      ],
+      "log": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\handoff\\logs\\bench01-benchmark-home-r3-forward_plus.log",
+      "log_sha256": "5d8e048725c276c56bbd7716f6a5083f3dac2622378223b5a81b319b37b10895",
+      "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\bench01-benchmark-home-r3-forward_plus",
+      "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\bench01-benchmark-home-r3-forward_plus\\local",
+      "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\bench01-benchmark-home-r3-forward_plus\\temp",
+      "processes_before": null,
+      "benchmark_competitors": []
+    },
+    {
+      "id": "pass02-g1-gl_compatibility",
+      "exit_code": 0,
+      "seconds": 8.2680234,
+      "results": [
+        "R3_INSPECTION 458 checks, 0 failures, 91 retained pieces"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--path",
+        "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\game",
+        "res://r3/inspection.tscn",
+        "--",
+        "--r3-baseline",
+        "--run-id=pass02-g1-gl_compatibility"
+      ],
+      "log": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\handoff\\logs\\pass02-g1-gl_compatibility.log",
+      "log_sha256": "a20166857b358d01fdc84235827a1d14c42ba12838e3808f0e20e4eef4ac32ff",
+      "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass02-g1-gl_compatibility",
+      "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass02-g1-gl_compatibility\\local",
+      "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass02-g1-gl_compatibility\\temp",
+      "processes_before": null,
+      "benchmark_competitors": []
+    },
+    {
+      "id": "pass02-r3-gl_compatibility",
+      "exit_code": 0,
+      "seconds": 9.1320376,
+      "results": [
+        "R3_INSPECTION 469 checks, 0 failures, 91 retained pieces"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--path",
+        "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\game",
+        "res://r3/inspection.tscn",
+        "--",
+        "--run-id=pass02-r3-gl_compatibility"
+      ],
+      "log": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\handoff\\logs\\pass02-r3-gl_compatibility.log",
+      "log_sha256": "6baf8c45b24409cce53a9ae4a540f93afecacb25f210f17c96c8062e4c489e0d",
+      "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass02-r3-gl_compatibility",
+      "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass02-r3-gl_compatibility\\local",
+      "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass02-r3-gl_compatibility\\temp",
+      "processes_before": null,
+      "benchmark_competitors": []
+    },
+    {
+      "id": "pass01-catalogue-gl_compatibility",
+      "exit_code": 0,
+      "seconds": 7.056678,
+      "results": [
+        "G1_CATALOGUE 1861 checks, 0 failures; 273 legal pairs"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--path",
+        "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\game",
+        "res://g1/catalogue.tscn",
+        "--",
+        "--run-id=pass01-catalogue-gl_compatibility"
+      ],
+      "log": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\handoff\\logs\\pass01-catalogue-gl_compatibility.log",
+      "log_sha256": "923964d71af409bfedbd374a5d65d1be154c26cf7b763740958aa8248d073fdd",
+      "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass01-catalogue-gl_compatibility",
+      "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass01-catalogue-gl_compatibility\\local",
+      "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass01-catalogue-gl_compatibility\\temp",
+      "processes_before": null,
+      "benchmark_competitors": []
+    },
+    {
+      "id": "pass01-transactions-gl_compatibility",
+      "exit_code": 0,
+      "seconds": 6.6325096,
+      "results": [
+        "PLACEMENT_TRANSACTIONS 470 checks, 0 failures"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--path",
+        "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\game",
+        "res://tests/placement_transactions.tscn",
+        "--",
+        "--run-id=pass01-transactions-gl_compatibility"
+      ],
+      "log": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\handoff\\logs\\pass01-transactions-gl_compatibility.log",
+      "log_sha256": "ee7d85c6286168be86129619c8c2f6e550b43d745c86dc0ecda541e3c0a6222e",
+      "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass01-transactions-gl_compatibility",
+      "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass01-transactions-gl_compatibility\\local",
+      "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass01-transactions-gl_compatibility\\temp",
+      "processes_before": null,
+      "benchmark_competitors": []
+    },
+    {
+      "id": "pass01-transactions-restore-gl_compatibility",
+      "exit_code": 0,
+      "seconds": 4.0064476,
+      "results": [
+        "PLACEMENT_RESTART 60 checks, 0 failures"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--path",
+        "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\game",
+        "res://tests/placement_transactions.tscn",
+        "--",
+        "--placement-restore-only",
+        "--run-id=pass01-transactions-restore-gl_compatibility"
+      ],
+      "log": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\handoff\\logs\\pass01-transactions-restore-gl_compatibility.log",
+      "log_sha256": "f5468b174804a07f88ff75e29f9e588a0c6cbcd804630e19df6a1af6793a7d35",
+      "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass01-transactions-gl_compatibility",
+      "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass01-transactions-gl_compatibility\\local",
+      "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass01-transactions-gl_compatibility\\temp",
+      "processes_before": null,
+      "benchmark_competitors": []
+    },
+    {
+      "id": "pass02-paid-g1-gl_compatibility",
+      "exit_code": 0,
+      "seconds": 110.4219125,
+      "results": [
+        "R3_PAID_HOME 18 checks, 0 failures, restore=false"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--path",
+        "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\game",
+        "res://r3/home.tscn",
+        "--",
+        "--r3-baseline",
+        "--run-id=pass02-paid-g1-gl_compatibility"
+      ],
+      "log": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\handoff\\logs\\pass02-paid-g1-gl_compatibility.log",
+      "log_sha256": "6c885fa5f9afb821c099b9eea219fcf93be4f22151454d10ef67c36b5e29bafe",
+      "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass02-paid-g1-gl_compatibility",
+      "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass02-paid-g1-gl_compatibility\\local",
+      "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass02-paid-g1-gl_compatibility\\temp",
+      "processes_before": null,
+      "benchmark_competitors": []
+    },
+    {
+      "id": "pass02-restore-g1-gl_compatibility",
+      "exit_code": 0,
+      "seconds": 103.7286508,
+      "results": [
+        "R3_PAID_HOME 9 checks, 0 failures, restore=true"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--path",
+        "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\game",
+        "res://r3/home.tscn",
+        "--",
+        "--r3-baseline",
+        "--r3-restore",
+        "--run-id=pass02-restore-g1-gl_compatibility"
+      ],
+      "log": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\handoff\\logs\\pass02-restore-g1-gl_compatibility.log",
+      "log_sha256": "522c3b3405418830dd8536c3852e63aea628be04e07ee6ea152cb6f3b92071cb",
+      "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass02-paid-g1-gl_compatibility",
+      "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass02-paid-g1-gl_compatibility\\local",
+      "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass02-paid-g1-gl_compatibility\\temp",
+      "processes_before": null,
+      "benchmark_competitors": []
+    },
+    {
+      "id": "bench01-benchmark-inspection-g1-gl_compatibility",
+      "exit_code": 0,
+      "seconds": 14.3458304,
+      "results": [
+        "R3_INSPECTION 458 checks, 0 failures, 91 retained pieces"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--path",
+        "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\game",
+        "res://r3/inspection.tscn",
+        "--",
+        "--benchmark",
+        "--r3-baseline",
+        "--run-id=bench01-benchmark-inspection-g1-gl_compatibility"
+      ],
+      "log": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\handoff\\logs\\bench01-benchmark-inspection-g1-gl_compatibility.log",
+      "log_sha256": "a20166857b358d01fdc84235827a1d14c42ba12838e3808f0e20e4eef4ac32ff",
+      "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\bench01-benchmark-inspection-g1-gl_compatibility",
+      "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\bench01-benchmark-inspection-g1-gl_compatibility\\local",
+      "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\bench01-benchmark-inspection-g1-gl_compatibility\\temp",
+      "processes_before": null,
+      "benchmark_competitors": []
+    },
+    {
+      "id": "bench01-benchmark-home-g1-gl_compatibility",
+      "exit_code": 0,
+      "seconds": 115.6899679,
+      "results": [
+        "R3_PAID_HOME 7 checks, 0 failures, restore=false"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--path",
+        "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\game",
+        "res://r3/home.tscn",
+        "--",
+        "--benchmark",
+        "--r3-baseline",
+        "--run-id=bench01-benchmark-home-g1-gl_compatibility"
+      ],
+      "log": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\handoff\\logs\\bench01-benchmark-home-g1-gl_compatibility.log",
+      "log_sha256": "1db71cbc5c7a1f40282c7a836c47c6e7ceb075d6cc00c2eedb7c0b5714a28228",
+      "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\bench01-benchmark-home-g1-gl_compatibility",
+      "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\bench01-benchmark-home-g1-gl_compatibility\\local",
+      "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\bench01-benchmark-home-g1-gl_compatibility\\temp",
+      "processes_before": null,
+      "benchmark_competitors": []
+    },
+    {
+      "id": "pass02-paid-r3-gl_compatibility",
+      "exit_code": 0,
+      "seconds": 109.5085095,
+      "results": [
+        "R3_PAID_HOME 18 checks, 0 failures, restore=false"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--path",
+        "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\game",
+        "res://r3/home.tscn",
+        "--",
+        "--run-id=pass02-paid-r3-gl_compatibility"
+      ],
+      "log": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\handoff\\logs\\pass02-paid-r3-gl_compatibility.log",
+      "log_sha256": "6c885fa5f9afb821c099b9eea219fcf93be4f22151454d10ef67c36b5e29bafe",
+      "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass02-paid-r3-gl_compatibility",
+      "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass02-paid-r3-gl_compatibility\\local",
+      "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass02-paid-r3-gl_compatibility\\temp",
+      "processes_before": null,
+      "benchmark_competitors": []
+    },
+    {
+      "id": "pass02-restore-r3-gl_compatibility",
+      "exit_code": 0,
+      "seconds": 103.6501133,
+      "results": [
+        "R3_PAID_HOME 9 checks, 0 failures, restore=true"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--path",
+        "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\game",
+        "res://r3/home.tscn",
+        "--",
+        "--r3-restore",
+        "--run-id=pass02-restore-r3-gl_compatibility"
+      ],
+      "log": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\handoff\\logs\\pass02-restore-r3-gl_compatibility.log",
+      "log_sha256": "522c3b3405418830dd8536c3852e63aea628be04e07ee6ea152cb6f3b92071cb",
+      "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass02-paid-r3-gl_compatibility",
+      "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass02-paid-r3-gl_compatibility\\local",
+      "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\pass02-paid-r3-gl_compatibility\\temp",
+      "processes_before": null,
+      "benchmark_competitors": []
+    },
+    {
+      "id": "bench01-benchmark-inspection-r3-gl_compatibility",
+      "exit_code": 0,
+      "seconds": 14.2654319,
+      "results": [
+        "R3_INSPECTION 469 checks, 0 failures, 91 retained pieces"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--path",
+        "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\game",
+        "res://r3/inspection.tscn",
+        "--",
+        "--benchmark",
+        "--run-id=bench01-benchmark-inspection-r3-gl_compatibility"
+      ],
+      "log": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\handoff\\logs\\bench01-benchmark-inspection-r3-gl_compatibility.log",
+      "log_sha256": "6baf8c45b24409cce53a9ae4a540f93afecacb25f210f17c96c8062e4c489e0d",
+      "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\bench01-benchmark-inspection-r3-gl_compatibility",
+      "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\bench01-benchmark-inspection-r3-gl_compatibility\\local",
+      "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\bench01-benchmark-inspection-r3-gl_compatibility\\temp",
+      "processes_before": null,
+      "benchmark_competitors": []
+    },
+    {
+      "id": "bench01-benchmark-home-r3-gl_compatibility",
+      "exit_code": 0,
+      "seconds": 114.9435417,
+      "results": [
+        "R3_PAID_HOME 7 checks, 0 failures, restore=false"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--path",
+        "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\runtime\\game",
+        "res://r3/home.tscn",
+        "--",
+        "--benchmark",
+        "--run-id=bench01-benchmark-home-r3-gl_compatibility"
+      ],
+      "log": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\handoff\\logs\\bench01-benchmark-home-r3-gl_compatibility.log",
+      "log_sha256": "1db71cbc5c7a1f40282c7a836c47c6e7ceb075d6cc00c2eedb7c0b5714a28228",
+      "appdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\bench01-benchmark-home-r3-gl_compatibility",
+      "localappdata": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\bench01-benchmark-home-r3-gl_compatibility\\local",
+      "temp": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\users\\bench01-benchmark-home-r3-gl_compatibility\\temp",
+      "processes_before": null,
+      "benchmark_competitors": []
+    }
+  ],
+  "benchmark_summary": [
+    {
+      "scene": "inspection",
+      "renderer": "forward_plus",
+      "matched_cases": 33,
+      "draw_delta_range": [
+        -19,
+        0
+      ],
+      "primitive_delta": 0,
+      "median_ms_delta_range": [
+        -0.044999999999999984,
+        -0.007000000000000006
+      ],
+      "p95_ms_delta_range": [
+        -0.29,
+        -0.0030000000000000027
+      ]
+    },
+    {
+      "scene": "home",
+      "renderer": "forward_plus",
+      "matched_cases": 6,
+      "draw_delta_range": [
+        0,
+        0
+      ],
+      "primitive_delta": 0,
+      "median_ms_delta_range": [
+        -0.016999999999999904,
+        0.07800000000000029
+      ],
+      "p95_ms_delta_range": [
+        -0.01100000000000012,
+        0.08099999999999996
+      ]
+    },
+    {
+      "scene": "inspection",
+      "renderer": "gl_compatibility",
+      "matched_cases": 33,
+      "draw_delta_range": [
+        -16,
+        0
+      ],
+      "primitive_delta": 0,
+      "median_ms_delta_range": [
+        -0.04400000000000004,
+        0.02100000000000002
+      ],
+      "p95_ms_delta_range": [
+        -0.07599999999999996,
+        0.05500000000000005
+      ]
+    },
+    {
+      "scene": "home",
+      "renderer": "gl_compatibility",
+      "matched_cases": 6,
+      "draw_delta_range": [
+        0,
+        1
+      ],
+      "primitive_delta": 0,
+      "median_ms_delta_range": [
+        -0.11099999999999977,
+        0.02200000000000024
+      ],
+      "p95_ms_delta_range": [
+        -0.17900000000000027,
+        0.06100000000000083
+      ]
+    }
+  ],
+  "benchmark_case_count": 78,
+  "measured_frames": 46800,
+  "hardware": {
+    "target_budget": "open",
+    "settings": {
+      "paid_home_fov_degrees": 60,
+      "warmup_frames": 120,
+      "msaa": "4x",
+      "samples_per_view_lighting": 300,
+      "inspection_fov_degrees": 55,
+      "vsync": "disabled",
+      "viewport": "1440x900"
+    },
+    "cpu": [
+      {
+        "Name": "AMD Ryzen 9 9950X3D 16-Core Processor          ",
+        "NumberOfCores": 16,
+        "NumberOfLogicalProcessors": 32
+      }
+    ],
+    "adapters": [
+      {
+        "Name": "NVIDIA GeForce RTX 5090",
+        "DriverVersion": "32.0.15.9186",
+        "CurrentHorizontalResolution": 2560,
+        "CurrentVerticalResolution": 1440
+      },
+      {
+        "Name": "AMD Radeon(TM) Graphics",
+        "DriverVersion": "32.0.21045.5002",
+        "CurrentHorizontalResolution": null,
+        "CurrentVerticalResolution": null
+      }
+    ],
+    "system": {
+      "TotalPhysicalMemory": 33446744064
+    },
+    "nvidia_smi": [
+      "NVIDIA GeForce RTX 5090, 591.86, 32607"
+    ],
+    "captured_utc": "2026-09-13T23:09:40.8869694Z",
+    "minimum_hardware_acceptance": "not established"
+  },
+  "render_settings": {
+    "godot": "4.5.stable.official.876b29033",
+    "size_px": [
+      1440,
+      900
+    ],
+    "msaa": 4,
+    "vsync": "off",
+    "inspection_fov_degrees": 55,
+    "home_fov_degrees": 60,
+    "warmup_frames_per_case": 120,
+    "measured_frames_per_case": 300
+  },
+  "tuning": {
+    "normal_strength": {
+      "value": 0.45,
+      "purpose": "Inherited G1 microrelief strength; does not change shape or collision."
+    },
+    "frame_shade": {
+      "value": 0.72,
+      "purpose": "Inherited G1 frame shade, now also distinguishes existing timber rails."
+    },
+    "end_normal_threshold": {
+      "value": 0.75,
+      "purpose": "Selects cut map where the normal faces along the timber member; no endgrain blend onto long faces."
+    },
+    "board_width_m": {
+      "value": 0.25,
+      "purpose": "Inherited quarter metre D1/D3 physical board spacing; variation follows the same run across coarse/fine joins."
+    },
+    "board_phase_texels": {
+      "value": 97,
+      "purpose": "Adjacent physical boards shift longitudinal grain by this whole-texel step within the original 1024-pixel face tile."
+    },
+    "face_resolution_px": {
+      "value": 1024,
+      "purpose": "Original D4 map size used to keep phase shifts on whole texels."
+    },
+    "recess_min_m": {
+      "value": 0.001,
+      "purpose": "Minimum measured inward skin depth that receives protected metal seam response."
+    },
+    "recess_edge_guard_m": {
+      "value": 0.012,
+      "purpose": "Keeps protected seam patina away from outer arrises; no added geometric seam."
+    },
+    "door_rails_y_m": {
+      "value": [
+        -0.78,
+        0.53
+      ],
+      "purpose": "Existing D2 horizontal rail centres; material orientation follows the retained geometry."
+    },
+    "door_rail_half_width_m": {
+      "value": 0.035,
+      "purpose": "Existing D2 half width between strap grooves."
+    },
+    "coarse_rail_width_m": {
+      "value": 0.065,
+      "purpose": "Existing D1 end-rail width on cube and wall; rail grain runs horizontally."
+    },
+    "fine_rail_width_m": {
+      "value": 0.032,
+      "purpose": "Existing D3 half cube/wall rail width; does not scale texture density."
+    },
+    "panel_frame_width_m": {
+      "value": 0.045,
+      "purpose": "Existing native/D3 integral panel batten width; frame orientation only."
+    },
+    "window_frame_width_m": {
+      "value": 0.075,
+      "purpose": "Existing native/D3 opaque window frame width; no body or pane change."
+    },
+    "seam_roughness_add": {
+      "value": 0.12,
+      "purpose": "Additional roughness at protected existing metal recesses; oxide/patina remains distinct from the metal body."
+    },
+    "projection_axis_threshold": {
+      "value": 0.95,
+      "purpose": "Stabilizes near-axis broad-plane projection across existing bevel normals."
+    },
+    "roof_face_min_up": {
+      "value": 0.2,
+      "purpose": "Separates roof covering planes from cut side/underside faces."
+    },
+    "alternate_axis_threshold": {
+      "value": 0.8,
+      "purpose": "Selects a nonparallel tangent reference for end maps."
+    },
+    "recess_face_threshold": {
+      "value": 0.9,
+      "purpose": "Limits protected metal seam tint to front-facing recesses."
+    },
+    "inspection_grid_m": {
+      "value": 0.1,
+      "purpose": "Diagnostic grid pitch in metres; used only in labelled UV evidence."
+    },
+    "inspection_line_fraction": {
+      "value": 0.035,
+      "purpose": "Diagnostic grid line fraction; not enabled in normal candidate rendering."
+    }
+  },
+  "inherited_scale": "D4/D5 family face/edge repeats unchanged; D6 retains G1 0.5 by 0.5 metre shared-map fallback.",
+  "authored_textures_added": 0,
+  "authored_textures_removed": 0,
+  "authored_geometry_replaced": 0,
+  "source_masters": [
+    {
+      "path": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\handoff\\masters\\d4_materials.blend",
+      "sha256": "b93a03545d5102594a068b9b1735ccfef7ac1301dc36123f2a8c82bdf546ccba",
+      "packed_images": 42,
+      "triangles_in_unchanged_master": 314
+    },
+    {
+      "path": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\handoff\\masters\\d5_materials.blend",
+      "sha256": "126bac7abab517d87b77d279b8934e2c2a8741e52d6a9518a61b488c7ae68cb8",
+      "packed_images": 48,
+      "triangles_in_unchanged_master": 1762
+    },
+    {
+      "path": "D:\\project-wroughtwild-art07-r3\\build\\art07-repairs\\r3\\v01\\handoff\\masters\\d6_materials.blend",
+      "sha256": "b2a7113fba5ba96ba5de7cababe3b0f45e3220f8e5026d7f207f215c899499e5",
+      "packed_images": 12,
+      "triangles_in_unchanged_master": 13620
+    }
+  ],
+  "selected_lods": "Unchanged G1 selections through art07_d1/adapter.gd, art07_d2/adapter.gd and art07_d3/adapter.gd, plus all unchanged world/resource LODs. No proxy or substitute mesh adopted.",
+  "private_state": "All APPDATA, LOCALAPPDATA, TEMP/TMP and Blender resources are under this R3 v01 users/<job-id> tree. Godot user:// resolves under each APPDATA/ART07G1. Successful restarts reuse only their matching private paid/transaction user directory in a fresh process. Normal owner saves are untouched.",
+  "visual_evidence": {
+    "report": "docs/art/leyline-studies/2026-09-14/art07-repairs/r3/README.md",
+    "curated_provenance": "curated/provenance.json",
+    "curated_sha256": "d97e84376ccdb0a718b57a40ed7254af90cce534da5b4f73306fd3dab4ef8a85",
+    "png_count": 27,
+    "png_size_px": [
+      1440,
+      900
+    ],
+    "motion": "curated/paid-native-walk.gif",
+    "motion_frames": 30,
+    "motion_size_px": [
+      640,
+      400
+    ],
+    "motion_frame_duration_ms": 100,
+    "scope": "Exact engine PNGs; GIF resized from original native input frames, with source hashes and actual physics tick stamps retained."
+  },
+  "strict_native_fingerprints": {
+    "paid-forward-fingerprints": "3552bb922ee06cd5093bff8fcb9b7ba96c78b1119162a3bd225ee34f72828727",
+    "paid-compatibility-fingerprints": "fb4e53eeaa7f5f0ca92cebc16a8274eaf996d75136c348b4305acf31ac6f21c3",
+    "restore-g1-forward-fingerprints": "24993212e637c6d999dc7c6a4a2041861fa3fae56387c534da12d8e70da8f936",
+    "restore-r3-forward-fingerprints": "3e1711716a29da2e79a7ad6c2e3cb80a451efe6fe207a39eb5378369cc2f000e",
+    "restore-g1-compatibility-fingerprints": "e18f8dc80dac8c729285569416cdb60e21c4a880c187b40b2de6593e11417efb",
+    "restore-r3-compatibility-fingerprints": "21108e1f2bf72d533d74117fc6a4aaee630c32f89ea71b082cff20441bfb76da",
+    "paid-cross-renderer-fingerprints": "f47facf19fb7eded2e346773002642bc32807e2af5a535665a66a14f2b2cd126"
+  },
+  "remaining_limits": [
+    "Owner visual acceptance and independent combined R8/R9 review remain pending; this is an R3 integration candidate.",
+    "R2 overlaps game/g1/materials.gd:G1Materials.material_for, game/g1/art.gd:G1Art.piece_mesh and game/scripts/piece_look.gd:PieceLook.apply_to. Merge the baseline-relative hooks; do not copy a whole peer runtime. Preserve per-piece shape identity if a shared mesh can represent different IDs.",
+    "Original geometry/grooves, material map repetition and the dark source paid interior remain. No new shape, body, recipe, roof gate, scatter, seat, canopy or ground-cover rule was introduced.",
+    "Cinderglass retains source opacity 0.72; several layers attenuate heavily and no refraction is supplied. Fixed front/back/axis and perpendicular-pane comparisons exist in both renderers.",
+    "Current RTX 5090 measurements do not establish minimum-hardware acceptance or a performance budget. Loaded construction edge textures and per-shape material cache entries increase.",
+    "The unchanged original transaction harness uses one fixed screenshot directory, so retained transaction screenshots are the later Compatibility output; independent logs and private restart checkpoints exist for both renderers.",
+    "The GIF is illustrative native-controller playback approaching a closed saved door, not a timing recording or a claim of walking through that door.",
+    "Two failed fixture attempts and unlaunched GPU deferrals are retained as history, not candidate acceptance evidence. Use the successful pass02 candidate paid checkpoints, with the explicit pass03 baseline Forward+ restore where indicated.",
+    "The checked engine batch used the earlier 45-second acquisition wait. The final owned wrapper offers one continuous finite 900-second acquisition wait; its syntax passed. All engine/Blender launches used the same unchanged shared runner and mutex.",
+    "Ordinary-world rollout and main integration/publication are outside this worker task."
+  ],
+  "owner_visual_acceptance": "pending",
+  "ordinary_world_rollout": "outside scope",
+  "main_integration_and_push": "not performed by worker",
+  "automatic_approval_rejections": [],
+  "verifier_command": "& 'C:/Users/Matty/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' -B tools/wroughtwild-art07-repairs/r3/seal.py --verify 'D:/project-wroughtwild-art07-r3/build/art07-repairs/r3/v01/handoff'",
+  "application_command": "& 'C:/Users/Matty/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' -B tools/wroughtwild-art07-repairs/r3/install.py --version v02",
+  "application_precondition": "Reconstruction version v02 is absent at receipt creation; verify absence again before running. Use workspace.py inspect/verify/prepare for r3 on this branch, the verified common source, and --version v02. Run install.py --version v02 --check-base before applying. Do not apply this baseline installer over an R2 or other peer candidate.",
+  "reconstruction_commands": [
+    "& 'C:/Users/Matty/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' -B tools/wroughtwild-art07-repairs/workspace.py inspect --id r3",
+    "& 'C:/Users/Matty/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' -B tools/wroughtwild-art07-repairs/workspace.py verify --id r3",
+    "& 'C:/Users/Matty/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' -B tools/wroughtwild-art07-repairs/workspace.py prepare --id r3 --version v02",
+    "& 'C:/Users/Matty/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' -B tools/wroughtwild-art07-repairs/r3/install.py --version v02 --check-base",
+    "& 'C:/Users/Matty/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' -B tools/wroughtwild-art07-repairs/r3/install.py --version v02"
+  ]
+}
