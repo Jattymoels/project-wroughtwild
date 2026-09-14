@@ -340,5 +340,18 @@
     "after": "evidence/paid-state/after.json",
     "byte_identical": true,
     "sha256": "40dfe237742c9058b13098a522802160de1df221895129f6cd421dc86044074d"
+  },
+  "publication": {
+    "method": "scoped cherry-pick",
+    "previous_main": "c342c775e409613f37193678933a7668f7859a56",
+    "original_implementation_commit": "f293e038d8c6c8cd54a4f84f57a724ae491bb06c",
+    "original_receipt_commit": "2b0af7889b48da90bdfa881cf27942ae9a7e1474",
+    "implementation_commit": "27f8a1f7f6133347a66fedd100ae1d03a8fc3951",
+    "receipt_commit": "eb9029dfe4dac3600546430f1f7e0081e79306df",
+    "worker_tree_content_match": "All owned Git blobs identical",
+    "destination": "origin/main at https://github.com/Jattymoels/project-wroughtwild.git",
+    "ref": "refs/heads/main",
+    "publisher_verification": "docs/prototype/art07-repairs/2026-09-14/publication-r7.json",
+    "push": "Accompanying publication commit; remote-tip result verified separately."
   }
 }

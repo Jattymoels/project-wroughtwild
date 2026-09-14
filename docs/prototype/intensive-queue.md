@@ -420,3 +420,9 @@ publication; no combined runtime or ordinary-world rollout was released.
 [R6 passed publisher verification](art07-repairs/2026-09-14/publication-r6.md).
 R6 adds ore-specific mineral, cracking and depletion detail to all five native faceted ore surfaces. It preserves the original thin terrain ribbon, picking triangles, finite yield, excavation and saved state; the raised authored fallback remains unchanged.
 G2-V04: partial; technically verified surface-material candidate, with owner visual acceptance and combined R8/R9 review pending. R8 still waits for checked R7 publication.
+
+### ART-07R7 publication, 14 September 2026
+
+[R7 passed publisher verification](art07-repairs/2026-09-14/publication-r7.md).
+R7 composes leafier shrubs, layered fern/grass groups and rooted sway at existing decorative anchors. It keeps their original envelopes, IDs, poses, clearing masks and visibility distances, while retaining the published R1 canopy and native world/save state.
+G2-V05: partial; bounded local composition is technically verified. Continuous reference understorey is unmet, with owner and combined R8/R9 review pending. R1–R7 are checked published candidates. R8 dependency gates are clear; its actual workspace setup is recorded separately once prepared. R9 waits for published R8 and must be an independent task.

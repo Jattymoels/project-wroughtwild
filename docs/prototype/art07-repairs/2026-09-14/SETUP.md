@@ -1,10 +1,10 @@
 # Worktree and runtime setup
 
-Start with [the plan](README.md). R8 still waits for checked R7 publication.
+Start with [the plan](README.md). R1–R7 are checked published candidates. R8 dependency gates are clear; its actual workspace setup is recorded separately once prepared. R9 waits for published R8 and must be an independent task.
 No worker task was launched by publication. [Workspaces](workspaces.json)
 preserves historical preparation and current delivery state.
 
-Published repair candidates: [R1](publication-r1.md) [R2](publication-r2.md) [R3](publication-r3.md) [R4](publication-r4.md) [R5](publication-r5.md) [R6](publication-r6.md).
+Published repair candidates: [R1](publication-r1.md) [R2](publication-r2.md) [R3](publication-r3.md) [R4](publication-r4.md) [R5](publication-r5.md) [R6](publication-r6.md) [R7](publication-r7.md).
 The initial setup flags remain historical; [deliveries.json](deliveries.json)
 is the current readiness record.
 
