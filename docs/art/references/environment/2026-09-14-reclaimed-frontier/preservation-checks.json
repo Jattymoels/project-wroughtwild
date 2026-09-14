@@ -1,0 +1,111 @@
+{
+  "result": "PASS",
+  "date": "2026-09-14",
+  "scope": "Documentation and unchanged owner-reference preservation only. No engine, asset generation, runtime implementation or worker task launched.",
+  "images": [
+    {
+      "id": "ENV-003",
+      "original_bytes_match": true,
+      "png_chunk_checksums": "PASS",
+      "sha256": "11a9c1ee313b734098f7bc91ece0710ef3a2c1709ba84a624d09a8af24ecae85",
+      "dimensions": [
+        1024,
+        576
+      ]
+    },
+    {
+      "id": "ENV-004",
+      "original_bytes_match": true,
+      "png_chunk_checksums": "PASS",
+      "sha256": "e9c29be20afa75095738f3de239b618b87026954dd6cfa67fef7e427df555e60",
+      "dimensions": [
+        1024,
+        576
+      ]
+    },
+    {
+      "id": "ENV-005",
+      "original_bytes_match": true,
+      "png_chunk_checksums": "PASS",
+      "sha256": "fbec3b8b33dc6ea38058fffa545d07312b85d5c5935cdad315a16f781a622b51",
+      "dimensions": [
+        1024,
+        576
+      ]
+    },
+    {
+      "id": "ENV-006",
+      "original_bytes_match": true,
+      "png_chunk_checksums": "PASS",
+      "sha256": "6f5e42828621f8abe5850d702bc590abcf6d013fa1f0686ef35fdce596f2fa60",
+      "dimensions": [
+        1024,
+        576
+      ]
+    },
+    {
+      "id": "ENV-007",
+      "original_bytes_match": true,
+      "png_chunk_checksums": "PASS",
+      "sha256": "b1ceaacbb8634269a852391e1d81e02c4aa1e0047c116bdc59777a6ab176413a",
+      "dimensions": [
+        1024,
+        576
+      ]
+    },
+    {
+      "id": "ENV-008",
+      "original_bytes_match": true,
+      "png_chunk_checksums": "PASS",
+      "sha256": "6a85a1c2801774442e0bcdf4737d5af113b9fc7facdb599a6adf1a9d57a48f6c",
+      "dimensions": [
+        2560,
+        1440
+      ]
+    }
+  ],
+  "local_markdown_links_checked": 303,
+  "validators": [
+    {
+      "command": "tools/wroughtwild-art07-repairs/dispatch.py",
+      "exit_code": 0,
+      "stdout": "{\n  \"result\": \"PASS\",\n  \"worker_prompts\": 9,\n  \"publisher_prompts\": 1,\n  \"exclusive_git_outputs\": 36,\n  \"findings_owned_once\": 7,\n  \"waves\": 4,\n  \"reading_files\": 35,\n  \"local_links\": 105\n}\n"
+    },
+    {
+      "command": "tools/wroughtwild-world-design/session_plan.py",
+      "exit_code": 0,
+      "stdout": "{\n  \"result\": \"PASS\",\n  \"production_slices\": 26,\n  \"worker_prompts\": 26,\n  \"publisher_prompts\": 1,\n  \"catalogue_entries_owned_once\": 131,\n  \"coverage\": {\n    \"resource_nodes\": 22,\n    \"nature_support\": 33,\n    \"shapes\": 26,\n    \"materials\": 19,\n    \"devices\": 15,\n    \"fauna_presentation\": 16\n  },\n  \"dependency_edges\": 60,\n  \"required_reading_files\": 43,\n  \"local_links\": 192,\n  \"initially_ready\": [\n    \"b1\",\n    \"b2\",\n    \"b3\",\n    \"d1\",\n    \"d4\",\n    \"d5\",\n    \"d6\",\n    \"f5\"\n  ]\n}\n"
+    },
+    {
+      "command": "tools/wroughtwild-world-design/catalogue.py",
+      "exit_code": 0,
+      "stdout": "{\n  \"result\": \"PASS\",\n  \"shapes\": 26,\n  \"materials\": 19,\n  \"kits\": 14,\n  \"upgrades\": 1,\n  \"finite_resource_types\": 22,\n  \"supporting_art_roles\": 33,\n  \"actor_ids\": 16,\n  \"grid_m\": 1.0,\n  \"lattice_divisions\": 2,\n  \"normal_profiles_kits\": 10,\n  \"living_frontier_supported_profiles_kits\": 14,\n  \"legal_material_shape_pairs\": 273,\n  \"station_body_m\": [\n    0.96,\n    2.0,\n    0.96\n  ],\n  \"scope\": \"Concept coverage only. Profile/era/unlock gates still apply; no new rules or universal kit availability.\"\n}\n"
+    },
+    {
+      "command": "tools/wroughtwild-world-design/verify_art.py",
+      "exit_code": 0,
+      "stdout": "{\n  \"result\": \"PASS\",\n  \"pngs\": 6,\n  \"selected_boards\": 5,\n  \"superseded_framing_board\": 1,\n  \"exact_prompts\": 6,\n  \"generated_original_copies_checked\": 6,\n  \"edit_parent_links\": 1,\n  \"unchanged_mood_reference\": 1,\n  \"local_links_checked\": 28\n}\n"
+    }
+  ],
+  "owned_paths": [
+    "docs/art/references/README.md",
+    "docs/art/art-direction.md",
+    "docs/decisions/registry.md",
+    "docs/world-premise.md",
+    "docs/systems/world-generation.md",
+    "docs/prototype/intensive-queue.md",
+    "docs/prototype/reclaimed-frontier-intensive-2026-09-14.md",
+    "docs/art/references/environment/2026-09-14-reclaimed-frontier/README.md",
+    "docs/art/references/environment/2026-09-14-reclaimed-frontier/owner-intent.md",
+    "docs/art/references/environment/2026-09-14-reclaimed-frontier/manifest.json",
+    "docs/art/references/environment/2026-09-14-reclaimed-frontier/preservation-checks.json",
+    "docs/art/references/environment/2026-09-14-reclaimed-frontier/env-003-styled-forest-original.png",
+    "docs/art/references/environment/2026-09-14-reclaimed-frontier/env-004-styled-open-country-original.png",
+    "docs/art/references/environment/2026-09-14-reclaimed-frontier/env-005-impact-grassland-original.png",
+    "docs/art/references/environment/2026-09-14-reclaimed-frontier/env-006-impact-forest-original.png",
+    "docs/art/references/environment/2026-09-14-reclaimed-frontier/env-007-impact-mountain-original.png",
+    "docs/art/references/environment/2026-09-14-reclaimed-frontier/env-008-valheim-undulating-meadow-original.png"
+  ],
+  "unrelated_checkout_entries_preserved": 49,
+  "tuning_introduced": null
+}

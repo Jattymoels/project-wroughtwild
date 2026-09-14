@@ -1,5 +1,16 @@
 # World Generation, Settlements and Travel
 
+**Future direction recorded, 14 September 2026:** the
+[Reclaimed Frontier intensive](../prototype/reclaimed-frontier-intensive-2026-09-14.md)
+follows R9 and accepted ART-07 main-game integration. Its
+[owner references and caveats](../art/references/environment/2026-09-14-reclaimed-frontier/README.md)
+call for undulating living terrain and biome-specific growth over old impact
+damage, with large impacts shaping surrounding land and selected pulsing scars.
+Images are influences, not exact maps or a new generation specification. This
+entry changes no current profile, terrain, placement, collision, finite stock,
+save or campaign event. Detailed compatibility and measured terrain/vegetation
+budgets belong to the future plan; no new profile or live growth system is selected.
+
 **LF-5C (9 September 2026):** first Pairing victory queues a distinct
 `resonance_second` event at the published Excited Uplands envelope. Stone shelves
 rise by up to three metres with twelve-metre spacing and ordinary one-metre

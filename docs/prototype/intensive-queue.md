@@ -1,6 +1,6 @@
 # Wroughtwild intensive queue
 
-Updated: 14 September 2026 (all 26 original ART-07 deliveries complete; R1–R4 repairs published; R5–R7 prepared; integration and acceptance gates remain open). Owner: Matty. Delivery: Codex.
+Updated: 14 September 2026 (all 26 original ART-07 deliveries complete; R1–R8 repairs published; R9 independent review is the current gate; Reclaimed Frontier future intensive and six owner references recorded). Owner: Matty. Delivery: Codex.
 
 The owner asked to keep track of the seven intensives discussed after the Wide
 Frontier pass and make a plan for the first one. This is the current planning
@@ -60,6 +60,25 @@ remaining fixtures before one retained world/home route. Reuse approved art.
 No new resource, recipe, enemy cap, generator profile or save migration is part
 of this design delivery. Mob rigs/era augmentation and the ART-05 route
 performance/polish backlog remain open.
+
+## Future intensive — Reclaimed Frontier
+
+**Queued at the owner's request, 14 September 2026; implementation not started.**
+The [Reclaimed Frontier brief](reclaimed-frontier-intensive-2026-09-14.md) preserves
+the new direction: rolling, living terrain years after the meteorite catastrophe,
+with established vegetation over much of the chaos, large impacts shaping the
+surroundings and surviving pulsating veins/cracks. Forest, open country, fen and
+mountain settings retain different recovery patterns. The
+[six unchanged images, per-image caveats and owner wording](../art/references/environment/2026-09-14-reclaimed-frontier/README.md)
+are durable influences on feel, not exact style, crater count or map targets.
+
+Sequence: complete R9 and accepted ART-07 main-game integration, then scope this
+terrain/biome-composition work against the adopted assets and actual performance.
+It does not add another condition to the current art integration or extend R9.
+R7's retained placement limits leave continuous ground cover unmet; this future
+pass addresses landform and ecological composition beyond individual asset finish.
+Detailed generation/save choices, density/pulse budgets and implementation prompts
+remain future planning. No new map extent, profile or live regrowth is selected.
 
 ## Previous art priority — remaining animal mobs, then era augmentation
 

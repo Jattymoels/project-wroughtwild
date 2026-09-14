@@ -68,6 +68,18 @@ the one who learns to contain that pressure and builds the new working machinery
 
 ## The player's place
 
+**Owner landscape clarification, 14 September 2026:** the present landscape
+should feel years after the original impacts, with established vegetation and
+wildlife reclaiming much of the broken ground. Large impacts still shape places;
+living veins/cracks remain within the recovered terrain. Green surroundings and
+biome-specific recovery matter more than repeated exposed crater bowls or fresh
+smoking devastation. The [six references and owner sentiment](art/references/environment/2026-09-14-reclaimed-frontier/README.md)
+guide that feeling without selecting their exact styles or layouts. The
+[Reclaimed Frontier intensive](prototype/reclaimed-frontier-intensive-2026-09-14.md)
+is recorded as future terrain/composition work, not implementation now. This
+clarifies the age of the original catastrophe visually; it does not retime the
+later Living Frontier campaign events or select live ecological regrowth.
+
 **Owner direction, 8 September 2026:** different meteorites carry different
 magic/technology. The owner identifies the existing white-coloured smithy example
 and envisages red, blue and green influences in seed-generated worlds. Each
@@ -130,8 +142,10 @@ compatible successor replaces them.
 ## Mysteries left open
 
 The sender and purpose of the meteorites, whether the shower was deliberate,
-the time since impact, the player's origin, and the names and histories of the
-former civilisations are not established. Enemy ancestries beyond the selected
+the exact number of years since impact, the player's origin, and the names and
+histories of the former civilisations are not established. The 14 September
+clarification above selects a years-after recovered landscape, superseding only
+the earlier entirely unspecified visual timescale. Enemy ancestries beyond the selected
 animals above and the human Conservator remain open; beasts need not have
 been people. Their ordinary origins do not establish a civilisation's history.
 

@@ -4,6 +4,23 @@ This is the durable starting point for environment direction and creature design
 Keep reference files here with their notes so a later task can recover the brief
 from the checkout without needing the original chat or temporary attachments.
 
+## Owner direction — 14 September 2026: reclaimed impact landscapes
+
+The [six annotated originals, ENV-003–ENV-008](environment/2026-09-14-reclaimed-frontier/README.md)
+preserve the owner's desired influence and sentiment, not exact image targets:
+undulating living terrain, grass and established vegetation growing over old
+impact damage, distinct biome recovery, and surviving pulsating veins/cracks.
+The first two are highly styled influences; the third remains too crater-focused;
+the mountain image feels too recent; the Valheim image supplies everyday
+undulation and life. Read the [owner wording](environment/2026-09-14-reclaimed-frontier/owner-intent.md)
+and per-image caveats before using the images. Originals retain their full
+resolution and bytes in a [separate manifest](environment/2026-09-14-reclaimed-frontier/manifest.json).
+
+The [Reclaimed Frontier intensive](../../prototype/reclaimed-frontier-intensive-2026-09-14.md)
+is queued after R9 and accepted ART-07 main-game integration. This records future
+work and accepted visual direction; it does not launch implementation or change
+current generation/save rules. Original ENV-001/002 and their manifest remain intact.
+
 ## Owner direction — 7 September 2026
 
 The owner supplied the two landscapes below as mood/composition references and

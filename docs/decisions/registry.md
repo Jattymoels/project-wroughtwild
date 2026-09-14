@@ -1,5 +1,20 @@
 # Decision Registry
 
+Owner reference and future-work direction, 14 September 2026: preserve six new
+biome references with their sentiment and queue the
+[Reclaimed Frontier intensive](../prototype/reclaimed-frontier-intensive-2026-09-14.md)
+after R9 and accepted ART-07 main-game integration. Under D-013/D-030, the intended
+landscape reads years after the initial catastrophe: undulating living ground,
+established vegetation reclaiming damage, large impacts shaping surrounding
+terrain and surviving pulsating veins/cracks. This narrows the previously open
+time-since-impact direction to a years-after visual setting; exact years remain
+unspecified. The [originals and owner caveats](../art/references/environment/2026-09-14-reclaimed-frontier/README.md)
+are influences, not exact reproduction or approval of every pictured feature.
+D-032's finite seeded worlds, existing saves, bodies, stock and campaign events
+remain authoritative. Accepted: visual intent, durable references and future
+backlog entry. Not selected: a runtime implementation, new generator profile,
+map extent, live growth simulation or extra R-wave/adoption gate.
+
 Owner visual correction, 9 September 2026: the six remaining animals need
 **obvious, deep veins that look like the mechanism keeping them alive**, with
 the porcupine face repaired alongside. [ART-06C](../prototype/roster-lifelines-2026-09-09.md)

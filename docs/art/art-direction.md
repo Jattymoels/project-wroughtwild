@@ -1,5 +1,17 @@
 # Art Direction — "Weathered Frontier, Dark Thresholds"
 
+**Owner clarification, 14 September 2026:** the world should feel years beyond
+the initial meteorite catastrophe, with established life reclaiming its damage.
+Rolling green ground and biome-specific vegetation connect ordinary places;
+large old impacts shape the land and selected exposed veins/cracks still pulse.
+Avoid excessive repeated bare crater bowls and universally fresh-looking damage.
+The [six preserved references and caveats](references/environment/2026-09-14-reclaimed-frontier/README.md)
+are influences on feeling and composition, explicitly not exact style/layout
+targets. The [Reclaimed Frontier intensive](../prototype/reclaimed-frontier-intensive-2026-09-14.md)
+is future work after R9 and accepted ART-07 game integration. This refines
+D-013/D-030's visual direction; it does not approve runtime generation changes,
+live regrowth, new biome/animal rules or a replacement of the current art style.
+
 **Owner continuation, 9 September 2026:** “Perfect” visually approves ART-06C's
 deep lifelines and porcupine face. The next request selects **nature/world-feel
 and every existing craftable placeable design**, using the original ENV-002
