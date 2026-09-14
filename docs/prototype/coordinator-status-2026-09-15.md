@@ -29,8 +29,8 @@ merely because a historical checkbox still says human review pending.
 Current adoption update: A1 is integrated on main as `35cee73` and successfully
 pushed to `origin/main`. The [result and normal-game playtest steps](mainline-art-a1-result-2026-09-15.md)
 record the reused worker checks and the short headless main asset import.
-A2 is now checked on `codex/mainline-fauna-a2`, ready for coordinator integration;
-main integration and push remain pending. The [A2 result](mainline-fauna-a2-result-2026-09-15.md)
+A2 is integrated and pushed on main as `27e742d`.
+The [A2 result](mainline-fauna-a2-result-2026-09-15.md)
 records the finished fauna, native checks and the small missing C3 shader repair.
 The inventory below preserves the original coordination inspection.
 
@@ -66,9 +66,9 @@ this coordination document's own commit, not a reset target.
 | Foundry, gear and trials | Classes, skill discovery, Kind/ingot interactions, crafting quality/mastery, Forge story and repeatable tiers are implemented. | Human build satisfaction, class balance, progression explanation, encounter tells and run length. Full Crossfire completion and upper-tier balance remain open evidence/feel questions. |
 | Living Frontier | Waves 1–7 and INT-18A are implemented on main: four-colour extraction/devices, laboratories, two protected terrain changes, human finale and captured challenges. | Still uses the existing opt-in campaign launch/policy. A continuous fresh campaign and ordinary-startup adoption decision remain distinct from this art port. Do not schedule LF3–7 again from older queue text. |
 | INT-01–08 improvements | Clarity, home placement/hauling, audio, workshop usability, combat feedback, save recovery, streaming, controls and portable export have implementation records. | Targeted owner feedback; investigate reported defects. Other-machine play and broad final regression wait for the chosen playtest phase. |
-| Existing normal-game art | A1 now supplies the approved R8 environment, resources, building materials, stations and devices through normal new-world and Continue entry. Older articulated animal art remains. | Latest finished fauna adoption is A2; reported playtest issues remain open. |
+| Existing normal-game art | A1 supplies the R8 environment, resources, buildings, stations and devices; A2 supplies the finished boar/wolf/stag with existing moths preserved. All use normal world/Continue entry. | Reported movement, underground and canopy issues remain open; owner playtesting is deferred. |
 | R8 environment/placeables | All 26 original ART-07 deliveries and R1–R8 are published as source/handoff work; their selected production runtime is now adopted on main. | **A1 integrated and pushed as `35cee73`.** [Result and playtest](mainline-art-a1-result-2026-09-15.md). |
-| Finished fauna | ART-01 boar and ART-03 wolf/stag are visually approved with rigs/clips; retain the liked moth. ART-05 supplies an existing native boar adapter example. R8 preserves the older actor set. | **A2 worker complete and checked; main integration/push pending.** Finished boar/wolf/stag and existing LF aliases use native clocks; moth retained. [Result](mainline-fauna-a2-result-2026-09-15.md). |
+| Finished fauna | A2 adopts ART-01 boar and ART-03 wolf/stag, including existing LF visual aliases, on native actor clocks. Moths retain their earlier art/motion. | **A2 integrated and pushed as `27e742d`.** Mid detail, foot sliding and no terrain IK/distance switching are recorded limits. [Result](mainline-fauna-a2-result-2026-09-15.md). |
 | Six replacement mobs | Approved ART-06C surfaces/models exist for porcupine Archer, ram Husk, crane Shrieker, beetle Crawler, six-legged nymph Lurker and tortoise Knight. | Real rigging, weighting, locomotion/attack presentation and runtime integration, one complete enemy role per slice. Static models are not playable replacements. |
 | Later art/world ambition | Later-era physical augmentation, remaining boss/host art and Reclaimed Frontier references/direction are recorded. | Future scoped production/design. Reclaimed Frontier means living, rolling terrain years after impact, vegetation reclaiming damage and surviving pulsing cracks; no new generator/save rule is selected. |
 | Broader game ambition | Class halls, substantial outpost/transport progression, larger production networks and richer late-game content remain longer-term design. | Choose only what the current prototype loop demonstrates it needs. Multiplayer, infinite generation and broad factory/trading systems remain outside scope. |
@@ -84,7 +84,7 @@ to their own future decision/bug work; art adoption must not silently decide the
 1. **A1 — completed on main and pushed.** Environment, building/resource materials,
    stations and devices, preserving current world/campaign/save rules and octagonal
    support. [Exact worker prompt and workspace](mainline-art-a1-worker-2026-09-15.md).
-2. **A2 — checked worker ready for integration.** Boar, wolf, stag and preserved moth; current
+2. **A2 — completed on main and pushed.** Boar, wolf, stag and preserved moth; current
    enemy IDs, bodies, attack clocks, statuses, drops and passive habits remain.
    [Worker result](mainline-fauna-a2-result-2026-09-15.md); integrate and push the returned commit before the six unfinished replacement rigs.
    [Prepared worker prompt and D: workspace](mainline-fauna-a2-worker-2026-09-15.md).
@@ -92,6 +92,7 @@ to their own future decision/bug work; art adoption must not silently decide the
    frame spikes and the accidental below-terrain transition/worse lag. Preserve
    the owner's preview save. Use a short representative trace/reproduction;
    do not assume streaming, collision, shaders or geometry is the cause.
+   [Prepared movement worker and D: workspace](play01-movement-worker-2026-09-15.md).
 4. **PLAY-02 — canopy completeness.** Inspect the reported missing portions and
    distance transitions; fix the demonstrated geometry/material/detail fault.
 5. **Remaining mob production**, one existing enemy role per rig/animation/runtime
@@ -105,6 +106,13 @@ to their own future decision/bug work; art adoption must not silently decide the
 R9 is stopped throughout this sequence. No additional visual approval, baseline
 comparison, performance clearance or independent review is required for approved
 art. PLAY-01–04 remain open until actual fixes/feedback establish otherwise.
+
+The retained preview log also records three signal-lifetime errors in
+`chest_panel.gd` refresh/store. This is a separate concrete UI diagnostic for the
+bug backlog; no evidence links it to the reported movement stutter. The preview's
+configured `user/ART07G1/g1-play.json` was absent at this inspection, while
+`runtime/game/g1/paid-home.json` exists. The owner's exact underground location
+is unavailable; do not invent it or block scoped diagnosis awaiting playtesting.
 
 ## Handoffs and playtesting
 
@@ -133,6 +141,7 @@ The existing R8 preview launcher is still only a preview:
 The original coordination setup used repository/worktree inspection and a small
 handoff check. A1 now has [passed production import and gameplay checks](mainline-art-a1-result-2026-09-15.md)
 from its worker, reused during completed main integration. Main's assets were
-prepared with one 31-second hidden headless import. Main integration and push
-are complete; finished-fauna adoption, performance fixes and replacement rigs
-remain separate work.
+prepared with one 31-second hidden headless import. A2's worker evidence was
+also reused, followed by a six-second headless import on main. Both adoption
+slices are integrated and pushed; movement/terrain fixes, canopy completeness
+and replacement rigs remain the next work.

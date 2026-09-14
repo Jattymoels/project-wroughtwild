@@ -1,9 +1,9 @@
 # A2 - finished fauna in the ordinary game
 
-This worker's normal game uses the approved ART-01 boar and ART-03 wolf/stag
+The normal game on main uses the approved ART-01 boar and ART-03 wolf/stag
 rigs, clips and materials. Existing LF visual aliases use the same finished
 families; the liked moth retains its earlier art and motion. The checked worker
-is ready for coordinator integration. Main integration and push are **pending**.
+was integrated as `27e742d` and successfully pushed to `origin/main`.
 Owner standing approval applies; owner playtesting remains deferred.
 
 ## Player-visible change and limits
@@ -97,12 +97,27 @@ Initial reading/cook and final Git/report preparation are additional; no broad
 review, benchmark or background continuation was launched. All owned tests have
 exited. Private logs, diagnostic and checkpoint stay under `build/a2/` on D:.
 
+## Main integration
+
+Worker commit `e7347d0db771c624533b5a6acf7603591155e295` was cherry-picked onto
+main `bfbe815` as `27e742d`; the ordinary `bfbe815..27e742d` push succeeded.
+There were no intervening gameplay changes. Git tree comparison confirmed the
+integrated game/simulation/tuning match the checked worker; current AGENTS.md and
+the owner's existing dirty captures were preserved. The committed diff check passed.
+
+One hidden headless import prepared main's new resources in **6.23 seconds**,
+exit code 0, with no reported error lines. Its private application data and logs
+are at `D:/Wroughtwild/work/mainline-a2-import`. The owned process exited. Reused
+the 62 passing actor assertions, the corrected capture-only pass and 14 passing
+restoration checks; no actor/camera matrix, full campaign or gameplay rerun was
+performed by the coordinator. Original failed logs remain in the worker's build.
+
 ## Manual launch and handoff
 
 From PowerShell:
 
 ```powershell
-& 'C:/Users/Matty/Godot/Godot_v4.5-stable_win64.exe' --path 'D:/Wroughtwild/work/mainline-fauna-a2/game'
+& 'C:/Users/Matty/Godot/Godot_v4.5-stable_win64.exe' --path 'C:/Users/Matty/Dev/project-wroughtwild/game'
 ```
 
 1. Use the normal chooser to Continue an existing world, or choose a class and
@@ -119,8 +134,7 @@ then run `res://tests/mainline_fauna.tscn` or
 The optional `--a2-capture-only` fixture additionally requires the disposable
 no-focus override above and `--r8-no-mouse-capture`; remove it after the capture.
 
-Commit only this checked slice on `codex/mainline-fauna-a2`. The coordinator
-should cherry-pick the SHA returned in the worker handoff, preserve current main
-AGENTS.md and owner files, reuse these checks, then make the ordinary push to
-`origin/main`. This worker does not integrate main or push. Next scope is
-PLAY-01/03 stutter and underground access, followed by PLAY-02 canopy work.
+The checked A2 slice is integrated and published; the worker remains available
+at its D: path. Owner playtesting stays deferred under standing approval.
+Next is [PLAY-01/03 stutter and underground access](play01-movement-worker-2026-09-15.md),
+followed by PLAY-02 canopy work.

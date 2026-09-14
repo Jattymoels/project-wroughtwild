@@ -5,12 +5,12 @@ immediate sequence](coordinator-status-2026-09-15.md) and [A1 worker prompt](mai
 The older entries below preserve history: Living Frontier is implemented through
 Wave 7, and thirty apparently unmerged art branches have equivalent patches on
 main. [A1's approved R8 runtime art is now integrated and pushed on main as
-`35cee73`](mainline-art-a1-result-2026-09-15.md). A2's [finished-fauna worker is checked](mainline-fauna-a2-result-2026-09-15.md)
-and ready for coordinator integration/push; the reported playtest issues follow. R9 stays stopped.
+`35cee73`](mainline-art-a1-result-2026-09-15.md). [A2 finished fauna](mainline-fauna-a2-result-2026-09-15.md)
+is integrated and pushed as `27e742d`. [PLAY-01/03 movement and underground work](play01-movement-worker-2026-09-15.md)
+is next, followed by canopy completeness. R9 stays stopped.
 
 The owner currently cannot playtest and has approved continued prototype work
-until told otherwise. A2's [worker prompt and D: workspace](mainline-fauna-a2-worker-2026-09-15.md)
-now have a completed checked slice awaiting main integration. Human feedback remains deferred; it does not block adoption, the
+until told otherwise. Human feedback remains deferred; it does not block the
 reported movement/terrain fixes or subsequent mob-production slices.
 
 Updated: 14 September 2026 (owner played R8 and authorises mainline adoption with stutter, canopy and underground issues recorded; R9 stopped; Reclaimed Frontier remains future work). Owner: Matty. Delivery: Codex.
