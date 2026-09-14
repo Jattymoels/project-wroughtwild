@@ -14,6 +14,21 @@
         "count_scope": "Payload entries and summed payload bytes; manifest.json is the separately hashed identity file."
       },
       "publication_report": "docs/prototype/art07-repairs/2026-09-14/publication-r2.json"
+    },
+    "r1": {
+      "status": "published",
+      "source_commit": "bd91501c8a7b17c9808aa606a10c14f0f46cab0a",
+      "receipt_commit": "2e4de363eb770a475375fdb21fccbca3fbe7e86e",
+      "original_source_commit": "baf781a38e970fef52c47d4faa6a864aa479e60b",
+      "original_receipt_commit": "5a35e6f0a30dc79981571f33a18c7dcff2550e7d",
+      "receipt": "docs/prototype/art07-repairs/2026-09-14/receipts/r1.json",
+      "package": {
+        "path": "D:/project-wroughtwild-art07-r1/build/art07-repairs/r1/v03/handoff",
+        "manifest_sha256": "9c0cd855d03cd5d88df1823538417da776775abd96a732eb7ad94f24a1f02c7e",
+        "files": 5940,
+        "bytes": 5622031314
+      },
+      "publication_report": "docs/prototype/art07-repairs/2026-09-14/publication-r1.json"
     }
   }
 }

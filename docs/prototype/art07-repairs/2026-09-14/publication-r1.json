@@ -1,0 +1,1917 @@
+{
+  "id": "r1",
+  "date": "2026-09-14",
+  "status": "verified_and_integrated",
+  "integration": {
+    "method": "scoped cherry-pick",
+    "previous_main": "93daa6a9ec72497a60e03d29fe43d45ce20e8915",
+    "original_implementation_commit": "baf781a38e970fef52c47d4faa6a864aa479e60b",
+    "original_receipt_commit": "5a35e6f0a30dc79981571f33a18c7dcff2550e7d",
+    "implementation_commit": "bd91501c8a7b17c9808aa606a10c14f0f46cab0a",
+    "receipt_commit": "2e4de363eb770a475375fdb21fccbca3fbe7e86e",
+    "worker_tree_content_match": "All owned paths have identical Git blob IDs",
+    "destination": "https://github.com/Jattymoels/project-wroughtwild.git",
+    "ref": "refs/heads/main"
+  },
+  "package": {
+    "path": "D:/project-wroughtwild-art07-r1/build/art07-repairs/r1/v03/handoff",
+    "manifest_sha256": "9c0cd855d03cd5d88df1823538417da776775abd96a732eb7ad94f24a1f02c7e",
+    "files": 5940,
+    "bytes": 5622031314
+  },
+  "outcome": "R1 widens the retained B1 crowns by fitting only the lower trunk. Native bodies, tree heights, selected LOD2, stock and source seating remain unchanged.",
+  "verification": "Full G1/G2/B1/C4 inputs and the submitted seal were verified before application. The publisher copied the selected packed models and source masters into v04, reopened two masters and all 19 exports, and reproduced source/UV/packed-map, triangle, height and material-binding audits. A fresh import, both renderer smoke jobs, native B1 flow with partial/final separate-process restores, and both 273-pair catalogues pass.",
+  "static_verification": {
+    "result": "PASS",
+    "original_implementation": "baf781a38e970fef52c47d4faa6a864aa479e60b",
+    "original_receipt": "5a35e6f0a30dc79981571f33a18c7dcff2550e7d",
+    "package": {
+      "path": "D:/project-wroughtwild-art07-r1/build/art07-repairs/r1/v03/handoff",
+      "manifest_sha256": "9c0cd855d03cd5d88df1823538417da776775abd96a732eb7ad94f24a1f02c7e",
+      "files": 5940,
+      "bytes": 5622031314
+    },
+    "owned_files": [
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r1/README.md",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r1/baseline-measurements.json",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r1/changes.json",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r1/code-checks-final.json",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r1/code-checks.json",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r1/export-geometry-and-maps.json",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r1/final-checks.json",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r1/forward_plus-all-lods.jpg",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r1/forward_plus-canopy-pairs.jpg",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r1/forward_plus-home-player-height.jpg",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r1/forward_plus-native-fall.webp",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r1/forward_plus-route-player-height.jpg",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r1/forward_plus-scar-off-on.jpg",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r1/forward_plus-scar-pulse.webp",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r1/gl_compatibility-all-lods.jpg",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r1/gl_compatibility-canopy-pairs.jpg",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r1/gl_compatibility-home-player-height.jpg",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r1/gl_compatibility-native-fall.webp",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r1/gl_compatibility-route-player-height.jpg",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r1/gl_compatibility-scar-off-on.jpg",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r1/gl_compatibility-scar-pulse.webp",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r1/hardware.json",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r1/image-provenance.json",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r1/master-packed-preservation.json",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r1/material-bindings.json",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r1/native-route.webp",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r1/ownership-equivalence.json",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r1/package.json",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r1/packed-master-reopen.json",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r1/performance-comparison.json",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r1/published-gates-checked.json",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r1/source-and-scar-audit.json",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r1/view-comparison.json",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r1/visual-review.json",
+      "docs/prototype/art07-repairs/2026-09-14/receipts/r1.json",
+      "docs/prototype/art07-repairs/2026-09-14/receipts/r1.md",
+      "tools/wroughtwild-art07-repairs/r1/README.md",
+      "tools/wroughtwild-art07-repairs/r1/apply.py",
+      "tools/wroughtwild-art07-repairs/r1/author_jobs.py",
+      "tools/wroughtwild-art07-repairs/r1/build.py",
+      "tools/wroughtwild-art07-repairs/r1/collect.py",
+      "tools/wroughtwild-art07-repairs/r1/copy_sources.py",
+      "tools/wroughtwild-art07-repairs/r1/install.py",
+      "tools/wroughtwild-art07-repairs/r1/jobs.py",
+      "tools/wroughtwild-art07-repairs/r1/material_audit.py",
+      "tools/wroughtwild-art07-repairs/r1/measure.py",
+      "tools/wroughtwild-art07-repairs/r1/model_costs.py",
+      "tools/wroughtwild-art07-repairs/r1/movement.gd.txt",
+      "tools/wroughtwild-art07-repairs/r1/native_tree.gd",
+      "tools/wroughtwild-art07-repairs/r1/ownership.py",
+      "tools/wroughtwild-art07-repairs/r1/package.py",
+      "tools/wroughtwild-art07-repairs/r1/present.py",
+      "tools/wroughtwild-art07-repairs/r1/preserve_packed.py",
+      "tools/wroughtwild-art07-repairs/r1/reopen.py",
+      "tools/wroughtwild-art07-repairs/r1/route.gd",
+      "tools/wroughtwild-art07-repairs/r1/settings.json",
+      "tools/wroughtwild-art07-repairs/r1/source_audit.py",
+      "tools/wroughtwild-art07-repairs/r1/studio.gd",
+      "tools/wroughtwild-art07-repairs/r1/views.gd"
+    ],
+    "sealed_recipe_matches": [
+      {
+        "path": "tools/wroughtwild-art07-repairs/r1/README.md",
+        "sealed": "recipes/r1/README.md",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r1/apply.py",
+        "sealed": "recipes/r1/apply.py",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r1/author_jobs.py",
+        "sealed": "recipes/r1/author_jobs.py",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r1/build.py",
+        "sealed": "recipes/r1/build.py",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r1/collect.py",
+        "sealed": "recipes/r1/collect.py",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r1/copy_sources.py",
+        "sealed": "recipes/r1/copy_sources.py",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r1/install.py",
+        "sealed": "recipes/r1/install.py",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r1/jobs.py",
+        "sealed": "recipes/r1/jobs.py",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r1/material_audit.py",
+        "sealed": "recipes/r1/material_audit.py",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r1/measure.py",
+        "sealed": "recipes/r1/measure.py",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r1/model_costs.py",
+        "sealed": "recipes/r1/model_costs.py",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r1/movement.gd.txt",
+        "sealed": "recipes/r1/movement.gd.txt",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r1/native_tree.gd",
+        "sealed": "recipes/r1/native_tree.gd",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r1/ownership.py",
+        "sealed": "recipes/r1/ownership.py",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r1/package.py",
+        "sealed": "recipes/r1/package.py",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r1/present.py",
+        "sealed": "recipes/r1/present.py",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r1/preserve_packed.py",
+        "sealed": "recipes/r1/preserve_packed.py",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r1/reopen.py",
+        "sealed": "recipes/r1/reopen.py",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r1/route.gd",
+        "sealed": "recipes/r1/route.gd",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r1/settings.json",
+        "sealed": "recipes/r1/settings.json",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r1/source_audit.py",
+        "sealed": "recipes/r1/source_audit.py",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r1/studio.gd",
+        "sealed": "recipes/r1/studio.gd",
+        "match": "exact or CRLF-normalized"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r1/views.gd",
+        "sealed": "recipes/r1/views.gd",
+        "match": "exact or CRLF-normalized"
+      }
+    ],
+    "worker_log_receipts": [
+      {
+        "id": "b1-after",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.7731696,
+        "log_sha256": "001cbbe08b68a222538b33461cc52396783a4e63bd2d0a3d454709b8670ec709"
+      },
+      {
+        "id": "b1-before",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.7813704,
+        "log_sha256": "001cbbe08b68a222538b33461cc52396783a4e63bd2d0a3d454709b8670ec709"
+      },
+      {
+        "id": "b1-final",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.688812,
+        "log_sha256": "8d9ef41f60000bf9cad1349762d4d9c834827611266bea0c3bb6eac643df2552"
+      },
+      {
+        "id": "b1-partial",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.6823794,
+        "log_sha256": "8d9ef41f60000bf9cad1349762d4d9c834827611266bea0c3bb6eac643df2552"
+      },
+      {
+        "id": "b1-rendered-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 7.4585729,
+        "log_sha256": "e9d8274b9a04b265f6e9af5d1ef51b85b628b46918347c2d9b1b1684c7a90b59"
+      },
+      {
+        "id": "b1-rendered-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 7.5208964,
+        "log_sha256": "af42a6b047d74a0ad0c022e5fdf77934fc08cc76e880dbf1712e0628977b4f66"
+      },
+      {
+        "id": "build-broadleaf",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 16.7474796,
+        "log_sha256": "ef4794c4b674268fdb67927fe448763a812d45f7ce0dfe7e2336f2c541c4fb71"
+      },
+      {
+        "id": "build-pine",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 17.8051979,
+        "log_sha256": "6511dbfcd53f3734d266f23a1b1b808fcafe0e9fe96aff67fc5afab654b1f7a5"
+      },
+      {
+        "id": "c4-final",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.5918202,
+        "log_sha256": "50e964c238bb7c0406a53270c41a470d96d34b522e04df82e247236702b09207"
+      },
+      {
+        "id": "c4-flow",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.5931139,
+        "log_sha256": "55d5cce4b4c4f9bc0a655f8ea0b68ff3c4f2a35001b66e09495db3bff0492231"
+      },
+      {
+        "id": "c4-partial",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.5877148,
+        "log_sha256": "50e964c238bb7c0406a53270c41a470d96d34b522e04df82e247236702b09207"
+      },
+      {
+        "id": "catalogue-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 8.8207012,
+        "log_sha256": "4cfb3077fb4d1d9cd5fdabb7de439516629dd4005b61199530b93f670b3ed116"
+      },
+      {
+        "id": "catalogue-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 6.7449771,
+        "log_sha256": "923964d71af409bfedbd374a5d65d1be154c26cf7b763740958aa8248d073fdd"
+      },
+      {
+        "id": "cost-after-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 112.4206327,
+        "log_sha256": "7cff2fef380e3169f18d75c60d84f728bf3c53d3dc5caf42159c73a6a99cb23c"
+      },
+      {
+        "id": "cost-after-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 114.783727,
+        "log_sha256": "5ac7a42c500c3626804f46c02cb8ef90cb208f1251c8620a25cf5a9f9b352a64"
+      },
+      {
+        "id": "cost-before-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 125.8807354,
+        "log_sha256": "258f7c42d2760c9de7c4aa5a939b24c9f0249060cb8e0f77e36b596649aed247"
+      },
+      {
+        "id": "cost-before-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 124.5669112,
+        "log_sha256": "07c09c0c494eff78d51cfe4884f0534e56d182f920fdcf859ac54777ddf59f1e"
+      },
+      {
+        "id": "import",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 88.2854343,
+        "log_sha256": "56af520b84e59345d803c6a81ffe0a241880a908ea2755d27c27da062148e1e2"
+      },
+      {
+        "id": "paid-after",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 111.6630808,
+        "log_sha256": "8f86e72af80474847bc32bf58012f9b125693b6a71c02a5bce76c00a24673507"
+      },
+      {
+        "id": "paid-before",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 122.9943233,
+        "log_sha256": "8f86e72af80474847bc32bf58012f9b125693b6a71c02a5bce76c00a24673507"
+      },
+      {
+        "id": "paid-restart-after",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 80.0104312,
+        "log_sha256": "4d60bf09071638b1c43b5d67aa775c915b9d3f849f6d21e6a61d7f96cdb45a99"
+      },
+      {
+        "id": "paid-restart-before",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 87.4311644,
+        "log_sha256": "4d60bf09071638b1c43b5d67aa775c915b9d3f849f6d21e6a61d7f96cdb45a99"
+      },
+      {
+        "id": "parse-b1_native",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.0297278,
+        "log_sha256": "dae8228273d100d1cf41a2478c598503facf4efba77627edda1c58ec57ebc4ce"
+      },
+      {
+        "id": "parse-c4_native",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.0389642,
+        "log_sha256": "dae8228273d100d1cf41a2478c598503facf4efba77627edda1c58ec57ebc4ce"
+      },
+      {
+        "id": "parse-catalogue",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.1295347,
+        "log_sha256": "dae8228273d100d1cf41a2478c598503facf4efba77627edda1c58ec57ebc4ce"
+      },
+      {
+        "id": "parse-native_tree",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.0921267,
+        "log_sha256": "dae8228273d100d1cf41a2478c598503facf4efba77627edda1c58ec57ebc4ce"
+      },
+      {
+        "id": "parse-paid",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.1247899,
+        "log_sha256": "dae8228273d100d1cf41a2478c598503facf4efba77627edda1c58ec57ebc4ce"
+      },
+      {
+        "id": "parse-probe",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.1287177,
+        "log_sha256": "dae8228273d100d1cf41a2478c598503facf4efba77627edda1c58ec57ebc4ce"
+      },
+      {
+        "id": "parse-route",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.2250946,
+        "log_sha256": "dae8228273d100d1cf41a2478c598503facf4efba77627edda1c58ec57ebc4ce"
+      },
+      {
+        "id": "parse-studio",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 0.2067827,
+        "log_sha256": "dae8228273d100d1cf41a2478c598503facf4efba77627edda1c58ec57ebc4ce"
+      },
+      {
+        "id": "parse-views",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 1.2204971,
+        "log_sha256": "dae8228273d100d1cf41a2478c598503facf4efba77627edda1c58ec57ebc4ce"
+      },
+      {
+        "id": "post-collect",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 16.0826499,
+        "log_sha256": "ed6f452ffe67786b9b873dbc80b2def3d19fdd3cff2a8e023e6ef0ffbf6db83e"
+      },
+      {
+        "id": "post-present",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 23.5552622,
+        "log_sha256": "2579fa16b30ab1b7cf022cdf2f754a6e861df1c07f7ed4a6aeb894fa1397af4b"
+      },
+      {
+        "id": "preserve-packed-02",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 8.5330493,
+        "log_sha256": "3cbee869ac9bbdbb0884a29f204ae6b0883218ba867ac535bea6097357dcf1ac"
+      },
+      {
+        "id": "preserve-packed",
+        "exit_code": 1,
+        "failure": "Fatal log diagnostic; assertions do not override this.",
+        "seconds": 1.6885885,
+        "log_sha256": "41cba6870c4686c08f32cab0c4dffe1e3877ea3a93db8f12ad94b29561c4f7a5"
+      },
+      {
+        "id": "probe-after",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 95.2325319,
+        "log_sha256": "dcd0d92a25cd2d0910f432354d04e1a2272a1082249a943e8ba224181222ac6c"
+      },
+      {
+        "id": "probe-before",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 106.5313093,
+        "log_sha256": "dcd0d92a25cd2d0910f432354d04e1a2272a1082249a943e8ba224181222ac6c"
+      },
+      {
+        "id": "reopen-packed",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 18.9581997,
+        "log_sha256": "ba857d0a1a54d21cb5ed7261d84c3c1e338fe5ecf8b8f74197dd40ae284f7f5f"
+      },
+      {
+        "id": "reopen",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 18.7450405,
+        "log_sha256": "7211168253321d1ff83aa00d0977f616a8c54072ee82f4f5dd31fbfd5a8a4b5e"
+      },
+      {
+        "id": "route-motion",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 117.6844948,
+        "log_sha256": "3e797ac7116fd752166baeb9e9fcb853e5e5340f336766a5fc8e82bfe0037fb0"
+      },
+      {
+        "id": "smoke-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 85.7367824,
+        "log_sha256": "a6457489dd615c57f47571067cb821b47a0330f90c95b3e27d339454e8509772"
+      },
+      {
+        "id": "smoke-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 83.0017796,
+        "log_sha256": "bcc5dd1c40549a72a960cfa2758068943fe9d3f7b5717a2024a4851ad364bbc0"
+      },
+      {
+        "id": "source-audit-packed",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 8.0045234,
+        "log_sha256": "bd537eb75ffefebba3b6ac8d17a91c9609e60baa8aa7344ca087285e076c570c"
+      },
+      {
+        "id": "source-audit",
+        "exit_code": 1,
+        "failure": "Fatal log diagnostic; assertions do not override this.",
+        "seconds": 3.2912762,
+        "log_sha256": "31ecc626eb2c3a424b866740a9d23e63e131001c67ac62793b3a281195d44115"
+      },
+      {
+        "id": "stream-after-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 112.490327,
+        "log_sha256": "3e797ac7116fd752166baeb9e9fcb853e5e5340f336766a5fc8e82bfe0037fb0"
+      },
+      {
+        "id": "stream-after-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 110.3212205,
+        "log_sha256": "3a6372a6b7bec0f86c880c1f61a1c91c7aba22398d4131ba021230edcb0d16b5"
+      },
+      {
+        "id": "stream-before-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 122.0870608,
+        "log_sha256": "3e797ac7116fd752166baeb9e9fcb853e5e5340f336766a5fc8e82bfe0037fb0"
+      },
+      {
+        "id": "stream-before-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 117.8423828,
+        "log_sha256": "3a6372a6b7bec0f86c880c1f61a1c91c7aba22398d4131ba021230edcb0d16b5"
+      },
+      {
+        "id": "studio-final-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 9.210875,
+        "log_sha256": "0ea405cbf1fcf02757bc4ba880e3b29b2cc357c4a72343c7e8e0021771975b8e"
+      },
+      {
+        "id": "studio-final-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 8.8818117,
+        "log_sha256": "3ce95333c083a727a29bac7a80d3cf2c07c81027394ba44a37869b6d05e4c3dc"
+      },
+      {
+        "id": "studio-forward_plus-02",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 8.6989682,
+        "log_sha256": "0ea405cbf1fcf02757bc4ba880e3b29b2cc357c4a72343c7e8e0021771975b8e"
+      },
+      {
+        "id": "studio-forward_plus",
+        "exit_code": -1,
+        "failure": "Fatal log diagnostic; assertions do not override this.",
+        "seconds": 2.2479216,
+        "log_sha256": "25c3a5a9c2f86d61ad02e6b056750a72178e4e7d8497e26c87df4b3246e753e9"
+      },
+      {
+        "id": "studio-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 8.5839568,
+        "log_sha256": "3ce95333c083a727a29bac7a80d3cf2c07c81027394ba44a37869b6d05e4c3dc"
+      },
+      {
+        "id": "views-after-forward_plus-v02",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 100.2752621,
+        "log_sha256": "af5c7f2a9b457c2d26483b6f19fa978c4903ac4fca225539f3b0bcf19219daa2"
+      },
+      {
+        "id": "views-after-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 99.8216048,
+        "log_sha256": "af5c7f2a9b457c2d26483b6f19fa978c4903ac4fca225539f3b0bcf19219daa2"
+      },
+      {
+        "id": "views-after-gl_compatibility-v02",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 98.0225728,
+        "log_sha256": "75cfce67d7a28a46edd7a7d1155f58913ae4cb8da8415d89f9c22ea7b62073c0"
+      },
+      {
+        "id": "views-after-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 97.286381,
+        "log_sha256": "75cfce67d7a28a46edd7a7d1155f58913ae4cb8da8415d89f9c22ea7b62073c0"
+      },
+      {
+        "id": "views-before-forward_plus-v02",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 113.4365991,
+        "log_sha256": "897e883af3081a1c574538e29bfda4ade02febfc181b8945fac7b4d383dfed94"
+      },
+      {
+        "id": "views-before-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 111.517692,
+        "log_sha256": "897e883af3081a1c574538e29bfda4ade02febfc181b8945fac7b4d383dfed94"
+      },
+      {
+        "id": "views-before-gl_compatibility-v02",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 109.5849909,
+        "log_sha256": "eb84f570e021fba8b08b827d0022d24b590c344cda82cfbb35e03b4a94d4f0fa"
+      },
+      {
+        "id": "views-before-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "seconds": 108.6231054,
+        "log_sha256": "eb84f570e021fba8b08b827d0022d24b590c344cda82cfbb35e03b4a94d4f0fa"
+      }
+    ],
+    "changes": {
+      "id": "r1",
+      "changed_source_masters": [
+        {
+          "path": "models/broadleaf/broadleaf-master.blend",
+          "original_source_sha256": "bb671f434b1b6021e378c203ab7f8e344b2cbc01c283f5a991ff04ac495672a7",
+          "changed_sha256": "843f8aebca50a8cf914d7d120ac50b32dd69389f7c9fc7a7e3a39dceed8cbd1f",
+          "purpose": "Editable lower-trunk/crown refit retaining exact original source objects, UVs and packed image bytes."
+        },
+        {
+          "path": "models/pine/pine-master.blend",
+          "original_source_sha256": "896e696700be53184a87f0511734c3d802110268f6726e463d1e1a00538a6eb2",
+          "changed_sha256": "3f06f3b7f6de63a97c592e383e9e88823e9bb0172f2ec0c4723a7919983b2c0d",
+          "purpose": "Editable lower-trunk/crown refit retaining exact original source objects, UVs and packed image bytes."
+        }
+      ],
+      "runtime_base": "6bb2e044dcd0bf1788896aa2c19cdf56fee93522",
+      "baseline_manifest_sha256": "fd5c592ef52185cc7d0737840e41af09dbb5bcea36b719539931e156f42865cd",
+      "parent_candidates": [],
+      "delta_base": "unchanged sealed G1 runtime",
+      "files": [
+        {
+          "path": "game/g1/art.gd",
+          "before_sha256": "760d85a59a05fd6445d70f87664c234d195d06394ee5a9717d52702073b2d9c8",
+          "after_sha256": "6d845ffb6642c8010c41195cfb481ded8ba2251a1d17fe787648c5eae74cac06",
+          "functions": [
+            "G1Art.resource"
+          ],
+          "purpose": "Select R1 fitted B1 tree presentation; preserve family choice and source-owner metadata. --r1-before selects unchanged G1 B1 visuals.",
+          "overlaps": [
+            "R2 may change resource loading/dispatch; R8 must merge this one selection hook by function."
+          ]
+        },
+        {
+          "path": "game/r1/assets/broadleaf-a-lod2.glb",
+          "before_sha256": null,
+          "after_sha256": "434c99c68de26c27cf54890eb2903a508f6ff488a0337b7e4cd928698e525929",
+          "functions": [],
+          "purpose": "selected presentation",
+          "overlaps": [],
+          "replaces_presentation_asset": "game/b1/assets/broadleaf-a-lod2.glb",
+          "source_refit": "models/broadleaf/broadleaf-a-lod2.glb"
+        },
+        {
+          "path": "game/r1/assets/broadleaf-a-lod2_broadleaf runtime Image_0.png",
+          "before_sha256": null,
+          "after_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1",
+          "functions": [],
+          "purpose": "selected presentation",
+          "overlaps": [],
+          "replaces_presentation_asset": "game/b1/assets/broadleaf-a-lod2_broadleaf runtime Image_0.png",
+          "source_refit": "models/broadleaf/broadleaf-a-lod2_broadleaf runtime Image_0.png"
+        },
+        {
+          "path": "game/r1/assets/broadleaf-a-lod2_broadleaf runtime Image_1.png",
+          "before_sha256": null,
+          "after_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e",
+          "functions": [],
+          "purpose": "selected presentation",
+          "overlaps": [],
+          "replaces_presentation_asset": "game/b1/assets/broadleaf-a-lod2_broadleaf runtime Image_1.png",
+          "source_refit": "models/broadleaf/broadleaf-a-lod2_broadleaf runtime Image_1.png"
+        },
+        {
+          "path": "game/r1/assets/broadleaf-stump.glb",
+          "before_sha256": null,
+          "after_sha256": "180d2a104d7050522d4d7d068d275e099dbcb0a22d77cb585eec6d46432ca270",
+          "functions": [],
+          "purpose": "selected presentation",
+          "overlaps": [],
+          "replaces_presentation_asset": "game/b1/assets/broadleaf-stump.glb",
+          "source_refit": "models/broadleaf/broadleaf-stump.glb"
+        },
+        {
+          "path": "game/r1/assets/broadleaf-stump_broadleaf coherent cut grain.png",
+          "before_sha256": null,
+          "after_sha256": "d8373511aac3511225feb942aefaa92fec1395bde24aa6539b0e8da0cd2fbae8",
+          "functions": [],
+          "purpose": "selected presentation",
+          "overlaps": [],
+          "replaces_presentation_asset": "game/b1/assets/broadleaf-stump_broadleaf coherent cut grain.png",
+          "source_refit": "models/broadleaf/broadleaf-stump_broadleaf coherent cut grain.png"
+        },
+        {
+          "path": "game/r1/assets/broadleaf-stump_broadleaf runtime Image_0.png",
+          "before_sha256": null,
+          "after_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1",
+          "functions": [],
+          "purpose": "selected presentation",
+          "overlaps": [],
+          "replaces_presentation_asset": "game/b1/assets/broadleaf-stump_broadleaf runtime Image_0.png",
+          "source_refit": "models/broadleaf/broadleaf-stump_broadleaf runtime Image_0.png"
+        },
+        {
+          "path": "game/r1/assets/broadleaf-stump_broadleaf runtime Image_1.png",
+          "before_sha256": null,
+          "after_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e",
+          "functions": [],
+          "purpose": "selected presentation",
+          "overlaps": [],
+          "replaces_presentation_asset": "game/b1/assets/broadleaf-stump_broadleaf runtime Image_1.png",
+          "source_refit": "models/broadleaf/broadleaf-stump_broadleaf runtime Image_1.png"
+        },
+        {
+          "path": "game/r1/assets/pine-a-lod2.glb",
+          "before_sha256": null,
+          "after_sha256": "cdc2f75085595e8545570a442bc38ffde00fccbccc51d0c6c8b07380aee34517",
+          "functions": [],
+          "purpose": "selected presentation",
+          "overlaps": [],
+          "replaces_presentation_asset": "game/b1/assets/pine-a-lod2.glb",
+          "source_refit": "models/pine/pine-a-lod2.glb"
+        },
+        {
+          "path": "game/r1/assets/pine-a-lod2_pine runtime Image_0.png",
+          "before_sha256": null,
+          "after_sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6",
+          "functions": [],
+          "purpose": "selected presentation",
+          "overlaps": [],
+          "replaces_presentation_asset": "game/b1/assets/pine-a-lod2_pine runtime Image_0.png",
+          "source_refit": "models/pine/pine-a-lod2_pine runtime Image_0.png"
+        },
+        {
+          "path": "game/r1/assets/pine-a-lod2_pine runtime Image_1.png",
+          "before_sha256": null,
+          "after_sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516",
+          "functions": [],
+          "purpose": "selected presentation",
+          "overlaps": [],
+          "replaces_presentation_asset": "game/b1/assets/pine-a-lod2_pine runtime Image_1.png",
+          "source_refit": "models/pine/pine-a-lod2_pine runtime Image_1.png"
+        },
+        {
+          "path": "game/r1/assets/pine-stump.glb",
+          "before_sha256": null,
+          "after_sha256": "29e867f79b6fb083bac2a68a636c2dc71dfb78f8632b82af3452cf1b84862f41",
+          "functions": [],
+          "purpose": "selected presentation",
+          "overlaps": [],
+          "replaces_presentation_asset": "game/b1/assets/pine-stump.glb",
+          "source_refit": "models/pine/pine-stump.glb"
+        },
+        {
+          "path": "game/r1/assets/pine-stump_pine coherent cut grain.png",
+          "before_sha256": null,
+          "after_sha256": "caf7b2353eb4fb3015b85ff3c1a514be74991245fb0f0ffd932189e7f63deb83",
+          "functions": [],
+          "purpose": "selected presentation",
+          "overlaps": [],
+          "replaces_presentation_asset": "game/b1/assets/pine-stump_pine coherent cut grain.png",
+          "source_refit": "models/pine/pine-stump_pine coherent cut grain.png"
+        },
+        {
+          "path": "game/r1/assets/pine-stump_pine runtime Image_0.png",
+          "before_sha256": null,
+          "after_sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6",
+          "functions": [],
+          "purpose": "selected presentation",
+          "overlaps": [],
+          "replaces_presentation_asset": "game/b1/assets/pine-stump_pine runtime Image_0.png",
+          "source_refit": "models/pine/pine-stump_pine runtime Image_0.png"
+        },
+        {
+          "path": "game/r1/assets/pine-stump_pine runtime Image_1.png",
+          "before_sha256": null,
+          "after_sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516",
+          "functions": [],
+          "purpose": "selected presentation",
+          "overlaps": [],
+          "replaces_presentation_asset": "game/b1/assets/pine-stump_pine runtime Image_1.png",
+          "source_refit": "models/pine/pine-stump_pine runtime Image_1.png"
+        },
+        {
+          "path": "game/r1/b1_native.gd",
+          "before_sha256": null,
+          "after_sha256": "9ae207b1c6cfa97e562c6ae1873bcbc0e1b86c611fbbeae1ab3b70627f8a9021",
+          "functions": [
+            "check",
+            "_ready",
+            "shot",
+            "finish",
+            "r1_envelope"
+          ],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/b1_native.gd.uid",
+          "before_sha256": null,
+          "after_sha256": "86d5bd3ec9eb06024fc5aac2d47796dade3c35c801f87e991423fd7495c3ae5c",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/b1_native.tscn",
+          "before_sha256": null,
+          "after_sha256": "7167e3ae0bc04b98da9fd077017c6068101d3b4bf56ce31eb7242ffad4bcbe81",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/c4_native.gd",
+          "before_sha256": null,
+          "after_sha256": "fc3fb760931cfa42d14d9c9fa5d27d984f04e92650809df862bc4ef4c234ff1d",
+          "functions": [
+            "check",
+            "_ready",
+            "shot",
+            "finish",
+            "r1_envelope"
+          ],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/c4_native.gd.uid",
+          "before_sha256": null,
+          "after_sha256": "c9e330cf60e5b014b924a07a09432a8d48c18f56385e7cdf896a06ad528f0078",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/c4_native.tscn",
+          "before_sha256": null,
+          "after_sha256": "e48edabaeed0566eddb6928bfca7f1ce60df81374d3a510e0cfa90bf30320a97",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/canopy.gdshader",
+          "before_sha256": null,
+          "after_sha256": "99c56f03157d8d96cb264326c5ac2eae1f45f9cc57b029768b0fad236c31f6ac",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/canopy.gdshader.uid",
+          "before_sha256": null,
+          "after_sha256": "a779317b4214441c7a164058b087ba92075faca1816416cd7ff2ff7f34263224",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/catalogue.gd",
+          "before_sha256": null,
+          "after_sha256": "8518d7bfc9ee360ba5684648d4c8877f0eae6133970d55e52b30e5e17a95417b",
+          "functions": [
+            "_run"
+          ],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/catalogue.tscn",
+          "before_sha256": null,
+          "after_sha256": "85b9584cf6b4838d67fe9e49ba6e4b784646719a7d10086c331000e3d9225ebb",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/native_tree.gd",
+          "before_sha256": null,
+          "after_sha256": "5c3aba95c90d462f01bca6bd7013135de299172d9a997fe16fd3c7cf272587f3",
+          "functions": [
+            "_apply_visual",
+            "_leave_stump"
+          ],
+          "purpose": "Offline lower-trunk fit replaces the B1 per-instance whole-tree squeeze; selected model/stump instantiate at unit scale. Original material handling, native parent rules and owner metadata remain.",
+          "overlaps": [
+            "R2 may optimize R1 resource reuse; geometry/fit contract belongs to R1."
+          ]
+        },
+        {
+          "path": "game/r1/native_tree.gd.uid",
+          "before_sha256": null,
+          "after_sha256": "bcbe5e6c8171a0513e02c29da6168c93a189c2927b875c969317aa4bc857505e",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/paid.gd",
+          "before_sha256": null,
+          "after_sha256": "ce17fbd3a462fa055e403fa73e2d554755ace4f92f688bb8bbbdcfb5f00f1fcb",
+          "functions": [
+            "_ready",
+            "check",
+            "execute",
+            "complete",
+            "blocked_placement",
+            "harvest_and_stream",
+            "walk_route",
+            "_home",
+            "_place",
+            "_piece",
+            "_station",
+            "_aim",
+            "_use_home",
+            "_hits",
+            "_station_stand"
+          ],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/paid.gd.uid",
+          "before_sha256": null,
+          "after_sha256": "39a8f834f85f8357c5e431bb0a5916621ad0e39507b5b3f2ccb2224233270c00",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/paid.tscn",
+          "before_sha256": null,
+          "after_sha256": "cde72a7bf7dec409f0a0a82a0d467650a137fc50aba6d153f9eccbd69b032cea",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/probe.gd",
+          "before_sha256": null,
+          "after_sha256": "25d8848ede8838a0eac5200e2023f26cce45d1744fe3abb6bdef5272506e6ff0",
+          "functions": [
+            "execute"
+          ],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/probe.gd.uid",
+          "before_sha256": null,
+          "after_sha256": "3ccfdc89e37f6b4d8640f58da29753a3e13f5317ef69630ba56d1da3b758349a",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/probe.tscn",
+          "before_sha256": null,
+          "after_sha256": "de0518f401d664ff424e3e2fae9d3c77d4a34bb943be4a81018777bd6422abf1",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/replayed-paid-home.json.previous",
+          "before_sha256": null,
+          "after_sha256": "97fa035e4813bf456202991dbd7ce5617c12c2abd2623309711cc0e37280c412",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/route.gd",
+          "before_sha256": null,
+          "after_sha256": "a5892811383b9fcf7e0b5a65cbe3bb02b6a7b5ae3ee6dd6864d0024471ff6de3",
+          "functions": [
+            "_process",
+            "execute"
+          ],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/route.gd.uid",
+          "before_sha256": null,
+          "after_sha256": "fc1d15043ef044d3627d73d5d8aed767961e2161247b9a680d85e1d81f777aec",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/route.tscn",
+          "before_sha256": null,
+          "after_sha256": "1d9e8ab6fa7891ab360a1726738cc1d55243bf2d139525bade254b9177af73c1",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/settings.json",
+          "before_sha256": null,
+          "after_sha256": "db4763c829977846d9534f10e78a120819d95e7b5616d14cbe8f34d446f3bc77",
+          "functions": [],
+          "purpose": "selected presentation",
+          "overlaps": [],
+          "settings": {
+            "lower_radius_m": 0.343,
+            "clear_height_m": 2.6,
+            "full_crown_height_m": 4.2,
+            "burial_m": {
+              "broadleaf": 0.65,
+              "pine": 0.55
+            },
+            "runtime_lod": 2,
+            "purpose": {
+              "lower_radius_m": "Smooth radial compression approaches 98% of the unchanged 0.35 m half-body width; it keeps the central trunk fuller than a single whole-tree squeeze.",
+              "clear_height_m": "Keep lower visual wood inside that radius through 2.6 m, above the 1.92 m player capsule and 1.68 m eye/work envelope.",
+              "full_crown_height_m": "Smoothly recover unchanged source X/Z above 2.6 m, reaching full branch/crown spread at 4.2 m. Trunk height and source seating stay exact; leaf/branch attachment corrections taper to zero at their existing tips.",
+              "burial_m": "Retain the B1 source's existing root seating. No spawn or ground height changes.",
+              "runtime_lod": "Keep G1's selected far LOD2 in the pilot; ship matching near/middle candidates for source review without new runtime LOD switching."
+            }
+          }
+        },
+        {
+          "path": "game/r1/studio-assets/broadleaf-a-lod0.glb",
+          "before_sha256": null,
+          "after_sha256": "d6d1bd99eaa0d9d23c2b373d6c5ebe91fa2cca7e009c80d333ec24abd58bbeaa",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/broadleaf-a-lod0_broadleaf runtime Image_0.png",
+          "before_sha256": null,
+          "after_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/broadleaf-a-lod0_broadleaf runtime Image_1.png",
+          "before_sha256": null,
+          "after_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/broadleaf-a-lod1.glb",
+          "before_sha256": null,
+          "after_sha256": "ab6973fa4b8401b4c0be438f0ae5a2b6d3a0803c24a921b55507df0f1c270d1d",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/broadleaf-a-lod1_broadleaf runtime Image_0.png",
+          "before_sha256": null,
+          "after_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/broadleaf-a-lod1_broadleaf runtime Image_1.png",
+          "before_sha256": null,
+          "after_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/broadleaf-a-lod2.glb",
+          "before_sha256": null,
+          "after_sha256": "434c99c68de26c27cf54890eb2903a508f6ff488a0337b7e4cd928698e525929",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/broadleaf-a-lod2_broadleaf runtime Image_0.png",
+          "before_sha256": null,
+          "after_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/broadleaf-a-lod2_broadleaf runtime Image_1.png",
+          "before_sha256": null,
+          "after_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/broadleaf-altered-lod0.glb",
+          "before_sha256": null,
+          "after_sha256": "1ae56aff2e7d1984e3ab963158a01df7cefce1d29f36fc3cdf6e0106460d0e6f",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/broadleaf-altered-lod0_broadleaf runtime Image_0.png",
+          "before_sha256": null,
+          "after_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/broadleaf-altered-lod0_broadleaf runtime Image_1.png",
+          "before_sha256": null,
+          "after_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/broadleaf-altered-lod1.glb",
+          "before_sha256": null,
+          "after_sha256": "76ec48e4e45090e76442488050b438c22ca1b38c4a9dfba8f923ce52c67d5314",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/broadleaf-altered-lod1_broadleaf runtime Image_0.png",
+          "before_sha256": null,
+          "after_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/broadleaf-altered-lod1_broadleaf runtime Image_1.png",
+          "before_sha256": null,
+          "after_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/broadleaf-altered-lod2.glb",
+          "before_sha256": null,
+          "after_sha256": "5dae59c492aa0a8f090995087bc503f2f3481e172f20afe6a4226eac30eae4b0",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/broadleaf-altered-lod2_broadleaf runtime Image_0.png",
+          "before_sha256": null,
+          "after_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/broadleaf-altered-lod2_broadleaf runtime Image_1.png",
+          "before_sha256": null,
+          "after_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/broadleaf-b-lod0.glb",
+          "before_sha256": null,
+          "after_sha256": "7da1f5a706a7d384e1dd449d0de7a4578e063ea9f75c6d549bcdb94fced45a47",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/broadleaf-b-lod0_broadleaf runtime Image_0.png",
+          "before_sha256": null,
+          "after_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/broadleaf-b-lod0_broadleaf runtime Image_1.png",
+          "before_sha256": null,
+          "after_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/broadleaf-b-lod1.glb",
+          "before_sha256": null,
+          "after_sha256": "3237baadec1c6d4204df128c9f2907e7287d16e023c904d4b15651dd35fbedf7",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/broadleaf-b-lod1_broadleaf runtime Image_0.png",
+          "before_sha256": null,
+          "after_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/broadleaf-b-lod1_broadleaf runtime Image_1.png",
+          "before_sha256": null,
+          "after_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/broadleaf-b-lod2.glb",
+          "before_sha256": null,
+          "after_sha256": "9774e8ac8ef8b9414f060f366f487cb26beaf4c7f2e8701c512b29931d421589",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/broadleaf-b-lod2_broadleaf runtime Image_0.png",
+          "before_sha256": null,
+          "after_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/broadleaf-b-lod2_broadleaf runtime Image_1.png",
+          "before_sha256": null,
+          "after_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/broadleaf-root-skirt.glb",
+          "before_sha256": null,
+          "after_sha256": "fcec0fd04da810b6e905729466d7a4746071c8b47d5627cd08435b2192d64d98",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/broadleaf-root-skirt_broadleaf coherent cut grain.png",
+          "before_sha256": null,
+          "after_sha256": "d8373511aac3511225feb942aefaa92fec1395bde24aa6539b0e8da0cd2fbae8",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/broadleaf-root-skirt_broadleaf runtime Image_0.png",
+          "before_sha256": null,
+          "after_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/broadleaf-root-skirt_broadleaf runtime Image_1.png",
+          "before_sha256": null,
+          "after_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/broadleaf-stump.glb",
+          "before_sha256": null,
+          "after_sha256": "180d2a104d7050522d4d7d068d275e099dbcb0a22d77cb585eec6d46432ca270",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/broadleaf-stump_broadleaf coherent cut grain.png",
+          "before_sha256": null,
+          "after_sha256": "d8373511aac3511225feb942aefaa92fec1395bde24aa6539b0e8da0cd2fbae8",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/broadleaf-stump_broadleaf runtime Image_0.png",
+          "before_sha256": null,
+          "after_sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/broadleaf-stump_broadleaf runtime Image_1.png",
+          "before_sha256": null,
+          "after_sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/pine-a-lod0.glb",
+          "before_sha256": null,
+          "after_sha256": "35c3a1cdc5cf0dc07b3cf5563438155bcffd3c8563dfa48100f0f74c9f5dd232",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/pine-a-lod0_pine runtime Image_0.png",
+          "before_sha256": null,
+          "after_sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/pine-a-lod0_pine runtime Image_1.png",
+          "before_sha256": null,
+          "after_sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/pine-a-lod1.glb",
+          "before_sha256": null,
+          "after_sha256": "d659f656904a9e63aef4f2891db4cb7e25706f2db30ad34776ef0e6f0d81768b",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/pine-a-lod1_pine runtime Image_0.png",
+          "before_sha256": null,
+          "after_sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/pine-a-lod1_pine runtime Image_1.png",
+          "before_sha256": null,
+          "after_sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/pine-a-lod2.glb",
+          "before_sha256": null,
+          "after_sha256": "cdc2f75085595e8545570a442bc38ffde00fccbccc51d0c6c8b07380aee34517",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/pine-a-lod2_pine runtime Image_0.png",
+          "before_sha256": null,
+          "after_sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/pine-a-lod2_pine runtime Image_1.png",
+          "before_sha256": null,
+          "after_sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/pine-b-lod0.glb",
+          "before_sha256": null,
+          "after_sha256": "6a8c3b738f126b2553d483d9ab83a67ea6f3e8f77b1302be4d0f1a4607bffdc3",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/pine-b-lod0_pine runtime Image_0.png",
+          "before_sha256": null,
+          "after_sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/pine-b-lod0_pine runtime Image_1.png",
+          "before_sha256": null,
+          "after_sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/pine-b-lod1.glb",
+          "before_sha256": null,
+          "after_sha256": "54513f697219f46769dbd47b72387d2819f86ff0756face434a4efffecb0ab01",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/pine-b-lod1_pine runtime Image_0.png",
+          "before_sha256": null,
+          "after_sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/pine-b-lod1_pine runtime Image_1.png",
+          "before_sha256": null,
+          "after_sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/pine-b-lod2.glb",
+          "before_sha256": null,
+          "after_sha256": "73ee84108fc027c9f3fa5b628ae77e6e31214c08f14b188877fb15a3bdc8e514",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/pine-b-lod2_pine runtime Image_0.png",
+          "before_sha256": null,
+          "after_sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/pine-b-lod2_pine runtime Image_1.png",
+          "before_sha256": null,
+          "after_sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/pine-root-skirt.glb",
+          "before_sha256": null,
+          "after_sha256": "f836373a7668726ed6b1459b8f8477d483d44ba78e9baaeabf2976d38458b1c3",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/pine-root-skirt_pine coherent cut grain.png",
+          "before_sha256": null,
+          "after_sha256": "caf7b2353eb4fb3015b85ff3c1a514be74991245fb0f0ffd932189e7f63deb83",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/pine-root-skirt_pine runtime Image_0.png",
+          "before_sha256": null,
+          "after_sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/pine-root-skirt_pine runtime Image_1.png",
+          "before_sha256": null,
+          "after_sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/pine-stump.glb",
+          "before_sha256": null,
+          "after_sha256": "29e867f79b6fb083bac2a68a636c2dc71dfb78f8632b82af3452cf1b84862f41",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/pine-stump_pine coherent cut grain.png",
+          "before_sha256": null,
+          "after_sha256": "caf7b2353eb4fb3015b85ff3c1a514be74991245fb0f0ffd932189e7f63deb83",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/pine-stump_pine runtime Image_0.png",
+          "before_sha256": null,
+          "after_sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio-assets/pine-stump_pine runtime Image_1.png",
+          "before_sha256": null,
+          "after_sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio.gd",
+          "before_sha256": null,
+          "after_sha256": "57c7918a772ffa44c2fccaeb9d19e1bceca19948fea9adcc10db4ec13a76fa9f",
+          "functions": [
+            "_ready",
+            "shot"
+          ],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio.gd.uid",
+          "before_sha256": null,
+          "after_sha256": "c16a2439dbd9bd95cbe207cff583db40287306a1cb3805082372bd017a12af5a",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/studio.tscn",
+          "before_sha256": null,
+          "after_sha256": "626398fe4d917a49f727f673e14fb1cdd532b2aec008b79c1af4444d5eeba0e8",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/views.gd",
+          "before_sha256": null,
+          "after_sha256": "3d30ca120487bf836f2ca6be6926248f885dfbcd5f877f1d57eb40d3da433bc1",
+          "functions": [
+            "execute",
+            "measure_crowns",
+            "ground_eye"
+          ],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/views.gd.uid",
+          "before_sha256": null,
+          "after_sha256": "dc433e88373f75634d6f289596b662f3c55b2adbb29eda3616a0053ffed44651",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        },
+        {
+          "path": "game/r1/views.tscn",
+          "before_sha256": null,
+          "after_sha256": "93aa7f885701feb343e3c1c4b5308c3cc552c8e8c6c85d27c198d4c0d632729a",
+          "functions": [],
+          "purpose": "inspection/test addition; not used by ordinary pilot play",
+          "overlaps": []
+        }
+      ],
+      "geometry": "B1 broadleaf/pine source-preserving lower-trunk fit and reattached crowns; source Y normalization, root burial and native bodies retained.",
+      "unchanged_context": [
+        "C4 geometry/fit",
+        "G1 settings and visibility distances",
+        "all game/sim/data/native authority",
+        "ground-cover composition",
+        "loading/cache policy"
+      ],
+      "line_endings": "g1/art.gd retains the original mixed line endings (28 CRLF lines); the selection hook adds LF lines. New UTF-8 R1 source/evidence files retain their recorded LF/CRLF bytes, all covered by per-file hashes."
+    },
+    "scope": "Exact worker ancestry, exclusive Git paths, source/sealed recipe agreement, Python parsing, whitespace and all retained runner-log hashes. Full input/package payload verification is executed separately before fresh application."
+  },
+  "fresh_verification": {
+    "result": "PASS",
+    "runtime": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\runtime",
+    "source_files_verified": 4891,
+    "fresh_jobs": [
+      {
+        "benchmark_competitors": [],
+        "arguments": [
+          "--background",
+          "--factory-startup",
+          "--python",
+          "D:\\project-wroughtwild-art07-r1\\tools\\wroughtwild-art07-repairs\\r1\\reopen.py",
+          "--",
+          "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04"
+        ],
+        "wrapper_pid": 35008,
+        "start": "2026-09-14T12:05:31.4072216+09:30",
+        "processes_before": null,
+        "results": [],
+        "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\users\\publisher-reopen",
+        "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\blender-tool\\blender-4.5.9-windows-x64\\blender.exe",
+        "id": "publisher-reopen",
+        "child_pid": 10268,
+        "seconds": 19.5546965,
+        "temp": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\users\\publisher-reopen\\temp",
+        "failure": "",
+        "log_sha256": "e6ebb3d6d12bbe7adaab00bdec69212c9eceddfd5f922e3ff418919a68e0889d",
+        "exit_code": 0,
+        "localappdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\users\\publisher-reopen\\local"
+      },
+      {
+        "benchmark_competitors": [],
+        "arguments": [
+          "--background",
+          "--factory-startup",
+          "--python",
+          "D:\\project-wroughtwild-art07-r1\\tools\\wroughtwild-art07-repairs\\r1\\source_audit.py",
+          "--",
+          "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04"
+        ],
+        "wrapper_pid": 35008,
+        "start": "2026-09-14T12:05:51.0000131+09:30",
+        "processes_before": null,
+        "results": [],
+        "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\users\\publisher-source_audit",
+        "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\blender-tool\\blender-4.5.9-windows-x64\\blender.exe",
+        "id": "publisher-source_audit",
+        "child_pid": 29600,
+        "seconds": 8.8969308,
+        "temp": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\users\\publisher-source_audit\\temp",
+        "failure": "",
+        "log_sha256": "b5d63a8741cdc8660f05fdaac58de1ac6edbfa8ec64feaf7679775195d2b94eb",
+        "exit_code": 0,
+        "localappdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\users\\publisher-source_audit\\local"
+      },
+      {
+        "benchmark_competitors": [],
+        "arguments": [
+          "--headless",
+          "--editor",
+          "--path",
+          "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\runtime\\game",
+          "--import"
+        ],
+        "wrapper_pid": 35008,
+        "start": "2026-09-14T12:05:59.9056381+09:30",
+        "processes_before": null,
+        "results": [],
+        "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\users\\import",
+        "program": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "id": "import",
+        "child_pid": 7980,
+        "seconds": 82.7324277,
+        "temp": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\users\\import\\temp",
+        "failure": "",
+        "log_sha256": "73e223ee65e6e43252cb89bd1e3748fdfda771673d1fb15e60ea76576668b9a1",
+        "exit_code": 0,
+        "localappdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\users\\import\\local"
+      },
+      {
+        "benchmark_competitors": [],
+        "arguments": [
+          "--rendering-method",
+          "forward_plus",
+          "--path",
+          "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\runtime\\game",
+          "res://g1/play.tscn",
+          "--",
+          "--smoke"
+        ],
+        "wrapper_pid": 35008,
+        "start": "2026-09-14T12:07:22.6874048+09:30",
+        "processes_before": null,
+        "results": [
+          "G1_PACKAGED_LAUNCH_OK"
+        ],
+        "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\users\\smoke-forward_plus",
+        "program": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "id": "smoke-forward_plus",
+        "child_pid": 31568,
+        "seconds": 89.1240293,
+        "temp": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\users\\smoke-forward_plus\\temp",
+        "failure": "",
+        "log_sha256": "a6457489dd615c57f47571067cb821b47a0330f90c95b3e27d339454e8509772",
+        "exit_code": 0,
+        "localappdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\users\\smoke-forward_plus\\local"
+      },
+      {
+        "benchmark_competitors": [],
+        "arguments": [
+          "--rendering-method",
+          "gl_compatibility",
+          "--path",
+          "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\runtime\\game",
+          "res://g1/play.tscn",
+          "--",
+          "--smoke"
+        ],
+        "wrapper_pid": 35008,
+        "start": "2026-09-14T12:08:51.8175704+09:30",
+        "processes_before": null,
+        "results": [
+          "G1_PACKAGED_LAUNCH_OK"
+        ],
+        "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\users\\smoke-gl_compatibility",
+        "program": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "id": "smoke-gl_compatibility",
+        "child_pid": 28032,
+        "seconds": 84.7553996,
+        "temp": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\users\\smoke-gl_compatibility\\temp",
+        "failure": "",
+        "log_sha256": "bcc5dd1c40549a72a960cfa2758068943fe9d3f7b5717a2024a4851ad364bbc0",
+        "exit_code": 0,
+        "localappdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\users\\smoke-gl_compatibility\\local"
+      },
+      {
+        "benchmark_competitors": [],
+        "arguments": [
+          "--headless",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\runtime\\game",
+          "res://r1/b1_native.tscn"
+        ],
+        "wrapper_pid": 35008,
+        "start": "2026-09-14T12:10:16.5760076+09:30",
+        "processes_before": null,
+        "results": [],
+        "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\users\\b1-after",
+        "program": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "id": "b1-after",
+        "child_pid": 35752,
+        "seconds": 1.7886089,
+        "temp": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\users\\b1-after\\temp",
+        "failure": "",
+        "log_sha256": "8fe5ffa1a17d6e33ec9b6b08f565e84f36e79d6fac0c0d912af4d34e5528547c",
+        "exit_code": 0,
+        "localappdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\users\\b1-after\\local"
+      },
+      {
+        "benchmark_competitors": [],
+        "arguments": [
+          "--headless",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\runtime\\game",
+          "res://r1/b1_native.tscn",
+          "--",
+          "--restore-partial"
+        ],
+        "wrapper_pid": 35008,
+        "start": "2026-09-14T12:10:18.3702106+09:30",
+        "processes_before": null,
+        "results": [],
+        "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\users\\b1-after",
+        "program": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "id": "b1-partial",
+        "child_pid": 36748,
+        "seconds": 1.6983021,
+        "temp": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\users\\b1-after\\temp",
+        "failure": "",
+        "log_sha256": "70e049b0879d2c7cb65c085b96d18b19eb894117edf9ebdff8c7906abefe1f4c",
+        "exit_code": 0,
+        "localappdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\users\\b1-after\\local"
+      },
+      {
+        "benchmark_competitors": [],
+        "arguments": [
+          "--headless",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\runtime\\game",
+          "res://r1/b1_native.tscn",
+          "--",
+          "--restore-final"
+        ],
+        "wrapper_pid": 35008,
+        "start": "2026-09-14T12:10:20.0740432+09:30",
+        "processes_before": null,
+        "results": [],
+        "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\users\\b1-after",
+        "program": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "id": "b1-final",
+        "child_pid": 33760,
+        "seconds": 1.6847507,
+        "temp": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\users\\b1-after\\temp",
+        "failure": "",
+        "log_sha256": "8d9ef41f60000bf9cad1349762d4d9c834827611266bea0c3bb6eac643df2552",
+        "exit_code": 0,
+        "localappdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\users\\b1-after\\local"
+      },
+      {
+        "benchmark_competitors": [],
+        "arguments": [
+          "--rendering-method",
+          "forward_plus",
+          "--path",
+          "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\runtime\\game",
+          "res://r1/catalogue.tscn"
+        ],
+        "wrapper_pid": 35008,
+        "start": "2026-09-14T12:10:21.7613325+09:30",
+        "processes_before": null,
+        "results": [
+          "G1_CATALOGUE 1861 checks, 0 failures; 273 legal pairs"
+        ],
+        "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\users\\catalogue-forward_plus",
+        "program": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "id": "catalogue-forward_plus",
+        "child_pid": 21108,
+        "seconds": 7.9984563,
+        "temp": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\users\\catalogue-forward_plus\\temp",
+        "failure": "",
+        "log_sha256": "4cfb3077fb4d1d9cd5fdabb7de439516629dd4005b61199530b93f670b3ed116",
+        "exit_code": 0,
+        "localappdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\users\\catalogue-forward_plus\\local"
+      },
+      {
+        "benchmark_competitors": [],
+        "arguments": [
+          "--rendering-method",
+          "gl_compatibility",
+          "--path",
+          "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\runtime\\game",
+          "res://r1/catalogue.tscn"
+        ],
+        "wrapper_pid": 35008,
+        "start": "2026-09-14T12:10:29.7628287+09:30",
+        "processes_before": null,
+        "results": [
+          "G1_CATALOGUE 1861 checks, 0 failures; 273 legal pairs"
+        ],
+        "appdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\users\\catalogue-gl_compatibility",
+        "program": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "id": "catalogue-gl_compatibility",
+        "child_pid": 14880,
+        "seconds": 7.3062936,
+        "temp": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\users\\catalogue-gl_compatibility\\temp",
+        "failure": "",
+        "log_sha256": "923964d71af409bfedbd374a5d65d1be154c26cf7b763740958aa8248d073fdd",
+        "exit_code": 0,
+        "localappdata": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\users\\catalogue-gl_compatibility\\local"
+      }
+    ],
+    "additional_proof": {
+      "blender-reopen.json": {
+        "path": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\evidence\\blender-reopen.json",
+        "sha256": "6f6c56a911d86f005c7455144cc0da530212a7c12491a54832fc3f7e9979d4a1"
+      },
+      "source-and-scar-audit.json": {
+        "path": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\evidence\\source-and-scar-audit.json",
+        "sha256": "8a031f2d60e472a6eb36bee4f3ef2fbb5f017b38f966beb80e69a57518c2d7f0"
+      },
+      "model-costs.json": {
+        "path": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\evidence\\model-costs.json",
+        "sha256": "5bb52f23ff94134aebb47b025c337355a9f52565606d15d510d4288ebcc66037"
+      },
+      "material-bindings.json": {
+        "path": "D:\\project-wroughtwild-art07-r1\\build\\art07-repairs\\r1\\v04\\evidence\\material-bindings.json",
+        "sha256": "291d55a8c34a723b4f96738b1388e06300e1f1fe7260fbb1bd9a75bb157f35f0"
+      }
+    },
+    "scope": "Fresh publisher cache/state and separate-process native checks. Verification runs are not repeated benchmark or long-session claims."
+  },
+  "visual_review": "Publisher inspected actual Forward+ broadleaf/pine pairs and player-height home day/shade/dusk views. Crowns visibly spread while existing thin foliage, blunt limbs, strong lower flare and dark shade remain. Owner visual acceptance is pending.",
+  "finding": "G2-V01: partial; isolated canopy fit is technically verified, with visual acceptance and combined R8/R9 review pending.",
+  "remaining_limits": "Preserve worker-reported warning history, sparse LOD2 leaves, dark shade and renderer response. The worker reports higher GPU cost from wider foliage; current-machine timings and projected crown AABBs establish neither minimum-hardware acceptance nor opaque leaf coverage. R8 must merge G1Art.resource with R2 reuse and R7 habitat presentation. The publisher did not repeat the full paid-route benchmark suite.",
+  "worker_remaining_limits": [
+    "Owner visual acceptance remains pending. Broadleaf has inherited blunt/heavy limbs, pronounced trunk flare and sparse LOD2 foliage; shade is dark and renderer responses differ.",
+    "Crown overlap is projected imported upper-mesh AABB overlap, not opaque leaf coverage or a complete tree census. Actual matched images accompany the measurements.",
+    "Raw paid/final snapshots differ only in one generated forge scene name (@StaticBody3D@4310 / @StaticBody3D@4311); every other saved field, native station key, ownership and geography match. No original native assertion or save code changed.",
+    "Current Ryzen 9 9950X3D / RTX 5090 timings are not minimum-hardware acceptance. Single-run streaming worst frames remain about 0.75 s; R2 owns loading policy.",
+    "Blender sampler warnings, B1/C4 ObjectDB exit warnings and Compatibility SSAO warnings remain visible. Material binding/sampler audit passes all 19 exports; R4 owns lifecycle cleanup.",
+    "Rejected v01/v02 geometry, unused-mask and parse failures, and first non-finite camera captures are retained as diagnostic history. Four earlier exit-zero captures are not accepted visual evidence.",
+    "Scar nearest-surface measurements across independently decimated siblings do not establish exact signed incision depth. Altered emission-off/on actual model views are supplied.",
+    "Ordinary-world rollout, rig adoption, new scatter/body/shape/recipe, ground-cover composition and cache changes are outside R1. No missing body/seat/geography decision was invented."
+  ],
+  "publisher_audit": {
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-repair-publication-rest-2026-09-14\\audit.py",
+    "sha256": "33f8aad22ef8a08d81e4b4cb252dd9abd687e8fa4862088a443c53d7b35d374a"
+  },
+  "publication": "These notes accompany an ordinary non-force push to approved origin/main. Actual remote-tip verification is retained separately after that push.",
+  "runtime_adoption": "Publication makes the isolated candidate available. R8 composes runtime hooks; ordinary-world rollout is not included."
+}

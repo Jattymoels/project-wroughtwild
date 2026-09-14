@@ -162,5 +162,17 @@
     }
   },
   "verify_command": "& 'C:/Users/Matty/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' tools/wroughtwild-art07-repairs/r1/package.py verify 'D:/project-wroughtwild-art07-r1/build/art07-repairs/r1/v03/handoff'",
-  "publication": "Local commits only. Worker did not integrate or push main. Serial publisher owns publication."
+  "publication": {
+    "method": "scoped cherry-pick",
+    "previous_main": "93daa6a9ec72497a60e03d29fe43d45ce20e8915",
+    "original_implementation_commit": "baf781a38e970fef52c47d4faa6a864aa479e60b",
+    "original_receipt_commit": "5a35e6f0a30dc79981571f33a18c7dcff2550e7d",
+    "implementation_commit": "bd91501c8a7b17c9808aa606a10c14f0f46cab0a",
+    "receipt_commit": "2e4de363eb770a475375fdb21fccbca3fbe7e86e",
+    "worker_tree_content_match": "All owned paths have identical Git blob IDs",
+    "destination": "origin/main at https://github.com/Jattymoels/project-wroughtwild.git",
+    "ref": "refs/heads/main",
+    "publisher_verification": "docs/prototype/art07-repairs/2026-09-14/publication-r1.json",
+    "push": "Accompanying publication commit; remote-tip result verified and reported separately."
+  }
 }
