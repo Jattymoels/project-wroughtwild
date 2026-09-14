@@ -1,4 +1,4 @@
-# ART-07R2 â€” setup and resource residency
+# ART-07R2 - setup and resource residency
 
 The isolated R2 candidate reduces median paid-world setup from 91.559 to 58.742
 seconds in Forward+ and from 87.130 to 56.785 seconds in Compatibility. All three

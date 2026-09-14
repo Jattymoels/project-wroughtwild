@@ -1,0 +1,3929 @@
+{
+  "package_path": "D:/project-wroughtwild-art07-r2/build/art07-repairs/r2/v03/handoff",
+  "manifest_sha256": "f5b3ea9559e9f4b76059c7863730b438bdfbe7a6f8f689ae3bae75340cb01ac0",
+  "source_commit": "ca370f52a20637548da0cf1fd04cdc9dbeb9c440",
+  "created_utc": "2026-09-14T01:53:20.992925+00:00",
+  "application": {
+    "prepared": "D:/project-wroughtwild-art07-r2/build/art07-repairs/r2/v04/prepared.json",
+    "prepared_sha256": "02c1578a32a5088e92ad6e7960caed4727b1b8675510d4e64fcdad9c16f36cfe",
+    "applied": "D:/project-wroughtwild-art07-r2/build/art07-repairs/r2/v04/r2-applied.json",
+    "applied_sha256": "e26052b8a39988b06e30434c4c807094d0278fa770b9cd8f513b0aaf0e86d3aa",
+    "change_records": 293
+  },
+  "fresh_engine_jobs": [
+    {
+      "metadata_path": "D:/project-wroughtwild-art07-r2/build/art07-repairs/r2/v04/logs/import.log.json",
+      "metadata_sha256": "3c478ae8b2bd712267c6f1eef9f4b35df2e827876ab039e802040f3d457abfe4",
+      "id": "import",
+      "child_pid": 33996,
+      "exit_code": 0,
+      "wrapper_pid": 34300,
+      "localappdata": "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v04\\users\\import\\local",
+      "failure": "",
+      "results": [],
+      "program": "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v04\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "appdata": "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v04\\users\\import",
+      "start": "2026-09-14T11:16:23.8578148+09:30",
+      "temp": "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v04\\users\\import\\temp",
+      "log_sha256": "2f386d32e4859935c798b330deffbc48ce897378965f9985e845ba0674f0daad",
+      "processes_before": null,
+      "benchmark_competitors": [],
+      "seconds": 60.0772457,
+      "arguments": [
+        "--headless",
+        "--editor",
+        "--path",
+        "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v04\\runtime\\game",
+        "--import"
+      ]
+    },
+    {
+      "metadata_path": "D:/project-wroughtwild-art07-r2/build/art07-repairs/r2/v04/logs/smoke-forward_plus.log.json",
+      "metadata_sha256": "37d431e7bbc9d769a9e536fdd3dceaea388114272911e86e15d6983550813177",
+      "id": "smoke-forward_plus",
+      "child_pid": 36084,
+      "exit_code": 0,
+      "wrapper_pid": 34300,
+      "localappdata": "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v04\\users\\smoke-forward_plus\\local",
+      "failure": "",
+      "results": [
+        "G1_PACKAGED_LAUNCH_OK"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v04\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "appdata": "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v04\\users\\smoke-forward_plus",
+      "start": "2026-09-14T11:17:24.0187371+09:30",
+      "temp": "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v04\\users\\smoke-forward_plus\\temp",
+      "log_sha256": "a6457489dd615c57f47571067cb821b47a0330f90c95b3e27d339454e8509772",
+      "processes_before": null,
+      "benchmark_competitors": [],
+      "seconds": 61.8607981,
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--path",
+        "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v04\\runtime\\game",
+        "res://g1/play.tscn",
+        "--",
+        "--smoke"
+      ]
+    },
+    {
+      "metadata_path": "D:/project-wroughtwild-art07-r2/build/art07-repairs/r2/v04/logs/smoke-gl_compatibility.log.json",
+      "metadata_sha256": "ba3005dd29a944437f442220b85ff50aa8ef40db9ce1c99b94bde49a407806eb",
+      "id": "smoke-gl_compatibility",
+      "child_pid": 33592,
+      "exit_code": 0,
+      "wrapper_pid": 34300,
+      "localappdata": "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v04\\users\\smoke-gl_compatibility\\local",
+      "failure": "",
+      "results": [
+        "G1_PACKAGED_LAUNCH_OK"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v04\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "appdata": "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v04\\users\\smoke-gl_compatibility",
+      "start": "2026-09-14T11:18:25.8860834+09:30",
+      "temp": "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v04\\users\\smoke-gl_compatibility\\temp",
+      "log_sha256": "bcc5dd1c40549a72a960cfa2758068943fe9d3f7b5717a2024a4851ad364bbc0",
+      "processes_before": null,
+      "benchmark_competitors": [],
+      "seconds": 60.1951861,
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--path",
+        "D:\\project-wroughtwild-art07-r2\\build\\art07-repairs\\r2\\v04\\runtime\\game",
+        "res://g1/play.tscn",
+        "--",
+        "--smoke"
+      ]
+    }
+  ],
+  "after_import_source_audit": {
+    "expected_source_files": 4842,
+    "mismatches": [],
+    "unexpected_source_files": [],
+    "generated_godot_metadata": [
+      {
+        "path": "game/art/art_geometry.gd.uid",
+        "source": "game/art/art_geometry.gd",
+        "kind": ".uid",
+        "sha256": "ca3a5c233de001624544da807c41d506d502e47ab3b732c375cb8c31b101a355"
+      },
+      {
+        "path": "game/art/augmentation_detail.gd.uid",
+        "source": "game/art/augmentation_detail.gd",
+        "kind": ".uid",
+        "sha256": "5203f5b07cb60a52df53125944ba870704cc1980b1f9e529b6cd6d45b9292e06"
+      },
+      {
+        "path": "game/art/augmentation_look.gd.uid",
+        "source": "game/art/augmentation_look.gd",
+        "kind": ".uid",
+        "sha256": "4365e9b383fe38db72e5b37e7f9b53bca1c5d6f2d61e1d8743aca944255436be"
+      },
+      {
+        "path": "game/art/bird.gdshader.uid",
+        "source": "game/art/bird.gdshader",
+        "kind": ".uid",
+        "sha256": "ef06abc1dc2d91decd6f5b1c062946d47c9b45681f12934008d0ee8644ea51e3"
+      },
+      {
+        "path": "game/art/build_ui_look.gd.uid",
+        "source": "game/art/build_ui_look.gd",
+        "kind": ".uid",
+        "sha256": "37171cf742727ee6962b00c9eeaa80eefae9eee30d8b80dc4aec07fc347a5c1c"
+      },
+      {
+        "path": "game/art/building_look.gd.uid",
+        "source": "game/art/building_look.gd",
+        "kind": ".uid",
+        "sha256": "8f666c2546fc994a0103de0ccad5231923623149263b3a2ce447ac843e4bad42"
+      },
+      {
+        "path": "game/art/building_surface.gdshader.uid",
+        "source": "game/art/building_surface.gdshader",
+        "kind": ".uid",
+        "sha256": "a6d7468dc8de382ffeb6cd6db4e6f540586e2a7d69d7d928db042ca87a7d85b7"
+      },
+      {
+        "path": "game/art/cataclysm_look.gd.uid",
+        "source": "game/art/cataclysm_look.gd",
+        "kind": ".uid",
+        "sha256": "06f230e0676270e1997791b0c439228815d0e467d432c90af02b9ac84b6029cd"
+      },
+      {
+        "path": "game/art/character_look.gd.uid",
+        "source": "game/art/character_look.gd",
+        "kind": ".uid",
+        "sha256": "884fd1d2fc0bba8ef0d8191d7082f76f27b6b6f1df038ce1d753ab4eecbba3f7"
+      },
+      {
+        "path": "game/art/combat_feel.gd.uid",
+        "source": "game/art/combat_feel.gd",
+        "kind": ".uid",
+        "sha256": "a0310f41d19d4709bc954a73d9cc1da9cf9ce29d8be0906d3b43b6deb9b9b266"
+      },
+      {
+        "path": "game/art/combat_visuals.gd.uid",
+        "source": "game/art/combat_visuals.gd",
+        "kind": ".uid",
+        "sha256": "56c94075a2b113194948742a3f60318b3d1e30eb932a880ae15ffc14dcce3870"
+      },
+      {
+        "path": "game/art/contraption_look.gd.uid",
+        "source": "game/art/contraption_look.gd",
+        "kind": ".uid",
+        "sha256": "48cb1d70ceea7558418ae384308d3dc8894c0018b9151d2b708afdb0c45388a0"
+      },
+      {
+        "path": "game/art/creature_motion.gd.uid",
+        "source": "game/art/creature_motion.gd",
+        "kind": ".uid",
+        "sha256": "63f5eaef95bc1f1b6cbe9c42192b266d4996640d01f4440a299a0b168e4f0f4b"
+      },
+      {
+        "path": "game/art/creature_motion_tuning.gd.uid",
+        "source": "game/art/creature_motion_tuning.gd",
+        "kind": ".uid",
+        "sha256": "5d611a70d7e10678d8e7966e1d382e986bb298832b30bfce865abd227c917be8"
+      },
+      {
+        "path": "game/art/discovery_look.gd.uid",
+        "source": "game/art/discovery_look.gd",
+        "kind": ".uid",
+        "sha256": "4ca1530014714f2dd56e178e10dfe570c9cc6cd02c86e7a3d098f686075bea05"
+      },
+      {
+        "path": "game/art/distant_canopy.gdshader.uid",
+        "source": "game/art/distant_canopy.gdshader",
+        "kind": ".uid",
+        "sha256": "95ec52cefc15c189ac6a47d9c9000e34664405e40d807cb60b5d363d19fe22cc"
+      },
+      {
+        "path": "game/art/enemy_shot.gdshader.uid",
+        "source": "game/art/enemy_shot.gdshader",
+        "kind": ".uid",
+        "sha256": "7af8917941498816b96757a5955d49213a29f16ac39528cabc1cea0b69aabda6"
+      },
+      {
+        "path": "game/art/enemy_shot_look.gd.uid",
+        "source": "game/art/enemy_shot_look.gd",
+        "kind": ".uid",
+        "sha256": "0fa67f63944a2f416bd6e669a59ae264e7ef3e82eae0ceeca03890ea1d7c5a57"
+      },
+      {
+        "path": "game/art/environment_sound.gd.uid",
+        "source": "game/art/environment_sound.gd",
+        "kind": ".uid",
+        "sha256": "b7fa08c7bcfd84cc6b2f26d6c7c8d572e0f6c424aeaee1d1e33ffa25d79c87db"
+      },
+      {
+        "path": "game/art/environment_sound_look.gd.uid",
+        "source": "game/art/environment_sound_look.gd",
+        "kind": ".uid",
+        "sha256": "c34a4b8a1d65be110430a023726aa823c06f981eb4d6dc12b77a8e7763dcb8f8"
+      },
+      {
+        "path": "game/art/fen_water.gdshader.uid",
+        "source": "game/art/fen_water.gdshader",
+        "kind": ".uid",
+        "sha256": "8f8015dcf9c1002e9ebd76702db0055f5ef77d49c686e55b81f3339064e1d130"
+      },
+      {
+        "path": "game/art/first_person_look.gd.uid",
+        "source": "game/art/first_person_look.gd",
+        "kind": ".uid",
+        "sha256": "39e9e3a205c717deef7a8405426c96ad656569b6c499e2d5ea766625834c9e67"
+      },
+      {
+        "path": "game/art/footstep_sound.gd.uid",
+        "source": "game/art/footstep_sound.gd",
+        "kind": ".uid",
+        "sha256": "6d67cb2233f45ae2866995f1f2b1366984986e5e3b2cf9a5db6fbe000215f21b"
+      },
+      {
+        "path": "game/art/footstep_sound_look.gd.uid",
+        "source": "game/art/footstep_sound_look.gd",
+        "kind": ".uid",
+        "sha256": "050b1f960615b167fa019eca837cdd16480aa291bfc81dfced6c54cdbc898504"
+      },
+      {
+        "path": "game/art/forge_look.gd.uid",
+        "source": "game/art/forge_look.gd",
+        "kind": ".uid",
+        "sha256": "5931919e947f7e20b882a20db75e76df166dc25292138a553b4574892318c47a"
+      },
+      {
+        "path": "game/art/forge_tell.gd.uid",
+        "source": "game/art/forge_tell.gd",
+        "kind": ".uid",
+        "sha256": "dbd7194f3319f8290e458b9cbeb79c4bae25c3fa37dac4c7dd34e959b35ad662"
+      },
+      {
+        "path": "game/art/forge_tell_edge.gdshader.uid",
+        "source": "game/art/forge_tell_edge.gdshader",
+        "kind": ".uid",
+        "sha256": "d58e4af1620f907f58e714113649dccb72198717fe17a488e1748ecef9dd1973"
+      },
+      {
+        "path": "game/art/forge_tell_look.gd.uid",
+        "source": "game/art/forge_tell_look.gd",
+        "kind": ".uid",
+        "sha256": "f149d1fffae9b54dc8482bceb08260158e1cbef286edbfdf5ac944539cca145a"
+      },
+      {
+        "path": "game/art/foundry_vapour.gdshader.uid",
+        "source": "game/art/foundry_vapour.gdshader",
+        "kind": ".uid",
+        "sha256": "d6a2e392fe3c1be95ae00255c8aed8055e21e89643b5615460fd533d0d723ac2"
+      },
+      {
+        "path": "game/art/frontier_cover.gdshader.uid",
+        "source": "game/art/frontier_cover.gdshader",
+        "kind": ".uid",
+        "sha256": "1b12598b65e0882c7d3cc4e739bcd9124a0d0a6309706cfce92b3bd2efc84c0c"
+      },
+      {
+        "path": "game/art/frontier_host_look.gd.uid",
+        "source": "game/art/frontier_host_look.gd",
+        "kind": ".uid",
+        "sha256": "ffda9a506889f4b5f008cc51d19496ff1fa8f2f59185ec7fc1f51b2485adf5ab"
+      },
+      {
+        "path": "game/art/frontier_look.gd.uid",
+        "source": "game/art/frontier_look.gd",
+        "kind": ".uid",
+        "sha256": "4f569304fc29cbde5eac6eadcfbdfe3dcecd6de2e6cfca62479435f787fb56d7"
+      },
+      {
+        "path": "game/art/frontier_scar.gdshader.uid",
+        "source": "game/art/frontier_scar.gdshader",
+        "kind": ".uid",
+        "sha256": "eda45e824233c40df71b91c526a91d495ca4aedc3c7cd2284716088bb58dd200"
+      },
+      {
+        "path": "game/art/frontier_terrain.gdshader.uid",
+        "source": "game/art/frontier_terrain.gdshader",
+        "kind": ".uid",
+        "sha256": "ed4a9305984bd465bbca4a0332b94988a26e3c522df63c5e548505c0c390039d"
+      },
+      {
+        "path": "game/art/gathering_look.gd.uid",
+        "source": "game/art/gathering_look.gd",
+        "kind": ".uid",
+        "sha256": "ff5954f6b3c67c18371f98c18ef24531288242e22946ceafa7d27556d293f39d"
+      },
+      {
+        "path": "game/art/habitat_look.gd.uid",
+        "source": "game/art/habitat_look.gd",
+        "kind": ".uid",
+        "sha256": "a45994da8cdb29e88be6d6fdd9455cd3773f26e5bccd97e9dfeba68a74639c6d"
+      },
+      {
+        "path": "game/art/habitat_motion.gdshader.uid",
+        "source": "game/art/habitat_motion.gdshader",
+        "kind": ".uid",
+        "sha256": "7af31ea2fa80aefb5c3734285181fe43fddd2635074463a64af4c967aeca6582"
+      },
+      {
+        "path": "game/art/habitat_sites_look.gd.uid",
+        "source": "game/art/habitat_sites_look.gd",
+        "kind": ".uid",
+        "sha256": "c844e0249878a4d75e6245a5015e5421795f994f5686e4f61d4b66e4845681dd"
+      },
+      {
+        "path": "game/art/interaction_sound.gd.uid",
+        "source": "game/art/interaction_sound.gd",
+        "kind": ".uid",
+        "sha256": "a5f0bb701627ae871cc29e4bca788857ef6280d0d9fb94f9820727094ff1311e"
+      },
+      {
+        "path": "game/art/interaction_sound_look.gd.uid",
+        "source": "game/art/interaction_sound_look.gd",
+        "kind": ".uid",
+        "sha256": "49aff2a2875ca92b8f85f5181ababe37fc0bf677b816ec98dad8b0fbd10e92d8"
+      },
+      {
+        "path": "game/art/landmark_look.gd.uid",
+        "source": "game/art/landmark_look.gd",
+        "kind": ".uid",
+        "sha256": "fe3822c6abdc50bd76a9b01b06566839d4b5dccb7d61346d2b53255be4c73f5b"
+      },
+      {
+        "path": "game/art/leyline_fissure.gdshader.uid",
+        "source": "game/art/leyline_fissure.gdshader",
+        "kind": ".uid",
+        "sha256": "47ba4bfd0a653163701a7e4c37ad89088fbeb2cbf1663efe71062731c2eb02ae"
+      },
+      {
+        "path": "game/art/leyline_look.gd.uid",
+        "source": "game/art/leyline_look.gd",
+        "kind": ".uid",
+        "sha256": "0068ffae2311832d1d46e973c54e031b8eb3934994461b1342bf9e581d83b3c1"
+      },
+      {
+        "path": "game/art/leyline_source_look.gd.uid",
+        "source": "game/art/leyline_source_look.gd",
+        "kind": ".uid",
+        "sha256": "17585091fbbf703c9b90edcc51475da66de32bf61e8d2209654579a2627181be"
+      },
+      {
+        "path": "game/art/material_library.gd.uid",
+        "source": "game/art/material_library.gd",
+        "kind": ".uid",
+        "sha256": "7d40f3b013b1080c2ad599c378a368a2ae1c7a77470a24083a4f4bd332a3139d"
+      },
+      {
+        "path": "game/art/rare_filament.gdshader.uid",
+        "source": "game/art/rare_filament.gdshader",
+        "kind": ".uid",
+        "sha256": "4d7294aa60ecf5158a9e0d7410c2b175df08d6ab9a776e45cc83bb16cc5a3f1f"
+      },
+      {
+        "path": "game/art/rare_finish.gd.uid",
+        "source": "game/art/rare_finish.gd",
+        "kind": ".uid",
+        "sha256": "e50155fe682d92c675352e2901a154f9312cdfbf5f4525a5fd15677e068ab9fd"
+      },
+      {
+        "path": "game/art/rare_finish.gdshader.uid",
+        "source": "game/art/rare_finish.gdshader",
+        "kind": ".uid",
+        "sha256": "e233630b92d9f05876683f707748ecfa5f7ecf58ac4a89bddddfae01d4b18d72"
+      },
+      {
+        "path": "game/art/recovered_actor_art.gd.uid",
+        "source": "game/art/recovered_actor_art.gd",
+        "kind": ".uid",
+        "sha256": "8b0b63bd4aa7038c31f406edd818464e53a6d26feb5ba3e104aa0f7184c74460"
+      },
+      {
+        "path": "game/art/station_look.gd.uid",
+        "source": "game/art/station_look.gd",
+        "kind": ".uid",
+        "sha256": "a1b611c7afdef4bb9f588626a9f6e45cad4da0bfcefa393b5994b7b56faca3da"
+      },
+      {
+        "path": "game/art/strange_ecology.gd.uid",
+        "source": "game/art/strange_ecology.gd",
+        "kind": ".uid",
+        "sha256": "1d4af6a9de737c1295bd143a215b79fda3cfc973dbf48c296e96c79f4abd4b94"
+      },
+      {
+        "path": "game/art/strange_horizon.gdshader.uid",
+        "source": "game/art/strange_horizon.gdshader",
+        "kind": ".uid",
+        "sha256": "7194548ff9e2e5ed8e1c61ee21bb58e49120f232446477404c8cf573f775c832"
+      },
+      {
+        "path": "game/art/strange_look.gd.uid",
+        "source": "game/art/strange_look.gd",
+        "kind": ".uid",
+        "sha256": "9d53075a120a183ed8c9f3a026d9538f0f012d00558d0eb402067286cdd86793"
+      },
+      {
+        "path": "game/art/strange_sound.gd.uid",
+        "source": "game/art/strange_sound.gd",
+        "kind": ".uid",
+        "sha256": "2643e796b08c97f098cb6c9d8cddf02fbbf73e09999ef8789a26a153a4319894"
+      },
+      {
+        "path": "game/art/strange_stream.gd.uid",
+        "source": "game/art/strange_stream.gd",
+        "kind": ".uid",
+        "sha256": "e987c695dff89003d7661411edb71764ece4b68416c72674837ddd0d628bcdc7"
+      },
+      {
+        "path": "game/art/strange_surface.gdshader.uid",
+        "source": "game/art/strange_surface.gdshader",
+        "kind": ".uid",
+        "sha256": "5e6e33423663f5d41445a892f88b33b7bfd0e08131d9699a224d042ee4f26741"
+      },
+      {
+        "path": "game/art/strange_water.gdshader.uid",
+        "source": "game/art/strange_water.gdshader",
+        "kind": ".uid",
+        "sha256": "882adbb1f851724f0071bf981114ed682e19ffdcf8f57ebc33e43908f5877cc4"
+      },
+      {
+        "path": "game/art/trial_fixture_art.gd.uid",
+        "source": "game/art/trial_fixture_art.gd",
+        "kind": ".uid",
+        "sha256": "591b1b77b94b6156c0c6ead3572949d601a61c0176e5c1c098340fff92d5987a"
+      },
+      {
+        "path": "game/art/trial_fixture_look.gd.uid",
+        "source": "game/art/trial_fixture_look.gd",
+        "kind": ".uid",
+        "sha256": "5f17582ef3c286bd7cc0f5648558d1ecef47ba1ea5f894674bffdd6b5546950b"
+      },
+      {
+        "path": "game/art/trial_gate_look.gd.uid",
+        "source": "game/art/trial_gate_look.gd",
+        "kind": ".uid",
+        "sha256": "27d2f9a2d2339b93f183892adcaf15ae00da8e3429ac76cb4298cf5f516c2d3d"
+      },
+      {
+        "path": "game/art/weathered_atmosphere.gd.uid",
+        "source": "game/art/weathered_atmosphere.gd",
+        "kind": ".uid",
+        "sha256": "88ab3850261851975fb12e77f326e42b9bc48f578201ef84be4871f42e7e7bfd"
+      },
+      {
+        "path": "game/art/wildland_atmosphere.gd.uid",
+        "source": "game/art/wildland_atmosphere.gd",
+        "kind": ".uid",
+        "sha256": "d4286c3d56376d06a9a520fda19fdc3b7eaf388dd262a12faf54ad20a52af1c9"
+      },
+      {
+        "path": "game/art/wildland_look.gd.uid",
+        "source": "game/art/wildland_look.gd",
+        "kind": ".uid",
+        "sha256": "90b4970a0b358efaeb41d125d8be36cfafecd6356d91cbf548b826e7f62f3866"
+      },
+      {
+        "path": "game/art/wildland_sky.gdshader.uid",
+        "source": "game/art/wildland_sky.gdshader",
+        "kind": ".uid",
+        "sha256": "79f4ee09f3de26f21662e68438fc33514c2a5b4702b386b9604b081d974ab710"
+      },
+      {
+        "path": "game/art/wildland_terrain.gdshader.uid",
+        "source": "game/art/wildland_terrain.gdshader",
+        "kind": ".uid",
+        "sha256": "4516b941036fed7f3f9d4a7666fb013101da9a59620b0f26966abc32d773af89"
+      },
+      {
+        "path": "game/art/woodland_look.gd.uid",
+        "source": "game/art/woodland_look.gd",
+        "kind": ".uid",
+        "sha256": "2c52c6c4504f5ad5f50176b1352b5315ee66e64928429bf2aec247f95c8ab1be"
+      },
+      {
+        "path": "game/art/workshop_feedback_look.gd.uid",
+        "source": "game/art/workshop_feedback_look.gd",
+        "kind": ".uid",
+        "sha256": "acf9b189850231b8d8f51a87edb391a9906e2b94065b73027ff75d0d06c14802"
+      },
+      {
+        "path": "game/art/workshop_wood.gdshader.uid",
+        "source": "game/art/workshop_wood.gdshader",
+        "kind": ".uid",
+        "sha256": "62e59284c666708a8852897b60f65c230840cf65167720f01effc725867f4edb"
+      },
+      {
+        "path": "game/art07_d1/adapter.gd.uid",
+        "source": "game/art07_d1/adapter.gd",
+        "kind": ".uid",
+        "sha256": "0fba1129056c87a15dfdc36eab1cdaab106636683206377f3b5eb37ed83ddd54"
+      },
+      {
+        "path": "game/art07_d1/checks.gd.uid",
+        "source": "game/art07_d1/checks.gd",
+        "kind": ".uid",
+        "sha256": "da164e75e02fec25d5fe8c9d64c856a03a7d68a0656c12efd2b60b486a930173"
+      },
+      {
+        "path": "game/art07_d1/gallery.gd.uid",
+        "source": "game/art07_d1/gallery.gd",
+        "kind": ".uid",
+        "sha256": "54af1afcc68e97cb2678f9bfed4841e9676801a9868207a46e37f66bad1e7e95"
+      },
+      {
+        "path": "game/art07_d2/adapter.gd.uid",
+        "source": "game/art07_d2/adapter.gd",
+        "kind": ".uid",
+        "sha256": "cb7e9f6b36ff92633378b12026a630b7bee4b5af0a0e29cfe5dabf3945bab00a"
+      },
+      {
+        "path": "game/art07_d2/checks.gd.uid",
+        "source": "game/art07_d2/checks.gd",
+        "kind": ".uid",
+        "sha256": "680124e38f6e29e61429106939b4e4b6995f2820380f13cb3239a2fe5813cfb2"
+      },
+      {
+        "path": "game/art07_d2/gallery.gd.uid",
+        "source": "game/art07_d2/gallery.gd",
+        "kind": ".uid",
+        "sha256": "94c847bd9ba0385b177d8dc596a09af4109dc81f5f76d25355993335be542cb0"
+      },
+      {
+        "path": "game/art07_d3/adapter.gd.uid",
+        "source": "game/art07_d3/adapter.gd",
+        "kind": ".uid",
+        "sha256": "f637207c32f745665cf97014bca9b7fd2ecfd39b8388d60d545f5b8c93018820"
+      },
+      {
+        "path": "game/art07_d3/checks.gd.uid",
+        "source": "game/art07_d3/checks.gd",
+        "kind": ".uid",
+        "sha256": "dbbbba92f83df3df59329154a2c1ffbc8b3c2704e36e9840977c20f268c7fb65"
+      },
+      {
+        "path": "game/art07_d3/gallery.gd.uid",
+        "source": "game/art07_d3/gallery.gd",
+        "kind": ".uid",
+        "sha256": "cf9f6c02ee9627e251dadfd126918479c0b8e834bd689db4b0e6da29305ad17c"
+      },
+      {
+        "path": "game/b1/native_review.gd.uid",
+        "source": "game/b1/native_review.gd",
+        "kind": ".uid",
+        "sha256": "4ab0d1ed47e178c588d9758139dfae4ff2bb193ba7dfb397182a02d23ec4ce1f"
+      },
+      {
+        "path": "game/b1/native_tree.gd.uid",
+        "source": "game/b1/native_tree.gd",
+        "kind": ".uid",
+        "sha256": "43a5d1a2619391f513ef073502917d6b3c4898c3c507ae5a7645bb68c4f52653"
+      },
+      {
+        "path": "game/b2/floor.gdshader.uid",
+        "source": "game/b2/floor.gdshader",
+        "kind": ".uid",
+        "sha256": "3c83e4a92114e6cb82f3896fb9ae183db78e002ee4326bc714c475207dab8928"
+      },
+      {
+        "path": "game/b2/plant.gdshader.uid",
+        "source": "game/b2/plant.gdshader",
+        "kind": ".uid",
+        "sha256": "7a09802ab4273bbf88982664edd03aab3091b2529c2be8af95490f224a3eef7a"
+      },
+      {
+        "path": "game/b2/review.gd.uid",
+        "source": "game/b2/review.gd",
+        "kind": ".uid",
+        "sha256": "7984923525508013fa719c9a9239beb8238bc8bf6bc6c3b1ca12a52724435841"
+      },
+      {
+        "path": "game/b3/native_resource.gd.uid",
+        "source": "game/b3/native_resource.gd",
+        "kind": ".uid",
+        "sha256": "c8f83097fb85676a93f6f62999011c883a4e54e2a07ae8c0963ebd0d6d98ae8c"
+      },
+      {
+        "path": "game/b3/native_review.gd.uid",
+        "source": "game/b3/native_review.gd",
+        "kind": ".uid",
+        "sha256": "847e5b25f9a83c51a5390fb1bb0d02455d78c3a9cfdd1c404cc5e6c0d2ae2a41"
+      },
+      {
+        "path": "game/b4/art/environment_sound.gd.uid",
+        "source": "game/b4/art/environment_sound.gd",
+        "kind": ".uid",
+        "sha256": "fa3814475a230608da62082450f396be8df1f49812161e802776da64e7e26a2e"
+      },
+      {
+        "path": "game/b4/art/environment_sound_look.gd.uid",
+        "source": "game/b4/art/environment_sound_look.gd",
+        "kind": ".uid",
+        "sha256": "2d16aae1cd1b8ddac46663a5c44f53eed3fadc7047beb3047f4ae738bbef78d4"
+      },
+      {
+        "path": "game/b4/review.gd.uid",
+        "source": "game/b4/review.gd",
+        "kind": ".uid",
+        "sha256": "18ef2ee04bf14ed725e1d81ac362e796b306215b5c02c2e2e635ff1e07476ae1"
+      },
+      {
+        "path": "game/b4/surface.gdshader.uid",
+        "source": "game/b4/surface.gdshader",
+        "kind": ".uid",
+        "sha256": "e5379803b92393c79d955258640ac3555be72d1863825a4aa9debd8059fcf8a5"
+      },
+      {
+        "path": "game/bin/wroughtwild_sim.gdextension.uid",
+        "source": "game/bin/wroughtwild_sim.gdextension",
+        "kind": ".uid",
+        "sha256": "6eb214f145d47460e4442455a17a928ea113742234a7fb3b54f845afbad98e48"
+      },
+      {
+        "path": "game/c1/native_resource.gd.uid",
+        "source": "game/c1/native_resource.gd",
+        "kind": ".uid",
+        "sha256": "829577f30f554d72aaac22a694d320106eaa4290e9d586837837bbb5e3a7aec3"
+      },
+      {
+        "path": "game/c1/native_review.gd.uid",
+        "source": "game/c1/native_review.gd",
+        "kind": ".uid",
+        "sha256": "7668061913a24a2c66ba527400b389e3ecc7784b0ff361d2c01a7314f6f21018"
+      },
+      {
+        "path": "game/c1/present.gd.uid",
+        "source": "game/c1/present.gd",
+        "kind": ".uid",
+        "sha256": "27edc7be192a89740c8c40cf666135cec57b9e5191bec72beed9887438784f8e"
+      },
+      {
+        "path": "game/c1/surface.gdshader.uid",
+        "source": "game/c1/surface.gdshader",
+        "kind": ".uid",
+        "sha256": "cf046f4a7bca6edb9567fd15a7f5ce2362831d3e3bbf95794b1b7d21964cb4c9"
+      },
+      {
+        "path": "game/c2/evidence/forward_plus/deplete-000.png.import",
+        "source": "game/c2/evidence/forward_plus/deplete-000.png",
+        "kind": ".import",
+        "sha256": "196fb5b01d603d07b7753ef356408ae38436d1e24a96994a64264f51cd22cf48"
+      },
+      {
+        "path": "game/c2/evidence/forward_plus/deplete-001.png.import",
+        "source": "game/c2/evidence/forward_plus/deplete-001.png",
+        "kind": ".import",
+        "sha256": "d92ed58f1591a0e85b7d18ad2de3f3429adb8c922738df9203ed84929a164bf5"
+      },
+      {
+        "path": "game/c2/evidence/forward_plus/deplete-002.png.import",
+        "source": "game/c2/evidence/forward_plus/deplete-002.png",
+        "kind": ".import",
+        "sha256": "28d4b008d85282de318c8cecbbd55beee3e6dfc6da7514f693183393a31a80c1"
+      },
+      {
+        "path": "game/c2/evidence/forward_plus/deplete-003.png.import",
+        "source": "game/c2/evidence/forward_plus/deplete-003.png",
+        "kind": ".import",
+        "sha256": "85771378b03f4aed6a6174ed2d1b8bb2ee410435e353d5761cc402fd601054a5"
+      },
+      {
+        "path": "game/c2/evidence/forward_plus/deplete-004.png.import",
+        "source": "game/c2/evidence/forward_plus/deplete-004.png",
+        "kind": ".import",
+        "sha256": "efb87e57ce1b93463fefb2e377f18c6756c453bdc2ab3e3f84f6c38206f30a3e"
+      },
+      {
+        "path": "game/c2/evidence/forward_plus/deplete-005.png.import",
+        "source": "game/c2/evidence/forward_plus/deplete-005.png",
+        "kind": ".import",
+        "sha256": "dc39b32791d5f56accb41f9ec14d6bc41320de4c08fa42467a7d39eefdd16712"
+      },
+      {
+        "path": "game/c2/evidence/forward_plus/deplete-006.png.import",
+        "source": "game/c2/evidence/forward_plus/deplete-006.png",
+        "kind": ".import",
+        "sha256": "dcc04bcc23d459f01685375e5683d95ffa8cef1eddd6b9a4042c92303ddf47f1"
+      },
+      {
+        "path": "game/c2/evidence/forward_plus/deplete-007.png.import",
+        "source": "game/c2/evidence/forward_plus/deplete-007.png",
+        "kind": ".import",
+        "sha256": "b9e28d06c56020e490824758156c2e39703b6ec76caa42888fc759f781f6fd58"
+      },
+      {
+        "path": "game/c2/evidence/forward_plus/deplete-008.png.import",
+        "source": "game/c2/evidence/forward_plus/deplete-008.png",
+        "kind": ".import",
+        "sha256": "e8f7b3912590d63bacad6dcd3ce7af19f0643be29f8a907166c1e0310356885b"
+      },
+      {
+        "path": "game/c2/evidence/forward_plus/deplete-009.png.import",
+        "source": "game/c2/evidence/forward_plus/deplete-009.png",
+        "kind": ".import",
+        "sha256": "b2c25389f77fe4b3c28ee1759efce4d3d82202627cf1f9d2305a4486c256cab7"
+      },
+      {
+        "path": "game/c2/evidence/forward_plus/deplete-010.png.import",
+        "source": "game/c2/evidence/forward_plus/deplete-010.png",
+        "kind": ".import",
+        "sha256": "48d7c28b6cdfec9987e3f9148655be78c591d26b0a18402cdc04948e458696d7"
+      },
+      {
+        "path": "game/c2/evidence/forward_plus/deplete-011.png.import",
+        "source": "game/c2/evidence/forward_plus/deplete-011.png",
+        "kind": ".import",
+        "sha256": "8c0ec21b985fc3499fa28bad813ba071bf78cec1d24b11ede14f0f90c186c96e"
+      },
+      {
+        "path": "game/c2/evidence/forward_plus/depleted.png.import",
+        "source": "game/c2/evidence/forward_plus/depleted.png",
+        "kind": ".import",
+        "sha256": "b7926e5b69a543cfc8f2575eece6d327f817d9f849155c70f25d29bbb33c5dfb"
+      },
+      {
+        "path": "game/c2/evidence/forward_plus/full.png.import",
+        "source": "game/c2/evidence/forward_plus/full.png",
+        "kind": ".import",
+        "sha256": "fdbc1218a3a2a4b275f7e699539c1062903fdd52aea2b1670f4cb6526f29be0d"
+      },
+      {
+        "path": "game/c2/evidence/forward_plus/half-worked.png.import",
+        "source": "game/c2/evidence/forward_plus/half-worked.png",
+        "kind": ".import",
+        "sha256": "eab08376a173f85ea1d7fe078c705b11b9aba5d1b027117093eaca054a807d03"
+      },
+      {
+        "path": "game/c2/evidence/forward_plus/last-portion.png.import",
+        "source": "game/c2/evidence/forward_plus/last-portion.png",
+        "kind": ".import",
+        "sha256": "51adfe91ecd0b491f3f03dcfb3e6b49fdb40dae41a281b95f48279741bdd5861"
+      },
+      {
+        "path": "game/c2/evidence/gl_compatibility/deplete-000.png.import",
+        "source": "game/c2/evidence/gl_compatibility/deplete-000.png",
+        "kind": ".import",
+        "sha256": "e96b94c4f14ada120cda580388a7bbea7d0052d40c2b27e0a3e7ee72ba39c282"
+      },
+      {
+        "path": "game/c2/evidence/gl_compatibility/deplete-001.png.import",
+        "source": "game/c2/evidence/gl_compatibility/deplete-001.png",
+        "kind": ".import",
+        "sha256": "c566a9ffe9f79fa90fb7958a1228f684f99dfd62074799326681f474623488bb"
+      },
+      {
+        "path": "game/c2/evidence/gl_compatibility/deplete-002.png.import",
+        "source": "game/c2/evidence/gl_compatibility/deplete-002.png",
+        "kind": ".import",
+        "sha256": "b0838d7e345d2037d182c9f77645dec5f8df3f86eaf55f067b2e5427c829f5b7"
+      },
+      {
+        "path": "game/c2/evidence/gl_compatibility/deplete-003.png.import",
+        "source": "game/c2/evidence/gl_compatibility/deplete-003.png",
+        "kind": ".import",
+        "sha256": "5526849b9d0fc2709a2ac2e390b701e7db711301131bdac863228fb42caa15b4"
+      },
+      {
+        "path": "game/c2/evidence/gl_compatibility/deplete-004.png.import",
+        "source": "game/c2/evidence/gl_compatibility/deplete-004.png",
+        "kind": ".import",
+        "sha256": "d69762cd9cd1ab8934ed30da8c87a3b3e4d208a403c44ef85f917fec6e43b8f9"
+      },
+      {
+        "path": "game/c2/evidence/gl_compatibility/deplete-005.png.import",
+        "source": "game/c2/evidence/gl_compatibility/deplete-005.png",
+        "kind": ".import",
+        "sha256": "c0ea3b292e1c06e21c4aa47818a28c37ea405a46c362feab04510ca9be8667e4"
+      },
+      {
+        "path": "game/c2/evidence/gl_compatibility/deplete-006.png.import",
+        "source": "game/c2/evidence/gl_compatibility/deplete-006.png",
+        "kind": ".import",
+        "sha256": "eb43dfe074825c119b2133e78dbd0e005f7a026f660d7e69312804546933dc66"
+      },
+      {
+        "path": "game/c2/evidence/gl_compatibility/deplete-007.png.import",
+        "source": "game/c2/evidence/gl_compatibility/deplete-007.png",
+        "kind": ".import",
+        "sha256": "e1ce467b0e974651d67d382e9e71584a6d2db1a1abb6ecd7869dc48bd0759329"
+      },
+      {
+        "path": "game/c2/evidence/gl_compatibility/deplete-008.png.import",
+        "source": "game/c2/evidence/gl_compatibility/deplete-008.png",
+        "kind": ".import",
+        "sha256": "0d57c79a0370cf516eba0ef81b876b8c1aa05562332d9352aeda1f50fc139f39"
+      },
+      {
+        "path": "game/c2/evidence/gl_compatibility/deplete-009.png.import",
+        "source": "game/c2/evidence/gl_compatibility/deplete-009.png",
+        "kind": ".import",
+        "sha256": "32ca9aa3f69bef7a46725ffb42585f38000ed47187f4a376bd750daa97f6571d"
+      },
+      {
+        "path": "game/c2/evidence/gl_compatibility/deplete-010.png.import",
+        "source": "game/c2/evidence/gl_compatibility/deplete-010.png",
+        "kind": ".import",
+        "sha256": "742f26d9e83836a58ab06742b19d74bc98f1c412c0003aadf12943ea8fd24c0d"
+      },
+      {
+        "path": "game/c2/evidence/gl_compatibility/deplete-011.png.import",
+        "source": "game/c2/evidence/gl_compatibility/deplete-011.png",
+        "kind": ".import",
+        "sha256": "6b9353d312719e13fcbd39e0321691152b8f04461b890e206baaec7e2e1baee8"
+      },
+      {
+        "path": "game/c2/evidence/gl_compatibility/depleted.png.import",
+        "source": "game/c2/evidence/gl_compatibility/depleted.png",
+        "kind": ".import",
+        "sha256": "fa53942044bfe20b8e66bec329fef949d2e262e88e73204287e28487d260a8c9"
+      },
+      {
+        "path": "game/c2/evidence/gl_compatibility/full.png.import",
+        "source": "game/c2/evidence/gl_compatibility/full.png",
+        "kind": ".import",
+        "sha256": "fec138d3dde701c34b75e587463b6cff6d0167acd8e7ff2df1e63d8a2e76277d"
+      },
+      {
+        "path": "game/c2/evidence/gl_compatibility/half-worked.png.import",
+        "source": "game/c2/evidence/gl_compatibility/half-worked.png",
+        "kind": ".import",
+        "sha256": "f61eed579483ca0d6ec613442e36fa9c231694c2f42a6df0e742bb2e78d180f9"
+      },
+      {
+        "path": "game/c2/evidence/gl_compatibility/last-portion.png.import",
+        "source": "game/c2/evidence/gl_compatibility/last-portion.png",
+        "kind": ".import",
+        "sha256": "098131056aade4ca470d92167e6c1de0e613fda690b50ad5daa650df84a44111"
+      },
+      {
+        "path": "game/c2/native_resource.gd.uid",
+        "source": "game/c2/native_resource.gd",
+        "kind": ".uid",
+        "sha256": "a30ae815433ea1602ac06bb1e86bc8e2154ca89ca2e0d1543541faa963b6568b"
+      },
+      {
+        "path": "game/c2/native_review.gd.uid",
+        "source": "game/c2/native_review.gd",
+        "kind": ".uid",
+        "sha256": "197069669a1c08d389e2fdb6a3d317d1edd45c88f25cc80b6a3038d2fed3406b"
+      },
+      {
+        "path": "game/c3/asset_view.gd.uid",
+        "source": "game/c3/asset_view.gd",
+        "kind": ".uid",
+        "sha256": "b6c86a25a7f1bc2845d673c334fa54a23aa35bb0fc9fc42cadebbfcae99ab187"
+      },
+      {
+        "path": "game/c3/native_resource.gd.uid",
+        "source": "game/c3/native_resource.gd",
+        "kind": ".uid",
+        "sha256": "7d97b508378cb04b107a90f12666ee24c5db9c5eb1968ac14892dd637aa64634"
+      },
+      {
+        "path": "game/c3/native_review.gd.uid",
+        "source": "game/c3/native_review.gd",
+        "kind": ".uid",
+        "sha256": "3626da18b2b4b7867a293d342eca4bc9a8957350bdd3b16e48f76d76004e01a0"
+      },
+      {
+        "path": "game/c3/surface.gdshader.uid",
+        "source": "game/c3/surface.gdshader",
+        "kind": ".uid",
+        "sha256": "7f422e6a51b0b90a3722d01c66652a23ff01edf4ce4b7b689e984420880b1516"
+      },
+      {
+        "path": "game/c4/native_review.gd.uid",
+        "source": "game/c4/native_review.gd",
+        "kind": ".uid",
+        "sha256": "2ff123f36fe4b4fa58cc3390a82b20d0cd20b8b5ebe4f5d97e242f316e1a9e59"
+      },
+      {
+        "path": "game/c4/native_tree.gd.uid",
+        "source": "game/c4/native_tree.gd",
+        "kind": ".uid",
+        "sha256": "8ba9daaecc263d9d880a5fd612ba2f16e0527dd0e4c35beee47ba6e73191d902"
+      },
+      {
+        "path": "game/c5/materials.gd.uid",
+        "source": "game/c5/materials.gd",
+        "kind": ".uid",
+        "sha256": "bb0c68c1497fe754aff310f4c263570ef8c17ef7d11f93adda715f6d566c0746"
+      },
+      {
+        "path": "game/c5/native_resource.gd.uid",
+        "source": "game/c5/native_resource.gd",
+        "kind": ".uid",
+        "sha256": "5e8730507a62f41d65dc784e07755600efadf0c3df6fdee872f3ee770fb94340"
+      },
+      {
+        "path": "game/c5/native_review.gd.uid",
+        "source": "game/c5/native_review.gd",
+        "kind": ".uid",
+        "sha256": "ef738655be32b6f393eb1c279453ddf8db3a63e0e70f790af10f726ddd941824"
+      },
+      {
+        "path": "game/c5/ore.gdshader.uid",
+        "source": "game/c5/ore.gdshader",
+        "kind": ".uid",
+        "sha256": "dba18a9d9a4b8df0dad37ec851f5f523fe097e9ea78e0ce79460676dc6145550"
+      },
+      {
+        "path": "game/c5/probe.gd.uid",
+        "source": "game/c5/probe.gd",
+        "kind": ".uid",
+        "sha256": "13b8ad01ab43f3b1b252a9b684389aae321c0ce0222309c471f4cc10aaacdd74"
+      },
+      {
+        "path": "game/c5/review.gd.uid",
+        "source": "game/c5/review.gd",
+        "kind": ".uid",
+        "sha256": "c3308d78a117af947d014bb5e71f323db23684d8a2ccd94ce8a559faffcf1d2e"
+      },
+      {
+        "path": "game/c5/verify_pause.gd.uid",
+        "source": "game/c5/verify_pause.gd",
+        "kind": ".uid",
+        "sha256": "2bd639ab5067afa588679985e9cdf77dc6a4cf35eec8081cd25ed6ca027776e0"
+      },
+      {
+        "path": "game/c6/adapter.gd.uid",
+        "source": "game/c6/adapter.gd",
+        "kind": ".uid",
+        "sha256": "401c66af4bd0bb66f211a3b81bf6821958ecc421acf3368156d896ccf2fdf967"
+      },
+      {
+        "path": "game/c6/living_frontier_routes.gd.uid",
+        "source": "game/c6/living_frontier_routes.gd",
+        "kind": ".uid",
+        "sha256": "12c099fcf5e41807a0795a317431dadf6b3f7609c1312136d99977592c9e892d"
+      },
+      {
+        "path": "game/c6/native_review.gd.uid",
+        "source": "game/c6/native_review.gd",
+        "kind": ".uid",
+        "sha256": "91e5f9c3a817178b7dfd1143f1019be711f13fa2684af5a1b6d8a5b3bdf0e5a6"
+      },
+      {
+        "path": "game/c6/smithy_story.gd.uid",
+        "source": "game/c6/smithy_story.gd",
+        "kind": ".uid",
+        "sha256": "5ad24d18b6cc09d3176d1888e5e19d6090e48278195578e5159f38ee5c8ea46d"
+      },
+      {
+        "path": "game/c6/surface.gdshader.uid",
+        "source": "game/c6/surface.gdshader",
+        "kind": ".uid",
+        "sha256": "50a17689250fadc942f55d3c1741f71e6cb346a8d980256ff0780f2a7505f018"
+      },
+      {
+        "path": "game/e1/review.gd.uid",
+        "source": "game/e1/review.gd",
+        "kind": ".uid",
+        "sha256": "9b235216f1e6af22f55937f56f69ecaf7e37dfa7810633b04ae8212f6f7f99fc"
+      },
+      {
+        "path": "game/e1/station_art.gd.uid",
+        "source": "game/e1/station_art.gd",
+        "kind": ".uid",
+        "sha256": "8f6fa913f724af3fc00b1c0842944e89d4ee1a65fd89ed99a5cad6c4c66604d7"
+      },
+      {
+        "path": "game/e2/forge_art.gd.uid",
+        "source": "game/e2/forge_art.gd",
+        "kind": ".uid",
+        "sha256": "292d72ecb72ac3e70d3eb214b71f240b0d153db2564de59ee4cd7f0b8cab52fd"
+      },
+      {
+        "path": "game/e2/forge_state.gd.uid",
+        "source": "game/e2/forge_state.gd",
+        "kind": ".uid",
+        "sha256": "c9356412e12602a11fcfd0d8e5d5566a69b14ccec77156c66c8764d6477a3229"
+      },
+      {
+        "path": "game/e2/review.gd.uid",
+        "source": "game/e2/review.gd",
+        "kind": ".uid",
+        "sha256": "f92910bbf1be12edf30e0105f25badc2eaf250c2fa8c6f098995c276e45a4503"
+      },
+      {
+        "path": "game/e2/work.gdshader.uid",
+        "source": "game/e2/work.gdshader",
+        "kind": ".uid",
+        "sha256": "2591f3a68f8642f45423b5c6f31d20bdecee1fa407a7a923700f35fd86c36c8b"
+      },
+      {
+        "path": "game/e3/ember.gdshader.uid",
+        "source": "game/e3/ember.gdshader",
+        "kind": ".uid",
+        "sha256": "a4b5afc00186575aa3005bade0e301e689a47cb77ab64eb08c9364142730e837"
+      },
+      {
+        "path": "game/e3/fuel.gdshader.uid",
+        "source": "game/e3/fuel.gdshader",
+        "kind": ".uid",
+        "sha256": "5249a4e8d2b48c964c12788ef8ee39a7ec2f0e171081a0845b76be6bbaf02176"
+      },
+      {
+        "path": "game/e3/home_art.gd.uid",
+        "source": "game/e3/home_art.gd",
+        "kind": ".uid",
+        "sha256": "0da59578fabb872dd29d3b220c5ca84e7e3862d286aeb4eb166d92fd8981d92c"
+      },
+      {
+        "path": "game/e3/home_state.gd.uid",
+        "source": "game/e3/home_state.gd",
+        "kind": ".uid",
+        "sha256": "0b3d85a37152b9f21a9347d691d191b67839f0488ac4f1f37076b397c2f1df11"
+      },
+      {
+        "path": "game/e3/review.gd.uid",
+        "source": "game/e3/review.gd",
+        "kind": ".uid",
+        "sha256": "01df102cf5efae3e73d9d3c054f6868e1e5d100b39f3466d51ff7a64eef02f89"
+      },
+      {
+        "path": "game/experiments/aesthetic_comparison.gd.uid",
+        "source": "game/experiments/aesthetic_comparison.gd",
+        "kind": ".uid",
+        "sha256": "83304f970ce6d9f2bed8cfd3d90a24cd3252d3396a0adc4dee102ec082b373fc"
+      },
+      {
+        "path": "game/experiments/build_picker_review.gd.uid",
+        "source": "game/experiments/build_picker_review.gd",
+        "kind": ".uid",
+        "sha256": "5c19a30aa1688c988582db5791e376a54f09709a8f3d6fd2fd254d5dd0bb825c"
+      },
+      {
+        "path": "game/experiments/building_review.gd.uid",
+        "source": "game/experiments/building_review.gd",
+        "kind": ".uid",
+        "sha256": "149cba9b696a0898559f9aacbcf6037926ffc29f7388c01ba7b1845d49e1adfa"
+      },
+      {
+        "path": "game/experiments/character_review.gd.uid",
+        "source": "game/experiments/character_review.gd",
+        "kind": ".uid",
+        "sha256": "55a48dc685cefd82208877692f0c879710e83583ba62fc58ad992929fb7f78a4"
+      },
+      {
+        "path": "game/experiments/combat_feel_review.gd.uid",
+        "source": "game/experiments/combat_feel_review.gd",
+        "kind": ".uid",
+        "sha256": "2c3d6fac6ec5a0ecccf5111c65f1a3b825fa398161d7b7e047439ddcebe57b11"
+      },
+      {
+        "path": "game/experiments/creature_motion_review.gd.uid",
+        "source": "game/experiments/creature_motion_review.gd",
+        "kind": ".uid",
+        "sha256": "a9f0291d7b440efb7a68cede4d26169e0eb5ddd3ffa8c904ade7141ef35f0517"
+      },
+      {
+        "path": "game/experiments/field_route.gd.uid",
+        "source": "game/experiments/field_route.gd",
+        "kind": ".uid",
+        "sha256": "bb494f92cd6c7a3684d1a503a671fafdc2bac0a98f27f62796848b9d7499ffc3"
+      },
+      {
+        "path": "game/experiments/forge_review.gd.uid",
+        "source": "game/experiments/forge_review.gd",
+        "kind": ".uid",
+        "sha256": "84220ee4deee393c3bec570050a5675e411231bccde4cfffe84099fdbc82019b"
+      },
+      {
+        "path": "game/experiments/foundry_identity_review.gd.uid",
+        "source": "game/experiments/foundry_identity_review.gd",
+        "kind": ".uid",
+        "sha256": "c83b0747c31095934ed1c41a77fcb8f1f538b57fd7d85659921d7d1ee7909096"
+      },
+      {
+        "path": "game/experiments/foundry_mutation_review.gd.uid",
+        "source": "game/experiments/foundry_mutation_review.gd",
+        "kind": ".uid",
+        "sha256": "b21dbad05524914c8dfde3cb58f16f2a6882ca83727ec0005229604875df4c35"
+      },
+      {
+        "path": "game/experiments/frontier_continuation_review.gd.uid",
+        "source": "game/experiments/frontier_continuation_review.gd",
+        "kind": ".uid",
+        "sha256": "6505122d3af9f31963e846d94c5ada60f6fb2f124748ba23938fbdb27a592be1"
+      },
+      {
+        "path": "game/experiments/gathering_review.gd.uid",
+        "source": "game/experiments/gathering_review.gd",
+        "kind": ".uid",
+        "sha256": "82ef9a0b873df26244147135da9fc9e30e619bf3d7224bc54e7379b4a1a903ac"
+      },
+      {
+        "path": "game/experiments/landform_comparison.gd.uid",
+        "source": "game/experiments/landform_comparison.gd",
+        "kind": ".uid",
+        "sha256": "b9dfd7feda77d32e1313967e0d0224032ef317f65415f0e4094fd79c57681d8f"
+      },
+      {
+        "path": "game/experiments/octagon_lab.gd.uid",
+        "source": "game/experiments/octagon_lab.gd",
+        "kind": ".uid",
+        "sha256": "8ce3519380a9f36a8616a329ee1dc8af0ee6f8420518bf361d535602fb3843b4"
+      },
+      {
+        "path": "game/experiments/prop_repair_comparison.gd.uid",
+        "source": "game/experiments/prop_repair_comparison.gd",
+        "kind": ".uid",
+        "sha256": "b5fba42240a47eab2022a9536dacc0fcef8bcc830e4bb053b533492ed03c843c"
+      },
+      {
+        "path": "game/experiments/ranged_review.gd.uid",
+        "source": "game/experiments/ranged_review.gd",
+        "kind": ".uid",
+        "sha256": "155de85f69069946aeca9ed5cf44adcaa91812e1c2fd879d16c16117266888ca"
+      },
+      {
+        "path": "game/experiments/roof_workshop.gd.uid",
+        "source": "game/experiments/roof_workshop.gd",
+        "kind": ".uid",
+        "sha256": "02424b2dce266b26659be46f8f4e7ba70b1eb812f5d72c05d65f5c9bdf441640"
+      },
+      {
+        "path": "game/experiments/skill_expansion_review.gd.uid",
+        "source": "game/experiments/skill_expansion_review.gd",
+        "kind": ".uid",
+        "sha256": "cf322cc1a43abd335e788cb2b29b4da7e89fea311b873c57f28227ca75aa6254"
+      },
+      {
+        "path": "game/experiments/station_review.gd.uid",
+        "source": "game/experiments/station_review.gd",
+        "kind": ".uid",
+        "sha256": "5578d518499b13875bb861f8502c563d4cfe16a5a70347bc9bc65b0f40a7e660"
+      },
+      {
+        "path": "game/experiments/woodland_comparison.gd.uid",
+        "source": "game/experiments/woodland_comparison.gd",
+        "kind": ".uid",
+        "sha256": "56a9505082fba3116fb23874b882348d886b99bed26a397850d1d0a256ef7109"
+      },
+      {
+        "path": "game/experiments/workshop_lab.gd.uid",
+        "source": "game/experiments/workshop_lab.gd",
+        "kind": ".uid",
+        "sha256": "5fa5dd335819dab15965d1ef08d6eabe3c70818762bf567c3c3ad2b92c63ff8a"
+      },
+      {
+        "path": "game/experiments/workshop_player.gd.uid",
+        "source": "game/experiments/workshop_player.gd",
+        "kind": ".uid",
+        "sha256": "c3b6357f226a7f1ad6932f90fa2ab56eff8fa68d6404b29ba3c3492ea9aa2910"
+      },
+      {
+        "path": "game/f1/evidence/forward_plus-depleted.png.import",
+        "source": "game/f1/evidence/forward_plus-depleted.png",
+        "kind": ".import",
+        "sha256": "c91f4e807ba2e987bf27be825dd4a90c46cab6fafec8b0ffb06330ebd0c4f8fd"
+      },
+      {
+        "path": "game/f1/evidence/forward_plus-lamp-off-dark.png.import",
+        "source": "game/f1/evidence/forward_plus-lamp-off-dark.png",
+        "kind": ".import",
+        "sha256": "f0243cdec11aefd55681f9e2708bedd46169a1f779f308a4b7e370c1924e42ac"
+      },
+      {
+        "path": "game/f1/evidence/forward_plus-lamp-off.png.import",
+        "source": "game/f1/evidence/forward_plus-lamp-off.png",
+        "kind": ".import",
+        "sha256": "e73653d6e329efbd3c06ed55a30dfa76f30a5f82b33d9e8ba4905c091f6e5afc"
+      },
+      {
+        "path": "game/f1/evidence/forward_plus-lamp-on-dark.png.import",
+        "source": "game/f1/evidence/forward_plus-lamp-on-dark.png",
+        "kind": ".import",
+        "sha256": "9af9abc57bce0c8b7891e9868b578877b777627655846c643ce988eb1dc3b06f"
+      },
+      {
+        "path": "game/f1/evidence/forward_plus-lamp-on.png.import",
+        "source": "game/f1/evidence/forward_plus-lamp-on.png",
+        "kind": ".import",
+        "sha256": "8d0cbcf4455575930e17f10a275225a0bd316b509845a1cd8e99f1e9d19d2fb0"
+      },
+      {
+        "path": "game/f1/evidence/forward_plus-lanternheart-intact.png.import",
+        "source": "game/f1/evidence/forward_plus-lanternheart-intact.png",
+        "kind": ".import",
+        "sha256": "afd0c8f1cb12ae806be79c2ed473e603ab18860c5a63c632921a6c1fe1530441"
+      },
+      {
+        "path": "game/f1/evidence/forward_plus-lanternheart-recovered.png.import",
+        "source": "game/f1/evidence/forward_plus-lanternheart-recovered.png",
+        "kind": ".import",
+        "sha256": "7336a35ec97eda82ce8c58ce49e6c1ee66ce90eb9adb55a7ebf6a06f6e4f7ca7"
+      },
+      {
+        "path": "game/f1/evidence/forward_plus-lanternheart-worked.png.import",
+        "source": "game/f1/evidence/forward_plus-lanternheart-worked.png",
+        "kind": ".import",
+        "sha256": "d3c9a3b0a654a93462afa114f5f585d887384b3bac2475366c9adec2d73335be"
+      },
+      {
+        "path": "game/f1/evidence/forward_plus-lever-idle.png.import",
+        "source": "game/f1/evidence/forward_plus-lever-idle.png",
+        "kind": ".import",
+        "sha256": "545c74c731f09f1efcdc1b2f7d2b5c0ce36c231abe253d1a85711db4e0fccce9"
+      },
+      {
+        "path": "game/f1/evidence/forward_plus-lever-pulse.png.import",
+        "source": "game/f1/evidence/forward_plus-lever-pulse.png",
+        "kind": ".import",
+        "sha256": "1446daa0bcc20d2b701ae359e147c9138537fc7321e559c5a028fae9fda9277f"
+      },
+      {
+        "path": "game/f1/evidence/forward_plus-lod-far.png.import",
+        "source": "game/f1/evidence/forward_plus-lod-far.png",
+        "kind": ".import",
+        "sha256": "bec4036da2b1a1338ff54cee4b0b76638e8f6ee8d07490385cd80906d37b8b8f"
+      },
+      {
+        "path": "game/f1/evidence/forward_plus-lod-middle.png.import",
+        "source": "game/f1/evidence/forward_plus-lod-middle.png",
+        "kind": ".import",
+        "sha256": "8b9bffaaa4717b7a96ce895caea57e3e54d752df7133892b976a1be81560184e"
+      },
+      {
+        "path": "game/f1/evidence/forward_plus-lod-near.png.import",
+        "source": "game/f1/evidence/forward_plus-lod-near.png",
+        "kind": ".import",
+        "sha256": "a90955b7505c227c91172e9bcd12e99135e1934dd10c6b594163831c155ab093"
+      },
+      {
+        "path": "game/f1/evidence/forward_plus-overview.png.import",
+        "source": "game/f1/evidence/forward_plus-overview.png",
+        "kind": ".import",
+        "sha256": "ab4d22136f96336f00ae5404881d2702b0aa817bd4e94b223fe1f07683051299"
+      },
+      {
+        "path": "game/f1/evidence/forward_plus-stormglass-intact.png.import",
+        "source": "game/f1/evidence/forward_plus-stormglass-intact.png",
+        "kind": ".import",
+        "sha256": "8a7b6d2738eed81a7008b3fca59ff57971d08c3b7cb213094335ca23e966a979"
+      },
+      {
+        "path": "game/f1/evidence/forward_plus-stormglass-recovered.png.import",
+        "source": "game/f1/evidence/forward_plus-stormglass-recovered.png",
+        "kind": ".import",
+        "sha256": "d66cd13c59d4b65593bc0f6c2858a94638b91749a40d261ea3cd52c3328538b9"
+      },
+      {
+        "path": "game/f1/evidence/forward_plus-stormglass-worked.png.import",
+        "source": "game/f1/evidence/forward_plus-stormglass-worked.png",
+        "kind": ".import",
+        "sha256": "e70bc72ce4ca54c27ce2f64dbb359decd5f9dbfd22a0e48243e9e6ba6c3e2cd1"
+      },
+      {
+        "path": "game/f1/evidence/gl_compatibility-depleted.png.import",
+        "source": "game/f1/evidence/gl_compatibility-depleted.png",
+        "kind": ".import",
+        "sha256": "fe097d3155d66462fa76b418c1acc0a0d295d4402ce055c4c95124dadef66f5a"
+      },
+      {
+        "path": "game/f1/evidence/gl_compatibility-lamp-off-dark.png.import",
+        "source": "game/f1/evidence/gl_compatibility-lamp-off-dark.png",
+        "kind": ".import",
+        "sha256": "5c0e5e9c143649e9e3c882a5846a3962a0449f18654d0ff17f60b318903aa064"
+      },
+      {
+        "path": "game/f1/evidence/gl_compatibility-lamp-off.png.import",
+        "source": "game/f1/evidence/gl_compatibility-lamp-off.png",
+        "kind": ".import",
+        "sha256": "28b3eed04bacc9ba7766967406c9a6820c04f4c7dacf4d07f37b31fac9cb48c3"
+      },
+      {
+        "path": "game/f1/evidence/gl_compatibility-lamp-on-dark.png.import",
+        "source": "game/f1/evidence/gl_compatibility-lamp-on-dark.png",
+        "kind": ".import",
+        "sha256": "b1a9b110c05ca9361e3166d172fdc8426511a575749f24a9934c52527e1cf143"
+      },
+      {
+        "path": "game/f1/evidence/gl_compatibility-lamp-on.png.import",
+        "source": "game/f1/evidence/gl_compatibility-lamp-on.png",
+        "kind": ".import",
+        "sha256": "ff6701b1debc4bb5aaab14b7751aa513fbb3efc412b3cb54e10cdefe3ea40238"
+      },
+      {
+        "path": "game/f1/evidence/gl_compatibility-lanternheart-intact.png.import",
+        "source": "game/f1/evidence/gl_compatibility-lanternheart-intact.png",
+        "kind": ".import",
+        "sha256": "4a030cbfa420a13713e8d30700c97d5b093f12223a824284c7ba35535e9cde81"
+      },
+      {
+        "path": "game/f1/evidence/gl_compatibility-lanternheart-recovered.png.import",
+        "source": "game/f1/evidence/gl_compatibility-lanternheart-recovered.png",
+        "kind": ".import",
+        "sha256": "a2ae3794b63f4d73f1337b996ebe113b4b26cbac5fb3b4230b495231646cc689"
+      },
+      {
+        "path": "game/f1/evidence/gl_compatibility-lanternheart-worked.png.import",
+        "source": "game/f1/evidence/gl_compatibility-lanternheart-worked.png",
+        "kind": ".import",
+        "sha256": "fec4a4032e1cbd4cf67e2f7c3d78a9b23ce7ed5a0c91698e5e55619438982b89"
+      },
+      {
+        "path": "game/f1/evidence/gl_compatibility-lever-idle.png.import",
+        "source": "game/f1/evidence/gl_compatibility-lever-idle.png",
+        "kind": ".import",
+        "sha256": "eaff7dd5036b9e54cfa5f48409bc2c8e075be281f674d6243c31356add048ce0"
+      },
+      {
+        "path": "game/f1/evidence/gl_compatibility-lever-pulse.png.import",
+        "source": "game/f1/evidence/gl_compatibility-lever-pulse.png",
+        "kind": ".import",
+        "sha256": "4cbb04b4b7d94f09d0adfd0c4ec54048c558d40b9a8c053171e53c916f628cdd"
+      },
+      {
+        "path": "game/f1/evidence/gl_compatibility-lod-far.png.import",
+        "source": "game/f1/evidence/gl_compatibility-lod-far.png",
+        "kind": ".import",
+        "sha256": "da17d0b462cde04b4726be0da57dbc36749bae4c3e9e8ff563c675aec16be273"
+      },
+      {
+        "path": "game/f1/evidence/gl_compatibility-lod-middle.png.import",
+        "source": "game/f1/evidence/gl_compatibility-lod-middle.png",
+        "kind": ".import",
+        "sha256": "9b77b1c9d3c7a4b192b1ce7c8d6d0fe0d820a290e20e6f7a74183d05a7074fef"
+      },
+      {
+        "path": "game/f1/evidence/gl_compatibility-lod-near.png.import",
+        "source": "game/f1/evidence/gl_compatibility-lod-near.png",
+        "kind": ".import",
+        "sha256": "8605e5e32533da184d62aebdc932e83467c73b88ea820bf85896239ce8a55aaf"
+      },
+      {
+        "path": "game/f1/evidence/gl_compatibility-overview.png.import",
+        "source": "game/f1/evidence/gl_compatibility-overview.png",
+        "kind": ".import",
+        "sha256": "47af7ee0cc87ce6e228afd5b9067d2d726407215961e8c43e74f37e337034fc9"
+      },
+      {
+        "path": "game/f1/evidence/gl_compatibility-stormglass-intact.png.import",
+        "source": "game/f1/evidence/gl_compatibility-stormglass-intact.png",
+        "kind": ".import",
+        "sha256": "65c0e6af55d84e86aaafa0299816f1e4f6008f727be020250c27cfb456121bc7"
+      },
+      {
+        "path": "game/f1/evidence/gl_compatibility-stormglass-recovered.png.import",
+        "source": "game/f1/evidence/gl_compatibility-stormglass-recovered.png",
+        "kind": ".import",
+        "sha256": "46de8772a4d0d79ff6f4f3b99f239dbff0acd96e86101348110f364eeeb27a2d"
+      },
+      {
+        "path": "game/f1/evidence/gl_compatibility-stormglass-worked.png.import",
+        "source": "game/f1/evidence/gl_compatibility-stormglass-worked.png",
+        "kind": ".import",
+        "sha256": "422aab9dc982785e34b150d6ee43e618344f31746c0f12adaac3455ce1bfa95c"
+      },
+      {
+        "path": "game/f1/review.gd.uid",
+        "source": "game/f1/review.gd",
+        "kind": ".uid",
+        "sha256": "2067fb882d35e5a29ea2559484c45ce0d2d9ac46578e83253e4eed811471f5be"
+      },
+      {
+        "path": "game/f1/scar.gdshader.uid",
+        "source": "game/f1/scar.gdshader",
+        "kind": ".uid",
+        "sha256": "14b07409af92482475a4cd85ee3a6cecbeda555bf5654da39a6e36e4f07b48bf"
+      },
+      {
+        "path": "game/f1/visuals.gd.uid",
+        "source": "game/f1/visuals.gd",
+        "kind": ".uid",
+        "sha256": "d8d3bf9f88fcfa9f48f7d6e7d6e104b35e835cd2f048449310abde1c9165da55"
+      },
+      {
+        "path": "game/f2/art.gd.uid",
+        "source": "game/f2/art.gd",
+        "kind": ".uid",
+        "sha256": "5109712592182632b8059be80ddf11b342dba70761c8752ecb0c55ff11f90128"
+      },
+      {
+        "path": "game/f2/energy.gdshader.uid",
+        "source": "game/f2/energy.gdshader",
+        "kind": ".uid",
+        "sha256": "04a10b53317353cd2fefcd3420161b9efc5bfad7fc60f503f48a6a309c6fe397"
+      },
+      {
+        "path": "game/f2/evidence/forward_plus-arrived.png.import",
+        "source": "game/f2/evidence/forward_plus-arrived.png",
+        "kind": ".import",
+        "sha256": "1bd401c089c76106ad09e9434850a0a5dadebdc64b2400fefe9645c4a8f13c50"
+      },
+      {
+        "path": "game/f2/evidence/forward_plus-blocked.png.import",
+        "source": "game/f2/evidence/forward_plus-blocked.png",
+        "kind": ".import",
+        "sha256": "f5a5dcf3feec4d24261fd472c8e33d9a95d6a9fb0be00514c7fade0f83852f88"
+      },
+      {
+        "path": "game/f2/evidence/forward_plus-emission-off.png.import",
+        "source": "game/f2/evidence/forward_plus-emission-off.png",
+        "kind": ".import",
+        "sha256": "780866f8cea7e7daa84356da2803876c33a677b354bd28cd10f21629371a84a3"
+      },
+      {
+        "path": "game/f2/evidence/forward_plus-landing.png.import",
+        "source": "game/f2/evidence/forward_plus-landing.png",
+        "kind": ".import",
+        "sha256": "d6ce3036d7ac1436c04a01f3f5f536506287fc6b641cd961b73cbc03e3d71067"
+      },
+      {
+        "path": "game/f2/evidence/forward_plus-recovered.png.import",
+        "source": "game/f2/evidence/forward_plus-recovered.png",
+        "kind": ".import",
+        "sha256": "3c74c89571b575f6787bd14795d0ee2c487f5a4d7a1743442def09bcf7bb8e3c"
+      },
+      {
+        "path": "game/f2/evidence/forward_plus-route.png.import",
+        "source": "game/f2/evidence/forward_plus-route.png",
+        "kind": ".import",
+        "sha256": "0a444b95458d4e938900cc7da6c7994d3943e287140f066f9f8aa3c6bd4c34a9"
+      },
+      {
+        "path": "game/f2/evidence/forward_plus-shade.png.import",
+        "source": "game/f2/evidence/forward_plus-shade.png",
+        "kind": ".import",
+        "sha256": "8c0962fd35adaac053bdf9f39cbff86e1de350446d39f4c5d03e1e67a891557a"
+      },
+      {
+        "path": "game/f2/evidence/forward_plus-source-depleted.png.import",
+        "source": "game/f2/evidence/forward_plus-source-depleted.png",
+        "kind": ".import",
+        "sha256": "82626179444a550b564fccc7c9ffbb2aa040586f00bc73eb8fd30ccec3488c6c"
+      },
+      {
+        "path": "game/f2/evidence/forward_plus-source-emission-off.png.import",
+        "source": "game/f2/evidence/forward_plus-source-emission-off.png",
+        "kind": ".import",
+        "sha256": "3b08822cb6fa2be799df77f12d70a224f57b01201c0b10a0bcaa4b6887420b46"
+      },
+      {
+        "path": "game/f2/evidence/forward_plus-source-worked.png.import",
+        "source": "game/f2/evidence/forward_plus-source-worked.png",
+        "kind": ".import",
+        "sha256": "b317c2cd95ccdf7e8b816667903ef7ad793b52527c29ee5662c4d23951d414a6"
+      },
+      {
+        "path": "game/f2/evidence/forward_plus-source.png.import",
+        "source": "game/f2/evidence/forward_plus-source.png",
+        "kind": ".import",
+        "sha256": "3d974386722c60df459f638c2ee31c932f6e469ea2771ed3e29256a2a8d0c85c"
+      },
+      {
+        "path": "game/f2/evidence/forward_plus-travelling.png.import",
+        "source": "game/f2/evidence/forward_plus-travelling.png",
+        "kind": ".import",
+        "sha256": "331e9d6de802c4ede15e5def82ff66524a25de1447bec40e6516dbd3e6fc556e"
+      },
+      {
+        "path": "game/f2/evidence/forward_plus-winch.png.import",
+        "source": "game/f2/evidence/forward_plus-winch.png",
+        "kind": ".import",
+        "sha256": "2bd2a9bc54bc0234a61026a834fc2e43d7864304abdb0a7b5c51d29328f6cfe6"
+      },
+      {
+        "path": "game/f2/evidence/forward_plus-wound-loaded.png.import",
+        "source": "game/f2/evidence/forward_plus-wound-loaded.png",
+        "kind": ".import",
+        "sha256": "8fb4a7a37e6332033a66da30295729c0600c8812aa6e77229f4a579e5eb5617e"
+      },
+      {
+        "path": "game/f2/evidence/gl_compatibility-arrived.png.import",
+        "source": "game/f2/evidence/gl_compatibility-arrived.png",
+        "kind": ".import",
+        "sha256": "2a985415e83953977eb1fbeac4bb05f5157ed854e6c00a361eb3677d496cdf77"
+      },
+      {
+        "path": "game/f2/evidence/gl_compatibility-blocked.png.import",
+        "source": "game/f2/evidence/gl_compatibility-blocked.png",
+        "kind": ".import",
+        "sha256": "d6dc10910184c1e0a7ace6e39983d7740f1aa3c4884c1f8d838c9e2d98c4772f"
+      },
+      {
+        "path": "game/f2/evidence/gl_compatibility-emission-off.png.import",
+        "source": "game/f2/evidence/gl_compatibility-emission-off.png",
+        "kind": ".import",
+        "sha256": "e05080894e8a211edf48b034ea3ba7a6d5d75d423dbb2b67c5e75c2272b341f3"
+      },
+      {
+        "path": "game/f2/evidence/gl_compatibility-landing.png.import",
+        "source": "game/f2/evidence/gl_compatibility-landing.png",
+        "kind": ".import",
+        "sha256": "53fead3bab765a340c0cb14c2ac44353b8f65ac732c430788c1f25d65d6f8138"
+      },
+      {
+        "path": "game/f2/evidence/gl_compatibility-recovered.png.import",
+        "source": "game/f2/evidence/gl_compatibility-recovered.png",
+        "kind": ".import",
+        "sha256": "022871e1c5746163d2f9626edcbeb43db7e1423832c9395af4265e5fc75e12ea"
+      },
+      {
+        "path": "game/f2/evidence/gl_compatibility-route.png.import",
+        "source": "game/f2/evidence/gl_compatibility-route.png",
+        "kind": ".import",
+        "sha256": "5d1f6fba4f53fc7fc7ec6efd0f511b4e76179b2e61d83c68017507e2ec8c0574"
+      },
+      {
+        "path": "game/f2/evidence/gl_compatibility-shade.png.import",
+        "source": "game/f2/evidence/gl_compatibility-shade.png",
+        "kind": ".import",
+        "sha256": "764447afedb66f099991e417eea61b73caf5b41655bf167c3f4873555a68effd"
+      },
+      {
+        "path": "game/f2/evidence/gl_compatibility-source-depleted.png.import",
+        "source": "game/f2/evidence/gl_compatibility-source-depleted.png",
+        "kind": ".import",
+        "sha256": "6298b3201a9cb1b2a85402338c74a47a9872a2463b007952fb108e51be1c2257"
+      },
+      {
+        "path": "game/f2/evidence/gl_compatibility-source-emission-off.png.import",
+        "source": "game/f2/evidence/gl_compatibility-source-emission-off.png",
+        "kind": ".import",
+        "sha256": "a9c479f5a44457f26a4f297f3f3e8d3100867d766b5253d1dc911884583c365b"
+      },
+      {
+        "path": "game/f2/evidence/gl_compatibility-source-worked.png.import",
+        "source": "game/f2/evidence/gl_compatibility-source-worked.png",
+        "kind": ".import",
+        "sha256": "0c4b5f3e996733e83e570a869ff13028b46b3c0181dde81ddd3650314519c416"
+      },
+      {
+        "path": "game/f2/evidence/gl_compatibility-source.png.import",
+        "source": "game/f2/evidence/gl_compatibility-source.png",
+        "kind": ".import",
+        "sha256": "c55f869c55a1e0171da8248a432389966cc026fa4a6856948543e9bdbd76bd1d"
+      },
+      {
+        "path": "game/f2/evidence/gl_compatibility-travelling.png.import",
+        "source": "game/f2/evidence/gl_compatibility-travelling.png",
+        "kind": ".import",
+        "sha256": "263797e61bd03b286247397d9deca7fb01f9d25d2fb8f6f65bd6f77da6ee7525"
+      },
+      {
+        "path": "game/f2/evidence/gl_compatibility-winch.png.import",
+        "source": "game/f2/evidence/gl_compatibility-winch.png",
+        "kind": ".import",
+        "sha256": "973df240565a05c4fe3ff84a94046144f021786162d7a52abe987d3667cbc6d2"
+      },
+      {
+        "path": "game/f2/evidence/gl_compatibility-wound-loaded.png.import",
+        "source": "game/f2/evidence/gl_compatibility-wound-loaded.png",
+        "kind": ".import",
+        "sha256": "d0398beeb7564d21579953226530226ede28207c6d112f8c5ade44c4e0caaf23"
+      },
+      {
+        "path": "game/f2/review.gd.uid",
+        "source": "game/f2/review.gd",
+        "kind": ".uid",
+        "sha256": "377355f0b2a543c5eb2e54230be1e0dfc721e2db469aef8f5182783d34e9fdb6"
+      },
+      {
+        "path": "game/f2/source.gdshader.uid",
+        "source": "game/f2/source.gdshader",
+        "kind": ".uid",
+        "sha256": "5bc5c6583e5546c6d0e34d5d00bb9eaf497a55f6a747fe09211a519f3ff04957"
+      },
+      {
+        "path": "game/f3/evidence/forward_plus-bellows-discharged.png.import",
+        "source": "game/f3/evidence/forward_plus-bellows-discharged.png",
+        "kind": ".import",
+        "sha256": "feaba12cc7fbb66cfa74a21a9f3b5bd68c2bcbc7a049546d013fd0eb271919ea"
+      },
+      {
+        "path": "game/f3/evidence/forward_plus-bellows-primed.png.import",
+        "source": "game/f3/evidence/forward_plus-bellows-primed.png",
+        "kind": ".import",
+        "sha256": "2bd1bc52e964f095d718d26af4143ac1a1bd741df9d91c81160d1eb6ffe30796"
+      },
+      {
+        "path": "game/f3/evidence/forward_plus-depleted.png.import",
+        "source": "game/f3/evidence/forward_plus-depleted.png",
+        "kind": ".import",
+        "sha256": "89098129436c16db3820d502a636b8ed095c1722c64e809ac8c25dcc35a81de0"
+      },
+      {
+        "path": "game/f3/evidence/forward_plus-lod-far.png.import",
+        "source": "game/f3/evidence/forward_plus-lod-far.png",
+        "kind": ".import",
+        "sha256": "f7efb1e13585cfca90887b1041f19c5b2102509289f163e17c0c4281b2eec23c"
+      },
+      {
+        "path": "game/f3/evidence/forward_plus-lod-middle.png.import",
+        "source": "game/f3/evidence/forward_plus-lod-middle.png",
+        "kind": ".import",
+        "sha256": "a2643486ac9d6a5af1e250c1c78da27c095ff34541989a7e8301639fc4033f82"
+      },
+      {
+        "path": "game/f3/evidence/forward_plus-lod-near.png.import",
+        "source": "game/f3/evidence/forward_plus-lod-near.png",
+        "kind": ".import",
+        "sha256": "84809446f93d3017242b91aee95894682afcee98f26a49d4f07901826aaa7e2c"
+      },
+      {
+        "path": "game/f3/evidence/forward_plus-magnetic_sorter-idle.png.import",
+        "source": "game/f3/evidence/forward_plus-magnetic_sorter-idle.png",
+        "kind": ".import",
+        "sha256": "b03b82c75c30cd06aba20602c991201e1ead41f46e31b4222f5bffb8ec807d43"
+      },
+      {
+        "path": "game/f3/evidence/forward_plus-overview.png.import",
+        "source": "game/f3/evidence/forward_plus-overview.png",
+        "kind": ".import",
+        "sha256": "9dad345a83126706e6729cf73618a567889f11c5f9a00d0a3079eb721a3a191a"
+      },
+      {
+        "path": "game/f3/evidence/forward_plus-pullstone-idle.png.import",
+        "source": "game/f3/evidence/forward_plus-pullstone-idle.png",
+        "kind": ".import",
+        "sha256": "bbcd63ed5f3cbba5034001696dbaad89f8e760b98bd1fad7132407658b91b5a9"
+      },
+      {
+        "path": "game/f3/evidence/forward_plus-pullstone-worked.png.import",
+        "source": "game/f3/evidence/forward_plus-pullstone-worked.png",
+        "kind": ".import",
+        "sha256": "70915987ac729bde4ad5f764193368921051d5c77022543fb6238e14b1b23e3c"
+      },
+      {
+        "path": "game/f3/evidence/forward_plus-sorter-first-batch.png.import",
+        "source": "game/f3/evidence/forward_plus-sorter-first-batch.png",
+        "kind": ".import",
+        "sha256": "32b6ac625962c7ebae6097a5306bd16b5cc33d7505285e578498c47c250b4ac5"
+      },
+      {
+        "path": "game/f3/evidence/forward_plus-sorter-input.png.import",
+        "source": "game/f3/evidence/forward_plus-sorter-input.png",
+        "kind": ".import",
+        "sha256": "44df27af30c61a1690597938d20b9487050cae68249795773f10d19cc9eb1fe4"
+      },
+      {
+        "path": "game/f3/evidence/forward_plus-sorter-trays.png.import",
+        "source": "game/f3/evidence/forward_plus-sorter-trays.png",
+        "kind": ".import",
+        "sha256": "ff36263fd6535183933288c17c972180cba6cef9509f4a677d63c4494994fb7e"
+      },
+      {
+        "path": "game/f3/evidence/forward_plus-ventlung-idle.png.import",
+        "source": "game/f3/evidence/forward_plus-ventlung-idle.png",
+        "kind": ".import",
+        "sha256": "889c80b03de61ebf14d648bda27d5131373f33f777e55279b61bbbfae9ad739a"
+      },
+      {
+        "path": "game/f3/evidence/forward_plus-ventlung-worked.png.import",
+        "source": "game/f3/evidence/forward_plus-ventlung-worked.png",
+        "kind": ".import",
+        "sha256": "d05afd1c8edc5dc815e156cac512c75eeaa439a4f881fd85d9814d9322810356"
+      },
+      {
+        "path": "game/f3/evidence/forward_plus-ventlung_bellows-idle.png.import",
+        "source": "game/f3/evidence/forward_plus-ventlung_bellows-idle.png",
+        "kind": ".import",
+        "sha256": "632e18393cbabdf0c7aa3dc6a171feddfdd3bf2ca14d0bd1a6916e0946fa30b8"
+      },
+      {
+        "path": "game/f3/evidence/gl_compatibility-bellows-discharged.png.import",
+        "source": "game/f3/evidence/gl_compatibility-bellows-discharged.png",
+        "kind": ".import",
+        "sha256": "813bceae7f1534efa24ab791377f72455270761b13c6cf26d23de4dd03a7c7b1"
+      },
+      {
+        "path": "game/f3/evidence/gl_compatibility-bellows-primed.png.import",
+        "source": "game/f3/evidence/gl_compatibility-bellows-primed.png",
+        "kind": ".import",
+        "sha256": "239a18fce2f1958ad3cf0537a000bef89ac3a6a327cc224693f493cc056ee5a1"
+      },
+      {
+        "path": "game/f3/evidence/gl_compatibility-depleted.png.import",
+        "source": "game/f3/evidence/gl_compatibility-depleted.png",
+        "kind": ".import",
+        "sha256": "b65629760a74b1884829afc9524b935147b5ea7eb8971be2f48f826047c4b4f5"
+      },
+      {
+        "path": "game/f3/evidence/gl_compatibility-lod-far.png.import",
+        "source": "game/f3/evidence/gl_compatibility-lod-far.png",
+        "kind": ".import",
+        "sha256": "97f9c01d95b7999811fdd40a3e00ab03a70d9dc6f839eb9793cb1387aea8a0d6"
+      },
+      {
+        "path": "game/f3/evidence/gl_compatibility-lod-middle.png.import",
+        "source": "game/f3/evidence/gl_compatibility-lod-middle.png",
+        "kind": ".import",
+        "sha256": "eb5cac3ba29ab9da022190257fa21cede1086a97b31105f190a35fa058e1a94b"
+      },
+      {
+        "path": "game/f3/evidence/gl_compatibility-lod-near.png.import",
+        "source": "game/f3/evidence/gl_compatibility-lod-near.png",
+        "kind": ".import",
+        "sha256": "0d9af4687da5d1ba7cbc0d94916b7f125b3a03271ff8f93c2f5a5241dd745400"
+      },
+      {
+        "path": "game/f3/evidence/gl_compatibility-magnetic_sorter-idle.png.import",
+        "source": "game/f3/evidence/gl_compatibility-magnetic_sorter-idle.png",
+        "kind": ".import",
+        "sha256": "19cfa2f6b69ee1a27e5b356561550a4fb3f2173552acd1bbc4c478bba5bb89d7"
+      },
+      {
+        "path": "game/f3/evidence/gl_compatibility-overview.png.import",
+        "source": "game/f3/evidence/gl_compatibility-overview.png",
+        "kind": ".import",
+        "sha256": "65cb5d572599196979ba03c3d2c8ab9764c8e392997c68677c6f8dbb7f39088f"
+      },
+      {
+        "path": "game/f3/evidence/gl_compatibility-pullstone-idle.png.import",
+        "source": "game/f3/evidence/gl_compatibility-pullstone-idle.png",
+        "kind": ".import",
+        "sha256": "d5779d44d462b6f103fad49780b71f90cb05403adfa8ee4d4f82f4cf88dc4cf3"
+      },
+      {
+        "path": "game/f3/evidence/gl_compatibility-pullstone-worked.png.import",
+        "source": "game/f3/evidence/gl_compatibility-pullstone-worked.png",
+        "kind": ".import",
+        "sha256": "2dc75bd2f4edbdfedef9e85aff3250e0e75d4319c70f01727f8c3fff69fce9bb"
+      },
+      {
+        "path": "game/f3/evidence/gl_compatibility-sorter-first-batch.png.import",
+        "source": "game/f3/evidence/gl_compatibility-sorter-first-batch.png",
+        "kind": ".import",
+        "sha256": "14a54523c7724455ba0f7983a8eec5d3ed8d2a9193df3dcdb52982d90ff34e47"
+      },
+      {
+        "path": "game/f3/evidence/gl_compatibility-sorter-input.png.import",
+        "source": "game/f3/evidence/gl_compatibility-sorter-input.png",
+        "kind": ".import",
+        "sha256": "6fc03bfee80f5e165d677d64369a134a8a300831b2726c245486fc6da36829c3"
+      },
+      {
+        "path": "game/f3/evidence/gl_compatibility-sorter-trays.png.import",
+        "source": "game/f3/evidence/gl_compatibility-sorter-trays.png",
+        "kind": ".import",
+        "sha256": "b91053da27eb8730a18a29e57a89acd20729ed58b7ccae02f19f7690816410e7"
+      },
+      {
+        "path": "game/f3/evidence/gl_compatibility-ventlung-idle.png.import",
+        "source": "game/f3/evidence/gl_compatibility-ventlung-idle.png",
+        "kind": ".import",
+        "sha256": "03d8d889e585e1548218d9e606b4d6d84b8210c6f2a97d6b2f001a3c231edeab"
+      },
+      {
+        "path": "game/f3/evidence/gl_compatibility-ventlung-worked.png.import",
+        "source": "game/f3/evidence/gl_compatibility-ventlung-worked.png",
+        "kind": ".import",
+        "sha256": "dbe988b3fa81c5fe403e704a4357f3e1a0fdb209044b5b2643f0fb550214ad37"
+      },
+      {
+        "path": "game/f3/evidence/gl_compatibility-ventlung_bellows-idle.png.import",
+        "source": "game/f3/evidence/gl_compatibility-ventlung_bellows-idle.png",
+        "kind": ".import",
+        "sha256": "2dafcfea3a50880d8fe8b82e906de6c1d8b28fc73daeeeee687a25dfa7e135df"
+      },
+      {
+        "path": "game/f3/review.gd.uid",
+        "source": "game/f3/review.gd",
+        "kind": ".uid",
+        "sha256": "dea722b53ea5ffe0d7f058af0e9cae7cb216327b183de78e5a4806140f7bc99b"
+      },
+      {
+        "path": "game/f3/scar.gdshader.uid",
+        "source": "game/f3/scar.gdshader",
+        "kind": ".uid",
+        "sha256": "d9954d6281670287a0416db0e5ff1e120ac664ca55d00b2d77bf25b268fb2e5c"
+      },
+      {
+        "path": "game/f3/visuals.gd.uid",
+        "source": "game/f3/visuals.gd",
+        "kind": ".uid",
+        "sha256": "ceaf67a370c1ca527b936efbf39bd4ce7974d70df6ebf81d3b6d5fd40dcd4c09"
+      },
+      {
+        "path": "game/f4/art.gd.uid",
+        "source": "game/f4/art.gd",
+        "kind": ".uid",
+        "sha256": "066a5d8197f4b97fff1f3819e445ee008a1a1eecaaabea5bf04c24b20f3ddb6e"
+      },
+      {
+        "path": "game/f4/pocket_state.gd.uid",
+        "source": "game/f4/pocket_state.gd",
+        "kind": ".uid",
+        "sha256": "b8039b9e4d14154aaad4f4a7022561a2e60765f15667bc350650fa3dd075a9b8"
+      },
+      {
+        "path": "game/f4/review.gd.uid",
+        "source": "game/f4/review.gd",
+        "kind": ".uid",
+        "sha256": "067aff965491fead3d9aff47a477794915df6394fb6fe20e59f4179eb5dc5960"
+      },
+      {
+        "path": "game/f4/skin.gdshader.uid",
+        "source": "game/f4/skin.gdshader",
+        "kind": ".uid",
+        "sha256": "b805d64b7d6083ae496aae5b82a7283f84e3d7464ac04854ab3d1f255261d0c0"
+      },
+      {
+        "path": "game/f5/blue/blue_scar.gdshader.uid",
+        "source": "game/f5/blue/blue_scar.gdshader",
+        "kind": ".uid",
+        "sha256": "1ef3d22ad745216a6a15dd6b08f9196750001e9b24930839b832efc4f1b52dbf"
+      },
+      {
+        "path": "game/f5/green/green_scar.gdshader.uid",
+        "source": "game/f5/green/green_scar.gdshader",
+        "kind": ".uid",
+        "sha256": "962010ae72c7dfe035fcce7310a0cec704d99d2447f316a1b5bd2263dc44fcef"
+      },
+      {
+        "path": "game/f5/red/red_scar.gdshader.uid",
+        "source": "game/f5/red/red_scar.gdshader",
+        "kind": ".uid",
+        "sha256": "7a2dc7025cb239a65419d574ab4e7470b8fe06d50b6961ed69e476692d3593aa"
+      },
+      {
+        "path": "game/f5/white/white_scar.gdshader.uid",
+        "source": "game/f5/white/white_scar.gdshader",
+        "kind": ".uid",
+        "sha256": "df32c25f35c03ae8ddd4f193b9115368f2dcae65b6b24540f856b20b2707c0ee"
+      },
+      {
+        "path": "game/g1/art.gd.uid",
+        "source": "game/g1/art.gd",
+        "kind": ".uid",
+        "sha256": "b5d881ca7813a8b1fc04594f478ee72e48b10273d023fa4cac25ec35b92bf7f5"
+      },
+      {
+        "path": "game/g1/c4_fixture.gd.uid",
+        "source": "game/g1/c4_fixture.gd",
+        "kind": ".uid",
+        "sha256": "3a3594cc8f09af43078dc8c1ec009f2e0bd62a83f6e6aaa23e3234ede1281eed"
+      },
+      {
+        "path": "game/g1/catalogue.gd.uid",
+        "source": "game/g1/catalogue.gd",
+        "kind": ".uid",
+        "sha256": "f071d621923f2000f8b7b2985cde4ed9332d1291cc6ee774d7e5c9c49863c805"
+      },
+      {
+        "path": "game/g1/colours.gd.uid",
+        "source": "game/g1/colours.gd",
+        "kind": ".uid",
+        "sha256": "bca0501063f788cd757823269bd4e8693eb1a18277a5b1dcfe7379f638da1438"
+      },
+      {
+        "path": "game/g1/environment.gd.uid",
+        "source": "game/g1/environment.gd",
+        "kind": ".uid",
+        "sha256": "1ea740ad52afa2052aa5ed2910b03114dc7465e4017136d6ad466141ec9cb28b"
+      },
+      {
+        "path": "game/g1/materials.gd.uid",
+        "source": "game/g1/materials.gd",
+        "kind": ".uid",
+        "sha256": "52ee2a33e61f355a371bfb80df8aa936e2d42b617b3862085af8972fc72a8ac4"
+      },
+      {
+        "path": "game/g1/paid.gd.uid",
+        "source": "game/g1/paid.gd",
+        "kind": ".uid",
+        "sha256": "c4b996546b3e872c73f692e3af89352bfa043e2c0a66f1354710cf2322a5c46b"
+      },
+      {
+        "path": "game/g1/play.gd.uid",
+        "source": "game/g1/play.gd",
+        "kind": ".uid",
+        "sha256": "6d776e29d4abcd3522f2ea9275de88702c16c6b501ef10c066191da780537922"
+      },
+      {
+        "path": "game/g1/probe.gd.uid",
+        "source": "game/g1/probe.gd",
+        "kind": ".uid",
+        "sha256": "d1e3b6320154dba59c4dafc0c0bfed92ef21672d26278afb41147ce5e99350e5"
+      },
+      {
+        "path": "game/g1/review.gd.uid",
+        "source": "game/g1/review.gd",
+        "kind": ".uid",
+        "sha256": "dcd64d3f2367d9b4ea966ce686dfca00530e7473ed4d018ee0e28c964d2ffe16"
+      },
+      {
+        "path": "game/g1/walk_review.gd.uid",
+        "source": "game/g1/walk_review.gd",
+        "kind": ".uid",
+        "sha256": "88d46541a6993469b41df4af7f376e3b3d2d0b11f620d43acba222f5c35d4cd9"
+      },
+      {
+        "path": "game/r2/benchmark.gd.uid",
+        "source": "game/r2/benchmark.gd",
+        "kind": ".uid",
+        "sha256": "ca6dd47157d4ca579e3034a3f94d709cfbf52ff67407c804b4659e2568d1b96d"
+      },
+      {
+        "path": "game/r2/native_living_frontier_flow.gd.uid",
+        "source": "game/r2/native_living_frontier_flow.gd",
+        "kind": ".uid",
+        "sha256": "a8ba708e1a7ff271a7fccd6bff9b15808c156ead59fc10cc03885f297f1176da"
+      },
+      {
+        "path": "game/r2/native_living_frontier_green_flow.gd.uid",
+        "source": "game/r2/native_living_frontier_green_flow.gd",
+        "kind": ".uid",
+        "sha256": "f7d59256242608edb916d5b9e55efa114ccb95ee36d057c1ab2cd594f28991fc"
+      },
+      {
+        "path": "game/r2/native_living_frontier_heat_flow.gd.uid",
+        "source": "game/r2/native_living_frontier_heat_flow.gd",
+        "kind": ".uid",
+        "sha256": "1080b3f1f392beefcf69143553e9bcd20018524d7075991cc702be09969b6e6e"
+      },
+      {
+        "path": "game/r2/native_living_frontier_wave2_flow.gd.uid",
+        "source": "game/r2/native_living_frontier_wave2_flow.gd",
+        "kind": ".uid",
+        "sha256": "932aebf1f4e6f862e3e7558c1e5a498ccea421eeb0549096d96d26116b6ba07d"
+      },
+      {
+        "path": "game/r2/native_paid.gd.uid",
+        "source": "game/r2/native_paid.gd",
+        "kind": ".uid",
+        "sha256": "7a9b947ed11f1ce3d85f4a7cc4f679ae1dd5eb33ff4f05f3fc1e808ec9dedff0"
+      },
+      {
+        "path": "game/r2/profile.gd.uid",
+        "source": "game/r2/profile.gd",
+        "kind": ".uid",
+        "sha256": "b0e68ffbba0344145c888f34042dae8bfd7edf2107fa0320e60b1cb0cb43544b"
+      },
+      {
+        "path": "game/r2/projection_base.gd.uid",
+        "source": "game/r2/projection_base.gd",
+        "kind": ".uid",
+        "sha256": "cc69446a850fc87e2f384e470f21e2f84822b56eb50acf14ed00d5825851ca6c"
+      },
+      {
+        "path": "game/r2/projection_base_b.gd.uid",
+        "source": "game/r2/projection_base_b.gd",
+        "kind": ".uid",
+        "sha256": "528bef8a701b479b5b7858ab04a631dc759c51f3c998afbc1b9e61104305c0d6"
+      },
+      {
+        "path": "game/r2/projection_checks.gd.uid",
+        "source": "game/r2/projection_checks.gd",
+        "kind": ".uid",
+        "sha256": "d08429c00f5169d00d589f8b0b25befb9f90256830103e152c7552596bebfce8"
+      },
+      {
+        "path": "game/r2/reference_b3.gd.uid",
+        "source": "game/r2/reference_b3.gd",
+        "kind": ".uid",
+        "sha256": "776d0a9c15c1d84093ab6ffe49197f0076d28985b4b919f335213bc2a0714ec2"
+      },
+      {
+        "path": "game/r2/reloads.gd.uid",
+        "source": "game/r2/reloads.gd",
+        "kind": ".uid",
+        "sha256": "0f2f724d16f39459aa92f35d9daf3b1f1b672f794a4b121b08da4a9df94ccab8"
+      },
+      {
+        "path": "game/r2/replay_b1.gd.uid",
+        "source": "game/r2/replay_b1.gd",
+        "kind": ".uid",
+        "sha256": "97c5b818fc57e99c7cef74e15d9edbd8cde84b2c6feecbf7d2490c27cd26d3ed"
+      },
+      {
+        "path": "game/r2/replay_b3.gd.uid",
+        "source": "game/r2/replay_b3.gd",
+        "kind": ".uid",
+        "sha256": "d029387009628c35bb25f68c96780d66927e4b3c6828b4d4aa8781b34602d1b6"
+      },
+      {
+        "path": "game/r2/replay_c1.gd.uid",
+        "source": "game/r2/replay_c1.gd",
+        "kind": ".uid",
+        "sha256": "75c66892e8c04a833db06f87fc965ac8e147a3b89c08e646da8b2275a39f8cb8"
+      },
+      {
+        "path": "game/r2/replay_c2.gd.uid",
+        "source": "game/r2/replay_c2.gd",
+        "kind": ".uid",
+        "sha256": "f2fdced20177ed595024167a83f19524652274baecc63e297acb1b5cdb0bae79"
+      },
+      {
+        "path": "game/r2/replay_c3.gd.uid",
+        "source": "game/r2/replay_c3.gd",
+        "kind": ".uid",
+        "sha256": "ba15dff6c80aa08809a348611e8d45a640bb2c2e5f21cdd1044f1c32d5b62bc4"
+      },
+      {
+        "path": "game/r2/replay_c4.gd.uid",
+        "source": "game/r2/replay_c4.gd",
+        "kind": ".uid",
+        "sha256": "ddbcb18a7fd13ab65648c0883a089ddfb286bc861c03e6bd6f29019a37d0e03f"
+      },
+      {
+        "path": "game/r2/replay_c5.gd.uid",
+        "source": "game/r2/replay_c5.gd",
+        "kind": ".uid",
+        "sha256": "0e2829f05bf222962b177a5184060a81b359ed5e2de84a002a716b2d87c9ff24"
+      },
+      {
+        "path": "game/r2/replay_e1.gd.uid",
+        "source": "game/r2/replay_e1.gd",
+        "kind": ".uid",
+        "sha256": "26e98f57c97eb9db66e8b5df25057062285e7f25acfdba0f57068ac23d3f71e1"
+      },
+      {
+        "path": "game/r2/replay_e2.gd.uid",
+        "source": "game/r2/replay_e2.gd",
+        "kind": ".uid",
+        "sha256": "2455add2f87ff6ef7681d8d6ec9bc905c2f99e9cc237bd7922fb754641ca27de"
+      },
+      {
+        "path": "game/r2/replay_e3.gd.uid",
+        "source": "game/r2/replay_e3.gd",
+        "kind": ".uid",
+        "sha256": "8d979babb33896d6118e28800343e8f3264e3b875e7ec829950f1f820298c980"
+      },
+      {
+        "path": "game/r2/replay_f1.gd.uid",
+        "source": "game/r2/replay_f1.gd",
+        "kind": ".uid",
+        "sha256": "4edcd98a5b9749038d80707776948137177a46c01c58154c5210b485ce2872cb"
+      },
+      {
+        "path": "game/r2/replay_f2.gd.uid",
+        "source": "game/r2/replay_f2.gd",
+        "kind": ".uid",
+        "sha256": "800108c3a6900986165d1d322fa8668861008c0c62a3bd58e6417bf1470bb48a"
+      },
+      {
+        "path": "game/r2/replay_f3.gd.uid",
+        "source": "game/r2/replay_f3.gd",
+        "kind": ".uid",
+        "sha256": "af7e7c7fba215c4c32528e1808242ca9013ac16306fc63f72d86808111de7ccd"
+      },
+      {
+        "path": "game/r2/replay_f4.gd.uid",
+        "source": "game/r2/replay_f4.gd",
+        "kind": ".uid",
+        "sha256": "554d23f6adad8267991c7952c3c861e6adff8831ce0ca1819e17f75db8ee96e2"
+      },
+      {
+        "path": "game/r2/resources.gd.uid",
+        "source": "game/r2/resources.gd",
+        "kind": ".uid",
+        "sha256": "5903c093f02cc5de5402621ffbbe23dadb449f70c716d07961fff2b534f56f56"
+      },
+      {
+        "path": "game/r2/traversal.gd.uid",
+        "source": "game/r2/traversal.gd",
+        "kind": ".uid",
+        "sha256": "7da5373a7542e1d77a19d0265cba5fa9de55161268721e779b864e16cabc2ebc"
+      },
+      {
+        "path": "game/r2/views.gd.uid",
+        "source": "game/r2/views.gd",
+        "kind": ".uid",
+        "sha256": "7f48794d72680bc6173817878ea8caaae9b72bdd8c9031521fd34f2a43d24328"
+      },
+      {
+        "path": "game/scripts/action_bar.gd.uid",
+        "source": "game/scripts/action_bar.gd",
+        "kind": ".uid",
+        "sha256": "40bfa911695595f3ea3149f3b443f8340cfc394a9fb4f076438d2730dd996ebd"
+      },
+      {
+        "path": "game/scripts/actor_nameplate.gd.uid",
+        "source": "game/scripts/actor_nameplate.gd",
+        "kind": ".uid",
+        "sha256": "a519005fce44e4d41cbab06dc8093713e72dc9730d24958d01c37543b6416712"
+      },
+      {
+        "path": "game/scripts/audio_preferences.gd.uid",
+        "source": "game/scripts/audio_preferences.gd",
+        "kind": ".uid",
+        "sha256": "a867607fbcdac1e55fcd095431f507b505e2fe4df4b5edd992efe1cd94e3cb09"
+      },
+      {
+        "path": "game/scripts/authored_assets.gd.uid",
+        "source": "game/scripts/authored_assets.gd",
+        "kind": ".uid",
+        "sha256": "a39c01a7bd869b079b922b9a279529163d2f6ed96fd2ddb21e79fa9821e072a2"
+      },
+      {
+        "path": "game/scripts/biome_mood.gd.uid",
+        "source": "game/scripts/biome_mood.gd",
+        "kind": ".uid",
+        "sha256": "471c538b9cad95234c11a3995f841cf43758fb1e996cf02046572253efd4728c"
+      },
+      {
+        "path": "game/scripts/boss.gd.uid",
+        "source": "game/scripts/boss.gd",
+        "kind": ".uid",
+        "sha256": "0cc9e03fc0bcd756333715118a72ed7ec2b8ad9d820cd42402f067ce32249f6a"
+      },
+      {
+        "path": "game/scripts/build_guide.gd.uid",
+        "source": "game/scripts/build_guide.gd",
+        "kind": ".uid",
+        "sha256": "55d609f07cd62ec4d793db556f170297fc24cb40be534c7c6fc32d46908cca3b"
+      },
+      {
+        "path": "game/scripts/build_palette.gd.uid",
+        "source": "game/scripts/build_palette.gd",
+        "kind": ".uid",
+        "sha256": "9359025ae22b77d6fdf7037c52e105d57688eaefd446b34fbed24e8d34c650ef"
+      },
+      {
+        "path": "game/scripts/build_thumbnail.gd.uid",
+        "source": "game/scripts/build_thumbnail.gd",
+        "kind": ".uid",
+        "sha256": "5a95dc9f5f59c49570ce0d0bcadb13c568221cef110e6948375232b25cd20eb0"
+      },
+      {
+        "path": "game/scripts/burning_ground.gd.uid",
+        "source": "game/scripts/burning_ground.gd",
+        "kind": ".uid",
+        "sha256": "1cdf075c106a978e9820a85da14a07b1f6d5ae0c72866d111f57fd818f3b5729"
+      },
+      {
+        "path": "game/scripts/cataclysm_sites.gd.uid",
+        "source": "game/scripts/cataclysm_sites.gd",
+        "kind": ".uid",
+        "sha256": "8c7beca09fa4f90255785807785f5fc6ca2ba70899ada8ceedd42733e8da0a7e"
+      },
+      {
+        "path": "game/scripts/chest_panel.gd.uid",
+        "source": "game/scripts/chest_panel.gd",
+        "kind": ".uid",
+        "sha256": "2b0be1322dfba5753b678c4e1d88beb52a9d7af51b5a26e0c330fa8819ad905d"
+      },
+      {
+        "path": "game/scripts/class_panel.gd.uid",
+        "source": "game/scripts/class_panel.gd",
+        "kind": ".uid",
+        "sha256": "3ccbd3d5e0e197658d270573aa813569ad3f185bad875c763e9b60f978f2fb99"
+      },
+      {
+        "path": "game/scripts/comfort_controls.gd.uid",
+        "source": "game/scripts/comfort_controls.gd",
+        "kind": ".uid",
+        "sha256": "4addea08e8bf881124cbfbd7f7631bfdac73eedee7d6f4dce259b329ea7794ff"
+      },
+      {
+        "path": "game/scripts/conservator.gd.uid",
+        "source": "game/scripts/conservator.gd",
+        "kind": ".uid",
+        "sha256": "2f0d848ac839504db6927d7bf710efbcd9d4d1848478a930b79fb568f8aa2fd7"
+      },
+      {
+        "path": "game/scripts/contraption_panel.gd.uid",
+        "source": "game/scripts/contraption_panel.gd",
+        "kind": ".uid",
+        "sha256": "1c8f109a8c045975cb332d02f6a060b09fa2ca34fc368a88c04962570779654d"
+      },
+      {
+        "path": "game/scripts/contraption_site.gd.uid",
+        "source": "game/scripts/contraption_site.gd",
+        "kind": ".uid",
+        "sha256": "37b5d017203cbb11b5ffbab6580f04ff574397defe2b0082c4748e8fa78dfdd0"
+      },
+      {
+        "path": "game/scripts/damage_compass.gd.uid",
+        "source": "game/scripts/damage_compass.gd",
+        "kind": ".uid",
+        "sha256": "1da8d0eb678b89e3ec021731e96aac9fa4e131a8101536f54c8c721326d833f5"
+      },
+      {
+        "path": "game/scripts/dropped_bundle.gd.uid",
+        "source": "game/scripts/dropped_bundle.gd",
+        "kind": ".uid",
+        "sha256": "35440af9da5bb67da01a4b956d0f49089847020eb4ccf983e5853f4a42a219db"
+      },
+      {
+        "path": "game/scripts/enemy.gd.uid",
+        "source": "game/scripts/enemy.gd",
+        "kind": ".uid",
+        "sha256": "66b1a15ea7fa044e3e0dfe49c3031bf5d71dc3c8eeade8a8a33658b1255269a3"
+      },
+      {
+        "path": "game/scripts/enemy_projectile.gd.uid",
+        "source": "game/scripts/enemy_projectile.gd",
+        "kind": ".uid",
+        "sha256": "efba2d77bdfc5df954ec2e6a647e020f9bc3ce92f046c656e81ee81cc13716a5"
+      },
+      {
+        "path": "game/scripts/environment_ambience.gd.uid",
+        "source": "game/scripts/environment_ambience.gd",
+        "kind": ".uid",
+        "sha256": "af1eb9a777bc7ab7b79d3f3c46d675e2f5425ed75d4fa9c4a8337bef6e6f4954"
+      },
+      {
+        "path": "game/scripts/equipment_compare.gd.uid",
+        "source": "game/scripts/equipment_compare.gd",
+        "kind": ".uid",
+        "sha256": "6da7d33984ce59c8cd336e3c9fb70129b36f120daef479ab3e3ada5f8afa62dd"
+      },
+      {
+        "path": "game/scripts/extension_guard.gd.uid",
+        "source": "game/scripts/extension_guard.gd",
+        "kind": ".uid",
+        "sha256": "2d7efbdf05f9baa5cc54248da74cf0b5fef0dc9e2799cbee0ff6ba4964a38abe"
+      },
+      {
+        "path": "game/scripts/feeder_readout.gd.uid",
+        "source": "game/scripts/feeder_readout.gd",
+        "kind": ".uid",
+        "sha256": "fb6c9666a29368a858816227fbc01a7a582e79517c824aadbdc5063e14103bdb"
+      },
+      {
+        "path": "game/scripts/first_person_hands.gd.uid",
+        "source": "game/scripts/first_person_hands.gd",
+        "kind": ".uid",
+        "sha256": "907eede52154c53bd40e74d0899aeb150a3ebc3ac7db79e32b1de1ecdec9af7f"
+      },
+      {
+        "path": "game/scripts/flock.gd.uid",
+        "source": "game/scripts/flock.gd",
+        "kind": ".uid",
+        "sha256": "52df858b10dab78d89a5a2468cd54e5a01f88870b4e86faf0366527a7fdadaa9"
+      },
+      {
+        "path": "game/scripts/forge_catalogue.gd.uid",
+        "source": "game/scripts/forge_catalogue.gd",
+        "kind": ".uid",
+        "sha256": "8bb962c1ea7576303aca5ab5494b3cdc1479767ea7bc7f3c57e6a128a0be037c"
+      },
+      {
+        "path": "game/scripts/forge_dungeon.gd.uid",
+        "source": "game/scripts/forge_dungeon.gd",
+        "kind": ".uid",
+        "sha256": "3a4f04207c15aa04f7b4bbb41cb9c6cc9b041e033b3bc27c053559926f13522e"
+      },
+      {
+        "path": "game/scripts/forge_icon.gd.uid",
+        "source": "game/scripts/forge_icon.gd",
+        "kind": ".uid",
+        "sha256": "c10d97f4c35fff41ad0936c7c3ca0cc146eff9941abeadd04b2a1e1dbe806692"
+      },
+      {
+        "path": "game/scripts/foundry_cold.gd.uid",
+        "source": "game/scripts/foundry_cold.gd",
+        "kind": ".uid",
+        "sha256": "4285335b1b47735b5b38500f52cc8455acae10f60ecd4930f5e62b6561b7a1b6"
+      },
+      {
+        "path": "game/scripts/foundry_echo.gd.uid",
+        "source": "game/scripts/foundry_echo.gd",
+        "kind": ".uid",
+        "sha256": "43bc8c19b1cda073cadf79723410af6493f043166cc378b37b349e39435e11e9"
+      },
+      {
+        "path": "game/scripts/foundry_ember.gd.uid",
+        "source": "game/scripts/foundry_ember.gd",
+        "kind": ".uid",
+        "sha256": "e8da7d2c51218912d38cdd9af3cc707b6f2cbea580b2415b6823b98a13a0ffa7"
+      },
+      {
+        "path": "game/scripts/foundry_field.gd.uid",
+        "source": "game/scripts/foundry_field.gd",
+        "kind": ".uid",
+        "sha256": "7d197dbe11207ac9318bc6d1201b54ab7a67c373013264a98a3b6ec13990bdde"
+      },
+      {
+        "path": "game/scripts/foundry_flow_overlay.gd.uid",
+        "source": "game/scripts/foundry_flow_overlay.gd",
+        "kind": ".uid",
+        "sha256": "c140a964bb68cedcbb40a6fba08193924a712b3b8a8fdf81977b97f9f8e59678"
+      },
+      {
+        "path": "game/scripts/foundry_guard.gd.uid",
+        "source": "game/scripts/foundry_guard.gd",
+        "kind": ".uid",
+        "sha256": "40e81514138dee13e7c1d9bc2530c284f8c977f25510bbbf677ad52ec4b5b113"
+      },
+      {
+        "path": "game/scripts/foundry_identity.gd.uid",
+        "source": "game/scripts/foundry_identity.gd",
+        "kind": ".uid",
+        "sha256": "b50d8dbe94b5cf9e2517309b158d47047b9226379abf952bc363da2ede874d10"
+      },
+      {
+        "path": "game/scripts/foundry_offence.gd.uid",
+        "source": "game/scripts/foundry_offence.gd",
+        "kind": ".uid",
+        "sha256": "c6558354731793d7917bcf6d597ffe395d9ae5c13ef4e03e2af4b7f33fe0cb5e"
+      },
+      {
+        "path": "game/scripts/foundry_panel.gd.uid",
+        "source": "game/scripts/foundry_panel.gd",
+        "kind": ".uid",
+        "sha256": "e8ee442bd6e0f34688e24e40eaa00e94ae769b0dbc54863a2235d085cc578caa"
+      },
+      {
+        "path": "game/scripts/foundry_puff.gd.uid",
+        "source": "game/scripts/foundry_puff.gd",
+        "kind": ".uid",
+        "sha256": "ff6fe0a6188479afa3bcc40aba06b413191cc47279b3900accdd330e84dcbece"
+      },
+      {
+        "path": "game/scripts/foundry_reactions.gd.uid",
+        "source": "game/scripts/foundry_reactions.gd",
+        "kind": ".uid",
+        "sha256": "0ed93260df15ae766b128e41ab7e378df05ce5721e876c1b743dd3d51536d31a"
+      },
+      {
+        "path": "game/scripts/foundry_return.gd.uid",
+        "source": "game/scripts/foundry_return.gd",
+        "kind": ".uid",
+        "sha256": "b4970e4268611dac3099339a7f895b12748fdd6b2dec0d68c0c3429f494d8d43"
+      },
+      {
+        "path": "game/scripts/foundry_sustain.gd.uid",
+        "source": "game/scripts/foundry_sustain.gd",
+        "kind": ".uid",
+        "sha256": "a978c085405aa861111dc76dc2dd33cf40ac35c032864a01d1ff7d5753736473"
+      },
+      {
+        "path": "game/scripts/foundry_tempo.gd.uid",
+        "source": "game/scripts/foundry_tempo.gd",
+        "kind": ".uid",
+        "sha256": "fc676789c597ed419442d63c0e82c934940bb953e8bb49c3cea25631877f5117"
+      },
+      {
+        "path": "game/scripts/frontier_sites.gd.uid",
+        "source": "game/scripts/frontier_sites.gd",
+        "kind": ".uid",
+        "sha256": "a71e0f6dad5dc890148e9e42217a4d6715978964f5913140bd2a73149b2ceb66"
+      },
+      {
+        "path": "game/scripts/gathering_impact.gd.uid",
+        "source": "game/scripts/gathering_impact.gd",
+        "kind": ".uid",
+        "sha256": "fa601122bf1c47b357e6d6071e2c510c4c8c1ac760fb02b897ba48d56d4b5e34"
+      },
+      {
+        "path": "game/scripts/grid_placement.gd.uid",
+        "source": "game/scripts/grid_placement.gd",
+        "kind": ".uid",
+        "sha256": "4ed7c20a965b685a6e904e169947b512c829a808db868b6e3adeb1c95d4b2555"
+      },
+      {
+        "path": "game/scripts/ground_cover.gd.uid",
+        "source": "game/scripts/ground_cover.gd",
+        "kind": ".uid",
+        "sha256": "bf1d86431e496fa15b2b14e51128502993f41cc981c22a9ca9119ab251815b6e"
+      },
+      {
+        "path": "game/scripts/grounded_seam.gd.uid",
+        "source": "game/scripts/grounded_seam.gd",
+        "kind": ".uid",
+        "sha256": "f27e51b441fcce4aea2770ac239dc9f35d26894d2665d0615f318222bc052dd3"
+      },
+      {
+        "path": "game/scripts/habitat_cover.gd.uid",
+        "source": "game/scripts/habitat_cover.gd",
+        "kind": ".uid",
+        "sha256": "02ca08864c96a0608d950386d6a3a69cb82358f5a7ed240bdb40e717a7bdc937"
+      },
+      {
+        "path": "game/scripts/habitat_resource_art.gd.uid",
+        "source": "game/scripts/habitat_resource_art.gd",
+        "kind": ".uid",
+        "sha256": "af528fdf01637d2262e3be17b3f2a0b349a192250958501e515a440a31b53853"
+      },
+      {
+        "path": "game/scripts/habitat_sites.gd.uid",
+        "source": "game/scripts/habitat_sites.gd",
+        "kind": ".uid",
+        "sha256": "d95643b452f156727d466f1ffa743886ca1aa2afce47da3fd36316845632d064"
+      },
+      {
+        "path": "game/scripts/hud.gd.uid",
+        "source": "game/scripts/hud.gd",
+        "kind": ".uid",
+        "sha256": "2f59af2c896909014e027c7ec89d62ae9a50ad4a226619c1976c42e3d13087da"
+      },
+      {
+        "path": "game/scripts/input_prompts.gd.uid",
+        "source": "game/scripts/input_prompts.gd",
+        "kind": ".uid",
+        "sha256": "5dcc55219048a4217b2bd53792483abbd04fc75d2152edb47fd5144de4e2556e"
+      },
+      {
+        "path": "game/scripts/inventory.gd.uid",
+        "source": "game/scripts/inventory.gd",
+        "kind": ".uid",
+        "sha256": "fd12b489ed3a4a2bd9ad71c0651b2aa2d34bc472235b3df9d2966b68a1c72233"
+      },
+      {
+        "path": "game/scripts/inventory_panel.gd.uid",
+        "source": "game/scripts/inventory_panel.gd",
+        "kind": ".uid",
+        "sha256": "d7532cf6a9c97ee24c52e41b60ee494c258c0ac30989aab36ac88ede576d3be1"
+      },
+      {
+        "path": "game/scripts/laboratory_gate.gd.uid",
+        "source": "game/scripts/laboratory_gate.gd",
+        "kind": ".uid",
+        "sha256": "a27f3fdaa91f06a7054bfd5efcf7383dde773fc390a6e6504cccf9b7945c3c02"
+      },
+      {
+        "path": "game/scripts/landmark.gd.uid",
+        "source": "game/scripts/landmark.gd",
+        "kind": ".uid",
+        "sha256": "ca425b65b1ffbd2170f4a48f9c8b2b6fb875cd44219a652623abc15a1b3ccdd6"
+      },
+      {
+        "path": "game/scripts/leyline_fissures.gd.uid",
+        "source": "game/scripts/leyline_fissures.gd",
+        "kind": ".uid",
+        "sha256": "438c8da3215d7fb5f1d4f0b006b4964ef04c947bc69141433ec8232c79c3bc8a"
+      },
+      {
+        "path": "game/scripts/leyline_source.gd.uid",
+        "source": "game/scripts/leyline_source.gd",
+        "kind": ".uid",
+        "sha256": "8b46396a8274669956408bd177fbce7ea37712c29970242e23185c14993d859e"
+      },
+      {
+        "path": "game/scripts/material_guide.gd.uid",
+        "source": "game/scripts/material_guide.gd",
+        "kind": ".uid",
+        "sha256": "e5b2994e1eb03ab007c7b5d4dbb572432108ed4a38f7aa706d8b8cd0e9e6c730"
+      },
+      {
+        "path": "game/scripts/mob_grid.gd.uid",
+        "source": "game/scripts/mob_grid.gd",
+        "kind": ".uid",
+        "sha256": "087df485038e089cd16d8cb26c22630b466a7962b6fafeccc6c5a1f898d68b83"
+      },
+      {
+        "path": "game/scripts/mob_packs.gd.uid",
+        "source": "game/scripts/mob_packs.gd",
+        "kind": ".uid",
+        "sha256": "f22a5d50168328b373c60cde04143749ebe293f321c05008be1b4cae46ed7db6"
+      },
+      {
+        "path": "game/scripts/order_board.gd.uid",
+        "source": "game/scripts/order_board.gd",
+        "kind": ".uid",
+        "sha256": "5e45d6f909db5698da1dda99f4890e4476465bb35eba602fa4449910220346a3"
+      },
+      {
+        "path": "game/scripts/peddler.gd.uid",
+        "source": "game/scripts/peddler.gd",
+        "kind": ".uid",
+        "sha256": "4c23d858043a1c96fca376e187130868c67c88879d75fd90c90a3b8c7c3f02ea"
+      },
+      {
+        "path": "game/scripts/pickup.gd.uid",
+        "source": "game/scripts/pickup.gd",
+        "kind": ".uid",
+        "sha256": "0ca42216a93330a13a4db395ff4b1883909b7877fcdbfc571860aba8de81d2db"
+      },
+      {
+        "path": "game/scripts/piece_look.gd.uid",
+        "source": "game/scripts/piece_look.gd",
+        "kind": ".uid",
+        "sha256": "6adec69b70acd551284fdef8debb44d268201315195ce185ec8963de2896710a"
+      },
+      {
+        "path": "game/scripts/piece_mesh.gd.uid",
+        "source": "game/scripts/piece_mesh.gd",
+        "kind": ".uid",
+        "sha256": "15131fa9e5e16a06d89fdce516e7376534638c67c71bcec4800cc05ea7bb3ad2"
+      },
+      {
+        "path": "game/scripts/placed_block.gd.uid",
+        "source": "game/scripts/placed_block.gd",
+        "kind": ".uid",
+        "sha256": "7a5134f62772240ae7700e027e9b42093c52a3484b09bf1ef8764386f32ee553"
+      },
+      {
+        "path": "game/scripts/player.gd.uid",
+        "source": "game/scripts/player.gd",
+        "kind": ".uid",
+        "sha256": "1bc7e47f1fe0267ccaa170c869b9fdeb72cfab8e977715280252f3d67d1ace9c"
+      },
+      {
+        "path": "game/scripts/player_combat.gd.uid",
+        "source": "game/scripts/player_combat.gd",
+        "kind": ".uid",
+        "sha256": "e3202e57c27fb4d515f2bac1867e1c3a01e4022dfd8b90e641273315837e7ef5"
+      },
+      {
+        "path": "game/scripts/player_footsteps.gd.uid",
+        "source": "game/scripts/player_footsteps.gd",
+        "kind": ".uid",
+        "sha256": "2ae1565640d075b173e87a57fb3012a9f6aa4e8dc2a6b43bd8308d6a6ea0a866"
+      },
+      {
+        "path": "game/scripts/player_preferences.gd.uid",
+        "source": "game/scripts/player_preferences.gd",
+        "kind": ".uid",
+        "sha256": "0584d720993e5cf9d765f9ce93bb372c957b18ae0803dd3714759e092926737f"
+      },
+      {
+        "path": "game/scripts/pressure_pocket.gd.uid",
+        "source": "game/scripts/pressure_pocket.gd",
+        "kind": ".uid",
+        "sha256": "92d085627d363254f49e1e8b23b98dfe031a8f247c8fd13c75567bb6f0cbd780"
+      },
+      {
+        "path": "game/scripts/prop_mesh.gd.uid",
+        "source": "game/scripts/prop_mesh.gd",
+        "kind": ".uid",
+        "sha256": "19bea1486cd3ac78e6aafb907b6c27502e24799ae671ccd698aa35792fb6bb3e"
+      },
+      {
+        "path": "game/scripts/pulse_ring.gd.uid",
+        "source": "game/scripts/pulse_ring.gd",
+        "kind": ".uid",
+        "sha256": "b4dcd01eafaef35e5b0a46e4e796623338cceed947e3d1457d8ff189110f9f53"
+      },
+      {
+        "path": "game/scripts/resonance_event.gd.uid",
+        "source": "game/scripts/resonance_event.gd",
+        "kind": ".uid",
+        "sha256": "0aca1bc56959a7e8e0ae13070169ab98212add51f6f55eaee60e4206cc6df6a2"
+      },
+      {
+        "path": "game/scripts/resource_canopies.gd.uid",
+        "source": "game/scripts/resource_canopies.gd",
+        "kind": ".uid",
+        "sha256": "72694d09c414218b649358df93e2df523ab80c848f04e49972faa43c75d54810"
+      },
+      {
+        "path": "game/scripts/resource_node.gd.uid",
+        "source": "game/scripts/resource_node.gd",
+        "kind": ".uid",
+        "sha256": "e818eed36fe519d63ef69a3749f9a1336f6e2e2e315000c145f98d2e51d905e5"
+      },
+      {
+        "path": "game/scripts/resource_stream.gd.uid",
+        "source": "game/scripts/resource_stream.gd",
+        "kind": ".uid",
+        "sha256": "d17fe8eda8f278303a65fb8a42aecb1dfd967f32061982786b5385528932242b"
+      },
+      {
+        "path": "game/scripts/sandpit.gd.uid",
+        "source": "game/scripts/sandpit.gd",
+        "kind": ".uid",
+        "sha256": "fb74de4f1b8533c4e64538037eddc3cebe657c9e20e1b0a0f66d5eabbe5989ec"
+      },
+      {
+        "path": "game/scripts/save_manager.gd.uid",
+        "source": "game/scripts/save_manager.gd",
+        "kind": ".uid",
+        "sha256": "b1bc90262479d03134cbe3c53c50f9d09b9adbc00dd909cccbe372edbb45dbce"
+      },
+      {
+        "path": "game/scripts/sim.gd.uid",
+        "source": "game/scripts/sim.gd",
+        "kind": ".uid",
+        "sha256": "e4bced42031b14059b2bc7b4d7ce4dde4611092988c2190c6f2c1396203a5f6b"
+      },
+      {
+        "path": "game/scripts/skill_burst.gd.uid",
+        "source": "game/scripts/skill_burst.gd",
+        "kind": ".uid",
+        "sha256": "a04bb74f1ab34865b4c66fefc600d704e6c8b50667b27ebff31251fc02154e9c"
+      },
+      {
+        "path": "game/scripts/skill_cast_effect.gd.uid",
+        "source": "game/scripts/skill_cast_effect.gd",
+        "kind": ".uid",
+        "sha256": "da9d7b24b478f68e556177998e26563ee4ed2cc8bcdc39934cf6b6aa64a9a65d"
+      },
+      {
+        "path": "game/scripts/skill_projectile.gd.uid",
+        "source": "game/scripts/skill_projectile.gd",
+        "kind": ".uid",
+        "sha256": "4936eb8a460af4036b9f9e5cbb92f9c0d30748258b6e055985fbff181697eca8"
+      },
+      {
+        "path": "game/scripts/station_site.gd.uid",
+        "source": "game/scripts/station_site.gd",
+        "kind": ".uid",
+        "sha256": "85358a0af1cd5db74845619d246812365423a11e4ba01fc859cc3ca42cf6d346"
+      },
+      {
+        "path": "game/scripts/strange_resource_art.gd.uid",
+        "source": "game/scripts/strange_resource_art.gd",
+        "kind": ".uid",
+        "sha256": "4e62618c242131bbd90c06d38dfaccc71a8858935b94f2001a8bdab4a0db7927"
+      },
+      {
+        "path": "game/scripts/strange_sites.gd.uid",
+        "source": "game/scripts/strange_sites.gd",
+        "kind": ".uid",
+        "sha256": "866fe2715b9bd66c64e251f092e711ff70631860be3e96bfd6c31500a5a4f866"
+      },
+      {
+        "path": "game/scripts/surface_sampler.gd.uid",
+        "source": "game/scripts/surface_sampler.gd",
+        "kind": ".uid",
+        "sha256": "98d8af467f6d558d7c0fa7fb527c503b2aed354d6073367e4cb1437beb456813"
+      },
+      {
+        "path": "game/scripts/terrain.gd.uid",
+        "source": "game/scripts/terrain.gd",
+        "kind": ".uid",
+        "sha256": "d0a6c049ef2b8aaed50343828d38982f08b7d1189534b4bc06745249700da332"
+      },
+      {
+        "path": "game/scripts/terrain_chunk_stream.gd.uid",
+        "source": "game/scripts/terrain_chunk_stream.gd",
+        "kind": ".uid",
+        "sha256": "7d60e73fcbe619936f6732d28b88de79afb6af2d36a1a4cd8747863dd59d49fc"
+      },
+      {
+        "path": "game/scripts/trial_arena.gd.uid",
+        "source": "game/scripts/trial_arena.gd",
+        "kind": ".uid",
+        "sha256": "4d35054aefcd84a2a711a3238d79e32b6efce03dc5144070bce22fdc00e42aa5"
+      },
+      {
+        "path": "game/scripts/trial_controller.gd.uid",
+        "source": "game/scripts/trial_controller.gd",
+        "kind": ".uid",
+        "sha256": "fc93767a156e17ca40cd7afdc5785d63c3385e2fda1eac3bfff5634fdec3231d"
+      },
+      {
+        "path": "game/scripts/trial_fixture.gd.uid",
+        "source": "game/scripts/trial_fixture.gd",
+        "kind": ".uid",
+        "sha256": "7e5dffaddd1714fd8b6edbc8fee4e6bbced4046e7572e0614e48414c704c2994"
+      },
+      {
+        "path": "game/scripts/trial_gate.gd.uid",
+        "source": "game/scripts/trial_gate.gd",
+        "kind": ".uid",
+        "sha256": "6180e1336d5774aeffd0f864affc94157ae3887b9a084f1cc3cb849ebbbc3df9"
+      },
+      {
+        "path": "game/scripts/trial_hazard.gd.uid",
+        "source": "game/scripts/trial_hazard.gd",
+        "kind": ".uid",
+        "sha256": "409fa556551ce9b879241fcbd67bf504bc4d5dd095c9e509eea4cdcc0cc08054"
+      },
+      {
+        "path": "game/scripts/ui_theme.gd.uid",
+        "source": "game/scripts/ui_theme.gd",
+        "kind": ".uid",
+        "sha256": "b8be06bbaf091232e33a77778e6d3236ca7ddf72ff7c80d55af9c7f7982154a2"
+      },
+      {
+        "path": "game/scripts/work_panel.gd.uid",
+        "source": "game/scripts/work_panel.gd",
+        "kind": ".uid",
+        "sha256": "42dc86ab48f8fbbe96473be3589b09f8912562025497f0f837eabd57fe4d9998"
+      },
+      {
+        "path": "game/scripts/world_drops.gd.uid",
+        "source": "game/scripts/world_drops.gd",
+        "kind": ".uid",
+        "sha256": "af0d4b4345b45e183425e0f72239df40979438253a30cdd8218cb2d863fd2481"
+      },
+      {
+        "path": "game/scripts/world_seed_controls.gd.uid",
+        "source": "game/scripts/world_seed_controls.gd",
+        "kind": ".uid",
+        "sha256": "d43254a402c6f9d7b810996796c3514ae9724f9384364acf965143453ef936bd"
+      },
+      {
+        "path": "game/tests/ambient_quiet_review.gd.uid",
+        "source": "game/tests/ambient_quiet_review.gd",
+        "kind": ".uid",
+        "sha256": "e5381923e9832235617eee86cad19896ebd395618087ee93da12f1f210c78549"
+      },
+      {
+        "path": "game/tests/art_checks.gd.uid",
+        "source": "game/tests/art_checks.gd",
+        "kind": ".uid",
+        "sha256": "8046c8a353d924f5ffc6a151f2a790a7dca872ffad1146e77d2d33a611f357ac"
+      },
+      {
+        "path": "game/tests/audio_controls.gd.uid",
+        "source": "game/tests/audio_controls.gd",
+        "kind": ".uid",
+        "sha256": "bd78fdbdeefb80b12024e5796282fa9d61ba75391f77e1540460360dc1b5aad1"
+      },
+      {
+        "path": "game/tests/augmented_beasts.gd.uid",
+        "source": "game/tests/augmented_beasts.gd",
+        "kind": ".uid",
+        "sha256": "e3a0a876917037c1dd75229aa7423e653cc04e4555cf20f852e5e384f0ec5ad7"
+      },
+      {
+        "path": "game/tests/build_usability.gd.uid",
+        "source": "game/tests/build_usability.gd",
+        "kind": ".uid",
+        "sha256": "176cbe7d25f1fc66a3625c881b6ec4d70d1042c7af8c710f043353563de1db10"
+      },
+      {
+        "path": "game/tests/building_load_boundaries.gd.uid",
+        "source": "game/tests/building_load_boundaries.gd",
+        "kind": ".uid",
+        "sha256": "58df17541dbb8efa4aa902f505cfcc607a44dd1ae6fca939d99ff58a4bb0a322"
+      },
+      {
+        "path": "game/tests/building_load_review.gd.uid",
+        "source": "game/tests/building_load_review.gd",
+        "kind": ".uid",
+        "sha256": "4bb65c4d396f1c92f35a4458cd566c46c3df032f92fc5db9713672b5c4458a00"
+      },
+      {
+        "path": "game/tests/cataclysm_actor_craft.gd.uid",
+        "source": "game/tests/cataclysm_actor_craft.gd",
+        "kind": ".uid",
+        "sha256": "23a5046110f05c068afef55bf9ea06a07746012bd7986f84ec74ef71041d0638"
+      },
+      {
+        "path": "game/tests/cataclysm_art_review.gd.uid",
+        "source": "game/tests/cataclysm_art_review.gd",
+        "kind": ".uid",
+        "sha256": "f28564f858f88138ff2cdaea2397784442ad5d87aa6f1d352f82e8d1c05d8172"
+      },
+      {
+        "path": "game/tests/cataclysm_intensive.gd.uid",
+        "source": "game/tests/cataclysm_intensive.gd",
+        "kind": ".uid",
+        "sha256": "3de1ab3787ef0483b77b8226bccefd3233c07a3d38ec17bae33110d95285676c"
+      },
+      {
+        "path": "game/tests/cataclysm_review.gd.uid",
+        "source": "game/tests/cataclysm_review.gd",
+        "kind": ".uid",
+        "sha256": "87a861f9e0f3755c95f8c549d5f85f27a4f0550925d7d84dc7c416f44f7a3ab5"
+      },
+      {
+        "path": "game/tests/central_fixture.gd.uid",
+        "source": "game/tests/central_fixture.gd",
+        "kind": ".uid",
+        "sha256": "12209c9ffbc66afe9e16309d3234872d993196fbfcec4c26bd47a90db97176bd"
+      },
+      {
+        "path": "game/tests/central_recovery.gd.uid",
+        "source": "game/tests/central_recovery.gd",
+        "kind": ".uid",
+        "sha256": "617d9a269131c37619d7864132e8a67a6096587033402cc0b0040b6c2ae61d14"
+      },
+      {
+        "path": "game/tests/central_trial.gd.uid",
+        "source": "game/tests/central_trial.gd",
+        "kind": ".uid",
+        "sha256": "e715293240c54fb27e0d15b58854cebe12a15dba5269335be9040537829143a3"
+      },
+      {
+        "path": "game/tests/combat_presentation.gd.uid",
+        "source": "game/tests/combat_presentation.gd",
+        "kind": ".uid",
+        "sha256": "e7cc80baa9be45be2bb99168ace8dc846c201e2a0b17c47ddb2130aeaec05c74"
+      },
+      {
+        "path": "game/tests/conservator_combat.gd.uid",
+        "source": "game/tests/conservator_combat.gd",
+        "kind": ".uid",
+        "sha256": "47b14ab80946f788216e4ab4c69d5ad18d763600631c811b2c1bd9efb2b9eb47"
+      },
+      {
+        "path": "game/tests/contraption_intensive.gd.uid",
+        "source": "game/tests/contraption_intensive.gd",
+        "kind": ".uid",
+        "sha256": "62843a418d7c135efa1f535f2d84f6bdb23000cdcee2836b8336c1f148b9df24"
+      },
+      {
+        "path": "game/tests/controls_baseline.gd.uid",
+        "source": "game/tests/controls_baseline.gd",
+        "kind": ".uid",
+        "sha256": "6b645c5383ac6b7c884c48945d9cf9dbdaab902d390233c665d92e99896f06b7"
+      },
+      {
+        "path": "game/tests/controls_comfort.gd.uid",
+        "source": "game/tests/controls_comfort.gd",
+        "kind": ".uid",
+        "sha256": "a66509bac5577c7c4b93addcea725565793dc1c2f722339cfd90a57d36b26a2d"
+      },
+      {
+        "path": "game/tests/crafted_traversal.gd.uid",
+        "source": "game/tests/crafted_traversal.gd",
+        "kind": ".uid",
+        "sha256": "1be9e40ee703c202a646faf94aa608f398f7e20f888159ca6f5057526ca1aac8"
+      },
+      {
+        "path": "game/tests/crafting_catalogue.gd.uid",
+        "source": "game/tests/crafting_catalogue.gd",
+        "kind": ".uid",
+        "sha256": "1f590dc25bc90a047fb739ed22ed8dd66f261de15dec7c73e8fee617be21ee96"
+      },
+      {
+        "path": "game/tests/creature_motion_checks.gd.uid",
+        "source": "game/tests/creature_motion_checks.gd",
+        "kind": ".uid",
+        "sha256": "bcf4d46068730a335593f98734796c87458c6923c486218a14c9cf59e591d016"
+      },
+      {
+        "path": "game/tests/custom_panel_refresh.gd.uid",
+        "source": "game/tests/custom_panel_refresh.gd",
+        "kind": ".uid",
+        "sha256": "b5ec01f445a251627039d89af5ae788cdb149d25ef874eb2859678967788406d"
+      },
+      {
+        "path": "game/tests/discovery_clarity.gd.uid",
+        "source": "game/tests/discovery_clarity.gd",
+        "kind": ".uid",
+        "sha256": "b23941d12760ec4ade12f6000b3bcc9791f39b651c5bdf4336a6ee3812d70315"
+      },
+      {
+        "path": "game/tests/discovery_sites.gd.uid",
+        "source": "game/tests/discovery_sites.gd",
+        "kind": ".uid",
+        "sha256": "fb79b6b81a3e319d19770d1f5d9578f25be48c339a69ff7d8822c327fde4de8b"
+      },
+      {
+        "path": "game/tests/ecology_buildings.gd.uid",
+        "source": "game/tests/ecology_buildings.gd",
+        "kind": ".uid",
+        "sha256": "88be6070473a9edd5880cce29985d6742ad5eeb2b1dcd5e0f3b1839f36972c25"
+      },
+      {
+        "path": "game/tests/enemy_contact_review.gd.uid",
+        "source": "game/tests/enemy_contact_review.gd",
+        "kind": ".uid",
+        "sha256": "8f8760df2b5c01a2d3e7c31e4607494c65c9f32cf6268a7218245690f721d7ee"
+      },
+      {
+        "path": "game/tests/environment_ambience.gd.uid",
+        "source": "game/tests/environment_ambience.gd",
+        "kind": ".uid",
+        "sha256": "50e7e332b7df8d9b680db4a8e0a40beaa752f0deb70bd1ac6290fd2f9cf7b3c7"
+      },
+      {
+        "path": "game/tests/environment_mix.gd.uid",
+        "source": "game/tests/environment_mix.gd",
+        "kind": ".uid",
+        "sha256": "4860e7594c0e4e1a7bfd05b1e278f5e0fb7ee94917969e25d1ab75cd4ada281f"
+      },
+      {
+        "path": "game/tests/environment_target_checks.gd.uid",
+        "source": "game/tests/environment_target_checks.gd",
+        "kind": ".uid",
+        "sha256": "5f7bed8eddb8631953448fd0fa42ca82b3fbbc674fbfb9a3bdd2bec69ad5c2d0"
+      },
+      {
+        "path": "game/tests/environment_target_review.gd.uid",
+        "source": "game/tests/environment_target_review.gd",
+        "kind": ".uid",
+        "sha256": "5d618a1091ce0e71999444a91869a9c898725a1fd866050fefac896503c81a68"
+      },
+      {
+        "path": "game/tests/establishment_guide.gd.uid",
+        "source": "game/tests/establishment_guide.gd",
+        "kind": ".uid",
+        "sha256": "b70374df161ea0d1bf6e3ef8f63fba9a88df87b429f868f811948d74c8796c33"
+      },
+      {
+        "path": "game/tests/exploration_review.gd.uid",
+        "source": "game/tests/exploration_review.gd",
+        "kind": ".uid",
+        "sha256": "271aac96afbee61fba60cc64a4a317bce00171475f130c78f2435f562d28628c"
+      },
+      {
+        "path": "game/tests/faceted_terrain.gd.uid",
+        "source": "game/tests/faceted_terrain.gd",
+        "kind": ".uid",
+        "sha256": "ea7a31b84050fc46a49537fe3e64e5cceb61e574a906ad150d1dc32034c4c0e7"
+      },
+      {
+        "path": "game/tests/feeder_controls.gd.uid",
+        "source": "game/tests/feeder_controls.gd",
+        "kind": ".uid",
+        "sha256": "fa4df626dde0cd2b87d65305b6bbb282222f0a9589f7314120619946f7c88841"
+      },
+      {
+        "path": "game/tests/feeder_visuals.gd.uid",
+        "source": "game/tests/feeder_visuals.gd",
+        "kind": ".uid",
+        "sha256": "7980a472eb96afa7cfaa01ed046b494d2f54fc6566c94bf3cf4585fa141960d2"
+      },
+      {
+        "path": "game/tests/feel_test.gd.uid",
+        "source": "game/tests/feel_test.gd",
+        "kind": ".uid",
+        "sha256": "331006275b4a6095178a3f3bd29c7f43b60e476f8601c35c1233d63cab89ad4e"
+      },
+      {
+        "path": "game/tests/first_hour_journey.gd.uid",
+        "source": "game/tests/first_hour_journey.gd",
+        "kind": ".uid",
+        "sha256": "4eac9402f655bc52d056782bf1d08b2af20cc208b62913cc7e8cfa7633338ebf"
+      },
+      {
+        "path": "game/tests/first_hour_panels.gd.uid",
+        "source": "game/tests/first_hour_panels.gd",
+        "kind": ".uid",
+        "sha256": "b4711cc7ed00067af2cabba5e38bfaa40d5f0a5ab5621d05613bd9ac8f3117cb"
+      },
+      {
+        "path": "game/tests/focus_scheduling.gd.uid",
+        "source": "game/tests/focus_scheduling.gd",
+        "kind": ".uid",
+        "sha256": "c5d09981955851c93eb5e47e91f65047391949978b478509ca6d994d16cbec61"
+      },
+      {
+        "path": "game/tests/footstep_palette.gd.uid",
+        "source": "game/tests/footstep_palette.gd",
+        "kind": ".uid",
+        "sha256": "ddccd6aedb34a471abc52391de37e911759507091a941183ee034e82a42ce638"
+      },
+      {
+        "path": "game/tests/footsteps_route.gd.uid",
+        "source": "game/tests/footsteps_route.gd",
+        "kind": ".uid",
+        "sha256": "3386dfb84085d9937cc4a54fe67167ac3bd88ffff9adf9e8348d8511b7970a48"
+      },
+      {
+        "path": "game/tests/forge_fixtures.gd.uid",
+        "source": "game/tests/forge_fixtures.gd",
+        "kind": ".uid",
+        "sha256": "10885627a168c2f06036e37c3ea09adc08c8487ded08fdeb960b551320a6cd9d"
+      },
+      {
+        "path": "game/tests/forge_pressure_checks.gd.uid",
+        "source": "game/tests/forge_pressure_checks.gd",
+        "kind": ".uid",
+        "sha256": "0991d946bea45c8da655775ee11923dfcd48fbb6a9a98ec94d412d3d80ae679b"
+      },
+      {
+        "path": "game/tests/forge_pressure_review.gd.uid",
+        "source": "game/tests/forge_pressure_review.gd",
+        "kind": ".uid",
+        "sha256": "001eace1a834ff355f393a7910d2fd871df7f93bd6210e1e3e1e59f17982a45f"
+      },
+      {
+        "path": "game/tests/forge_progression.gd.uid",
+        "source": "game/tests/forge_progression.gd",
+        "kind": ".uid",
+        "sha256": "743a33cc196d0bb5c1c08906085a1e971064f6592c5a33358a59420faa6af091"
+      },
+      {
+        "path": "game/tests/forge_readability_review.gd.uid",
+        "source": "game/tests/forge_readability_review.gd",
+        "kind": ".uid",
+        "sha256": "02f92434601907cb68c1eb4ef26d11db5444bb9135d58d2b0d582c223cc78bcd"
+      },
+      {
+        "path": "game/tests/forge_tells.gd.uid",
+        "source": "game/tests/forge_tells.gd",
+        "kind": ".uid",
+        "sha256": "7ffd610716a771210fa013f862937360260a2503803861881f01c6b09c88ba00"
+      },
+      {
+        "path": "game/tests/forge_traversal.gd.uid",
+        "source": "game/tests/forge_traversal.gd",
+        "kind": ".uid",
+        "sha256": "411e88d960b75ed08d3b45af9789abf4808c1cff818d09d3999b0342b5fc0230"
+      },
+      {
+        "path": "game/tests/foundry_clarity.gd.uid",
+        "source": "game/tests/foundry_clarity.gd",
+        "kind": ".uid",
+        "sha256": "1bcd9177c1e44b172ad9663ade02bd5c765690fa9057f2b68e3a6473ce71e896"
+      },
+      {
+        "path": "game/tests/foundry_flow_review.gd.uid",
+        "source": "game/tests/foundry_flow_review.gd",
+        "kind": ".uid",
+        "sha256": "50961b18a3d160f6e83909998e0944d0a0b8cd86c702225f301fd515a365775c"
+      },
+      {
+        "path": "game/tests/foundry_guard_identity.gd.uid",
+        "source": "game/tests/foundry_guard_identity.gd",
+        "kind": ".uid",
+        "sha256": "d0b162dde40abc6235b1fa2e8fa3e8e3bd6cd5a7e5eec0a1077f467c0d70f2c2"
+      },
+      {
+        "path": "game/tests/foundry_mutations.gd.uid",
+        "source": "game/tests/foundry_mutations.gd",
+        "kind": ".uid",
+        "sha256": "7e70490156c454931b5de70e2586f5b4f3694fc9c9b6c26a33a76baa43f5a84e"
+      },
+      {
+        "path": "game/tests/foundry_offence_identity.gd.uid",
+        "source": "game/tests/foundry_offence_identity.gd",
+        "kind": ".uid",
+        "sha256": "e61411fcee0cd3be3cc41486442687595a19811a2d25cc5018bc640d2f3331c2"
+      },
+      {
+        "path": "game/tests/foundry_sustain_identity.gd.uid",
+        "source": "game/tests/foundry_sustain_identity.gd",
+        "kind": ".uid",
+        "sha256": "6df368ca3c52d05303b4ef23ef17b19e1544989e470c6dfa471c80fea3f17fcb"
+      },
+      {
+        "path": "game/tests/foundry_tempo_identity.gd.uid",
+        "source": "game/tests/foundry_tempo_identity.gd",
+        "kind": ".uid",
+        "sha256": "0867d92806e2653c17106686c593aec7b6a6e466df76a8cd1b515cbf52b59c0d"
+      },
+      {
+        "path": "game/tests/frontier_continuation_checks.gd.uid",
+        "source": "game/tests/frontier_continuation_checks.gd",
+        "kind": ".uid",
+        "sha256": "0625bdde57e3488cfc447b6dad7ad4ff29ef983214f5b4bddb01fdaf9c056c0e"
+      },
+      {
+        "path": "game/tests/frontier_polish_review.gd.uid",
+        "source": "game/tests/frontier_polish_review.gd",
+        "kind": ".uid",
+        "sha256": "fe75e4bd60914e09aec3336c0ec6a35bdf05a8a45ce0c6d57ea897cfb200067f"
+      },
+      {
+        "path": "game/tests/frontier_polish_walk.gd.uid",
+        "source": "game/tests/frontier_polish_walk.gd",
+        "kind": ".uid",
+        "sha256": "dd6148c4cbaac054b2a81ee67ae15a0fedfe16bc7681b4ba6338b7ac0d8927d8"
+      },
+      {
+        "path": "game/tests/gathering_feedback.gd.uid",
+        "source": "game/tests/gathering_feedback.gd",
+        "kind": ".uid",
+        "sha256": "eaf5b151f9d710fdf58ca5de6545eb9ac9ed0aeca46475f2294f6cb9837d39db"
+      },
+      {
+        "path": "game/tests/grammar_test.gd.uid",
+        "source": "game/tests/grammar_test.gd",
+        "kind": ".uid",
+        "sha256": "a610010172c3a784a143d1f897369f111fdbf6504b17ea8efc038ef35b24af16"
+      },
+      {
+        "path": "game/tests/grounded_footsteps.gd.uid",
+        "source": "game/tests/grounded_footsteps.gd",
+        "kind": ".uid",
+        "sha256": "91cf0aded13bd5b5a356d7ccf4cd6b37ebb816d67f55743ed28eeb756446ecba"
+      },
+      {
+        "path": "game/tests/home_door_persistence.gd.uid",
+        "source": "game/tests/home_door_persistence.gd",
+        "kind": ".uid",
+        "sha256": "233af09f554e1a22ae50b79251cde8fdc92ea87a10a393b150bf00d01acd5d83"
+      },
+      {
+        "path": "game/tests/home_headroom.gd.uid",
+        "source": "game/tests/home_headroom.gd",
+        "kind": ".uid",
+        "sha256": "205a57ec3e3b383c552baa7a2d8cd56dbf18a1c838ba76f3903a710c444a9171"
+      },
+      {
+        "path": "game/tests/home_material_joins.gd.uid",
+        "source": "game/tests/home_material_joins.gd",
+        "kind": ".uid",
+        "sha256": "8c18d8f4ac97bb716fd33e125d28b318d7fb679bd6d814145daf52f87c7798e6"
+      },
+      {
+        "path": "game/tests/home_station_clearance.gd.uid",
+        "source": "game/tests/home_station_clearance.gd",
+        "kind": ".uid",
+        "sha256": "49db94b7d3c88b275e608bc07da3e231b0211eed0a82c4fd69361c5a10d20118"
+      },
+      {
+        "path": "game/tests/home_station_placement.gd.uid",
+        "source": "game/tests/home_station_placement.gd",
+        "kind": ".uid",
+        "sha256": "af354dbe7854c98661bdb5e470bd668f56827899c10ada4e1e17c38b011bdd44"
+      },
+      {
+        "path": "game/tests/home_terrain_placement.gd.uid",
+        "source": "game/tests/home_terrain_placement.gd",
+        "kind": ".uid",
+        "sha256": "60dcf1bb49c53e70f2ec988a9dde5f718f747cd1c1de9ba8895ac2ab3312b6b4"
+      },
+      {
+        "path": "game/tests/home_workshop_review.gd.uid",
+        "source": "game/tests/home_workshop_review.gd",
+        "kind": ".uid",
+        "sha256": "0609139e2ac71f6a89f474a931317e259763248748e9063ea759775f1300c248"
+      },
+      {
+        "path": "game/tests/horde_test.gd.uid",
+        "source": "game/tests/horde_test.gd",
+        "kind": ".uid",
+        "sha256": "66f730bc0381a8ec2d92764779bc6df376c3375b4371daebdcd81438b78f87f6"
+      },
+      {
+        "path": "game/tests/integration_test.gd.uid",
+        "source": "game/tests/integration_test.gd",
+        "kind": ".uid",
+        "sha256": "4710e4b92d76067b1f28d091363172ed37be9110bb6e24cee8ad18ff7b21cc91"
+      },
+      {
+        "path": "game/tests/interaction_feedback.gd.uid",
+        "source": "game/tests/interaction_feedback.gd",
+        "kind": ".uid",
+        "sha256": "2a8f81884dd6ce0ebfff67b95b72e8e1e1191c5039a38e5e5c47166d88285736"
+      },
+      {
+        "path": "game/tests/interaction_route.gd.uid",
+        "source": "game/tests/interaction_route.gd",
+        "kind": ".uid",
+        "sha256": "53491bfee11843de15328fde55137085e1590ecc88d35ce447cf3066869bb0d0"
+      },
+      {
+        "path": "game/tests/laboratory_experiment.gd.uid",
+        "source": "game/tests/laboratory_experiment.gd",
+        "kind": ".uid",
+        "sha256": "8ee6136efe01b07390fda28a2dc5b31dcad90e9ddae12e56d2c9d35b14f74c81"
+      },
+      {
+        "path": "game/tests/laboratory_experiment_combat.gd.uid",
+        "source": "game/tests/laboratory_experiment_combat.gd",
+        "kind": ".uid",
+        "sha256": "850f2e656fa9d66b1e3262c52faa9d15ce7ceafee8d8f09f661d4afe0e877a44"
+      },
+      {
+        "path": "game/tests/laboratory_pressure_effects.gd.uid",
+        "source": "game/tests/laboratory_pressure_effects.gd",
+        "kind": ".uid",
+        "sha256": "d85e0968fde2d4692b5de8955b67d9477da459706aa1bd1f776b6bf5028cdfce"
+      },
+      {
+        "path": "game/tests/laboratory_pressure_runs.gd.uid",
+        "source": "game/tests/laboratory_pressure_runs.gd",
+        "kind": ".uid",
+        "sha256": "1ba18a7fcf6051e9280ad15bd5741dda373a1d94d05e48b0e69101cf17a09471"
+      },
+      {
+        "path": "game/tests/laboratory_repeat_loop.gd.uid",
+        "source": "game/tests/laboratory_repeat_loop.gd",
+        "kind": ".uid",
+        "sha256": "953e4caf91f650d6a5d05f4d293f469fbfa1ba95593d72e1304e11f6c286d2c3"
+      },
+      {
+        "path": "game/tests/laboratory_route_geometry.gd.uid",
+        "source": "game/tests/laboratory_route_geometry.gd",
+        "kind": ".uid",
+        "sha256": "e7ffde1b068c172f5ee6342ede512cc00009dd783e9f1c69de9c8cf83614bc8f"
+      },
+      {
+        "path": "game/tests/laboratory_trial.gd.uid",
+        "source": "game/tests/laboratory_trial.gd",
+        "kind": ".uid",
+        "sha256": "f810e690da639f0c401865d7c094628258827f84f90fadb299687f891f01926d"
+      },
+      {
+        "path": "game/tests/leyline_geometry_probe.gd.uid",
+        "source": "game/tests/leyline_geometry_probe.gd",
+        "kind": ".uid",
+        "sha256": "d956ab5bf78a2ed4bc2f61ed7e356b3e7873484bdec05dfbc4f6a3e7f000c52f"
+      },
+      {
+        "path": "game/tests/leyline_mesh_equivalence.gd.uid",
+        "source": "game/tests/leyline_mesh_equivalence.gd",
+        "kind": ".uid",
+        "sha256": "94e71730c7fe4176c49f6e34791e82ba9511a0ed15836c2889d7e2d4d65f339b"
+      },
+      {
+        "path": "game/tests/leyline_support_repair.gd.uid",
+        "source": "game/tests/leyline_support_repair.gd",
+        "kind": ".uid",
+        "sha256": "79e1a01beb52388870a20dc4b2ac3ba4679ab7f1903e02592ac7b22bae6b0e5e"
+      },
+      {
+        "path": "game/tests/leyline_visual_review.gd.uid",
+        "source": "game/tests/leyline_visual_review.gd",
+        "kind": ".uid",
+        "sha256": "82d7300a3d48c005b8153d5f19ac721c6b285569c05513a60f9af65cd50f2582"
+      },
+      {
+        "path": "game/tests/living_frontier_flow.gd.uid",
+        "source": "game/tests/living_frontier_flow.gd",
+        "kind": ".uid",
+        "sha256": "ce14851cbae797e4e995d0aa124df31b37bb47a80462e1d22f1480107343d1e0"
+      },
+      {
+        "path": "game/tests/living_frontier_green_flow.gd.uid",
+        "source": "game/tests/living_frontier_green_flow.gd",
+        "kind": ".uid",
+        "sha256": "c4016a487ec4688965be6e5cbfaedea5bf04cc195df76d66d172b0566bf1a67c"
+      },
+      {
+        "path": "game/tests/living_frontier_habitat.gd.uid",
+        "source": "game/tests/living_frontier_habitat.gd",
+        "kind": ".uid",
+        "sha256": "b99202408c9bd7b4175b11c96f1847f9d8cc457739fc52f575004978b17ef6f2"
+      },
+      {
+        "path": "game/tests/living_frontier_heat_flow.gd.uid",
+        "source": "game/tests/living_frontier_heat_flow.gd",
+        "kind": ".uid",
+        "sha256": "b5fb183875678e651d8e018d72b0c3f19105abf2a6793c7bce63636be9ff7a23"
+      },
+      {
+        "path": "game/tests/living_frontier_hosts.gd.uid",
+        "source": "game/tests/living_frontier_hosts.gd",
+        "kind": ".uid",
+        "sha256": "5c38ce29b0d4a066878476ffa065860bd672f7c7a651c43b4023fe2f8198a70a"
+      },
+      {
+        "path": "game/tests/living_frontier_hybrid.gd.uid",
+        "source": "game/tests/living_frontier_hybrid.gd",
+        "kind": ".uid",
+        "sha256": "f9d653de58eca92d747600b77b6fdd1a1cb458c52b32af80a2585324934055cf"
+      },
+      {
+        "path": "game/tests/living_frontier_routes.gd.uid",
+        "source": "game/tests/living_frontier_routes.gd",
+        "kind": ".uid",
+        "sha256": "197ffbf66ce8ca7fa060ca9e61509bb55b00b0ec08893af4a729c99da859bd99"
+      },
+      {
+        "path": "game/tests/living_frontier_trail_flow.gd.uid",
+        "source": "game/tests/living_frontier_trail_flow.gd",
+        "kind": ".uid",
+        "sha256": "18d783e4d4955a1306af2def6627ced06b92f6dd7144db420b57948f9d76b24f"
+      },
+      {
+        "path": "game/tests/living_frontier_wave2_flow.gd.uid",
+        "source": "game/tests/living_frontier_wave2_flow.gd",
+        "kind": ".uid",
+        "sha256": "d0e61233c76d9635b68f65a6bbd205c19d7b989e1e91041e5d207f1a138590ca"
+      },
+      {
+        "path": "game/tests/living_frontier_workshop_flow.gd.uid",
+        "source": "game/tests/living_frontier_workshop_flow.gd",
+        "kind": ".uid",
+        "sha256": "d6c3715cba6f9e8864d73a093e293c5e44ddffb72e0a5de6224e35e2d2802250"
+      },
+      {
+        "path": "game/tests/loose_drop_save.gd.uid",
+        "source": "game/tests/loose_drop_save.gd",
+        "kind": ".uid",
+        "sha256": "8108be6241d37aa8d42a6c51c96ba379f571badc8e81bd94dc4d13858d58310c"
+      },
+      {
+        "path": "game/tests/loot_persistence.gd.uid",
+        "source": "game/tests/loot_persistence.gd",
+        "kind": ".uid",
+        "sha256": "8832d047436ce0ffafc22542b10dae68381beb8d6d27da71b7a1fb97f5f27f6d"
+      },
+      {
+        "path": "game/tests/material_intensive.gd.uid",
+        "source": "game/tests/material_intensive.gd",
+        "kind": ".uid",
+        "sha256": "adea53cae2d2521b66df8f47bc88ea7acdcf4700e025bdd66ed72baecc09cbb5"
+      },
+      {
+        "path": "game/tests/material_transitions.gd.uid",
+        "source": "game/tests/material_transitions.gd",
+        "kind": ".uid",
+        "sha256": "69557fdfa43f9e10dbdfc50fb1a53883ef35f25f39f632f002a22b2adc8c1ce7"
+      },
+      {
+        "path": "game/tests/new_world_startup.gd.uid",
+        "source": "game/tests/new_world_startup.gd",
+        "kind": ".uid",
+        "sha256": "821b1855efcedf144eb3257c3089951ddad9eb7f5769ef046def6b30e89a7b07"
+      },
+      {
+        "path": "game/tests/pairing_trial.gd.uid",
+        "source": "game/tests/pairing_trial.gd",
+        "kind": ".uid",
+        "sha256": "24c768fdbef3cdbc20266ad91ad95d6c96442292d947af41f18a8179b315b19c"
+      },
+      {
+        "path": "game/tests/panel_density.gd.uid",
+        "source": "game/tests/panel_density.gd",
+        "kind": ".uid",
+        "sha256": "b2c5589ec6ebc465f2b783c6f3e57a3ee000dc47f01fa393fd8c8996f2a66de3"
+      },
+      {
+        "path": "game/tests/placement_generated_fixtures.gd.uid",
+        "source": "game/tests/placement_generated_fixtures.gd",
+        "kind": ".uid",
+        "sha256": "ab2733b7b5f5ebc1e4c02bf23dde4d34492e33007c248e6b5734498b78dc8c60"
+      },
+      {
+        "path": "game/tests/placement_performance_review.gd.uid",
+        "source": "game/tests/placement_performance_review.gd",
+        "kind": ".uid",
+        "sha256": "46aca86c538ee23187d329e09ecc1f4804f31edd3fe0bd571dc97e5b425c1f22"
+      },
+      {
+        "path": "game/tests/placement_scenery.gd.uid",
+        "source": "game/tests/placement_scenery.gd",
+        "kind": ".uid",
+        "sha256": "aa3cce68a651c60c628463df762219ddae0f987e0db7a1041f12ca912558029c"
+      },
+      {
+        "path": "game/tests/placement_transactions.gd.uid",
+        "source": "game/tests/placement_transactions.gd",
+        "kind": ".uid",
+        "sha256": "969612a9995aabb73a1e57921db0bd3b75303870b43e7c4130016530be210b6a"
+      },
+      {
+        "path": "game/tests/population_audit.gd.uid",
+        "source": "game/tests/population_audit.gd",
+        "kind": ".uid",
+        "sha256": "7cf275e7a843e546adea317422a41fe7512c76c26c186d8271e678c16922377c"
+      },
+      {
+        "path": "game/tests/population_grounding.gd.uid",
+        "source": "game/tests/population_grounding.gd",
+        "kind": ".uid",
+        "sha256": "a58cd47917bc54a2aeafe8addf8c3affe23648f426e1c278c8d361df5cb49a65"
+      },
+      {
+        "path": "game/tests/population_walk.gd.uid",
+        "source": "game/tests/population_walk.gd",
+        "kind": ".uid",
+        "sha256": "c442d8e117fffddf489678eba8c5afeb8957fbf1f59d308f35c2a77151355edc"
+      },
+      {
+        "path": "game/tests/portable_build.gd.uid",
+        "source": "game/tests/portable_build.gd",
+        "kind": ".uid",
+        "sha256": "340cb713352ce5a531f9072d42b2d6b527004e45bae52ec989410c4f4d173277"
+      },
+      {
+        "path": "game/tests/power_progression_review.gd.uid",
+        "source": "game/tests/power_progression_review.gd",
+        "kind": ".uid",
+        "sha256": "606e308ac7109df5ebfcd0755270086eeae650eace5c8472da16855883f5e1b6"
+      },
+      {
+        "path": "game/tests/presentation_checks.gd.uid",
+        "source": "game/tests/presentation_checks.gd",
+        "kind": ".uid",
+        "sha256": "82f4472bd4338f86f33a384e278c34f46bc90df01002e18800849f2f03ed35ad"
+      },
+      {
+        "path": "game/tests/pressure_feeder_presentation.gd.uid",
+        "source": "game/tests/pressure_feeder_presentation.gd",
+        "kind": ".uid",
+        "sha256": "990f16230b4920fe957f2b80bdd673dd7d2fddf56d362e4b639673130c07a06a"
+      },
+      {
+        "path": "game/tests/pressure_workshop.gd.uid",
+        "source": "game/tests/pressure_workshop.gd",
+        "kind": ".uid",
+        "sha256": "e666b2ec08f30256822b8ed2ff7cd64d5ad845cccbde65c06bfda5adc768ba8d"
+      },
+      {
+        "path": "game/tests/probe_save.gd.uid",
+        "source": "game/tests/probe_save.gd",
+        "kind": ".uid",
+        "sha256": "69b4096bef52a17791b8b2eb65be6b6b206a8d5f27c6e5bafa26cd482586a20f"
+      },
+      {
+        "path": "game/tests/progression_controlled.gd.uid",
+        "source": "game/tests/progression_controlled.gd",
+        "kind": ".uid",
+        "sha256": "0b9abf4465105a27af0d7e4793cc6659bb00a78e50473c28271ea4fd8b5679ef"
+      },
+      {
+        "path": "game/tests/progression_journey.gd.uid",
+        "source": "game/tests/progression_journey.gd",
+        "kind": ".uid",
+        "sha256": "e562e7bb6669799694255e01ce35b8e9fd9f43a7347e824a7bae6f3458e2d5b1"
+      },
+      {
+        "path": "game/tests/progression_meter.gd.uid",
+        "source": "game/tests/progression_meter.gd",
+        "kind": ".uid",
+        "sha256": "7c93ef1a96f2da65a404277506182fd42140fc52cc50f62739be6063ea7b6897"
+      },
+      {
+        "path": "game/tests/quiet_ambience.gd.uid",
+        "source": "game/tests/quiet_ambience.gd",
+        "kind": ".uid",
+        "sha256": "8c67403de035486283937634d3777fe9bdce8851feac1778be2b55eeb17ae959"
+      },
+      {
+        "path": "game/tests/ranged_fairness.gd.uid",
+        "source": "game/tests/ranged_fairness.gd",
+        "kind": ".uid",
+        "sha256": "3023bdd721b3b7e17d5833e7a4cafaeb8588f22ca174a682257b0ace9a87656e"
+      },
+      {
+        "path": "game/tests/resonance_recovery_controls.gd.uid",
+        "source": "game/tests/resonance_recovery_controls.gd",
+        "kind": ".uid",
+        "sha256": "54029ccd2c0a56cd00af34caef4a948f8a76f9580ad527973a27ec2cafa5889e"
+      },
+      {
+        "path": "game/tests/resonance_terrain.gd.uid",
+        "source": "game/tests/resonance_terrain.gd",
+        "kind": ".uid",
+        "sha256": "de94f746a5eb05a56818140ccb85abe17ff5fca59f8debbef6501759d548f287"
+      },
+      {
+        "path": "game/tests/resource_highlight.gd.uid",
+        "source": "game/tests/resource_highlight.gd",
+        "kind": ".uid",
+        "sha256": "c7c20a14668ead5d21a797d1eb19c346bbec1aca882c17c2eb0f8994dcf12b2a"
+      },
+      {
+        "path": "game/tests/resource_presentation_review.gd.uid",
+        "source": "game/tests/resource_presentation_review.gd",
+        "kind": ".uid",
+        "sha256": "adebff6d69d8b6c59bba8cc5a665449054426579fc1c79d21346199823a292d7"
+      },
+      {
+        "path": "game/tests/run_tests.gd.uid",
+        "source": "game/tests/run_tests.gd",
+        "kind": ".uid",
+        "sha256": "92b5843e86ef6481d0e9a295d4903326ce461eda7ee7fd413a0dd409bdb22594"
+      },
+      {
+        "path": "game/tests/save_recovery.gd.uid",
+        "source": "game/tests/save_recovery.gd",
+        "kind": ".uid",
+        "sha256": "0c5559c4257e26ecde57daef93a2df5b80d0f43fac63d7cd2ff6c617e39e70b6"
+      },
+      {
+        "path": "game/tests/scenery_grounding.gd.uid",
+        "source": "game/tests/scenery_grounding.gd",
+        "kind": ".uid",
+        "sha256": "104853f3926242ac27daebfe9a31b8fb5fadaa2e22f37ee3d9028f320574bc0b"
+      },
+      {
+        "path": "game/tests/scratch_fire.gd.uid",
+        "source": "game/tests/scratch_fire.gd",
+        "kind": ".uid",
+        "sha256": "a2f1b4149ce628baa3bc8a22fca366c0be581011d339a597cfe2ac70453539ad"
+      },
+      {
+        "path": "game/tests/scratch_seam.gd.uid",
+        "source": "game/tests/scratch_seam.gd",
+        "kind": ".uid",
+        "sha256": "ffe3bfd193448232eb43cd9763718e59ad048ec64f7a07b29ad0f0095ae347ba"
+      },
+      {
+        "path": "game/tests/second_resonance_terrain.gd.uid",
+        "source": "game/tests/second_resonance_terrain.gd",
+        "kind": ".uid",
+        "sha256": "3c346e787e8464b40c59255a5eac8eb0d2b0645c0b84778aad66b33ffeb6f9c3"
+      },
+      {
+        "path": "game/tests/session_soak.gd.uid",
+        "source": "game/tests/session_soak.gd",
+        "kind": ".uid",
+        "sha256": "5bf80e04992232fa10e7065ffe5d845761bbdb2c00fd65fc621c944eeb377cc7"
+      },
+      {
+        "path": "game/tests/skill_expansion.gd.uid",
+        "source": "game/tests/skill_expansion.gd",
+        "kind": ".uid",
+        "sha256": "3ab8f067a9e77fe88e45ab02897fcd385de24c2063b40ce8286f00025ad01b96"
+      },
+      {
+        "path": "game/tests/smithy_story.gd.uid",
+        "source": "game/tests/smithy_story.gd",
+        "kind": ".uid",
+        "sha256": "a697668189c2394e2c16aec456515f1dc550854105c669deb2fd87f4d57a39f8"
+      },
+      {
+        "path": "game/tests/strange_art_review.gd.uid",
+        "source": "game/tests/strange_art_review.gd",
+        "kind": ".uid",
+        "sha256": "45e95644d557a9a5bf8077377733aeb9bf5ebd498d26cfa3fade927d5cfab922"
+      },
+      {
+        "path": "game/tests/strange_frontier.gd.uid",
+        "source": "game/tests/strange_frontier.gd",
+        "kind": ".uid",
+        "sha256": "272f8419d506d16d0fc93a519b832d46f469bc79bf8ecbfec6016e7f9748854d"
+      },
+      {
+        "path": "game/tests/strange_frontier_review.gd.uid",
+        "source": "game/tests/strange_frontier_review.gd",
+        "kind": ".uid",
+        "sha256": "f17992260701f491e3ef452ef059a5bef4370b7dee85bc23ea5096862b4d7aa9"
+      },
+      {
+        "path": "game/tests/stream_capacity.gd.uid",
+        "source": "game/tests/stream_capacity.gd",
+        "kind": ".uid",
+        "sha256": "8f1dfea50fcc937187dd6e8ad3079dc57e155006634600d2890f297fd6cc77a2"
+      },
+      {
+        "path": "game/tests/stream_scheduling.gd.uid",
+        "source": "game/tests/stream_scheduling.gd",
+        "kind": ".uid",
+        "sha256": "498c286e1ef8dce4639e1fd1892d6da3ae1ebee1677d0ca34722a321b46a3b77"
+      },
+      {
+        "path": "game/tests/terrain_preparation.gd.uid",
+        "source": "game/tests/terrain_preparation.gd",
+        "kind": ".uid",
+        "sha256": "0e95fec54c5df38dff5552e5bd8abb67c8405c660e0a26065306b3fe6c66fbe7"
+      },
+      {
+        "path": "game/tests/terrain_stream_intensive.gd.uid",
+        "source": "game/tests/terrain_stream_intensive.gd",
+        "kind": ".uid",
+        "sha256": "df893e0da266d441f69551890bf58178c3031a9b7f88ce8eef9a6b7d96d7aeb9"
+      },
+      {
+        "path": "game/tests/trace_surface_cache.gd.uid",
+        "source": "game/tests/trace_surface_cache.gd",
+        "kind": ".uid",
+        "sha256": "2f681a8fb32d674ca69829703797334cf4cfc45462fb3899b24ea68c99b05217"
+      },
+      {
+        "path": "game/tests/travel_performance_review.gd.uid",
+        "source": "game/tests/travel_performance_review.gd",
+        "kind": ".uid",
+        "sha256": "87f1a93f9413671e22229155564b04569979a782e9c3949c44bcb32ade9f327c"
+      },
+      {
+        "path": "game/tests/travel_profile_terrain.gd.uid",
+        "source": "game/tests/travel_profile_terrain.gd",
+        "kind": ".uid",
+        "sha256": "ee35ef1cbdece8584aaf5ef7d5642bbccc08c82220cb681a61ce9bf8ccb4dd24"
+      },
+      {
+        "path": "game/tests/trial_balance.gd.uid",
+        "source": "game/tests/trial_balance.gd",
+        "kind": ".uid",
+        "sha256": "93183a9a2742d23e834c82466bedf54262407dcf496dee8b373b8c0febe3b0d5"
+      },
+      {
+        "path": "game/tests/trial_balance_config.gd.uid",
+        "source": "game/tests/trial_balance_config.gd",
+        "kind": ".uid",
+        "sha256": "6cf9527f383880bc7e1fa99f4a8a21724bf9cb7776036e0b68fb6cd4843b1b11"
+      },
+      {
+        "path": "game/tests/trial_intensive.gd.uid",
+        "source": "game/tests/trial_intensive.gd",
+        "kind": ".uid",
+        "sha256": "c7ee73bb1ab99141d8ae32c16f0bd251f6815929e6fca72af0937ff65f2c90f2"
+      },
+      {
+        "path": "game/tests/weathered_save.gd.uid",
+        "source": "game/tests/weathered_save.gd",
+        "kind": ".uid",
+        "sha256": "8f2e093670fd27e505eafe1e9f40221c24cd08e5a7f022278aa754ec0bb15e7d"
+      },
+      {
+        "path": "game/tests/wide_frontier_pacing.gd.uid",
+        "source": "game/tests/wide_frontier_pacing.gd",
+        "kind": ".uid",
+        "sha256": "7eeb418593cd610ba1c4c7a8c32f05cdc06c58e86a294addadc1b62007e71582"
+      },
+      {
+        "path": "game/tests/wide_frontier_review.gd.uid",
+        "source": "game/tests/wide_frontier_review.gd",
+        "kind": ".uid",
+        "sha256": "7b0ca863be3365743ca5cec9862d67306cd082e0cfcb491a572fb87d0fd40ece"
+      },
+      {
+        "path": "game/tests/wide_terrain_stream.gd.uid",
+        "source": "game/tests/wide_terrain_stream.gd",
+        "kind": ".uid",
+        "sha256": "7f107cb20c5cdb7d77e647803f35439fe465c2370daa2094b3255122c4403c78"
+      },
+      {
+        "path": "game/tests/wildland_diagnostic.gd.uid",
+        "source": "game/tests/wildland_diagnostic.gd",
+        "kind": ".uid",
+        "sha256": "22b491ba82b389871e97606cf290cafd775de0c11841d96a298a4c96206ebb9a"
+      },
+      {
+        "path": "game/tests/workshop_feedback.gd.uid",
+        "source": "game/tests/workshop_feedback.gd",
+        "kind": ".uid",
+        "sha256": "83f577ce341a2f47f35b313b41f77615163f595ade7ede893085bf20491edf7e"
+      },
+      {
+        "path": "game/tests/workshop_readability_review.gd.uid",
+        "source": "game/tests/workshop_readability_review.gd",
+        "kind": ".uid",
+        "sha256": "e5ddc17840236e788b00b222b846d3e9ac88918667cae2f9a995063da9c8739a"
+      },
+      {
+        "path": "game/tests/world_intensive.gd.uid",
+        "source": "game/tests/world_intensive.gd",
+        "kind": ".uid",
+        "sha256": "f106205c993ba49d51cfc3acbeca1ed8ef5188bf4d486b71cc955e78b81dcd3a"
+      },
+      {
+        "path": "game/tests/world_mesh_equivalence.gd.uid",
+        "source": "game/tests/world_mesh_equivalence.gd",
+        "kind": ".uid",
+        "sha256": "37974aab714afc8dcbe54cbe50f502454286997df19a8bc19b61c4ce6da1ddbc"
+      },
+      {
+        "path": "game/tests/world_performance_review.gd.uid",
+        "source": "game/tests/world_performance_review.gd",
+        "kind": ".uid",
+        "sha256": "0ebeda9c6f0b39c0437b5f5b4342b3bb24ece1cf91834a60c82c22f6d24e2656"
+      },
+      {
+        "path": "game/tests/world_seed_capture.gd.uid",
+        "source": "game/tests/world_seed_capture.gd",
+        "kind": ".uid",
+        "sha256": "fcb6601b1a834beed828974eb61cd9bb4407353dad0ad8493c3d31b5a06c8a70"
+      }
+    ],
+    "native_dll_sha256": "0e7c4956b6c870f5879e78f54c5830509b7ae37913055543cc3a6d451298e0e1",
+    "paid_fixture_sha256": "14c20ce335b11acdb6c2fae97350d47ae0359f30b40d2099078a3ff6bd08d168",
+    "audit_note": "The initial metadata classifier incorrectly allowed new UID files only under R2. Fresh import generated 461 UID and 126 import sidecars across original sources too. Every such file now explicitly maps to an exactly hashed declared source; UID syntax and import source_file are checked. All declared source bytes remain exact. No engine assertion changed."
+  },
+  "commit_content_proof": {
+    "source_commit": "ca370f52a20637548da0cf1fd04cdc9dbeb9c440",
+    "files": [
+      {
+        "git_path": "docs/art/leyline-studies/2026-09-14/art07-repairs/r2/APPLICATION.md",
+        "sealed_path": "documentation/APPLICATION.md",
+        "git_blob_sha256": "06045997c52eaf8b9abd1eb8be987b8c8dcda8cf51d209a43e79b1572e328e8c",
+        "sealed_sha256": "06045997c52eaf8b9abd1eb8be987b8c8dcda8cf51d209a43e79b1572e328e8c",
+        "byte_identical": true,
+        "only_crlf_normalization_if_not_identical": true
+      },
+      {
+        "git_path": "docs/art/leyline-studies/2026-09-14/art07-repairs/r2/CHECKS.md",
+        "sealed_path": "documentation/CHECKS.md",
+        "git_blob_sha256": "65e61e5e20e15e798dfad7bfce5da9c1dd438b27e093383c542f8353292a1f22",
+        "sealed_sha256": "65e61e5e20e15e798dfad7bfce5da9c1dd438b27e093383c542f8353292a1f22",
+        "byte_identical": true,
+        "only_crlf_normalization_if_not_identical": true
+      },
+      {
+        "git_path": "docs/art/leyline-studies/2026-09-14/art07-repairs/r2/DIAGNOSTICS.md",
+        "sealed_path": "documentation/DIAGNOSTICS.md",
+        "git_blob_sha256": "4fbeb1decc1b271425fb2efb1c58e3dfe609bf465bb388d2ad162872fc617c83",
+        "sealed_sha256": "4fbeb1decc1b271425fb2efb1c58e3dfe609bf465bb388d2ad162872fc617c83",
+        "byte_identical": true,
+        "only_crlf_normalization_if_not_identical": true
+      },
+      {
+        "git_path": "docs/art/leyline-studies/2026-09-14/art07-repairs/r2/METHOD.md",
+        "sealed_path": "documentation/METHOD.md",
+        "git_blob_sha256": "f3656acab2b7ceff7a88fd333fcc9ae5ace880eca8ae20195d4cc09b2406c375",
+        "sealed_sha256": "f3656acab2b7ceff7a88fd333fcc9ae5ace880eca8ae20195d4cc09b2406c375",
+        "byte_identical": true,
+        "only_crlf_normalization_if_not_identical": true
+      },
+      {
+        "git_path": "docs/art/leyline-studies/2026-09-14/art07-repairs/r2/OBSERVATIONS.md",
+        "sealed_path": "documentation/OBSERVATIONS.md",
+        "git_blob_sha256": "b3a68ab7fc6228032e67f0fb3238efd8f3ceb50bdf733fb235d7b2746505c546",
+        "sealed_sha256": "b3a68ab7fc6228032e67f0fb3238efd8f3ceb50bdf733fb235d7b2746505c546",
+        "byte_identical": true,
+        "only_crlf_normalization_if_not_identical": true
+      },
+      {
+        "git_path": "docs/art/leyline-studies/2026-09-14/art07-repairs/r2/README.md",
+        "sealed_path": "documentation/README.md",
+        "git_blob_sha256": "eebc8da0323c0158ec3ee3dcdf9ad96e2af97bb95e3a502fd6625ca8b7293722",
+        "sealed_sha256": "eebc8da0323c0158ec3ee3dcdf9ad96e2af97bb95e3a502fd6625ca8b7293722",
+        "byte_identical": true,
+        "only_crlf_normalization_if_not_identical": true
+      },
+      {
+        "git_path": "docs/art/leyline-studies/2026-09-14/art07-repairs/r2/costs.json",
+        "sealed_path": "documentation/costs.json",
+        "git_blob_sha256": "3371397122657180521adf605bd8a14e6cd92abcb6b8c215ec8732ff813b81b1",
+        "sealed_sha256": "3371397122657180521adf605bd8a14e6cd92abcb6b8c215ec8732ff813b81b1",
+        "byte_identical": true,
+        "only_crlf_normalization_if_not_identical": true
+      },
+      {
+        "git_path": "docs/art/leyline-studies/2026-09-14/art07-repairs/r2/costs.md",
+        "sealed_path": "documentation/costs.md",
+        "git_blob_sha256": "541b0d90f8fa4f9de0a5721a79ed5117a7ef00e67fca5acd5a84444858419c37",
+        "sealed_sha256": "541b0d90f8fa4f9de0a5721a79ed5117a7ef00e67fca5acd5a84444858419c37",
+        "byte_identical": true,
+        "only_crlf_normalization_if_not_identical": true
+      },
+      {
+        "git_path": "tools/wroughtwild-art07-repairs/r2/audit.py",
+        "sealed_path": "r2-tools/audit.py",
+        "git_blob_sha256": "5c406f4b15bbaa646e34e95a15cfce77bd8082646f0585dc6da9f197bbf2cd2c",
+        "sealed_sha256": "fac4ee5ab251ff7f4fec03a81aea0cd58ec903c63d91eab10d0a2aa8e8caf4a3",
+        "byte_identical": false,
+        "only_crlf_normalization_if_not_identical": true
+      },
+      {
+        "git_path": "tools/wroughtwild-art07-repairs/r2/check_jobs.py",
+        "sealed_path": "r2-tools/check_jobs.py",
+        "git_blob_sha256": "5d84d6a3c09692ee72db14fee3a505b087715356420697785a362efec19e8cbd",
+        "sealed_sha256": "5d84d6a3c09692ee72db14fee3a505b087715356420697785a362efec19e8cbd",
+        "byte_identical": true,
+        "only_crlf_normalization_if_not_identical": true
+      },
+      {
+        "git_path": "tools/wroughtwild-art07-repairs/r2/checkpoint.py",
+        "sealed_path": "r2-tools/checkpoint.py",
+        "git_blob_sha256": "1e5e6344b736f715a130ae0bb670a7e8443c4039b16f1f05458bd3f06e17fb4d",
+        "sealed_sha256": "1e5e6344b736f715a130ae0bb670a7e8443c4039b16f1f05458bd3f06e17fb4d",
+        "byte_identical": true,
+        "only_crlf_normalization_if_not_identical": true
+      },
+      {
+        "git_path": "tools/wroughtwild-art07-repairs/r2/collect_checks.py",
+        "sealed_path": "r2-tools/collect_checks.py",
+        "git_blob_sha256": "efa988a415531079fd2e081794440c17b5d6a464ac0fa69c8f89b750975a787f",
+        "sealed_sha256": "38f1b4c3bed0171fc587f25fd0690b5c1c28313a86dd0e2cff6be96894d256ab",
+        "byte_identical": false,
+        "only_crlf_normalization_if_not_identical": true
+      },
+      {
+        "git_path": "tools/wroughtwild-art07-repairs/r2/controls.py",
+        "sealed_path": "r2-tools/controls.py",
+        "git_blob_sha256": "7dd517db4a65662756a25be7f749a58c8dc7eeb07cf6d32818a542720b2c5150",
+        "sealed_sha256": "4ca527e17bcf3339f1c658a12a5ca3ebd23239a9c828a8e42d153bb5a91ecb77",
+        "byte_identical": false,
+        "only_crlf_normalization_if_not_identical": true
+      },
+      {
+        "git_path": "tools/wroughtwild-art07-repairs/r2/disk_audit.py",
+        "sealed_path": "r2-tools/disk_audit.py",
+        "git_blob_sha256": "9cf2059b5557f552c9cc8ab0c538e40c527634f5b522894a68859c1314ab6370",
+        "sealed_sha256": "091f719234dcf6b1e14031f93b9ceddbe543681b0993fceb5c9f4024bbe1ef8f",
+        "byte_identical": false,
+        "only_crlf_normalization_if_not_identical": true
+      },
+      {
+        "git_path": "tools/wroughtwild-art07-repairs/r2/evidence.py",
+        "sealed_path": "r2-tools/evidence.py",
+        "git_blob_sha256": "f10fb018b1e27ea676ba705036d26c256c662e432dde2025d4edd4335d0702b0",
+        "sealed_sha256": "f10fb018b1e27ea676ba705036d26c256c662e432dde2025d4edd4335d0702b0",
+        "byte_identical": true,
+        "only_crlf_normalization_if_not_identical": true
+      },
+      {
+        "git_path": "tools/wroughtwild-art07-repairs/r2/handoff.py",
+        "sealed_path": "r2-tools/handoff.py",
+        "git_blob_sha256": "5cdc10d86cd14cc1511e33d4e50ea2154175305d4e17bf507d3d9c1a7869dce9",
+        "sealed_sha256": "5cdc10d86cd14cc1511e33d4e50ea2154175305d4e17bf507d3d9c1a7869dce9",
+        "byte_identical": true,
+        "only_crlf_normalization_if_not_identical": true
+      },
+      {
+        "git_path": "tools/wroughtwild-art07-repairs/r2/install_checks.py",
+        "sealed_path": "r2-tools/install_checks.py",
+        "git_blob_sha256": "7d05d00ff53254828431f9f8901be3791a43e84f53f709ef4f1e50d7b5b63430",
+        "sealed_sha256": "c0c57712ab7730e6cd8390d2dcb88537f694925b761dc4a7096e8f880e84d24d",
+        "byte_identical": false,
+        "only_crlf_normalization_if_not_identical": true
+      },
+      {
+        "git_path": "tools/wroughtwild-art07-repairs/r2/install_views.py",
+        "sealed_path": "r2-tools/install_views.py",
+        "git_blob_sha256": "8af6b3f68702fe790f8999fe00fa4539db768be847d09b87acdbf70435f6e84c",
+        "sealed_sha256": "e7ecc970394385143bb157717e2e60c65b8efdae7529afffc8f567344a452132",
+        "byte_identical": false,
+        "only_crlf_normalization_if_not_identical": true
+      },
+      {
+        "git_path": "tools/wroughtwild-art07-repairs/r2/inventory.gd.txt",
+        "sealed_path": "r2-tools/inventory.gd.txt",
+        "git_blob_sha256": "5c5641cf3611c9df0c423c05dc993e70f610e076d7b79d13a222ce0219114cc1",
+        "sealed_sha256": "0aba50365246073141708cd761cd2da0cbd012174f198551c1efb24b308dbb5b",
+        "byte_identical": false,
+        "only_crlf_normalization_if_not_identical": true
+      },
+      {
+        "git_path": "tools/wroughtwild-art07-repairs/r2/material_keys.py",
+        "sealed_path": "r2-tools/material_keys.py",
+        "git_blob_sha256": "a57eae135a4eefdf84c753eb7e526b51f9069db828477bba2fefcecdd562a8bd",
+        "sealed_sha256": "4a2faa6dd0634203bbd857011a803b0723dc096d24b7a154d1ca2d292e65a576",
+        "byte_identical": false,
+        "only_crlf_normalization_if_not_identical": true
+      },
+      {
+        "git_path": "tools/wroughtwild-art07-repairs/r2/measure.py",
+        "sealed_path": "r2-tools/measure.py",
+        "git_blob_sha256": "efb7ef0d07c0d0443c3221f56753ff6451434bb8e63517c5ac37ca5e379a62dc",
+        "sealed_sha256": "efb7ef0d07c0d0443c3221f56753ff6451434bb8e63517c5ac37ca5e379a62dc",
+        "byte_identical": true,
+        "only_crlf_normalization_if_not_identical": true
+      },
+      {
+        "git_path": "tools/wroughtwild-art07-repairs/r2/motion.py",
+        "sealed_path": "r2-tools/motion.py",
+        "git_blob_sha256": "44530e665fa7d6dafd1243c0a67393baeaf0f26c7f8ffa1285f5ead936246649",
+        "sealed_sha256": "44530e665fa7d6dafd1243c0a67393baeaf0f26c7f8ffa1285f5ead936246649",
+        "byte_identical": true,
+        "only_crlf_normalization_if_not_identical": true
+      },
+      {
+        "git_path": "tools/wroughtwild-art07-repairs/r2/native_renderers.py",
+        "sealed_path": "r2-tools/native_renderers.py",
+        "git_blob_sha256": "c497c87d840cd0f9c3cd9815abe9dc2773123b82228743c89598c8e3ac4a58fc",
+        "sealed_sha256": "c7b1529d3ef9baf2cafec3a302aa10a32a98d0fe7f68ba9128efce4dfc77cc87",
+        "byte_identical": false,
+        "only_crlf_normalization_if_not_identical": true
+      },
+      {
+        "git_path": "tools/wroughtwild-art07-repairs/r2/profile.gd",
+        "sealed_path": "r2-tools/profile.gd",
+        "git_blob_sha256": "da07b80c817c944f837d449709c193f605d063f28473360b6eafabcb0e36bc6c",
+        "sealed_sha256": "d15d0bce3779cfba07003dc7528bc9ebdf7cd25ff624a0f1c1fa94ed932d7bb0",
+        "byte_identical": false,
+        "only_crlf_normalization_if_not_identical": true
+      },
+      {
+        "git_path": "tools/wroughtwild-art07-repairs/r2/profile_install.py",
+        "sealed_path": "r2-tools/profile_install.py",
+        "git_blob_sha256": "5d04183581544e06f7972c45ceef14a9a8092f6749355b1addd52e1b96f1c29b",
+        "sealed_sha256": "88d1cdb0bf3d860aadfbcc9c06e932d159a73266c98209b662983f6b9b022cde",
+        "byte_identical": false,
+        "only_crlf_normalization_if_not_identical": true
+      },
+      {
+        "git_path": "tools/wroughtwild-art07-repairs/r2/projection_checks.gd",
+        "sealed_path": "r2-tools/projection_checks.gd",
+        "git_blob_sha256": "5c67d14b2d0fafef7d505caaed0446849ed0792bc2dce91981f533056f70282c",
+        "sealed_sha256": "5c67d14b2d0fafef7d505caaed0446849ed0792bc2dce91981f533056f70282c",
+        "byte_identical": true,
+        "only_crlf_normalization_if_not_identical": true
+      },
+      {
+        "git_path": "tools/wroughtwild-art07-repairs/r2/queue.ps1",
+        "sealed_path": "r2-tools/queue.ps1",
+        "git_blob_sha256": "0d35203ba0ae7add7cfa54d0ffbd075bd9286668f9f56330c990c083f3b1124d",
+        "sealed_sha256": "83334356da40426b3c7749f434a8c88221a9a2980850922893c13fb8fd69be7b",
+        "byte_identical": false,
+        "only_crlf_normalization_if_not_identical": true
+      },
+      {
+        "git_path": "tools/wroughtwild-art07-repairs/r2/reloads.gd",
+        "sealed_path": "r2-tools/reloads.gd",
+        "git_blob_sha256": "1bfeaa25a9da7b0c6560b67ac433fc0006a94bc347af9bcf36fc9fe824b21314",
+        "sealed_sha256": "1bfeaa25a9da7b0c6560b67ac433fc0006a94bc347af9bcf36fc9fe824b21314",
+        "byte_identical": true,
+        "only_crlf_normalization_if_not_identical": true
+      },
+      {
+        "git_path": "tools/wroughtwild-art07-repairs/r2/replays.py",
+        "sealed_path": "r2-tools/replays.py",
+        "git_blob_sha256": "8aa80570de901f82225520e6d2fea943f6fc6bf7bcc460584845d022dc7a2b18",
+        "sealed_sha256": "8aa80570de901f82225520e6d2fea943f6fc6bf7bcc460584845d022dc7a2b18",
+        "byte_identical": true,
+        "only_crlf_normalization_if_not_identical": true
+      },
+      {
+        "git_path": "tools/wroughtwild-art07-repairs/r2/source.py",
+        "sealed_path": "r2-tools/source.py",
+        "git_blob_sha256": "541b81e9c7c2d64fb4614d4b6e256759bf1cacb8b481a27e52d50a885046ca3c",
+        "sealed_sha256": "b9f69db9d6200d4a3bc6a6994f0dd24b4d672eda23ac3a2a699fe167e676d6c4",
+        "byte_identical": false,
+        "only_crlf_normalization_if_not_identical": true
+      },
+      {
+        "git_path": "tools/wroughtwild-art07-repairs/r2/summarize.py",
+        "sealed_path": "r2-tools/summarize.py",
+        "git_blob_sha256": "3fef87755b760c981cd693f3fc8688407f7beb3ae586657dce09d30df48f51cf",
+        "sealed_sha256": "3fef87755b760c981cd693f3fc8688407f7beb3ae586657dce09d30df48f51cf",
+        "byte_identical": true,
+        "only_crlf_normalization_if_not_identical": true
+      },
+      {
+        "git_path": "tools/wroughtwild-art07-repairs/r2/texture_inventory.gd.txt",
+        "sealed_path": "r2-tools/texture_inventory.gd.txt",
+        "git_blob_sha256": "38c2f6da32825f3ad3f15043b70aaaf4a3d9e0a9407e601715e2f38e9edcd216",
+        "sealed_sha256": "38c2f6da32825f3ad3f15043b70aaaf4a3d9e0a9407e601715e2f38e9edcd216",
+        "byte_identical": true,
+        "only_crlf_normalization_if_not_identical": true
+      },
+      {
+        "git_path": "tools/wroughtwild-art07-repairs/r2/traversal.py",
+        "sealed_path": "r2-tools/traversal.py",
+        "git_blob_sha256": "9803f398277b832149e854414de80ae2b2fa4c65b392c71b4943d4bb7e1aebb4",
+        "sealed_sha256": "671a086b41a5f73eaace192f489141d3a7588a6041da00828b58023f0690d3b3",
+        "byte_identical": false,
+        "only_crlf_normalization_if_not_identical": true
+      },
+      {
+        "git_path": "tools/wroughtwild-art07-repairs/r2/verify_harness.py",
+        "sealed_path": "r2-tools/verify_harness.py",
+        "git_blob_sha256": "4af1e09bf65f4e55d112b80d3b92de985b0d74e0396703b8015e217ffd24b013",
+        "sealed_sha256": "4af1e09bf65f4e55d112b80d3b92de985b0d74e0396703b8015e217ffd24b013",
+        "byte_identical": true,
+        "only_crlf_normalization_if_not_identical": true
+      },
+      {
+        "git_path": "tools/wroughtwild-art07-repairs/r2/verify_native.py",
+        "sealed_path": "r2-tools/verify_native.py",
+        "git_blob_sha256": "0217728547bfbf112e39913f23c58a324a814eb03f9a36d9ba20c80db19e9641",
+        "sealed_sha256": "785ac1491076fb02b455fd6647056a2e7a4fb96ba238f7e97d998874d807cd54",
+        "byte_identical": false,
+        "only_crlf_normalization_if_not_identical": true
+      }
+    ],
+    "scope": "Every implementation-commit blob matches the sealed tool/document, exactly or with only Git CRLF-to-LF normalization. The initial byte-only assertion caught that configured Git normalization; this record explicitly retains both hashes. No other differences and no sealed payload mutation. Runtime production hashes are verified separately and exactly."
+  },
+  "scheduling": {
+    "expired_prelaunch_waits": 1,
+    "second_bounded_wait": "acquired same GPU mutex; import and renderer jobs completed",
+    "observed_other_work": "R1 capture and benchmark left undisturbed",
+    "process_snapshots": [
+      "D:/project-wroughtwild-art07-r2/build/art07-repairs/r2/v04/gpu-context-before-reopen.json",
+      "D:/project-wroughtwild-art07-r2/build/art07-repairs/r2/v04/gpu-context-after-deferred-wait.json"
+    ]
+  },
+  "scope": "Post-seal verification outside the immutable package. All exact source hashes checked after fresh import/reopen; generated .godot cache and new Godot metadata sidecars are not sealed source. This record adds actual new engine evidence without relabelling or modifying the v03 seal."
+}

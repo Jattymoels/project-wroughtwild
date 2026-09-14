@@ -1,0 +1,252 @@
+{
+  "id": "r2",
+  "status": "ready_for_integration",
+  "source_commits": [
+    "ca370f52a20637548da0cf1fd04cdc9dbeb9c440"
+  ],
+  "runtime_base": "6bb2e044dcd0bf1788896aa2c19cdf56fee93522",
+  "parent_candidates": [],
+  "delta_base": "Exact common G1 companion; no peer runtime or newer game/data revision.",
+  "worktree": "D:/project-wroughtwild-art07-r2",
+  "branch": "codex/art07-r2",
+  "inspected_published_main": "473ae7604b3841899c29629cf59f8836ed528424",
+  "package": {
+    "path": "D:/project-wroughtwild-art07-r2/build/art07-repairs/r2/v03/handoff",
+    "manifest_sha256": "f5b3ea9559e9f4b76059c7863730b438bdfbe7a6f8f689ae3bae75340cb01ac0",
+    "files": 6411,
+    "bytes": 9091108107,
+    "count_scope": "Payload entries and summed payload bytes; manifest.json is the separately hashed identity file."
+  },
+  "changes": "changes.json",
+  "changes_sha256": "9a380d1d25f1dd7795a6f5a111ea99306cb12c72fc2bffffd93c91b12e27b778",
+  "production_modified_original_files": 238,
+  "production_added_files": 2,
+  "evidence_harness_added_files": 53,
+  "findings": {
+    "G2-C01": "Measured isolated candidate repair: median setup reduced 35.84% Forward+ and 34.83% Compatibility; loaded textures reduced by about 441 and 499 MiB. Independent integration and owner review remain pending."
+  },
+  "inputs": {
+    "g1": {
+      "path": "D:/project-wroughtwild-art07-g2/build/art07/g2/v01/sealed",
+      "manifest_sha256": "fd5c592ef52185cc7d0737840e41af09dbb5bcea36b719539931e156f42865cd",
+      "files": 5701,
+      "bytes": 7430015212
+    },
+    "g2": {
+      "path": "D:/project-wroughtwild-art07-g2/build/art07/g2/v02/handoff",
+      "manifest_sha256": "49827ac3fe3522a92cb74eecdf60cd857e1157b08f5d57f2d273c617606e93a1",
+      "files": 772,
+      "bytes": 594208921
+    },
+    "native_dll_sha256": "0e7c4956b6c870f5879e78f54c5830509b7ae37913055543cc3a6d451298e0e1",
+    "full_input_results": "evidence/v01/input-verification-01.log",
+    "repeat_full_input_results": "evidence/v03/application-input-verification-01.log"
+  },
+  "checks": [
+    {
+      "id": "fresh-process-costs",
+      "status": "passed",
+      "processes": 24,
+      "per_mode_backend_per_version": 3,
+      "settings": {
+        "viewport": [
+          1440,
+          900
+        ],
+        "msaa": "4x",
+        "vsync": false,
+        "max_fps": 0,
+        "warmup_frames": 120,
+        "samples_per_camera_light": 300,
+        "cameras": 4,
+        "lights": [
+          "day",
+          "dusk"
+        ]
+      },
+      "result": "Every candidate art-on setup below every original G1 observation in the same backend; primary buffer/geometry ranges unchanged. Art-off controls retained.",
+      "evidence": "documentation/costs.json"
+    },
+    {
+      "id": "actual-process-index",
+      "status": "indexed",
+      "successful_jobs": 110,
+      "failed_attempts_retained": 7,
+      "evidence": "evidence/v03/analysis/engine-jobs.json",
+      "sha256": "c705284bbbd41bc751c5836a33c705d98a060a166f708716780c722ecc24bd40"
+    },
+    {
+      "id": "native-and-restart",
+      "status": "passed",
+      "native_jobs_tabulated": 60,
+      "unit_checks": 398,
+      "legal_pairs": 273,
+      "catalogue_checks_per_backend": 1861,
+      "projection_checks": 16676,
+      "result": "Original B1/B3/C1-C5/E1-E3/F1-F4 assertions and partial/final restarts; native pause/block/cancel; paid acquisition/restart; Living Frontier paid continuations and restores.",
+      "evidence": "documentation/CHECKS.md"
+    },
+    {
+      "id": "final-hook-ownership",
+      "status": "passed",
+      "result": "Fresh art-on and art-off native fingerprints are byte-identical and equal the explicitly historical original G1 fingerprints across all six owner fields.",
+      "geography_sha256": "550b2d742314136a71a8c177920059bd245996e744b8722c8ba8c68afbde4a70",
+      "evidence": "evidence/v03/analysis/native-ownership.json"
+    },
+    {
+      "id": "reload-and-release",
+      "status": "passed_with_retained_stress_limit",
+      "checks_per_backend": {
+        "flow": 43,
+        "fresh_restart": 14
+      },
+      "cycles_per_flow": 3,
+      "result": "Frame-paced route/home/read cycles, actual partial work, release/re-entry and finite depletion. Original G1 frame-paced reference also passes both renderers.",
+      "evidence": "evidence/v03/analysis/reload-cost-comparison.json"
+    },
+    {
+      "id": "matched-images-and-geometry",
+      "status": "passed_technical_comparison_owner_review_pending",
+      "pairs": 60,
+      "size": [
+        1440,
+        900
+      ],
+      "byte_identical_pairs": 59,
+      "remaining_difference": "One RGB channel at one pixel differs by one level; alpha exact in all pairs.",
+      "exact_geometry_and_native_state": true,
+      "evidence": "evidence/v03/analysis/visual-final/visual-geometry.json"
+    },
+    {
+      "id": "native-motion",
+      "status": "captured",
+      "source_frames": {
+        "f4_work_pause_block": 60,
+        "native_controller_route": 77
+      },
+      "source_size": [
+        1440,
+        900
+      ],
+      "preview_size": [
+        720,
+        450
+      ],
+      "evidence": "evidence/v03/analysis/motion/motion-provenance.json"
+    },
+    {
+      "id": "source-preservation",
+      "status": "passed",
+      "original_files_checked": 4787,
+      "recorded_original_changes": 238,
+      "unexpected_changes": 0,
+      "g1_reference_original_changes": 0,
+      "result": "Original paid fixture restored with exact origin proof; all original PNGs, native/data files and packed masters retained. All non-image interchange JSON and GLB non-JSON chunks preserved.",
+      "evidence": "evidence/v03/source-audit-final.json"
+    },
+    {
+      "id": "source-replay-preservation",
+      "status": "passed",
+      "review_script_inverses": 14,
+      "inherited_display_wrappers": 5,
+      "python_files_parsed": 21,
+      "powershell_parse": "passed",
+      "evidence": "evidence/v03/analysis/harness-source-proof-final.json"
+    },
+    {
+      "id": "exact-seal-and-application",
+      "status": "passed",
+      "full_seal_files": 6411,
+      "applied_change_records": 293,
+      "fresh_target": "D:/project-wroughtwild-art07-r2/build/art07-repairs/r2/v04/runtime",
+      "application_record": "D:/project-wroughtwild-art07-r2/build/art07-repairs/r2/v04/r2-applied.json",
+      "application_record_sha256": "e26052b8a39988b06e30434c4c807094d0278fa770b9cd8f513b0aaf0e86d3aa"
+    },
+    {
+      "id": "post-seal-import-and-reopen",
+      "status": "passed",
+      "spec": "D:/project-wroughtwild-art07-r2/build/art07-repairs/r2/v04/import-smoke.json",
+      "note": "Fresh actual import and both real-renderer reopen jobs completed after the GPU slot became available; no other process was stopped.",
+      "jobs": [
+        {
+          "id": "import",
+          "exit_code": 0,
+          "seconds": 60.0772457,
+          "log_sha256": "2f386d32e4859935c798b330deffbc48ce897378965f9985e845ba0674f0daad"
+        },
+        {
+          "id": "smoke-forward_plus",
+          "exit_code": 0,
+          "seconds": 61.8607981,
+          "log_sha256": "a6457489dd615c57f47571067cb821b47a0330f90c95b3e27d339454e8509772"
+        },
+        {
+          "id": "smoke-gl_compatibility",
+          "exit_code": 0,
+          "seconds": 60.1951861,
+          "log_sha256": "bcc5dd1c40549a72a960cfa2758068943fe9d3f7b5717a2024a4851ad364bbc0"
+        }
+      ]
+    }
+  ],
+  "actual_device": {
+    "engine": "Godot 4.5.stable.official.876b29033",
+    "engine_hash": "876b290332ec6f2e6d173d08162a02aa7e6ca46d",
+    "gpu": "NVIDIA GeForce RTX 5090",
+    "cpu": "AMD Ryzen 9 9950X3D 16-Core Processor",
+    "os": "Windows 10.0.26200",
+    "forward_plus_api": "Vulkan 1.4.325",
+    "compatibility_api_driver": "OpenGL 3.3.0 NVIDIA 591.86"
+  },
+  "disk": {
+    "baseline_runtime_files": 4787,
+    "baseline_runtime_bytes": 3438257458,
+    "candidate_production_runtime_files": 4789,
+    "candidate_production_runtime_bytes": 3438342971,
+    "candidate_runtime_with_harness_files": 4842,
+    "candidate_runtime_with_harness_bytes": 3448218754,
+    "original_g1_full_package_bytes": 7430015212,
+    "disk_png_duplicates_removed": 0,
+    "scope": "Comparable game/data/engine runtime payload separately from masters and evidence overhead. All original redundant PNGs remain; GPU savings are measured allocations, not disk-byte estimates."
+  },
+  "tuning_values": [],
+  "evidence_controls": {
+    "purpose": "Deterministic inspection and measurement only; no new gameplay tuning.",
+    "capture_fixed_fps": 60,
+    "reload_process_frames_before_rendered_boundary": 2,
+    "motion_native_tick_seconds": "1/30",
+    "traversal_settling_physics_frames": 45
+  },
+  "overlaps": "See every file/function/setting in changes.json and documentation/APPLICATION.md. Compose R1 fit, R3/R7 materials and final image references; also retain R5 chest/R6 supported-surface changes and R4 lifecycle evidence. Never overwrite a peer candidate wholesale.",
+  "remaining_limits": [
+    "Target-device acceptance unverified until the owner selects a device and actual tests run; current RTX 5090 costs are not a minimum-hardware budget.",
+    "Owner visual acceptance pending; isolated candidate does not clear the combined R8 result or ordinary rollout.",
+    "Immediate same-frame retirement retains a material-null error in both unchanged G1 and R2; the failed dummy/Forward+ logs remain. Frame-paced passes are not a claimed lifecycle repair.",
+    "After reload, Forward+ R2 buffers are 303696 bytes above G1; both add 6144 bytes per later cycle. Compatibility buffers match. Three cycles do not establish leak freedom.",
+    "Traversal still has streaming spikes (single-run R2 maxima 437.400 ms Forward+ and 456.368 ms Compatibility). These tails are not repeatability bands or budget acceptance.",
+    "Imports are single separate observations; OS/global driver caches were not flushed. Benchmark groups were sequential rather than randomly interleaved.",
+    "All duplicate PNG disk bytes remain. Production runtime is 85513 bytes larger; loaded allocation savings are not disk savings.",
+    "No Blender geometry regeneration or edited packed-master claim; all 31 original master files are retained with verified lineage."
+  ],
+  "owner_visual_acceptance": "pending",
+  "ordinary_world_rollout": "outside scope",
+  "publication": {
+    "main_integration": "not performed by worker",
+    "push": "not performed",
+    "publisher": "serial publisher after verification"
+  },
+  "owned_git_paths": [
+    "tools/wroughtwild-art07-repairs/r2/",
+    "docs/art/leyline-studies/2026-09-14/art07-repairs/r2/",
+    "docs/prototype/art07-repairs/2026-09-14/receipts/r2.md",
+    "docs/prototype/art07-repairs/2026-09-14/receipts/r2.json"
+  ],
+  "post_seal_verification": {
+    "path": "D:/project-wroughtwild-art07-r2/docs/art/leyline-studies/2026-09-14/art07-repairs/r2/post-seal-verification.json",
+    "sha256": "8a7c981337527ef0b9f5729b90022e07261f43f7e01c8cb79a6efad1dbc41743",
+    "source_files_exact_after_import": 4842,
+    "source_mismatches": 0,
+    "scope": "Separate post-seal evidence; immutable package unchanged."
+  },
+  "post_seal_documentation_correction": "The receipt commit normalizes the Git README and receipt heading to ASCII. The immutable seal retains its original bytes, identified by the checked implementation commit. Commands, cost data, production source and engine evidence are unchanged."
+}
