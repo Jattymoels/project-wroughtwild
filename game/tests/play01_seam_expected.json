@@ -1,0 +1,55 @@
+{
+	"cut": [
+		[
+			{
+				"count": 5940,
+				"material": "res://b3/assets/stone-seam-lod0.glb::StandardMaterial3D_skkfk",
+				"normals": 4293917940,
+				"uv": 1408060689,
+				"vertices": 981980630
+			},
+			{
+				"count": 750,
+				"material": "res://b3/assets/stone-seam-lod0.glb::StandardMaterial3D_7gr85",
+				"normals": 3928456811,
+				"uv": 2195261368,
+				"vertices": 334708857
+			}
+		],
+		[]
+	],
+	"initial": [
+		[
+			{
+				"count": 5940,
+				"material": "res://b3/assets/stone-seam-lod0.glb::StandardMaterial3D_skkfk",
+				"normals": 4293917940,
+				"uv": 1408060689,
+				"vertices": 981980630
+			},
+			{
+				"count": 750,
+				"material": "res://b3/assets/stone-seam-lod0.glb::StandardMaterial3D_7gr85",
+				"normals": 3928456811,
+				"uv": 2195261368,
+				"vertices": 334708857
+			}
+		],
+		[
+			{
+				"count": 17694,
+				"material": "res://b3/assets/stone-seam-lod0.glb::StandardMaterial3D_skkfk",
+				"normals": 61899239,
+				"uv": 2596612258,
+				"vertices": 2795009611
+			},
+			{
+				"count": 300,
+				"material": "res://b3/assets/stone-seam-lod0.glb::StandardMaterial3D_7gr85",
+				"normals": 2307098121,
+				"uv": 4102514224,
+				"vertices": 1917468388
+			}
+		]
+	]
+}

@@ -26,6 +26,10 @@ start the runtime merge, new workers or another R9 review as part of writing it.
 | PLAY-03 | The player accidentally went underground; lag immediately became much worse. | Investigate unintended below-terrain access and the additional stuttering there. Exact location/reproduction and cause are unknown. Preserve the player's save; do not assume normal intended underground travel. |
 | PLAY-04 | Most new stations were not interacted with yet; the owner intends to try them in a later playtest. | Station usability remains unreviewed by the owner. Existing automated evidence is not a substitute for that feedback. |
 
+**Owner correction, 15 September 2026:** PLAY-03 concerns significant lag while
+underground, not gaining access underground. Preserve legitimate cave/digging
+behavior. [PLAY-01 worker result and separate PLAY-03 status](play01-movement-result-2026-09-15.md).
+
 These are reports from a human playtest, not independently reproduced findings.
 The owner explicitly requests mainline adoption with these issues noted; they
 are not new pre-merge performance or cosmetic gates. A concrete new save-loss,

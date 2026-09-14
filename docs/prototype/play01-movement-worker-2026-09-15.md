@@ -11,6 +11,10 @@ The owner cannot currently playtest and grants standing approval for this agreed
 work. Get a usable improvement into normal play, with honest limits. No further
 visual approval, baseline clearance or hard ten-minute extension request applies.
 
+**Owner correction during execution, 15 September 2026:** PLAY-03 is significant
+lag underground, not access underground. This supersedes access-fault assumptions
+in the original instructions below. [Checked result and remaining question](play01-movement-result-2026-09-15.md).
+
 ## Outcome and evidence
 
 Diagnose and fix the reported intermittent stuttering/judder during movement,

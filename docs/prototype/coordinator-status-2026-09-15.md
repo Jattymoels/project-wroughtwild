@@ -88,10 +88,11 @@ to their own future decision/bug work; art adoption must not silently decide the
    enemy IDs, bodies, attack clocks, statuses, drops and passive habits remain.
    [Worker result](mainline-fauna-a2-result-2026-09-15.md); integrate and push the returned commit before the six unfinished replacement rigs.
    [Prepared worker prompt and D: workspace](mainline-fauna-a2-worker-2026-09-15.md).
-3. **PLAY-01/03 — movement comfort and underground access.** Diagnose ordinary
-   frame spikes and the accidental below-terrain transition/worse lag. Preserve
-   the owner's preview save. Use a short representative trace/reproduction;
-   do not assume streaming, collision, shaders or geometry is the cause.
+3. **PLAY-01 — checked worker ready for main integration.** Stone-seam decoration
+   now shares the resource work budget; the representative worst walking frame
+   fell from 188 to 45 ms. **PLAY-03 — underground lag remains open.** The owner
+   clarified that access is not the issue. A current-code cave sample did not
+   reproduce sustained lag. [Checks, limits and handoff](play01-movement-result-2026-09-15.md).
    [Prepared movement worker and D: workspace](play01-movement-worker-2026-09-15.md).
 4. **PLAY-02 — canopy completeness.** Inspect the reported missing portions and
    distance transitions; fix the demonstrated geometry/material/detail fault.
@@ -105,7 +106,8 @@ to their own future decision/bug work; art adoption must not silently decide the
 
 R9 is stopped throughout this sequence. No additional visual approval, baseline
 comparison, performance clearance or independent review is required for approved
-art. PLAY-01–04 remain open until actual fixes/feedback establish otherwise.
+art. PLAY-01 has a checked causal improvement awaiting integration and owner
+comfort feedback; PLAY-02/03/04 remain open. PLAY-03 is lag underground, not access.
 
 The retained preview log also records three signal-lifetime errors in
 `chest_panel.gd` refresh/store. This is a separate concrete UI diagnostic for the

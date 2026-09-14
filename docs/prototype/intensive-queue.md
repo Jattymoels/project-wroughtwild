@@ -7,7 +7,9 @@ Wave 7, and thirty apparently unmerged art branches have equivalent patches on
 main. [A1's approved R8 runtime art is now integrated and pushed on main as
 `35cee73`](mainline-art-a1-result-2026-09-15.md). [A2 finished fauna](mainline-fauna-a2-result-2026-09-15.md)
 is integrated and pushed as `27e742d`. [PLAY-01/03 movement and underground work](play01-movement-worker-2026-09-15.md)
-is next, followed by canopy completeness. R9 stays stopped.
+now has a [checked seam-arrival fix for integration](play01-movement-result-2026-09-15.md).
+PLAY-03 remains significant underground lag, not an access defect (owner correction
+during this worker). Canopy completeness follows. R9 stays stopped.
 
 The owner currently cannot playtest and has approved continued prototype work
 until told otherwise. Human feedback remains deferred; it does not block the
@@ -26,7 +28,8 @@ game rules. Existing accepted work items and decisions remain authoritative.
 **Current authorised work:** [Art mainline adoption and owner playtest follow-up](art-mainline-adoption-2026-09-14.md).
 The owner found the R8 preview fun and explicitly asks for all completed art to
 enter mainline now, with severe judder, incomplete-looking tree canopies and
-accidental underground access/worse lag noted for follow-up. Most stations have
+significant underground lag noted for follow-up; the owner clarified that access
+itself is not the issue. Most stations have
 not yet been tried. This accepts the delivered kit for prototype integration
 with known limitations and supersedes the historical pending-approval/gate
 language below. First adopt finished work into the normal game; then address

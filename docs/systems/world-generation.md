@@ -109,6 +109,22 @@ not a rollback system for engine failure or power loss. Schema 2, generation
 inputs, finite stock, trial deposits and existing lifetime rules remain unchanged.
 [Reproduction, repeated circuits and limits](../prototype/session-reliability-2026-09-07.md).
 
+## Stone-seam travel work — PLAY-01, 15 September 2026
+
+The [movement fix](../prototype/play01-movement-result-2026-09-15.md) stages B3's
+costly decorative triangle projection within the existing shared 2 ms
+`resource_build_budget_ms`. Native resource creation takes priority. Native ribbons,
+authoritative collision, stock and work state remain immediately available; the
+complete decorative overlay publishes when ready. Changed terrain replaces partial
+work, and retired resources/restore clear queued jobs. Initial creation and explicit
+immediate focus complete decoration synchronously. No new tuning or save schema.
+The budget is soft: one surface read/completion may exceed it. Busy travel may delay
+seam decoration for several seconds while the native ribbon remains visible.
+
+The owner clarified that PLAY-03 means significant lag underground, not underground
+access. A short current-code cave sample did not reproduce sustained slowdown; this
+remains a separate open performance report, without changes to cave/digging rules.
+
 ## Walking support under overload — INT-07G, 7 September 2026
 
 A recent focus scan does not prove that streamed terrain preparation kept up.

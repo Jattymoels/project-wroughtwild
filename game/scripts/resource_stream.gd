@@ -19,6 +19,7 @@ var resource_build_budget_ms: float
 var refresh_seconds := 0.25
 var _pending: Array[String] = []
 var canopies: ResourceCanopies
+var _projection_pending: Dictionary = {} # Weak, coalesced decorative seam jobs; never saved.
 
 func setup(owner_terrain: Terrain, definitions: Array) -> void:
 	terrain = owner_terrain
@@ -75,6 +76,8 @@ func _remember(id: String) -> void:
 	record.position = [node.position.x,node.position.y,node.position.z]
 
 func _exiting(id: String) -> void:
+	var node: ResourceNode = active.get(id)
+	if is_instance_valid(node): _projection_pending.erase(node.get_instance_id())
 	_remember(id)
 	active.erase(id)
 	if canopies != null: canopies.update(id)
@@ -86,6 +89,7 @@ func capture() -> Array:
 	return result
 
 func restore(saved: Array) -> void:
+	_projection_pending.clear()
 	for id in active.keys():
 		var node: ResourceNode = active[id]
 		if is_instance_valid(node):
@@ -109,7 +113,7 @@ func restore(saved: Array) -> void:
 	_focus=Vector3.INF
 	if canopies != null: canopies.rebuild()
 
-func materialise(id: String) -> ResourceNode:
+func materialise(id: String, stream_projection := false) -> ResourceNode:
 	if active.has(id) and is_instance_valid(active[id]): return active[id]
 	if not records.has(id): return null
 	var record: Dictionary = records[id]
@@ -127,11 +131,13 @@ func materialise(id: String) -> ResourceNode:
 	node.set_meta("rare_stages",record.get("harvest_stages",[]))
 	node.set_meta("rare_use",record.get("use_preview",""))
 	node.set_meta("site_id",record.get("site_id",""))
+	node.set_meta("stream_projection",stream_projection)
 	terrain.nodes_root.add_child(node)
 	active[id]=node
 	if canopies != null: canopies.update(id)
 	node.tree_exiting.connect(_exiting.bind(id))
 	node._refresh_wedge_look()
+	node.set_meta("stream_projection",true)
 	return node
 
 func focus(at: Vector3, immediate := false) -> void:
@@ -162,6 +168,7 @@ func focus(at: Vector3, immediate := false) -> void:
 	if immediate:
 		for id in _pending: materialise(id)
 		_pending.clear()
+		_step_projections(0)
 
 func refresh_due(delta: float) -> bool:
 	return _timer <= delta
@@ -176,10 +183,28 @@ func tick(delta: float, at: Vector3, allow_work := true, refresh := true) -> voi
 		focus(at)
 		return # Freeing distant nodes and creating arrivals use separate frames.
 	var began := Time.get_ticks_usec()
+	var deadline := began + int(resource_build_budget_ms*1000.0)
 	for i in mini(nodes_per_frame,_pending.size()):
-		materialise(_pending.pop_front())
-		if (Time.get_ticks_usec()-began)/1000.0 >= resource_build_budget_ms: break
+		materialise(_pending.pop_front(),true)
+		if Time.get_ticks_usec() >= deadline: break
+	_step_projections(deadline)
 
 func has_resource(id: String) -> bool:
 	if active.has(id): _remember(id)
 	return records.has(id)
+
+## Decoration uses the existing resource-work slot and budget, not one budget
+## per node. Collision/native ribbons remain synchronous and authoritative.
+func queue_projection(node: ResourceNode) -> void:
+	_projection_pending[node.get_instance_id()] = weakref(node)
+
+func _step_projections(deadline_usec: int) -> void:
+	while not _projection_pending.is_empty() and (deadline_usec==0 or Time.get_ticks_usec()<deadline_usec):
+		var id: int = _projection_pending.keys()[0]
+		var node: ResourceNode = _projection_pending[id].get_ref()
+		if not is_instance_valid(node) or not node.is_inside_tree() or node.is_queued_for_deletion():
+			_projection_pending.erase(id)
+		elif bool(node.call("step_projection",deadline_usec)):
+			_projection_pending.erase(id)
+		else:
+			return
