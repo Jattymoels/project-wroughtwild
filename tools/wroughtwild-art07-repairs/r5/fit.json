@@ -1,0 +1,20 @@
+{
+  "source_bottom_m": -0.5,
+  "candidate_bottom_m": -0.225,
+  "fixed_upper_body_m": 0.06,
+  "foot_bottom_m": -0.35,
+  "foot_x_m": 0.4,
+  "foot_depth_m": 0.29,
+  "foot_width_m": 0.08,
+  "foot_joint_overlap_m": 0.02,
+  "controls": {
+    "source_bottom_m": "Measured inherited authored base relative to the unchanged native lattice pose.",
+    "candidate_bottom_m": "Cabinet underside clears the ordinary slab top (0.125 m above its lattice plane) without moving the native seat or lid.",
+    "fixed_upper_body_m": "Upper rim and hinge attachment remain exact above this height; lower boards compress linearly below it.",
+    "foot_bottom_m": "Feet reach the nominal flat support plane at unchanged native pose Y=0.35; full/fine slabs conceal part or all of their 0.125 m exposed length.",
+    "foot_x_m": "Symmetrical inset foot centres along the chest width, within the original body.",
+    "foot_depth_m": "Symmetrical inset foot centres along the chest depth, within the original body.",
+    "foot_width_m": "Small same-family feet give visible grounded contacts without broad cabinet/floor intersections.",
+    "foot_joint_overlap_m": "Feet enter the cabinet base by 20 mm so their supporting joints stay connected."
+  }
+}

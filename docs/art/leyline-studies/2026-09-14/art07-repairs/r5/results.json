@@ -1,0 +1,1895 @@
+{
+  "jobs": [
+    {
+      "variant": "baseline",
+      "id": "import",
+      "log": "build/art07-repairs/r5/v01/logs/import.log",
+      "checks": null,
+      "diagnostics": [],
+      "log_sha256": "d4e8713dbbb4dd69f2f4cdf7d0b07ac8e5c8093d8000f4ee59eba95454eedbb6",
+      "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "results": [],
+      "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\import",
+      "processes_before": null,
+      "arguments": [
+        "--headless",
+        "--editor",
+        "--path",
+        "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\game",
+        "--import"
+      ],
+      "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\import\\local",
+      "start": "2026-09-14T12:55:05.3995853+09:30",
+      "exit_code": 0,
+      "failure": "",
+      "wrapper_pid": 24104,
+      "child_pid": 5184,
+      "seconds": 84.2809859,
+      "benchmark_competitors": [],
+      "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\import\\temp"
+    },
+    {
+      "variant": "baseline",
+      "id": "smoke-forward_plus",
+      "log": "build/art07-repairs/r5/v01/logs/smoke-forward_plus.log",
+      "checks": null,
+      "diagnostics": [],
+      "log_sha256": "a6457489dd615c57f47571067cb821b47a0330f90c95b3e27d339454e8509772",
+      "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "results": [
+        "G1_PACKAGED_LAUNCH_OK"
+      ],
+      "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\smoke-forward_plus",
+      "processes_before": null,
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--path",
+        "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\game",
+        "res://g1/play.tscn",
+        "--",
+        "--smoke"
+      ],
+      "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\smoke-forward_plus\\local",
+      "start": "2026-09-14T12:56:29.7755241+09:30",
+      "exit_code": 0,
+      "failure": "",
+      "wrapper_pid": 24104,
+      "child_pid": 17220,
+      "seconds": 96.7655006,
+      "benchmark_competitors": [],
+      "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\smoke-forward_plus\\temp"
+    },
+    {
+      "variant": "baseline",
+      "id": "smoke-gl_compatibility",
+      "log": "build/art07-repairs/r5/v01/logs/smoke-gl_compatibility.log",
+      "checks": null,
+      "diagnostics": [
+        "WARNING: Screen-space ambient occlusion (SSAO) can only be enabled when using the Forward+ renderer."
+      ],
+      "log_sha256": "bcc5dd1c40549a72a960cfa2758068943fe9d3f7b5717a2024a4851ad364bbc0",
+      "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "results": [
+        "G1_PACKAGED_LAUNCH_OK"
+      ],
+      "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\smoke-gl_compatibility",
+      "processes_before": null,
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--path",
+        "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\game",
+        "res://g1/play.tscn",
+        "--",
+        "--smoke"
+      ],
+      "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\smoke-gl_compatibility\\local",
+      "start": "2026-09-14T12:58:06.5492923+09:30",
+      "exit_code": 0,
+      "failure": "",
+      "wrapper_pid": 24104,
+      "child_pid": 16132,
+      "seconds": 93.1124954,
+      "benchmark_competitors": [],
+      "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\smoke-gl_compatibility\\temp"
+    },
+    {
+      "variant": "baseline",
+      "id": "baseline06-capture-forward_plus",
+      "log": "build/art07-repairs/r5/v01/logs/baseline06-capture-forward_plus.log",
+      "checks": 270,
+      "diagnostics": [],
+      "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline06-capture-forward_plus",
+      "exit_code": 0,
+      "child_pid": 40636,
+      "seconds": 22.0642501,
+      "start": "2026-09-14T13:40:03.2344964+09:30",
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--path",
+        "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\game",
+        "res://r5/review.tscn",
+        "--",
+        "--capture",
+        "--out=D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\evidence\\baseline06-capture-forward_plus"
+      ],
+      "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline06-capture-forward_plus\\temp",
+      "benchmark_competitors": [],
+      "wrapper_pid": 24076,
+      "log_sha256": "1121c81ad9193354466408d7cead8413b45fcf3655ea037dde56a09ff2d9f20c",
+      "processes_before": null,
+      "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline06-capture-forward_plus\\local",
+      "results": [
+        "R5_CAPTURE 270 checks, 0 failures"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "failure": ""
+    },
+    {
+      "variant": "baseline",
+      "id": "baseline02-restore-forward_plus",
+      "log": "build/art07-repairs/r5/v01/logs/baseline02-restore-forward_plus.log",
+      "checks": 32,
+      "diagnostics": [],
+      "wrapper_pid": 9920,
+      "benchmark_competitors": [],
+      "log_sha256": "48c756579cc6cefff9fb6dece61395ea2f3da195bac98b6fef635c1ba3fae226",
+      "results": [
+        "R5_RESTORE 32 checks, 0 failures"
+      ],
+      "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline02-capture-forward_plus\\local",
+      "start": "2026-09-14T13:06:27.0741110+09:30",
+      "exit_code": 0,
+      "processes_before": null,
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--path",
+        "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\game",
+        "res://r5/review.tscn",
+        "--",
+        "--restore",
+        "--out=D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\evidence\\baseline02-restore-forward_plus"
+      ],
+      "seconds": 4.2021031,
+      "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline02-capture-forward_plus",
+      "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline02-capture-forward_plus\\temp",
+      "child_pid": 22100,
+      "failure": "",
+      "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe"
+    },
+    {
+      "variant": "baseline",
+      "id": "baseline02-benchmark-forward_plus",
+      "log": "build/art07-repairs/r5/v01/logs/baseline02-benchmark-forward_plus.log",
+      "checks": 213,
+      "diagnostics": [],
+      "wrapper_pid": 9920,
+      "benchmark_competitors": [],
+      "log_sha256": "413f23f1a41e0c6f9f822a527bccaa8d575432bb60ff0bff2f4be562b747966c",
+      "results": [
+        "R5_BENCHMARK 213 checks, 0 failures"
+      ],
+      "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline02-benchmark-forward_plus\\local",
+      "start": "2026-09-14T13:06:31.2828836+09:30",
+      "exit_code": 0,
+      "processes_before": null,
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--path",
+        "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\game",
+        "res://r5/review.tscn",
+        "--",
+        "--benchmark",
+        "--out=D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\evidence\\baseline02-benchmark-forward_plus"
+      ],
+      "seconds": 20.9296231,
+      "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline02-benchmark-forward_plus",
+      "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline02-benchmark-forward_plus\\temp",
+      "child_pid": 8820,
+      "failure": "",
+      "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe"
+    },
+    {
+      "variant": "baseline",
+      "id": "baseline05-terrain-forward_plus",
+      "log": "build/art07-repairs/r5/v01/logs/baseline05-terrain-forward_plus.log",
+      "checks": 25,
+      "diagnostics": [],
+      "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline05-terrain-forward_plus\\local",
+      "benchmark_competitors": [],
+      "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline05-terrain-forward_plus",
+      "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "seconds": 99.449844,
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--path",
+        "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\game",
+        "res://r5/terrain_review.tscn",
+        "--",
+        "--terrain",
+        "--out=D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\evidence\\baseline05-terrain-forward_plus"
+      ],
+      "log_sha256": "56912371c28fe006a5103f419c5112bc922c823e04ed53ccdd75cde45e57a4bb",
+      "processes_before": null,
+      "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline05-terrain-forward_plus\\temp",
+      "wrapper_pid": 36264,
+      "results": [
+        "R5_TERRAIN 25 checks, 0 failures"
+      ],
+      "start": "2026-09-14T13:26:32.0914487+09:30",
+      "failure": "",
+      "child_pid": 10020,
+      "exit_code": 0
+    },
+    {
+      "variant": "baseline",
+      "id": "baseline06-capture-gl_compatibility",
+      "log": "build/art07-repairs/r5/v01/logs/baseline06-capture-gl_compatibility.log",
+      "checks": 270,
+      "diagnostics": [],
+      "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline06-capture-gl_compatibility",
+      "exit_code": 0,
+      "child_pid": 22080,
+      "seconds": 21.960156,
+      "start": "2026-09-14T13:40:25.3061130+09:30",
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--path",
+        "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\game",
+        "res://r5/review.tscn",
+        "--",
+        "--capture",
+        "--out=D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\evidence\\baseline06-capture-gl_compatibility"
+      ],
+      "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline06-capture-gl_compatibility\\temp",
+      "benchmark_competitors": [],
+      "wrapper_pid": 24076,
+      "log_sha256": "9d6c0c03848f6aef82032e6c60356a5fa5088c1d3ca8ee24e029b86e82dd0e5b",
+      "processes_before": null,
+      "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline06-capture-gl_compatibility\\local",
+      "results": [
+        "R5_CAPTURE 270 checks, 0 failures"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "failure": ""
+    },
+    {
+      "variant": "baseline",
+      "id": "baseline02-restore-gl_compatibility",
+      "log": "build/art07-repairs/r5/v01/logs/baseline02-restore-gl_compatibility.log",
+      "checks": 32,
+      "diagnostics": [],
+      "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline02-capture-gl_compatibility\\local",
+      "log_sha256": "39f789ef451f55969bd6edf7e08bc627334eed992e297d97b73e48cc7fabe42a",
+      "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline02-capture-gl_compatibility",
+      "seconds": 4.2937912,
+      "start": "2026-09-14T13:08:51.8604683+09:30",
+      "benchmark_competitors": [],
+      "failure": "",
+      "results": [
+        "R5_RESTORE 32 checks, 0 failures"
+      ],
+      "processes_before": null,
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--path",
+        "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\game",
+        "res://r5/review.tscn",
+        "--",
+        "--restore",
+        "--out=D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\evidence\\baseline02-restore-gl_compatibility"
+      ],
+      "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline02-capture-gl_compatibility\\temp",
+      "child_pid": 34708,
+      "exit_code": 0,
+      "wrapper_pid": 35352
+    },
+    {
+      "variant": "baseline",
+      "id": "baseline02-benchmark-gl_compatibility",
+      "log": "build/art07-repairs/r5/v01/logs/baseline02-benchmark-gl_compatibility.log",
+      "checks": 213,
+      "diagnostics": [],
+      "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline02-benchmark-gl_compatibility\\local",
+      "log_sha256": "2a79b57ea9a99c87c2b797e204dfff6481c17d00e33fab62812ddb3f41c7b502",
+      "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline02-benchmark-gl_compatibility",
+      "seconds": 20.67897,
+      "start": "2026-09-14T13:08:56.1608646+09:30",
+      "benchmark_competitors": [],
+      "failure": "",
+      "results": [
+        "R5_BENCHMARK 213 checks, 0 failures"
+      ],
+      "processes_before": null,
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--path",
+        "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\game",
+        "res://r5/review.tscn",
+        "--",
+        "--benchmark",
+        "--out=D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\evidence\\baseline02-benchmark-gl_compatibility"
+      ],
+      "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline02-benchmark-gl_compatibility\\temp",
+      "child_pid": 35052,
+      "exit_code": 0,
+      "wrapper_pid": 35352
+    },
+    {
+      "variant": "baseline",
+      "id": "baseline05-terrain-gl_compatibility",
+      "log": "build/art07-repairs/r5/v01/logs/baseline05-terrain-gl_compatibility.log",
+      "checks": 25,
+      "diagnostics": [
+        "WARNING: Screen-space ambient occlusion (SSAO) can only be enabled when using the Forward+ renderer."
+      ],
+      "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline05-terrain-gl_compatibility\\local",
+      "benchmark_competitors": [],
+      "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline05-terrain-gl_compatibility",
+      "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "seconds": 94.5013038,
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--path",
+        "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\game",
+        "res://r5/terrain_review.tscn",
+        "--",
+        "--terrain",
+        "--out=D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\evidence\\baseline05-terrain-gl_compatibility"
+      ],
+      "log_sha256": "45b9a87976a518aa27ed6e5921673a7907bf77838c24381eecaa07523e84edaa",
+      "processes_before": null,
+      "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline05-terrain-gl_compatibility\\temp",
+      "wrapper_pid": 36264,
+      "results": [
+        "R5_TERRAIN 25 checks, 0 failures"
+      ],
+      "start": "2026-09-14T13:28:11.5616186+09:30",
+      "failure": "",
+      "child_pid": 36248,
+      "exit_code": 0
+    },
+    {
+      "variant": "candidate",
+      "id": "blender-fit",
+      "log": "build/art07-repairs/r5/v02/logs/blender-fit.log",
+      "checks": null,
+      "diagnostics": [],
+      "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\blender-fit\\local",
+      "benchmark_competitors": [],
+      "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\blender-fit",
+      "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\blender-tool\\blender-4.5.9-windows-x64\\blender.exe",
+      "seconds": 5.1085542,
+      "arguments": [
+        "--background",
+        "--threads",
+        "8",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "D:\\project-wroughtwild-art07-r5\\tools\\wroughtwild-art07-repairs\\r5\\blender_fit.py",
+        "--",
+        "fit",
+        "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\original-source\\source\\e3_home.blend",
+        "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\models"
+      ],
+      "log_sha256": "ac8babdb8007386b3a1fd1b259cd6db7061d2310d31cd3acb19917ad057f9b51",
+      "processes_before": null,
+      "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\blender-fit\\temp",
+      "wrapper_pid": 36264,
+      "results": [],
+      "start": "2026-09-14T13:29:46.0695841+09:30",
+      "failure": "",
+      "child_pid": 19808,
+      "exit_code": 0
+    },
+    {
+      "variant": "candidate",
+      "id": "blender-reopen-v02",
+      "log": "build/art07-repairs/r5/v02/logs/blender-reopen-v02.log",
+      "checks": null,
+      "diagnostics": [],
+      "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\blender-reopen-v02",
+      "exit_code": 0,
+      "child_pid": 29928,
+      "seconds": 97.5904196,
+      "start": "2026-09-14T13:38:25.5878496+09:30",
+      "arguments": [
+        "--background",
+        "--threads",
+        "8",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "D:\\project-wroughtwild-art07-r5\\tools\\wroughtwild-art07-repairs\\r5\\blender_fit.py",
+        "--",
+        "reopen",
+        "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\models\\r5_chest.blend",
+        "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\reopen-v02"
+      ],
+      "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\blender-reopen-v02\\temp",
+      "benchmark_competitors": [],
+      "wrapper_pid": 24076,
+      "log_sha256": "9efe77226147b97ad93793f4f5c11015a1d20dc5ae6a1a0ca5655610b1b8d5cf",
+      "processes_before": null,
+      "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\blender-reopen-v02\\local",
+      "results": [],
+      "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\blender-tool\\blender-4.5.9-windows-x64\\blender.exe",
+      "failure": ""
+    },
+    {
+      "variant": "candidate",
+      "id": "import",
+      "log": "build/art07-repairs/r5/v02/logs/import.log",
+      "checks": null,
+      "diagnostics": [],
+      "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\import",
+      "exit_code": 0,
+      "child_pid": 9856,
+      "seconds": 87.9249802,
+      "start": "2026-09-14T13:40:47.2726810+09:30",
+      "arguments": [
+        "--headless",
+        "--editor",
+        "--path",
+        "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\game",
+        "--import"
+      ],
+      "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\import\\temp",
+      "benchmark_competitors": [],
+      "wrapper_pid": 24076,
+      "log_sha256": "520fdcde1c6a149491c1929005718c71b02fb8e1b4c101f508a07a1cc97fa1fc",
+      "processes_before": null,
+      "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\import\\local",
+      "results": [],
+      "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "failure": ""
+    },
+    {
+      "variant": "candidate",
+      "id": "smoke-forward_plus",
+      "log": "build/art07-repairs/r5/v02/logs/smoke-forward_plus.log",
+      "checks": null,
+      "diagnostics": [],
+      "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\smoke-forward_plus",
+      "exit_code": 0,
+      "child_pid": 37640,
+      "seconds": 96.5298579,
+      "start": "2026-09-14T13:42:15.2637780+09:30",
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--path",
+        "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\game",
+        "res://g1/play.tscn",
+        "--",
+        "--smoke"
+      ],
+      "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\smoke-forward_plus\\temp",
+      "benchmark_competitors": [],
+      "wrapper_pid": 24076,
+      "log_sha256": "a6457489dd615c57f47571067cb821b47a0330f90c95b3e27d339454e8509772",
+      "processes_before": null,
+      "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\smoke-forward_plus\\local",
+      "results": [
+        "G1_PACKAGED_LAUNCH_OK"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "failure": ""
+    },
+    {
+      "variant": "candidate",
+      "id": "smoke-gl_compatibility",
+      "log": "build/art07-repairs/r5/v02/logs/smoke-gl_compatibility.log",
+      "checks": null,
+      "diagnostics": [
+        "WARNING: Screen-space ambient occlusion (SSAO) can only be enabled when using the Forward+ renderer."
+      ],
+      "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\smoke-gl_compatibility",
+      "exit_code": 0,
+      "child_pid": 16000,
+      "seconds": 92.7255452,
+      "start": "2026-09-14T13:43:51.8004591+09:30",
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--path",
+        "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\game",
+        "res://g1/play.tscn",
+        "--",
+        "--smoke"
+      ],
+      "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\smoke-gl_compatibility\\temp",
+      "benchmark_competitors": [],
+      "wrapper_pid": 24076,
+      "log_sha256": "bcc5dd1c40549a72a960cfa2758068943fe9d3f7b5717a2024a4851ad364bbc0",
+      "processes_before": null,
+      "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\smoke-gl_compatibility\\local",
+      "results": [
+        "G1_PACKAGED_LAUNCH_OK"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "failure": ""
+    },
+    {
+      "variant": "candidate",
+      "id": "candidate-capture-forward_plus",
+      "log": "build/art07-repairs/r5/v02/logs/candidate-capture-forward_plus.log",
+      "checks": 294,
+      "diagnostics": [],
+      "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-capture-forward_plus",
+      "exit_code": 0,
+      "child_pid": 38272,
+      "seconds": 21.8543135,
+      "start": "2026-09-14T13:45:24.5321066+09:30",
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--path",
+        "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\game",
+        "res://r5/review.tscn",
+        "--",
+        "--capture",
+        "--out=D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\evidence\\candidate-capture-forward_plus"
+      ],
+      "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-capture-forward_plus\\temp",
+      "benchmark_competitors": [],
+      "wrapper_pid": 24076,
+      "log_sha256": "76035e019296c7d11c5322fc7c2cf0181adf488c65433354f80f973afdc6c576",
+      "processes_before": null,
+      "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-capture-forward_plus\\local",
+      "results": [
+        "R5_CAPTURE 294 checks, 0 failures"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "failure": ""
+    },
+    {
+      "variant": "candidate",
+      "id": "candidate-restore-forward_plus",
+      "log": "build/art07-repairs/r5/v02/logs/candidate-restore-forward_plus.log",
+      "checks": 32,
+      "diagnostics": [],
+      "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-capture-forward_plus",
+      "exit_code": 0,
+      "child_pid": 15556,
+      "seconds": 4.3024059,
+      "start": "2026-09-14T13:45:46.3930780+09:30",
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--path",
+        "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\game",
+        "res://r5/review.tscn",
+        "--",
+        "--restore",
+        "--out=D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\evidence\\candidate-restore-forward_plus"
+      ],
+      "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-capture-forward_plus\\temp",
+      "benchmark_competitors": [],
+      "wrapper_pid": 24076,
+      "log_sha256": "48c756579cc6cefff9fb6dece61395ea2f3da195bac98b6fef635c1ba3fae226",
+      "processes_before": null,
+      "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-capture-forward_plus\\local",
+      "results": [
+        "R5_RESTORE 32 checks, 0 failures"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "failure": ""
+    },
+    {
+      "variant": "candidate",
+      "id": "candidate-benchmark-forward_plus",
+      "log": "build/art07-repairs/r5/v02/logs/candidate-benchmark-forward_plus.log",
+      "checks": 249,
+      "diagnostics": [],
+      "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-benchmark-forward_plus",
+      "exit_code": 0,
+      "child_pid": 8920,
+      "seconds": 20.9252646,
+      "start": "2026-09-14T13:45:50.7019774+09:30",
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--path",
+        "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\game",
+        "res://r5/review.tscn",
+        "--",
+        "--benchmark",
+        "--out=D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\evidence\\candidate-benchmark-forward_plus"
+      ],
+      "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-benchmark-forward_plus\\temp",
+      "benchmark_competitors": [],
+      "wrapper_pid": 24076,
+      "log_sha256": "edd5345bf8bd3cdb1add077d32b1e080541dcee827acc191a06a577c88d7339b",
+      "processes_before": null,
+      "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-benchmark-forward_plus\\local",
+      "results": [
+        "R5_BENCHMARK 249 checks, 0 failures"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "failure": ""
+    },
+    {
+      "variant": "candidate",
+      "id": "candidate-terrain-forward_plus",
+      "log": "build/art07-repairs/r5/v02/logs/candidate-terrain-forward_plus.log",
+      "checks": 65,
+      "diagnostics": [],
+      "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-terrain-forward_plus",
+      "exit_code": 0,
+      "child_pid": 40468,
+      "seconds": 99.0020987,
+      "start": "2026-09-14T13:46:11.6337756+09:30",
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--path",
+        "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\game",
+        "res://r5/terrain_review.tscn",
+        "--",
+        "--terrain",
+        "--out=D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\evidence\\candidate-terrain-forward_plus"
+      ],
+      "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-terrain-forward_plus\\temp",
+      "benchmark_competitors": [],
+      "wrapper_pid": 24076,
+      "log_sha256": "a2c15c1b490c32d9de6e56455e814a74a22a6352d1b0e1741488deb76257f84e",
+      "processes_before": null,
+      "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-terrain-forward_plus\\local",
+      "results": [
+        "R5_TERRAIN 65 checks, 0 failures"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "failure": ""
+    },
+    {
+      "variant": "candidate",
+      "id": "candidate-capture-gl_compatibility",
+      "log": "build/art07-repairs/r5/v02/logs/candidate-capture-gl_compatibility.log",
+      "checks": 294,
+      "diagnostics": [],
+      "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-capture-gl_compatibility",
+      "exit_code": 0,
+      "child_pid": 37956,
+      "seconds": 21.9645512,
+      "start": "2026-09-14T13:47:50.6429235+09:30",
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--path",
+        "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\game",
+        "res://r5/review.tscn",
+        "--",
+        "--capture",
+        "--out=D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\evidence\\candidate-capture-gl_compatibility"
+      ],
+      "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-capture-gl_compatibility\\temp",
+      "benchmark_competitors": [],
+      "wrapper_pid": 24076,
+      "log_sha256": "9b6e62a23d7cc0d3db055899e9074a9371ad632634a9c54df18db0171eddb426",
+      "processes_before": null,
+      "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-capture-gl_compatibility\\local",
+      "results": [
+        "R5_CAPTURE 294 checks, 0 failures"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "failure": ""
+    },
+    {
+      "variant": "candidate",
+      "id": "candidate-restore-gl_compatibility",
+      "log": "build/art07-repairs/r5/v02/logs/candidate-restore-gl_compatibility.log",
+      "checks": 32,
+      "diagnostics": [],
+      "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-capture-gl_compatibility",
+      "exit_code": 0,
+      "child_pid": 30656,
+      "seconds": 4.9232748,
+      "start": "2026-09-14T13:48:12.6141455+09:30",
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--path",
+        "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\game",
+        "res://r5/review.tscn",
+        "--",
+        "--restore",
+        "--out=D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\evidence\\candidate-restore-gl_compatibility"
+      ],
+      "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-capture-gl_compatibility\\temp",
+      "benchmark_competitors": [],
+      "wrapper_pid": 24076,
+      "log_sha256": "39f789ef451f55969bd6edf7e08bc627334eed992e297d97b73e48cc7fabe42a",
+      "processes_before": null,
+      "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-capture-gl_compatibility\\local",
+      "results": [
+        "R5_RESTORE 32 checks, 0 failures"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "failure": ""
+    },
+    {
+      "variant": "candidate",
+      "id": "candidate-benchmark-gl_compatibility",
+      "log": "build/art07-repairs/r5/v02/logs/candidate-benchmark-gl_compatibility.log",
+      "checks": 249,
+      "diagnostics": [],
+      "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-benchmark-gl_compatibility",
+      "exit_code": 0,
+      "child_pid": 40268,
+      "seconds": 21.6906655,
+      "start": "2026-09-14T13:48:17.5432239+09:30",
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--path",
+        "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\game",
+        "res://r5/review.tscn",
+        "--",
+        "--benchmark",
+        "--out=D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\evidence\\candidate-benchmark-gl_compatibility"
+      ],
+      "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-benchmark-gl_compatibility\\temp",
+      "benchmark_competitors": [],
+      "wrapper_pid": 24076,
+      "log_sha256": "4d88d3c8c088d2cd3028d7105581dc0b0c6aa884eb819f47a6a89c827d4edf12",
+      "processes_before": null,
+      "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-benchmark-gl_compatibility\\local",
+      "results": [
+        "R5_BENCHMARK 249 checks, 0 failures"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "failure": ""
+    },
+    {
+      "variant": "candidate",
+      "id": "candidate-terrain-gl_compatibility",
+      "log": "build/art07-repairs/r5/v02/logs/candidate-terrain-gl_compatibility.log",
+      "checks": 65,
+      "diagnostics": [
+        "WARNING: Screen-space ambient occlusion (SSAO) can only be enabled when using the Forward+ renderer."
+      ],
+      "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-terrain-gl_compatibility",
+      "exit_code": 0,
+      "child_pid": 39476,
+      "seconds": 95.6222763,
+      "start": "2026-09-14T13:48:39.2394335+09:30",
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--path",
+        "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\game",
+        "res://r5/terrain_review.tscn",
+        "--",
+        "--terrain",
+        "--out=D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\evidence\\candidate-terrain-gl_compatibility"
+      ],
+      "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-terrain-gl_compatibility\\temp",
+      "benchmark_competitors": [],
+      "wrapper_pid": 24076,
+      "log_sha256": "645a427569397ebc5d9a901bff21e314dca67b37cd07b914b1817edc8adec379",
+      "processes_before": null,
+      "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-terrain-gl_compatibility\\local",
+      "results": [
+        "R5_TERRAIN 65 checks, 0 failures"
+      ],
+      "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "failure": ""
+    }
+  ],
+  "costs": [
+    {
+      "variant": "baseline02",
+      "renderer": "forward_plus",
+      "draws": 170.0,
+      "p50_ms": 0.464,
+      "p95_ms": 0.834,
+      "primitives": 231458.0,
+      "samples": 300,
+      "texture_bytes": 459915776.0,
+      "worst_ms": 1.232
+    },
+    {
+      "variant": "candidate",
+      "renderer": "forward_plus",
+      "draws": 170.0,
+      "p50_ms": 0.467,
+      "p95_ms": 0.831,
+      "primitives": 247010.0,
+      "samples": 300,
+      "texture_bytes": 459915776.0,
+      "worst_ms": 1.23
+    },
+    {
+      "variant": "baseline02",
+      "renderer": "gl_compatibility",
+      "draws": 234.0,
+      "p50_ms": 0.876,
+      "p95_ms": 1.264,
+      "primitives": 231458.0,
+      "samples": 300,
+      "texture_bytes": 272763190.0,
+      "worst_ms": 1.77
+    },
+    {
+      "variant": "candidate",
+      "renderer": "gl_compatibility",
+      "draws": 234.0,
+      "p50_ms": 0.867,
+      "p95_ms": 1.353,
+      "primitives": 247010.0,
+      "samples": 300,
+      "texture_bytes": 272763190.0,
+      "worst_ms": 1.752
+    }
+  ],
+  "audit": {
+    "runtime_base": "6bb2e044dcd0bf1788896aa2c19cdf56fee93522",
+    "original_runtime_entries_checked": 4787,
+    "changed_runtime_files": [
+      "game/assets/authored/e3/chest_ash_wood_body.glb",
+      "game/assets/authored/e3/chest_bog_oak_body.glb",
+      "game/assets/authored/e3/chest_bronze_body.glb",
+      "game/assets/authored/e3/chest_iron_body.glb",
+      "game/assets/authored/e3/chest_pine_body.glb",
+      "game/assets/authored/e3/chest_resinheart_body.glb",
+      "game/assets/authored/e3/chest_steel_body.glb",
+      "game/assets/authored/e3/chest_wood_body.glb",
+      "game/e3/geometry.json"
+    ],
+    "native_sha256": "0e7c4956b6c870f5879e78f54c5830509b7ae37913055543cc3a6d451298e0e1",
+    "embedded_image_hashes_unchanged": {
+      "chest_ash_wood_body.glb": {
+        "d4_ash_wood_face_normal": "36dccc0c81097c189274faed90d44cb6083efaf7f0f00f316f2fd032543dddea",
+        "d4_ash_wood_face_albedo": "ad434cc76489ee22e28e5e83d850a3a766ec5747f07c58b24c969d276cdfd5d2",
+        "d4_ash_wood_face_orm": "08b29b45ce51da7b6c5e21b13e780b405c83cecb6caa4a1780a7c600f67e55ba",
+        "d4_ash_wood_edge_normal": "cc0a1e4611ad59a185ad2a33c47012248c2626befbfccd996b9b8abc502ef6fb",
+        "d4_ash_wood_edge_albedo": "112c39bd3a5d83053b83b622706e89da5d58d21164cbb17d43b140aefa9a9b5c",
+        "d4_ash_wood_edge_orm": "f0b990064a33a86fc9b1fa3f8006d92e47d591bb5b98d5865338e2a8755948fa",
+        "d6_iron_normal": "fd31cdeea7994d987a88e128aa3f588074817eba92a7b1121ec5a9d932da0fb6",
+        "d6_iron_albedo": "0c5be94f2d761836257a1c9f26990107753e383bfec4c7dcaba69c7730d95e74",
+        "d6_iron_orm": "6361d449326cef5aff2804cc370c23c72d4b8807d0073ba644fd9c27ddfa58f6"
+      },
+      "chest_bog_oak_body.glb": {
+        "d4_bog_oak_face_normal": "8e6ebb2aea21f8efb382aeeaabe37e63a5a62c93b9977fe2feba8f10f3cb9b08",
+        "d4_bog_oak_face_albedo": "056dc44268f0c97ae97ec65941550560bd92a2c15ce5cf349d86b2ab969c16a5",
+        "d4_bog_oak_face_orm": "e71588e8bf0a8419e805737112693796df9807acf59fab1e3cf12ef25c01ff8b",
+        "d4_bog_oak_edge_normal": "d34132463a63675802d42d71e756d1b5a7ad724339d9336ef823f601ef70c6b5",
+        "d4_bog_oak_edge_albedo": "41ceeb9c3e4f4b045c4d83d4f75645f84ae77c1a36f6f5002d34dc54f9660c47",
+        "d4_bog_oak_edge_orm": "6860b678349b176e7097f24e525a9a4efb14052a4bd2eae1ab090a3c0bdd90c4",
+        "d6_iron_normal": "fd31cdeea7994d987a88e128aa3f588074817eba92a7b1121ec5a9d932da0fb6",
+        "d6_iron_albedo": "0c5be94f2d761836257a1c9f26990107753e383bfec4c7dcaba69c7730d95e74",
+        "d6_iron_orm": "6361d449326cef5aff2804cc370c23c72d4b8807d0073ba644fd9c27ddfa58f6"
+      },
+      "chest_bronze_body.glb": {
+        "d6_bronze_normal": "630ba7eb61bb22f0d8ab09a71105a8b3d5ccb5fa10ad151541aad0d99cd6bd7d",
+        "d6_bronze_albedo": "2eee9f8323b59286f23d185ce53a12f1a920fe1132808da3d4ae25d05aec4acb",
+        "d6_bronze_orm": "70b52451680d0bb16816d3a017de96ca2243e788b1d0b13c673e82da43256312"
+      },
+      "chest_iron_body.glb": {
+        "d6_iron_normal": "fd31cdeea7994d987a88e128aa3f588074817eba92a7b1121ec5a9d932da0fb6",
+        "d6_iron_albedo": "0c5be94f2d761836257a1c9f26990107753e383bfec4c7dcaba69c7730d95e74",
+        "d6_iron_orm": "6361d449326cef5aff2804cc370c23c72d4b8807d0073ba644fd9c27ddfa58f6"
+      },
+      "chest_pine_body.glb": {
+        "d4_pine_face_normal": "b2127388b9bff4177702567a1bb7dc9205ed488c81c03007814690db45e98163",
+        "d4_pine_face_albedo": "9c0e43fe21e0137804617d5d5dc45d91dd4f7102b82224b2d6acd4176b4ea12e",
+        "d4_pine_face_orm": "5d0c20a1bf3f8c757c95cbf348361e35cab9995ae7929290c90073cfec5bcfef",
+        "d4_pine_edge_normal": "8a3116d67735cb61563d424d2b9073e27ce41f2dfcd7948799c4b73e0f03f134",
+        "d4_pine_edge_albedo": "30b6cdbf1cf4f6fcf8cf993c1b60b7b48c8c50082c7b916c9f4127531be51e32",
+        "d4_pine_edge_orm": "f07005fd6ea5ed898aa4a118e61ea9079f35863ee3686d6369b9faaef74dc04a",
+        "d6_iron_normal": "fd31cdeea7994d987a88e128aa3f588074817eba92a7b1121ec5a9d932da0fb6",
+        "d6_iron_albedo": "0c5be94f2d761836257a1c9f26990107753e383bfec4c7dcaba69c7730d95e74",
+        "d6_iron_orm": "6361d449326cef5aff2804cc370c23c72d4b8807d0073ba644fd9c27ddfa58f6"
+      },
+      "chest_resinheart_body.glb": {
+        "d4_resinheart_face_normal": "75b7dc491d0436653331441d8da22aa0988a467a37286ea4b8f3987babe348f0",
+        "d4_resinheart_face_albedo": "bb302268b631a509e2b151e669d2489617856e6b27dc6062e3d4f58ea77565e6",
+        "d4_resinheart_face_orm": "4a817e8b0e69365a07c470b4348a1596770214280f12c707e59e74989cfd64bb",
+        "d4_resinheart_edge_normal": "0b51bec96d78b61cb76b125533ded1b14489d63cb6340be4c27234837fd96c45",
+        "d4_resinheart_edge_albedo": "129de64182e445216c64a8456ed693e4148d36db7c4f4f422fd18b9f89b39c0a",
+        "d4_resinheart_edge_orm": "0ad7854a2179f58277cc3bd8b0fd425dbc80c8ab22b640540c5b550050f3007c",
+        "d6_iron_normal": "fd31cdeea7994d987a88e128aa3f588074817eba92a7b1121ec5a9d932da0fb6",
+        "d6_iron_albedo": "0c5be94f2d761836257a1c9f26990107753e383bfec4c7dcaba69c7730d95e74",
+        "d6_iron_orm": "6361d449326cef5aff2804cc370c23c72d4b8807d0073ba644fd9c27ddfa58f6"
+      },
+      "chest_steel_body.glb": {
+        "d6_steel_normal": "132c1b47f4a026be88c7b7a09e787598789ace6f57f3ca25317954eb225b2d3a",
+        "d6_steel_albedo": "a15b076eefc22cf9b00b2d6961822d0658aea36c51733da8227ba04dd0c005c1",
+        "d6_steel_orm": "7c4dc8885f25bb9b35d89d2fa96e39f93f2dda3bd63f84eca6435192c54f1838"
+      },
+      "chest_wood_body.glb": {
+        "d4_wood_face_normal": "eaa132c2296ad62b996941cecbd335248f490327712ce84d6973d3a0652c2bba",
+        "d4_wood_face_albedo": "60495f38ed2f8660102a40e5c209943e552b955af3c45afd19f6790a8ecee6fc",
+        "d4_wood_face_orm": "553c03e409746ae7f8fa6cadcacbd6d2238ad80b0718ba3785a23266aae1c6a1",
+        "d4_wood_edge_normal": "6b5e0e3c710ea44a646a3cce9fd31b3a41bd88a06cd6c0fa845e49097e23eb06",
+        "d4_wood_edge_albedo": "f9782d735584a82c04a495cff356d8d5246fa22d2bd109749851d048a264d22f",
+        "d4_wood_edge_orm": "8ec98352d964b87f06d410936f6c8988e58220672f605e9e0ff873a314222727",
+        "d6_iron_normal": "fd31cdeea7994d987a88e128aa3f588074817eba92a7b1121ec5a9d932da0fb6",
+        "d6_iron_albedo": "0c5be94f2d761836257a1c9f26990107753e383bfec4c7dcaba69c7730d95e74",
+        "d6_iron_orm": "6361d449326cef5aff2804cc370c23c72d4b8807d0073ba644fd9c27ddfa58f6"
+      }
+    },
+    "exact_lids": {
+      "chest_ash_wood_lid.glb": "a2a7b450a028b5a53a9acaebc871cca6e257e0e6d1602b6ed4e04016f025a85f",
+      "chest_bog_oak_lid.glb": "d6449df5d06543aa840058675031536f010628028ed3776028e5c04bd118d856",
+      "chest_bronze_lid.glb": "187ef5c69cb4b18613f2ac6c773c5cb1b2ba7114a9e4170eb4690d5478e6bbb2",
+      "chest_iron_lid.glb": "0d86d84d77c21d8f2a6328fbd7ee9533b28820453a068c46b5253daad8661469",
+      "chest_pine_lid.glb": "ad2ab673c63fd89d7ce9f260eb294bcc4a8ced260d1dfd5f87ecff4e86a050d3",
+      "chest_resinheart_lid.glb": "c3ecdc116703fad81497c5e4e298eabbb664e18ccd41e4793dc93b7d08a96404",
+      "chest_steel_lid.glb": "abc7c931f7d1b4b1fa55d9b3ae3fbf763987cb20d3eb4a2762f909d464cfc5d6",
+      "chest_wood_lid.glb": "5acfd9d8a9011e0ed1f9b528797fc5d1ba9af7fd24a2f3af48c702e195962aa9"
+    },
+    "comparisons": [
+      {
+        "renderer": "forward_plus",
+        "id": "flat-wood",
+        "old_base_gap_m": -0.150000005960464,
+        "new_foot_gap_m": 0.0,
+        "new_cabinet_gap_m": 0.125,
+        "native_exact": true,
+        "closed_top_world": 0.550000011920929,
+        "open_top_world": 1.20039367675781
+      },
+      {
+        "renderer": "forward_plus",
+        "id": "flat-pine",
+        "old_base_gap_m": -0.150000005960464,
+        "new_foot_gap_m": 0.0,
+        "new_cabinet_gap_m": 0.125,
+        "native_exact": true,
+        "closed_top_world": 0.550000011920929,
+        "open_top_world": 1.20039367675781
+      },
+      {
+        "renderer": "forward_plus",
+        "id": "flat-bog_oak",
+        "old_base_gap_m": -0.150000005960464,
+        "new_foot_gap_m": 0.0,
+        "new_cabinet_gap_m": 0.125,
+        "native_exact": true,
+        "closed_top_world": 0.550000011920929,
+        "open_top_world": 1.20039367675781
+      },
+      {
+        "renderer": "forward_plus",
+        "id": "flat-ash_wood",
+        "old_base_gap_m": -0.150000005960464,
+        "new_foot_gap_m": 0.0,
+        "new_cabinet_gap_m": 0.125,
+        "native_exact": true,
+        "closed_top_world": 0.550000011920929,
+        "open_top_world": 1.20039367675781
+      },
+      {
+        "renderer": "forward_plus",
+        "id": "flat-resinheart",
+        "old_base_gap_m": -0.150000005960464,
+        "new_foot_gap_m": 0.0,
+        "new_cabinet_gap_m": 0.125,
+        "native_exact": true,
+        "closed_top_world": 0.550000011920929,
+        "open_top_world": 1.20039367675781
+      },
+      {
+        "renderer": "forward_plus",
+        "id": "flat-iron",
+        "old_base_gap_m": -0.150000005960464,
+        "new_foot_gap_m": 0.0,
+        "new_cabinet_gap_m": 0.125,
+        "native_exact": true,
+        "closed_top_world": 0.550000011920929,
+        "open_top_world": 1.20039367675781
+      },
+      {
+        "renderer": "forward_plus",
+        "id": "flat-bronze",
+        "old_base_gap_m": -0.150000005960464,
+        "new_foot_gap_m": 0.0,
+        "new_cabinet_gap_m": 0.125,
+        "native_exact": true,
+        "closed_top_world": 0.550000011920929,
+        "open_top_world": 1.20039367675781
+      },
+      {
+        "renderer": "forward_plus",
+        "id": "flat-steel",
+        "old_base_gap_m": -0.150000005960464,
+        "new_foot_gap_m": 0.0,
+        "new_cabinet_gap_m": 0.125,
+        "native_exact": true,
+        "closed_top_world": 0.550000011920929,
+        "open_top_world": 1.20039367675781
+      },
+      {
+        "renderer": "forward_plus",
+        "id": "ordinary-slab",
+        "old_base_gap_m": -0.274999976158142,
+        "new_foot_gap_m": -0.125,
+        "new_cabinet_gap_m": 2.98023223876953e-08,
+        "native_exact": true,
+        "closed_top_world": 1.55000007152557,
+        "open_top_world": 2.20039367675781
+      },
+      {
+        "renderer": "forward_plus",
+        "id": "fine-slab",
+        "old_base_gap_m": -0.212499976158142,
+        "new_foot_gap_m": -0.0625,
+        "new_cabinet_gap_m": 0.0625000298023224,
+        "native_exact": true,
+        "closed_top_world": 1.55000007152557,
+        "open_top_world": 2.20039367675781
+      },
+      {
+        "renderer": "forward_plus",
+        "id": "back-wall",
+        "old_base_gap_m": -0.150000005960464,
+        "new_foot_gap_m": 0.0,
+        "new_cabinet_gap_m": 0.125,
+        "native_exact": true,
+        "closed_top_world": 0.550000011920929,
+        "open_top_world": 1.20039367675781
+      },
+      {
+        "renderer": "forward_plus",
+        "id": "low-ceiling",
+        "old_base_gap_m": -0.150000005960464,
+        "new_foot_gap_m": 0.0,
+        "new_cabinet_gap_m": 0.125,
+        "native_exact": true,
+        "closed_top_world": 0.550000011920929,
+        "open_top_world": 1.20039367675781
+      },
+      {
+        "renderer": "gl_compatibility",
+        "id": "flat-wood",
+        "old_base_gap_m": -0.150000005960464,
+        "new_foot_gap_m": 0.0,
+        "new_cabinet_gap_m": 0.125,
+        "native_exact": true,
+        "closed_top_world": 0.550000011920929,
+        "open_top_world": 1.20039367675781
+      },
+      {
+        "renderer": "gl_compatibility",
+        "id": "flat-pine",
+        "old_base_gap_m": -0.150000005960464,
+        "new_foot_gap_m": 0.0,
+        "new_cabinet_gap_m": 0.125,
+        "native_exact": true,
+        "closed_top_world": 0.550000011920929,
+        "open_top_world": 1.20039367675781
+      },
+      {
+        "renderer": "gl_compatibility",
+        "id": "flat-bog_oak",
+        "old_base_gap_m": -0.150000005960464,
+        "new_foot_gap_m": 0.0,
+        "new_cabinet_gap_m": 0.125,
+        "native_exact": true,
+        "closed_top_world": 0.550000011920929,
+        "open_top_world": 1.20039367675781
+      },
+      {
+        "renderer": "gl_compatibility",
+        "id": "flat-ash_wood",
+        "old_base_gap_m": -0.150000005960464,
+        "new_foot_gap_m": 0.0,
+        "new_cabinet_gap_m": 0.125,
+        "native_exact": true,
+        "closed_top_world": 0.550000011920929,
+        "open_top_world": 1.20039367675781
+      },
+      {
+        "renderer": "gl_compatibility",
+        "id": "flat-resinheart",
+        "old_base_gap_m": -0.150000005960464,
+        "new_foot_gap_m": 0.0,
+        "new_cabinet_gap_m": 0.125,
+        "native_exact": true,
+        "closed_top_world": 0.550000011920929,
+        "open_top_world": 1.20039367675781
+      },
+      {
+        "renderer": "gl_compatibility",
+        "id": "flat-iron",
+        "old_base_gap_m": -0.150000005960464,
+        "new_foot_gap_m": 0.0,
+        "new_cabinet_gap_m": 0.125,
+        "native_exact": true,
+        "closed_top_world": 0.550000011920929,
+        "open_top_world": 1.20039367675781
+      },
+      {
+        "renderer": "gl_compatibility",
+        "id": "flat-bronze",
+        "old_base_gap_m": -0.150000005960464,
+        "new_foot_gap_m": 0.0,
+        "new_cabinet_gap_m": 0.125,
+        "native_exact": true,
+        "closed_top_world": 0.550000011920929,
+        "open_top_world": 1.20039367675781
+      },
+      {
+        "renderer": "gl_compatibility",
+        "id": "flat-steel",
+        "old_base_gap_m": -0.150000005960464,
+        "new_foot_gap_m": 0.0,
+        "new_cabinet_gap_m": 0.125,
+        "native_exact": true,
+        "closed_top_world": 0.550000011920929,
+        "open_top_world": 1.20039367675781
+      },
+      {
+        "renderer": "gl_compatibility",
+        "id": "ordinary-slab",
+        "old_base_gap_m": -0.274999976158142,
+        "new_foot_gap_m": -0.125,
+        "new_cabinet_gap_m": 2.98023223876953e-08,
+        "native_exact": true,
+        "closed_top_world": 1.55000007152557,
+        "open_top_world": 2.20039367675781
+      },
+      {
+        "renderer": "gl_compatibility",
+        "id": "fine-slab",
+        "old_base_gap_m": -0.212499976158142,
+        "new_foot_gap_m": -0.0625,
+        "new_cabinet_gap_m": 0.0625000298023224,
+        "native_exact": true,
+        "closed_top_world": 1.55000007152557,
+        "open_top_world": 2.20039367675781
+      },
+      {
+        "renderer": "gl_compatibility",
+        "id": "back-wall",
+        "old_base_gap_m": -0.150000005960464,
+        "new_foot_gap_m": 0.0,
+        "new_cabinet_gap_m": 0.125,
+        "native_exact": true,
+        "closed_top_world": 0.550000011920929,
+        "open_top_world": 1.20039367675781
+      },
+      {
+        "renderer": "gl_compatibility",
+        "id": "low-ceiling",
+        "old_base_gap_m": -0.150000005960464,
+        "new_foot_gap_m": 0.0,
+        "new_cabinet_gap_m": 0.125,
+        "native_exact": true,
+        "closed_top_world": 0.550000011920929,
+        "open_top_world": 1.20039367675781
+      }
+    ],
+    "terrain_comparisons": [
+      {
+        "renderer": "forward_plus",
+        "id": "original-paid-home",
+        "native_pose_and_body_exact": true,
+        "support_samples_exact": 9,
+        "old_base_gap_m": -0.150001525878906,
+        "new_foot_gap_m": -1.9073486328125e-06,
+        "new_cabinet_gap_m": 0.124998480081558,
+        "terrain_sha256": "5a97c79b202521cc73939916944a02a30dd1b56e04b71e96be490259ff0440de"
+      },
+      {
+        "renderer": "forward_plus",
+        "id": "retained-terrain-1",
+        "native_pose_and_body_exact": true,
+        "support_samples_exact": 9,
+        "old_base_gap_m": -0.149999618530273,
+        "new_foot_gap_m": 0.0,
+        "new_cabinet_gap_m": 0.125000387430191,
+        "terrain_sha256": "5a97c79b202521cc73939916944a02a30dd1b56e04b71e96be490259ff0440de"
+      },
+      {
+        "renderer": "forward_plus",
+        "id": "retained-terrain-2",
+        "native_pose_and_body_exact": true,
+        "support_samples_exact": 9,
+        "old_base_gap_m": -0.149999618530273,
+        "new_foot_gap_m": 0.0,
+        "new_cabinet_gap_m": 0.125000387430191,
+        "terrain_sha256": "5a97c79b202521cc73939916944a02a30dd1b56e04b71e96be490259ff0440de"
+      },
+      {
+        "renderer": "forward_plus",
+        "id": "retained-terrain-3",
+        "native_pose_and_body_exact": true,
+        "support_samples_exact": 9,
+        "old_base_gap_m": -0.149999618530273,
+        "new_foot_gap_m": 0.0,
+        "new_cabinet_gap_m": 0.125000387430191,
+        "terrain_sha256": "5a97c79b202521cc73939916944a02a30dd1b56e04b71e96be490259ff0440de"
+      },
+      {
+        "renderer": "gl_compatibility",
+        "id": "original-paid-home",
+        "native_pose_and_body_exact": true,
+        "support_samples_exact": 9,
+        "old_base_gap_m": -0.150001525878906,
+        "new_foot_gap_m": -1.9073486328125e-06,
+        "new_cabinet_gap_m": 0.124998480081558,
+        "terrain_sha256": "5a97c79b202521cc73939916944a02a30dd1b56e04b71e96be490259ff0440de"
+      },
+      {
+        "renderer": "gl_compatibility",
+        "id": "retained-terrain-1",
+        "native_pose_and_body_exact": true,
+        "support_samples_exact": 9,
+        "old_base_gap_m": -0.149999618530273,
+        "new_foot_gap_m": 0.0,
+        "new_cabinet_gap_m": 0.125000387430191,
+        "terrain_sha256": "5a97c79b202521cc73939916944a02a30dd1b56e04b71e96be490259ff0440de"
+      },
+      {
+        "renderer": "gl_compatibility",
+        "id": "retained-terrain-2",
+        "native_pose_and_body_exact": true,
+        "support_samples_exact": 9,
+        "old_base_gap_m": -0.149999618530273,
+        "new_foot_gap_m": 0.0,
+        "new_cabinet_gap_m": 0.125000387430191,
+        "terrain_sha256": "5a97c79b202521cc73939916944a02a30dd1b56e04b71e96be490259ff0440de"
+      },
+      {
+        "renderer": "gl_compatibility",
+        "id": "retained-terrain-3",
+        "native_pose_and_body_exact": true,
+        "support_samples_exact": 9,
+        "old_base_gap_m": -0.149999618530273,
+        "new_foot_gap_m": 0.0,
+        "new_cabinet_gap_m": 0.125000387430191,
+        "terrain_sha256": "5a97c79b202521cc73939916944a02a30dd1b56e04b71e96be490259ff0440de"
+      }
+    ],
+    "geometry_semantic_rows_changed": [
+      "chest_wood_body",
+      "chest_pine_body",
+      "chest_bog_oak_body",
+      "chest_ash_wood_body",
+      "chest_resinheart_body",
+      "chest_iron_body",
+      "chest_bronze_body",
+      "chest_steel_body"
+    ],
+    "geometry_serialization": "JSON reserialized with indent=2 and final LF; only eight body rows differ semantically."
+  },
+  "hardware": {
+    "time": "2026-09-14T12:59:12.7646386+09:30",
+    "cpu": [
+      {
+        "Name": "AMD Ryzen 9 9950X3D 16-Core Processor          ",
+        "NumberOfCores": 16,
+        "NumberOfLogicalProcessors": 32
+      }
+    ],
+    "gpu": [
+      {
+        "Name": "NVIDIA GeForce RTX 5090",
+        "DriverVersion": "32.0.15.9186",
+        "VideoModeDescription": "2560 x 1440 x 4294967296 colors"
+      },
+      {
+        "Name": "AMD Radeon(TM) Graphics",
+        "DriverVersion": "32.0.21045.5002",
+        "VideoModeDescription": "3840 x 2160 x 4294967296 colors"
+      }
+    ],
+    "memory_bytes": 33446744064,
+    "os": {
+      "Caption": "Microsoft Windows 11 Home",
+      "Version": "10.0.26200",
+      "BuildNumber": "26200"
+    }
+  },
+  "source_reopen": {
+    "packed_images": 42,
+    "source_sha256": "55392f9725c07e8005facdefbc22f4534bd8fb4df78de6a67a22a06347a84382",
+    "measurements": {
+      "wood": {
+        "closed": {
+          "triangles": 6768,
+          "objects": 80,
+          "bounds_blender": [
+            [
+              -0.5,
+              -0.4000000059604645,
+              -0.3499999940395355
+            ],
+            [
+              0.5,
+              0.4000000059604645,
+              0.20000001788139343
+            ]
+          ]
+        },
+        "hinge_blender": [
+          0,
+          0.354,
+          0.09
+        ],
+        "open": {
+          "triangles": 6768,
+          "objects": 80,
+          "bounds_blender": [
+            [
+              -0.5,
+              -0.4000000059604645,
+              -0.3499999940395355
+            ],
+            [
+              0.5,
+              0.4702245593070984,
+              0.8467621803283691
+            ]
+          ]
+        }
+      },
+      "pine": {
+        "closed": {
+          "triangles": 6768,
+          "objects": 80,
+          "bounds_blender": [
+            [
+              -0.5,
+              -0.4000000059604645,
+              -0.3499999940395355
+            ],
+            [
+              0.5,
+              0.4000000059604645,
+              0.20000001788139343
+            ]
+          ]
+        },
+        "hinge_blender": [
+          0,
+          0.354,
+          0.09
+        ],
+        "open": {
+          "triangles": 6768,
+          "objects": 80,
+          "bounds_blender": [
+            [
+              -0.5,
+              -0.4000000059604645,
+              -0.3499999940395355
+            ],
+            [
+              0.5,
+              0.4702245593070984,
+              0.8467621803283691
+            ]
+          ]
+        }
+      },
+      "bog_oak": {
+        "closed": {
+          "triangles": 6768,
+          "objects": 80,
+          "bounds_blender": [
+            [
+              -0.5,
+              -0.4000000059604645,
+              -0.3499999940395355
+            ],
+            [
+              0.5,
+              0.4000000059604645,
+              0.20000001788139343
+            ]
+          ]
+        },
+        "hinge_blender": [
+          0,
+          0.354,
+          0.09
+        ],
+        "open": {
+          "triangles": 6768,
+          "objects": 80,
+          "bounds_blender": [
+            [
+              -0.5,
+              -0.4000000059604645,
+              -0.3499999940395355
+            ],
+            [
+              0.5,
+              0.4702245593070984,
+              0.8467621803283691
+            ]
+          ]
+        }
+      },
+      "ash_wood": {
+        "closed": {
+          "triangles": 6768,
+          "objects": 80,
+          "bounds_blender": [
+            [
+              -0.5,
+              -0.4000000059604645,
+              -0.3499999940395355
+            ],
+            [
+              0.5,
+              0.4000000059604645,
+              0.20000001788139343
+            ]
+          ]
+        },
+        "hinge_blender": [
+          0,
+          0.354,
+          0.09
+        ],
+        "open": {
+          "triangles": 6768,
+          "objects": 80,
+          "bounds_blender": [
+            [
+              -0.5,
+              -0.4000000059604645,
+              -0.3499999940395355
+            ],
+            [
+              0.5,
+              0.4702245593070984,
+              0.8467621803283691
+            ]
+          ]
+        }
+      },
+      "resinheart": {
+        "closed": {
+          "triangles": 6768,
+          "objects": 80,
+          "bounds_blender": [
+            [
+              -0.5,
+              -0.4000000059604645,
+              -0.3499999940395355
+            ],
+            [
+              0.5,
+              0.4000000059604645,
+              0.20000001788139343
+            ]
+          ]
+        },
+        "hinge_blender": [
+          0,
+          0.354,
+          0.09
+        ],
+        "open": {
+          "triangles": 6768,
+          "objects": 80,
+          "bounds_blender": [
+            [
+              -0.5,
+              -0.4000000059604645,
+              -0.3499999940395355
+            ],
+            [
+              0.5,
+              0.4702245593070984,
+              0.8467621803283691
+            ]
+          ]
+        }
+      },
+      "iron": {
+        "closed": {
+          "triangles": 6768,
+          "objects": 80,
+          "bounds_blender": [
+            [
+              -0.5,
+              -0.4000000059604645,
+              -0.3499999940395355
+            ],
+            [
+              0.5,
+              0.4000000059604645,
+              0.20000001788139343
+            ]
+          ]
+        },
+        "hinge_blender": [
+          0,
+          0.354,
+          0.09
+        ],
+        "open": {
+          "triangles": 6768,
+          "objects": 80,
+          "bounds_blender": [
+            [
+              -0.5,
+              -0.4000000059604645,
+              -0.3499999940395355
+            ],
+            [
+              0.5,
+              0.4702245593070984,
+              0.8467621803283691
+            ]
+          ]
+        }
+      },
+      "bronze": {
+        "closed": {
+          "triangles": 6768,
+          "objects": 80,
+          "bounds_blender": [
+            [
+              -0.5,
+              -0.4000000059604645,
+              -0.3499999940395355
+            ],
+            [
+              0.5,
+              0.4000000059604645,
+              0.20000001788139343
+            ]
+          ]
+        },
+        "hinge_blender": [
+          0,
+          0.354,
+          0.09
+        ],
+        "open": {
+          "triangles": 6768,
+          "objects": 80,
+          "bounds_blender": [
+            [
+              -0.5,
+              -0.4000000059604645,
+              -0.3499999940395355
+            ],
+            [
+              0.5,
+              0.4702245593070984,
+              0.8467621803283691
+            ]
+          ]
+        }
+      },
+      "steel": {
+        "closed": {
+          "triangles": 6768,
+          "objects": 80,
+          "bounds_blender": [
+            [
+              -0.5,
+              -0.4000000059604645,
+              -0.3499999940395355
+            ],
+            [
+              0.5,
+              0.4000000059604645,
+              0.20000001788139343
+            ]
+          ]
+        },
+        "hinge_blender": [
+          0,
+          0.354,
+          0.09
+        ],
+        "open": {
+          "triangles": 6768,
+          "objects": 80,
+          "bounds_blender": [
+            [
+              -0.5,
+              -0.4000000059604645,
+              -0.3499999940395355
+            ],
+            [
+              0.5,
+              0.4702245593070984,
+              0.8467621803283691
+            ]
+          ]
+        }
+      }
+    },
+    "imports": {
+      "chest_ash_wood_body.glb": {
+        "sha256": "82a0e35fef1fcd90a4a6eec3fa94ac0a16e9547a0fddfdff988e57c4e9ee54cb",
+        "triangles": 4720,
+        "bounds_blender": [
+          [
+            -0.5,
+            -0.4000000059604645,
+            -0.3499999940395355
+          ],
+          [
+            0.5,
+            0.4000000059604645,
+            0.1080000028014183
+          ]
+        ]
+      },
+      "chest_ash_wood_lid.glb": {
+        "sha256": "a2a7b450a028b5a53a9acaebc871cca6e257e0e6d1602b6ed4e04016f025a85f",
+        "triangles": 2048,
+        "bounds_blender": [
+          [
+            -0.4970000088214874,
+            -0.4000000059604645,
+            0.03799999877810478
+          ],
+          [
+            0.4970000088214874,
+            0.39649999141693115,
+            0.20000001788139343
+          ]
+        ]
+      },
+      "chest_bog_oak_body.glb": {
+        "sha256": "11d9d57499ae21676d52f9719b518a00bc45d2e73bcb780381d5ab32f9a1a83f",
+        "triangles": 4720,
+        "bounds_blender": [
+          [
+            -0.5,
+            -0.4000000059604645,
+            -0.3499999940395355
+          ],
+          [
+            0.5,
+            0.4000000059604645,
+            0.1080000028014183
+          ]
+        ]
+      },
+      "chest_bog_oak_lid.glb": {
+        "sha256": "d6449df5d06543aa840058675031536f010628028ed3776028e5c04bd118d856",
+        "triangles": 2048,
+        "bounds_blender": [
+          [
+            -0.4970000088214874,
+            -0.4000000059604645,
+            0.03799999877810478
+          ],
+          [
+            0.4970000088214874,
+            0.39649999141693115,
+            0.20000001788139343
+          ]
+        ]
+      },
+      "chest_bronze_body.glb": {
+        "sha256": "7468f8f1c6a97ef148b3d5cbf4c8b56166301726e74a010e074fefa5fc4abdd6",
+        "triangles": 4720,
+        "bounds_blender": [
+          [
+            -0.5,
+            -0.4000000059604645,
+            -0.3499999940395355
+          ],
+          [
+            0.5,
+            0.4000000059604645,
+            0.1080000028014183
+          ]
+        ]
+      },
+      "chest_bronze_lid.glb": {
+        "sha256": "187ef5c69cb4b18613f2ac6c773c5cb1b2ba7114a9e4170eb4690d5478e6bbb2",
+        "triangles": 2048,
+        "bounds_blender": [
+          [
+            -0.4970000088214874,
+            -0.4000000059604645,
+            0.03799999877810478
+          ],
+          [
+            0.4970000088214874,
+            0.39649999141693115,
+            0.20000001788139343
+          ]
+        ]
+      },
+      "chest_iron_body.glb": {
+        "sha256": "b64cb98d765e44ab18676bd86b861d943d6af91f5e84674180bbcd4c37861814",
+        "triangles": 4720,
+        "bounds_blender": [
+          [
+            -0.5,
+            -0.4000000059604645,
+            -0.3499999940395355
+          ],
+          [
+            0.5,
+            0.4000000059604645,
+            0.1080000028014183
+          ]
+        ]
+      },
+      "chest_iron_lid.glb": {
+        "sha256": "0d86d84d77c21d8f2a6328fbd7ee9533b28820453a068c46b5253daad8661469",
+        "triangles": 2048,
+        "bounds_blender": [
+          [
+            -0.4970000088214874,
+            -0.4000000059604645,
+            0.03799999877810478
+          ],
+          [
+            0.4970000088214874,
+            0.39649999141693115,
+            0.20000001788139343
+          ]
+        ]
+      },
+      "chest_pine_body.glb": {
+        "sha256": "19a83c6f9811826a67aa6aeb8ced2fdd0d945a5e328dd285d5c6ec3d7a4dd74d",
+        "triangles": 4720,
+        "bounds_blender": [
+          [
+            -0.5,
+            -0.4000000059604645,
+            -0.3499999940395355
+          ],
+          [
+            0.5,
+            0.4000000059604645,
+            0.1080000028014183
+          ]
+        ]
+      },
+      "chest_pine_lid.glb": {
+        "sha256": "ad2ab673c63fd89d7ce9f260eb294bcc4a8ced260d1dfd5f87ecff4e86a050d3",
+        "triangles": 2048,
+        "bounds_blender": [
+          [
+            -0.4970000088214874,
+            -0.4000000059604645,
+            0.03799999877810478
+          ],
+          [
+            0.4970000088214874,
+            0.39649999141693115,
+            0.20000001788139343
+          ]
+        ]
+      },
+      "chest_resinheart_body.glb": {
+        "sha256": "00992c740cde547c279e8c4039d5014ec534d47d859adbfb2b83394c06aab9ce",
+        "triangles": 4720,
+        "bounds_blender": [
+          [
+            -0.5,
+            -0.4000000059604645,
+            -0.3499999940395355
+          ],
+          [
+            0.5,
+            0.4000000059604645,
+            0.1080000028014183
+          ]
+        ]
+      },
+      "chest_resinheart_lid.glb": {
+        "sha256": "c3ecdc116703fad81497c5e4e298eabbb664e18ccd41e4793dc93b7d08a96404",
+        "triangles": 2048,
+        "bounds_blender": [
+          [
+            -0.4970000088214874,
+            -0.4000000059604645,
+            0.03799999877810478
+          ],
+          [
+            0.4970000088214874,
+            0.39649999141693115,
+            0.20000001788139343
+          ]
+        ]
+      },
+      "chest_steel_body.glb": {
+        "sha256": "a879a3a3677fb056ff4a11a817b9a6ed03734dd6275fd68817ab4f9379e9310d",
+        "triangles": 4720,
+        "bounds_blender": [
+          [
+            -0.5,
+            -0.4000000059604645,
+            -0.3499999940395355
+          ],
+          [
+            0.5,
+            0.4000000059604645,
+            0.1080000028014183
+          ]
+        ]
+      },
+      "chest_steel_lid.glb": {
+        "sha256": "abc7c931f7d1b4b1fa55d9b3ae3fbf763987cb20d3eb4a2762f909d464cfc5d6",
+        "triangles": 2048,
+        "bounds_blender": [
+          [
+            -0.4970000088214874,
+            -0.4000000059604645,
+            0.03799999877810478
+          ],
+          [
+            0.4970000088214874,
+            0.39649999141693115,
+            0.20000001788139343
+          ]
+        ]
+      },
+      "chest_wood_body.glb": {
+        "sha256": "6fbf3decd1853445580c122e7bc1b9d2a35ecc258a8b5006e4f97e7182ee3231",
+        "triangles": 4720,
+        "bounds_blender": [
+          [
+            -0.5,
+            -0.4000000059604645,
+            -0.3499999940395355
+          ],
+          [
+            0.5,
+            0.4000000059604645,
+            0.1080000028014183
+          ]
+        ]
+      },
+      "chest_wood_lid.glb": {
+        "sha256": "5acfd9d8a9011e0ed1f9b528797fc5d1ba9af7fd24a2f3af48c702e195962aa9",
+        "triangles": 2048,
+        "bounds_blender": [
+          [
+            -0.4970000088214874,
+            -0.4000000059604645,
+            0.03799999877810478
+          ],
+          [
+            0.4970000088214874,
+            0.39649999141693115,
+            0.20000001788139343
+          ]
+        ]
+      }
+    }
+  },
+  "fit": {
+    "source_bottom_m": -0.5,
+    "candidate_bottom_m": -0.225,
+    "fixed_upper_body_m": 0.06,
+    "foot_bottom_m": -0.35,
+    "foot_x_m": 0.4,
+    "foot_depth_m": 0.29,
+    "foot_width_m": 0.08,
+    "foot_joint_overlap_m": 0.02,
+    "controls": {
+      "source_bottom_m": "Measured inherited authored base relative to the unchanged native lattice pose.",
+      "candidate_bottom_m": "Cabinet underside clears the ordinary slab top (0.125 m above its lattice plane) without moving the native seat or lid.",
+      "fixed_upper_body_m": "Upper rim and hinge attachment remain exact above this height; lower boards compress linearly below it.",
+      "foot_bottom_m": "Feet reach the nominal flat support plane at unchanged native pose Y=0.35; full/fine slabs conceal part or all of their 0.125 m exposed length.",
+      "foot_x_m": "Symmetrical inset foot centres along the chest width, within the original body.",
+      "foot_depth_m": "Symmetrical inset foot centres along the chest depth, within the original body.",
+      "foot_width_m": "Small same-family feet give visible grounded contacts without broad cabinet/floor intersections.",
+      "foot_joint_overlap_m": "Feet enter the cabinet base by 20 mm so their supporting joints stay connected."
+    }
+  }
+}

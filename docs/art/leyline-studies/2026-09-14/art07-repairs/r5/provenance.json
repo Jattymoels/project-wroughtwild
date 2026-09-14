@@ -1,0 +1,678 @@
+{
+  "images": [
+    {
+      "file": "source-wood-closed.png",
+      "source": "build/art07-repairs/r5/v02/reopen-v02/wood-closed.png",
+      "sha256": "dde9c8fb202a1d9a8bf8edd231d4571f8b60dbcc07e724a244311bdb03fb1e81",
+      "dimensions": [
+        1200,
+        900
+      ],
+      "processing": "Byte-exact PNG copy; no crop, resize, retouch or compositing."
+    },
+    {
+      "file": "source-wood-open.png",
+      "source": "build/art07-repairs/r5/v02/reopen-v02/wood-open.png",
+      "sha256": "8f2ca3e134942b73d7ffb897ac4bcc9c95a617bd6e706856df32e12a51caf984",
+      "dimensions": [
+        1200,
+        900
+      ],
+      "processing": "Byte-exact PNG copy; no crop, resize, retouch or compositing."
+    },
+    {
+      "file": "source-iron-open.png",
+      "source": "build/art07-repairs/r5/v02/reopen-v02/iron-open.png",
+      "sha256": "c6b40025e779f28813277d7463c7c6678914ecbfac9acc1bc565d49281c07a9c",
+      "dimensions": [
+        1200,
+        900
+      ],
+      "processing": "Byte-exact PNG copy; no crop, resize, retouch or compositing."
+    },
+    {
+      "file": "baseline06-forward_plus-flat-wood-closed.png",
+      "source": "build/art07-repairs/r5/v01/evidence/baseline06-capture-forward_plus/flat-wood-closed.png",
+      "sha256": "572a36a02a0b90407c839a952a0684c7378855b50bc914d09906546969a22103",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "processing": "Byte-exact PNG copy; no crop, resize, retouch or compositing."
+    },
+    {
+      "file": "baseline06-forward_plus-ordinary-slab-closed.png",
+      "source": "build/art07-repairs/r5/v01/evidence/baseline06-capture-forward_plus/ordinary-slab-closed.png",
+      "sha256": "1b3bf222d17ee29500aba863b473825a3ac26667ee1fcabbc94bc8e2cb82a04f",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "processing": "Byte-exact PNG copy; no crop, resize, retouch or compositing."
+    },
+    {
+      "file": "baseline06-forward_plus-fine-slab-closed.png",
+      "source": "build/art07-repairs/r5/v01/evidence/baseline06-capture-forward_plus/fine-slab-closed.png",
+      "sha256": "86dbd109323e3490222d9d276cf517fd9e572b6c60d9209eb9a1cb6fbecf0caf",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "processing": "Byte-exact PNG copy; no crop, resize, retouch or compositing."
+    },
+    {
+      "file": "baseline06-forward_plus-back-wall-open.png",
+      "source": "build/art07-repairs/r5/v01/evidence/baseline06-capture-forward_plus/back-wall-open.png",
+      "sha256": "72a0e9ab0f39859189ea411e96c2bbc64049e60b54e9a4bbe788a2a8476068bf",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "processing": "Byte-exact PNG copy; no crop, resize, retouch or compositing."
+    },
+    {
+      "file": "baseline06-forward_plus-low-ceiling-open.png",
+      "source": "build/art07-repairs/r5/v01/evidence/baseline06-capture-forward_plus/low-ceiling-open.png",
+      "sha256": "14cf1fe6ff30bf47a7ed22703d12346055518b227080ee6209102fdc352ee6f2",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "processing": "Byte-exact PNG copy; no crop, resize, retouch or compositing."
+    },
+    {
+      "file": "baseline06-forward_plus-ordinary-slab-open.png",
+      "source": "build/art07-repairs/r5/v01/evidence/baseline06-capture-forward_plus/ordinary-slab-open.png",
+      "sha256": "1d5233a099047e738ad20df1b5ca48fb75a96c39713766fc3f2ccf8281c4352d",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "processing": "Byte-exact PNG copy; no crop, resize, retouch or compositing."
+    },
+    {
+      "file": "candidate-forward_plus-flat-wood-closed.png",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-forward_plus/flat-wood-closed.png",
+      "sha256": "080559d74271b2a820a8793fffd5a6f484ac760dce72b8dde1bd8d034f7ab6fd",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "processing": "Byte-exact PNG copy; no crop, resize, retouch or compositing."
+    },
+    {
+      "file": "candidate-forward_plus-ordinary-slab-closed.png",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-forward_plus/ordinary-slab-closed.png",
+      "sha256": "dd257f64eefab4281ff4c7fd996c2158b97cefae171a5119c95719e5f9fedeeb",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "processing": "Byte-exact PNG copy; no crop, resize, retouch or compositing."
+    },
+    {
+      "file": "candidate-forward_plus-fine-slab-closed.png",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-forward_plus/fine-slab-closed.png",
+      "sha256": "fce68c2728a92e3a893dc4bd9dd55c67996adfddee858ae5ad01ef60691233ae",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "processing": "Byte-exact PNG copy; no crop, resize, retouch or compositing."
+    },
+    {
+      "file": "candidate-forward_plus-back-wall-open.png",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-forward_plus/back-wall-open.png",
+      "sha256": "928df62ed0b0f45f943f62201c4a52a9aca01483bbfcdf23bc0a0712863e68d4",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "processing": "Byte-exact PNG copy; no crop, resize, retouch or compositing."
+    },
+    {
+      "file": "candidate-forward_plus-low-ceiling-open.png",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-forward_plus/low-ceiling-open.png",
+      "sha256": "5981a146488d17b30135dea5dc622bedbbf85f2bed58e76f369e08fc40441f5c",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "processing": "Byte-exact PNG copy; no crop, resize, retouch or compositing."
+    },
+    {
+      "file": "candidate-forward_plus-ordinary-slab-open.png",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-forward_plus/ordinary-slab-open.png",
+      "sha256": "2b080b965a7164b56865449062e2f9c4a00ecc8ad9b1f67d16a32cd8cb992630",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "processing": "Byte-exact PNG copy; no crop, resize, retouch or compositing."
+    },
+    {
+      "file": "baseline05-forward_plus-original-paid-home-closed.png",
+      "source": "build/art07-repairs/r5/v01/evidence/baseline05-terrain-forward_plus/original-paid-home-closed.png",
+      "sha256": "d104dbe922ba01147a13cc359d97e928db27dfc3f6a9940e2b0f8672c5fba408",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "processing": "Byte-exact PNG copy; no crop, resize, retouch or compositing."
+    },
+    {
+      "file": "baseline05-forward_plus-retained-terrain-1-closed.png",
+      "source": "build/art07-repairs/r5/v01/evidence/baseline05-terrain-forward_plus/retained-terrain-1-closed.png",
+      "sha256": "092caabac0f4777600d122d337b6ba56744c90d1ce890c4ad0149461f8ab6770",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "processing": "Byte-exact PNG copy; no crop, resize, retouch or compositing."
+    },
+    {
+      "file": "candidate-forward_plus-original-paid-home-closed.png",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-terrain-forward_plus/original-paid-home-closed.png",
+      "sha256": "796b5e1d3fad6d5763cc4374110d26885394d5f642b6c89bd84254f033a0f4e7",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "processing": "Byte-exact PNG copy; no crop, resize, retouch or compositing."
+    },
+    {
+      "file": "candidate-forward_plus-retained-terrain-1-closed.png",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-terrain-forward_plus/retained-terrain-1-closed.png",
+      "sha256": "fe33a7ea2a424bc625c90e87dbb71a17edbd7d274547916aabc5bacc166b943f",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "processing": "Byte-exact PNG copy; no crop, resize, retouch or compositing."
+    },
+    {
+      "file": "candidate-forward_plus-opening.gif",
+      "sha256": "a8bda56b714e9df22d9c79d9730d195d995ccda7bb9739b13ccb1ac756317c8b",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "frames": 20,
+      "duration_ms": 1590,
+      "processing": "Actual engine PNG samples, native panel-driven lid; full-frame GIF palette conversion only; captured wall-clock durations rounded to GIF 10 ms units; final sample held for preceding interval. Loop resets to first sample; no reverse or invented closing. Capture stalls affect wall-clock sampling. First sample is already partway open."
+    },
+    {
+      "file": "baseline06-gl_compatibility-flat-wood-closed.png",
+      "source": "build/art07-repairs/r5/v01/evidence/baseline06-capture-gl_compatibility/flat-wood-closed.png",
+      "sha256": "272c64cb30f8d0dfc07c254c427c954d3fc6d9d4b5c8c06b8f09104619bcd5af",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "processing": "Byte-exact PNG copy; no crop, resize, retouch or compositing."
+    },
+    {
+      "file": "baseline06-gl_compatibility-ordinary-slab-closed.png",
+      "source": "build/art07-repairs/r5/v01/evidence/baseline06-capture-gl_compatibility/ordinary-slab-closed.png",
+      "sha256": "7642b996693d8913975fb124302afafc6694527b5cdb38b789d53998a9d09677",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "processing": "Byte-exact PNG copy; no crop, resize, retouch or compositing."
+    },
+    {
+      "file": "baseline06-gl_compatibility-fine-slab-closed.png",
+      "source": "build/art07-repairs/r5/v01/evidence/baseline06-capture-gl_compatibility/fine-slab-closed.png",
+      "sha256": "0cc5bda0d8802f7575446881170f3465a0b5006993ef1c0f7da07fee1f556c17",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "processing": "Byte-exact PNG copy; no crop, resize, retouch or compositing."
+    },
+    {
+      "file": "candidate-gl_compatibility-flat-wood-closed.png",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-gl_compatibility/flat-wood-closed.png",
+      "sha256": "941b20c2184e1fee0a5dbde391325b5eb44fed7e67d452d849fdb65f5b772098",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "processing": "Byte-exact PNG copy; no crop, resize, retouch or compositing."
+    },
+    {
+      "file": "candidate-gl_compatibility-ordinary-slab-closed.png",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-gl_compatibility/ordinary-slab-closed.png",
+      "sha256": "fc0a2e20649dc2db5028f2ba48a6d11b246744bc97f36a65acd6e1a8b2dd3cc4",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "processing": "Byte-exact PNG copy; no crop, resize, retouch or compositing."
+    },
+    {
+      "file": "candidate-gl_compatibility-fine-slab-closed.png",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-gl_compatibility/fine-slab-closed.png",
+      "sha256": "9fed6ce92574c568d4929a1910e7565312f79396e9f55f374f820ff20fff7113",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "processing": "Byte-exact PNG copy; no crop, resize, retouch or compositing."
+    },
+    {
+      "file": "candidate-gl_compatibility-opening.gif",
+      "sha256": "c80ea8b0291747bbad80f0a7953063a791157a15275b675f0c725f6a299e03a4",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "frames": 20,
+      "duration_ms": 1920,
+      "processing": "Actual engine PNG samples, native panel-driven lid; full-frame GIF palette conversion only; captured wall-clock durations rounded to GIF 10 ms units; final sample held for preceding interval. Loop resets to first sample; no reverse or invented closing. Capture stalls affect wall-clock sampling. First sample is already partway open."
+    }
+  ],
+  "motion_frames": [
+    {
+      "renderer": "forward_plus",
+      "capture_usec": 15202968,
+      "image": "motion-open-00.png",
+      "lid_angle_radians": -0.429329488888889,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-forward_plus/motion-open-00.png",
+      "sha256": "3965ff9c4caa82768541de65a5b45527d6d3b3abf9fec5b43cfc968986521cc8",
+      "gif_duration_ms": 70
+    },
+    {
+      "renderer": "forward_plus",
+      "capture_usec": 15276882,
+      "image": "motion-open-02.png",
+      "lid_angle_radians": -0.721638155555556,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-forward_plus/motion-open-02.png",
+      "sha256": "af60f349243150417d0ec68db4a23e845b06a1d6797a4dccabb2442cf57240c1",
+      "gif_duration_ms": 80
+    },
+    {
+      "renderer": "forward_plus",
+      "capture_usec": 15355259,
+      "image": "motion-open-04.png",
+      "lid_angle_radians": -1.03991095555556,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-forward_plus/motion-open-04.png",
+      "sha256": "623c9445d13fc09bb30e84b740d9a2b56bd638ca1a9d9ded83cfc8ff3c6efd5b",
+      "gif_duration_ms": 80
+    },
+    {
+      "renderer": "forward_plus",
+      "capture_usec": 15434771,
+      "image": "motion-open-06.png",
+      "lid_angle_radians": -1.31040128888889,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-forward_plus/motion-open-06.png",
+      "sha256": "ed0cf18d031ef72f222082105ed158816ab658db8857e9c84316ed960f3f906b",
+      "gif_duration_ms": 80
+    },
+    {
+      "renderer": "forward_plus",
+      "capture_usec": 15516131,
+      "image": "motion-open-08.png",
+      "lid_angle_radians": -1.36135681655558,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-forward_plus/motion-open-08.png",
+      "sha256": "8236ed1b44770fe34a54274b0eebde7e33b6939897f8b7a625ff86af4f25ee89",
+      "gif_duration_ms": 80
+    },
+    {
+      "renderer": "forward_plus",
+      "capture_usec": 15597444,
+      "image": "motion-open-10.png",
+      "lid_angle_radians": -1.36135681655558,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-forward_plus/motion-open-10.png",
+      "sha256": "3581469f378252c652d0ccbb8579c8978f120574cb2e4d68e16db972722bd2fb",
+      "gif_duration_ms": 80
+    },
+    {
+      "renderer": "forward_plus",
+      "capture_usec": 15679310,
+      "image": "motion-open-12.png",
+      "lid_angle_radians": -1.36135681655558,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-forward_plus/motion-open-12.png",
+      "sha256": "039d912ac289ee9602b5d2914fef62c8a38190959a73995e7e83e51e3f76e81e",
+      "gif_duration_ms": 80
+    },
+    {
+      "renderer": "forward_plus",
+      "capture_usec": 15760793,
+      "image": "motion-open-14.png",
+      "lid_angle_radians": -1.36135681655558,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-forward_plus/motion-open-14.png",
+      "sha256": "7f58f61e9f82bbf5a4e77c124f42739751ebf02ef101823301d957380d62aad8",
+      "gif_duration_ms": 80
+    },
+    {
+      "renderer": "forward_plus",
+      "capture_usec": 15842374,
+      "image": "motion-open-16.png",
+      "lid_angle_radians": -1.36135681655558,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-forward_plus/motion-open-16.png",
+      "sha256": "4663e5da7093817a5fd17e01fc482c1cfc5cd52452cfd54e14bfa037e0c9594a",
+      "gif_duration_ms": 80
+    },
+    {
+      "renderer": "forward_plus",
+      "capture_usec": 15924301,
+      "image": "motion-open-18.png",
+      "lid_angle_radians": -1.36135681655558,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-forward_plus/motion-open-18.png",
+      "sha256": "8ead235d1f9a5151a53cc5c46a75226e85e9b5a919bdc41ae863433a11bcb54d",
+      "gif_duration_ms": 80
+    },
+    {
+      "renderer": "forward_plus",
+      "capture_usec": 16005970,
+      "image": "motion-open-20.png",
+      "lid_angle_radians": -1.36135681655558,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-forward_plus/motion-open-20.png",
+      "sha256": "817ac02925ff7afa7780cf2af27573061559a5aa935afe0b75bba24ae2525548",
+      "gif_duration_ms": 80
+    },
+    {
+      "renderer": "forward_plus",
+      "capture_usec": 16087593,
+      "image": "motion-open-22.png",
+      "lid_angle_radians": -1.36135681655558,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-forward_plus/motion-open-22.png",
+      "sha256": "06c62173a849042be2fddd15f87b973cb4e3d64569143d72a1d643faf8520339",
+      "gif_duration_ms": 80
+    },
+    {
+      "renderer": "forward_plus",
+      "capture_usec": 16169051,
+      "image": "motion-open-24.png",
+      "lid_angle_radians": -1.36135681655558,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-forward_plus/motion-open-24.png",
+      "sha256": "5b393192d36956c74077d43306bf5b7800d6872334e00c670e8de761cde598da",
+      "gif_duration_ms": 80
+    },
+    {
+      "renderer": "forward_plus",
+      "capture_usec": 16250239,
+      "image": "motion-open-26.png",
+      "lid_angle_radians": -1.36135681655558,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-forward_plus/motion-open-26.png",
+      "sha256": "b9b526a9884750ad33f7059a2a06d0e4de8dce24ceaf3f0b3aa78f7d3fca1564",
+      "gif_duration_ms": 80
+    },
+    {
+      "renderer": "forward_plus",
+      "capture_usec": 16331728,
+      "image": "motion-open-28.png",
+      "lid_angle_radians": -1.36135681655558,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-forward_plus/motion-open-28.png",
+      "sha256": "36a11293cf4876215338b58b0b82b81794a689e6eed8db009f199ffa697fdb29",
+      "gif_duration_ms": 80
+    },
+    {
+      "renderer": "forward_plus",
+      "capture_usec": 16413130,
+      "image": "motion-open-30.png",
+      "lid_angle_radians": -1.36135681655558,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-forward_plus/motion-open-30.png",
+      "sha256": "487f2ee7de150a28c92fc67aad69f9d89221e3dde2414d50afab32c4e47afd0b",
+      "gif_duration_ms": 80
+    },
+    {
+      "renderer": "forward_plus",
+      "capture_usec": 16494733,
+      "image": "motion-open-32.png",
+      "lid_angle_radians": -1.36135681655558,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-forward_plus/motion-open-32.png",
+      "sha256": "72eca42125d37423ea900090c8607166492c2b4218862a3163ccf7b4826f6c2c",
+      "gif_duration_ms": 80
+    },
+    {
+      "renderer": "forward_plus",
+      "capture_usec": 16575856,
+      "image": "motion-open-34.png",
+      "lid_angle_radians": -1.36135681655558,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-forward_plus/motion-open-34.png",
+      "sha256": "0b7de94924b58a832af4db6f82e719a0416c5f5f8b6ffdad6bf9858cc9923083",
+      "gif_duration_ms": 80
+    },
+    {
+      "renderer": "forward_plus",
+      "capture_usec": 16657532,
+      "image": "motion-open-36.png",
+      "lid_angle_radians": -1.36135681655558,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-forward_plus/motion-open-36.png",
+      "sha256": "709ca21f879059b01e79c498369362286ddedc3adfa501a81bff3a10518356ed",
+      "gif_duration_ms": 80
+    },
+    {
+      "renderer": "forward_plus",
+      "capture_usec": 16738734,
+      "image": "motion-open-38.png",
+      "lid_angle_radians": -1.36135681655558,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-forward_plus/motion-open-38.png",
+      "sha256": "571e4781c446e30b829d787350a6960f33e10361dd0cb5db936da88347f94972",
+      "gif_duration_ms": 80
+    },
+    {
+      "renderer": "gl_compatibility",
+      "capture_usec": 15143488,
+      "image": "motion-open-00.png",
+      "lid_angle_radians": -0.484121688888889,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-gl_compatibility/motion-open-00.png",
+      "sha256": "4b08b8036ac72c4882019c5d0c4abfaab9be77edce625bf230d6975d916df104",
+      "gif_duration_ms": 90
+    },
+    {
+      "renderer": "gl_compatibility",
+      "capture_usec": 15229455,
+      "image": "motion-open-02.png",
+      "lid_angle_radians": -0.833535488888888,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-gl_compatibility/motion-open-02.png",
+      "sha256": "22ea1d8e66ef3faf374d4cd6bfbe3070d725c590455124935aaab0db459ef808",
+      "gif_duration_ms": 90
+    },
+    {
+      "renderer": "gl_compatibility",
+      "capture_usec": 15320600,
+      "image": "motion-open-04.png",
+      "lid_angle_radians": -1.15629608888889,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-gl_compatibility/motion-open-04.png",
+      "sha256": "76115326b164d36e6a4eb15f7967799a749b13dd9d8b34669852366f191f0ded",
+      "gif_duration_ms": 90
+    },
+    {
+      "renderer": "gl_compatibility",
+      "capture_usec": 15413524,
+      "image": "motion-open-06.png",
+      "lid_angle_radians": -1.36135681655558,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-gl_compatibility/motion-open-06.png",
+      "sha256": "97bcde9543d7e6b2060fa78c4628420b14ad641d361fd1a87c9a1fcd6625a2cc",
+      "gif_duration_ms": 90
+    },
+    {
+      "renderer": "gl_compatibility",
+      "capture_usec": 15507762,
+      "image": "motion-open-08.png",
+      "lid_angle_radians": -1.36135681655558,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-gl_compatibility/motion-open-08.png",
+      "sha256": "2a8060715fd035da37914806e690845890282e434b2ab9eedc986ded43374c94",
+      "gif_duration_ms": 100
+    },
+    {
+      "renderer": "gl_compatibility",
+      "capture_usec": 15607351,
+      "image": "motion-open-10.png",
+      "lid_angle_radians": -1.36135681655558,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-gl_compatibility/motion-open-10.png",
+      "sha256": "0d54d8f0529bceadb70b6913d2f49c1e52586a990726a4281007ce03f4f5e568",
+      "gif_duration_ms": 100
+    },
+    {
+      "renderer": "gl_compatibility",
+      "capture_usec": 15705019,
+      "image": "motion-open-12.png",
+      "lid_angle_radians": -1.36135681655558,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-gl_compatibility/motion-open-12.png",
+      "sha256": "a7063af24cb4139ee903edfec28cfd0766325ec79d1b48d79321eb2b1c83b91f",
+      "gif_duration_ms": 90
+    },
+    {
+      "renderer": "gl_compatibility",
+      "capture_usec": 15799553,
+      "image": "motion-open-14.png",
+      "lid_angle_radians": -1.36135681655558,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-gl_compatibility/motion-open-14.png",
+      "sha256": "e1f6d58b8bf9f3e308962fefb94d1249a2eb4083535d599da6ef3f42a4988861",
+      "gif_duration_ms": 90
+    },
+    {
+      "renderer": "gl_compatibility",
+      "capture_usec": 15893469,
+      "image": "motion-open-16.png",
+      "lid_angle_radians": -1.36135681655558,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-gl_compatibility/motion-open-16.png",
+      "sha256": "8b7d23e1ad58a36b3d6cf2640a3680e08eeb41a12354b68f41d04833f90292c1",
+      "gif_duration_ms": 90
+    },
+    {
+      "renderer": "gl_compatibility",
+      "capture_usec": 15988108,
+      "image": "motion-open-18.png",
+      "lid_angle_radians": -1.36135681655558,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-gl_compatibility/motion-open-18.png",
+      "sha256": "0253e1ebbdbdb730684604c517734df37488cb358ff0ed82def6ea7b025c68fb",
+      "gif_duration_ms": 100
+    },
+    {
+      "renderer": "gl_compatibility",
+      "capture_usec": 16083466,
+      "image": "motion-open-20.png",
+      "lid_angle_radians": -1.36135681655558,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-gl_compatibility/motion-open-20.png",
+      "sha256": "dbe8f735b21c6473b967ac7f6e5cb9653eed89813f343fe594f377ef95c445d8",
+      "gif_duration_ms": 90
+    },
+    {
+      "renderer": "gl_compatibility",
+      "capture_usec": 16178369,
+      "image": "motion-open-22.png",
+      "lid_angle_radians": -1.36135681655558,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-gl_compatibility/motion-open-22.png",
+      "sha256": "4481531b7b680be5e79f98878e0dc3278bf522233144a93946b7a1ce038561c1",
+      "gif_duration_ms": 100
+    },
+    {
+      "renderer": "gl_compatibility",
+      "capture_usec": 16274710,
+      "image": "motion-open-24.png",
+      "lid_angle_radians": -1.36135681655558,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-gl_compatibility/motion-open-24.png",
+      "sha256": "34351c6febeb489b7a2aa5323b9585a09206842cd001302dee731200003eb55e",
+      "gif_duration_ms": 100
+    },
+    {
+      "renderer": "gl_compatibility",
+      "capture_usec": 16370421,
+      "image": "motion-open-26.png",
+      "lid_angle_radians": -1.36135681655558,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-gl_compatibility/motion-open-26.png",
+      "sha256": "9b8eb9bd12670dbf52f0bc5bb0feb7edeb30ea3e7305934a18c3de73699aada2",
+      "gif_duration_ms": 100
+    },
+    {
+      "renderer": "gl_compatibility",
+      "capture_usec": 16466027,
+      "image": "motion-open-28.png",
+      "lid_angle_radians": -1.36135681655558,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-gl_compatibility/motion-open-28.png",
+      "sha256": "7769f02bbced3178f5167b34dfe9d34351ea9bf59e896637d69f4b0df5695c0d",
+      "gif_duration_ms": 100
+    },
+    {
+      "renderer": "gl_compatibility",
+      "capture_usec": 16561821,
+      "image": "motion-open-30.png",
+      "lid_angle_radians": -1.36135681655558,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-gl_compatibility/motion-open-30.png",
+      "sha256": "fe236a81ede0f36d9b850ad2de18a6aa0d5416b7e5257cbeb71842d30c3560d5",
+      "gif_duration_ms": 100
+    },
+    {
+      "renderer": "gl_compatibility",
+      "capture_usec": 16656937,
+      "image": "motion-open-32.png",
+      "lid_angle_radians": -1.36135681655558,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-gl_compatibility/motion-open-32.png",
+      "sha256": "95e14e201337bfc520988da20aead185b173fdfeb8399152c1af616fc607dd08",
+      "gif_duration_ms": 100
+    },
+    {
+      "renderer": "gl_compatibility",
+      "capture_usec": 16752204,
+      "image": "motion-open-34.png",
+      "lid_angle_radians": -1.36135681655558,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-gl_compatibility/motion-open-34.png",
+      "sha256": "c493c098b6174cc877182ea81da1ec0ad3b414b245d3dea56f108151adf1303f",
+      "gif_duration_ms": 100
+    },
+    {
+      "renderer": "gl_compatibility",
+      "capture_usec": 16847969,
+      "image": "motion-open-36.png",
+      "lid_angle_radians": -1.36135681655558,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-gl_compatibility/motion-open-36.png",
+      "sha256": "60edd6037a3d81dda7eaf9eda0a872c9a83bfc25287e1ccdac838816baf3d04f",
+      "gif_duration_ms": 100
+    },
+    {
+      "renderer": "gl_compatibility",
+      "capture_usec": 16943180,
+      "image": "motion-open-38.png",
+      "lid_angle_radians": -1.36135681655558,
+      "native_pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+      "source": "build/art07-repairs/r5/v02/evidence/candidate-capture-gl_compatibility/motion-open-38.png",
+      "sha256": "149a6313e3b7717c5dda5416ff476e5e34bd9199b72ee459b881f81b688ec392",
+      "gif_duration_ms": 100
+    }
+  ]
+}
