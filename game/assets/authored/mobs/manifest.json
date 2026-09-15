@@ -447,6 +447,23 @@
           0.0
         ],
         "source": "game/scenes/enemy.tscn"
+      },
+      "porcupine": {
+        "uniform_scale": 1.58,
+        "yaw_degrees": 180.0,
+        "ground_offset": 0.0,
+        "forward_offset": 0.4,
+        "stride_m": 0.95,
+        "idle_clip": "idle",
+        "cull_margin_m": 0.4,
+        "purpose": {
+          "uniform_scale": "Convert two studio units to a roughly 2.4 m animal after existing 0.76 family scaling; keep broad anatomy.",
+          "yaw_degrees": "Face the nose along the actor forward direction (-Z).",
+          "ground_offset": "Rest paws remain on the source ground plane.",
+          "forward_offset": "Place the upper shoulder comb near the unchanged native muzzle at body origin.",
+          "stride_m": "Travel per pre-family walk cycle; balances readable short steps against existing chase speed. Fast travel can slide, with no locomotion-rule change.",
+          "cull_margin_m": "Keep the short animated paws and quill recoil within the visible bounds."
+        }
       }
     },
     "ash_hound": {

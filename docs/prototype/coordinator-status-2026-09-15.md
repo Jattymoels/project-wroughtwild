@@ -111,8 +111,10 @@ to their own future decision/bug work; art adoption must not silently decide the
    lifecycle remains intact. The forest smoke also repaired missing C1 settings
    and shader dependencies. [Result and remaining visual limits](play02-canopy-result-2026-09-15.md).
    Owner saw the corrected captures; hands-on playtesting remains deferred.
-5. **MOB-01 — porcupine Cinder Archer**, first of six existing enemy roles to rig,
-   animate and integrate. [Exact prompt and D: workspace](mob01-porcupine-worker-2026-09-15.md).
+5. **MOB-01 — porcupine checked in its worker; main integration in progress.**
+   Fitted rig, native movement/shot animation and ordinary Continue are complete.
+   [Result, limits and checks](mob01-porcupine-result-2026-09-15.md).
+   [Exact prompt and D: workspace](mob01-porcupine-worker-2026-09-15.md).
    [MOB-02 ram production](mob02-ram-worker-2026-09-15.md) and
    [MOB-03 crane production](mob03-crane-worker-2026-09-15.md) are prepared to run
    in parallel; shared adapters/manifests stay with MOB-01. Integrate their finished
@@ -169,4 +171,5 @@ also reused, followed by a six-second headless import on main. Both adoption
 slices and the demonstrated PLAY-01 seam-stall fix are integrated and pushed.
 PLAY-02 is also integrated and pushed; its 70 worker checks were reused and one
 5.01-second hidden headless main import passed. Underground lag remains unresolved.
-The prepared MOB-01 worker continues the approved roster while feedback is deferred.
+MOB-01 returns a checked porcupine commit for coordinator integration.
+Remaining roles continue separately while feedback is deferred.

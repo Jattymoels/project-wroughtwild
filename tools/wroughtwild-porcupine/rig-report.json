@@ -1,0 +1,421 @@
+{
+  "source_selection": {
+    "source": "C:/Users/Matty/Dev/project-wroughtwild/build/roster-art06c/lifeline-handoff/sources/cinder_archer",
+    "selected_input": "D:/Wroughtwild/source-art/mob01-porcupine/input-art06c",
+    "files": [
+      {
+        "file": "cinder_archer-surface.blend",
+        "bytes": 29075010,
+        "sha256": "567347D847E44D5FF3DC2BC6AF6B26E0E177CF782F3CB75640F8D5DD6EE3E1A2"
+      },
+      {
+        "file": "base.png",
+        "bytes": 8296318,
+        "sha256": "7BC47883E9E9CCEE0F1335AB3A9B67424127DB4FFB4B5DF43B0328B800668489"
+      },
+      {
+        "file": "orm.png",
+        "bytes": 4000013,
+        "sha256": "116CF53343FE878BA2C12AC7A07814F744E1ADD7B3D28D37AC226CC9705D4C91"
+      },
+      {
+        "file": "scar-mask.png",
+        "bytes": 3799767,
+        "sha256": "4048C173CD28B60237D452EDD72AAFA7E7E6A8B393911C49EF4B875426D6187B"
+      },
+      {
+        "file": "surface-report.json",
+        "bytes": 36996,
+        "sha256": "92CB7BC623C19C5935D15670258C2509DBB6A5AF985E39AEDBB5BA0003973B6B"
+      }
+    ],
+    "purpose": "Selected approved ART-06C porcupine input for MOB-01; originals retained; edit a new version"
+  },
+  "source_geometry_sha256": "8045a34fce88065d29fd39e39566d7712090eed6957611f15a4cfd73c64ab06c",
+  "dense_triangles": 280126,
+  "runtime_host_triangles": 149968,
+  "attachment_triangles": 4432,
+  "bones": [
+    {
+      "name": "body",
+      "parent": null,
+      "head": [
+        0,
+        0.18,
+        0.49
+      ],
+      "tail": [
+        0,
+        -0.1,
+        0.57
+      ]
+    },
+    {
+      "name": "chest",
+      "parent": "body",
+      "head": [
+        0,
+        -0.26,
+        0.6
+      ],
+      "tail": [
+        0,
+        -0.48,
+        0.7
+      ]
+    },
+    {
+      "name": "head",
+      "parent": "chest",
+      "head": [
+        0,
+        -0.59,
+        0.73
+      ],
+      "tail": [
+        0,
+        -0.9,
+        0.73
+      ]
+    },
+    {
+      "name": "mantle",
+      "parent": "chest",
+      "head": [
+        0,
+        -0.23,
+        0.84
+      ],
+      "tail": [
+        0,
+        0.1,
+        1.0
+      ]
+    },
+    {
+      "name": "tail",
+      "parent": "body",
+      "head": [
+        0,
+        0.59,
+        0.23
+      ],
+      "tail": [
+        0,
+        0.9,
+        0.19
+      ]
+    },
+    {
+      "name": "front_L_upper",
+      "parent": "chest",
+      "head": [
+        -0.2780369520187378,
+        -0.3199999928474426,
+        0.4399999976158142
+      ],
+      "tail": [
+        -0.2780369520187378,
+        -0.33000001311302185,
+        0.2199999988079071
+      ]
+    },
+    {
+      "name": "front_L_lower",
+      "parent": "front_L_upper",
+      "head": [
+        -0.2780369520187378,
+        -0.33000001311302185,
+        0.2199999988079071
+      ],
+      "tail": [
+        -0.2780369520187378,
+        -0.5564422011375427,
+        0.06499999761581421
+      ]
+    },
+    {
+      "name": "front_L_hoof",
+      "parent": "front_L_lower",
+      "head": [
+        -0.2780369520187378,
+        -0.5564422011375427,
+        0.06499999761581421
+      ],
+      "tail": [
+        -0.2780369520187378,
+        -0.6564422249794006,
+        0.06499999761581421
+      ]
+    },
+    {
+      "name": "front_R_upper",
+      "parent": "chest",
+      "head": [
+        0.27792903780937195,
+        -0.3199999928474426,
+        0.4399999976158142
+      ],
+      "tail": [
+        0.27792903780937195,
+        -0.33000001311302185,
+        0.2199999988079071
+      ]
+    },
+    {
+      "name": "front_R_lower",
+      "parent": "front_R_upper",
+      "head": [
+        0.27792903780937195,
+        -0.33000001311302185,
+        0.2199999988079071
+      ],
+      "tail": [
+        0.27792903780937195,
+        -0.5587623715400696,
+        0.06556671857833862
+      ]
+    },
+    {
+      "name": "front_R_hoof",
+      "parent": "front_R_lower",
+      "head": [
+        0.27792903780937195,
+        -0.5587623715400696,
+        0.06556671857833862
+      ],
+      "tail": [
+        0.27792903780937195,
+        -0.6587623953819275,
+        0.06556671857833862
+      ]
+    },
+    {
+      "name": "rear_L_upper",
+      "parent": "body",
+      "head": [
+        -0.2573753595352173,
+        0.36000001430511475,
+        0.3400000035762787
+      ],
+      "tail": [
+        -0.2573753595352173,
+        0.4699999988079071,
+        0.1899999976158142
+      ]
+    },
+    {
+      "name": "rear_L_lower",
+      "parent": "rear_L_upper",
+      "head": [
+        -0.2573753595352173,
+        0.4699999988079071,
+        0.1899999976158142
+      ],
+      "tail": [
+        -0.2573753595352173,
+        0.30814990401268005,
+        0.06703221797943115
+      ]
+    },
+    {
+      "name": "rear_L_hoof",
+      "parent": "rear_L_lower",
+      "head": [
+        -0.2573753595352173,
+        0.30814990401268005,
+        0.06703221797943115
+      ],
+      "tail": [
+        -0.2573753595352173,
+        0.20814990997314453,
+        0.06703221797943115
+      ]
+    },
+    {
+      "name": "rear_R_upper",
+      "parent": "body",
+      "head": [
+        0.25747746229171753,
+        0.36000001430511475,
+        0.3400000035762787
+      ],
+      "tail": [
+        0.25747746229171753,
+        0.4699999988079071,
+        0.1899999976158142
+      ]
+    },
+    {
+      "name": "rear_R_lower",
+      "parent": "rear_R_upper",
+      "head": [
+        0.25747746229171753,
+        0.4699999988079071,
+        0.1899999976158142
+      ],
+      "tail": [
+        0.25747746229171753,
+        0.3080008327960968,
+        0.0671948790550232
+      ]
+    },
+    {
+      "name": "rear_R_hoof",
+      "parent": "rear_R_lower",
+      "head": [
+        0.25747746229171753,
+        0.3080008327960968,
+        0.0671948790550232
+      ],
+      "tail": [
+        0.25747746229171753,
+        0.20800083875656128,
+        0.0671948790550232
+      ]
+    }
+  ],
+  "feet": [
+    {
+      "name": "front_L",
+      "front": true,
+      "side": -1,
+      "hip": [
+        -0.2780369520187378,
+        -0.3199999928474426,
+        0.4399999976158142
+      ],
+      "knee": [
+        -0.2780369520187378,
+        -0.33000001311302185,
+        0.2199999988079071
+      ],
+      "foot": [
+        -0.2780369520187378,
+        -0.5564422011375427,
+        0.06499999761581421
+      ],
+      "sole": 0.0
+    },
+    {
+      "name": "front_R",
+      "front": true,
+      "side": 1,
+      "hip": [
+        0.27792903780937195,
+        -0.3199999928474426,
+        0.4399999976158142
+      ],
+      "knee": [
+        0.27792903780937195,
+        -0.33000001311302185,
+        0.2199999988079071
+      ],
+      "foot": [
+        0.27792903780937195,
+        -0.5587623715400696,
+        0.06556671857833862
+      ],
+      "sole": 0.0005667209625244141
+    },
+    {
+      "name": "rear_L",
+      "front": false,
+      "side": -1,
+      "hip": [
+        -0.2573753595352173,
+        0.36000001430511475,
+        0.3400000035762787
+      ],
+      "knee": [
+        -0.2573753595352173,
+        0.4699999988079071,
+        0.1899999976158142
+      ],
+      "foot": [
+        -0.2573753595352173,
+        0.30814990401268005,
+        0.06703221797943115
+      ],
+      "sole": 0.0020322203636169434
+    },
+    {
+      "name": "rear_R",
+      "front": false,
+      "side": 1,
+      "hip": [
+        0.25747746229171753,
+        0.36000001430511475,
+        0.3400000035762787
+      ],
+      "knee": [
+        0.25747746229171753,
+        0.4699999988079071,
+        0.1899999976158142
+      ],
+      "foot": [
+        0.25747746229171753,
+        0.3080008327960968,
+        0.0671948790550232
+      ],
+      "sole": 0.0021948814392089844
+    }
+  ],
+  "clips_seconds": {
+    "idle": 4.0,
+    "walk": 1.4,
+    "windup": 0.6,
+    "release": 0.22
+  },
+  "max_foot_target_error_units": 1.2489448945403256e-07,
+  "saved_pose_checks": [
+    {
+      "clip": "idle",
+      "frame": 0,
+      "max_displacement_units": 0.05932718844707662,
+      "minimum_z": -0.00025549466954544187
+    },
+    {
+      "clip": "walk",
+      "frame": 17,
+      "max_displacement_units": 0.0985133847793247,
+      "minimum_z": -0.0002555021201260388
+    },
+    {
+      "clip": "windup",
+      "frame": 36,
+      "max_displacement_units": 0.15535662470604464,
+      "minimum_z": -0.0002555015671532601
+    },
+    {
+      "clip": "release",
+      "frame": 4,
+      "max_displacement_units": 0.09925357120615476,
+      "minimum_z": -0.0002554866368882358
+    }
+  ],
+  "uv_dense_unchanged": true,
+  "all_vertices_normalized_1_to_4_weights": true,
+  "settings": {
+    "runtime_host_triangles": 150000,
+    "weight_smoothing_passes": 6,
+    "stance_sink_units": 0.045,
+    "brace_sink_units": 0.018,
+    "body_brace_radians": 0.025,
+    "body_recoil_radians": 0.045,
+    "chest_brace_radians": 0.045,
+    "head_tuck_radians": 0.09,
+    "quill_brace_radians": 0.13,
+    "quill_recoil_radians": 0.16,
+    "recoil_units": 0.025,
+    "breath_units": 0.004,
+    "walk_bob_units": 0.003,
+    "step_span_units": 0.15,
+    "step_lift_units": 0.048,
+    "stance_fraction": 0.65,
+    "tail_sway_radians": 0.035,
+    "idle_seconds": 4.0,
+    "walk_seconds": 1.4,
+    "release_clip_seconds": 0.22
+  }
+}

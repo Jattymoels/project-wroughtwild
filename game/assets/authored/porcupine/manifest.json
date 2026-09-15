@@ -1,0 +1,75 @@
+{
+  "asset": "cinder_archer",
+  "animal": "porcupine",
+  "source": "ART-06C selected input; MOB-01 rig-v04",
+  "editable_master": "D:\\Wroughtwild\\source-art\\mob01-porcupine\\rig-v04\\porcupine-rigged.blend",
+  "source_selection": {
+    "source": "C:/Users/Matty/Dev/project-wroughtwild/build/roster-art06c/lifeline-handoff/sources/cinder_archer",
+    "selected_input": "D:/Wroughtwild/source-art/mob01-porcupine/input-art06c",
+    "files": [
+      {
+        "file": "cinder_archer-surface.blend",
+        "bytes": 29075010,
+        "sha256": "567347D847E44D5FF3DC2BC6AF6B26E0E177CF782F3CB75640F8D5DD6EE3E1A2"
+      },
+      {
+        "file": "base.png",
+        "bytes": 8296318,
+        "sha256": "7BC47883E9E9CCEE0F1335AB3A9B67424127DB4FFB4B5DF43B0328B800668489"
+      },
+      {
+        "file": "orm.png",
+        "bytes": 4000013,
+        "sha256": "116CF53343FE878BA2C12AC7A07814F744E1ADD7B3D28D37AC226CC9705D4C91"
+      },
+      {
+        "file": "scar-mask.png",
+        "bytes": 3799767,
+        "sha256": "4048C173CD28B60237D452EDD72AAFA7E7E6A8B393911C49EF4B875426D6187B"
+      },
+      {
+        "file": "surface-report.json",
+        "bytes": 36996,
+        "sha256": "92CB7BC623C19C5935D15670258C2509DBB6A5AF985E39AEDBB5BA0003973B6B"
+      }
+    ],
+    "purpose": "Selected approved ART-06C porcupine input for MOB-01; originals retained; edit a new version"
+  },
+  "runtime_host_triangles": 149968,
+  "attachment_triangles": 4432,
+  "bone_count": 17,
+  "clips_seconds": {
+    "idle": 4.0,
+    "walk": 1.4,
+    "windup": 0.6,
+    "release": 0.22
+  },
+  "maps": {
+    "base": "base.png",
+    "orm": "orm.png",
+    "scar": "scar-mask.png"
+  },
+  "scar": {
+    "colour": [
+      1,
+      0.19,
+      0.025
+    ],
+    "damage_tint": [
+      0.16,
+      0.14,
+      0.12
+    ],
+    "peak_emission": 2.4,
+    "minimum_light": 0.32,
+    "period_seconds": 4,
+    "crest_width": 0.2
+  },
+  "files": {
+    "base.png": "7bc47883e9e9ccee0f1335ab3a9b67424127db4ffb4b5df43b0328b800668489",
+    "orm.png": "116cf53343fe878ba2c12ac7a07814f744e1add7b3d28d37ac226cc9705d4c91",
+    "porcupine.glb": "c35be7d121875ef534ca9ea1fb421e947b70ae052b1e294c39c69f9a3d605507",
+    "scar-mask.png": "4048c173cd28b60237d452edd72aafa7e7e6a8b393911c49ef4b875426d6187b"
+  },
+  "simplification": "One Blender collapse-decimated 150k host; original UV atlas and full face attachments. No manual retopology, normal map or distance LOD."
+}

@@ -1,0 +1,22 @@
+{
+  "runtime_host_triangles": 150000,
+  "weight_smoothing_passes": 6,
+  "stance_sink_units": 0.045,
+  "brace_sink_units": 0.018,
+  "body_brace_radians": 0.025,
+  "body_recoil_radians": 0.045,
+  "chest_brace_radians": 0.045,
+  "head_tuck_radians": 0.09,
+  "quill_brace_radians": 0.13,
+  "quill_recoil_radians": 0.16,
+  "recoil_units": 0.025,
+  "breath_units": 0.004,
+  "walk_bob_units": 0.003,
+  "step_span_units": 0.15,
+  "step_lift_units": 0.048,
+  "stance_fraction": 0.65,
+  "tail_sway_radians": 0.035,
+  "idle_seconds": 4.0,
+  "walk_seconds": 1.4,
+  "release_clip_seconds": 0.22
+}
