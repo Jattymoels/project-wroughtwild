@@ -51,6 +51,12 @@ The owner clarified in the movement worker on 15 September that PLAY-03 is
 significant lag underground, not difficulty or unintended access underground.
 Preserve legitimate cave/digging behavior; do not invent an access restriction.
 
+After the completed PLAY-03 diagnostic, the owner said they were happy to wait
+for their next playthrough. Its opt-in recorder is integrated; the lag remains
+unresolved. Do not resume underground sampling or speculative performance fixes
+without new playtest evidence or an explicit request. See the current coordination
+sheet for the next scoped work item.
+
 After ram integration on 15 September, the owner said: "Everything looks great -
 approved, I haven't done full performance impact yet though but that's fine".
 Record the current delivered visuals as approved, including the integrated

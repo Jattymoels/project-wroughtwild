@@ -32,24 +32,30 @@ merely because a historical checkbox still says human review pending.
 
 ## Current next slice after the completed art batch
 
-The owner approved the published tortoise visuals and asked to continue.
-**[PLAY-03 underground lag](play03-underground-worker-2026-09-15.md)** is prepared
-at `D:/Wroughtwild/work/play03-underground`, branch `codex/play03-underground`.
-The owner starts the worker; the coordinator publishes its checked result.
-It covers one evidence-led entry/drop into a cave or hole and subsequent stationary
-state, addressing the warmup/preparation gap in the earlier clean sample. Deliver
-a narrow causal fix if reproduced, or a small opt-in capture if not. A diagnostic
-alone leaves the bug open. No broad performance clearance or art review is needed.
+**PLAY-03 diagnostic delivery is integrated as `cbc6f67`.** The staged drop did
+not reproduce the owner's continuing slowdown; no causal fix is claimed. The
+[result and optional recording instructions](play03-underground-result-2026-09-15.md)
+provide a bounded local recorder for the next real incident. The owner said:
+"happy to wait for my next playthrough". Keep the bug open and stop further
+underground investigation until new evidence or an explicit request.
 
-The owner clarified that lag began as soon as they went underground or fell into
-a hole, felt as though something needed to load, and differed from surface
-stuttering. Capture the onset before entry/drop; loading remains a hypothesis.
-The incident coordinate/save, duration and persistence while stationary remain
-unknown. Proceed with the focused diagnostic using this observation; active digging
-was not identified as necessary. Station/home and campaign feel
-remain subsequent playtest questions. Later-era creature growth, boss art and
-Reclaimed Frontier landscapes are longer-term scoped choices, not the next
-automatic batch. The original implementation sequence below is retained as history.
+Reuse the worker's 7 transition and 19 recorder checks. Main's one hidden headless
+import passed in 6.8 seconds with exit 0 and no reported errors. Normal launch
+leaves recording off; saves, controls, art and streaming behavior remain unchanged.
+
+**Next prepared slice: [PLAY-05 chest transfer reliability](play05-chest-worker-2026-09-15.md)**,
+at `D:/Wroughtwild/work/play05-chest`, branch `codex/play05-chest`. The retained
+owner preview log has three errors from freeing a signal emitter during
+`ChestPanel.refresh()` called by `store()`. Current main still synchronously
+frees row children in this path. Reproduce using the actual transfer buttons,
+then correct their lifecycle while preserving exact native ownership and caps.
+This is one concrete UI fix, not a new home/workshop audit or performance wave.
+The owner starts the worker; the coordinator publishes its checked result.
+
+PLAY-04 station/home and campaign feel remain owner playtest questions. They are
+not failed acceptance tests, and PLAY-05 does not close them. Later-era creature
+growth, boss art and Reclaimed Frontier landscapes remain longer-term scoped
+choices. The original implementation sequence below is retained as history.
 
 ## Repository inventory
 
@@ -183,7 +189,7 @@ hands-on feedback. PLAY-03/04 remain open. PLAY-03 is lag underground, not acces
 
 The retained preview log also records three signal-lifetime errors in
 `chest_panel.gd` refresh/store. This is a separate concrete UI diagnostic for the
-bug backlog; no evidence links it to the reported movement stutter. The preview's
+prepared PLAY-05 slice; no evidence links it to the reported movement stutter. The preview's
 configured `user/ART07G1/g1-play.json` was absent at this inspection, while
 `runtime/game/g1/paid-home.json` exists. The owner's exact underground location
 is unavailable; do not invent it or block scoped diagnosis awaiting playtesting.

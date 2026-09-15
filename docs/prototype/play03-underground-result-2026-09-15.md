@@ -5,6 +5,14 @@ It retains entry, falling and stationary intervals, location, streaming work and
 controller/render observations without changing controls or quality.
 **Diagnostic-only progress: PLAY-03 remains open. No lag fix is claimed.**
 
+Coordinator adoption, 15 September: worker `13d5bdd` is integrated on main as
+`cbc6f67`. The 7 transition and 19 recorder checks below were reused; one hidden
+headless main import passed in 6.8 seconds, exit 0, no reported errors. No further
+underground run was made. The owner is happy to wait for their next playthrough;
+investigation is parked until new incident evidence or an explicit request.
+Normal play keeps the recorder off. Use the optional launch instructions below
+when that playthrough is convenient; no playtest is needed now.
+
 The completed staged drop had brief entry spikes but did not reproduce continuing
 underground slowdown. The owner's exact save/location, duration and stationary
 behavior remain unknown. Owner playtesting is deferred.
