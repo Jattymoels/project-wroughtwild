@@ -62,8 +62,16 @@ visibly appearing in the overworld. The owner suspects the earlier underground
 incident followed a long fall into newly activated mobs; that connection is not
 yet confirmed. They clarified: "A brief hitch, then recovers"; focus on arrival
 work rather than assuming sustained nearby-mob cost. The [PLAY-03 mob-arrival follow-up](docs/prototype/play03-mob-arrival-followup-2026-09-15.md)
-records the evidence. RF-05 is now integrated; the [PLAY-03 mob-arrival worker](docs/prototype/play03-mob-arrival-worker-2026-09-15.md)
-is prepared next on D: for the owner to start, preserving the adopted lake behavior.
+records the evidence. RF-05 and the first [PLAY-03 mob-arrival improvement](docs/prototype/play03-mob-arrival-result-2026-09-15.md)
+are integrated. The measured arrival fell from 443 to 324 ms; roughly 308 ms of
+presentation setup remains. The owner questioned whether the worker was simply
+accepting significant lag. Treat this as partial progress with an open, high-impact
+player-experience defect. Prototype pragmatism does not make a reproduced long
+freeze acceptable or make passing functional checks proof of smooth movement.
+The [presentation follow-up](docs/prototype/play03-presentation-hitch-worker-2026-09-15.md)
+is next in the existing D: worker for the owner to resume. Continue the measured
+critical path; do not stop after another minor saving while its dominant known
+cause is still actionable. Keep the focused verification guidance below.
 This meets the new-evidence condition above; do not keep the issue indefinitely
 parked, restart the old shaft test by default, or assume a spawn/loading cause
 without timing it. The owner's requested lake-first sequence is now complete.

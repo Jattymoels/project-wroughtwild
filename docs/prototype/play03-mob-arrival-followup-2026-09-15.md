@@ -1,10 +1,13 @@
 # PLAY-03 follow-up — large hitches when nearby mobs appear
 
-Status: [the focused worker](play03-mob-arrival-worker-2026-09-15.md) is prepared
-after RF-05 adoption as `5e5de06`. Workspace: `D:/Wroughtwild/work/play03-mob-arrival`,
-branch `codex/play03-mob-arrival`, setup `build/play03-arrival/SETUP.md`.
-The owner starts it. No diagnostic run or performance review was started during
-coordination; the evidence and reasoning below remain the scoped starting point.
+Status: the [first measured improvement](play03-mob-arrival-result-2026-09-15.md)
+is integrated as `87849bd` from worker `de0125f`. The selected first boar arrival
+fell from 443 to 324 ms; 308 ms of finished presentation setup remains. This is
+partial progress and PLAY-03 remains open. The owner questioned whether significant
+lag was being accepted; the next task must pursue the remaining demonstrated cost.
+Resume `D:/Wroughtwild/work/play03-mob-arrival`, branch `codex/play03-mob-arrival`,
+using the [current continuation](play03-presentation-hitch-worker-2026-09-15.md).
+The owner starts it. The inspection and initial scope below are historical context.
 
 ## Owner observation
 

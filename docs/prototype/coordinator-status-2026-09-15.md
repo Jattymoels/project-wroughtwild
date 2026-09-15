@@ -5,7 +5,7 @@ plan, not a new acceptance gate. The owner wants a solo indie prototype develope
 through playable iterations. Current AGENTS.md and the owner's approved work
 outrank historical review, packaging and rollout requirements.
 
-## RF-05 adoption and next worker
+## Current adoption and next worker
 
 [RF-05 lakes and surface swimming](rf05-lakes-swimming-result-2026-09-15.md) is
 integrated on main as `5e5de06` from worker `c3867bf`, with its matching native DLL
@@ -16,10 +16,24 @@ passed in 6.54 seconds, exit 0 and zero reported errors; no test remains running
 Static water edges and the lack of dedicated swim animation remain limitations.
 Owner lake feel/performance feedback is deferred; R9 stays stopped.
 
-Next is the [PLAY-03 mob-arrival worker](play03-mob-arrival-worker-2026-09-15.md),
-prepared on D: from adopted RF-05. The owner starts it; no worker is automatically
-launched. Its target is the reported brief hitch followed by recovery when mobs
-appear, preserving the lake feature and earlier gameplay.
+The first [PLAY-03 mob-arrival improvement](play03-mob-arrival-result-2026-09-15.md)
+is integrated as `87849bd` from worker `de0125f`. It removes unused hidden mesh
+reconstruction for finished boars, wolves and stags. One measured first boar
+arrival fell from 443 to 324 ms, with 308 ms still in finished presentation setup.
+This remains a significant freeze and PLAY-03 stays open. The owner explicitly
+questioned accepting the remaining lag; this is a partial improvement, not an
+acceptable final state. Reused worker checks: 11 rendered and 39 headless. Main's
+hidden headless import passed in 5.16 seconds with exit 0 and no reported errors.
+The RF-05 DLL is unchanged; all owned checks are finished.
+
+Next is the [remaining presentation hitch](play03-presentation-hitch-worker-2026-09-15.md).
+Resume the existing `D:/Wroughtwild/work/play03-mob-arrival` checkout and
+`codex/play03-mob-arrival` branch; reuse imports, retained timings and native DLL.
+The owner starts/resumes the task. No extra checkout or worker is launched.
+Investigate and reduce the dominant setup cost through the full approach/arrival;
+do not accept another small percentage improvement while a substantial known
+arrival freeze remains actionable. A later unassigned 115 ms spike and the
+underground connection remain separate open observations.
 
 ## Working rhythm
 
@@ -109,12 +123,11 @@ the owner reports large lag coinciding with nearby mobs visibly appearing in the
 overworld and suspects the earlier underground incident had the same trigger.
 They clarified **"A brief hitch, then recovers"**. The correlation and recovery are
 observed; shared underground cause and exact costly phase are unconfirmed.
-[PLAY-03 mob-arrival follow-up](play03-mob-arrival-followup-2026-09-15.md) is now
-the next prepared worker: `D:/Wroughtwild/work/play03-mob-arrival`, branch
-`codex/play03-mob-arrival`, setup `build/play03-arrival/SETUP.md`. RF-05 adoption
-completes the owner's lake-first sequence. Reuse the existing recorder with
-targeted arrival markers, one short causal comparison and relevant lifecycle
-checks. No independent reviewer or parallel runtime repair worker is launched.
+[PLAY-03 mob-arrival follow-up](play03-mob-arrival-followup-2026-09-15.md) now has
+a measured partial improvement on main as `87849bd`. The first boar's presentation
+setup is the next demonstrated target, as detailed in the current dispatch above.
+The source of that setup cost and the underground connection still need evidence.
+No independent reviewer or parallel runtime repair worker is launched.
 
 Reuse the worker's 7 transition and 19 recorder checks. Main's one hidden headless
 import passed in 6.8 seconds with exit 0 and no reported errors. Normal launch

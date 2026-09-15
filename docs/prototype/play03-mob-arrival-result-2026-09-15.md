@@ -172,3 +172,19 @@ It is ignored, not committed. It already includes RF-04/RF-05; keep the matching
 current coordinator DLL. No owner-depot DLL or source-art master was replaced.
 The worker stops after this checked partial improvement; remaining hitch work
 requires the coordinator/owner's next selected scope.
+
+## Coordinator adoption and remaining priority
+
+Worker `de0125f2062d9cd628b44bd23e76094676336d11` is adopted on main as
+`87849bda32be28c0d52751979d8bebfba794354c`. The inherited RF-05 DLL matches the
+reported hash and remains in place. The coordinator reused the worker's evidence
+and ran one hidden headless import: 5.16 seconds, exit 0, zero reported errors.
+No new rendered comparison or native rebuild was run; the check has exited.
+
+The owner asked whether this result was simply accepting significant lag.
+The 324 ms pause remains a significant player-experience defect. Passing the
+functional checks verifies preservation, not acceptable frame pacing. The first
+prompt permitted stopping after the smallest demonstrated improvement; that
+stopping condition does not close the bug. The immediate next scope is the
+[remaining 308 ms presentation setup](play03-presentation-hitch-worker-2026-09-15.md)
+in the existing worker, without another owner reproduction as a prerequisite.

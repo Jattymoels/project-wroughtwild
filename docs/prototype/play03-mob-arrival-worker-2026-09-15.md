@@ -1,8 +1,10 @@
 # PLAY-03 â€” remove the brief hitch when mobs appear
 
-Status: checked partial improvement ready for coordinator integration, 15 September 2026.
+Status: first partial improvement integrated on main as `87849bd`, 15 September 2026.
 [Measured result and remaining hitch](play03-mob-arrival-result-2026-09-15.md):
 443 ms to 324 ms on the selected arrival; PLAY-03 remains open.
+Use the [presentation hitch continuation](play03-presentation-hitch-worker-2026-09-15.md)
+for the next work; the original first-slice scope below is complete.
 Worktree: `D:/Wroughtwild/work/play03-mob-arrival`.
 Branch: `codex/play03-mob-arrival`. Setup: `build/play03-arrival/SETUP.md`.
 The owner starts this worker; the coordinator integrates the checked result and
