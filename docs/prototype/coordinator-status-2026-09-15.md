@@ -55,9 +55,12 @@ presentation, pause/status priority and ordinary Continue are complete.
 The owner subsequently approved the current visual results: "Everything looks
 great - approved", while explicitly leaving full performance impact untested.
 This covers the delivered art, not a claim of full gameplay/performance clearance.
-**Next prepared slice: [MOB-04 playable beetle](mob04-beetle-worker-2026-09-15.md)**,
-`D:/Wroughtwild/work/mob04-beetle`, branch `codex/mob04-beetle`. The owner starts it;
-it delivers rigging, animation and native Gloom Crawler integration together.
+MOB-04's beetle Gloom Crawler is integrated and pushed as `a524870`, including
+native swarm/melee presentation and ordinary Continue.
+[Beetle result, motion and playtest](mob04-beetle-result-2026-09-15.md).
+**Next prepared slice: [MOB-05 playable nymph](mob05-nymph-worker-2026-09-15.md)**,
+`D:/Wroughtwild/work/mob05-nymph`, branch `codex/mob05-nymph`. The owner starts it;
+it delivers rigging, animation and native Bog Lurker integration together.
 The inventory below preserves the original coordination inspection.
 
 At inspection, local main, origin/main and the live GitHub main all point to
@@ -95,7 +98,7 @@ this coordination document's own commit, not a reset target.
 | Existing normal-game art | A1 supplies the R8 kit; A2 supplies boar/wolf/stag with moths preserved. PLAY-01 reduces demonstrated seam-arrival stalls; PLAY-02 improves active broadleaf/pine crowns. All use normal world/Continue entry. | Significant underground lag remains unresolved. Movement comfort and canopy feel await hands-on feedback; blunt limb ends remain visual polish. |
 | R8 environment/placeables | All 26 original ART-07 deliveries and R1–R8 are published as source/handoff work; their selected production runtime is now adopted on main. | **A1 integrated and pushed as `35cee73`.** [Result and playtest](mainline-art-a1-result-2026-09-15.md). |
 | Finished fauna | A2 adopts ART-01 boar and ART-03 wolf/stag, including existing LF visual aliases, on native actor clocks. Moths retain their earlier art/motion. | **A2 integrated and pushed as `27e742d`.** Mid detail, foot sliding and no terrain IK/distance switching are recorded limits. [Result](mainline-fauna-a2-result-2026-09-15.md). |
-| Six replacement mobs | Porcupine Archer (`f0349c2`), crane Shrieker (`d9e6b90`) and ram Stone Husk (`5493470`) are rigged, animated and integrated on main. | Beetle, six-legged nymph and tortoise remain. Preserve native roles; production assets alone do not establish gameplay adoption. |
+| Six replacement mobs | Porcupine Archer (`f0349c2`), crane Shrieker (`d9e6b90`), ram Stone Husk (`5493470`) and beetle Gloom Crawler (`a524870`) are rigged, animated and integrated on main. | Six-legged nymph and tortoise remain. Preserve native roles; production assets alone do not establish gameplay adoption. |
 | Later art/world ambition | Later-era physical augmentation, remaining boss/host art and Reclaimed Frontier references/direction are recorded. | Future scoped production/design. Reclaimed Frontier means living, rolling terrain years after impact, vegetation reclaiming damage and surviving pulsing cracks; no new generator/save rule is selected. |
 | Broader game ambition | Class halls, substantial outpost/transport progression, larger production networks and richer late-game content remain longer-term design. | Choose only what the current prototype loop demonstrates it needs. Multiplayer, infinite generation and broad factory/trading systems remain outside scope. |
 
@@ -133,8 +136,9 @@ to their own future decision/bug work; art adoption must not silently decide the
    separate from pecking and keeps the legs walking; Continue clears transient poses.
    **[MOB-02 ram](mob02-ram-result-2026-09-15.md) is integrated and pushed as `5493470`.**
    Its stationary brace, walk and forehead strike preserve native guard and combat.
-   **[MOB-04 beetle](mob04-beetle-worker-2026-09-15.md)** is prepared as the next
-   complete playable worker slice. Nymph and tortoise follow. Only this worker
+   **[MOB-04 beetle](mob04-beetle-result-2026-09-15.md)** is integrated and pushed
+   as `a524870`. **[MOB-05 nymph](mob05-nymph-worker-2026-09-15.md)** is prepared
+   as the next complete playable worker slice; tortoise follows. Only this worker
    owns new shared mob wiring; the coordinator integrates its checked commit.
    This is a production
    order, not new game rules; no extra visual approval is required at integration.
@@ -194,4 +198,6 @@ checks and source evidence. Main's 5.48-second headless import passed. MOB-03 is
 also integrated/pushed, reusing source evidence with 29 native and 10 Continue
 checks plus the asset import. MOB-02 is integrated/pushed as `5493470`, reusing
 source evidence with 29 native and 10 Continue assertions plus a 4.02-second main
-import. Hands-on feedback remains deferred; three replacement mobs remain.
+import. MOB-04 is integrated/pushed as `a524870`, reusing 10 rig, 45 native and
+14 Continue checks with one 5.23-second main import. Full performance impact and
+hands-on beetle feedback remain deferred; nymph and tortoise are the last two.

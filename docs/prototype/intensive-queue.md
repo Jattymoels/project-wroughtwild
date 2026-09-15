@@ -17,15 +17,16 @@ is integrated and pushed on main as `f0349c2`:
 [MOB-03 crane](mob03-crane-result-2026-09-15.md) is integrated and pushed as
 `d9e6b90`, with native recruiting-call/peck presentation and Continue cleanup.
 [MOB-02 ram](mob02-ram-result-2026-09-15.md) is integrated and pushed as `5493470`,
-with native guard/melee presentation and ordinary Continue. Beetle, nymph and
-tortoise remain. The [shared-file boundary](mob-parallel-production-2026-09-15.md)
+with native guard/melee presentation and ordinary Continue. [MOB-04 beetle](mob04-beetle-result-2026-09-15.md)
+is integrated and pushed as `a524870`, including native swarm/melee and Continue.
+Nymph and tortoise remain. The [shared-file boundary](mob-parallel-production-2026-09-15.md)
 keeps independent production separate from completed gameplay adoption.
 R9 stays stopped.
 
 After MOB-02 the owner approved the current visuals and explicitly left full
-performance impact untested. **[MOB-04 beetle](mob04-beetle-worker-2026-09-15.md)**
+performance impact untested. **[MOB-05 nymph](mob05-nymph-worker-2026-09-15.md)**
 is the next prepared D: worker slice: fitted six-leg motion and normal-game
-Gloom Crawler adoption, followed by nymph and tortoise. PLAY-03 remains open.
+Bog Lurker adoption, followed by tortoise. PLAY-03 remains open.
 
 The owner currently cannot playtest and has approved continued prototype work
 until told otherwise. Human feedback remains deferred; it does not block the

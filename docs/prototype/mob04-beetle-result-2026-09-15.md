@@ -1,7 +1,7 @@
 # MOB-04 — playable beetle Gloom Crawler
 
 The approved beetle now replaces the Gloom Crawler in ordinary new worlds and
-Continue on `codex/mob04-beetle`. Its 25-bone skin has six fitted jointed legs,
+Continue on main, published as `a524870`. Its 25-bone skin has six fitted jointed legs,
 an alternating tripod gait, supported antennae and a short mandibular brace/bite.
 The displaced dark elytra, exposed lamellae and recessed travelling lifelines
 remain. Normal native pursuit, swarm damage and melee events drive presentation.
@@ -15,6 +15,23 @@ open. Legitimate cave/digging behavior is unchanged; R9 remains stopped.
 
 Standing owner approval covers this integrated prototype slice. This records
 implementation and technical checks, not a new claim of hands-on owner review.
+
+## Mainline adoption — 15 September 2026
+
+The completed worker task returned `ebaef881a2623b63b77c6607f4545a0429acaa6e`.
+The coordinator cherry-picked it as `a524870` without conflicts. Integrated game
+and beetle-tool files match the checked worker commit exactly. The worker's 10
+saved-master, 45 native and 14 Continue checks above were reused. One headless
+main import passed in **5.23 seconds**, exit 0 and no reported errors; its compact
+[result](../../game/tests/mob04/evidence/mainline-import.json) is retained with the
+evidence. Logs and private data are in
+`D:/Wroughtwild/work/mob04-beetle/build/mob04/mainline-adoption/`.
+
+No new renderer, source rebuild, combat matrix or performance gate was run. The
+owned import process exited; no game override or testing was left running. The
+ordinary `c4d620f..a524870` push to origin/main succeeded. Existing owner captures
+were preserved. Nymph and tortoise remain; underground lag and full performance
+impact are still open rather than implied to pass through this art adoption.
 
 ## Focused verification
 
@@ -93,7 +110,7 @@ in the recipe/descriptor. No new gameplay tuning is introduced.
 ## Normal-game playtest later
 
 ```powershell
-& 'C:/Users/Matty/Godot/Godot_v4.5-stable_win64.exe' --path 'D:/Wroughtwild/work/mob04-beetle/game'
+& 'C:/Users/Matty/Godot/Godot_v4.5-stable_win64.exe' --path 'C:/Users/Matty/Dev/project-wroughtwild/game'
 ```
 
 1. Choose Continue or a new world; no art/showcase flag is needed.
@@ -116,7 +133,7 @@ clip includes idle, pursuit, native bites and freeze.
 
 ## Commit and publication
 
-Deliver the checked commit on **`codex/mob04-beetle`** to the coordinator. The exact
-SHA is returned in chat. Normal-game integration is included on this branch;
-mainline integration, aggregate status updates and push remain coordinator-owned.
-No worker push or mainline publication is claimed.
+The worker delivered `ebaef881a2623b63b77c6607f4545a0429acaa6e` on
+**`codex/mob04-beetle`**, including native runtime integration. It made no worker
+push. The coordinator completed mainline adoption and publication as `a524870`,
+as recorded above, then updated the aggregate status and next worker prompt.
