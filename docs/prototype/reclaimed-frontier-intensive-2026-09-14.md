@@ -9,8 +9,11 @@ Blender grass forms respond to the owner's ground feedback. [RF-03 landforms and
 inspiring home sites](rf03-landforms-homes-result-2026-09-15.md) is adopted as
 `d4aa817`, with four distinct useful settings in fresh normal V7 worlds.
 RF-04's local ground correction is adopted as `27fc34d`; RF-05 lakes with simple
-swimming are adopted as `5e5de06`. The reported mob-arrival hitch is next.
-Other biome expansion remains later. R9 stays stopped.
+swimming are adopted as `5e5de06`. The selected mob-arrival presentation hitch is
+now corrected on main as `1bc19e9`; the original underground connection remains
+unconfirmed. [PLAY-06 navigation](play06-navigation-worker-2026-09-15.md) is the
+next small usability slice. Fen/mountain recovery remains the next larger biome
+direction to scope separately. R9 stays stopped.
 
 ## Ground continuity and water — owner feedback, 15 September
 

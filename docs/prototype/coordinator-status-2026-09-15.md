@@ -5,7 +5,7 @@ plan, not a new acceptance gate. The owner wants a solo indie prototype develope
 through playable iterations. Current AGENTS.md and the owner's approved work
 outrank historical review, packaging and rollout requirements.
 
-## Current adoption and remaining issues
+## Current adoption and next worker
 
 [RF-05 lakes and surface swimming](rf05-lakes-swimming-result-2026-09-15.md) is
 integrated on main as `5e5de06` from worker `c3867bf`, with its matching native DLL
@@ -38,6 +38,16 @@ unassigned 115 ms non-arrival spike, underground connection, other mob pipelines
 and long world entry remain open or unmeasured. No broad review, new worker or
 further performance slice is automatically launched. The completed D: worker
 retains a private playtest launcher with a staged approach and optional trace.
+
+**Next: [PLAY-06 bearings and optional coordinates](play06-navigation-worker-2026-09-15.md).**
+The owner's lake directions exposed the lack of an in-game compass/position readout.
+Prepare a discreet default compass and optional X/Z/Y readout in existing H Display
+preferences, preserving input, saves and current gameplay. This is a small HUD
+addition under standing prototype approval. Workspace:
+`D:/Wroughtwild/work/play06-navigation`, branch `codex/play06-navigation`, setup
+`build/play06/SETUP.md`. The owner starts it; no task or game starts automatically.
+RF-01–05 and original art/base-mob adoption are complete. Fen/mountain recovery
+remains the next larger Reclaimed Frontier direction to scope separately.
 
 ## Working rhythm
 
@@ -152,8 +162,8 @@ No new worker or review wave was started during adoption.
 PLAY-04 station/home and campaign feel remain owner playtest questions. They are
 not failed acceptance tests, and PLAY-05 does not close them. Later-era creature
 growth and boss art remain longer-term scoped choices. Reclaimed Frontier now
-has the first RF-01 brief above; broader terrain/biome ambitions are still future
-work. The original implementation sequence below is retained as history.
+has RF-01–05 integrated; fen/mountain recovery and broader biome ambitions remain
+future work. The original implementation sequence below is retained as history.
 
 ## Repository inventory
 

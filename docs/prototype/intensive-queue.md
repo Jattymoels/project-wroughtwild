@@ -40,6 +40,15 @@ The selected presentation freeze is resolved; broader PLAY-03 underground lag,
 the earlier non-arrival spike, other families and long entry remain open/unmeasured.
 The worker is complete; no broad performance/review wave starts automatically.
 
+**Next prepared slice: [PLAY-06 navigation](play06-navigation-worker-2026-09-15.md).**
+The owner asked how to see direction/coordinates while finding the new lake.
+A compact compass and optional live X/Z/Y display address that concrete gap using
+the existing HUD and H Display preferences. It adds no minimap, marker system or
+gameplay/save rule. D: workspace: `D:/Wroughtwild/work/play06-navigation`, branch
+`codex/play06-navigation`. The owner starts it; coordinator adoption follows.
+Original adoption/base-mob and RF-01–05 scopes are complete; broader fen/mountain
+recovery remains a later bounded design/production choice.
+
 **RF-01 is integrated on main as `66f3211`: [result and playtest](rf01-reclaimed-ground-result-2026-09-15.md).**
 Ordinary V6/LF play now has seeded low meadow/forest cover with actual support and
 paid footprint handling. Coverage remains patchy; the owner dislikes the exposed
@@ -186,12 +195,13 @@ No new resource, recipe, enemy cap, generator profile or save migration is part
 of this design delivery. Mob rigs/era augmentation and the ART-05 route
 performance/polish backlog remain open.
 
-## Reclaimed Frontier — first slice scoped
+## Reclaimed Frontier — first five slices delivered
 
-**Queued 14 September; RF-01 scoped at the owner's request on 15 September;
-implementation not started.** The first prepared
-[meadow/woodland worker](rf01-reclaimed-ground-worker-2026-09-15.md) changes low
-cosmetic cover in current V6/LF play while retaining native terrain and saves.
+**RF-01–05 are integrated on main.** Meadow/woodland cover, authored ground and
+grass, broad landforms/home sites, local ground continuity and lakes/swimming
+have delivered results. The older first-slice outline below is historical context;
+use the current [status and scope table](reclaimed-frontier-intensive-2026-09-14.md)
+and coordinator sheet instead of dispatching RF-01 again.
 The [Reclaimed Frontier brief](reclaimed-frontier-intensive-2026-09-14.md) preserves
 the new direction: rolling, living terrain years after the meteorite catastrophe,
 with established vegetation over much of the chaos, large impacts shaping the
