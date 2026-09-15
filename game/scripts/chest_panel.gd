@@ -101,6 +101,7 @@ func close_panel() -> void:
 	if not is_open():
 		return
 	_root.visible = false
+	_clear_rows()
 	chest = null
 	store_key = ""
 	closed.emit()
@@ -141,10 +142,7 @@ func refresh() -> void:
 		return
 	var rules: Dictionary = sim.hauling_rules()
 	_title.text = "Chest  ·  %d / %d" % [sim.store_units(store_key), int(rules.get("chest_units", 0))]
-	for child in _rows.get_children():
-		_rows.remove_child(child)
-		child.free()
-	row_count = 0
+	_clear_rows()
 	var families := {}
 	var bases := sim.item_base_ids()
 	var held: Dictionary = sim.inventory()
@@ -160,6 +158,20 @@ func refresh() -> void:
 		_add_row(String(id), int(held.get(id, 0)), int(contents.get(id, 0)))
 	_empty.visible = row_count == 0
 	_fit.call_deferred()
+
+
+func _clear_rows() -> void:
+	for row in _rows.get_children():
+		# A transfer refreshes inside pressed. Retire every old action now,
+		# including on close, but keep its emitter alive until emission ends.
+		for control in row.get_children():
+			if control is Button:
+				control.disabled = true
+				for connection in control.pressed.get_connections():
+					control.pressed.disconnect(connection.callable)
+		_rows.remove_child(row)
+		row.queue_free()
+	row_count = 0
 
 
 func _fit() -> void:
