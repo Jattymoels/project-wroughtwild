@@ -1,8 +1,10 @@
 # RF-05 — first lakes and simple swimming
 
-Status: required next feature after RF-04 adoption, 15 September 2026.
-This is the selected scope, not a completed implementation or a dispatched
-worker. Prepare its final prompt and D: worktree from adopted RF-04 main.
+Status: next implementation worker prepared after RF-04 adoption, 15 September
+2026. [The final worker brief](rf05-lakes-swimming-worker-2026-09-15.md) settles the
+choices below. Workspace: `D:/Wroughtwild/work/rf05-lakes-swimming`, branch
+`codex/rf05-lakes-swimming`, setup `build/rf05/SETUP.md`. The owner starts it.
+No lake/swimming implementation is claimed yet.
 
 ## Owner decision and intended experience
 
@@ -24,9 +26,10 @@ interpretation under standing approval, not additional verbatim owner requests.
 
 ## Small complete playable boundary
 
-- Generate one or two modest, seeded lakes with actual basins, readable shallow
-  margins and deeper centres. Choose count/size/depth in documented tuning during
-  the final worker brief. Compose shorelines into the surrounding broad landforms;
+- Generate one modest, seeded lake initially, with an actual basin, readable
+  shallow margins and a deeper centre. The worker brief starts around 50–90 m
+  across, 4 m deep and 6–10 m shallow margins, with documented feel tuning.
+  Compose shorelines into the surrounding broad landforms;
   avoid a decorative blue plane floating above land or flooding every low cave.
 - Include at least one useful dry home opportunity near a lake. Preserve four
   useful starter cores, finite supplies, opening pressure, progression routes and
@@ -40,14 +43,14 @@ interpretation under standing approval, not additional verbatim owner requests.
 - Water state must be bounded and authoritative enough for movement and saves,
   not inferred only from a decorative mesh. Ground movement, teleport/respawn,
   Continue and loading a player in water must settle into a valid position/state.
-- Keep paid items and death recovery reachable with exact ownership. The final
-  worker brief must choose a simple surface-float or reachable-bank treatment for
-  drops/recovery in deep water using the existing ownership model. Do not add a
+- Keep paid items and death recovery reachable with exact ownership. Pickups and
+  death packs released into the lake volume float at the surface at their existing
+  horizontal position, with ordinary age/contents/collection preserved. Do not add a
   parallel inventory, duplicate drops or silently destroy submerged ownership.
-- Use fixed lake extents/levels with local terrain/build refresh where necessary.
-  Define the small dig/build boundary explicitly before implementation: local
-  clipping/contact may respond, but lakes do not spread through every excavation
-  or require hydrological simulation. Preserve legitimate caves and digging.
+- Use fixed lake extents/levels and original bed limits, with local terrain/build
+  refresh and solid-volume rejection. Water neither spreads nor drains with
+  digging; tunnels beyond/below the generated basin stay dry. Preserve legitimate
+  caves, digging and ordinary paid support. Record the static boundary honestly.
 - Give the water restrained colour, motion and readable shores in ordinary play.
   Existing `strange_sites.gd::_pools` and `strange_water.gdshader` may provide visual
   ingredients; current fen discs are decorative and do not supply basins/swimming.
@@ -55,7 +58,7 @@ interpretation under standing approval, not additional verbatim owner requests.
 
 ## Generation and save boundary
 
-Changing basin geometry requires a separate fresh normal-world identity, expected
+Changing basin geometry requires the separate fresh normal-world identity
 `frontier_v8`, with separate tuning inputs/composition. Prepare it from RF-04's
 adopted continuity result. Keep the finite 1,024 x 1,024 x 96 extent and established
 editable cell size. Old V1–V7/LF generation, saved geography, anchors, excavation,
@@ -69,11 +72,14 @@ art, surface continuity and normal gameplay into the new profile explicitly.
 
 ## Worker preparation and focused evidence
 
-After RF-04 is integrated, inspect the actual movement/save/drop APIs and settle
-the small water record, contact, edit and recovery choices in the final worker
-brief. Prepare `D:/Wroughtwild/work/rf05-lakes-swimming` with the matching native
-runtime at that point; do not create it now from a soon-stale RF-03 base. The owner
-starts the worker. The coordinator adopts its checked result under standing approval.
+RF-04 worker `5c421b3` is integrated as `27fc34d` with its matching native DLL.
+Scoping inspected player movement/death, generated map records, `Pickup`,
+`DroppedBundle`, `WorldDrops` and SaveManager restoration. The final brief selects
+a compact generated lake record and a shared bounded water query, transient swim
+state derived from world/pose, and existing drop save fields for floating recovery.
+The D: worker is prepared from adopted RF-04 and the final brief; no implementation
+or extra engine run was started for scoping. The coordinator adopts its checked
+result under standing approval.
 
 Default to three focused jobs on one renderer: deterministic lake/shore/supply
 generation checks; water entry/swim/shore exit and water-related Continue/recovery

@@ -1,12 +1,13 @@
 # World Generation, Settlements and Travel
 
-**RF-04 worker implementation, 15 September 2026:**
+**RF-04 integrated as `27fc34d`, 15 September 2026:**
 [Result](../prototype/rf04-ground-continuity-result-2026-09-15.md). V7 upward
 source-face centres follow their existing averaged corners, removing extra local
 peaks/hollows. Side/underside contacts, native heights/blocks, profile/seed, resource
 anchors, four home cores and paid ownership remain. Render/collision/sampling share the
 corrected triangles; existing V7 Continue needs no migration. V1–V6/LF surfaces stay
-unchanged. Coordinator adoption is pending.
+unchanged. The matching native DLL is installed locally; main's short import passed.
+Steep native terracing remains a documented limit.
 
 **Selected sequence, 15 September 2026:** [RF-04 ground continuity](../prototype/rf04-ground-continuity-worker-2026-09-15.md)
 addresses reported unnatural small grassland bumps while retaining broad hills
@@ -15,7 +16,12 @@ and saved native geography. The owner now requires **lakes with simple swimming*
 basins, wading, surface swimming, easy exits and appealing dry lakeside home space.
 Its separate fresh-world profile keeps existing V1–V7/LF worlds unchanged. This
 selected future feature supersedes historical no-swimming exclusions within that
-scope; no lake/swimming implementation is claimed yet.
+scope; no lake/swimming implementation is claimed yet. The prepared
+[RF-05 worker brief](../prototype/rf05-lakes-swimming-worker-2026-09-15.md) selects
+one lake per fresh V8 world, fixed basin water with original bed limits, surface
+swimming and surface-floating loose drops/death packs under existing ownership.
+Digging does not spread/drain water or flood underlying caves. V1–V7/LF inputs,
+saved terrain and ownership retain their meaning. The owner starts the worker.
 
 **RF-03 integrated on main as `d4aa817`, 15 September 2026:** normal fresh random/chosen
 worlds select `frontier_v7`, a separate input table and composer at the existing

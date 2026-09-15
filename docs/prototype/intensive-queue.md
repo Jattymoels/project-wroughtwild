@@ -40,11 +40,14 @@ fresh normal-world V7, varied useful home settings and rolling old-impact
 surroundings. Existing V6/LF worlds retain their geography and ownership.
 RF-03 is now [integrated as `d4aa817`](rf03-landforms-homes-result-2026-09-15.md),
 with the matching native DLL locally installed and main's short import passed.
-Next is [RF-04 ground continuity](rf04-ground-continuity-worker-2026-09-15.md),
-responding to the owner's unnatural small-bump feedback while keeping broad hills.
-Its D: prompt/worktree is prepared for the owner to start. [RF-05 lakes with simple
-swimming](rf05-lakes-swimming-scope-2026-09-15.md) is the required following feature,
-explicitly selected by the owner; prepare it after RF-04 adoption. Existing saved
+[RF-04 ground continuity](rf04-ground-continuity-result-2026-09-15.md) is integrated
+as `27fc34d`, removing extra V7 face-centre bumps while keeping broad hills and
+saved geography. Steeper native terracing remains. Its matching DLL is installed;
+focused worker evidence was reused and main's 6.76 s import passed.
+[RF-05 lakes with simple swimming](rf05-lakes-swimming-worker-2026-09-15.md) is next,
+with its D: prompt/worktree prepared from adopted RF-04 for the owner to start.
+One lake per fresh V8 world, accessible shores, dry home space and reachable
+floating drops/death packs form the first complete water feature. Existing saved
 worlds keep their geography. Small seas, fen/mountain redesign, fresh-LF generation
 and era/boss work remain later.
 

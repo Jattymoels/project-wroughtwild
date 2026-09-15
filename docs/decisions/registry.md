@@ -1,11 +1,20 @@
 # Decision Registry
 
-RF-04 worker implementation, 15 September 2026: the
+RF-05 worker preparation, 15 September 2026: [the implementation brief](../prototype/rf05-lakes-swimming-worker-2026-09-15.md)
+settles the selected lake scope under standing prototype approval. One seeded
+lake per fresh `frontier_v8` world, useful dry lakeside home space, wading and
+surface swimming come first. Generated water has fixed extents/levels and original
+bed limits; digging neither spreads/drains it nor floods underlying caves.
+Pickups/death packs float locally at the surface with existing exact ownership,
+lifetimes and collection. Old V1–V7/LF geography and game rules remain. The owner
+starts the prepared D: worker; no lake implementation is claimed yet.
+
+RF-04 integrated as `27fc34d`, 15 September 2026: the
 [result](../prototype/rf04-ground-continuity-result-2026-09-15.md) records the confirmed
 face-centre geometry cause and a V7-only upward-face correction. Side/underside contact,
 native saved geography and paid ownership are preserved. No new profile, save migration,
-controller rule or tuning is selected. Worker commit and matching DLL await coordinator
-adoption; RF-05 remains next.
+controller rule or tuning is selected. Worker `5c421b3` and matching DLL are adopted;
+main's short headless import passed. Steep native terracing remains; RF-05 is next.
 
 Owner landscape correction and water selection, 15 September 2026: following
 RF-03, small bumps between grass in the same biome feel too wavy and unnatural.

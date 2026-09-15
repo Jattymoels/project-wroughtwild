@@ -4,7 +4,23 @@ RF-04 removes the extra face-centre peaks and hollows from V7's nearby ground,
 so the meadow/woodland surface reads and walks more continuously. Broad hills,
 all four RF-03 home settings, native saved geography and paid ownership remain.
 Normal V7 New World and V7 Continue use the correction without a save migration.
-This worker stops for coordinator adoption; RF-05 has not started here.
+Worker `5c421b3` is integrated on main as `27fc34d`. RF-05 has not started here.
+
+## Mainline adoption
+
+The coordinator installed the matching RF-04 DLL in the normal owner depot after
+confirming no Godot process was running. The worker's focused geometry, contact,
+Continue and Forward+ evidence below was reused. Main's one hidden headless import
+passed in **6.76 seconds**, exit 0, engine exit 0 and zero reported errors.
+Private logs/state are retained at
+`D:/Wroughtwild/work/rf04-ground-continuity/build/rf04/main-integration`.
+No coordinator test remains running. Worker import sidecars remain local and
+are excluded from adoption; no native binary is committed. The ordinary source
+push is reported separately in the coordinator handoff.
+
+[RF-05 lakes and simple swimming](rf05-lakes-swimming-worker-2026-09-15.md) is
+prepared next from this adopted surface correction. Owner feel remains deferred
+feedback; the remaining steep-bank terracing below is not claimed resolved.
 
 ## Remaining limits
 
@@ -95,6 +111,16 @@ route thereafter uses normal movement, active world work and collision.
 
 ## Ordinary New World / Continue playtest
 
+For the integrated normal owner game:
+
+```powershell
+& 'C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe' --path 'C:/Users/Matty/Dev/project-wroughtwild/game' -- --world-seed=77
+```
+
+V7 **Continue** receives the surface correction on its existing geography. A
+fresh **New World**, seed 77, offers the route below; the normal launcher uses
+the owner's usual save slot. V1–V6/LF Continue retains its prior surface.
+
 Use the worker's user-invoked launcher for an ordinary separate save slot:
 
 ```powershell
@@ -126,14 +152,14 @@ For the already-paid private RF-03 fixture:
 Choose **Continue**. It copies the retained fixture once into a separate private
 slot, never over an existing playtest save. Floor: `(606,39,498)`; workbench:
 `(600,39,502)`. This is a paid test fixture, not a free home in a normal New World.
-After coordinator adoption, ordinary owner-depot V7 Continue gets the surface
+Ordinary owner-depot V7 Continue now gets the surface
 correction; V1–V6/LF Continue retains its prior surface and geography.
 
 ## Native handoff and publication
 
-The checked source and selected evidence are committed on `codex/rf04-ground-continuity`.
-The final worker commit is reported in chat and in the private source provenance
-record after committing. Coordinator adoption requires that commit and this DLL:
+The checked source and selected evidence are committed as `5c421b3` on
+`codex/rf04-ground-continuity` and adopted on main as `27fc34d`, together with
+this matching DLL:
 
 `D:/Wroughtwild/work/rf04-ground-continuity/game/bin/libwroughtwild_sim.windows.x86_64.dll`
 
@@ -145,5 +171,5 @@ ABI, DLL hash and final matching source revision. The selected verification
 receipt retains the native source/input hashes. The builder resolves sources
 from this worker, uses incremental objects and never rebuilds/downloads the ABI.
 
-Mainline adoption, owner-depot DLL replacement and ordinary push are coordinator
-work. This worker makes no remote push and stops before RF-05.
+Mainline adoption and owner-depot DLL replacement are complete. The coordinator
+reports the ordinary push outcome separately. The RF-04 worker is finished.

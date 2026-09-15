@@ -66,22 +66,25 @@ generation/legacy identity, 31 paid-build and 19 V7 Continue checks, and a real
 exit 0, zero reported errors; its private logs/state are on D:. No test is running.
 Only two seeds and one rendered route were covered; owner feel remains feedback.
 
-**[RF-04 ground continuity](rf04-ground-continuity-result-2026-09-15.md) is complete in its worker and awaiting coordinator adoption.**
+**[RF-04 ground continuity](rf04-ground-continuity-result-2026-09-15.md) is integrated on main as `27fc34d`.**
 The V7-only upward-face correction removes extra face-centre peaks/hollows while
 preserving native saved geography and the RF-03 home settings. A discovered side
 contact regression was fixed by retaining side/underside fans. Final geometry/dig
 checks, the exact corner-contact walk and a 60.32 m Forward+ walk pass; reuse the
-private paid-home Continue evidence as described in the result. Adopt the worker
-commit together with its matching DLL (`bcfb358028cfa1ac3c6a7269001a6d3451a47b73ba74ed1d3b9d622ef3a72700`).
-Source and runtime remain at `D:/Wroughtwild/work/rf04-ground-continuity`, branch
-`codex/rf04-ground-continuity`; no owner-depot DLL replacement or push was made.
-Owner playtesting remains deferred. RF-05 is not started by this worker.
+private paid-home Continue evidence as described in the result. Worker `5c421b3`
+and its matching DLL are adopted. Main's hidden headless import passed in 6.76 s,
+exit 0 and zero reported errors. Private output stays on D: and no test is running.
+V7 New World/Continue receive the correction; V1–V6/LF remain unchanged. Steep
+terracing and personal owner feel remain limitations. The RF-04 worker is finished.
 
-**Required next feature: [RF-05 lakes and simple swimming](rf05-lakes-swimming-scope-2026-09-15.md).**
+**Next worker: [RF-05 lakes and simple swimming](rf05-lakes-swimming-worker-2026-09-15.md).**
 The owner now requires water and selected lakes with simple swimming. Include
 wading, surface swimming, easy exits and appealing dry lakeside building space.
-Prepare its worker only after RF-04 adoption, with a separate fresh-world profile
-for lake basins and existing saved geography intact. Small seas, fen/mountain
+Prepared from adopted RF-04 at `D:/Wroughtwild/work/rf05-lakes-swimming`, branch
+`codex/rf05-lakes-swimming`, setup `build/rf05/SETUP.md`. The owner starts it.
+The brief selects one lake per fresh V8 world, static bounded basin water and
+surface-floating drops/death packs using existing ownership. Existing saved
+geography remains intact. Small seas, fen/mountain
 redesign and a fresh-LF successor remain later possibilities.
 
 **PLAY-03 diagnostic delivery is integrated as `cbc6f67`.** The staged drop did
