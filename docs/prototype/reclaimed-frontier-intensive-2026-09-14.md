@@ -1,12 +1,12 @@
 # Reclaimed Frontier — terrain and biome composition
 
-**Status: RF-01 integrated on main as `66f3211`, 15 September 2026.**
+**Status: RF-01 and RF-02 integrated on main, 15 September 2026.**
 [RF-01 meadow and woodland recovery](rf01-reclaimed-ground-result-2026-09-15.md)
 adds supported low cover in ordinary V6/LF play. The recovered floor remains
-visibly patchy. The owner's latest feedback makes ground-surface quality and
-grass appearance the next priority. The owner has requested the
-[RF-02 prompt/worktree](rf02-ground-grass-worker-2026-09-15.md), prepared for them
-to start. Later terrain and biome work remains proposed. R9 stays stopped.
+visibly patchy. [RF-02 ground materials and grass](rf02-ground-grass-result-2026-09-15.md)
+is now adopted as `7c1e3a7`: finer authored turf/litter surfaces and two original
+Blender grass forms respond to the owner's ground feedback. Physical terrain
+and biome expansion remain proposed. R9 stays stopped.
 
 ## Ground and grass feedback — 15 September
 
@@ -73,7 +73,7 @@ contract, with existing saves kept intact; no new generator profile is selected.
 | Milestone | Present scope/status |
 | --- | --- |
 | RF-01: meadow/woodland recovery | Integrated as `66f3211`; supported low-cover composition, focused lifecycle/use/Continue evidence and a real 76.42 m walk. Still patchy; no impact margin on that route. |
-| RF-02: ground and grass art | Prompt/worktree prepared at the owner's request; ground first, two useful Blender grass forms to match, ordinary V6/LF integration. Owner starts the worker. |
+| RF-02: ground and grass art | Integrated as `7c1e3a7`; two authored surface treatments and two Blender grass forms, ordinary V6/LF play and Continue. Clumped cover/hardware cost remain limitations. |
 | Later landform slice | Proposed after the surface/grass response: old-impact surroundings, rises/dips and routes. Decide whether a new-world-only successor is needed; never silently reshape existing saves. |
 | Later biome expansion | Proposed: fen and mountain recovery based on what works in RF-01 and any landform decision. No all-biome production batch is dispatched now. |
 
@@ -89,8 +89,10 @@ Worker location: `D:/Wroughtwild/work/rf01-reclaimed-ground`, branch
 `codex/rf01-reclaimed-ground`; setup is `build/rf01/SETUP.md`. Worker `85d3ece`
 is complete and adopted as `66f3211`. Current standing approval covers ordinary
 prototype delivery and main adoption without another visual/benchmark gate.
-RF-02 is prepared at `D:/Wroughtwild/work/rf02-ground-grass`, branch
-`codex/rf02-ground-grass`, setup `build/rf02/SETUP.md`. The owner starts it.
+RF-02 worker `9180001` at `D:/Wroughtwild/work/rf02-ground-grass`, branch
+`codex/rf02-ground-grass`, is complete and adopted as `7c1e3a7`.
+Next proposed work is a bounded landform scope with an explicit saved-world
+contract; no RF-03 worker is prepared or started.
 Earlier informal references to RF-02 as landform work are superseded by this
 ground/grass priority; no physical terrain slice has been dispatched.
 

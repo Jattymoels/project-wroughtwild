@@ -44,14 +44,21 @@ The owner reports that the ground texture looks unpleasant and asks whether the
 grass needs proper Blender production. RF-01 reused simplified B2 LOD2 grass;
 coverage is still patchy and its route did not reach an impact margin. It is an
 implemented placement iteration, not a claim of final visual acceptance.
-The active terrain uses the custom `wildland_terrain.gdshader` procedural surface.
-**Next worker: [RF-02 ground materials and grass](rf02-ground-grass-worker-2026-09-15.md).**
-The owner requested its prompt/worktree: authored meadow soil/turf and woodland
-litter first, then two useful near-view grass forms through the existing Blender
-workflow. Prepared location: `D:/Wroughtwild/work/rf02-ground-grass`, branch
-`codex/rf02-ground-grass`, setup `build/rf02/SETUP.md`. Reuse RF-01's placement
-and evidence; preserve native terrain and saves. The owner starts the worker.
-Physical landforms and other biomes remain later work.
+**[RF-02 ground materials and grass](rf02-ground-grass-result-2026-09-15.md)
+is integrated on main as `7c1e3a7`.** Worker `9180001` is finished. Authored turf/
+soil and woodland litter maps now replace coarse procedural grain on eligible
+V6/LF surfaces, and two original Blender grass forms replace RF-01's stacked
+LOD2 crowns. Native terrain, saves, placement and paid footprints are preserved.
+Reuse the 29 asset checks, 23 final Continue/use checks and successful 76.42 m
+Forward+ walk. Main's hidden headless import passed in 5.06 seconds, exit 0,
+zero reported errors; its private logs/state are on D: and no test remains running.
+New editable source remains at `D:/Wroughtwild/source-art/rf02-ground-grass`.
+
+The grass is still clumped, with gaps at shelves/reserved areas. Hardware cost,
+other lighting and personal owner acceptance remain unmeasured/deferred.
+The next proposed scope is rolling landforms and old-impact surroundings, with
+an explicit saved-world compatibility decision before implementation. No RF-03
+worker is prepared or started; fen/mountain and other biome expansion remain later.
 
 **PLAY-03 diagnostic delivery is integrated as `cbc6f67`.** The staged drop did
 not reproduce the owner's continuing slowdown; no causal fix is claimed. The

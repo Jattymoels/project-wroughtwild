@@ -1,5 +1,11 @@
 # Decision Registry
 
+RF-02 delivery update, 15 September 2026: worker `9180001` is integrated on main
+as `7c1e3a7`; [result and focused evidence](../prototype/rf02-ground-grass-result-2026-09-15.md).
+Authored ground maps and two Blender grass forms retain the selected terrain,
+save and placement boundary. No landform/new-generation contract is selected by
+this adoption; broader physical terrain work remains proposed.
+
 RF-02 work-item selection, 15 September 2026: the owner requested the next
 [ground-material and grass prompt/worktree](../prototype/rf02-ground-grass-worker-2026-09-15.md).
 Author meadow turf/soil and woodland litter first, then finish two useful grass

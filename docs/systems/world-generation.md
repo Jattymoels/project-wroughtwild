@@ -13,8 +13,8 @@ landforms remain later work. The owner requested
 [RF-02 ground materials and grass](../prototype/rf02-ground-grass-worker-2026-09-15.md)
 next: authored ground surfaces and a small Blender grass kit, preserving this
 placement and native terrain/save boundary. RF-02 is now
-[delivered on its worker branch](../prototype/rf02-ground-grass-result-2026-09-15.md)
-for coordinator integration: original turf/litter maps and two Blender grass
+[integrated on main as `7c1e3a7`](../prototype/rf02-ground-grass-result-2026-09-15.md):
+original turf/litter maps and two Blender grass
 forms use the same placement, support and paid-work clearances. A transient native
 biome mask scopes materials to eligible V6/LF meadow/forest surfaces;
 no generator, save, ownership or collision change is introduced.

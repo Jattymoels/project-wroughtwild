@@ -4,8 +4,23 @@ RF-02 gives ordinary V6/Living Frontier meadow and woodland finer turf, soil and
 leaf-litter surfaces, with fuller curved grass that roots into that ground.
 The coarse embossed ground grain is replaced on these surfaces. Two original
 Blender clumps now occupy RF-01's existing placements in New World and Continue.
-This is a playable art iteration on the worker branch, ready for coordinator
-integration.
+This playable art iteration is integrated on main as `7c1e3a7`.
+
+## Mainline adoption
+
+On 15 September 2026 the coordinator adopted worker `9180001` onto main as
+`7c1e3a7` under standing prototype permission. Its 29 asset checks, 23 final
+Continue/use checks and successful ordinary Forward+ walk were reused; the
+initial fixture failures below remain recorded. One additional hidden headless
+main import passed in **5.06 seconds, exit 0, zero reported errors**. Private
+logs and temporary state are at
+`D:/Wroughtwild/work/rf02-ground-grass/build/rf02/main-integration`.
+No new rendered review or gameplay matrix was run, and no owned test remains
+running. The coordinator's final chat records the actual push outcome.
+
+The two selected actual captures were inspected and the retained editable master
+was confirmed present. This does not claim personal owner visual acceptance or
+measured hardware cost. The original worker delivery and evidence follow.
 
 ## Remaining limits
 
@@ -95,7 +110,19 @@ reports sit beside the selected media. Full logs/frames remain in `build/rf02`.
 
 ## Exact normal-game playtest
 
-This launcher opens the ordinary game interactively with separate RF02
+**Integrated main:** launch the normal owner checkout:
+
+~~~powershell
+& 'C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe' --path 'C:/Users/Matty/Dev/project-wroughtwild/game' -- --world-seed=77
+~~~
+
+Choose **Continue** for the existing eligible V6 world, or **New World**, seed
+**77**, then a class for the route below. Existing LF saves use their usual LF
+launch option instead. The changed ground/grass is enabled automatically;
+existing saved terrain and ownership remain authoritative.
+
+**Optional isolated worker play:** the retained D: launcher opens that worker's
+ordinary game interactively with separate RF02
 manual-play saves/preferences and restores the shell environment on exit:
 
 ~~~powershell
@@ -115,15 +142,15 @@ manual-play saves/preferences and restores the shell environment on exit:
    **Continue saved world / suspended trial**. Ground/grass loads automatically.
    Manual-play saves are separate from owner saves and automated check saves.
 
-For an existing owner save, launch the worker game normally instead of the
+For an existing owner LF save, launch the integrated main game instead of the
 isolated launcher and choose Continue. Retain its usual LF option, for example:
 
 ~~~powershell
-& 'C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe' --path 'D:/Wroughtwild/work/rf02-ground-grass/game' -- --living-frontier-wave7
+& 'C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe' --path 'C:/Users/Matty/Dev/project-wroughtwild/game' -- --living-frontier-wave7
 ~~~
 
-The fixed route belongs to V6 seed 77, not every LF map. After coordinator
-integration, use the normal main game with the same controls.
+The fixed route belongs to V6 seed 77, not every LF map. Both launch paths use
+normal game controls; the optional worker launcher has its own separate saves.
 
 ## Source and selected actual media
 
