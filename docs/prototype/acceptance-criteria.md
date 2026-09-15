@@ -13,6 +13,10 @@
   review wave is scheduled.
 
 [Worker result, limits and private playtest](rf06-fen-lakeside-result-2026-09-16.md).
+The owner selected [RF-06B](rf06b-fen-art-worker-2026-09-16.md) to address the visual
+shortfall now. Its target is connected rooted ground, distinct vegetation layers
+and a readable inviting fen passage/bank outlook in ordinary seeded play. These
+remain open until the continuation demonstrates them; functional tests are separate.
 
 
 ## RF-05 lakes and surface swimming

@@ -88,7 +88,15 @@ The owner calls it "definitely underwhelming"; the intended atmosphere is still
 open, not aesthetically signed off. See the assessment below. The D: worktree
 retains separate fen/lake private playtest slots and actual game pictures.
 
-**Next original outcome: highland recovery**, with weathered rock shelves
+**Next selected: [RF-06B fen art/composition](rf06b-fen-art-worker-2026-09-16.md).**
+The owner explicitly approved continuing the fen now as a worthy tangent and
+asked for better future prompting. Reuse `D:/Wroughtwild/work/rf06-fen-lakeside`
+on new branch `codex/rf06b-fen-art`, with `build/rf06b/SETUP.md`. The completed
+first-pass branch and private saves remain. The owner resumes the worker; it is
+not automatically launched. Deliver a purpose-made wetland kit, connected ground
+and layered groups in normal seeded play, starting with one convincing fen scene.
+
+**Following original outcome: highland recovery**, with weathered rock shelves
 and appropriate vegetation pockets, then remaining original composition around
 recovered impacts and living scars. Its worker has not been prepared or started.
 New water geography, generation profiles and
@@ -107,7 +115,8 @@ PLAY-07 is now integrated; return to the original creative outcomes.
 | --- | --- | --- |
 | Done | PLAY-07 scenery arrival and normal integration | Approved additional fix, now adopted as `c5ceb9f` |
 | Foundation adopted; visual target open | RF-06 fen/lakeside atmosphere | Supported planting is playable; owner finds the result underwhelming. Strong wetland identity remains unresolved |
-| Next | Highland recovery | Original mountain character: weathered shelves, settled debris and vegetation pockets |
+| Next, explicitly selected | RF-06B fen art/composition | Resolve the underwhelming original visual outcome with a focused authored kit and scene composition |
+| Then | Highland recovery | Original mountain character: weathered shelves, settled debris and vegetation pockets |
 | Then | Remaining impact/scar composition | Original reclaimed-catastrophe identity: vegetation reconnects old damage while selected physical scars/pulses remain legible |
 | End | Bounded cleanup slice | Consolidate deferred issues by player impact; no exhaustive review wave |
 
@@ -126,26 +135,26 @@ reuses existing sedge/fern/deadfall rather than producing a new wetland art kit.
 This is a shortfall against the atmosphere brief, not simply an unchecked box or
 minor cosmetic polish. Functional placement completion and visual success differ.
 
-**Later environment-art intensive — proposal, not scheduled:** establish one
+**Art method, now selected for fen only:** establish one
 convincing in-game representative scene first, then expand its reusable kit and
 seeded biome placement. Possible workflow: reference/concept image, selective
 image-to-3D or direct Blender modelling, Blender cleanup/materials/game export,
 then actual player-height composition. Include silhouette, patch scale/layering,
 ground-to-bank transitions and readability; better isolated models alone will
 not establish the scene. No specific service, dependency or all-asset rebuild is
-approved. Starting this now would displace highlands and impact/scar work, so
-retain the original sequence and revisit scope at the end. Do not bury this
-potentially larger art task inside a supposedly small cleanup slice.
+approved. The owner then explicitly selected this focused fen continuation now,
+moving highlands back one slice. Local existing image-to-3D plus Blender, or direct
+Blender foliage authoring, are in scope; a broad all-environment rebuild remains
+later. Do not bury that larger task inside a supposedly small cleanup slice.
 
 Upcoming creative briefs should describe a visible scene-level improvement;
 passing placement checks alone does not fulfil a look/feel/atmosphere outcome.
 This requires artistic focus within the slice, not an extra approval/review wave.
 
-RF-06 additions for end-of-wave cleanup: the actual pictures show sparse fen
-terrace gaps, plants lost in strong bank shade and bright swimming-view water
-glare; angular shores remain. These affect visual richness/readability, not the
-checked access/save behavior. Recommend deferral rather than delaying highland
-recovery. No new wind animation, broader art pass or performance fix is scheduled.
+RF-06B now addresses the sparse fen groups, exposed ground transitions and local
+plant readability within its explicit art scope. Water glare, physical angular
+shores, unrelated tree art and new swim/wind animation remain cleanup/later notes;
+no broad lighting, terrain or performance overhaul is selected.
 
 Initial cleanup notes: residual short group hitch (34.621 ms full frame in PLAY-07),
 Thrumroot construction (8.790 ms first / 4.238 ms repeat), older unassigned lag/underground

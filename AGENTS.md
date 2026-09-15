@@ -121,8 +121,10 @@ main's hidden headless import passed in 4.91 s with zero errors. The owner calle
 the result "definitely underwhelming" on 16 September. Placement is delivered,
 but convincing wetland atmosphere remains an unmet visual outcome. Record that
 honestly rather than treating passing functional checks as aesthetic success.
-The suggested later image-to-3D/Blender environment intensive is a proposal,
-not an instruction to start or reorder this wave. Highland recovery remains next.
+The owner subsequently selected the focused [RF-06B fen art continuation](docs/prototype/rf06b-fen-art-worker-2026-09-16.md)
+now, explicitly calling it a worthy tangent. It precedes highlands; a broader
+all-environment image-to-3D/Blender intensive remains later, not automatically
+authorised by this one-environment continuation.
 
 After ram integration on 15 September, the owner said: "Everything looks great -
 approved, I haven't done full performance impact yet though but that's fine".
@@ -218,6 +220,31 @@ Reclaimed Frontier outcomes: fen/lakeside atmosphere, highland recovery, and rem
 around recovered impacts/living scars. Scope these as small playable iterations
 of the original direction, then address the cleanup backlog. Compass/coordinates
 remain parked. Do not extend completed PLAY-07 into another performance tangent.
+
+### Creative briefs must deliver the intended look — owner correction, 16 September
+
+After RF-06's underwhelming result, the owner approved continuing the fen now
+and asked to fix prompting going forward. This is an explicit sequence exception:
+RF-06B art/composition, then highlands, impact/scar composition and cleanup.
+
+For art/atmosphere work, lead the brief with what the player should visibly see
+and feel, the relevant reference qualities and a few concrete scene outcomes.
+Distinguish these from technical safeguards. Functional checks establish usable
+placement and preserved gameplay; they do not establish an appealing environment.
+Do not label the requested visual outcome as incidental polish and defer it
+merely because the implementation passes tests.
+
+Build one representative ordinary in-game scene early, inspect it at player
+height and revise the dominant visual weakness before expanding its seeded rules.
+Reuse existing assets when they suit the result; permit a small purpose-made kit
+when reuse falls short. Scope asset forms, grouping, ground transitions and
+readability together. A concept, isolated model or dense scatter is not by itself
+the delivered environment. No hardcoded showcase-only scenery as the final result.
+
+This changes artistic focus, not the review burden: no new approval gate,
+perfection requirement or camera/baseline matrix. Report achieved appearance,
+remaining visual weaknesses and functional checks separately, with actual game
+pictures. Keep the normal prototype limits and current worker-start workflow.
 
 ### Standard game development practices at prototype scale
 

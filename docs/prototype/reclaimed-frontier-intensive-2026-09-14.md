@@ -20,8 +20,10 @@ owner on 16 September. [RF-06 fen/lakeside foundation](rf06-fen-lakeside-result-
 is integrated as `12238ce` / `710a3c6`: cosmetic planting around existing fen and
 V8 lake geography, with no new native generation or save rule. The owner finds
 it "definitely underwhelming"; the wetland atmosphere target remains open.
-Highlands and remaining impact/scar composition follow. A later environment-art
-intensive is proposed, not scheduled; see the coordination sheet's assessment.
+The owner subsequently selected [RF-06B fen art/composition](rf06b-fen-art-worker-2026-09-16.md)
+now as a worthy tangent. Highlands and remaining impact/scar composition follow.
+A broader all-environment intensive remains later; this continuation addresses
+the fen with a small authored kit and a convincing ordinary game composition.
 R9 stays stopped.
 
 ## Sequence protection — owner correction, 16 September
@@ -35,9 +37,10 @@ reprioritisation can change that; speculative risk and minor polish cannot.
 PLAY-07 is integrated. Return to:
 
 1. RF-06 fen/lakeside foundation (adopted; atmosphere target still open).
-2. Highland character and recovery.
-3. Remaining composition around reclaimed impacts and living scars.
-4. A bounded cleanup slice drawn from the recorded player-impact notes.
+2. RF-06B fen art/composition (explicitly selected continuation now).
+3. Highland character and recovery.
+4. Remaining composition around reclaimed impacts and living scars.
+5. A bounded cleanup slice drawn from the recorded player-impact notes.
 
 These are the remaining original landscape outcomes, to be broken into small
 playable implementations using the completed RF foundations. Do not retroactively

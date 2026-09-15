@@ -65,10 +65,13 @@ Thrumroot construction and remaining short group/loading costs go to cleanup.
 as `12238ce` / `710a3c6`, from `928fb4c` / `5785711`. Reused 60 passed focused
 worker checks; main import passed in 4.91 s, zero errors. The owner calls it
 "definitely underwhelming": supported planting is delivered, convincing wetland
-atmosphere remains open. Highland recovery is next, then impact/scar composition.
-The owner's suggested later image-to-3D/Blender environment intensive is recorded
-as a proposal in the coordination sheet, not started or slipped into cleanup as
-an all-asset rebuild. No native generation, water geography or save rule changed.
+atmosphere remains open. The owner then explicitly approved the focused
+[RF-06B fen art continuation](rf06b-fen-art-worker-2026-09-16.md) now, ahead of
+highlands and impact/scar composition. Reuse the existing RF-06 D: workspace on
+`codex/rf06b-fen-art`; the owner resumes it. A purpose-made kit and actual scene
+composition are selected; the broader all-environment intensive remains later.
+AGENTS.md now distinguishes creative outcomes from functional safeguards in
+future prompts. No native generation, water geography or save rule changed.
 
 **Owner scheduling correction, 16 September:** stick firmly to the original slice
 breakdown. Raise additions, but recommend recording them for a bounded cleanup

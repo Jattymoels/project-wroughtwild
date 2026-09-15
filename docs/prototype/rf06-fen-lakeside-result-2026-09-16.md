@@ -20,6 +20,10 @@ The usable placement foundation is adopted, but the intended atmosphere remains
 an open outcome. This is not an aesthetic sign-off. A later art/composition
 intensive is a proposal; highland recovery remains the next original slice.
 
+Subsequent owner direction: the focused [RF-06B fen art continuation](rf06b-fen-art-worker-2026-09-16.md)
+is now explicitly selected before highlands. This updates the sequence above;
+the first pass's aesthetic shortfall is unchanged until that work is delivered.
+
 ## Coordinator adoption, 16 September
 
 Implementation is on main as `12238ce`, worker handoff as `710a3c6`, from
