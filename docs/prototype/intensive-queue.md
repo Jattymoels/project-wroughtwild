@@ -47,21 +47,25 @@ fixture's teardown failure was corrected and checked, not hidden. Art, encounter
 saves, lakes and RF-05 DLL remain unchanged. Preparation costs roughly 2–2.5 s
 at entry, including the prior fitted fauna work; memory cost is unmeasured.
 
-Remaining: the short 40.869 ms combined group hitch, separately measured 106.840 ms
-pullstone/scenery loading, old unassigned spike, long world entry and unconfirmed
-underground connection. The creature-loading correction is complete within its
-scope; it does not certify all game performance. Keep scenery preparation as a
-concrete separate follow-up lead. No worker/review wave starts automatically.
+Remaining: a short combined group hitch, old unassigned spike, long world entry
+and unconfirmed underground connection. The creature-loading correction is complete
+within its scope; it does not certify all game performance. The separate measured
+pullstone loading omission is now corrected by PLAY-07 below.
 
 **[PLAY-06 navigation](play06-navigation-worker-2026-09-15.md) is parked by the
 owner on 16 September.** No worktree or implementation exists; retain the compact
 compass/optional-coordinate brief for later. Original adoption/base-mob and
 RF-01–05 scopes are complete. The owner agreed to the proposed sequence:
-**[PLAY-07 scenery arrival](play07-scenery-arrival-worker-2026-09-16.md) is running**,
-started by the owner in the existing D: mob-arrival workspace from `43e7cf3`.
-Let it finish its approved scope. Then return to the original Reclaimed Frontier
-outcomes: fen/lakeside atmosphere, highland recovery and remaining recovered-impact/
-living-scar composition; this does not select new generation rules or an all-biome intensive.
+**[PLAY-07 scenery arrival](play07-scenery-arrival-result-2026-09-16.md) is integrated
+as `c5ceb9f`, worker `29e90e4`.** Pullstone creation fell from 154.202 to 2.174 ms;
+its full frame from 178.281 to 8.656 ms. Reused final route, corrected device and
+passed ownership/Continue evidence; main import passed in 5.36 s, zero errors.
+Thrumroot construction and remaining short group/loading costs go to cleanup.
+**[RF-06 fen/lakeside atmosphere](rf06-fen-lakeside-worker-2026-09-16.md) is prepared**
+in `D:/Wroughtwild/work/rf06-fen-lakeside`, branch `codex/rf06-fen-lakeside`, base
+`c5ceb9f`. The owner starts it. It returns to the original wetland recovery scope,
+then highlands and recovered-impact/living-scar composition. No new native
+generation, water geography or save rule is selected for RF-06.
 
 **Owner scheduling correction, 16 September:** stick firmly to the original slice
 breakdown. Raise additions, but recommend recording them for a bounded cleanup

@@ -55,10 +55,9 @@ The RF-05 DLL is unchanged. No owned test remains running. Raw evidence and the
 private horn/group playtest launcher remain in the existing D: worktree.
 
 The large demonstrated creature-loading freeze is fixed; broader lag is open.
-Retain the 40.869 ms combined group frame, the separate measured 106.840 ms
-pullstone/scenery arrival, older unassigned spike, long world entry and unconfirmed
-underground connection. Scenery resource preparation is a concrete separate
-follow-up lead, not an automatically launched repair wave. Owner playtesting of
+Retain the short combined group frame, older unassigned spike, long world entry
+and unconfirmed underground connection.
+The pullstone/scenery arrival is addressed by PLAY-07 below. Owner playtesting of
 this continuation is deferred; do not claim owner confirmation of smoothness.
 
 **Parked by the owner, 16 September: [PLAY-06 bearings and optional coordinates](play06-navigation-worker-2026-09-15.md).**
@@ -66,15 +65,25 @@ Its worktree has not been created and implementation has not started. Keep its
 brief for later; do not prepare or dispatch it now. RF-01–05 and original art/base-
 mob adoption are complete.
 
-The owner agreed to this sequence on 16 September. **Current worker:
-[PLAY-07 scenery arrival](play07-scenery-arrival-worker-2026-09-16.md).** Reuse
-`D:/Wroughtwild/work/play03-mob-arrival`, branch `codex/play03-mob-arrival` at
-`43e7cf3`, with `build/play07-scenery/SETUP.md`. Diagnose the measured pullstone
-first-use stall and correct demonstrated shared causes using the retained trace.
-The owner has started the existing task. No new checkout or runtime copy.
-Only new continuation commits will need adoption; the previous three are on main.
-Then scope
-one fen/lakeside atmosphere slice: wet margins, reeds/roots, dry approaches and
+**[PLAY-07 scenery arrival](play07-scenery-arrival-result-2026-09-16.md) is integrated
+as `c5ceb9f`, from completed worker `29e90e4`.** Pullstone creation measured
+154.202 to 2.174 ms and its full frame 178.281 to 8.656 ms. F1/F2/F3 now retain
+the five rare-source families' shared scenes through real entry/Continue, adding
+0.934 s preparation in the rendered entry. Art, stages, stock, saves and RF-05 DLL
+remain. Reused 28 final route checks, zero-error retirement probe and 97 passed
+lifecycle checks; its two bellows harness failures were corrected and the affected
+paid-device check passed 6/6. The original 97/99 run is not relabelled clean.
+Main hidden headless import passed in 5.36 s, exit 0, zero errors. All owned tests
+ended. The existing D: scenery task is idle at `29e90e4` and retains private playtest
+state. Remaining costs belong to cleanup, not another immediate lag worker.
+
+**Next prepared: [RF-06 fen/lakeside atmosphere](rf06-fen-lakeside-worker-2026-09-16.md).**
+Workspace `D:/Wroughtwild/work/rf06-fen-lakeside`, branch `codex/rf06-fen-lakeside`,
+base `c5ceb9f`, with `build/rf06/SETUP.md` and the current owner-depot prompt.
+Only the required native DLL was copied/verified; no package, imports or player
+saves were copied. The owner starts it; no worker/game was launched automatically.
+This original-plan slice covers existing fen and actual V8 lake margins: cosmetic
+wet margins, reeds/roots, dry approaches and
 appealing nearby home space, building on existing water and the reclaimed-landscape
 references. Highland recovery can follow separately, with weathered rock shelves
 and appropriate vegetation pockets, then the remaining original composition
@@ -88,12 +97,12 @@ campaign feel still needs useful owner playtest notes, not a new verification wa
 On 16 September the owner asked the coordinator to hold firmly to the original
 slice breakdown, raise additions but default to recording them for a cleanup
 slice at the end. This supersedes making each new finding the immediate next job.
-The running PLAY-07 can finish its current scope; do not expand or interrupt it.
+PLAY-07 is now integrated; return to the original creative outcomes.
 
 | Order | Work | Relationship to the original plan |
 | --- | --- | --- |
-| Finish current | PLAY-07 scenery arrival and normal integration | Already approved additional fix, already running |
-| Next | Fen/lakeside atmosphere | Original wetland recovery: planted margins, roots, dry approaches and appealing living/building spaces |
+| Done | PLAY-07 scenery arrival and normal integration | Approved additional fix, now adopted as `c5ceb9f` |
+| Next prepared | RF-06 fen/lakeside atmosphere | Original wetland recovery: planted margins, roots, dry approaches and appealing living/building spaces |
 | Then | Highland recovery | Original mountain character: weathered shelves, settled debris and vegetation pockets |
 | Then | Remaining impact/scar composition | Original reclaimed-catastrophe identity: vegetation reconnects old damage while selected physical scars/pulses remain legible |
 | End | Bounded cleanup slice | Consolidate deferred issues by player impact; no exhaustive review wave |
@@ -103,11 +112,12 @@ delivered RF-01–05 foundations; this schedule does not select new world/save r
 or promise all-biome production. RF-01–05 stay delivered. Keep original outcomes
 separate from refinements rather than restarting them for minor remaining polish.
 
-Initial cleanup notes: residual short group hitch, older unassigned lag/underground
+Initial cleanup notes: residual short group hitch (34.621 ms full frame in PLAY-07),
+Thrumroot construction (8.790 ms first / 4.238 ms repeat), older unassigned lag/underground
 correlation, long world entry, angular shore/steep-bank polish and missing dedicated
 swim animation. Preserve each item's existing evidence and uncertainty; none is
 claimed fixed or newly blocking. New findings join these notes by default. The
-scenery cause currently being worked belongs to PLAY-07, not another immediate
+large scenery loading omission is fixed in PLAY-07, not another immediate
 follow-up. Grass/impact composition that directly delivers the original creative
 outcomes stays in those scopes; incidental cosmetic refinements wait for cleanup.
 

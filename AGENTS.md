@@ -111,10 +111,13 @@ adoption. The owner parked PLAY-06 compass/coordinates on 16 September; do not
 prepare its worktree or start it until they return to it. The owner then agreed
 to fixing the measured scenery stall, followed by fen/lakeside atmosphere and
 later separate highland recovery. [PLAY-07 scenery arrival](docs/prototype/play07-scenery-arrival-worker-2026-09-16.md)
-is the prepared next slice in the existing D: mob-arrival workspace. It diagnoses
-the pullstone cost and corrects demonstrated shared causes; it is not a general
-performance audit. The owner starts it. Biome work will be scoped afterward;
-no new generation/save rule is selected by this sequence agreement.
+is now integrated as `c5ceb9f` from worker `29e90e4`: pullstone creation measured
+154.202 to 2.174 ms; its full frame 178.281 to 8.656 ms. All five rare-source
+families retain shared resources during actual entry. Main's short headless
+import passed; residual Thrumroot construction, group-frame and loading-time
+limits go to cleanup. [RF-06 fen/lakeside atmosphere](docs/prototype/rf06-fen-lakeside-worker-2026-09-16.md)
+is prepared next on D: from that integrated source. It is cosmetic composition
+using existing terrain/water, not a new generation/save rule. The owner starts it.
 
 After ram integration on 15 September, the owner said: "Everything looks great -
 approved, I haven't done full performance impact yet though but that's fine".
@@ -205,13 +208,11 @@ raise additions, but take a firm stance toward the original slice breakdown.
   additions deferred. Keep known issues open and honest without making each one
   the next automatic assignment. Preserve the original intent in future prompts.
 
-For the current wave, let the already-running PLAY-07 scenery task finish its
-existing approved scope and integrate it. Then return to the Reclaimed Frontier
-outcomes: fen/lakeside atmosphere, highland recovery, and remaining composition
+PLAY-07 has now finished its approved scope and is integrated. Return to the
+Reclaimed Frontier outcomes: fen/lakeside atmosphere, highland recovery, and remaining composition
 around recovered impacts/living scars. Scope these as small playable iterations
 of the original direction, then address the cleanup backlog. Compass/coordinates
-remain parked. Do not extend PLAY-07 into another performance tangent or interrupt
-its running work to retrofit this scheduling clarification.
+remain parked. Do not extend completed PLAY-07 into another performance tangent.
 
 ### Standard game development practices at prototype scale
 

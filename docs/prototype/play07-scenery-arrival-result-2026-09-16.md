@@ -194,3 +194,25 @@ The inherited RF-05 DLL is unchanged and was hash-checked, not rebuilt or copied
 `fbf7067477d63693e35b5d15ccff0bbad86be7586d679e284a44c843b0404e2b`.
 Retain that DLL for integration. No new gameplay tuning or save fields were added.
 Stop after this scenery slice.
+
+### Mainline adoption — 16 September
+
+Worker `29e90e4e27f8ad0152547b9f59231d72939fd6f2` is adopted on main as
+`c5ceb9fef46d13e413f98cf9b8ed5f05e32f7fb2`. The coordinator checked the small
+resource/entry diff, clean worker source/index, retained launcher and compact
+evidence. The native DLL matched the recorded hash and was retained unchanged.
+The worker's final route/retirement checks and passed ownership/Continue evidence
+were reused, preserving the original 97/99 result and the corrected 6/6 device
+subcheck. No rendered comparison, native build or package reconstruction repeated.
+
+Main's hidden headless asset/script import passed in **5.36 seconds**, engine
+and runner exit 0, **zero reported errors**. Its D: private output is
+`build/play07-scenery/main-integration-2026-09-16/` in the retained worker workspace.
+The owned process exited. Unrelated owner captures/import artifacts were preserved.
+Normal mainline New World/Continue now includes the fix after relaunch; the exact
+private launcher above also retains it. Neither was launched interactively by
+the coordinator. Final publication status is recorded in the coordinator handoff.
+
+The remaining costs are deferred cleanup notes under the owner's original-plan
+rule. Next is [RF-06 fen/lakeside atmosphere](rf06-fen-lakeside-worker-2026-09-16.md),
+prepared in its own D: worktree from this integrated source. The owner starts it.

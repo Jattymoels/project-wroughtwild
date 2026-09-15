@@ -8,12 +8,14 @@ ordinary/LF bodies, variants and both distinct boss paths at real world/trial
 entry and restore. Reused lifecycle/restore/boss evidence and main's 9.88-second
 headless import support adoption. The worker is finished; no automatic continuation.
 
-The 40.869 ms group frame, separately measured 106.840 ms pullstone/scenery load,
-long world entry, old unassigned spike and underground connection remain open.
+The short group frame, long world entry, old unassigned spike and underground
+connection remain open. The separate pullstone/scenery omission is corrected by
+[PLAY-07](play07-scenery-arrival-result-2026-09-16.md), adopted as `c5ceb9f`:
+instrumented creation 154.202 to 2.174 ms, full arrival frame 178.281 to 8.656 ms.
 This is a substantial creature-loading correction, not a claim of hitch-free
-play. The owner parked PLAY-06 navigation on 16 September; the measured scenery
-loading stall is now selected as [PLAY-07](play07-scenery-arrival-worker-2026-09-16.md).
-Its brief and existing D: workspace are prepared; the owner starts that worker.
+play. The owner parked PLAY-06 navigation on 16 September. Further non-blocking
+findings belong to end-of-wave cleanup. [RF-06 fen/lakeside atmosphere](rf06-fen-lakeside-worker-2026-09-16.md)
+is prepared next, returning to the original creative plan.
 The previous scope and observations below are retained as history.
 
 Earlier status: both arrival slices were integrated: partial `87849bd` and the

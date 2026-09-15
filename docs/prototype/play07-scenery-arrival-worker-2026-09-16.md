@@ -1,5 +1,9 @@
 # PLAY-07: remove the measured scenery arrival stall
 
+**Completed and adopted:** worker `29e90e4` is integrated as `c5ceb9f` on
+16 September. See the [result and remaining limits](play07-scenery-arrival-result-2026-09-16.md).
+This brief is historical; return to RF-06 rather than restart a performance task.
+
 ## Approved outcome and workspace
 
 On 16 September the owner parked compass/coordinates and agreed to the sequence:
