@@ -1,0 +1,130 @@
+{
+  "enemy_id": "hollow_knight",
+  "role": "knight",
+  "source_stage": "Approved ART-06C v02 living tortoise, fitted MOB-06 rig-v01",
+  "model": "res://assets/authored/roster/hollow_knight/model.glb",
+  "maps": {
+    "base": "res://assets/authored/roster/hollow_knight/base.png",
+    "orm": "res://assets/authored/roster/hollow_knight/orm.png",
+    "scar": "res://assets/authored/roster/hollow_knight/scar-mask.png"
+  },
+  "nodes_relative_to_model_root": {
+    "skeleton": "TortoiseRig/Skeleton3D",
+    "animation_player": "AnimationPlayer",
+    "mesh": "TortoiseRig/Skeleton3D/TortoiseSkin"
+  },
+  "geometry": {
+    "source_triangles": 295369,
+    "triangles": 79997,
+    "blender_vertices": 38788,
+    "bones": 17,
+    "surfaces": 1,
+    "max_weights": 3,
+    "simplification": "Automatic triangle collapse after coincident-position welding; two duplicate faces removed by validation. No manual retopology or normal bake."
+  },
+  "clips": {
+    "idle": {
+      "duration_seconds": 4.0,
+      "authored_duration_seconds": 4,
+      "loop": true
+    },
+    "walk": {
+      "duration_seconds": 1.4,
+      "authored_duration_seconds": 1.4,
+      "loop": true
+    },
+    "windup": {
+      "duration_seconds": 0.7,
+      "authored_duration_seconds": 0.7,
+      "loop": false
+    },
+    "release": {
+      "duration_seconds": 0.225,
+      "authored_duration_seconds": 0.22,
+      "loop": false
+    }
+  },
+  "fit": {
+    "source_coordinates": "Blender Z-up, -Y forward; GLB Y-up, +Z forward. A 180 degree yaw aligns the head with native -Z.",
+    "uniform_metres_per_source_unit": 0.9,
+    "ground_offset_metres": [
+      0,
+      0,
+      0
+    ],
+    "rotation_y_degrees": 180,
+    "extra_cull_margin_source_units": 0.2,
+    "source_rest_bounds_blender": [
+      [
+        -0.6894915699958801,
+        -1.0003477334976196,
+        -1.9843220798065886e-05
+      ],
+      [
+        0.688967227935791,
+        1.0001370906829834,
+        1.329819917678833
+      ]
+    ],
+    "root_motion": false,
+    "capsule_limit": "The broad shell silhouette differs from the unchanged upright radius .35 / height 1.3 collider. Aspect ratio, targeting and contact reach are preserved."
+  },
+  "material": {
+    "core_colour_godot_Color": [
+      0.82,
+      0.85,
+      0.64
+    ],
+    "damage_tint_linear": [
+      0.16,
+      0.14,
+      0.12
+    ],
+    "period_seconds": 4,
+    "peak_emission": 2.4,
+    "minimum_light": 0.32,
+    "crest_width": 0.2,
+    "pulse_mode": 3,
+    "base_colour_space": "sRGB source_color",
+    "orm_colour_space": "linear data: G roughness, B metallic; source AO retained",
+    "scar_colour_space": "linear data: R core, G damage, B connected travel delay",
+    "albedo_formula": "mix(base, base * damage_tint, scar.g)",
+    "normal_map": null,
+    "clock": "Pause-aware ambient clock, per-instance phase. Native status takes priority; scars never deal damage or heal."
+  },
+  "integration": {
+    "legacy_mesh_scale": 0.76,
+    "legacy_mesh_scale_purpose": "Presentation cancels only the native .76 humanoid reduction. The 1.25 family size and optional elite size live on the parent mesh and apply once.",
+    "cosmetic_stride_metres": 1.5,
+    "cosmetic_stride_purpose": "At native 2.6m/s and family 1.25 this gives about 1.39 heavy gait cycles/sec. Foot sliding accepted without changing native speed.",
+    "actual_source_travel_units_per_cycle": 0.20512820512820512,
+    "stance_fraction": 0.78,
+    "four_beat_phases": {
+      "fore_L": 0.5,
+      "hind_L": 0.25,
+      "fore_R": 0,
+      "hind_R": 0.75
+    },
+    "timing": "Normalized native windup; native attack_released(strike) starts existing CreatureMotion cosmetic release window. No damage events or movement tracks.",
+    "continue": "Existing transient_actor_presentations reset clears cosmetic release; no persistent fields."
+  },
+  "provenance": {
+    "editable_master": "D:\\Wroughtwild\\source-art\\mob06-tortoise\\rig-v01\\hollow_knight-rigged.blend",
+    "rig_report": "D:\\Wroughtwild\\source-art\\mob06-tortoise\\rig-v01\\rig-report.json",
+    "immutable_input_receipt": "D:/Wroughtwild/source-art/mob06-tortoise/input-art06c/source-selection.json",
+    "recipe": "tools/wroughtwild-mob06-tortoise/build_tortoise.py",
+    "tuning": "tools/wroughtwild-mob06-tortoise/rig.json",
+    "files_sha256": {
+      "base.png": "45fde05bbfad92882d6cbf3710709f82627a227950a884177326605479b04bc0",
+      "model.glb": "4fdf108c38d06411376918e989e42a99283ef0968aca80241688e8cb7f71a935",
+      "orm.png": "40d5298ac554ba6813eb485ae7b19b00d5b0d8862df43fbf6bd8523daef91eae",
+      "scar-mask.png": "bf34fcb0b48e46b3085452f002d2a6937b8bfe400554f6ec00d29cca76e309c6"
+    }
+  },
+  "known_limits": [
+    "Foot sliding from deliberate native cadence; no runtime terrain IK. Short head/neck release is cosmetic; the native contact envelope remains larger than the visible head.",
+    "Generated fine cavities and weight transitions remain prototype quality.",
+    "One runtime detail level; full performance impact and owner playtesting deferred.",
+    "Physical era variants and significant underground lag remain separate work."
+  ]
+}

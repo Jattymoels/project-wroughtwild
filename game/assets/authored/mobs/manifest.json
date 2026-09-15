@@ -2047,6 +2047,9 @@
           0.0
         ],
         "source": "game/scenes/enemy.tscn"
+      },
+      "tortoise": {
+        "descriptor": "res://assets/authored/roster/hollow_knight/asset.json"
       }
     },
     "valley_elk": {

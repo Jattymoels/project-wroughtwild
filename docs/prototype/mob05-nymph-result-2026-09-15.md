@@ -40,6 +40,12 @@ adoption above. Leave the active checkout unchanged; later integrate only its
 new tortoise commits. The coordinator retains mainline publication. The owner
 explicitly confirmed this continuation, so no duplicate tortoise worker is needed.
 
+## Owner visual approval
+
+After the worker handoff, the owner said "Love it - next", approving the shown
+nymph and continuing to MOB-06 tortoise. Hands-on gameplay/performance testing
+remains deferred. The checked nymph commit is 89bde373edae90005ee26888a140b34816eb82fb.
+
 ## Focused verification
 
 Concrete risks: unsupported/deformed legs or abdomen, double family scaling,

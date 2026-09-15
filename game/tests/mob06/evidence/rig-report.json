@@ -1,0 +1,775 @@
+{
+  "stage": "saved rig and export",
+  "source_triangles": 295369,
+  "runtime_triangles": 79997,
+  "runtime_vertices": 38788,
+  "bones": [
+    {
+      "name": "root",
+      "head": [
+        0,
+        0,
+        0
+      ],
+      "tail": [
+        0,
+        0,
+        0.15
+      ],
+      "parent": null
+    },
+    {
+      "name": "body",
+      "head": [
+        0,
+        0,
+        0.48
+      ],
+      "tail": [
+        0,
+        -0.25,
+        0.48
+      ],
+      "parent": "root"
+    },
+    {
+      "name": "neck",
+      "head": [
+        0,
+        -0.53,
+        0.51
+      ],
+      "tail": [
+        0,
+        -0.81,
+        0.86
+      ],
+      "parent": "body"
+    },
+    {
+      "name": "head",
+      "head": [
+        0,
+        -0.81,
+        0.86
+      ],
+      "tail": [
+        0,
+        -0.97,
+        0.9
+      ],
+      "parent": "neck"
+    },
+    {
+      "name": "tail",
+      "head": [
+        0,
+        0.69,
+        0.27
+      ],
+      "tail": [
+        0,
+        0.96,
+        0.22
+      ],
+      "parent": "body"
+    },
+    {
+      "name": "fore_L_upper",
+      "head": [
+        -0.34,
+        -0.36,
+        0.42
+      ],
+      "tail": [
+        -0.54,
+        -0.39,
+        0.25
+      ],
+      "parent": "body"
+    },
+    {
+      "name": "fore_L_lower",
+      "head": [
+        -0.54,
+        -0.39,
+        0.25
+      ],
+      "tail": [
+        -0.49,
+        -0.45,
+        0.07
+      ],
+      "parent": "fore_L_upper"
+    },
+    {
+      "name": "fore_L_foot",
+      "head": [
+        -0.49,
+        -0.45,
+        0.07
+      ],
+      "tail": [
+        -0.5,
+        -0.55,
+        0.03
+      ],
+      "parent": "fore_L_lower"
+    },
+    {
+      "name": "hind_L_upper",
+      "head": [
+        -0.34,
+        0.39,
+        0.34
+      ],
+      "tail": [
+        -0.45,
+        0.61,
+        0.22
+      ],
+      "parent": "body"
+    },
+    {
+      "name": "hind_L_lower",
+      "head": [
+        -0.45,
+        0.61,
+        0.22
+      ],
+      "tail": [
+        -0.46,
+        0.52,
+        0.07
+      ],
+      "parent": "hind_L_upper"
+    },
+    {
+      "name": "hind_L_foot",
+      "head": [
+        -0.46,
+        0.52,
+        0.07
+      ],
+      "tail": [
+        -0.46,
+        0.39,
+        0.03
+      ],
+      "parent": "hind_L_lower"
+    },
+    {
+      "name": "fore_R_upper",
+      "head": [
+        0.34,
+        -0.36,
+        0.42
+      ],
+      "tail": [
+        0.54,
+        -0.39,
+        0.25
+      ],
+      "parent": "body"
+    },
+    {
+      "name": "fore_R_lower",
+      "head": [
+        0.54,
+        -0.39,
+        0.25
+      ],
+      "tail": [
+        0.49,
+        -0.45,
+        0.07
+      ],
+      "parent": "fore_R_upper"
+    },
+    {
+      "name": "fore_R_foot",
+      "head": [
+        0.49,
+        -0.45,
+        0.07
+      ],
+      "tail": [
+        0.5,
+        -0.55,
+        0.03
+      ],
+      "parent": "fore_R_lower"
+    },
+    {
+      "name": "hind_R_upper",
+      "head": [
+        0.34,
+        0.39,
+        0.34
+      ],
+      "tail": [
+        0.45,
+        0.61,
+        0.22
+      ],
+      "parent": "body"
+    },
+    {
+      "name": "hind_R_lower",
+      "head": [
+        0.45,
+        0.61,
+        0.22
+      ],
+      "tail": [
+        0.46,
+        0.52,
+        0.07
+      ],
+      "parent": "hind_R_upper"
+    },
+    {
+      "name": "hind_R_foot",
+      "head": [
+        0.46,
+        0.52,
+        0.07
+      ],
+      "tail": [
+        0.46,
+        0.39,
+        0.03
+      ],
+      "parent": "hind_R_lower"
+    }
+  ],
+  "weighted_vertices": {
+    "root": 0,
+    "body": 33514,
+    "neck": 1421,
+    "head": 900,
+    "tail": 193,
+    "fore_L_upper": 661,
+    "fore_L_lower": 452,
+    "fore_L_foot": 709,
+    "hind_L_upper": 423,
+    "hind_L_lower": 552,
+    "hind_L_foot": 840,
+    "fore_R_upper": 586,
+    "fore_R_lower": 484,
+    "fore_R_foot": 723,
+    "hind_R_upper": 476,
+    "hind_R_lower": 583,
+    "hind_R_foot": 853
+  },
+  "rigid_shell_vertices": 28612,
+  "max_weights": 3,
+  "max_weight_error": 4.0978193283081055e-08,
+  "max_foot_target_error": 1.862645149230957e-07,
+  "max_segment_length_error": 7.617360758827019e-08,
+  "pose_samples": {
+    "idle:0": {
+      "bounds": [
+        [
+          -0.6894915699958801,
+          -1.00034761428833,
+          -5.9371814131736755e-08
+        ],
+        [
+          0.688967227935791,
+          1.0001370906829834,
+          1.3218199014663696
+        ]
+      ]
+    },
+    "idle:40": {
+      "bounds": [
+        [
+          -0.6894915699958801,
+          -1.0034904479980469,
+          -1.1990778148174286e-07
+        ],
+        [
+          0.688967227935791,
+          1.0005041360855103,
+          1.3248199224472046
+        ]
+      ]
+    },
+    "idle:80": {
+      "bounds": [
+        [
+          -0.6894915699958801,
+          -1.00034761428833,
+          -5.9371814131736755e-08
+        ],
+        [
+          0.688967227935791,
+          1.0001370906829834,
+          1.3218199014663696
+        ]
+      ]
+    },
+    "idle:120": {
+      "bounds": [
+        [
+          -0.6894915699958801,
+          -0.9971826672554016,
+          -2.246815711259842e-08
+        ],
+        [
+          0.688967227935791,
+          0.9997574687004089,
+          1.3188198804855347
+        ]
+      ]
+    },
+    "idle:160": {
+      "bounds": [
+        [
+          -0.6894915699958801,
+          -1.00034761428833,
+          -5.9371814131736755e-08
+        ],
+        [
+          0.688967227935791,
+          1.0001370906829834,
+          1.3218199014663696
+        ]
+      ]
+    },
+    "walk:0": {
+      "bounds": [
+        [
+          -0.6894915699958801,
+          -1.00034761428833,
+          -3.189779818058014e-08
+        ],
+        [
+          0.688967227935791,
+          1.0001370906829834,
+          1.3218199014663696
+        ]
+      ]
+    },
+    "walk:14": {
+      "bounds": [
+        [
+          -0.6894915699958801,
+          -1.0034904479980469,
+          -8.917413651943207e-08
+        ],
+        [
+          0.688967227935791,
+          1.0005041360855103,
+          1.3218199014663696
+        ]
+      ]
+    },
+    "walk:28": {
+      "bounds": [
+        [
+          -0.6894915699958801,
+          -1.00034761428833,
+          -8.265487849712372e-08
+        ],
+        [
+          0.688967227935791,
+          1.0001370906829834,
+          1.3218199014663696
+        ]
+      ]
+    },
+    "walk:42": {
+      "bounds": [
+        [
+          -0.6894915699958801,
+          -0.9971826672554016,
+          -7.28759914636612e-08
+        ],
+        [
+          0.688967227935791,
+          0.9997574687004089,
+          1.3218199014663696
+        ]
+      ]
+    },
+    "walk:56": {
+      "bounds": [
+        [
+          -0.6894915699958801,
+          -1.00034761428833,
+          -3.189779818058014e-08
+        ],
+        [
+          0.688967227935791,
+          1.0001370906829834,
+          1.3218199014663696
+        ]
+      ]
+    },
+    "windup:0": {
+      "bounds": [
+        [
+          -0.6894915699958801,
+          -1.00034761428833,
+          -5.9371814131736755e-08
+        ],
+        [
+          0.688967227935791,
+          1.0001370906829834,
+          1.3218199014663696
+        ]
+      ]
+    },
+    "windup:7": {
+      "bounds": [
+        [
+          -0.6894915699958801,
+          -0.9953691363334656,
+          -5.9371814131736755e-08
+        ],
+        [
+          0.688967227935791,
+          1.0001370906829834,
+          1.3218199014663696
+        ]
+      ]
+    },
+    "windup:14": {
+      "bounds": [
+        [
+          -0.6894915699958801,
+          -0.9842250943183899,
+          -5.9371814131736755e-08
+        ],
+        [
+          0.688967227935791,
+          1.0001370906829834,
+          1.3218199014663696
+        ]
+      ]
+    },
+    "windup:21": {
+      "bounds": [
+        [
+          -0.6894915699958801,
+          -0.9728242754936218,
+          -5.9371814131736755e-08
+        ],
+        [
+          0.688967227935791,
+          1.0001370906829834,
+          1.3218199014663696
+        ]
+      ]
+    },
+    "windup:28": {
+      "bounds": [
+        [
+          -0.6894915699958801,
+          -0.9675595164299011,
+          -5.9371814131736755e-08
+        ],
+        [
+          0.688967227935791,
+          1.0001370906829834,
+          1.3218199014663696
+        ]
+      ]
+    },
+    "release:0": {
+      "bounds": [
+        [
+          -0.6894915699958801,
+          -0.9675595164299011,
+          -5.9371814131736755e-08
+        ],
+        [
+          0.688967227935791,
+          1.0001370906829834,
+          1.3218199014663696
+        ]
+      ]
+    },
+    "release:2": {
+      "bounds": [
+        [
+          -0.6894915699958801,
+          -1.0556281805038452,
+          -5.9371814131736755e-08
+        ],
+        [
+          0.688967227935791,
+          1.0001370906829834,
+          1.3218199014663696
+        ]
+      ]
+    },
+    "release:4": {
+      "bounds": [
+        [
+          -0.6894915699958801,
+          -1.0493733882904053,
+          -5.9371814131736755e-08
+        ],
+        [
+          0.688967227935791,
+          1.0001370906829834,
+          1.3218199014663696
+        ]
+      ]
+    },
+    "release:6": {
+      "bounds": [
+        [
+          -0.6894915699958801,
+          -1.025692343711853,
+          -5.9371814131736755e-08
+        ],
+        [
+          0.688967227935791,
+          1.0001370906829834,
+          1.3218199014663696
+        ]
+      ]
+    },
+    "release:9": {
+      "bounds": [
+        [
+          -0.6894915699958801,
+          -1.00034761428833,
+          -5.9371814131736755e-08
+        ],
+        [
+          0.688967227935791,
+          1.0001370906829834,
+          1.3218199014663696
+        ]
+      ]
+    }
+  },
+  "clips_seconds": {
+    "idle": 4,
+    "walk": 1.4,
+    "windup": 0.7,
+    "release": 0.22
+  },
+  "baked_clips_seconds": {
+    "idle": 4.0,
+    "walk": 1.4,
+    "windup": 0.7,
+    "release": 0.225
+  },
+  "settings": {
+    "target_triangles": 80000,
+    "source_fps": 40,
+    "body_lift_units": -0.008,
+    "stance_fraction": 0.78,
+    "step_units": 0.16,
+    "foot_lift_units": 0.055,
+    "breath_units": 0.003,
+    "neck_idle_radians": 0.008,
+    "neck_windup_radians": -0.08,
+    "neck_release_radians": 0.16,
+    "head_windup_radians": 0.03,
+    "head_release_radians": -0.07,
+    "tail_sway_radians": 0.02,
+    "idle_duration": 4,
+    "walk_duration": 1.4,
+    "windup_duration": 0.7,
+    "release_duration": 0.22,
+    "uniform_metres_per_source_unit": 0.9,
+    "cosmetic_stride_metres": 1.5,
+    "cull_margin_source_units": 0.2,
+    "body": [
+      0,
+      0,
+      0.48
+    ],
+    "body_tip": [
+      0,
+      -0.25,
+      0.48
+    ],
+    "neck": [
+      0,
+      -0.53,
+      0.51
+    ],
+    "neck_tip": [
+      0,
+      -0.81,
+      0.86
+    ],
+    "head": [
+      0,
+      -0.81,
+      0.86
+    ],
+    "head_tip": [
+      0,
+      -0.97,
+      0.9
+    ],
+    "tail": [
+      0,
+      0.69,
+      0.27
+    ],
+    "tail_tip": [
+      0,
+      0.96,
+      0.22
+    ],
+    "legs": [
+      {
+        "name": "fore_L",
+        "kind": "fore",
+        "side": -1,
+        "phase": 0.5,
+        "hip": [
+          -0.34,
+          -0.36,
+          0.42
+        ],
+        "knee": [
+          -0.54,
+          -0.39,
+          0.25
+        ],
+        "ankle": [
+          -0.49,
+          -0.45,
+          0.07
+        ],
+        "toe": [
+          -0.5,
+          -0.55,
+          0.03
+        ],
+        "sole": 0.0024723228998482227
+      },
+      {
+        "name": "hind_L",
+        "kind": "hind",
+        "side": -1,
+        "phase": 0.25,
+        "hip": [
+          -0.34,
+          0.39,
+          0.34
+        ],
+        "knee": [
+          -0.45,
+          0.61,
+          0.22
+        ],
+        "ankle": [
+          -0.46,
+          0.52,
+          0.07
+        ],
+        "toe": [
+          -0.46,
+          0.39,
+          0.03
+        ],
+        "sole": -1.9843220798065886e-05
+      },
+      {
+        "name": "fore_R",
+        "kind": "fore",
+        "side": 1,
+        "phase": 0,
+        "hip": [
+          0.34,
+          -0.36,
+          0.42
+        ],
+        "knee": [
+          0.54,
+          -0.39,
+          0.25
+        ],
+        "ankle": [
+          0.49,
+          -0.45,
+          0.07
+        ],
+        "toe": [
+          0.5,
+          -0.55,
+          0.03
+        ],
+        "sole": 0.0012098976876586676
+      },
+      {
+        "name": "hind_R",
+        "kind": "hind",
+        "side": 1,
+        "phase": 0.75,
+        "hip": [
+          0.34,
+          0.39,
+          0.34
+        ],
+        "knee": [
+          0.45,
+          0.61,
+          0.22
+        ],
+        "ankle": [
+          0.46,
+          0.52,
+          0.07
+        ],
+        "toe": [
+          0.46,
+          0.39,
+          0.03
+        ],
+        "sole": 0.0003715876955538988
+      }
+    ],
+    "purpose": {
+      "target_triangles": "One automatic runtime collapse level; dense approved source retained. No manual retopology or normal bake.",
+      "source_fps": "Animation bake sampling only; native combat still owns elapsed time.",
+      "body_lift_units": "Eight-thousandths of a source unit of settled body weight; the shell remains above the planted feet.",
+      "stance_fraction": "78 percent stance overlaps a four-beat gait so at least three feet are planted on the local plane.",
+      "step_units": "Source fore/aft foot sweep; never drives native travel, collision or reach.",
+      "foot_lift_units": "Modest swing clearance for the four thick source feet.",
+      "breath_units": "Restrained whole-body breathing, with planted-foot compensation and no shell deformation.",
+      "neck_idle_radians": "Small supported neck motion during breathing and walking.",
+      "neck_windup_radians": "Draw the neck back and up during the existing melee warning.",
+      "neck_release_radians": "Short forward/down neck thrust following the authoritative strike event.",
+      "head_windup_radians": "Counter-rotation keeps the rounded head readable in anticipation.",
+      "head_release_radians": "Supported head follow-through; no shell spin, new shield, hitbox or damage event.",
+      "tail_sway_radians": "Small movement restricted to the low rear tail, outside the shell.",
+      "durations": "Authored clip spans; warning is sampled from native 0.7-second windup, recovery within the existing 0.22-second cosmetic window.",
+      "uniform_metres_per_source_unit": "Uniform .9 fit before the native 1.25 family size and any elite scale. Presentation cancels only the existing .76 humanoid shrink.",
+      "cosmetic_stride_metres": "At native 2.6m/s and family 1.25 this gives about 1.39 heavy gait cycles/sec. Foot sliding accepted without changing native speed.",
+      "cull_margin_source_units": "Small local visual envelope for feet and neck motion.",
+      "joints": "Measured tortoise Z-up, -Y-forward source landmarks. Four independent upper/lower/foot chains; mantle and scutes held together on body."
+    }
+  },
+  "original_maps_sha256": {
+    "base.png": "45fde05bbfad92882d6cbf3710709f82627a227950a884177326605479b04bc0",
+    "orm.png": "40d5298ac554ba6813eb485ae7b19b00d5b0d8862df43fbf6bd8523daef91eae",
+    "scar-mask.png": "bf34fcb0b48e46b3085452f002d2a6937b8bfe400554f6ec00d29cca76e309c6"
+  },
+  "source_bounds": [
+    [
+      -0.6894915699958801,
+      -1.0003477334976196,
+      -1.9843220798065886e-05
+    ],
+    [
+      0.688967227935791,
+      1.0001370906829834,
+      1.329819917678833
+    ]
+  ],
+  "post_simplification_validation_changed": true,
+  "root_motion": false
+}

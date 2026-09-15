@@ -1,0 +1,32 @@
+{
+  "import": {
+    "engineExitCode": null,
+    "exitCode": null,
+    "seconds": 36.14,
+    "reportedErrors": 0
+  },
+  "native_initial": {
+    "engineExitCode": 1,
+    "exitCode": 1,
+    "seconds": 11.08,
+    "reportedErrors": 0
+  },
+  "capture_corrected": {
+    "engineExitCode": 0,
+    "exitCode": 0,
+    "seconds": 11.49,
+    "reportedErrors": 0
+  },
+  "continue": {
+    "engineExitCode": 0,
+    "exitCode": 0,
+    "seconds": 38.66,
+    "reportedErrors": 0
+  },
+  "notes": {
+    "import": "Completed import log, no reported script/shader errors; initial Windows PowerShell launcher did not retain an exit code. Later successful native and Continue use verifies imported assets.",
+    "native_initial": "49/50 assertions passed; no-focus assertion failed due to BOM-encoded override. Gameplay evidence reused.",
+    "capture_corrected": "Only capture plus selected actor check rerun after launcher encoding repair; 3/3 pass.",
+    "renderer": "Forward+ only; owned test processes ended and override removed."
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "checks": {
+    "dense_v02_source_retained": true,
+    "17_bones_four_fitted_chains": true,
+    "skin_modifier_retained": true,
+    "four_baked_clips_retained": true,
+    "supported_neck_head_tail": true,
+    "original_source_maps_packed": true,
+    "normalized_skin": true,
+    "rigid_upper_shell": true,
+    "runtime_uv_and_topology": true,
+    "planted_solver_checked": true,
+    "representative_pose_clearance": true,
+    "three_or_four_feet_in_stance": true
+  },
+  "passed": 12,
+  "failed": 0
+}

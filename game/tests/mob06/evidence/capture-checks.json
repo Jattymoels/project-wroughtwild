@@ -1,0 +1,9 @@
+{
+	"checks": {
+		"capture keeps pointer visible and window unfocusable": true,
+		"motion capture includes naturally timed windup and actual melee releases": true,
+		"ordinary Hollow Knight selects 17-bone tortoise": true
+	},
+	"failed": 0,
+	"passed": 3
+}

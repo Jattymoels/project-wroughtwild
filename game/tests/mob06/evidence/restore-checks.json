@@ -1,0 +1,14 @@
+{
+	"failed": 0,
+	"loose_pickups": 0,
+	"loot_kill_counter": 1,
+	"pack_biome": "ember_wastes",
+	"pack_position": [
+		898.5,
+		42.0,
+		374.5
+	],
+	"passed": 14,
+	"seed": 77,
+	"world_profile": "frontier_v6"
+}

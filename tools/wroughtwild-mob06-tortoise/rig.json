@@ -1,0 +1,188 @@
+{
+  "target_triangles": 80000,
+  "source_fps": 40,
+  "body_lift_units": -0.008,
+  "stance_fraction": 0.78,
+  "step_units": 0.16,
+  "foot_lift_units": 0.055,
+  "breath_units": 0.003,
+  "neck_idle_radians": 0.008,
+  "neck_windup_radians": -0.08,
+  "neck_release_radians": 0.16,
+  "head_windup_radians": 0.03,
+  "head_release_radians": -0.07,
+  "tail_sway_radians": 0.02,
+  "idle_duration": 4,
+  "walk_duration": 1.4,
+  "windup_duration": 0.7,
+  "release_duration": 0.22,
+  "uniform_metres_per_source_unit": 0.9,
+  "cosmetic_stride_metres": 1.5,
+  "cull_margin_source_units": 0.2,
+  "body": [
+    0,
+    0,
+    0.48
+  ],
+  "body_tip": [
+    0,
+    -0.25,
+    0.48
+  ],
+  "neck": [
+    0,
+    -0.53,
+    0.51
+  ],
+  "neck_tip": [
+    0,
+    -0.81,
+    0.86
+  ],
+  "head": [
+    0,
+    -0.81,
+    0.86
+  ],
+  "head_tip": [
+    0,
+    -0.97,
+    0.9
+  ],
+  "tail": [
+    0,
+    0.69,
+    0.27
+  ],
+  "tail_tip": [
+    0,
+    0.96,
+    0.22
+  ],
+  "legs": [
+    {
+      "name": "fore_L",
+      "kind": "fore",
+      "side": -1,
+      "phase": 0.5,
+      "hip": [
+        -0.34,
+        -0.36,
+        0.42
+      ],
+      "knee": [
+        -0.54,
+        -0.39,
+        0.25
+      ],
+      "ankle": [
+        -0.49,
+        -0.45,
+        0.07
+      ],
+      "toe": [
+        -0.5,
+        -0.55,
+        0.03
+      ]
+    },
+    {
+      "name": "hind_L",
+      "kind": "hind",
+      "side": -1,
+      "phase": 0.25,
+      "hip": [
+        -0.34,
+        0.39,
+        0.34
+      ],
+      "knee": [
+        -0.45,
+        0.61,
+        0.22
+      ],
+      "ankle": [
+        -0.46,
+        0.52,
+        0.07
+      ],
+      "toe": [
+        -0.46,
+        0.39,
+        0.03
+      ]
+    },
+    {
+      "name": "fore_R",
+      "kind": "fore",
+      "side": 1,
+      "phase": 0,
+      "hip": [
+        0.34,
+        -0.36,
+        0.42
+      ],
+      "knee": [
+        0.54,
+        -0.39,
+        0.25
+      ],
+      "ankle": [
+        0.49,
+        -0.45,
+        0.07
+      ],
+      "toe": [
+        0.5,
+        -0.55,
+        0.03
+      ]
+    },
+    {
+      "name": "hind_R",
+      "kind": "hind",
+      "side": 1,
+      "phase": 0.75,
+      "hip": [
+        0.34,
+        0.39,
+        0.34
+      ],
+      "knee": [
+        0.45,
+        0.61,
+        0.22
+      ],
+      "ankle": [
+        0.46,
+        0.52,
+        0.07
+      ],
+      "toe": [
+        0.46,
+        0.39,
+        0.03
+      ]
+    }
+  ],
+  "purpose": {
+    "target_triangles": "One automatic runtime collapse level; dense approved source retained. No manual retopology or normal bake.",
+    "source_fps": "Animation bake sampling only; native combat still owns elapsed time.",
+    "body_lift_units": "Eight-thousandths of a source unit of settled body weight; the shell remains above the planted feet.",
+    "stance_fraction": "78 percent stance overlaps a four-beat gait so at least three feet are planted on the local plane.",
+    "step_units": "Source fore/aft foot sweep; never drives native travel, collision or reach.",
+    "foot_lift_units": "Modest swing clearance for the four thick source feet.",
+    "breath_units": "Restrained whole-body breathing, with planted-foot compensation and no shell deformation.",
+    "neck_idle_radians": "Small supported neck motion during breathing and walking.",
+    "neck_windup_radians": "Draw the neck back and up during the existing melee warning.",
+    "neck_release_radians": "Short forward/down neck thrust following the authoritative strike event.",
+    "head_windup_radians": "Counter-rotation keeps the rounded head readable in anticipation.",
+    "head_release_radians": "Supported head follow-through; no shell spin, new shield, hitbox or damage event.",
+    "tail_sway_radians": "Small movement restricted to the low rear tail, outside the shell.",
+    "durations": "Authored clip spans; warning is sampled from native 0.7-second windup, recovery within the existing 0.22-second cosmetic window.",
+    "uniform_metres_per_source_unit": "Uniform .9 fit before the native 1.25 family size and any elite scale. Presentation cancels only the existing .76 humanoid shrink.",
+    "cosmetic_stride_metres": "At native 2.6m/s and family 1.25 this gives about 1.39 heavy gait cycles/sec. Foot sliding accepted without changing native speed.",
+    "cull_margin_source_units": "Small local visual envelope for feet and neck motion.",
+    "joints": "Measured tortoise Z-up, -Y-forward source landmarks. Four independent upper/lower/foot chains; mantle and scutes held together on body."
+  }
+}

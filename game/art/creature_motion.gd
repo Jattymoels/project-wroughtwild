@@ -37,6 +37,15 @@ func _configure() -> void:
 	_points = LOOK.pivots(role)
 	var id := String(_mesh.get_meta("authored_actor_id",""))
 	var definition: Dictionary = RecoveredActorArt.definitions().get(id,{})
+	if definition.has("tortoise"):
+		finished = TortoisePresentation.new()
+		finished.name = "TortoisePresentation"
+		add_child(finished)
+		finished.setup(_mesh, actor, definition.tortoise)
+		rig = finished.rig
+		_previous = actor.global_position
+		actor.attack_released.connect(released)
+		return
 	if definition.has("nymph"):
 		finished = NymphPresentation.new()
 		finished.name = "NymphPresentation"
