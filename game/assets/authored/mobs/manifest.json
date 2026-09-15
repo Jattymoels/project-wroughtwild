@@ -1142,6 +1142,9 @@
           0.0
         ],
         "source": "game/scenes/enemy.tscn"
+      },
+      "nymph": {
+        "descriptor": "res://assets/authored/roster/bog_lurker/asset.json"
       }
     },
     "marsh_wisp": {

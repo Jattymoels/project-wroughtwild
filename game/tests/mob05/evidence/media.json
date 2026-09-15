@@ -1,0 +1,19 @@
+{
+  "captured_frames": 270,
+  "encoded_frames": 266,
+  "duration_seconds": 9,
+  "dimensions": [
+    640,
+    480
+  ],
+  "renderer": "Forward+",
+  "source": "native Enemy in flat capture fixture, fixed 60Hz physics; 30fps selected frames",
+  "segments": {
+    "0-1.5": "native idle",
+    "1.5-5": "native pursuit of scripted moving target",
+    "5-8": "native windup and root strikes",
+    "8-9": "native freeze"
+  },
+  "path": "nymph-motion.webp",
+  "bytes": 1591786
+}

@@ -1,0 +1,17 @@
+{
+  "checks": {
+    "dense_v04_source_retained": true,
+    "27_bones_six_thoracic_chains": true,
+    "skin_modifier_retained": true,
+    "four_baked_clips_retained": true,
+    "weighted_supported_parts": true,
+    "original_source_maps_packed": true,
+    "normalized_skin": true,
+    "legless_supported_abdomen": true,
+    "runtime_uv_and_topology": true,
+    "planted_solver_checked": true,
+    "representative_pose_clearance": true
+  },
+  "passed": 11,
+  "failed": 0
+}

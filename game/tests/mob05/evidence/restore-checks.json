@@ -1,0 +1,14 @@
+{
+	"failed": 0,
+	"loose_pickups": 1,
+	"loot_kill_counter": 1,
+	"pack_biome": "fen",
+	"pack_position": [
+		902.5,
+		32.0,
+		202.5
+	],
+	"passed": 14,
+	"seed": 77,
+	"world_profile": "frontier_v6"
+}

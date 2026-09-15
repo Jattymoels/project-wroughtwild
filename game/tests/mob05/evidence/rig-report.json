@@ -1,0 +1,993 @@
+{
+  "stage": "saved rig and export",
+  "source_triangles": 290654,
+  "runtime_triangles": 79995,
+  "runtime_vertices": 37214,
+  "bones": [
+    {
+      "name": "root",
+      "head": [
+        0,
+        0,
+        0
+      ],
+      "tail": [
+        0,
+        0,
+        0.15
+      ],
+      "parent": null
+    },
+    {
+      "name": "body",
+      "head": [
+        0,
+        -0.3,
+        0.23
+      ],
+      "tail": [
+        0,
+        -0.05,
+        0.25
+      ],
+      "parent": "root"
+    },
+    {
+      "name": "head",
+      "head": [
+        0,
+        -0.59,
+        0.25
+      ],
+      "tail": [
+        0,
+        -0.79,
+        0.27
+      ],
+      "parent": "body"
+    },
+    {
+      "name": "labium",
+      "head": [
+        0,
+        -0.69,
+        0.16
+      ],
+      "tail": [
+        0,
+        -0.8,
+        0.17
+      ],
+      "parent": "head"
+    },
+    {
+      "name": "abdomen_1",
+      "head": [
+        0,
+        -0.025,
+        0.25
+      ],
+      "tail": [
+        0,
+        0.31,
+        0.32
+      ],
+      "parent": "body"
+    },
+    {
+      "name": "abdomen_2",
+      "head": [
+        0,
+        0.31,
+        0.32
+      ],
+      "tail": [
+        0,
+        0.64,
+        0.37
+      ],
+      "parent": "abdomen_1"
+    },
+    {
+      "name": "abdomen_3",
+      "head": [
+        0,
+        0.64,
+        0.37
+      ],
+      "tail": [
+        0,
+        0.94,
+        0.39
+      ],
+      "parent": "abdomen_2"
+    },
+    {
+      "name": "antenna_L",
+      "head": [
+        -0.07,
+        -0.795,
+        0.365
+      ],
+      "tail": [
+        -0.13,
+        -0.94,
+        0.43
+      ],
+      "parent": "head"
+    },
+    {
+      "name": "antenna_R",
+      "head": [
+        0.07,
+        -0.795,
+        0.365
+      ],
+      "tail": [
+        0.13,
+        -0.94,
+        0.43
+      ],
+      "parent": "head"
+    },
+    {
+      "name": "fore_L_upper",
+      "head": [
+        -0.245,
+        -0.475,
+        0.13
+      ],
+      "tail": [
+        -0.41,
+        -0.63,
+        0.255
+      ],
+      "parent": "body"
+    },
+    {
+      "name": "fore_L_lower",
+      "head": [
+        -0.41,
+        -0.63,
+        0.255
+      ],
+      "tail": [
+        -0.49,
+        -0.864,
+        0.165
+      ],
+      "parent": "fore_L_upper"
+    },
+    {
+      "name": "fore_L_foot",
+      "head": [
+        -0.49,
+        -0.864,
+        0.165
+      ],
+      "tail": [
+        -0.549,
+        -0.992,
+        0.035
+      ],
+      "parent": "fore_L_lower"
+    },
+    {
+      "name": "mid_L_upper",
+      "head": [
+        -0.255,
+        -0.285,
+        0.12
+      ],
+      "tail": [
+        -0.525,
+        -0.218,
+        0.255
+      ],
+      "parent": "body"
+    },
+    {
+      "name": "mid_L_lower",
+      "head": [
+        -0.525,
+        -0.218,
+        0.255
+      ],
+      "tail": [
+        -0.744,
+        -0.217,
+        0.155
+      ],
+      "parent": "mid_L_upper"
+    },
+    {
+      "name": "mid_L_foot",
+      "head": [
+        -0.744,
+        -0.217,
+        0.155
+      ],
+      "tail": [
+        -0.87,
+        -0.216,
+        0.013
+      ],
+      "parent": "mid_L_lower"
+    },
+    {
+      "name": "hind_L_upper",
+      "head": [
+        -0.232,
+        -0.063,
+        0.13
+      ],
+      "tail": [
+        -0.401,
+        0.15,
+        0.265
+      ],
+      "parent": "body"
+    },
+    {
+      "name": "hind_L_lower",
+      "head": [
+        -0.401,
+        0.15,
+        0.265
+      ],
+      "tail": [
+        -0.537,
+        0.372,
+        0.17
+      ],
+      "parent": "hind_L_upper"
+    },
+    {
+      "name": "hind_L_foot",
+      "head": [
+        -0.537,
+        0.372,
+        0.17
+      ],
+      "tail": [
+        -0.624,
+        0.498,
+        0.018
+      ],
+      "parent": "hind_L_lower"
+    },
+    {
+      "name": "fore_R_upper",
+      "head": [
+        0.245,
+        -0.475,
+        0.13
+      ],
+      "tail": [
+        0.41,
+        -0.63,
+        0.255
+      ],
+      "parent": "body"
+    },
+    {
+      "name": "fore_R_lower",
+      "head": [
+        0.41,
+        -0.63,
+        0.255
+      ],
+      "tail": [
+        0.49,
+        -0.864,
+        0.165
+      ],
+      "parent": "fore_R_upper"
+    },
+    {
+      "name": "fore_R_foot",
+      "head": [
+        0.49,
+        -0.864,
+        0.165
+      ],
+      "tail": [
+        0.549,
+        -0.992,
+        0.035
+      ],
+      "parent": "fore_R_lower"
+    },
+    {
+      "name": "mid_R_upper",
+      "head": [
+        0.255,
+        -0.285,
+        0.12
+      ],
+      "tail": [
+        0.525,
+        -0.218,
+        0.255
+      ],
+      "parent": "body"
+    },
+    {
+      "name": "mid_R_lower",
+      "head": [
+        0.525,
+        -0.218,
+        0.255
+      ],
+      "tail": [
+        0.744,
+        -0.217,
+        0.155
+      ],
+      "parent": "mid_R_upper"
+    },
+    {
+      "name": "mid_R_foot",
+      "head": [
+        0.744,
+        -0.217,
+        0.155
+      ],
+      "tail": [
+        0.87,
+        -0.216,
+        0.013
+      ],
+      "parent": "mid_R_lower"
+    },
+    {
+      "name": "hind_R_upper",
+      "head": [
+        0.232,
+        -0.063,
+        0.13
+      ],
+      "tail": [
+        0.401,
+        0.15,
+        0.265
+      ],
+      "parent": "body"
+    },
+    {
+      "name": "hind_R_lower",
+      "head": [
+        0.401,
+        0.15,
+        0.265
+      ],
+      "tail": [
+        0.537,
+        0.372,
+        0.17
+      ],
+      "parent": "hind_R_upper"
+    },
+    {
+      "name": "hind_R_foot",
+      "head": [
+        0.537,
+        0.372,
+        0.17
+      ],
+      "tail": [
+        0.624,
+        0.498,
+        0.018
+      ],
+      "parent": "hind_R_lower"
+    }
+  ],
+  "weighted_vertices": {
+    "root": 0,
+    "body": 9393,
+    "head": 2986,
+    "labium": 133,
+    "abdomen_1": 10524,
+    "abdomen_2": 13565,
+    "abdomen_3": 7417,
+    "antenna_L": 34,
+    "antenna_R": 33,
+    "fore_L_upper": 335,
+    "fore_L_lower": 519,
+    "fore_L_foot": 259,
+    "mid_L_upper": 587,
+    "mid_L_lower": 469,
+    "mid_L_foot": 270,
+    "hind_L_upper": 452,
+    "hind_L_lower": 509,
+    "hind_L_foot": 331,
+    "fore_R_upper": 344,
+    "fore_R_lower": 502,
+    "fore_R_foot": 249,
+    "mid_R_upper": 561,
+    "mid_R_lower": 465,
+    "mid_R_foot": 267,
+    "hind_R_upper": 465,
+    "hind_R_lower": 504,
+    "hind_R_foot": 321
+  },
+  "supported_abdomen_vertices": 23361,
+  "max_weights": 3,
+  "max_weight_error": 3.6900871691614157e-08,
+  "max_foot_target_error": 1.9314112360500873e-07,
+  "max_segment_length_error": 1.5769085279226935e-07,
+  "pose_samples": {
+    "idle:0": {
+      "bounds": [
+        [
+          -0.885195791721344,
+          -1.0005743503570557,
+          -1.1734664440155029e-07
+        ],
+        [
+          0.8849160671234131,
+          1.0015480518341064,
+          0.577360212802887
+        ]
+      ]
+    },
+    "idle:40": {
+      "bounds": [
+        [
+          -0.885195791721344,
+          -1.0005743503570557,
+          -7.264316082000732e-08
+        ],
+        [
+          0.8849160075187683,
+          0.9968256950378418,
+          0.5889506340026855
+        ]
+      ]
+    },
+    "idle:80": {
+      "bounds": [
+        [
+          -0.885195791721344,
+          -1.0005743503570557,
+          -1.1734664440155029e-07
+        ],
+        [
+          0.8849160671234131,
+          0.9999514222145081,
+          0.5796511769294739
+        ]
+      ]
+    },
+    "idle:120": {
+      "bounds": [
+        [
+          -0.885195791721344,
+          -1.0005743503570557,
+          -1.471489667892456e-07
+        ],
+        [
+          0.8849160075187683,
+          1.0045177936553955,
+          0.5679988265037537
+        ]
+      ]
+    },
+    "idle:160": {
+      "bounds": [
+        [
+          -0.885195791721344,
+          -1.0005743503570557,
+          -1.1734664440155029e-07
+        ],
+        [
+          0.8849160671234131,
+          1.0015480518341064,
+          0.577360212802887
+        ]
+      ]
+    },
+    "walk:0": {
+      "bounds": [
+        [
+          -0.8851958513259888,
+          -1.0501066446304321,
+          -9.685754776000977e-08
+        ],
+        [
+          0.8849159479141235,
+          1.0015480518341064,
+          0.577360212802887
+        ]
+      ]
+    },
+    "walk:12": {
+      "bounds": [
+        [
+          -0.8851957321166992,
+          -1.0116450786590576,
+          -7.264316082000732e-08
+        ],
+        [
+          0.8849160671234131,
+          0.9968256950378418,
+          0.5869506597518921
+        ]
+      ]
+    },
+    "walk:24": {
+      "bounds": [
+        [
+          -0.8851958513259888,
+          -1.0505744218826294,
+          -6.705522537231445e-08
+        ],
+        [
+          0.8849160075187683,
+          0.9999514222145081,
+          0.5796511769294739
+        ]
+      ]
+    },
+    "walk:36": {
+      "bounds": [
+        [
+          -0.8851958513259888,
+          -1.0121129751205444,
+          -7.385096978396177e-08
+        ],
+        [
+          0.8849160075187683,
+          1.0045177936553955,
+          0.5699988007545471
+        ]
+      ]
+    },
+    "walk:48": {
+      "bounds": [
+        [
+          -0.8851958513259888,
+          -1.0501066446304321,
+          -9.685754776000977e-08
+        ],
+        [
+          0.8849159479141235,
+          1.0015480518341064,
+          0.577360212802887
+        ]
+      ]
+    },
+    "windup:0": {
+      "bounds": [
+        [
+          -0.885195791721344,
+          -1.0005743503570557,
+          -1.1734664440155029e-07
+        ],
+        [
+          0.8849160671234131,
+          1.0007535219192505,
+          0.5785076022148132
+        ]
+      ]
+    },
+    "windup:9": {
+      "bounds": [
+        [
+          -0.885195791721344,
+          -1.0005743503570557,
+          -1.1734664440155029e-07
+        ],
+        [
+          0.8849160671234131,
+          1.0007535219192505,
+          0.5785076022148132
+        ]
+      ]
+    },
+    "windup:18": {
+      "bounds": [
+        [
+          -0.885195791721344,
+          -1.0005743503570557,
+          -1.1734664440155029e-07
+        ],
+        [
+          0.8849160671234131,
+          1.0007535219192505,
+          0.5785076022148132
+        ]
+      ]
+    },
+    "windup:27": {
+      "bounds": [
+        [
+          -0.885195791721344,
+          -1.0005743503570557,
+          -1.1734664440155029e-07
+        ],
+        [
+          0.8849160671234131,
+          1.0007535219192505,
+          0.5785076022148132
+        ]
+      ]
+    },
+    "windup:36": {
+      "bounds": [
+        [
+          -0.885195791721344,
+          -1.0005743503570557,
+          -1.1734664440155029e-07
+        ],
+        [
+          0.8849160671234131,
+          1.0007535219192505,
+          0.5785076022148132
+        ]
+      ]
+    },
+    "release:0": {
+      "bounds": [
+        [
+          -0.885195791721344,
+          -1.0005743503570557,
+          -1.1734664440155029e-07
+        ],
+        [
+          0.8849160671234131,
+          1.0007535219192505,
+          0.5785076022148132
+        ]
+      ]
+    },
+    "release:2": {
+      "bounds": [
+        [
+          -0.885195791721344,
+          -1.0005743503570557,
+          -1.1734664440155029e-07
+        ],
+        [
+          0.8849160671234131,
+          1.0007535219192505,
+          0.5785076022148132
+        ]
+      ]
+    },
+    "release:4": {
+      "bounds": [
+        [
+          -0.885195791721344,
+          -1.0005743503570557,
+          -1.1734664440155029e-07
+        ],
+        [
+          0.8849160671234131,
+          1.0007535219192505,
+          0.5785076022148132
+        ]
+      ]
+    },
+    "release:6": {
+      "bounds": [
+        [
+          -0.885195791721344,
+          -1.0005743503570557,
+          -1.1734664440155029e-07
+        ],
+        [
+          0.8849160671234131,
+          1.0007535219192505,
+          0.5785076022148132
+        ]
+      ]
+    },
+    "release:9": {
+      "bounds": [
+        [
+          -0.885195791721344,
+          -1.0005743503570557,
+          -1.1734664440155029e-07
+        ],
+        [
+          0.8849160671234131,
+          1.0007535219192505,
+          0.5785076022148132
+        ]
+      ]
+    }
+  },
+  "clips_seconds": {
+    "idle": 4,
+    "walk": 1.2,
+    "windup": 0.9,
+    "release": 0.22
+  },
+  "baked_clips_seconds": {
+    "idle": 4.0,
+    "walk": 1.2,
+    "windup": 0.9,
+    "release": 0.225
+  },
+  "settings": {
+    "target_triangles": 80000,
+    "source_fps": 40,
+    "body_lift_units": 0.016,
+    "stance_fraction": 0.65,
+    "step_units": 0.1,
+    "foot_lift_units": 0.05,
+    "breath_units": 0.002,
+    "head_windup_radians": -0.11,
+    "head_followthrough_radians": 0.13,
+    "labium_windup_radians": -0.1,
+    "labium_release_radians": 0.24,
+    "labium_extension_units": 0.045,
+    "antenna_sweep_radians": 0.04,
+    "abdomen_flex_radians": 0.006,
+    "idle_duration": 4,
+    "walk_duration": 1.2,
+    "windup_duration": 0.9,
+    "release_duration": 0.22,
+    "uniform_metres_per_source_unit": 0.82,
+    "cosmetic_stride_metres": 0.9,
+    "cull_margin_source_units": 0.25,
+    "body": [
+      0,
+      -0.3,
+      0.23
+    ],
+    "body_tip": [
+      0,
+      -0.05,
+      0.25
+    ],
+    "head": [
+      0,
+      -0.59,
+      0.25
+    ],
+    "head_tip": [
+      0,
+      -0.79,
+      0.27
+    ],
+    "labium": [
+      0,
+      -0.69,
+      0.16
+    ],
+    "labium_tip": [
+      0,
+      -0.8,
+      0.17
+    ],
+    "abdomen": [
+      [
+        0,
+        -0.025,
+        0.25
+      ],
+      [
+        0,
+        0.31,
+        0.32
+      ],
+      [
+        0,
+        0.64,
+        0.37
+      ],
+      [
+        0,
+        0.94,
+        0.39
+      ]
+    ],
+    "legs": [
+      {
+        "name": "fore_L",
+        "kind": "fore",
+        "side": -1,
+        "phase": 0,
+        "hip": [
+          -0.245,
+          -0.475,
+          0.13
+        ],
+        "knee": [
+          -0.41,
+          -0.63,
+          0.255
+        ],
+        "ankle": [
+          -0.49,
+          -0.864,
+          0.165
+        ],
+        "toe": [
+          -0.549,
+          -0.992,
+          0.035
+        ],
+        "sole": 0.027827566489577293
+      },
+      {
+        "name": "mid_L",
+        "kind": "mid",
+        "side": -1,
+        "phase": 0.5,
+        "hip": [
+          -0.255,
+          -0.285,
+          0.12
+        ],
+        "knee": [
+          -0.525,
+          -0.218,
+          0.255
+        ],
+        "ankle": [
+          -0.744,
+          -0.217,
+          0.155
+        ],
+        "toe": [
+          -0.87,
+          -0.216,
+          0.013
+        ],
+        "sole": -0.0002135426038876176
+      },
+      {
+        "name": "hind_L",
+        "kind": "hind",
+        "side": -1,
+        "phase": 0,
+        "hip": [
+          -0.232,
+          -0.063,
+          0.13
+        ],
+        "knee": [
+          -0.401,
+          0.15,
+          0.265
+        ],
+        "ankle": [
+          -0.537,
+          0.372,
+          0.17
+        ],
+        "toe": [
+          -0.624,
+          0.498,
+          0.018
+        ],
+        "sole": 0.0028251123148947954
+      },
+      {
+        "name": "fore_R",
+        "kind": "fore",
+        "side": 1,
+        "phase": 0.5,
+        "hip": [
+          0.245,
+          -0.475,
+          0.13
+        ],
+        "knee": [
+          0.41,
+          -0.63,
+          0.255
+        ],
+        "ankle": [
+          0.49,
+          -0.864,
+          0.165
+        ],
+        "toe": [
+          0.549,
+          -0.992,
+          0.035
+        ],
+        "sole": 0.028224270790815353
+      },
+      {
+        "name": "mid_R",
+        "kind": "mid",
+        "side": 1,
+        "phase": 0,
+        "hip": [
+          0.255,
+          -0.285,
+          0.12
+        ],
+        "knee": [
+          0.525,
+          -0.218,
+          0.255
+        ],
+        "ankle": [
+          0.744,
+          -0.217,
+          0.155
+        ],
+        "toe": [
+          0.87,
+          -0.216,
+          0.013
+        ],
+        "sole": 0.0005812643794342875
+      },
+      {
+        "name": "hind_R",
+        "kind": "hind",
+        "side": 1,
+        "phase": 0.5,
+        "hip": [
+          0.232,
+          -0.063,
+          0.13
+        ],
+        "knee": [
+          0.401,
+          0.15,
+          0.265
+        ],
+        "ankle": [
+          0.537,
+          0.372,
+          0.17
+        ],
+        "toe": [
+          0.624,
+          0.498,
+          0.018
+        ],
+        "sole": 0.004576446954160929
+      }
+    ],
+    "purpose": {
+      "target_triangles": "One automatic runtime collapse level; dense editable source remains retained. This is not manual retopology.",
+      "source_fps": "Animation bake samples only; the native engine owns elapsed combat time.",
+      "body_lift_units": "Small supported clearance for the low thorax and abdominal underside; six toes stay planted on the local plane.",
+      "stance_fraction": "65 percent ground contact per foot gives the heavy nymph overlapping alternating tripods.",
+      "step_units": "Source fore/aft foot sweep; no movement or contact reach is driven by the clip.",
+      "foot_lift_units": "Five-hundredths of a source unit of swing clearance on a flat floor.",
+      "breath_units": "Restrained idle thorax breathing with planted feet.",
+      "head_windup_radians": "Brace and lift the source head through the native warning fraction.",
+      "head_followthrough_radians": "Short downward head release following the actual melee event.",
+      "labium_windup_radians": "Tuck the existing compact labium in anticipation.",
+      "labium_release_radians": "Brief opening of the source-supported folded mouthpart; no persistent grab.",
+      "labium_extension_units": "A short local 0.045-unit mouthpart release. It adds no tether, reach or hitbox.",
+      "antenna_sweep_radians": "Quiet supported antenna motion independent of game RNG.",
+      "abdomen_flex_radians": "Very small supported segmented-abdomen flex; layered ruptures keep their material and weights together.",
+      "durations": "Authored clip spans; windup is normalized from native tuning, recovery resampled into the existing cosmetic window.",
+      "uniform_metres_per_source_unit": "Grounded uniform .82 scale before the native 1.4 family size and any elite size, applied once. Lurker has no .76 humanoid reduction.",
+      "cosmetic_stride_metres": "At native 1.8m/s and family 1.4 this gives about 1.43 heavy gait cycles/sec, accepting foot sliding without changing motion.",
+      "cull_margin_source_units": "Keeps moving toes and the short labium action inside the visual culling envelope.",
+      "joints": "Measured Z-up, -Y-forward nymph source landmarks, independent of beetle pivots. All six hips lie on the thorax; abdomen stays legless."
+    }
+  },
+  "original_maps_sha256": {
+    "base.png": "a41893c349949697891f3f92047321353f26a6c61f3212444da780ec9afe5ca5",
+    "orm.png": "3083d5eb5ff3f321c42c768a41e9989897f56e21c2ff1839ae340792d02e3ade",
+    "scar-mask.png": "72e4b993f7f0f0f4616b9b455616313a60efe48a1b9f4cc17356a913dfa907eb"
+  },
+  "source_bounds": [
+    [
+      -0.885195791721344,
+      -1.0005744695663452,
+      -0.0002135426038876176
+    ],
+    [
+      0.8849160075187683,
+      1.0007535219192505,
+      0.5625075101852417
+    ]
+  ],
+  "post_simplification_validation_changed": true,
+  "root_motion": false
+}
