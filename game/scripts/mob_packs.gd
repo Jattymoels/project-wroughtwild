@@ -186,6 +186,8 @@ func _physics_process(delta: float) -> void:
 	# do not wake while the player is inside one.
 	if player.trial != null and player.trial.active():
 		return
+	var trace: Node = terrain.play03_trace
+	var began := Time.get_ticks_usec() if is_instance_valid(trace) and trace.active else 0
 	sleep_far_packs(player.global_position)
 	var live := live_count()
 	if _indexed:
@@ -207,6 +209,7 @@ func _physics_process(delta: float) -> void:
 		if at.distance_to(player.global_position) <= ACTIVATION_RANGE_M:
 			_spawn_pack(pack, at)
 			live += (pack["members"] as Array).size()
+	if began > 0: trace.note_arrival("activation_scan", began, {"candidates":last_candidate_count,"live":live})
 
 
 ## Where a pack is right now: its den by day; at night a patrol is out along
@@ -488,6 +491,8 @@ func sleep_far_packs(player_position: Vector3) -> int:
 
 
 func _spawn_pack(pack: Dictionary, at: Vector3) -> void:
+	var trace: Node = terrain.play03_trace if terrain != null else null
+	var began := Time.get_ticks_usec() if is_instance_valid(trace) and trace.active else 0
 	pack["spawned"] = true
 	if _indexed: _active_pack_ids[int(pack.index)] = true
 	var sim: WroughtwildSim = load("res://scripts/sim.gd").shared()
@@ -537,14 +542,18 @@ func _spawn_pack(pack: Dictionary, at: Vector3) -> void:
 				elite_modifier = modifiers[roll.randi() % modifiers.size()]
 	var members: Array = []
 	for i in ids.size():
+		var member_began := Time.get_ticks_usec() if began > 0 else 0
 		var angle := TAU * float(i) / float(maxi(ids.size(), 1))
 		var offset := Vector3(cos(angle), 0.5, sin(angle)) * 1.6
 		var enemy: Enemy = preload("res://scenes/enemy.tscn").instantiate()
+		if began > 0: trace.note_arrival("instantiate", member_began, {"enemy_id":String(ids[i]), "member":i})
+		var support_began := Time.get_ticks_usec() if began > 0 else 0
 		enemy.enemy_id = StringName(ids[i])
 		var position := at + (Vector3.UP * .5 if bounded else offset)
 		if terrain != null and not terrain.map.is_empty() and String(pack.get("biome",""))!="cave":
 			var body := enemy.get_node("CollisionShape3D") as CollisionShape3D
 			position = _surface_member_position(position,(body.shape as CapsuleShape3D).radius,offset.y)
+		if began > 0: trace.note_arrival("support", support_began, {"enemy_id":String(ids[i]), "member":i})
 		# Set the final pose before entering the tree, as Enemy.spawn does: no
 		# transient body at the scene origin and a correct first MobGrid entry.
 		enemy.position = (get_parent() as Node3D).to_local(position) if get_parent() is Node3D else position
@@ -561,7 +570,9 @@ func _spawn_pack(pack: Dictionary, at: Vector3) -> void:
 			enemy.make_elite(sim.elite_modifier(elite_modifier))
 		enemy.died.connect(_on_enemy_died)
 		members.append(enemy)
+		if began > 0: trace.note_arrival("member", member_began, {"enemy_id":String(ids[i]), "member":i, "actor":enemy.get_instance_id()})
 	pack["members"] = members
+	if began > 0: trace.note_arrival("pack", began, {"pack":int(pack.get("index",-1)), "count":members.size(), "position":[at.x,at.y,at.z], "resting":resting})
 
 
 func loot_kill_counter() -> int:

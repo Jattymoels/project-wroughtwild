@@ -209,7 +209,12 @@ static func spawn(root: Node, id: StringName, at: Vector3) -> Enemy:
 	return enemy
 
 
+var arrival_trace: Node
+var _arrival_first_tick := false
+
 func _ready() -> void:
+	arrival_trace = get_tree().get_first_node_in_group("play03_trace")
+	_arrival_first_tick = is_instance_valid(arrival_trace) and arrival_trace.active
 	add_to_group("enemies")
 	configure(load("res://scripts/sim.gd").shared())
 	# Findable from the frame it appears (a scream in the same frame counts).
@@ -217,6 +222,7 @@ func _ready() -> void:
 
 
 func configure(sim: WroughtwildSim) -> void:
+	var arrival_began := Time.get_ticks_usec() if _arrival_tracing() else 0
 	var def: Dictionary = sim.enemy(enemy_id)
 	if def.is_empty():
 		push_error("Enemy: unknown enemy id %s" % enemy_id)
@@ -316,11 +322,21 @@ func configure(sim: WroughtwildSim) -> void:
 	_material.vertex_color_use_as_albedo = true
 	_material.vertex_color_is_srgb = true
 	_material.roughness = 1.0
+	var motion_began := Time.get_ticks_usec() if _arrival_tracing() else 0
 	CreatureMotion.attach(_mesh,self,"grazer" if flees else behaviour)
+	_note_arrival("motion_attach", motion_began)
 	if not influence.is_empty(): FrontierHostLook.attach(self)
 	_label.position.y = _mesh.mesh.get_aabb().end.y * _mesh.scale.y + 0.25
 	_refresh_label()
+	_note_arrival("configure", arrival_began)
 
+
+func _arrival_tracing() -> bool:
+	return is_instance_valid(arrival_trace) and arrival_trace.active
+
+func _note_arrival(phase: String, began: int) -> void:
+	if began > 0 and _arrival_tracing():
+		arrival_trace.note_arrival(phase, began, {"enemy_id":String(enemy_id), "role":behaviour, "actor":get_instance_id()})
 
 func _refresh_label() -> void:
 	if _label != null:
@@ -645,6 +661,15 @@ func set_aggro_multiplier(multiplier: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if not _arrival_first_tick:
+		_physics_step(delta)
+		return
+	_arrival_first_tick = false
+	var began := Time.get_ticks_usec()
+	_physics_step(delta)
+	_note_arrival("first_actor_tick", began)
+
+func _physics_step(delta: float) -> void:
 	MobGrid.register(self)
 	since_hurt += delta
 	_refresh_aura()

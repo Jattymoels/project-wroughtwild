@@ -29,7 +29,7 @@ static func apply(mesh: MeshInstance3D, actor: Node3D, role: String) -> void:
 	actor._base_albedo=Color.WHITE
 	actor._material.albedo_color=Color.WHITE
 	actor._material.roughness=LOOK.actor_roughness
-	if int(definitions()[id].get("rig_version",1))==2:
+	if int(definitions()[id].get("rig_version",1))==2 and not uses_finished_envelope(definitions()[id]):
 		var material := _materials[id] as StandardMaterial3D
 		actor._material.albedo_texture=material.albedo_texture
 		actor._material.roughness_texture=material.roughness_texture
@@ -63,9 +63,34 @@ static func refresh_material(actor: Enemy) -> void:
 	# LF hosts render the same mask through their own local scar material.
 	if not actor.influence.is_empty(): actor._material.emission_enabled=false
 
+## Finished models hide the old surface. Only its exact envelope survives for
+## fit/label placement; rebuilding thousands of skinned triangles on arrival is
+## wasted work. Manifest bounds are in source space, before family rebasing.
+static func uses_finished_envelope(definition: Dictionary) -> bool:
+	# The fitted A2 boar/wolf/stag have exact, complete source bounds. The six
+	# later replacement mobs retain their legacy path (it appends adornments).
+	return definition.has("finished") and definition.has("visual_bounds") and int(definition.get("rig_version",1)) == 2
+
 static func mesh_for(id: String, role: String) -> ArrayMesh:
 	if _meshes.has(id): return _meshes[id]
 	if not definitions().has(id): return null
+	var definition: Dictionary = definitions()[id]
+	if uses_finished_envelope(definition):
+		var low: Array = definition.visual_bounds[0]
+		var high: Array = definition.visual_bounds[1]
+		var scale_values: Array = definition.applied_visual_scale
+		var family_scale := Vector3(scale_values[0],scale_values[1],scale_values[2])
+		var bounds_mesh := ArrayMesh.new()
+		var arrays := []
+		arrays.resize(Mesh.ARRAY_MAX)
+		arrays[Mesh.ARRAY_VERTEX] = PackedVector3Array([
+			Vector3(low[0],low[1],low[2])/family_scale,
+			Vector3(high[0],high[1],high[2])/family_scale])
+		bounds_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_POINTS,arrays)
+		bounds_mesh.set_meta("authored_actor_id",id)
+		bounds_mesh.set_meta("finished_envelope",true)
+		_meshes[id] = bounds_mesh
+		return bounds_mesh
 	var packed := load("res://assets/authored/mobs/"+id+".glb") as PackedScene
 	if packed==null: return null
 	var root := packed.instantiate()
@@ -77,7 +102,6 @@ static func mesh_for(id: String, role: String) -> ArrayMesh:
 	var instance: MeshInstance3D=found.instance
 	var transform: Transform3D=found.transform
 	var source := instance.mesh as ArrayMesh
-	var definition: Dictionary=definitions()[id]
 	var articulated := int(definition.get("rig_version",1))==2
 	if articulated: _materials[id]=source.surface_get_material(0)
 	var scale_array: Array=definition.applied_visual_scale

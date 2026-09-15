@@ -1,6 +1,8 @@
-# PLAY-03 — remove the brief hitch when mobs appear
+# PLAY-03 â€” remove the brief hitch when mobs appear
 
-Status: next worker prepared after RF-05 adoption, 15 September 2026.
+Status: checked partial improvement ready for coordinator integration, 15 September 2026.
+[Measured result and remaining hitch](play03-mob-arrival-result-2026-09-15.md):
+443 ms to 324 ms on the selected arrival; PLAY-03 remains open.
 Worktree: `D:/Wroughtwild/work/play03-mob-arrival`.
 Branch: `codex/play03-mob-arrival`. Setup: `build/play03-arrival/SETUP.md`.
 The owner starts this worker; the coordinator integrates the checked result and
@@ -73,7 +75,7 @@ defeated actor or leak work into another world. Check only the lifecycle boundar
 actually affected; do not reopen all six mob delivery suites.
 
 Preserve V8 lakes, shore constraints, surface swimming, paid support and floating
-recovery, plus V1–V7/LF saved geography. Do not reseed, migrate saves, alter native
+recovery, plus V1â€“V7/LF saved geography. Do not reseed, migrate saves, alter native
 generation inputs or change campaign rules. Any new scheduling control belongs
 in an existing suitable tuning resource with a plain-language purpose.
 

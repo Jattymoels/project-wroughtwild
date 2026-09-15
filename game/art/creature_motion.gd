@@ -23,14 +23,18 @@ static func attach(mesh: MeshInstance3D, owner_actor: Node3D, actor_role: String
 	if previous != null:
 		previous.free()
 	mesh.layers = 1
+	var began := Time.get_ticks_usec() if owner_actor is Enemy and owner_actor._arrival_tracing() else 0
 	RecoveredActorArt.apply(mesh,owner_actor,actor_role)
+	if began > 0: owner_actor._note_arrival("recovered_mesh", began)
 	var motion := CreatureMotion.new()
 	motion.name = "Motion"
 	motion.actor = owner_actor
 	motion.role = actor_role
 	motion._mesh = mesh
 	mesh.add_child(motion)
+	began = Time.get_ticks_usec() if began > 0 else 0
 	motion._configure()
+	if began > 0: owner_actor._note_arrival("presentation_setup", began)
 	return motion
 
 func _configure() -> void:

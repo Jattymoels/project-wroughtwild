@@ -1,0 +1,930 @@
+{
+  "before": {
+    "fixture": {
+      "arrival_distance": 27.2881565093994,
+      "arrival_frame": 266,
+      "checks": 10,
+      "failures": 1,
+      "initial_distance": 35.1455574035645,
+      "initial_position": [
+        368.980285644531,
+        30.1000003814697,
+        583.43505859375
+      ],
+      "members": [
+        {
+          "bounds_position": [
+            -0.500244438648224,
+            -0.011999998241663,
+            -1.36299991607666
+          ],
+          "bounds_size": [
+            1.00030517578125,
+            1.25900268554688,
+            2.40088510513306
+          ],
+          "id": "ember_whelp",
+          "life": 75.0,
+          "model_position": "(0.001082, -0.000045, -0.163266)",
+          "model_scale": "(1.048434, 1.048434, 1.048434)",
+          "role": "melee"
+        }
+      ],
+      "pack": {
+        "enemies": [
+          "ember_whelp"
+        ],
+        "index": 176,
+        "position": [
+          338.5,
+          39.0,
+          598.5
+        ]
+      },
+      "trace": "D:/Wroughtwild/work/play03-mob-arrival/build/play03-arrival/before/play03-2026-09-15T21-31-10-38500-2466767.json",
+      "walk_start_frame": 89,
+      "world_setup_ms": 39790.941
+    },
+    "metadata": {
+      "cpu": "AMD Ryzen 9 9950X3D 16-Core Processor",
+      "engine": "4.5-stable (official)",
+      "format": 1,
+      "frame_max_ms": 40447.016,
+      "frame_p95_ms": 15.866,
+      "gpu": "NVIDIA GeForce RTX 5090",
+      "max_frames": 7200,
+      "observer_frame_max_ms": 0.127,
+      "observer_scope": "observer_frame_ms measures row collection including the 1Hz actor count; excludes small timing-hook overhead, storage allocations between callbacks, and post-stop JSON/file writing. This is an instrumented session, not an overhead-free benchmark.",
+      "overwritten_frames": 0,
+      "rendering_method": "forward_plus",
+      "retained_frames": 507,
+      "scope": "Consecutive process-frame intervals, including preceding idle/draw and following physics callbacks. Native surface_y is a reference, not a collision query. Engine monitors are sampled, draw_wall_ms is NOT GPU execution time. No save/inventory payloads. Normal controls and quality are unchanged.",
+      "stop_reason": "arrival_complete"
+    },
+    "causal_frame_ms": 443.144,
+    "arrival_events": [
+      {
+        "duration_ms": 0.122,
+        "enemy_id": "ember_whelp",
+        "member": 0,
+        "phase": "instantiate",
+        "physics_frame": 176,
+        "process_frame": 266,
+        "start_usec": 46101347
+      },
+      {
+        "duration_ms": 0.047,
+        "enemy_id": "ember_whelp",
+        "member": 0,
+        "phase": "support",
+        "physics_frame": 176,
+        "process_frame": 266,
+        "start_usec": 46101474
+      },
+      {
+        "actor": 1256965820584,
+        "duration_ms": 125.855,
+        "enemy_id": "ember_whelp",
+        "phase": "recovered_mesh",
+        "physics_frame": 176,
+        "process_frame": 266,
+        "role": "melee",
+        "start_usec": 46108747
+      },
+      {
+        "actor": 1256965820584,
+        "duration_ms": 301.926,
+        "enemy_id": "ember_whelp",
+        "phase": "presentation_setup",
+        "physics_frame": 176,
+        "process_frame": 266,
+        "role": "melee",
+        "start_usec": 46234644
+      },
+      {
+        "actor": 1256965820584,
+        "duration_ms": 427.836,
+        "enemy_id": "ember_whelp",
+        "phase": "motion_attach",
+        "physics_frame": 176,
+        "process_frame": 266,
+        "role": "melee",
+        "start_usec": 46108742
+      },
+      {
+        "actor": 1256965820584,
+        "duration_ms": 435.016,
+        "enemy_id": "ember_whelp",
+        "phase": "configure",
+        "physics_frame": 176,
+        "process_frame": 266,
+        "role": "melee",
+        "start_usec": 46101579
+      },
+      {
+        "actor": 1256965820584,
+        "duration_ms": 435.354,
+        "enemy_id": "ember_whelp",
+        "member": 0,
+        "phase": "member",
+        "physics_frame": 176,
+        "process_frame": 266,
+        "start_usec": 46101347
+      },
+      {
+        "count": 1,
+        "duration_ms": 435.401,
+        "pack": 176,
+        "phase": "pack",
+        "physics_frame": 176,
+        "position": [
+          338.5,
+          39.0,
+          598.5
+        ],
+        "process_frame": 266,
+        "resting": false,
+        "start_usec": 46101306
+      },
+      {
+        "candidates": 15,
+        "duration_ms": 435.495,
+        "live": 3,
+        "phase": "activation_scan",
+        "physics_frame": 176,
+        "process_frame": 266,
+        "start_usec": 46101237
+      }
+    ],
+    "first_draw_interval": {
+      "frame": 267,
+      "frame_ms": 16.086,
+      "position": [
+        361.877166748047,
+        30.960844039917,
+        586.944763183594
+      ],
+      "draw_wall_ms": 4.342,
+      "render_setup_cpu_ms": 0.682,
+      "physics_callbacks_ms": 2.755,
+      "chunk_tick_ms": 3.25,
+      "resource_tick_ms": 2.019,
+      "pipeline_mesh": 54,
+      "pipeline_surface": 204,
+      "pipeline_specialization": 83,
+      "arrivals": [
+        {
+          "actor": 1256965820584,
+          "duration_ms": 0.033,
+          "enemy_id": "ember_whelp",
+          "phase": "first_actor_tick",
+          "physics_frame": 177,
+          "process_frame": 267,
+          "role": "melee",
+          "start_usec": 46550390
+        }
+      ]
+    },
+    "recovered_two_seconds": {
+      "frames": 213,
+      "median_ms": 8.634,
+      "p95_ms": 15.214,
+      "max_ms": 20.117
+    },
+    "slowest_recovered_interval": {
+      "below_surface_m": -0.960844039916992,
+      "chunk_tick_ms": 12.042,
+      "chunks": 190,
+      "chunks_built_total": 311,
+      "chunks_retired_total": 121,
+      "draw_calls": 2940,
+      "draw_wall_ms": 3.309,
+      "edits": 0,
+      "elapsed_s": 44.636687,
+      "enemies_sampled_1hz": 3,
+      "floor": true,
+      "fps_cap": 120,
+      "frame": 325,
+      "frame_ms": 20.117,
+      "observer_frame_ms": 0.057,
+      "phase_after": 3,
+      "physics_callbacks_ms": 0.326,
+      "physics_monitor_ms": 436.716,
+      "physics_ticks": 1,
+      "pipeline_mesh": 54,
+      "pipeline_specialization": 83,
+      "pipeline_surface": 204,
+      "player_physics_enabled": true,
+      "player_physics_ms": 0.089,
+      "position": [
+        361.877166748047,
+        30.960844039917,
+        586.944763183594
+      ],
+      "primitives": 33149808,
+      "process_monitor_ms": 16.4,
+      "process_to_draw_ms": 16.169,
+      "profile": "frontier_v8",
+      "projection_pending": 49,
+      "render_setup_cpu_ms": 0.956,
+      "resource_active": 643,
+      "resource_pending": 0,
+      "resource_tick_ms": 2.016,
+      "safety_refills_total": 0,
+      "seed": 77,
+      "stage_before": "cover",
+      "surface_y": 30,
+      "terrain_pending": 142,
+      "trial": false,
+      "velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "vsync": 0,
+      "window_size": [
+        1280,
+        720
+      ]
+    },
+    "adjacent_intervals": [
+      {
+        "frame": 265,
+        "frame_ms": 7.487,
+        "position": [
+          361.951873779297,
+          30.960844039917,
+          586.907836914063
+        ],
+        "draw_wall_ms": 2.956,
+        "render_setup_cpu_ms": 0.441,
+        "physics_callbacks_ms": null,
+        "chunk_tick_ms": 1.073,
+        "resource_tick_ms": 2.01,
+        "pipeline_mesh": 51,
+        "pipeline_surface": 204,
+        "pipeline_specialization": 81,
+        "arrivals": null
+      },
+      {
+        "frame": 266,
+        "frame_ms": 443.144,
+        "position": [
+          361.877166748047,
+          30.960844039917,
+          586.944763183594
+        ],
+        "draw_wall_ms": 2.775,
+        "render_setup_cpu_ms": 0.425,
+        "physics_callbacks_ms": 435.984,
+        "chunk_tick_ms": 0.271,
+        "resource_tick_ms": 2.003,
+        "pipeline_mesh": 54,
+        "pipeline_surface": 204,
+        "pipeline_specialization": 81,
+        "arrivals": [
+          {
+            "duration_ms": 0.122,
+            "enemy_id": "ember_whelp",
+            "member": 0,
+            "phase": "instantiate",
+            "physics_frame": 176,
+            "process_frame": 266,
+            "start_usec": 46101347
+          },
+          {
+            "duration_ms": 0.047,
+            "enemy_id": "ember_whelp",
+            "member": 0,
+            "phase": "support",
+            "physics_frame": 176,
+            "process_frame": 266,
+            "start_usec": 46101474
+          },
+          {
+            "actor": 1256965820584,
+            "duration_ms": 125.855,
+            "enemy_id": "ember_whelp",
+            "phase": "recovered_mesh",
+            "physics_frame": 176,
+            "process_frame": 266,
+            "role": "melee",
+            "start_usec": 46108747
+          },
+          {
+            "actor": 1256965820584,
+            "duration_ms": 301.926,
+            "enemy_id": "ember_whelp",
+            "phase": "presentation_setup",
+            "physics_frame": 176,
+            "process_frame": 266,
+            "role": "melee",
+            "start_usec": 46234644
+          },
+          {
+            "actor": 1256965820584,
+            "duration_ms": 427.836,
+            "enemy_id": "ember_whelp",
+            "phase": "motion_attach",
+            "physics_frame": 176,
+            "process_frame": 266,
+            "role": "melee",
+            "start_usec": 46108742
+          },
+          {
+            "actor": 1256965820584,
+            "duration_ms": 435.016,
+            "enemy_id": "ember_whelp",
+            "phase": "configure",
+            "physics_frame": 176,
+            "process_frame": 266,
+            "role": "melee",
+            "start_usec": 46101579
+          },
+          {
+            "actor": 1256965820584,
+            "duration_ms": 435.354,
+            "enemy_id": "ember_whelp",
+            "member": 0,
+            "phase": "member",
+            "physics_frame": 176,
+            "process_frame": 266,
+            "start_usec": 46101347
+          },
+          {
+            "count": 1,
+            "duration_ms": 435.401,
+            "pack": 176,
+            "phase": "pack",
+            "physics_frame": 176,
+            "position": [
+              338.5,
+              39.0,
+              598.5
+            ],
+            "process_frame": 266,
+            "resting": false,
+            "start_usec": 46101306
+          },
+          {
+            "candidates": 15,
+            "duration_ms": 435.495,
+            "live": 3,
+            "phase": "activation_scan",
+            "physics_frame": 176,
+            "process_frame": 266,
+            "start_usec": 46101237
+          }
+        ]
+      },
+      {
+        "frame": 267,
+        "frame_ms": 16.086,
+        "position": [
+          361.877166748047,
+          30.960844039917,
+          586.944763183594
+        ],
+        "draw_wall_ms": 4.342,
+        "render_setup_cpu_ms": 0.682,
+        "physics_callbacks_ms": 2.755,
+        "chunk_tick_ms": 3.25,
+        "resource_tick_ms": 2.019,
+        "pipeline_mesh": 54,
+        "pipeline_surface": 204,
+        "pipeline_specialization": 83,
+        "arrivals": [
+          {
+            "actor": 1256965820584,
+            "duration_ms": 0.033,
+            "enemy_id": "ember_whelp",
+            "phase": "first_actor_tick",
+            "physics_frame": 177,
+            "process_frame": 267,
+            "role": "melee",
+            "start_usec": 46550390
+          }
+        ]
+      },
+      {
+        "frame": 268,
+        "frame_ms": 9.278,
+        "position": [
+          361.877166748047,
+          30.960844039917,
+          586.944763183594
+        ],
+        "draw_wall_ms": 3.423,
+        "render_setup_cpu_ms": 0.626,
+        "physics_callbacks_ms": 0.853,
+        "chunk_tick_ms": 2.427,
+        "resource_tick_ms": 0.002,
+        "pipeline_mesh": 54,
+        "pipeline_surface": 204,
+        "pipeline_specialization": 83,
+        "arrivals": null
+      },
+      {
+        "frame": 269,
+        "frame_ms": 6.767,
+        "position": [
+          361.877166748047,
+          30.960844039917,
+          586.944763183594
+        ],
+        "draw_wall_ms": 3.046,
+        "render_setup_cpu_ms": 0.532,
+        "physics_callbacks_ms": 0.299,
+        "chunk_tick_ms": 0.006,
+        "resource_tick_ms": 1.604,
+        "pipeline_mesh": 54,
+        "pipeline_surface": 204,
+        "pipeline_specialization": 83,
+        "arrivals": null
+      }
+    ],
+    "selected_setup_events_in_whole_trace": 1
+  },
+  "after": {
+    "fixture": {
+      "arrival_distance": 27.5271644592285,
+      "arrival_frame": 226,
+      "checks": 11,
+      "failures": 0,
+      "initial_distance": 35.1455574035645,
+      "initial_position": [
+        368.980285644531,
+        30.1000003814697,
+        583.43505859375
+      ],
+      "members": [
+        {
+          "bounds_position": [
+            -0.500244438648224,
+            -0.011999998241663,
+            -1.36299991607666
+          ],
+          "bounds_size": [
+            1.00030517578125,
+            1.25900268554688,
+            2.40088510513306
+          ],
+          "id": "ember_whelp",
+          "life": 75.0,
+          "model_position": "(0.001082, -0.000045, -0.163266)",
+          "model_scale": "(1.048434, 1.048434, 1.048434)",
+          "role": "melee"
+        }
+      ],
+      "pack": {
+        "enemies": [
+          "ember_whelp"
+        ],
+        "index": 176,
+        "position": [
+          338.5,
+          39.0,
+          598.5
+        ]
+      },
+      "trace": "D:/Wroughtwild/work/play03-mob-arrival/build/play03-arrival/after/play03-2026-09-15T21-33-55-12112-1970242.json",
+      "walk_start_frame": 89,
+      "world_setup_ms": 51138.391
+    },
+    "metadata": {
+      "cpu": "AMD Ryzen 9 9950X3D 16-Core Processor",
+      "engine": "4.5-stable (official)",
+      "format": 1,
+      "frame_max_ms": 51677.011,
+      "frame_p95_ms": 17.635,
+      "gpu": "NVIDIA GeForce RTX 5090",
+      "max_frames": 7200,
+      "observer_frame_max_ms": 0.107,
+      "observer_scope": "observer_frame_ms measures row collection including the 1Hz actor count; excludes small timing-hook overhead, storage allocations between callbacks, and post-stop JSON/file writing. This is an instrumented session, not an overhead-free benchmark.",
+      "overwritten_frames": 0,
+      "rendering_method": "forward_plus",
+      "retained_frames": 449,
+      "scope": "Consecutive process-frame intervals, including preceding idle/draw and following physics callbacks. Native surface_y is a reference, not a collision query. Engine monitors are sampled, draw_wall_ms is NOT GPU execution time. No save/inventory payloads. Normal controls and quality are unchanged.",
+      "stop_reason": "arrival_complete"
+    },
+    "causal_frame_ms": 324.445,
+    "arrival_events": [
+      {
+        "duration_ms": 0.092,
+        "enemy_id": "ember_whelp",
+        "member": 0,
+        "phase": "instantiate",
+        "physics_frame": 176,
+        "process_frame": 226,
+        "start_usec": 57083030
+      },
+      {
+        "duration_ms": 0.035,
+        "enemy_id": "ember_whelp",
+        "member": 0,
+        "phase": "support",
+        "physics_frame": 176,
+        "process_frame": 226,
+        "start_usec": 57083125
+      },
+      {
+        "actor": 1232018090259,
+        "duration_ms": 0.049,
+        "enemy_id": "ember_whelp",
+        "phase": "recovered_mesh",
+        "physics_frame": 176,
+        "process_frame": 226,
+        "role": "melee",
+        "start_usec": 57089847
+      },
+      {
+        "actor": 1232018090259,
+        "duration_ms": 307.916,
+        "enemy_id": "ember_whelp",
+        "phase": "presentation_setup",
+        "physics_frame": 176,
+        "process_frame": 226,
+        "role": "melee",
+        "start_usec": 57089917
+      },
+      {
+        "actor": 1232018090259,
+        "duration_ms": 307.999,
+        "enemy_id": "ember_whelp",
+        "phase": "motion_attach",
+        "physics_frame": 176,
+        "process_frame": 226,
+        "role": "melee",
+        "start_usec": 57089842
+      },
+      {
+        "actor": 1232018090259,
+        "duration_ms": 314.657,
+        "enemy_id": "ember_whelp",
+        "phase": "configure",
+        "physics_frame": 176,
+        "process_frame": 226,
+        "role": "melee",
+        "start_usec": 57083201
+      },
+      {
+        "actor": 1232018090259,
+        "duration_ms": 314.937,
+        "enemy_id": "ember_whelp",
+        "member": 0,
+        "phase": "member",
+        "physics_frame": 176,
+        "process_frame": 226,
+        "start_usec": 57083030
+      },
+      {
+        "count": 1,
+        "duration_ms": 314.966,
+        "pack": 176,
+        "phase": "pack",
+        "physics_frame": 176,
+        "position": [
+          338.5,
+          39.0,
+          598.5
+        ],
+        "process_frame": 226,
+        "resting": false,
+        "start_usec": 57083007
+      },
+      {
+        "candidates": 15,
+        "duration_ms": 315.042,
+        "live": 3,
+        "phase": "activation_scan",
+        "physics_frame": 176,
+        "process_frame": 226,
+        "start_usec": 57082955
+      }
+    ],
+    "first_draw_interval": {
+      "frame": 227,
+      "frame_ms": 15.578,
+      "position": [
+        362.101287841797,
+        30.960844039917,
+        586.833984375
+      ],
+      "draw_wall_ms": 3.992,
+      "render_setup_cpu_ms": 0.8,
+      "physics_callbacks_ms": 2.955,
+      "chunk_tick_ms": 2.462,
+      "resource_tick_ms": 2.014,
+      "pipeline_mesh": 49,
+      "pipeline_surface": 199,
+      "pipeline_specialization": 83,
+      "arrivals": [
+        {
+          "actor": 1232018090259,
+          "duration_ms": 0.031,
+          "enemy_id": "ember_whelp",
+          "phase": "first_actor_tick",
+          "physics_frame": 177,
+          "process_frame": 227,
+          "role": "melee",
+          "start_usec": 57411178
+        }
+      ]
+    },
+    "recovered_two_seconds": {
+      "frames": 199,
+      "median_ms": 8.668,
+      "p95_ms": 15.712,
+      "max_ms": 114.66
+    },
+    "slowest_recovered_interval": {
+      "arrivals": [
+        {
+          "candidates": 14,
+          "duration_ms": 0.065,
+          "live": 3,
+          "phase": "activation_scan",
+          "physics_frame": 251,
+          "process_frame": 337,
+          "start_usec": 58552391
+        }
+      ],
+      "below_surface_m": -0.960844039916992,
+      "chunk_tick_ms": 2.692,
+      "chunks": 193,
+      "chunks_built_total": 313,
+      "chunks_retired_total": 120,
+      "draw_calls": 2944,
+      "draw_wall_ms": 3.038,
+      "edits": 0,
+      "elapsed_s": 56.583441,
+      "enemies_sampled_1hz": 3,
+      "floor": true,
+      "fps_cap": 120,
+      "frame": 337,
+      "frame_ms": 114.66,
+      "observer_frame_ms": 0.048,
+      "phase_after": 3,
+      "physics_callbacks_ms": 2.195,
+      "physics_monitor_ms": 316.385,
+      "physics_ticks": 6,
+      "pipeline_mesh": 49,
+      "pipeline_specialization": 83,
+      "pipeline_surface": 199,
+      "player_physics_enabled": true,
+      "player_physics_ms": 0.569,
+      "position": [
+        362.101287841797,
+        30.960844039917,
+        586.833984375
+      ],
+      "primitives": 33147972,
+      "process_monitor_ms": 18.329,
+      "process_to_draw_ms": 6.031,
+      "profile": "frontier_v8",
+      "projection_pending": 49,
+      "render_setup_cpu_ms": 0.496,
+      "resource_active": 641,
+      "resource_pending": 0,
+      "resource_tick_ms": 2.02,
+      "safety_refills_total": 0,
+      "seed": 77,
+      "stage_before": "cover",
+      "surface_y": 30,
+      "terrain_pending": 140,
+      "trial": false,
+      "velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "vsync": 0,
+      "window_size": [
+        1280,
+        720
+      ]
+    },
+    "adjacent_intervals": [
+      {
+        "frame": 225,
+        "frame_ms": 6.976,
+        "position": [
+          362.175994873047,
+          30.960844039917,
+          586.797058105469
+        ],
+        "draw_wall_ms": 2.422,
+        "render_setup_cpu_ms": 0.479,
+        "physics_callbacks_ms": null,
+        "chunk_tick_ms": 1.082,
+        "resource_tick_ms": 2.009,
+        "pipeline_mesh": 48,
+        "pipeline_surface": 199,
+        "pipeline_specialization": 81,
+        "arrivals": null
+      },
+      {
+        "frame": 226,
+        "frame_ms": 324.445,
+        "position": [
+          362.101287841797,
+          30.960844039917,
+          586.833984375
+        ],
+        "draw_wall_ms": 2.908,
+        "render_setup_cpu_ms": 0.486,
+        "physics_callbacks_ms": 315.526,
+        "chunk_tick_ms": 1.668,
+        "resource_tick_ms": 2.007,
+        "pipeline_mesh": 49,
+        "pipeline_surface": 199,
+        "pipeline_specialization": 81,
+        "arrivals": [
+          {
+            "duration_ms": 0.092,
+            "enemy_id": "ember_whelp",
+            "member": 0,
+            "phase": "instantiate",
+            "physics_frame": 176,
+            "process_frame": 226,
+            "start_usec": 57083030
+          },
+          {
+            "duration_ms": 0.035,
+            "enemy_id": "ember_whelp",
+            "member": 0,
+            "phase": "support",
+            "physics_frame": 176,
+            "process_frame": 226,
+            "start_usec": 57083125
+          },
+          {
+            "actor": 1232018090259,
+            "duration_ms": 0.049,
+            "enemy_id": "ember_whelp",
+            "phase": "recovered_mesh",
+            "physics_frame": 176,
+            "process_frame": 226,
+            "role": "melee",
+            "start_usec": 57089847
+          },
+          {
+            "actor": 1232018090259,
+            "duration_ms": 307.916,
+            "enemy_id": "ember_whelp",
+            "phase": "presentation_setup",
+            "physics_frame": 176,
+            "process_frame": 226,
+            "role": "melee",
+            "start_usec": 57089917
+          },
+          {
+            "actor": 1232018090259,
+            "duration_ms": 307.999,
+            "enemy_id": "ember_whelp",
+            "phase": "motion_attach",
+            "physics_frame": 176,
+            "process_frame": 226,
+            "role": "melee",
+            "start_usec": 57089842
+          },
+          {
+            "actor": 1232018090259,
+            "duration_ms": 314.657,
+            "enemy_id": "ember_whelp",
+            "phase": "configure",
+            "physics_frame": 176,
+            "process_frame": 226,
+            "role": "melee",
+            "start_usec": 57083201
+          },
+          {
+            "actor": 1232018090259,
+            "duration_ms": 314.937,
+            "enemy_id": "ember_whelp",
+            "member": 0,
+            "phase": "member",
+            "physics_frame": 176,
+            "process_frame": 226,
+            "start_usec": 57083030
+          },
+          {
+            "count": 1,
+            "duration_ms": 314.966,
+            "pack": 176,
+            "phase": "pack",
+            "physics_frame": 176,
+            "position": [
+              338.5,
+              39.0,
+              598.5
+            ],
+            "process_frame": 226,
+            "resting": false,
+            "start_usec": 57083007
+          },
+          {
+            "candidates": 15,
+            "duration_ms": 315.042,
+            "live": 3,
+            "phase": "activation_scan",
+            "physics_frame": 176,
+            "process_frame": 226,
+            "start_usec": 57082955
+          }
+        ]
+      },
+      {
+        "frame": 227,
+        "frame_ms": 15.578,
+        "position": [
+          362.101287841797,
+          30.960844039917,
+          586.833984375
+        ],
+        "draw_wall_ms": 3.992,
+        "render_setup_cpu_ms": 0.8,
+        "physics_callbacks_ms": 2.955,
+        "chunk_tick_ms": 2.462,
+        "resource_tick_ms": 2.014,
+        "pipeline_mesh": 49,
+        "pipeline_surface": 199,
+        "pipeline_specialization": 83,
+        "arrivals": [
+          {
+            "actor": 1232018090259,
+            "duration_ms": 0.031,
+            "enemy_id": "ember_whelp",
+            "phase": "first_actor_tick",
+            "physics_frame": 177,
+            "process_frame": 227,
+            "role": "melee",
+            "start_usec": 57411178
+          }
+        ]
+      },
+      {
+        "frame": 228,
+        "frame_ms": 8.791,
+        "position": [
+          362.101287841797,
+          30.960844039917,
+          586.833984375
+        ],
+        "draw_wall_ms": 3.322,
+        "render_setup_cpu_ms": 0.603,
+        "physics_callbacks_ms": 0.721,
+        "chunk_tick_ms": 0.005,
+        "resource_tick_ms": 2.175,
+        "pipeline_mesh": 49,
+        "pipeline_surface": 199,
+        "pipeline_specialization": 83,
+        "arrivals": null
+      },
+      {
+        "frame": 229,
+        "frame_ms": 8.174,
+        "position": [
+          362.101287841797,
+          30.960844039917,
+          586.833984375
+        ],
+        "draw_wall_ms": 2.804,
+        "render_setup_cpu_ms": 0.517,
+        "physics_callbacks_ms": 0.505,
+        "chunk_tick_ms": 0.998,
+        "resource_tick_ms": 2.009,
+        "pipeline_mesh": 49,
+        "pipeline_surface": 199,
+        "pipeline_specialization": 83,
+        "arrivals": null
+      }
+    ],
+    "selected_setup_events_in_whole_trace": 1
+  },
+  "frame_reduction_percent": 26.785649811348012,
+  "lifecycle": {
+    "bounds": {
+      "ash_hound": {
+        "position_error": 0.0,
+        "size_error": 0.0
+      },
+      "ember_whelp": {
+        "position_error": 0.0,
+        "size_error": 0.0
+      },
+      "valley_elk": {
+        "position_error": 5.96046447753906e-08,
+        "size_error": 1.19209289550781e-07
+      }
+    },
+    "checks": 39,
+    "failures": 0
+  },
+  "limitations": [
+    "One instrumented V8 seed-77 boar arrival per process; no OS/driver-cold claim.",
+    "First before fixture returned 1 for an overbroad empty-all-species-cache assertion: ordinary spawn-area grazers already existed. Retained whole-session events prove no earlier boar setup; corrected assertions check the selected boar in the after run.",
+    "The row closing the activation physics contains the preceding draw. First rendering of the new actor is observed in the NEXT interval; wall-time render counters are not direct GPU measurements.",
+    "Remaining finished presentation setup exceeds 300 ms. Other arrivals and the underground connection remain unresolved."
+  ]
+}

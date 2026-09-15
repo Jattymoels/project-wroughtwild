@@ -57,6 +57,7 @@ func _ready() -> void:
 		"cpu":OS.get_processor_name(),"gpu":RenderingServer.get_video_adapter_name(),
 		"rendering_method":RenderingServer.get_current_rendering_method(),
 		"scope":"Consecutive process-frame intervals, including preceding idle/draw and following physics callbacks. Native surface_y is a reference, not a collision query. Engine monitors are sampled, draw_wall_ms is NOT GPU execution time. No save/inventory payloads. Normal controls and quality are unchanged."}
+	add_to_group("play03_trace")
 	terrain.play03_trace = self
 	player.play03_trace = self
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -76,6 +77,21 @@ func _ready() -> void:
 
 func add_time(key: String, began: int) -> void:
 	_interval[key] = float(_interval.get(key,0.0)) + (Time.get_ticks_usec()-began)/1000.0
+
+## Bounded arrival spans live in the same intervals as frame/stream observations.
+## Nested spans overlap; process_frame identifies execution, row.frame its close.
+func note_arrival(phase: String, began: int, details: Dictionary = {}) -> void:
+	if not active: return
+	if not _interval.has("arrivals"): _interval["arrivals"] = []
+	var events: Array = _interval.arrivals
+	if events.size() >= 128:
+		_interval["arrival_events_dropped"] = int(_interval.get("arrival_events_dropped", 0)) + 1
+		return
+	var event := details.duplicate()
+	event.merge({"phase":phase, "process_frame":Engine.get_process_frames(),
+		"physics_frame":Engine.get_physics_frames(), "start_usec":began,
+		"duration_ms":(Time.get_ticks_usec()-began)/1000.0})
+	events.append(event)
 
 func note_stream(chunk_ms: float, resource_ms: float, stage: String) -> void:
 	_interval["chunk_tick_ms"] = float(_interval.get("chunk_tick_ms",0.0)) + chunk_ms
@@ -102,6 +118,7 @@ func _physics_start() -> void:
 
 func _draw_start() -> void:
 	_draw_began = Time.get_ticks_usec()
+	_interval["draw_process_frame"] = Engine.get_process_frames()
 	_interval["process_to_draw_ms"] = (_draw_began-_process_began)/1000.0
 
 func _draw_end() -> void:
