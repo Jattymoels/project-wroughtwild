@@ -2,13 +2,16 @@
   "lower_radius_m": 0.343,
   "clear_height_m": 2.6,
   "full_crown_height_m": 4.2,
-  "burial_m": {"broadleaf": 0.65, "pine": 0.55},
-  "runtime_lod": 2,
+  "burial_m": {
+    "broadleaf": 0.65,
+    "pine": 0.55
+  },
+  "runtime_lod": 1,
   "purpose": {
     "lower_radius_m": "Smooth radial compression approaches 98% of the unchanged 0.35 m half-body width; it keeps the central trunk fuller than a single whole-tree squeeze.",
     "clear_height_m": "Keep lower visual wood inside that radius through 2.6 m, above the 1.92 m player capsule and 1.68 m eye/work envelope.",
     "full_crown_height_m": "Smoothly recover unchanged source X/Z above 2.6 m, reaching full branch/crown spread at 4.2 m. Trunk height and source seating stay exact; leaf/branch attachment corrections taper to zero at their existing tips.",
     "burial_m": "Retain the B1 source's existing root seating. No spawn or ground height changes.",
-    "runtime_lod": "Keep G1's selected far LOD2 in the pilot; ship matching near/middle candidates for source review without new runtime LOD switching."
+    "runtime_lod": "Use the delivered middle-detail crown for active broadleaf and pine resources: fuller leaf surfaces at player height, retaining fitted lower trunks and natural branch gaps. No distance-switching or resource eligibility change."
   }
 }

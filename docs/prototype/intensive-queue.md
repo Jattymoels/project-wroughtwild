@@ -9,7 +9,10 @@ main. [A1's approved R8 runtime art is now integrated and pushed on main as
 is integrated and pushed as `27e742d`. [PLAY-01/03 movement and underground work](play01-movement-worker-2026-09-15.md)
 has a [published seam-arrival fix on main as `d396d9e`](play01-movement-result-2026-09-15.md).
 PLAY-03 remains significant underground lag, not an access defect (owner correction
-during this worker). [Canopy completeness is the next prepared slice](play02-canopy-worker-2026-09-15.md).
+during the movement worker). [PLAY-02 has a checked canopy fix ready for main
+integration](play02-canopy-result-2026-09-15.md): fuller active broadleaf/pine leaf
+surfaces and missing C1 runtime dependencies restored. Owner playtesting remains
+deferred; the six replacement-mob rigs are next, one existing role per slice.
 R9 stays stopped.
 
 The owner currently cannot playtest and has approved continued prototype work

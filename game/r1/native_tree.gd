@@ -2,12 +2,19 @@ extends "res://scripts/resource_node.gd"
 ## R1 presentation only. Native work, stock, collision, heights and fall inherited.
 var source_kind:="broadleaf"
 var art_burial:=0.0
+static var _controls:Dictionary={}
+static var _models:Dictionary={}
 func _apply_visual()->void:
 	super._apply_visual()
 	var pivot:MeshInstance3D=get_node("MeshInstance3D")
 	pivot.mesh=null
-	var model:Node3D=load("res://r1/assets/"+source_kind+"-a-lod2.glb").instantiate()
-	var controls:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://r1/settings.json"))
+	if _controls.is_empty():
+		_controls=JSON.parse_string(FileAccess.get_file_as_string("res://r1/settings.json"))
+	var controls:Dictionary=_controls
+	var model_path:="res://r1/assets/%s-a-lod%d.glb"%[source_kind,int(controls.runtime_lod)]
+	if not _models.has(model_path):
+		_models[model_path]=load(model_path)
+	var model:Node3D=_models[model_path].instantiate()
 	art_burial=controls.burial_m[source_kind]
 	for mesh:MeshInstance3D in model.find_children("*","MeshInstance3D",true,false):
 		for surface in mesh.mesh.get_surface_count():

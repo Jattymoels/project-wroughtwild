@@ -35,6 +35,9 @@ records the finished fauna, native checks and the small missing C3 shader repair
 PLAY-01's causal seam-projection improvement is integrated and pushed as `d396d9e`.
 The [movement result](play01-movement-result-2026-09-15.md) records the measured
 short-route benefit, delayed decoration tradeoff and still-open underground lag.
+PLAY-02 has a checked worker slice ready for main integration: fuller R1 active
+crowns and restored missing C1 runtime dependencies.
+[Canopy result, evidence and launch steps](play02-canopy-result-2026-09-15.md).
 The inventory below preserves the original coordination inspection.
 
 At inspection, local main, origin/main and the live GitHub main all point to
@@ -97,9 +100,11 @@ to their own future decision/bug work; art adoption must not silently decide the
    clarified that access is not the issue. A current-code cave sample did not
    reproduce sustained lag. [Checks, limits and handoff](play01-movement-result-2026-09-15.md).
    [Prepared movement worker and D: workspace](play01-movement-worker-2026-09-15.md).
-4. **PLAY-02 — canopy completeness.** Inspect the reported missing portions and
-   distance transitions; fix the demonstrated geometry/material/detail fault.
-   [Prepared canopy worker and D: workspace](play02-canopy-worker-2026-09-15.md).
+4. **PLAY-02 — checked worker ready for main integration.** Common broadleaf/pine
+   use delivered middle-detail crowns with fuller leaf surfaces; native tree
+   lifecycle remains intact. The forest smoke also repaired missing C1 settings
+   and shader dependencies. [Result and remaining visual limits](play02-canopy-result-2026-09-15.md).
+   Owner playtesting is deferred; no main integration/push is claimed by the worker.
 5. **Remaining mob production**, one existing enemy role per rig/animation/runtime
    slice. Deferred owner playtesting does not hold this up. Physical era variants
    and boss art retain explicit backlog entries.
@@ -111,7 +116,8 @@ to their own future decision/bug work; art adoption must not silently decide the
 R9 is stopped throughout this sequence. No additional visual approval, baseline
 comparison, performance clearance or independent review is required for approved
 art. PLAY-01 has a published causal improvement awaiting owner
-comfort feedback; PLAY-02/03/04 remain open. PLAY-03 is lag underground, not access.
+comfort feedback; PLAY-02 has a checked presentation fix awaiting integration and
+owner feedback. PLAY-03/04 remain open. PLAY-03 is lag underground, not access.
 
 The retained preview log also records three signal-lifetime errors in
 `chest_panel.gd` refresh/store. This is a separate concrete UI diagnostic for the
@@ -150,5 +156,5 @@ from its worker, reused during completed main integration. Main's assets were
 prepared with one 31-second hidden headless import. A2's worker evidence was
 also reused, followed by a six-second headless import on main. Both adoption
 slices and the demonstrated PLAY-01 seam-stall fix are integrated and pushed.
-Underground lag remains unconfirmed; canopy completeness and replacement rigs
-can proceed while owner feedback is deferred.
+Underground lag remains unresolved. Integrate the checked PLAY-02 canopy slice,
+then continue the replacement rigs while owner feedback is deferred.

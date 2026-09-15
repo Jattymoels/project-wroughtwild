@@ -1,0 +1,55 @@
+{
+  "seed": 42,
+  "oak_body_radius_m": 0.33,
+  "oak_body_height_m": 3.0,
+  "oak_crown_start_m": 3.0,
+  "oak_crown_spread_m": 4.5,
+  "oak_upper_lean_m_per_m": 0.18,
+  "oak_notch_depth_m": 0.065,
+  "clay_size_blender_m": [
+    1.76,
+    1.21,
+    0.36
+  ],
+  "clay_scoop_depth_m": 0.17,
+  "reed_height_m": 1.26,
+  "reed_stalks": 32,
+  "reed_horizontal_scale": 0.95,
+  "sedge_height_m": 0.27,
+  "tree_lod_m": [
+    7,
+    22
+  ],
+  "small_lod_m": [
+    4,
+    12
+  ],
+  "wind_period_s": 5.5,
+  "wind_m_per_m": 0.014,
+  "purposes": {
+    "seed": "Repeatable modelling variation; independent of gameplay random numbers.",
+    "oak_body_radius_m": "Fits the lower wood within the existing 0.7 m square in every yaw, leaving 2 cm margin.",
+    "oak_body_height_m": "The existing three-metre native trunk body; upper canopy is overhead presentation.",
+    "oak_crown_start_m": "Keep large branches above the native trunk body and player head.",
+    "oak_crown_spread_m": "End the smooth lower-trunk fitting transition here, retaining broad irregular overhead branches.",
+    "oak_upper_lean_m_per_m": "Lean upper wood and attached crown together while the work target stays inside its native body.",
+    "oak_notch_depth_m": "Physical dark chopping wound exposed by partial native work, without magical emission.",
+    "clay_size_blender_m": "Fit soft earth inside the unchanged 1.8 by 0.38 by 1.25 m native Godot body.",
+    "clay_scoop_depth_m": "Visible excavated depth accumulated across six actual four-unit clay releases.",
+    "reed_height_m": "Mature seed heads stay within the native 1.3 m picking envelope, including restrained wind.",
+    "reed_stalks": "Dense upright harvest silhouette divided into four equal groups matching six-unit releases.",
+    "reed_horizontal_scale": "Leaves and stalks shrink together by five percent horizontally, preserving a wind margin inside the one-metre native body.",
+    "sedge_height_m": "Low splayed decorative leaves remain distinct from upright harvestable seed heads.",
+    "tree_lod_m": "Near, middle and far transitions in this small review, not a world shipping budget.",
+    "small_lod_m": "Retain foreground roots and foliage while reducing distant local ground detail.",
+    "wind_period_s": "Slow ambient rooted motion, paused explicitly by the review clock.",
+    "wind_m_per_m": "Small sway proportional to rooted height; ground contact remains stationary.",
+    "plant_seating_fade_m": "Only low stem vertices follow retained review terrain; mature seed heads preserve the native height envelope. Native flat-floor presentation applies no seating.",
+    "clay_seated_top_m": "Cap seated review soil at the existing body top; downhill soil follows the bank and uphill excess is buried. No geography or body changes."
+  },
+  "plant_seating_fade_m": [
+    0.03,
+    0.24
+  ],
+  "clay_seated_top_m": 0.36
+}
