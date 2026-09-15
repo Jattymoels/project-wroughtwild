@@ -1,5 +1,13 @@
 # MOB-02/03 parallel production boundary
 
+**Current integration update:** MOB-01 is published on main as `f0349c2`.
+`PorcupinePresentation` supplies species-specific rig/material/size setup and
+extends the existing `FinishedFauna` sampler; one `CreatureMotion` dispatch branch
+selects it. The A2 sampler, native `enemy.gd`, combat tuning and saves are unchanged.
+Ram/crane production should finish its own descriptors without rebasing a running
+checkout. The coordinator owns subsequent shared wiring. The crane still needs
+the documented observer at the actual `force_scream()` event, separate from melee.
+
 The owner asked on 15 September for work they can start alongside MOB-01.
 Rigging/weighting/animation of different approved ART-06C animals can proceed
 independently. The owner starts these prepared tasks; do not spawn extra workers.

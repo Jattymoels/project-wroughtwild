@@ -2,9 +2,9 @@
 
 The ordinary Cinder Archer now uses the approved porcupine with a fitted
 17-bone skin, four-beat locomotion, breathing, shoulder-comb brace and native
-shot recoil. Its worker supports normal new-world and Continue paths. Standing
-owner approval applies; hands-on playtesting is deferred. The checked commit
-is ready for coordinator integration into main.
+shot recoil in the normal game on main, including new-world and Continue paths.
+Worker commit `8eb3d16` is integrated and pushed as `f0349c2`. Standing owner
+approval applies; hands-on playtesting remains deferred.
 
 ## Remaining limits
 
@@ -100,12 +100,26 @@ walk, commitment and shots. It is technical evidence, not owner playtesting.
 ## Commit and normal-main playtest
 
 Worker: `codex/mob01-porcupine`, based on
-`3c9ec7e05d92ea59ac7e750c2f07b5039479e8bb`. This result and the complete checked
-slice are committed together; the delivery message gives the exact SHA.
-**Main integration and origin/main push are pending the coordinator.** No worker
-push or main publication is claimed. Reuse the passed evidence above.
+`3c9ec7e05d92ea59ac7e750c2f07b5039479e8bb`. Worker commit `8eb3d16` was cherry-picked
+onto main `65faafe` as `f0349c2`; the ordinary push to origin/main succeeded.
+Only two coordination-document conflicts needed resolution, retaining the newer
+parallel ram/crane instructions. No intervening gameplay changes existed.
 
-After integration, launch normally:
+The coordinator verified that integrated `game/`, `sim/` and `data/` exactly
+match the checked worker, current AGENTS.md was preserved, and the staged diff
+check passed. Source/rig evidence and the 42 native-actor plus 18 lifecycle checks
+were reused. One hidden headless main import for the new model and script class
+passed in **5.48 seconds**, exit 0, without reported script/shader/import errors.
+Logs are in `D:/Wroughtwild/work/mob01-porcupine/build/mob01/main-integration/`.
+The import exited; no rendered test or native gameplay suite was repeated.
+Four import records had line-ending-only status changes; their index entries
+were refreshed after confirming no content diff. Unrelated captures were retained.
+
+Ram and crane continue in their isolated production worktrees. Their next step
+is sequential ordinary-game integration from their checked descriptors and clips;
+see the [parallel handoff boundary](mob-parallel-production-2026-09-15.md).
+
+Launch main normally:
 
 ```powershell
 & 'C:/Users/Matty/Godot/Godot_v4.5-stable_win64.exe' --path 'C:/Users/Matty/Dev/project-wroughtwild/game'
@@ -118,6 +132,6 @@ After integration, launch normally:
 3. Sidestep committed aim or use cover; try existing freeze/stagger and pause.
    Save normally, restart and Continue.
 
-Before main integration, the same command can use
+To inspect the retained worker version, the same command can use
 `--path 'D:/Wroughtwild/work/mob01-porcupine/game'`. Normal launches use normal
 saves; automated checks used private D: application data only.
