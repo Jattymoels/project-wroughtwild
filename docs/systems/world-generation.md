@@ -1,5 +1,18 @@
 # World Generation, Settlements and Travel
 
+## RF-06: derived fen and dry lake-bank presentation
+
+The [RF-06 worker result](../prototype/rf06-fen-lakeside-result-2026-09-16.md)
+adds seeded sedge/rush groups, low ferns and occasional deadfall on existing fen
+surfaces in V6/V7/V8/LF and suitable dry banks of actual V8 lakes. Native heights,
+water columns/levels/beds, collisions, finite ownership, profiles and save fields
+are unchanged. V1–V5 retain their presentation. New cosmetic roots use actual
+surface support, existing approaches and paid floor/station clearance. Existing
+regional roots/pools remain distinct. Continue/publication derive the treatment
+through the existing world build path; there is no migration or new ecology.
+Worker `928fb4c` is checked locally; coordinator adoption is pending.
+
+
 ## RF-05: lakes in fresh V8 worlds
 
 RF-05 is integrated on main as `5e5de06`, including its matching native DLL and

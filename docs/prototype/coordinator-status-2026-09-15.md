@@ -112,6 +112,16 @@ delivered RF-01–05 foundations; this schedule does not select new world/save r
 or promise all-biome production. RF-01–05 stay delivered. Keep original outcomes
 separate from refinements rather than restarting them for minor remaining polish.
 
+RF-06 worker completed on 16 September as `928fb4c`; [result and private playtest](rf06-fen-lakeside-result-2026-09-16.md).
+Coordinator adoption remains pending. This advances the original wetland outcome;
+highland recovery is the next original slice after adoption. This worker stopped.
+
+RF-06 additions for end-of-wave cleanup: the actual pictures show sparse fen
+terrace gaps, plants lost in strong bank shade and bright swimming-view water
+glare; angular shores remain. These affect visual richness/readability, not the
+checked access/save behavior. Recommend deferral rather than delaying highland
+recovery. No new wind animation, broader art pass or performance fix is scheduled.
+
 Initial cleanup notes: residual short group hitch (34.621 ms full frame in PLAY-07),
 Thrumroot construction (8.790 ms first / 4.238 ms repeat), older unassigned lag/underground
 correlation, long world entry, angular shore/steep-bank polish and missing dedicated

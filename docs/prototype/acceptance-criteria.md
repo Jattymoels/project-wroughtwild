@@ -1,5 +1,16 @@
 # Vertical-Slice Acceptance Criteria
 
+## RF-06 fen/lakeside presentation
+
+- [x] Supported fen and actual dry-bank cover in ordinary New World/Continue;
+  paid floor/station, local excavation and exact saved-world state checks pass.
+- [x] One player-height Forward+ fen/lake route, wading/swimming/dry exit and
+  selected actual pictures/clip; no-focus/mouse opt-out retained.
+- [ ] Owner aesthetic/comfort playtest and broader seed/hardware/campaign coverage.
+
+[Worker result, limits and private playtest](rf06-fen-lakeside-result-2026-09-16.md).
+
+
 ## RF-05 lakes and surface swimming
 
 - [x] Fresh V8 lake with four dry home cores, land supplies/routes and old-save identity preservation.
