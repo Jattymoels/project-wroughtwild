@@ -1,5 +1,54 @@
 # Project storage and retention — 15 September 2026
 
+## Later cleanup and physical archive locations
+
+After the initial cleanup below, the owner requested further space recovery and
+approved Google Drive archiving. A first follow-up removed 29.18 GB of generated
+Godot imports and three duplicate verification copies. Selected ART-07 masters,
+tracked Blender studies, all six current creature source directories, RF-02
+ground/grass sources and preservation records were backed up as 2.84 GB of cloud
+archives. This is a selected art backup, not a complete backup of all history.
+
+The owner then requested continuing the larger cleanup. That pass removed
+another 33.46 GB of old verification/publication copies and G1 pilots. Useful
+records and all differing non-cache files were preserved in 20 ZIPs totalling
+1.27 GB under `D:/Wroughtwild/archive/storage-pass2-records-2026-09-15`.
+
+It also relocated 161.62 GB in 36 inactive art-output directories to D:. The
+active depot, current game, saves, remote-access services and all 54 registered
+worktrees stayed in place. C: free space rose from 61.88 GB to 257.18 GB during
+this pass; other active work can affect drive-wide readings.
+
+The original C: output paths are now **Windows directory junctions** to:
+
+- `D:/Wroughtwild/archive/retained-art07-outputs-2026-09-15/<slice>` for B1–B4,
+  C1–C6, D1–D6, E1–E3, F1–F5 and G1 output directories. The worker checkouts and
+  their Git metadata remain at their original paths.
+- `D:/Wroughtwild/archive/retained-legacy-art-outputs-2026-09-15/<original-name>`
+  for `boar-art01`, `grove-art02`, `fauna-art03`, `workshop-art04`, `roster-art06`,
+  `roster-art06b`, `roster-art06c`, `workshop-blue`, `workshop-green`,
+  `workshop-white` and `art05`.
+
+Existing source references and retained handoff paths continue to work through
+the junctions. These D: directories are retained originals, **not disposable
+caches**. Do not remove their destinations or change the links without updating
+dependent paths. Do not follow junctions when measuring C: usage. No active
+checkout or app/remote configuration was relocated.
+
+The exact 36 source/destination mappings and removed-copy list are in the local
+`build/storage-pass2-2026-09-15/result.json`, also retained with the D: records.
+`build/storage-pass2-2026-09-15/RESULT.md` records the outcome. The retained
+directories contain intermediate versions as well as selected art; relocation
+preserved that material rather than declaring every old asset disposable.
+
+Preservation ZIPs passed CRC checks and SHA-256 checks before deletion. Retained
+relocations passed complete file/directory inventory, file-length and file-time
+comparisons, source-change checks and old-path junction checks. No game tests,
+renderers or full retained-package content rehashes were run. Large relocated
+outputs remain local D: storage; they were not all uploaded to Google Drive.
+
+## Initial cleanup record
+
 The owner authorised the recommended storage work only if it preserves the
 current remote-access process. The active C: depot remains in place. New large
 worker workspaces and outputs should use D:; existing active work is not moved.
