@@ -91,8 +91,15 @@ redesign and a fresh-LF successor remain later possibilities.
 not reproduce the owner's continuing slowdown; no causal fix is claimed. The
 [result and optional recording instructions](play03-underground-result-2026-09-15.md)
 provide a bounded local recorder for the next real incident. The owner said:
-"happy to wait for my next playthrough". Keep the bug open and stop further
-underground investigation until new evidence or an explicit request.
+"happy to wait for my next playthrough". That waiting condition is now met:
+the owner reports large lag coinciding with nearby mobs visibly appearing in the
+overworld and suspects the earlier underground incident had the same trigger.
+They clarified **"A brief hitch, then recovers"**. The correlation and recovery are
+observed; shared underground cause and exact costly phase are unconfirmed.
+[PLAY-03 mob-arrival follow-up](play03-mob-arrival-followup-2026-09-15.md) is queued
+immediately after RF-05 adoption. The owner explicitly continues the active lake
+worker first. No parallel runtime repair worker is launched; prepare its prompt
+from adopted RF-05 and reuse the existing recorder with targeted arrival markers.
 
 Reuse the worker's 7 transition and 19 recorder checks. Main's one hidden headless
 import passed in 6.8 seconds with exit 0 and no reported errors. Normal launch

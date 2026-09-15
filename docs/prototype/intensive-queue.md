@@ -27,6 +27,14 @@ The [shared-file boundary](mob-parallel-production-2026-09-15.md)
 keeps independent production separate from completed gameplay adoption.
 R9 stays stopped.
 
+**New playtest priority, 15 September:** the owner reports major lag when nearby
+mobs visibly appear, including above ground. The suspected connection to the
+earlier underground incident remains unconfirmed. They clarified **"A brief hitch,
+then recovers"**, so prioritise activation/creation/first display. [PLAY-03 mob arrival](play03-mob-arrival-followup-2026-09-15.md)
+is the next focused diagnostic/fix after the active RF-05 lake worker is adopted.
+The owner explicitly wants lakes to continue first. This new evidence supersedes
+the earlier parked status; it does not start a broad performance/review wave.
+
 **RF-01 is integrated on main as `66f3211`: [result and playtest](rf01-reclaimed-ground-result-2026-09-15.md).**
 Ordinary V6/LF play now has seeded low meadow/forest cover with actual support and
 paid footprint handling. Coverage remains patchy; the owner dislikes the exposed

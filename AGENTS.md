@@ -57,6 +57,16 @@ unresolved. Do not resume underground sampling or speculative performance fixes
 without new playtest evidence or an explicit request. See the current coordination
 sheet for the next scoped work item.
 
+New owner evidence on 15 September: the large lag also coincides with nearby mobs
+visibly appearing in the overworld. The owner suspects the earlier underground
+incident followed a long fall into newly activated mobs; that connection is not
+yet confirmed. They clarified: "A brief hitch, then recovers"; focus on arrival
+work rather than assuming sustained nearby-mob cost. The [PLAY-03 mob-arrival follow-up](docs/prototype/play03-mob-arrival-followup-2026-09-15.md)
+records the evidence and is queued immediately after the active RF-05 lake slice.
+This meets the new-evidence condition above; do not keep the issue indefinitely
+parked, restart the old shaft test by default, or assume a spawn/loading cause
+without timing it. The owner explicitly continues the lake worker first.
+
 After ram integration on 15 September, the owner said: "Everything looks great -
 approved, I haven't done full performance impact yet though but that's fine".
 Record the current delivered visuals as approved, including the integrated

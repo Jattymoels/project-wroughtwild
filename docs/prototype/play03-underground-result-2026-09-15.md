@@ -5,6 +5,15 @@ It retains entry, falling and stationary intervals, location, streaming work and
 controller/render observations without changing controls or quality.
 **Diagnostic-only progress: PLAY-03 remains open. No lag fix is claimed.**
 
+**New owner evidence, 15 September:** large lag coincides with nearby mobs visibly
+appearing in the overworld. The owner suspects that mob arrival also explains the
+earlier underground descent incident; that link is not yet proven. They clarified
+that the new observation is **a brief hitch, then recovery**. The
+[focused follow-up](play03-mob-arrival-followup-2026-09-15.md) is queued after the
+active RF-05 lake slice, which the owner explicitly continues first. The historical
+parked status below is superseded by this new evidence. Earlier checks remain
+valid within their recorded scope, not evidence that mob arrivals are inexpensive.
+
 Coordinator adoption, 15 September: worker `13d5bdd` is integrated on main as
 `cbc6f67`. The 7 transition and 19 recorder checks below were reused; one hidden
 headless main import passed in 6.8 seconds, exit 0, no reported errors. No further
