@@ -30,10 +30,11 @@ R9 stays stopped.
 **RF-01 is integrated on main as `66f3211`: [result and playtest](rf01-reclaimed-ground-result-2026-09-15.md).**
 Ordinary V6/LF play now has seeded low meadow/forest cover with actual support and
 paid footprint handling. Coverage remains patchy; the owner dislikes the exposed
-ground surface and asks about better Blender grass. Prioritise the proposed
-[ground-material and near-grass art pass](reclaimed-frontier-intensive-2026-09-14.md#ground-and-grass-feedback--15-september)
-before broader landforms. No successor worker, fen/mountain batch or era/boss art
-has been dispatched. RF-01 changed no native terrain/collision or save schema.
+ground surface and asks about better Blender grass. The owner requested
+[RF-02 ground materials and grass](rf02-ground-grass-worker-2026-09-15.md), now
+prepared at `D:/Wroughtwild/work/rf02-ground-grass` for the owner to start.
+It precedes broader landforms; fen/mountain and era/boss work remain later.
+RF-01 changed no native terrain/collision or save schema; RF-02 retains that boundary.
 
 After MOB-02 the owner approved the current visuals and explicitly left full
 performance impact untested. They subsequently praised the nymph and confirmed

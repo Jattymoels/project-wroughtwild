@@ -45,10 +45,13 @@ grass needs proper Blender production. RF-01 reused simplified B2 LOD2 grass;
 coverage is still patchy and its route did not reach an impact margin. It is an
 implemented placement iteration, not a claim of final visual acceptance.
 The active terrain uses the custom `wildland_terrain.gdshader` procedural surface.
-The recommended next art pass is authored meadow soil/turf and woodland litter,
-followed by fuller near-view grass with matching colour and rooted transitions.
-See the [feedback and proposed boundary](reclaimed-frontier-intensive-2026-09-14.md#ground-and-grass-feedback--15-september).
-No successor worker is dispatched. Physical landforms and other biomes remain later work.
+**Next worker: [RF-02 ground materials and grass](rf02-ground-grass-worker-2026-09-15.md).**
+The owner requested its prompt/worktree: authored meadow soil/turf and woodland
+litter first, then two useful near-view grass forms through the existing Blender
+workflow. Prepared location: `D:/Wroughtwild/work/rf02-ground-grass`, branch
+`codex/rf02-ground-grass`, setup `build/rf02/SETUP.md`. Reuse RF-01's placement
+and evidence; preserve native terrain and saves. The owner starts the worker.
+Physical landforms and other biomes remain later work.
 
 **PLAY-03 diagnostic delivery is integrated as `cbc6f67`.** The staged drop did
 not reproduce the owner's continuing slowdown; no causal fix is claimed. The

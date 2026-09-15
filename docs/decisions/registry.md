@@ -1,5 +1,13 @@
 # Decision Registry
 
+RF-02 work-item selection, 15 September 2026: the owner requested the next
+[ground-material and grass prompt/worktree](../prototype/rf02-ground-grass-worker-2026-09-15.md).
+Author meadow turf/soil and woodland litter first, then finish two useful grass
+forms through the existing Blender workflow and integrate into ordinary V6/LF
+play. Preserve RF-01's native terrain/save/ownership boundary and placement;
+retain V1–V5 and other biomes. This is the selected next art slice under existing
+D-013/D-030/D-032, not a generator or gameplay decision. The owner starts it.
+
 RF-01 delivery update, 15 September 2026: the scoped presentation is integrated
 on main as `66f3211`; see its [result](../prototype/rf01-reclaimed-ground-result-2026-09-15.md).
 The owner dislikes the exposed ground surface and asks about better grass through

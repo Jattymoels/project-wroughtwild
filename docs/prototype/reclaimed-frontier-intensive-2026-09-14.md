@@ -4,8 +4,9 @@
 [RF-01 meadow and woodland recovery](rf01-reclaimed-ground-result-2026-09-15.md)
 adds supported low cover in ordinary V6/LF play. The recovered floor remains
 visibly patchy. The owner's latest feedback makes ground-surface quality and
-grass appearance the next discussion priority. Later terrain and biome work
-remains proposed. This is separate from the stopped R9 review.
+grass appearance the next priority. The owner has requested the
+[RF-02 prompt/worktree](rf02-ground-grass-worker-2026-09-15.md), prepared for them
+to start. Later terrain and biome work remains proposed. R9 stays stopped.
 
 ## Ground and grass feedback — 15 September
 
@@ -27,7 +28,7 @@ Inspection found two relevant presentation layers:
   landscape asset. The adopted C1 forest-floor image dresses separate assets and
   does not replace this continuous terrain surface.
 
-**Recommended next scope, not yet dispatched:** first improve one meadow turf/
+**RF-02 scope, requested by the owner:** first improve one meadow turf/
 soil surface and one woodland leaf-litter/humus surface, including restrained
 apparent relief, texture scale and natural joins to existing rock. Then refine a
 small near-view grass kit through the existing Blender workflow: inspect useful
@@ -72,7 +73,7 @@ contract, with existing saves kept intact; no new generator profile is selected.
 | Milestone | Present scope/status |
 | --- | --- |
 | RF-01: meadow/woodland recovery | Integrated as `66f3211`; supported low-cover composition, focused lifecycle/use/Continue evidence and a real 76.42 m walk. Still patchy; no impact margin on that route. |
-| Ground and grass art | Recommended next from owner feedback above; no worker dispatched. |
+| RF-02: ground and grass art | Prompt/worktree prepared at the owner's request; ground first, two useful Blender grass forms to match, ordinary V6/LF integration. Owner starts the worker. |
 | Later landform slice | Proposed after the surface/grass response: old-impact surroundings, rises/dips and routes. Decide whether a new-world-only successor is needed; never silently reshape existing saves. |
 | Later biome expansion | Proposed: fen and mountain recovery based on what works in RF-01 and any landform decision. No all-biome production batch is dispatched now. |
 
@@ -88,7 +89,10 @@ Worker location: `D:/Wroughtwild/work/rf01-reclaimed-ground`, branch
 `codex/rf01-reclaimed-ground`; setup is `build/rf01/SETUP.md`. Worker `85d3ece`
 is complete and adopted as `66f3211`. Current standing approval covers ordinary
 prototype delivery and main adoption without another visual/benchmark gate.
-No successor worker is prepared or started yet.
+RF-02 is prepared at `D:/Wroughtwild/work/rf02-ground-grass`, branch
+`codex/rf02-ground-grass`, setup `build/rf02/SETUP.md`. The owner starts it.
+Earlier informal references to RF-02 as landform work are superseded by this
+ground/grass priority; no physical terrain slice has been dispatched.
 
 **Later owner workflow clarification, 14 September:** when the owner approves
 the result visually, integrate it into the game without separate rollout approval

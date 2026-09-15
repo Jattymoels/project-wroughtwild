@@ -1,6 +1,6 @@
 # World Generation, Settlements and Travel
 
-**RF-01 implemented in the worker, 15 September 2026:**
+**RF-01 integrated on main as `66f3211`, 15 September 2026:**
 [Result and focused checks](../prototype/rf01-reclaimed-ground-result-2026-09-15.md).
 Seeded low grass/fern patches now dress eligible meadow/forest surfaces in the
 ordinary V6/LF geography paths, using adopted assets without changing terrain,
@@ -9,7 +9,10 @@ local excavation and paid octagonal building/station suppression use existing
 chunk/refresh paths. Eligible Continue worlds need no migration; V1–V5 and other
 biomes retain their presentation. Cover remains visibly patchy at steep shelves
 and reserved areas. The one nearby seed-77 walk has no impact-margin beat; physical
-landforms remain later work. Coordinator integration/publication is still separate.
+landforms remain later work. The owner requested
+[RF-02 ground materials and grass](../prototype/rf02-ground-grass-worker-2026-09-15.md)
+next: authored ground surfaces and a small Blender grass kit, preserving this
+placement and native terrain/save boundary. RF-02 is prepared, not implemented.
 
 **Future direction recorded, 14 September 2026:** the
 [Reclaimed Frontier intensive](../prototype/reclaimed-frontier-intensive-2026-09-14.md)
