@@ -1,5 +1,13 @@
 # Decision Registry
 
+Owner clarification, 15 September 2026: current [AGENTS.md](../../AGENTS.md)
+removes the hard ten-minute cutoff for routine completion. Use focused checks,
+reuse applicable evidence and finish authorised integration/pushes; do not revive
+large baseline/camera matrices or R9. Standing approval applies while owner
+playtesting is deferred. PLAY-03 is significant **lag underground**, not an access
+defect; preserve legitimate cave/digging behavior. These clarifications supersede
+older time-cap and access-defect wording in historical work items.
+
 Owner playtest and mainline direction, 14 September 2026: after playing R8, the
 owner explicitly authorises putting all completed art work into mainline with
 known issues recorded. The preview was fun, but severe judder/stuttering,
@@ -19,8 +27,8 @@ no additional rollout permission, baseline comparisons, benchmark/target-device
 gate or independent review. Use a short load/use check and focused checks for
 changed behavior; performance tuning follows owner playtesting/feedback, and
 broad end-to-end work waits for their selected phase. R9's excessive review was
-stopped. Current [AGENTS.md](../../AGENTS.md) limits default review/verification
-to ten minutes and three focused jobs on one renderer. These owner corrections
+stopped. Current [AGENTS.md](../../AGENTS.md) defaults to three focused jobs on
+one renderer, with no hard time cutoff for routine completion. These owner corrections
 supersede historical exhaustive review and ordinary-world exclusion boilerplate
 for approved work. They do not approve every candidate, alter gameplay/save
 contracts or permit hiding known failures.

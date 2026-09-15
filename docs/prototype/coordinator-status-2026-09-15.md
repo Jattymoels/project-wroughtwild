@@ -35,8 +35,8 @@ records the finished fauna, native checks and the small missing C3 shader repair
 PLAY-01's causal seam-projection improvement is integrated and pushed as `d396d9e`.
 The [movement result](play01-movement-result-2026-09-15.md) records the measured
 short-route benefit, delayed decoration tradeoff and still-open underground lag.
-PLAY-02 has a checked worker slice ready for main integration: fuller R1 active
-crowns and restored missing C1 runtime dependencies.
+PLAY-02 is integrated and pushed as `870159e`: fuller R1 active crowns and
+restored missing C1 runtime dependencies. The owner has seen its captures in chat.
 [Canopy result, evidence and launch steps](play02-canopy-result-2026-09-15.md).
 The inventory below preserves the original coordination inspection.
 
@@ -72,7 +72,7 @@ this coordination document's own commit, not a reset target.
 | Foundry, gear and trials | Classes, skill discovery, Kind/ingot interactions, crafting quality/mastery, Forge story and repeatable tiers are implemented. | Human build satisfaction, class balance, progression explanation, encounter tells and run length. Full Crossfire completion and upper-tier balance remain open evidence/feel questions. |
 | Living Frontier | Waves 1–7 and INT-18A are implemented on main: four-colour extraction/devices, laboratories, two protected terrain changes, human finale and captured challenges. | Still uses the existing opt-in campaign launch/policy. A continuous fresh campaign and ordinary-startup adoption decision remain distinct from this art port. Do not schedule LF3–7 again from older queue text. |
 | INT-01–08 improvements | Clarity, home placement/hauling, audio, workshop usability, combat feedback, save recovery, streaming, controls and portable export have implementation records. | Targeted owner feedback; investigate reported defects. Other-machine play and broad final regression wait for the chosen playtest phase. |
-| Existing normal-game art | A1 supplies the R8 environment, resources, buildings, stations and devices; A2 supplies the finished boar/wolf/stag with existing moths preserved. All use normal world/Continue entry. | Reported movement, underground and canopy issues remain open; owner playtesting is deferred. |
+| Existing normal-game art | A1 supplies the R8 kit; A2 supplies boar/wolf/stag with moths preserved. PLAY-01 reduces demonstrated seam-arrival stalls; PLAY-02 improves active broadleaf/pine crowns. All use normal world/Continue entry. | Significant underground lag remains unresolved. Movement comfort and canopy feel await hands-on feedback; blunt limb ends remain visual polish. |
 | R8 environment/placeables | All 26 original ART-07 deliveries and R1–R8 are published as source/handoff work; their selected production runtime is now adopted on main. | **A1 integrated and pushed as `35cee73`.** [Result and playtest](mainline-art-a1-result-2026-09-15.md). |
 | Finished fauna | A2 adopts ART-01 boar and ART-03 wolf/stag, including existing LF visual aliases, on native actor clocks. Moths retain their earlier art/motion. | **A2 integrated and pushed as `27e742d`.** Mid detail, foot sliding and no terrain IK/distance switching are recorded limits. [Result](mainline-fauna-a2-result-2026-09-15.md). |
 | Six replacement mobs | Approved ART-06C surfaces/models exist for porcupine Archer, ram Husk, crane Shrieker, beetle Crawler, six-legged nymph Lurker and tortoise Knight. | Real rigging, weighting, locomotion/attack presentation and runtime integration, one complete enemy role per slice. Static models are not playable replacements. |
@@ -100,14 +100,16 @@ to their own future decision/bug work; art adoption must not silently decide the
    clarified that access is not the issue. A current-code cave sample did not
    reproduce sustained lag. [Checks, limits and handoff](play01-movement-result-2026-09-15.md).
    [Prepared movement worker and D: workspace](play01-movement-worker-2026-09-15.md).
-4. **PLAY-02 — checked worker ready for main integration.** Common broadleaf/pine
+4. **PLAY-02 — completed on main and pushed as `870159e`.** Common broadleaf/pine
    use delivered middle-detail crowns with fuller leaf surfaces; native tree
    lifecycle remains intact. The forest smoke also repaired missing C1 settings
    and shader dependencies. [Result and remaining visual limits](play02-canopy-result-2026-09-15.md).
-   Owner playtesting is deferred; no main integration/push is claimed by the worker.
-5. **Remaining mob production**, one existing enemy role per rig/animation/runtime
-   slice. Deferred owner playtesting does not hold this up. Physical era variants
-   and boss art retain explicit backlog entries.
+   Owner saw the corrected captures; hands-on playtesting remains deferred.
+5. **MOB-01 — porcupine Cinder Archer**, first of six existing enemy roles to rig,
+   animate and integrate. [Exact prompt and D: workspace](mob01-porcupine-worker-2026-09-15.md).
+   Then ram Husk, crane Shrieker, beetle Crawler, nymph Lurker and tortoise Knight,
+   one complete role per slice. This is a production order, not new game rules.
+   Physical era variants and boss art retain explicit backlog entries.
 6. **Owner playtest when available.** Try the new stations and a useful home/workshop
    task, then a fresh campaign/combat session. Feed findings into the existing
    INT-01–08/LF backlog. Keep Reclaimed Frontier references for a later scoped
@@ -116,8 +118,8 @@ to their own future decision/bug work; art adoption must not silently decide the
 R9 is stopped throughout this sequence. No additional visual approval, baseline
 comparison, performance clearance or independent review is required for approved
 art. PLAY-01 has a published causal improvement awaiting owner
-comfort feedback; PLAY-02 has a checked presentation fix awaiting integration and
-owner feedback. PLAY-03/04 remain open. PLAY-03 is lag underground, not access.
+comfort feedback; PLAY-02 is published with known visual limits and deferred
+hands-on feedback. PLAY-03/04 remain open. PLAY-03 is lag underground, not access.
 
 The retained preview log also records three signal-lifetime errors in
 `chest_panel.gd` refresh/store. This is a separate concrete UI diagnostic for the
@@ -156,5 +158,6 @@ from its worker, reused during completed main integration. Main's assets were
 prepared with one 31-second hidden headless import. A2's worker evidence was
 also reused, followed by a six-second headless import on main. Both adoption
 slices and the demonstrated PLAY-01 seam-stall fix are integrated and pushed.
-Underground lag remains unresolved. Integrate the checked PLAY-02 canopy slice,
-then continue the replacement rigs while owner feedback is deferred.
+PLAY-02 is also integrated and pushed; its 70 worker checks were reused and one
+5.01-second hidden headless main import passed. Underground lag remains unresolved.
+The prepared MOB-01 worker continues the approved roster while feedback is deferred.

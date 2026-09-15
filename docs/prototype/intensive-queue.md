@@ -9,10 +9,11 @@ main. [A1's approved R8 runtime art is now integrated and pushed on main as
 is integrated and pushed as `27e742d`. [PLAY-01/03 movement and underground work](play01-movement-worker-2026-09-15.md)
 has a [published seam-arrival fix on main as `d396d9e`](play01-movement-result-2026-09-15.md).
 PLAY-03 remains significant underground lag, not an access defect (owner correction
-during the movement worker). [PLAY-02 has a checked canopy fix ready for main
-integration](play02-canopy-result-2026-09-15.md): fuller active broadleaf/pine leaf
+during the movement worker). [PLAY-02 is integrated and pushed as `870159e`](play02-canopy-result-2026-09-15.md): fuller active broadleaf/pine leaf
 surfaces and missing C1 runtime dependencies restored. Owner playtesting remains
-deferred; the six replacement-mob rigs are next, one existing role per slice.
+deferred. [MOB-01 porcupine Cinder Archer](mob01-porcupine-worker-2026-09-15.md)
+is next: real rigging, animation and native integration. Ram, crane, beetle,
+nymph and tortoise follow, one existing role per slice.
 R9 stays stopped.
 
 The owner currently cannot playtest and has approved continued prototype work

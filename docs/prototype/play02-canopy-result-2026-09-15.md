@@ -6,9 +6,11 @@ more coherent foliage at player height. The forest smoke also restored two
 missing C1 presentation dependencies encountered while loading nearby resources.
 
 Worker: `D:/Wroughtwild/work/play02-canopies`, `codex/play02-canopies`, prepared
-base `e1d5b8bf68592a4cd845b25bc88d4594ae9a645c`. This is a checked worker delivery
-for coordinator integration. Main integration and remote push are not performed
-by this worker. Owner standing approval applies; owner playtesting is deferred.
+base `e1d5b8bf68592a4cd845b25bc88d4594ae9a645c`. Worker commit
+`3e4639ca00717b15caac476584c9fcda213d6645` is integrated and pushed on main as
+`870159e`. The owner saw the two corrected captures in chat and said "Okay cool",
+then explicitly requested the completed commits be pushed and the next slice
+prepared. Hands-on owner playtesting remains deferred.
 
 ## Diagnosis and implementation
 
@@ -102,12 +104,20 @@ work, and R9 remains stopped.
 
 ## Integration and normal-main playtest
 
-Cherry-pick the worker commit returned with this result onto current main, then
-make the ordinary non-force push under standing permission. Reuse this evidence;
-main only needs its local import for the two new model files. Do not merge private
-saves, captures, `.godot`, generated sidecars or `override.cfg`.
+The coordinator cherry-picked the checked worker onto unchanged main `e1d5b8b`
+as `870159e`. The committed diff check passed; integrated `game/`, `sim/` and
+`data/` exactly match the worker commit, and current owner guidance was preserved.
+The worker's 12 rendered and 58 lifecycle/save checks were reused. One hidden
+headless import on main passed in **5.01 seconds**, with no reported errors;
+there was no repeated game/camera/lifecycle run. Logs are retained in
+`D:/Wroughtwild/work/play02-canopies/build/play02/main-integration/`.
+The ordinary `e1d5b8b..870159e` push to origin/main succeeded. The import exited;
+no test process or mouse-capture override was left active. Unrelated depot
+captures and worker import-sidecar edits were preserved and excluded.
 
-After integration, launch the normal game:
+Next: [MOB-01 porcupine rig, animation and native integration](mob01-porcupine-worker-2026-09-15.md).
+
+Launch the normal game:
 
 ```powershell
 & 'C:/Users/Matty/Godot/Godot_v4.5-stable_win64.exe' --path 'C:/Users/Matty/Dev/project-wroughtwild/game'

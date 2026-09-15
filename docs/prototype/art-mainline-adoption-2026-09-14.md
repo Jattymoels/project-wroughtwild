@@ -22,7 +22,7 @@ start the runtime merge, new workers or another R9 review as part of writing it.
 | ID | Owner observation | Follow-up |
 | --- | --- | --- |
 | PLAY-01 | Very laggy through repeated little interruptions/judder, rather than delayed input. Stuttering was too much for comfortable play. | A demonstrated stone-seam projection stall is fixed on main as `d396d9e`; representative worst frame improved from 188 to 45 ms. Other stalls and owner comfort feedback remain open. |
-| PLAY-02 | Tree canopies look as though some parts have not been created. | Inspect the apparent missing/incomplete canopy portions at player height and across distance changes. Geometry, material visibility and detail switching are possibilities to inspect, not diagnosed causes. |
+| PLAY-02 | Tree canopies look as though some parts have not been created. | Fuller active broadleaf/pine leaf surfaces and missing C1 dependencies are integrated and pushed as `870159e`. Owner saw the corrected captures in chat; hands-on feedback remains deferred. Blunt branch ends and natural gaps remain documented polish. |
 | PLAY-03 | Significant lag underground; owner clarified that access underground is not the defect. | Still open: one current-code cave sample did not reproduce sustained slowdown. Exact affected location/reproduction and cause are unknown. Preserve legitimate caves/digging and the player's state. |
 | PLAY-04 | Most new stations were not interacted with yet; the owner intends to try them in a later playtest. | Station usability remains unreviewed by the owner. Existing automated evidence is not a substitute for that feedback. |
 
