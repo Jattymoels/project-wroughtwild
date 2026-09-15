@@ -1,6 +1,15 @@
 # World Generation, Settlements and Travel
 
-**RF-03 worker implementation, 15 September 2026:** normal fresh random/chosen
+**Next selected work, 15 September 2026:** [RF-04 ground continuity](../prototype/rf04-ground-continuity-worker-2026-09-15.md)
+addresses reported unnatural small grassland bumps while retaining broad hills
+and saved native geography. The owner now requires **lakes with simple swimming**;
+[RF-05](../prototype/rf05-lakes-swimming-scope-2026-09-15.md) follows RF-04 with real
+basins, wading, surface swimming, easy exits and appealing dry lakeside home space.
+Its separate fresh-world profile keeps existing V1–V7/LF worlds unchanged. This
+selected future feature supersedes historical no-swimming exclusions within that
+scope; no lake/swimming implementation is claimed yet.
+
+**RF-03 integrated on main as `d4aa817`, 15 September 2026:** normal fresh random/chosen
 worlds select `frontier_v7`, a separate input table and composer at the existing
 1,024 × 1,024 × 96 one-metre extent. Rolling meadow/woodland and a weathered
 wildwood impact shoulder precede final resources/discoveries/routes. Four

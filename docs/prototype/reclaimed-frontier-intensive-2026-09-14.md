@@ -1,13 +1,31 @@
 # Reclaimed Frontier — terrain and biome composition
 
-**Status: RF-01 and RF-02 integrated on main, 15 September 2026.**
+**Status: RF-01 through RF-03 integrated on main, 15 September 2026.**
 [RF-01 meadow and woodland recovery](rf01-reclaimed-ground-result-2026-09-15.md)
 adds supported low cover in ordinary V6/LF play. The recovered floor remains
 visibly patchy. [RF-02 ground materials and grass](rf02-ground-grass-result-2026-09-15.md)
 is now adopted as `7c1e3a7`: finer authored turf/litter surfaces and two original
-Blender grass forms respond to the owner's ground feedback. The owner has now
-selected [RF-03 landforms and inspiring home sites](rf03-landforms-homes-worker-2026-09-15.md).
+Blender grass forms respond to the owner's ground feedback. [RF-03 landforms and
+inspiring home sites](rf03-landforms-homes-result-2026-09-15.md) is adopted as
+`d4aa817`, with four distinct useful settings in fresh normal V7 worlds.
+RF-04 ground continuity is next, then required lakes with simple swimming.
 Other biome expansion remains later. R9 stays stopped.
+
+## Ground continuity and water — owner feedback, 15 September
+
+After RF-03 the owner dislikes the small bumps between grass in the same biome,
+which feel too wavy and unnatural. Preserve the intended broad hills and home
+settings; investigate the local surface instead of treating all undulation as
+unwanted. [RF-04](rf04-ground-continuity-worker-2026-09-15.md) is prepared for that
+focused correction. Native cell heights, generated triangles and apparent relief
+are possible contributors; no final cause is established by scoping.
+
+The owner now calls water a must and selected **lakes with simple swimming**.
+[RF-05](rf05-lakes-swimming-scope-2026-09-15.md) follows RF-04 with shallow wading,
+surface swimming, easy shore exits and dry lakeside places that suggest appealing
+bases. Real basins require a separate fresh-world profile; preserve existing
+saved worlds and their ownership. Small seas remain a later option. This advances
+water from a vague future idea to the required next feature after continuity.
 
 ## RF-03 selection — 15 September
 
@@ -31,9 +49,9 @@ RF-03 focuses on rolling meadow/woodland landforms, useful connections and
 weathered old-impact surroundings. It does not enlarge the world, add hydrology,
 live erosion/regrowth, new biomes/resources or a general generator framework.
 The worker returns a playable native/Godot change, short home visit/build/Continue
-evidence and the matching native DLL. The owner starts it at
-`D:/Wroughtwild/work/rf03-landforms-homes`, branch `codex/rf03-landforms-homes`;
-setup is `build/rf03/SETUP.md`. No worker is automatically launched by scoping.
+evidence and the matching native DLL. Worker `b8d884c` at
+`D:/Wroughtwild/work/rf03-landforms-homes` is complete and adopted as `d4aa817`.
+The original brief is retained as history; no RF-03 worker should be restarted.
 
 ## Ground and grass feedback — 15 September
 
@@ -101,7 +119,9 @@ contract, with existing saves kept intact; no new generator profile is selected.
 | --- | --- |
 | RF-01: meadow/woodland recovery | Integrated as `66f3211`; supported low-cover composition, focused lifecycle/use/Continue evidence and a real 76.42 m walk. Still patchy; no impact margin on that route. |
 | RF-02: ground and grass art | Integrated as `7c1e3a7`; two authored surface treatments and two Blender grass forms, ordinary V6/LF play and Continue. Clumped cover/hardware cost remain limitations. |
-| RF-03: landforms and inspiring home sites | Scoped/prepared at the owner's request: fresh normal-world V7, rolling land and distinctive useful home settings. Existing V6/LF saves keep their geography. |
+| RF-03: landforms and inspiring home sites | Integrated as `d4aa817`: fresh normal-world V7, rolling land and four distinctive useful home settings. Existing V1–V6/LF saves keep their geography. Small-bump feedback remains open. |
+| RF-04: ground continuity | Next worker prepared on D:; diagnose and correct unnatural local bumps while preserving broad landforms and saved native geography. |
+| RF-05: lakes and simple swimming | Required next feature after RF-04; actual basins, wading/surface swimming, easy exits and useful lakeside home space. Prepare from adopted RF-04, with a separate fresh-world identity. |
 | Later biome expansion | Proposed: fen and mountain recovery based on what works in RF-01 and any landform decision. No all-biome production batch is dispatched now. |
 
 Scoping evidence: all six owner references and their caveats were inspected,
@@ -118,8 +138,9 @@ is complete and adopted as `66f3211`. Current standing approval covers ordinary
 prototype delivery and main adoption without another visual/benchmark gate.
 RF-02 worker `9180001` at `D:/Wroughtwild/work/rf02-ground-grass`, branch
 `codex/rf02-ground-grass`, is complete and adopted as `7c1e3a7`.
-RF-03's prompt/worktree and fresh-world compatibility contract are prepared
-above. The owner starts the worker.
+RF-03 worker `b8d884c` is adopted as `d4aa817`, including the matching native DLL.
+RF-04's prompt/worktree is prepared; the owner starts it. RF-05 is queued after
+that result and does not yet have a prepared worker.
 Earlier informal references to RF-02 as landform work are superseded by this
 ground/grass priority; physical terrain now belongs to the scoped RF-03 above.
 

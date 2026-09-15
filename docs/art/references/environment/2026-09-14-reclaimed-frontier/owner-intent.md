@@ -59,3 +59,26 @@ The resulting bounded implementation and fresh-world compatibility contract
 are recorded in [RF-03](../../../../prototype/rf03-landforms-homes-worker-2026-09-15.md).
 This later work item supersedes the original backlog-only status for that slice;
 the six originals and their caveats remain unchanged.
+
+## Later owner direction — continuity and lakes, 15 September 2026
+
+After RF-03 the owner reported:
+
+> That one's done - note one thing I don't like which may not have been part of that is the 'bumps' between grass of the same biome, makes it feel too wavvy and unnatural.
+> I also think water is now definitely a must either lakes or small sea biomes
+
+When asked whether the first lakes should remain shallow or support swimming:
+
+> Lakes with simple swimming fine
+
+Interpret the ground feedback as a request for natural local continuity, while
+retaining the earlier broad hills, living landscape and creative home-setting
+direction. The exact cause of the small bumps needs focused diagnosis in
+[RF-04](../../../../prototype/rf04-ground-continuity-worker-2026-09-15.md).
+
+Lakes with simple swimming are now the selected required feature after that
+correction. [RF-05](../../../../prototype/rf05-lakes-swimming-scope-2026-09-15.md)
+records wading, surface swimming, accessible shores and useful dry lakeside
+building space. The last details are the coordinator's prototype interpretation
+under standing approval. Small seas remain a future option; this does not select
+boats, diving, fluid simulation or retroactive changes to saved worlds.

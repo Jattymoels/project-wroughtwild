@@ -5,7 +5,26 @@ a meadow overlook, a bank-side terrace and a broader clearing. Rolling land,
 enclosing banks and asymmetric extra level ground suggest entrances, courtyards,
 workshops and future wings using the existing construction kit. Ordinary New
 World now selects `frontier_v7`; existing saves and Living Frontier retain their
-own geography, gameplay and ownership. Coordinator main integration is pending.
+own geography, gameplay and ownership. Integrated on main as `d4aa817`.
+
+## Mainline adoption and owner feedback
+
+Worker `b8d884c` is complete and adopted as `d4aa817`. Its matching native DLL
+(hash below) is installed in the normal owner depot. No Godot process was running
+during replacement. The coordinator reused the worker's native, paid build,
+Continue and Forward+ evidence; main's hidden headless import passed in **4.89 s**,
+exit 0, engine exit 0 and zero reported errors. Logs/private state are retained at
+`D:/Wroughtwild/work/rf03-landforms-homes/build/rf03/main-integration`.
+No coordinator test remains running. The ordinary source push is reported in the
+coordinator handoff; the ignored native DLL is local, not a committed binary.
+
+The owner reports small bumps between grass in the same biome that feel too wavy
+and unnatural. Their cause is not established by RF-03's earlier steep-approach
+diagnostic. [RF-04 ground continuity](rf04-ground-continuity-worker-2026-09-15.md)
+is next, preserving broad hills and useful home settings. The owner also requires
+water and selected **lakes with simple swimming**; [RF-05](rf05-lakes-swimming-scope-2026-09-15.md)
+follows RF-04. Neither feedback item is claimed fixed here, and this adoption does
+not claim personal owner acceptance of the final landscape.
 
 ## Remaining limits
 
@@ -105,7 +124,18 @@ were removed. Final syntax/diff/link and source/DLL checks accompany the commit.
 
 ## Exact playtest
 
-Run this user-invoked launcher for a separate ordinary save slot:
+For the integrated normal game, launch:
+
+```powershell
+& 'C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe' --path 'C:/Users/Matty/Dev/project-wroughtwild/game' -- --world-seed=77
+```
+
+Choose **New World** to see V7 and follow the route below. Existing Continue
+worlds retain their saved geography; an old V6/LF save will not gain V7 landforms.
+This is the usual owner save slot, so use the separate launcher below if you want
+to keep that slot while exploring a fresh world.
+
+Alternatively, run this user-invoked launcher for a separate ordinary save slot:
 
 ```powershell
 & 'D:/Wroughtwild/work/rf03-landforms-homes/tools/wroughtwild-rf03/play.ps1'
@@ -134,14 +164,15 @@ For the exact paid home fixture shown in the evidence:
 
 Choose **Continue**. This copies the checked save once into another private slot,
 never over an existing playtest save. Floor: `(606,39,498)`; bench: `(600,39,502)`.
-It is a paid test fixture, not a free home in normal New World. After coordinator
-integration, main's normal New World selects V7; existing Continue/LF launches
+It is a paid test fixture, not a free home in normal New World. Main's normal
+New World now selects V7; existing Continue/LF launches
 retain their saved geography and usual flags.
 
 ## Native handoff / publication
 
-**Worker commit only; coordinator integration and push are pending.** The final
-SHA is in the chat handoff and ignored native provenance record. Stop after RF-03.
+**Worker `b8d884c` adopted on main as `d4aa817`.** The coordinator installed the
+matching DLL below and completed the short main import. Publication status is
+reported separately in the coordinator chat handoff. The RF-03 worker is finished.
 
 DLL: `D:/Wroughtwild/work/rf03-landforms-homes/game/bin/libwroughtwild_sim.windows.x86_64.dll`
 

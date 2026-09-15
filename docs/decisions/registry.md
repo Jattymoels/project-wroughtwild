@@ -1,5 +1,17 @@
 # Decision Registry
 
+Owner landscape correction and water selection, 15 September 2026: following
+RF-03, small bumps between grass in the same biome feel too wavy and unnatural.
+[RF-04](../prototype/rf04-ground-continuity-worker-2026-09-15.md) will diagnose and
+correct local surface continuity while preserving broad landforms and saved
+native geography. The owner also said water is now a must and chose **"Lakes with
+simple swimming fine"**. [RF-05's selected scope](../prototype/rf05-lakes-swimming-scope-2026-09-15.md)
+adds lakes, wading, surface swimming and accessible shores after RF-04, in a
+separate fresh normal-world profile. Existing V1–V7/LF saves retain their geography
+and ownership. This overrides historical swimming deferrals for this bounded
+feature; boats, diving and fluid simulation are not required. The worker brief
+will settle the small water record, edit and item-recovery choices before work.
+
 RF-03 scoped extension under D-013/D-030/D-032, 15 September 2026: after RF-02,
 the owner said "Yep let's do it" to landform scoping and asked for generation
 that gives excitement/creativity about building a base there. The
@@ -10,7 +22,7 @@ and adopted gameplay/art. Rolling meadow/woodland, varied home outlooks and
 expansion opportunities express that direction. Existing V1-V6 and LF inputs,
 geography, Continue ownership and campaign terrain events remain unchanged;
 new V7 inputs are separate from the V6/LF `worldgen.json`. No existing-world
-migration, new construction rule or fresh-LF successor is selected. The [RF-03 worker result](../prototype/rf03-landforms-homes-result-2026-09-15.md) records implementation and focused checks. Coordinator integration/publication is separate; no owner playtest acceptance is claimed.
+migration, new construction rule or fresh-LF successor is selected. The [RF-03 result](../prototype/rf03-landforms-homes-result-2026-09-15.md) records implementation and focused checks. Worker `b8d884c` is integrated on main as `d4aa817`, with its matching native DLL locally installed. No owner playtest acceptance is claimed.
 
 RF-02 delivery update, 15 September 2026: worker `9180001` is integrated on main
 as `7c1e3a7`; [result and focused evidence](../prototype/rf02-ground-grass-result-2026-09-15.md).

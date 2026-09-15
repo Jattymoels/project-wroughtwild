@@ -1,8 +1,8 @@
 # RF-03 — landforms that make you want to build
 
-Status: scoped and prepared at the owner's request, 15 September 2026. The
-owner starts the implementation worker; the coordinator adopts its checked
-commit and matching native DLL into main and pushes the tracked changes.
+Status: completed by worker `b8d884c` and integrated on main as `d4aa817`,
+15 September 2026. See the [result and playtest](rf03-landforms-homes-result-2026-09-15.md).
+This brief is retained as history; do not restart RF-03. Ground continuity is next.
 
 Worktree: `D:/Wroughtwild/work/rf03-landforms-homes`
 Branch: `codex/rf03-landforms-homes`

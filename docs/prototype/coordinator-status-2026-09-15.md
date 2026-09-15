@@ -56,15 +56,29 @@ New editable source remains at `D:/Wroughtwild/source-art/rf02-ground-grass`.
 
 The grass is still clumped, with gaps at shelves/reserved areas. Hardware cost,
 other lighting and personal owner acceptance remain unmeasured/deferred.
-**Next worker: [RF-03 landforms and inspiring home sites](rf03-landforms-homes-worker-2026-09-15.md).**
-The owner said to proceed and asked for generation that inspires excitement and
-creativity about a base. Scope: rolling meadow/woodland, old-impact surroundings
-and four useful home settings with varied outlook/enclosure/expansion options.
-Normal fresh worlds get a separate V7 identity; existing V6/LF Continue geography,
-ownership and campaign events remain intact. V7 retains adopted art and gameplay.
-Prepared at `D:/Wroughtwild/work/rf03-landforms-homes`, branch
-`codex/rf03-landforms-homes`, setup `build/rf03/SETUP.md`. The owner starts it.
-Fen/mountain redesign and a fresh-LF successor remain later work.
+**[RF-03 landforms and inspiring home sites](rf03-landforms-homes-result-2026-09-15.md)
+is integrated on main as `d4aa817`.** Worker `b8d884c` is finished. Normal fresh
+worlds now select V7 with rolling land and woodland-pocket, overlook, bank-terrace
+and clearing home settings. Existing V1–V6/LF saves retain geography and ownership.
+The matching native DLL is installed locally. Reused evidence includes native
+generation/legacy identity, 31 paid-build and 19 V7 Continue checks, and a real
+202.64 m Forward+ walk. Main's hidden headless import passed in 4.89 seconds,
+exit 0, zero reported errors; its private logs/state are on D:. No test is running.
+Only two seeds and one rendered route were covered; owner feel remains feedback.
+
+**Next worker: [RF-04 ground continuity](rf04-ground-continuity-worker-2026-09-15.md).**
+The owner dislikes small bumps between grass in the same biome. Diagnose and
+correct the local surface while retaining broad landforms, home appeal and saved
+native geography. The mesher is one lead, not a confirmed cause. Prepared at
+`D:/Wroughtwild/work/rf04-ground-continuity`, branch `codex/rf04-ground-continuity`,
+setup `build/rf04/SETUP.md`. The owner starts it.
+
+**Required next feature: [RF-05 lakes and simple swimming](rf05-lakes-swimming-scope-2026-09-15.md).**
+The owner now requires water and selected lakes with simple swimming. Include
+wading, surface swimming, easy exits and appealing dry lakeside building space.
+Prepare its worker only after RF-04 adoption, with a separate fresh-world profile
+for lake basins and existing saved geography intact. Small seas, fen/mountain
+redesign and a fresh-LF successor remain later possibilities.
 
 **PLAY-03 diagnostic delivery is integrated as `cbc6f67`.** The staged drop did
 not reproduce the owner's continuing slowdown; no causal fix is claimed. The

@@ -38,8 +38,15 @@ Both RF-01 and RF-02 are delivered; continuous cover and physical undulation are
 not claimed. The owner requested [RF-03 landforms and inspiring home sites](rf03-landforms-homes-worker-2026-09-15.md):
 fresh normal-world V7, varied useful home settings and rolling old-impact
 surroundings. Existing V6/LF worlds retain their geography and ownership.
-Its D: prompt/worktree is prepared for the owner to start; fen/mountain redesign,
-fresh-LF generation and era/boss work remain later.
+RF-03 is now [integrated as `d4aa817`](rf03-landforms-homes-result-2026-09-15.md),
+with the matching native DLL locally installed and main's short import passed.
+Next is [RF-04 ground continuity](rf04-ground-continuity-worker-2026-09-15.md),
+responding to the owner's unnatural small-bump feedback while keeping broad hills.
+Its D: prompt/worktree is prepared for the owner to start. [RF-05 lakes with simple
+swimming](rf05-lakes-swimming-scope-2026-09-15.md) is the required following feature,
+explicitly selected by the owner; prepare it after RF-04 adoption. Existing saved
+worlds keep their geography. Small seas, fen/mountain redesign, fresh-LF generation
+and era/boss work remain later.
 
 After MOB-02 the owner approved the current visuals and explicitly left full
 performance impact untested. They subsequently praised the nymph and confirmed
