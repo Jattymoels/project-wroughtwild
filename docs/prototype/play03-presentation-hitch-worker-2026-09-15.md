@@ -1,6 +1,11 @@
 # PLAY-03 continuation: remove the remaining presentation freeze
 
-Prepared 15 September 2026. Resume the existing task and checkout:
+Completed and adopted 15 September 2026 as `1bc19e9`, from worker `039bccf`.
+[Measured result and playtest](play03-presentation-hitch-result-2026-09-15.md):
+selected arrival 324.760 to 7.529 ms, with about 0.9 s of entry preparation.
+The dispatch below is retained history; do not restart it automatically.
+
+Original task and checkout:
 
 - Workspace: `D:/Wroughtwild/work/play03-mob-arrival`.
 - Branch: `codex/play03-mob-arrival`, completed first slice `de0125f2062d9cd628b44bd23e76094676336d11`.

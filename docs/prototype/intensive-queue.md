@@ -31,13 +31,14 @@ R9 stays stopped.
 mobs visibly appear, including above ground. The suspected connection to the
 earlier underground incident remains unconfirmed. They clarified **"A brief hitch,
 then recovers"**, so prioritise activation/creation/first display. [PLAY-03 mob arrival](play03-mob-arrival-followup-2026-09-15.md)
-has a [partial improvement on main as `87849bd`](play03-mob-arrival-result-2026-09-15.md):
-443 to 324 ms for the measured first boar arrival. The remaining 308 ms of finished
-presentation setup is still a significant freeze. The owner questioned accepting
-that lag; PLAY-03 remains open and is the immediate priority. Resume the same D:
-worker using the [presentation hitch continuation](play03-presentation-hitch-worker-2026-09-15.md).
-It retains RF-05 and existing evidence. No broad performance/review wave or worker
-is started automatically; the owner resumes the task from the supplied prompt.
+now has [both arrival corrections adopted](play03-presentation-hitch-result-2026-09-15.md):
+partial `87849bd` removed unused hidden mesh work; `1bc19e9` moves shared fitted
+fauna resource acquisition into New World/Continue loading before control release.
+The selected first boar arrival fell from 324.760 to 7.529 ms, for roughly 0.9 s
+of added entry preparation. The owner describes a seemingly massive improvement.
+The selected presentation freeze is resolved; broader PLAY-03 underground lag,
+the earlier non-arrival spike, other families and long entry remain open/unmeasured.
+The worker is complete; no broad performance/review wave starts automatically.
 
 **RF-01 is integrated on main as `66f3211`: [result and playtest](rf01-reclaimed-ground-result-2026-09-15.md).**
 Ordinary V6/LF play now has seeded low meadow/forest cover with actual support and

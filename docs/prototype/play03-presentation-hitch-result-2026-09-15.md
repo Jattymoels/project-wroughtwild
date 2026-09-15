@@ -165,3 +165,35 @@ The inherited ignored RF-05 DLL is unchanged and was not rebuilt:
 (rechecked at handoff). Coordinator should keep that compatible native binary.
 Generated import sidecars/caches and unrelated untracked artifacts are excluded
 from the commit and left in place. No owner-depot source was edited.
+
+## Coordinator adoption and owner response
+
+Worker `039bccf49e6c99c1d40ec78102ccf6cc31efcc0e` is adopted on main as
+`1bc19e90a17600dc9556a2cf38d291c0b9027518`. The coordinator reused the worker's
+focused evidence and ran one hidden headless import: 4.68 seconds, exit 0,
+zero reported errors. The RF-05 DLL remains in place with the matching hash.
+No comparison matrix, additional game run or native rebuild was performed;
+the import has exited.
+
+The owner says the result "seems to be a massive improvement" and asks why such
+an established technique was not the default. This is recorded as positive
+feedback, not proof that every family or underground scenario was playtested.
+The original integration left first-use synchronous resource loads in the spawn
+path. Godot already provides resource caching and background loading facilities;
+the game must choose when its resources are prepared. This slice uses synchronous
+preparation during world entry, not background streaming. Current AGENTS.md now
+requires a proportionate loading/reuse decision during heavier asset integration
+and first-use coverage within its existing short smoke when that path changes.
+This does not create a benchmark/adoption gate or reopen historical art reviews.
+
+For the same selected check, use the retained D: launcher above. For ordinary
+mainline play, launch the command below and choose New World or your usual Continue:
+
+```powershell
+& 'C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe' --path 'C:/Users/Matty/Dev/project-wroughtwild/game'
+```
+
+Encounter a newly activated boar, wolf or stag during ordinary travel. Only the
+boar route was timed; the resource preparation covers all three fitted families.
+This ordinary main launch uses the normal save slot. Long entry and separate lag
+observations remain as documented above.

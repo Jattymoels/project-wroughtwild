@@ -1,13 +1,13 @@
 # PLAY-03 follow-up — large hitches when nearby mobs appear
 
-Status: the [first measured improvement](play03-mob-arrival-result-2026-09-15.md)
-is integrated as `87849bd` from worker `de0125f`. The selected first boar arrival
-fell from 443 to 324 ms; 308 ms of finished presentation setup remains. This is
-partial progress and PLAY-03 remains open. The owner questioned whether significant
-lag was being accepted; the next task must pursue the remaining demonstrated cost.
-Resume `D:/Wroughtwild/work/play03-mob-arrival`, branch `codex/play03-mob-arrival`,
-using the [current continuation](play03-presentation-hitch-worker-2026-09-15.md).
-The owner starts it. The inspection and initial scope below are historical context.
+Status: both arrival slices are integrated: partial `87849bd` and the
+[selected presentation fix `1bc19e9`](play03-presentation-hitch-result-2026-09-15.md).
+After the initial 443 to 324 ms improvement, preparing shared fitted-fauna
+resources during real world entry reduced the selected first boar arrival from
+324.760 to 7.529 ms, adding about 0.9 s to entry preparation. The worker is complete.
+The owner describes a seemingly massive improvement. The original underground
+connection and other lag observations remain open; this is not a whole-game
+performance claim. The inspection and initial scope below are historical context.
 
 ## Owner observation
 

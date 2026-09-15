@@ -14,6 +14,11 @@ that all hitches are fixed. Owner playtesting remains deferred.
 
 ## Measured event
 
+Later update: the [completed presentation continuation](play03-presentation-hitch-result-2026-09-15.md)
+is adopted as `1bc19e9`. It addresses the remaining selected setup freeze by
+preparing shared resources at normal world entry: selected arrival 324.760 to
+7.529 ms. The measurements below remain the first slice's historical record.
+
 Worker `D:/Wroughtwild/work/play03-mob-arrival`, branch
 `codex/play03-mob-arrival`, base `67061a916e902134c4557aade25846aa5bad4021`.
 Current owner guidance, required project reading and the scoped worker brief

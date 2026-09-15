@@ -5,7 +5,7 @@ plan, not a new acceptance gate. The owner wants a solo indie prototype develope
 through playable iterations. Current AGENTS.md and the owner's approved work
 outrank historical review, packaging and rollout requirements.
 
-## Current adoption and next worker
+## Current adoption and remaining issues
 
 [RF-05 lakes and surface swimming](rf05-lakes-swimming-result-2026-09-15.md) is
 integrated on main as `5e5de06` from worker `c3867bf`, with its matching native DLL
@@ -16,24 +16,28 @@ passed in 6.54 seconds, exit 0 and zero reported errors; no test remains running
 Static water edges and the lack of dedicated swim animation remain limitations.
 Owner lake feel/performance feedback is deferred; R9 stays stopped.
 
-The first [PLAY-03 mob-arrival improvement](play03-mob-arrival-result-2026-09-15.md)
-is integrated as `87849bd` from worker `de0125f`. It removes unused hidden mesh
-reconstruction for finished boars, wolves and stags. One measured first boar
-arrival fell from 443 to 324 ms, with 308 ms still in finished presentation setup.
-This remains a significant freeze and PLAY-03 stays open. The owner explicitly
-questioned accepting the remaining lag; this is a partial improvement, not an
-acceptable final state. Reused worker checks: 11 rendered and 39 headless. Main's
-hidden headless import passed in 5.16 seconds with exit 0 and no reported errors.
-The RF-05 DLL is unchanged; all owned checks are finished.
+Both PLAY-03 arrival slices are integrated. The first, `87849bd` from `de0125f`,
+removed unused hidden mesh construction and reduced the selected freeze from
+443 to 324 ms. The [presentation correction](play03-presentation-hitch-result-2026-09-15.md),
+`1bc19e9` from worker `039bccf`, addresses the remaining dominant cost: first-use
+texture/material acquisition. The measured first boar arrival fell from 324.760
+to 7.529 ms; the next interval including first draw was 10.530 ms. Boar, wolf
+and stag shared resources now prepare during ordinary New World and Continue
+before controls release. The directly measured preparation cost is about 0.9 s.
+Art, encounter rules, saves and RF-05 behavior remain; native DLL unchanged.
 
-Next is the [remaining presentation hitch](play03-presentation-hitch-worker-2026-09-15.md).
-Resume the existing `D:/Wroughtwild/work/play03-mob-arrival` checkout and
-`codex/play03-mob-arrival` branch; reuse imports, retained timings and native DLL.
-The owner starts/resumes the task. No extra checkout or worker is launched.
-Investigate and reduce the dominant setup cost through the full approach/arrival;
-do not accept another small percentage improvement while a substantial known
-arrival freeze remains actionable. A later unassigned 115 ms spike and the
-underground connection remain separate open observations.
+Reused continuation checks: 11 diagnostic, 12 arrival, 22 Continue/lifecycle,
+plus applicable earlier evidence. Main's hidden headless import passed in 4.68 s,
+exit 0 and zero reported errors; all owned checks are finished. The owner says
+the result seems a massive improvement and asks that established game-development
+practice be the default. AGENTS.md records proportionate resource/first-use
+discipline without adding an exhaustive review gate.
+
+The selected presentation freeze is resolved in the measured case. The earlier
+unassigned 115 ms non-arrival spike, underground connection, other mob pipelines
+and long world entry remain open or unmeasured. No broad review, new worker or
+further performance slice is automatically launched. The completed D: worker
+retains a private playtest launcher with a staged approach and optional trace.
 
 ## Working rhythm
 
@@ -124,9 +128,10 @@ overworld and suspects the earlier underground incident had the same trigger.
 They clarified **"A brief hitch, then recovers"**. The correlation and recovery are
 observed; shared underground cause and exact costly phase are unconfirmed.
 [PLAY-03 mob-arrival follow-up](play03-mob-arrival-followup-2026-09-15.md) now has
-a measured partial improvement on main as `87849bd`. The first boar's presentation
-setup is the next demonstrated target, as detailed in the current dispatch above.
-The source of that setup cost and the underground connection still need evidence.
+a selected presentation fix on main as `1bc19e9`, following partial `87849bd`.
+First-use texture/material acquisition explained most of that selected pause;
+the real entry paths now prepare those resources before controls release.
+The underground connection still needs evidence; do not infer all lag is fixed.
 No independent reviewer or parallel runtime repair worker is launched.
 
 Reuse the worker's 7 transition and 19 recorder checks. Main's one hidden headless

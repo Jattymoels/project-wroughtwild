@@ -3,8 +3,9 @@
 Status: first partial improvement integrated on main as `87849bd`, 15 September 2026.
 [Measured result and remaining hitch](play03-mob-arrival-result-2026-09-15.md):
 443 ms to 324 ms on the selected arrival; PLAY-03 remains open.
-Use the [presentation hitch continuation](play03-presentation-hitch-worker-2026-09-15.md)
-for the next work; the original first-slice scope below is complete.
+The [presentation continuation is also adopted](play03-presentation-hitch-result-2026-09-15.md)
+as `1bc19e9`: selected first boar arrival 324.760 to 7.529 ms. Both worker scopes
+are complete; broader lag observations remain open.
 Worktree: `D:/Wroughtwild/work/play03-mob-arrival`.
 Branch: `codex/play03-mob-arrival`. Setup: `build/play03-arrival/SETUP.md`.
 The owner starts this worker; the coordinator integrates the checked result and

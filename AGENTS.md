@@ -62,16 +62,19 @@ visibly appearing in the overworld. The owner suspects the earlier underground
 incident followed a long fall into newly activated mobs; that connection is not
 yet confirmed. They clarified: "A brief hitch, then recovers"; focus on arrival
 work rather than assuming sustained nearby-mob cost. The [PLAY-03 mob-arrival follow-up](docs/prototype/play03-mob-arrival-followup-2026-09-15.md)
-records the evidence. RF-05 and the first [PLAY-03 mob-arrival improvement](docs/prototype/play03-mob-arrival-result-2026-09-15.md)
-are integrated. The measured arrival fell from 443 to 324 ms; roughly 308 ms of
-presentation setup remains. The owner questioned whether the worker was simply
-accepting significant lag. Treat this as partial progress with an open, high-impact
-player-experience defect. Prototype pragmatism does not make a reproduced long
-freeze acceptable or make passing functional checks proof of smooth movement.
-The [presentation follow-up](docs/prototype/play03-presentation-hitch-worker-2026-09-15.md)
-is next in the existing D: worker for the owner to resume. Continue the measured
-critical path; do not stop after another minor saving while its dominant known
-cause is still actionable. Keep the focused verification guidance below.
+records the evidence. RF-05 and both PLAY-03 arrival slices are integrated.
+The first reduced a measured arrival from 443 to 324 ms; the owner questioned
+accepting the remaining freeze. The [presentation correction](docs/prototype/play03-presentation-hitch-result-2026-09-15.md)
+then reduced the selected first boar arrival from 324.760 to 7.529 ms. Shared
+boar/wolf/stag resources now prepare during real New World and Continue entry
+before controls release, adding roughly 0.9 seconds of preparation. The owner
+describes this as seemingly a massive improvement. This closes the selected
+measured presentation freeze, not all game lag or the unconfirmed underground
+connection. Other mob pipelines, the separate non-arrival spike and long world
+entry remain unmeasured/open; do not automatically start a broad repair wave.
+Prototype pragmatism does not make a reproduced long freeze acceptable or make
+passing functional checks proof of smooth movement. Continue an actionable
+dominant cause instead of stopping after a minor saving; keep checks focused.
 This meets the new-evidence condition above; do not keep the issue indefinitely
 parked, restart the old shaft test by default, or assume a spawn/loading cause
 without timing it. The owner's requested lake-first sequence is now complete.
@@ -135,6 +138,20 @@ handoffs, SETUP files and copied worktrees. It does not authorise broad review w
 
 For copied/older project worktrees, read this section from the current owner depot
 at `C:/Users/Matty/Dev/project-wroughtwild/AGENTS.md` before applying an old prompt.
+
+### Standard game development practices at prototype scale
+
+The owner asked why established game-development techniques were not the default
+after the mob-arrival fix. Use suitable existing engine facilities and established
+patterns when implementing a slice; explain a custom approach when it is needed.
+For heavier art integration, plan when shared scenes, textures and materials load
+and how they are reused. Keep avoidable blocking resource loads out of active
+movement/spawn callbacks, using a suitable loading/preparation point. Preloading
+everything is not a universal rule: consider the slice's startup and memory cost.
+When this path changes, include first use in the existing short load/use smoke,
+not only an already-warmed showcase. This is routine implementation discipline,
+not a new adoption gate, benchmark matrix, full-project audit or generic framework.
+The PLAY-03 result supplies a concrete reusable example for fitted fauna.
 
 ## Storage discipline — owner cleanup request, 15 September 2026
 
