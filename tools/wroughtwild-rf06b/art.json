@@ -1,0 +1,19 @@
+{
+  "seed": 160977,
+  "sedge_blades": 96,
+  "rush_stems": 21,
+  "fern_fronds": 9,
+  "purpose": {
+    "sedge-spread": "Wide low interlocking rosettes with folded curved leaves, ochre old blades and irregular edge.",
+    "sedge-crescent": "One-sided swept low leaves open toward nearby passages; distinct silhouette.",
+    "rush-fan": "Curving upright stems with cascading leaves and a broad rooted base, no harvest seed heads.",
+    "fern-bower": "Broad arching fronds with individual paired leaflets form the middle layer.",
+    "root-weave": "Low braided rotten roots threaded with small living leaves; entirely supported dressing."
+  },
+  "design_purpose": {
+    "seed": "Repeatable original mesh variations.",
+    "sedge_blades": "Ninety-six folded leaves connect several growing points into a spreading patch.",
+    "rush_stems": "Twenty-one curved upright stems give a readable fan with gaps.",
+    "fern_fronds": "Nine arching compound fronds fill a broad middle-layer silhouette."
+  }
+}

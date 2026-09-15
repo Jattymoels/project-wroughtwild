@@ -1,0 +1,42 @@
+{
+  "forms": {
+    "sedge-spread": {
+      "triangles": 2304,
+      "vertices": 2016,
+      "width_m": 1.9822591972814998,
+      "height_m": 0.31863030791282654,
+      "sha256": "8465280c494dc8605b8accc9e0081d770375bf3cdb2b068646c7eb293a670979"
+    },
+    "sedge-crescent": {
+      "triangles": 2304,
+      "vertices": 2016,
+      "width_m": 1.578139653127472,
+      "height_m": 0.31599000096321106,
+      "sha256": "cb36560c903d8badfb71ed5a7be18c7b2573d530498afa057169069ab584d5f9"
+    },
+    "rush-fan": {
+      "triangles": 2550,
+      "vertices": 1911,
+      "width_m": 1.6168683041997933,
+      "height_m": 1.2312955856323242,
+      "sha256": "f25725521bdd840c39407f376fc8e40c52a7abff3b0ac67a871af6c520154fac"
+    },
+    "fern-bower": {
+      "triangles": 2232,
+      "vertices": 1854,
+      "width_m": 1.6102595703236304,
+      "height_m": 0.7178474068641663,
+      "sha256": "a56241c23d62dd2b06f7c04d82609d30d308c127bf79625c99cb900cd2705a0e"
+    },
+    "root-weave": {
+      "triangles": 1120,
+      "vertices": 840,
+      "width_m": 1.7694913850675111,
+      "height_m": 0.20238009095191956,
+      "sha256": "1cc521331e4421f0f0bc69eaf41e7966596464cc1bb24c7a574f78d89e452a26"
+    }
+  },
+  "method": "Direct original Blender foliage; no reconstruction, external assets or reference pixels.",
+  "coordinate_system": "Metres; Blender Z up, standard glTF Y up.",
+  "source": "D:\\Wroughtwild\\source-art\\rf06b-fen-art\\rf06b-wetland-master.blend"
+}
