@@ -2,7 +2,7 @@
   "descriptor_kind": "MOB production handoff; not a new shared runtime schema",
   "enemy_id": "stone_husk",
   "role": "guard",
-  "source_stage": "approved ART-06C ram v03 surface, MOB-02 fitted rig v05",
+  "source_stage": "approved ART-06C ram v03 surface, MOB-02 fitted rig v05; normal-game integration published as 5493470",
   "model": "res://assets/authored/roster/stone_husk/model.glb",
   "maps": {
     "base": "res://assets/authored/roster/stone_husk/base.png",
@@ -151,7 +151,7 @@
       "era_two_guard_arc_bonus_degrees": 40,
       "era_two_breaks_timber": true
     },
-    "coordinator_next": "Cherry-pick production commit after MOB-01, add the stone_husk entry to its shared adapter/manifests, then short actual-role and ordinary Continue smoke. No additional owner approval."
+    "coordinator_next": "Complete: production fb9fe9d and native integration 5493470 pushed to main; 29 native and 10 Continue assertions passed. Owner playtesting is deferred."
   },
   "provenance": {
     "editable_master": "D:\\Wroughtwild\\source-art\\mob02-ram\\rig-v05\\stone_husk-rigged.blend",
@@ -167,10 +167,10 @@
     }
   },
   "known_limits": [
-    "Owner playtesting deferred; no claim of normal-game adoption yet.",
+    "Normal-game adoption complete; owner hands-on playtesting remains deferred.",
     "No terrain IK or facial articulation; source-generated fur/fold detail and slight foot sliding remain.",
     "One runtime detail level; no performance or minimum-hardware clearance.",
     "Later-era physical additions are deferred; existing era gameplay remains unchanged.",
-    "The stationary guard/idle switch should blend briefly during integration; it must not lock movement."
+    "The stationary guard/idle switch blends for 0.12 seconds without locking movement; moving actors use the cosmetic walk cadence."
   ]
 }

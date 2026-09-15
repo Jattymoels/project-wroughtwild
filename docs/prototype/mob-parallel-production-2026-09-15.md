@@ -1,14 +1,22 @@
 # MOB-02/03 parallel production boundary
 
+**Ram integration update:** MOB-02 is published on main as `5493470` (production
+`fb9fe9d`). `RamPresentation` binds the 23-bone export to existing Stone Husk
+guard/melee behavior. Stationary alert braces, movement keeps walking, native
+windup/release drives the forehead strike, and Continue clears the cosmetic
+release. The 29 native and 10 Continue assertions passed; worker rig evidence was
+reused. Porcupine, crane and ram production/adoption are now complete. The original
+worker boundaries below are retained as historical setup, not outstanding work.
+
 **Crane integration update:** MOB-03 is published on main as `d9e6b90`.
 `CranePresentation` supplies species setup and a five-bone call layer over native
 locomotion. `Enemy.recruitment_called` now observes the completed native call;
 melee release remains separate. Successful SaveManager restoration resets the
 crane's transient action poses through its registered presentation group. Ram
-production remains isolated; integrate its checked descriptor into current main,
-preserving these additions. There is no requirement to redo its source work.
+integration above preserves these additions. There is no requirement to redo
+either species' source work.
 
-**Current integration update:** MOB-01 is published on main as `f0349c2`.
+**Earlier integration update:** MOB-01 is published on main as `f0349c2`.
 `PorcupinePresentation` supplies species-specific rig/material/size setup and
 extends the existing `FinishedFauna` sampler; one `CreatureMotion` dispatch branch
 selects it. The A2 sampler, native `enemy.gd`, combat tuning and saves are unchanged.

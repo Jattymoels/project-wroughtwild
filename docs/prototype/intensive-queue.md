@@ -16,8 +16,9 @@ is integrated and pushed on main as `f0349c2`:
 [result and checks](mob01-porcupine-result-2026-09-15.md).
 [MOB-03 crane](mob03-crane-result-2026-09-15.md) is integrated and pushed as
 `d9e6b90`, with native recruiting-call/peck presentation and Continue cleanup.
-[MOB-02 ram](mob02-ram-worker-2026-09-15.md) is next for normal-game adoption;
-beetle, nymph and tortoise follow. The [shared-file boundary](mob-parallel-production-2026-09-15.md)
+[MOB-02 ram](mob02-ram-result-2026-09-15.md) is integrated and pushed as `5493470`,
+with native guard/melee presentation and ordinary Continue. Beetle, nymph and
+tortoise remain. The [shared-file boundary](mob-parallel-production-2026-09-15.md)
 keeps independent production separate from completed gameplay adoption.
 R9 stays stopped.
 

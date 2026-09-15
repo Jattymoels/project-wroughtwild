@@ -1,18 +1,73 @@
-# MOB-02 — checked ram production and integration handoff
+# MOB-02 — ram integrated into the normal game
 
 The approved ram now has a weighted 23-bone rig, a four-beat walk, quiet idle,
 braced guard pose and grounded forehead anticipation/follow-through. One skinned
-runtime export and its original ART-06C maps are ready for the coordinator to
-install as the existing stone_husk / guard enemy after MOB-01.
+runtime export and its original ART-06C maps now appear on the existing
+stone_husk / guard enemy in ordinary worlds and Continue. Production is adopted
+as `fb9fe9d`; native runtime integration is `5493470`. Both were successfully
+pushed to origin/main on 15 September 2026.
 
-**Limits:** normal-game wiring and its short actual-role/Continue check remain
-coordinator work. Owner playtesting is deferred under the 15 September standing
+**Limits:** Owner playtesting is deferred under the 15 September standing
 approval; this is not a claim of personal playtest acceptance. The existing
 upright collider does not fit the long animal silhouette. Small foot sliding,
 generated fur/fold detail, no terrain IK/facial articulation, later-era physical
 additions and unmeasured hardware remain limits.
 
-## Delivery
+## Completed native integration
+
+`RamPresentation` supplies the selected rig and ART-06C scar/status material.
+Normal Stone Husks walk with actual movement, brace while stationary and alert,
+and use the existing windup and melee event for the forehead strike. Guard
+eligibility, 110-degree facing arc, mitigation, health, damage, movement, reach,
+era rules and collision remain native. No Enemy, save schema or gameplay tuning
+was changed. Successful ordinary restoration uses the existing presentation
+reset group to discard an unsaved cosmetic strike.
+
+The adapter compensates the legacy 0.76 humanoid reduction once, giving 0.85 m
+per source unit before family/elite scaling; it preserves proportions and faces
+the forehead along native forward. The source's 0.32-second recovery is sampled
+inside the existing 0.22-second cosmetic release window. An explicit 1.5 m
+cosmetic stride accepts foot sliding to avoid frantic steps at native speed.
+The descriptor documents a 0.12-second stationary idle/brace blend; it never
+delays movement, damage or guard eligibility. Source cull margin remains 0.65.
+
+Focused coordinator checks, with no baseline or renderer matrix:
+
+- Main headless import: **4.02 seconds**, exit 0, no reported errors.
+- Native actor with one Forward+ capture: **29 assertions passed**, **2.91
+  seconds**. Actual pursuit/melee, guard front/rear/arc and stagger, native
+  collider/numbers, material binding, freeze/status priority, pause, rebind and
+  death passed. [Actual native actor capture](../../game/tests/mob02/evidence/native-ram.png).
+- One ordinary seed-77 Stone Husk pack and SaveManager/Continue: **10 assertions
+  passed**, **39.68 seconds**. World identity, exact progression and finite-source
+  ownership survived; the rig/observer remained singular and the old strike cleared.
+
+The worker's selected-master validation, **83 import assertions** and **4 capture
+assertions** were reused. Source work was not rebuilt or reopened. The first main
+import reported that Godot cannot import the animated WebP documentation clip.
+The evidence directory now has `.gdignore`; runtime assets remain imported. The
+original failure and final passing logs are retained in
+`D:/Wroughtwild/work/mob02-ram/build/mob02/integration/`; compact final results are
+also beside the selected native capture. No assertion was weakened or removed.
+
+The rendered check asserted a visible pointer and unfocusable window and held
+the shared renderer mutex. All owned check processes exited and the temporary
+`game/override.cfg` was removed. No testing remains running.
+
+To play later:
+
+```powershell
+& 'C:/Users/Matty/Godot/Godot_v4.5-stable_win64.exe' --path 'C:/Users/Matty/Dev/project-wroughtwild/game'
+```
+
+Choose Continue or a new world and encounter a Stone Husk. Approach to see pursuit
+and its forehead attack; circle its rear and use stagger to exercise the existing
+guard rules. Try Save/Continue and pause. No art or showcase flag is needed.
+The earlier animation preview below is the exported-model fixture; the native
+capture above shows the integrated actor. Owner feedback, significant underground
+lag and the remaining beetle/nymph/tortoise work stay open. R9 remains stopped.
+
+## Production delivery and original integration handoff
 
 - [Runtime model and descriptor](../../game/assets/authored/roster/stone_husk/asset.json):
   model.glb, base.png, orm.png and scar-mask.png.
@@ -159,7 +214,7 @@ its existing windup, release, movement and status priorities should stay first. 
 actor to finish the guard clip. Freeze holds the pose; stagger/death interrupts
 the action through the existing native path.
 
-### Coordinator's remaining short check
+### Original coordinator check request — now completed above
 
 Wire stone_husk in the shared MOB-01 path, then load/use it in its actual role:
 facing aligns with native guard, stagger removes mitigation and cancels the
@@ -167,9 +222,12 @@ pose, the existing melee event samples the short strike, and ordinary Continue
 loads with unchanged saves/ownership. Reuse this source/import evidence. Broader
 combat balance, performance and owner playtesting remain later work.
 
-## Commit/publication
+## Original production publication boundary
 
 The production commit contains only the owned paths listed above, on
 codex/mob02-ram, based on 65faafed2ee179a71222c426c8947c9af224e9e8.
-The final task response supplies its exact SHA and branch publication result.
-Mainline adoption is still pending the coordinator's sequential integration.
+The worker commit is `cac53672cf08e1029f274756c0ff6065a8c32939`. The coordinator
+cherry-picked it as `fb9fe9d` and completed normal-game adoption in `5493470`.
+The ordinary `84c89b8..5493470` push to origin/main succeeded, including both
+production and tested runtime integration. The status documentation was updated
+after that successful publication; tested runtime values were not changed.
