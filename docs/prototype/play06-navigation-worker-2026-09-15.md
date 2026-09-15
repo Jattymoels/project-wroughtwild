@@ -1,5 +1,10 @@
 # PLAY-06: bearings and optional coordinates
 
+**Queued, not dispatched.** The owner's new turtle/archer/Cinder Wisp group hitch
+takes priority: [current worker brief](play03-group-arrival-worker-2026-09-15.md).
+The proposed worktree below has not been created; do not start this prompt until
+the coordinator prepares it after the reported defect. No implementation is done.
+
 Prepared after the owner's direction/coordinate question and request for the
 next slice, under standing prototype approval. The owner starts this worker.
 

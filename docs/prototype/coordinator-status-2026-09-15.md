@@ -39,15 +39,22 @@ and long world entry remain open or unmeasured. No broad review, new worker or
 further performance slice is automatically launched. The completed D: worker
 retains a private playtest launcher with a staged approach and optional trace.
 
-**Next: [PLAY-06 bearings and optional coordinates](play06-navigation-worker-2026-09-15.md).**
-The owner's lake directions exposed the lack of an in-game compass/position readout.
-Prepare a discreet default compass and optional X/Z/Y readout in existing H Display
-preferences, preserving input, saves and current gameplay. This is a small HUD
-addition under standing prototype approval. Workspace:
-`D:/Wroughtwild/work/play06-navigation`, branch `codex/play06-navigation`, setup
-`build/play06/SETUP.md`. The owner starts it; no task or game starts automatically.
-RF-01–05 and original art/base-mob adoption are complete. Fen/mountain recovery
-remains the next larger Reclaimed Frontier direction to scope separately.
+**Immediate next: [PLAY-03 group arrivals](play03-group-arrival-worker-2026-09-15.md).**
+The owner reports considerable lag when many mobs appear, specifically "turtle +
+archers + cinder wisps". Hollow Knight/tortoise, Cinder Archer/porcupine and Cinder
+Wisp/moth are outside the previous fitted-fauna resource preparation. Measure
+this actual group and distinguish first-use resource loading, per-actor setup
+and same-frame batch work. The prior boar improvement remains; broader PLAY-03
+is open. Resume `D:/Wroughtwild/work/play03-mob-arrival` on `codex/play03-mob-arrival`,
+current worker `039bccf`, with `build/play03-group/SETUP.md` and the new owner-depot
+brief. The owner starts it; no new worker/checkout/game is launched automatically.
+
+[PLAY-06 bearings and optional coordinates](play06-navigation-worker-2026-09-15.md)
+is queued behind that defect. Its proposed D: checkout has not been created and
+implementation has not started. It will add a compact compass and optional X/Z/Y
+readout through existing H Display preferences. RF-01–05 and original art/base-mob
+adoption are complete. Fen/mountain recovery remains the next larger landscape
+direction to scope separately.
 
 ## Working rhythm
 

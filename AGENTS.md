@@ -79,6 +79,16 @@ This meets the new-evidence condition above; do not keep the issue indefinitely
 parked, restart the old shaft test by default, or assume a spawn/loading cause
 without timing it. The owner's requested lake-first sequence is now complete.
 
+Further owner evidence on 15 September: considerable lag remains when many mobs
+appear together, specifically "turtle + archers + cinder wisps". These map to
+Hollow Knight/tortoise, Cinder Archer/porcupine and Cinder Wisp/moth; they are outside
+the previous fitted-fauna preparation path. The [group-arrival continuation](docs/prototype/play03-group-arrival-worker-2026-09-15.md)
+is the immediate priority, ahead of queued PLAY-06 navigation. Reuse the current
+mob-arrival worker and measure this actual mixed/group case; preserve the prior
+boar fix without presenting it as closure of the broader reported issue. Diagnose
+resource loading versus repeated construction/batch cost before choosing the fix.
+The owner starts the worker; do not launch it automatically.
+
 After ram integration on 15 September, the owner said: "Everything looks great -
 approved, I haven't done full performance impact yet though but that's fine".
 Record the current delivered visuals as approved, including the integrated

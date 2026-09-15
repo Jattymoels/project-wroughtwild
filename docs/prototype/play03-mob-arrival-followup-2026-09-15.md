@@ -9,6 +9,26 @@ The owner describes a seemingly massive improvement. The original underground
 connection and other lag observations remain open; this is not a whole-game
 performance claim. The inspection and initial scope below are historical context.
 
+## New group-arrival report after the selected boar fix
+
+The owner reports "still some considerable lag when a lot of mobs spawn in at
+once unfortunately" and identifies "turtle + archers + cinder wisps". The earlier
+brief-hitch/recovery account remains context; they did not supply a new duration,
+count or world identity with this report. No Godot process was still running when
+the coordinator checked the launch path, so the exact reported checkout is not
+established by a live process. Do not claim the owner used an old build.
+
+Confirmed code mapping: `hollow_knight` -> TortoisePresentation;
+`cinder_archer` -> PorcupinePresentation; `cinder_wisp` -> articulated moth.
+None is covered by the previous `finished`-family preparation. The first two
+still have lazy scene/material acquisition; the moth's visible skinned mesh and
+rig path is distinct. Synchronous MobPacks member/pack construction can also
+combine work. These are leads to time, not a completed diagnosis.
+
+The [group-arrival worker](play03-group-arrival-worker-2026-09-15.md) is next in
+the existing D: checkout at `039bccf`, ahead of queued PLAY-06. It uses the current
+source and retained runtime/evidence. No new worktree or task is launched.
+
 ## Owner observation
 
 The owner reported during playtesting on 15 September 2026:

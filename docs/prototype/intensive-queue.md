@@ -40,14 +40,19 @@ The selected presentation freeze is resolved; broader PLAY-03 underground lag,
 the earlier non-arrival spike, other families and long entry remain open/unmeasured.
 The worker is complete; no broad performance/review wave starts automatically.
 
-**Next prepared slice: [PLAY-06 navigation](play06-navigation-worker-2026-09-15.md).**
-The owner asked how to see direction/coordinates while finding the new lake.
-A compact compass and optional live X/Z/Y display address that concrete gap using
-the existing HUD and H Display preferences. It adds no minimap, marker system or
-gameplay/save rule. D: workspace: `D:/Wroughtwild/work/play06-navigation`, branch
-`codex/play06-navigation`. The owner starts it; coordinator adoption follows.
-Original adoption/base-mob and RF-01–05 scopes are complete; broader fen/mountain
-recovery remains a later bounded design/production choice.
+**New immediate priority: [PLAY-03 grouped arrivals](play03-group-arrival-worker-2026-09-15.md).**
+The owner reports considerable lag when many mobs appear: "turtle + archers +
+cinder wisps". These are the tortoise, porcupine and moth paths, outside the prior
+fitted-fauna preparation. Resume the existing D: mob-arrival worker at `039bccf`
+to measure that mixed/group arrival and correct its demonstrated cost. No automatic
+worker launch or new review wave. The previous selected boar improvement stands;
+the broader reported hitch remains open.
+
+[PLAY-06 navigation](play06-navigation-worker-2026-09-15.md) is queued afterward:
+compact compass and optional X/Z/Y through existing H Display preferences, with
+no minimap or gameplay/save rule. Its new worktree was not created before this
+owner correction; implementation has not started. Original adoption/base-mob and
+RF-01–05 scopes are complete; fen/mountain recovery remains later scoped work.
 
 **RF-01 is integrated on main as `66f3211`: [result and playtest](rf01-reclaimed-ground-result-2026-09-15.md).**
 Ordinary V6/LF play now has seeded low meadow/forest cover with actual support and
