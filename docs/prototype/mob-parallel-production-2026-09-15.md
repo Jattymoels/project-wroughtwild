@@ -1,5 +1,13 @@
 # MOB-02/03 parallel production boundary
 
+**Crane integration update:** MOB-03 is published on main as `d9e6b90`.
+`CranePresentation` supplies species setup and a five-bone call layer over native
+locomotion. `Enemy.recruitment_called` now observes the completed native call;
+melee release remains separate. Successful SaveManager restoration resets the
+crane's transient action poses through its registered presentation group. Ram
+production remains isolated; integrate its checked descriptor into current main,
+preserving these additions. There is no requirement to redo its source work.
+
 **Current integration update:** MOB-01 is published on main as `f0349c2`.
 `PorcupinePresentation` supplies species-specific rig/material/size setup and
 extends the existing `FinishedFauna` sampler; one `CreatureMotion` dispatch branch

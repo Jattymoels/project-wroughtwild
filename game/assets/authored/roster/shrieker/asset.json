@@ -1,7 +1,7 @@
 {
   "enemy_id": "shrieker",
   "animal": "grounded augmented crane",
-  "stage": "checked source production; normal-game wiring pending coordinator",
+  "stage": "checked source production and native-game integration; published as d9e6b90",
   "model": "model.glb",
   "maps": {
     "base": "base.png",
@@ -114,7 +114,7 @@
     "rig_report": "D:\\Wroughtwild\\source-art\\mob03-crane\\rig-v04\\rig-report.json"
   },
   "limitations": [
-    "Native recruitment/combat/save/Continue integration remains for coordinator after MOB-01 and ram.",
+    "Native recruitment, melee presentation and Continue are integrated; hands-on owner feedback remains deferred.",
     "No terrain foot IK; modest sliding on uneven terrain and source feather/cavity roughness remain.",
     "Existing upright capsule differs from the long-necked animal silhouette.",
     "No later-era additional anatomy, hardware benchmark or broad regression performed.",

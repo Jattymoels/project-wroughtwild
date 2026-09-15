@@ -14,11 +14,11 @@ surfaces and missing C1 runtime dependencies restored. Owner playtesting remains
 deferred. [MOB-01 porcupine Cinder Archer](mob01-porcupine-worker-2026-09-15.md)
 is integrated and pushed on main as `f0349c2`:
 [result and checks](mob01-porcupine-result-2026-09-15.md).
-[MOB-02 ram](mob02-ram-worker-2026-09-15.md) and
-[MOB-03 crane](mob03-crane-worker-2026-09-15.md) are finishing independent
-parallel rig/animation production under the [shared-file boundary](mob-parallel-production-2026-09-15.md).
-Normal-game integration remains sequential after porcupine; beetle, nymph and
-tortoise follow. These production handoffs are not complete gameplay adoption.
+[MOB-03 crane](mob03-crane-result-2026-09-15.md) is integrated and pushed as
+`d9e6b90`, with native recruiting-call/peck presentation and Continue cleanup.
+[MOB-02 ram](mob02-ram-worker-2026-09-15.md) is next for normal-game adoption;
+beetle, nymph and tortoise follow. The [shared-file boundary](mob-parallel-production-2026-09-15.md)
+keeps independent production separate from completed gameplay adoption.
 R9 stays stopped.
 
 The owner currently cannot playtest and has approved continued prototype work

@@ -46,6 +46,9 @@ restored missing C1 runtime dependencies. The owner has seen its captures in cha
 [Canopy result, evidence and launch steps](play02-canopy-result-2026-09-15.md).
 MOB-01's rigged porcupine Cinder Archer is integrated and pushed as `f0349c2`.
 [Motion, preserved native behavior and limits](mob01-porcupine-result-2026-09-15.md).
+MOB-03's crane Shrieker is integrated and pushed as `d9e6b90`, using the checked
+production assets plus native call/melee wiring and Continue cleanup.
+[Crane result and focused integration checks](mob03-crane-result-2026-09-15.md).
 The inventory below preserves the original coordination inspection.
 
 At inspection, local main, origin/main and the live GitHub main all point to
@@ -83,7 +86,7 @@ this coordination document's own commit, not a reset target.
 | Existing normal-game art | A1 supplies the R8 kit; A2 supplies boar/wolf/stag with moths preserved. PLAY-01 reduces demonstrated seam-arrival stalls; PLAY-02 improves active broadleaf/pine crowns. All use normal world/Continue entry. | Significant underground lag remains unresolved. Movement comfort and canopy feel await hands-on feedback; blunt limb ends remain visual polish. |
 | R8 environment/placeables | All 26 original ART-07 deliveries and R1–R8 are published as source/handoff work; their selected production runtime is now adopted on main. | **A1 integrated and pushed as `35cee73`.** [Result and playtest](mainline-art-a1-result-2026-09-15.md). |
 | Finished fauna | A2 adopts ART-01 boar and ART-03 wolf/stag, including existing LF visual aliases, on native actor clocks. Moths retain their earlier art/motion. | **A2 integrated and pushed as `27e742d`.** Mid detail, foot sliding and no terrain IK/distance switching are recorded limits. [Result](mainline-fauna-a2-result-2026-09-15.md). |
-| Six replacement mobs | Porcupine Archer is rigged, animated and integrated on main as `f0349c2`. Ram and crane are in parallel production; approved beetle, six-legged nymph and tortoise sources remain. | Integrate checked ram/crane outputs, then complete the remaining three. Preserve native roles; production assets alone do not establish gameplay adoption. |
+| Six replacement mobs | Porcupine Archer (`f0349c2`) and crane Shrieker (`d9e6b90`) are rigged, animated and integrated on main. Ram production is separate; approved beetle, six-legged nymph and tortoise sources remain. | Integrate checked ram output, then complete the remaining three. Preserve native roles; production assets alone do not establish gameplay adoption. |
 | Later art/world ambition | Later-era physical augmentation, remaining boss/host art and Reclaimed Frontier references/direction are recorded. | Future scoped production/design. Reclaimed Frontier means living, rolling terrain years after impact, vegetation reclaiming damage and surviving pulsing cracks; no new generator/save rule is selected. |
 | Broader game ambition | Class halls, substantial outpost/transport progression, larger production networks and richer late-game content remain longer-term design. | Choose only what the current prototype loop demonstrates it needs. Multiplayer, infinite generation and broad factory/trading systems remain outside scope. |
 
@@ -117,11 +120,11 @@ to their own future decision/bug work; art adoption must not silently decide the
    Fitted rig, native movement/shot animation and ordinary Continue are complete.
    [Result, limits and checks](mob01-porcupine-result-2026-09-15.md).
    [Exact prompt and D: workspace](mob01-porcupine-worker-2026-09-15.md).
-   [MOB-02 ram production](mob02-ram-worker-2026-09-15.md) and
-   [MOB-03 crane production](mob03-crane-worker-2026-09-15.md) are finishing
-   independently. Shared runtime changes stay with the coordinator during sequential
-   native adoption. Integrate their checked assets next, then beetle, nymph and
-   tortoise. This is a production
+   **MOB-03 crane is integrated and pushed as `d9e6b90`.** Its native call is
+   separate from pecking and keeps the legs walking; Continue clears transient poses.
+   [MOB-02 ram production](mob02-ram-worker-2026-09-15.md) is next for native adoption,
+   then beetle, nymph and tortoise. Shared runtime changes stay with the coordinator.
+   This is a production
    order, not new game rules; no extra visual approval is required at integration.
    Physical era variants and boss art retain explicit backlog entries.
 6. **Owner playtest when available.** Try the new stations and a useful home/workshop
@@ -175,5 +178,6 @@ slices and the demonstrated PLAY-01 seam-stall fix are integrated and pushed.
 PLAY-02 is also integrated and pushed; its 70 worker checks were reused and one
 5.01-second hidden headless main import passed. Underground lag remains unresolved.
 MOB-01 is integrated and pushed as `f0349c2`, reusing 60 native actor/lifecycle
-checks and source evidence. Main's 5.48-second headless import passed. Ram/crane
-production continues separately while hands-on feedback is deferred.
+checks and source evidence. Main's 5.48-second headless import passed. MOB-03 is
+also integrated/pushed, reusing source evidence with 29 native and 10 Continue
+checks plus the asset import. Ram adoption is next; hands-on feedback is deferred.

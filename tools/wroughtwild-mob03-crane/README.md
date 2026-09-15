@@ -1,5 +1,11 @@
 # MOB-03 crane production
 
+Native integration is published as `d9e6b90`. `run_native.ps1` provides the focused
+actual-role checks (`-Job native -Capture` and `-Job restore`), with private D:
+state/logs and verified mouse/no-focus handling. See the completed integration
+section of `docs/prototype/mob03-crane-result-2026-09-15.md` for evidence and normal
+playtest steps. The source fixture below remains reusable production evidence.
+
 The approved ART-06C crane now has one weighted runtime surface, an attached
 opening lower beak, fitted legs, a supported neck/throat and five in-place clips.
 This folder contains the species recipe, not a shared game adapter.

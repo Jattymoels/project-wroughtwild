@@ -2,14 +2,16 @@
 
 The approved crane now walks on two fitted legs, breathes while grounded, opens
 its attached beak and expands its supported throat for a recruitment call. A
-small peck represents its existing weak close attack. The weighted runtime
-asset is ready for coordinator integration after porcupine and ram.
+small peck represents its existing weak close attack. The crane is now integrated
+and pushed in the normal game: production commit `e7325de` was adopted as
+`34c7f55`, followed by native wiring `d9e6b90`. Ram remains a separate integration;
+there was no runtime dependency requiring it to precede the crane.
 
 ## Remaining limits
 
-Normal-game adoption is **not installed by this worker**. Native recruitment,
-combat and ordinary Continue need the coordinator's short wiring check. The
-species fixture cannot establish those results. Owner playtesting is deferred
+The coordinator completed normal-game recruitment, melee presentation and
+ordinary Continue checks, recorded below. The earlier species fixture establishes
+source motion only; it is not the native-gameplay evidence. Owner playtesting is deferred
 under the owner's 15 September standing approval; this is not a claim that the
 owner has played or personally judged this motion.
 
@@ -77,7 +79,10 @@ hit/freeze/burn/status presentation when binding this shader through MOB-01's
 adapter. Ambient pulse uses the pause-aware visual clock and independent
 instance phase; it has no recruitment or healing meaning.
 
-## Exact normal-game wiring handoff
+## Production wiring handoff (implemented by the coordinator)
+
+The handoff below is retained for provenance. The completed integration section
+supersedes its future-tense instructions and proposed ram-first ordering.
 
 1. Cherry-pick this worker's checked production commit after the shared MOB-01
    adapter and ram integration. Register only `shrieker` using the descriptor
@@ -159,11 +164,86 @@ Evidence: [state report](../../game/tests/mob03/evidence/state-report.json),
 ![Supported call](../../game/tests/mob03/evidence/crane-call.png)
 ![Eight-second exported crane motion](../../game/tests/mob03/evidence/crane-motion.gif)
 
-## Commit and publication outcome
+## Completed normal-game integration
+
+`CranePresentation` uses the checked rig, maps and descriptor in normal Shrieker
+instantiation. `CreatureMotion` selects it from the existing actor manifest. It
+retains A2's manual clip seeking and status presentation, with the ART-06C scar
+math already used by porcupine. The crane's colour passes directly, as in its
+selected source. No boar/wolf/stag/moth/porcupine sampler or asset was replaced.
+
+`Enemy.recruitment_called` emits after the existing `force_scream()` finishes
+its timer reset, nearby living-idle recruitment and ring. The callback changes
+only a transient visual age. Melee `attack_released("strike")` independently
+starts the peck. A moving call retains all non-call bones from the actual-travel
+walk; the five neck/head/jaw/resonator local poses come from the checked call clip.
+Melee tell/release takes priority and suppressed calls expire without queuing.
+Freeze holds the exact pose; stagger/death/rebinding clear transient action state.
+
+The Continue check found that same-world restoration can retain live actors.
+SaveManager now resets registered transient actor presentations after successful
+world/drop restoration. Only the crane currently registers for that cleanup;
+its old call/peck is cleared without adding save fields or changing native actors,
+recruitment clocks, effects, ownership or gameplay state.
+
+The new `cinder_archer`/porcupine behavior is untouched. Shrieker numbers, attack
+instant, call period/radius and era adjustments, collision, loot and population
+remain native. Crane fit/stride come from the checked descriptor. The only new
+art setting is `shrieker.crane.cull_margin_m = 0.4`, extending visible animated
+bounds without changing collision; its purpose is documented in the actor manifest.
+
+Coordinator checks were limited to the changed runtime connection:
+
+- Headless main import: exit 0, **6.71 seconds**, no reported errors.
+- Native actor/Forward+ view: **29 assertions passed**, **3.18 seconds**, no
+  script/shader errors. Actual calls preserve recruitment eligibility/timing;
+  actual melee does not call; walking legs remain on the base gait while the
+  upper body calls. Freeze, status priority, pause, rebind and death were checked.
+- Ordinary seed-77 Shrieker/SaveManager/Continue: **10 assertions passed**,
+  **39.13 seconds**, preserving world identity, exact progression/finite-source
+  ownership, one rig/observer and no replay of transient call/peck.
+
+Source geometry, rig, map and 230/348 worker checks were reused. No source rebuild,
+baseline/camera matrix, performance gate or further fauna regression was run.
+The first native run passed its behavior assertions but reported a freed fixture
+lambda capture. That observer now keeps a weak reference; a follow-up type-warning
+parse failure was corrected with an explicit WeakRef type and the failed owned
+process was stopped. The first Continue run caught the retained call state;
+the runtime cleanup fixed it. Original assertions remain intact and all failed
+logs are retained beside the final passing runs at
+`D:/Wroughtwild/work/mob03-crane/build/mob03/integration/`.
+
+One selected actual-native moving-call image is retained there as
+`native-moving-call.png`; the earlier GIF above remains an exported-model preview.
+Rendered checking used Forward+, the shared mutex, visible mouse and an asserted
+unfocusable window. Both final owned processes exited and `game/override.cfg`
+was removed. No testing is left running.
+
+The ordinary `e0cbd5c..d9e6b90` push to origin/main succeeded, containing the
+checked production assets and complete native integration. Documentation and
+descriptor status were updated afterward without changing tested runtime values.
+
+For later playtesting:
+
+```powershell
+& 'C:/Users/Matty/Godot/Godot_v4.5-stable_win64.exe' --path 'C:/Users/Matty/Dev/project-wroughtwild/game'
+```
+
+Use Continue or a fresh world and find a Shrieker. Approach while other idle
+enemies are nearby: its native call recruits them and animates the throat/beak,
+including while walking. At close range the peck remains a separate melee action.
+Try pause/stagger and Save/Continue. No crane/showcase flag is required. R9 stays
+stopped; underground lag, other mobs and deferred station/campaign feedback remain.
+
+Reproduce only a relevant focused integration check with
+`tools/wroughtwild-mob03-crane/run_native.ps1 -Job native -Capture` or
+`-Job restore`; defaults put private state/logs on D: and preserve normal saves.
+
+## Original production publication boundary
 
 Delivery is the checked production commit on **`codex/mob03-crane`**, with its
 exact SHA returned in chat. This worker does not push or modify `main`; the
-coordinator performs the ordinary sequential integration and push. No shared
+coordinator has now performed the ordinary integration and push above. No shared
 actor code, aggregate manifests, tuning, game rules or saves are changed here.
 All owned tests/renderers have exited. No normal-game test override was created.
 The ignored species fixture is retained for reuse, with isolated D: user data.
