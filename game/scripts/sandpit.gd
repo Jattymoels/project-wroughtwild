@@ -15,7 +15,7 @@ const SEED_CONTROLS := preload("res://scripts/world_seed_controls.gd")
 @export var world_seed: int = 1
 ## Fresh worlds use the new resource geography; old saves explicitly select
 ## legacy_v1 before restoring builds, resource depletion and excavation.
-@export var world_profile: String = "frontier_v6"
+@export var world_profile: String = "frontier_v7"
 var seed_controls: Node
 
 @onready var terrain: Terrain = $Terrain

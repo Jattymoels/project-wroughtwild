@@ -10,8 +10,7 @@ and adopted gameplay/art. Rolling meadow/woodland, varied home outlooks and
 expansion opportunities express that direction. Existing V1-V6 and LF inputs,
 geography, Continue ownership and campaign terrain events remain unchanged;
 new V7 inputs are separate from the V6/LF `worldgen.json`. No existing-world
-migration, new construction rule or fresh-LF successor is selected. This is
-scoped implementation, not a claim that V7 has already shipped.
+migration, new construction rule or fresh-LF successor is selected. The [RF-03 worker result](../prototype/rf03-landforms-homes-result-2026-09-15.md) records implementation and focused checks. Coordinator integration/publication is separate; no owner playtest acceptance is claimed.
 
 RF-02 delivery update, 15 September 2026: worker `9180001` is integrated on main
 as `7c1e3a7`; [result and focused evidence](../prototype/rf02-ground-grass-result-2026-09-15.md).

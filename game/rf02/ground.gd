@@ -1,6 +1,6 @@
 extends Resource
 ## Only visual data, reconstructed from the loaded world's existing biome map.
-const PROFILES := ["frontier_v6", "living_frontier_wave1", "living_frontier_wave3"]
+const PROFILES := ["frontier_v6","frontier_v7", "living_frontier_wave1", "living_frontier_wave3"]
 const SURFACES := ["grass", "forest_floor", "dirt"]
 @export var meadow_albedo: Texture2D
 @export var meadow_detail: Texture2D

@@ -1,14 +1,23 @@
 # World Generation, Settlements and Travel
 
-**RF-03 scoped, 15 September 2026:** the owner requested landforms that inspire
-excitement and creativity about where to build a base. The
-[worker contract](../prototype/rf03-landforms-homes-worker-2026-09-15.md) selects
-a separate V7 for normal fresh worlds: rolling meadow/woodland, old-impact
-surroundings and four useful home settings with varied outlooks, natural margins,
-approaches and expansion space. Existing construction, stock and opening rules
-remain. Keep V1-V6/LF generation and Continue identity unchanged; V7 inputs must
-be separate from the V6 table also used by LF. Existing LF flags/events stay on
-their current geography. This is prepared work, not implemented behavior yet.
+**RF-03 worker implementation, 15 September 2026:** normal fresh random/chosen
+worlds select `frontier_v7`, a separate input table and composer at the existing
+1,024 × 1,024 × 96 one-metre extent. Rolling meadow/woodland and a weathered
+wildwood impact shoulder precede final resources/discoveries/routes. Four
+radius-14 home cores gain woodland enclosure, an overlook, a bank-side terrace
+and an extended clearing. Their asymmetric skirts/extra level space suggest
+layouts without new building rules, plots, bonuses or free structures. Low grass
+continues over V7 cores until paid footprints clear it. V6/LF cover reservations
+remain unchanged. See [implementation, tuning, checks and playtest](../prototype/rf03-landforms-homes-result-2026-09-15.md).
+
+V1–V6 algorithms and `worldgen.json` remain frozen. Both LF tables still derive
+only from that original V6 input; LF flags and campaign policies are unchanged.
+V7 reads `worldgen-frontier-v7.json` explicitly, while old native default callers
+keep their previous meaning. Strict SaveManager validation restores actual saved
+profile/seed before generating, without a schema migration. Profile-scoped local
+content IDs retain the inherited `v6` spelling; they cannot cross world identity.
+V7 opts into adopted art, RF01/RF02, bounded terrain/resource/pack streaming and
+the ordinary pressure ledger. LF-only source/campaign rules remain exclusive.
 
 **RF-01 integrated on main as `66f3211`, 15 September 2026:**
 [Result and focused checks](../prototype/rf01-reclaimed-ground-result-2026-09-15.md).

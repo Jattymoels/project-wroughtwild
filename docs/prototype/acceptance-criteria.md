@@ -2,6 +2,20 @@
 
 These are player-visible outcomes, not a substitute for implementation-level tests.
 
+## RF-03: inspiring home settings in fresh worlds
+
+- [x] Normal fresh worlds explicitly select V7; two bounded seed fixtures retain
+  four supported 14 m cores, finite supplies, quiet routes and existing content.
+- [x] V6/LF3 seed-77 complete runtime map fingerprints remain exact; LF1 keeps
+  its original V6-derived table and generation route.
+- [x] A paid octagonal floor and ordinary workbench support use, movement,
+  grass clearance, digging and exact fresh-process Continue. A private V6 save
+  still loads as V6 with V7 selected as the New World default.
+- [ ] Owner finds these settings exciting and wants to build/expand there.
+  Owner playtesting remains deferred; technical checks cannot establish this.
+
+[RF-03 result and actual walking evidence](rf03-landforms-homes-result-2026-09-15.md).
+
 ## Living Frontier captured experiments — LF-7A/B
 
 - [x] Captured Central's actual E/key controls combine stable saved offers,

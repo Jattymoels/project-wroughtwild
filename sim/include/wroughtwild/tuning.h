@@ -1032,6 +1032,13 @@ struct WideFrontierParams {
     int homeTrees = 4, homeBoulders = 3, homeStone = 2, homeIron = 1;
 };
 
+// RF-03 values apply only to the separate frontier_v7 input table.
+struct ReclaimedFrontierParams {
+    double landformAmplitudeM=5, landformWavelengthM=155;
+    double homeDistanceJitterM=8, homeAngleJitter=.16, homeBlendM=30, extensionM=10, approachSmoothingM=3;
+    double bankHeightM=5, overlookLiftM=5, woodlandRadiusM=62, woodlandDensity=.028, impactShoulderM=3;
+};
+
 struct FrontierHostDef { std::string id, sourceId, enemyId, influence; int homeIndex = 0; };
 struct FrontierLabDef { std::string id, label, regionId; };
 struct LivingFrontierTable {
@@ -1052,6 +1059,7 @@ struct WorldgenTable {
     CataclysmParams cataclysm;
     PressureSiteParams pressureSite;
     WideFrontierParams wideFrontier;
+    ReclaimedFrontierParams reclaimedFrontier;
     uint64_t defaultSeed = 1;
     MapParams map;
     MountainParams mountains;
@@ -1328,6 +1336,7 @@ struct Tuning {
     std::map<std::string, double> centralRules;
     RealtimeTable realtime;
     WorldgenTable worldgen;
+    WorldgenTable frontierV7Worldgen; // separate fresh normal-world inputs; never derives LF
     WorldgenTable legacyWorldgen; // immutable legacy_v1 inputs for old saves
     WorldgenTable frontierV2Worldgen; // immutable frontier_v2 geography and placement inputs
     WorldgenTable frontierV3Worldgen; // immutable frontier_v3 geography and placement inputs

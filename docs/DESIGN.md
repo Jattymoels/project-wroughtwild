@@ -66,13 +66,15 @@ These references describe design influences, not a promise to reproduce their co
 
 ### World and settlements
 
-New prototype worlds use `frontier_v5`, a finite 512 × 512 metre region with three
-broad discovery areas. Terrain, impacts and connected traces compose six supported
-ruins around existing finite discoveries and the Forge threshold. Material habitats,
-starter supplies and progression journeys remain reachable. Legacy, V2 and V3 saves
-retain their frozen geography and resource identities. The longer-term hybrid model
-also calls for authored class halls and settlements; those are not added by this
-intensive. See [world generation](systems/world-generation.md).
+Normal fresh prototype worlds now use `frontier_v7`, a finite 1,024 × 1,024 metre
+region with four useful home settings in rolling meadow/woodland, alongside the
+existing three broad discoveries, impacts, ruins, habitats and finite supplies.
+RF-03 shapes outlooks, enclosure and extension space using existing construction.
+V1–V6 and Living Frontier saves retain their own profile, geography and ownership;
+LF flags continue their established campaigns. See [world generation](systems/world-generation.md)
+and the [RF-03 worker result](prototype/rf03-landforms-homes-result-2026-09-15.md).
+The longer-term hybrid model still calls for authored class halls and settlements;
+RF-03 adds neither.
 
 The long-term settlement arc is:
 

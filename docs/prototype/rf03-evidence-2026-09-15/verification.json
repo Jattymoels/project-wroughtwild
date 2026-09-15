@@ -1,0 +1,96 @@
+{
+  "native": {
+    "seeds": [
+      77,
+      904
+    ],
+    "primary_repeated": true,
+    "passed": true,
+    "fingerprints": {
+      "77": "7390872050862452190",
+      "904": "3356487179604358726"
+    },
+    "log": "build/rf03/native/generation.log"
+  },
+  "old_native_maps": {
+    "frontier_v6": "811f85635a66cb01f7e70edf1525b65519b88e5bb23450b09366f484afbd4e57",
+    "living_frontier_wave3": "fce60b41847468af36d484b4e07f3125f5f39833eab1a653eef331e8c74f4aae"
+  },
+  "build": {
+    "checks": 31,
+    "failures": 0,
+    "profile": "frontier_v7",
+    "scope": "One paid octagonal footprint and ordinary workbench; actual finite harvesting, capsule support/movement, local dig, CPU clearance and private save.",
+    "seed": 77
+  },
+  "continue": {
+    "checks": 19,
+    "failures": 0,
+    "scope": "One fresh-process paid V7 Continue; exact ownership, dig, floor movement and CPU cover restoration."
+  },
+  "v6_continue": {
+    "reportedErrors": 0,
+    "seconds": 63.64,
+    "log": "D:/Wroughtwild/work/rf03-landforms-homes/build/rf03/logs/v6-20260915-184303",
+    "engineExitCode": 0,
+    "exitCode": 0
+  },
+  "walk": {
+    "captured_frames": 120,
+    "checks": 12,
+    "clip_fps": 15,
+    "controller_frames": 2433,
+    "distance_m": 202.641071779653,
+    "end": [
+      607.500244140625,
+      39.9602317810059,
+      503.023803710938
+    ],
+    "failures": 0,
+    "profile": "frontier_v7",
+    "route_complete": true,
+    "scope": "One daylight Forward+ walk, initial pose at woodland home; scripted ordinary walking with no jumps/teleports afterward. Paid home at meadow overlook. Impact is beyond this heartland route.",
+    "seed": 77,
+    "start": [
+      503.5,
+      30.9601669311523,
+      420.5
+    ],
+    "stuck_frames": 0
+  },
+  "walk_runner": {
+    "reportedErrors": 0,
+    "exitCode": 0,
+    "engineExitCode": 0,
+    "seconds": 97.23,
+    "log": "D:/Wroughtwild/work/rf03-landforms-homes/build/rf03/logs/walk-20260915-185551"
+  },
+  "initial_walk": {
+    "captured_frames": 120,
+    "checks": 12,
+    "clip_fps": 15,
+    "controller_frames": 2010,
+    "distance_m": 155.644026759081,
+    "end": [
+      568.642578125,
+      29.3037185668945,
+      511.407836914063
+    ],
+    "failures": 2,
+    "profile": "frontier_v7",
+    "route_complete": false,
+    "scope": "One daylight Forward+ walk, initial pose at woodland home; scripted ordinary walking with no jumps/teleports afterward. Paid home at meadow overlook. Impact is beyond this heartland route.",
+    "seed": 77,
+    "start": [
+      503.5,
+      30.9601669311523,
+      420.5
+    ],
+    "stuck_frames": 120
+  },
+  "repair": "Observed ChunkBody at 569,511 had a steep collision normal (-.960,.240,-.144). V7 home margins now filter heights before quantisation; unchanged V6/LF evidence reused.",
+  "dll_sha256": "8d65d7331e445602c48e826cb5a1d280c24aae69b02a4c29f0ae3047ca3b65f2",
+  "compiled_source_files_verified": 58,
+  "build_record": "build/rf03/native/provenance.json",
+  "scope": "RF-03 only; one renderer, two new seeds, two old identity guards; no benchmark, campaign replay or reviewer."
+}

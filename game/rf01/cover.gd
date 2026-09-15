@@ -1,7 +1,7 @@
 extends RefCounted
 ## One world's transient low-cover composition. No owned state or geometry edits.
 const SETTINGS = preload("res://rf01/low_cover.tres")
-const PROFILES := ["frontier_v6","living_frontier_wave1","living_frontier_wave3"]
+const PROFILES := ["frontier_v6","frontier_v7","living_frontier_wave1","living_frontier_wave3"]
 const RESERVATION_CELL := 8.0
 var _map: Dictionary
 var _seed: int
@@ -26,7 +26,10 @@ func _init(map: Dictionary, world_seed: int, profile: String, reservations: Dict
  var cell := float(map.cell_size)
  _reserve(Vector3((float(map.spawn_x)+0.5)*cell,HabitatCover.LOOK.clearing_metres,(float(map.spawn_z)+0.5)*cell))
  for site: Dictionary in map.get("home_sites",[]):
-  _reserve(Vector3((float(site.x)+0.5)*cell,float(site.radius_m),(float(site.z)+0.5)*cell))
+  # V7 cores are useful ground, not visible plots. Low grass remains until
+  # ordinary paid footprints clear it; published V6/LF reservations stay exact.
+  if profile != "frontier_v7":
+   _reserve(Vector3((float(site.x)+0.5)*cell,float(site.radius_m),(float(site.z)+0.5)*cell))
   for point: Vector3 in site.get("approach",[]): _reserve(Vector3(point.x,StrangeSites.LOOK.approach_clearance_m,point.z))
  for site: Dictionary in map.get("landmarks",[]):
   _reserve(Vector3((float(site.x)+0.5)*cell,5.0*cell,(float(site.z)+0.5)*cell))
