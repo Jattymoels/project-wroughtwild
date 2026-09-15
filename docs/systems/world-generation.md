@@ -15,6 +15,19 @@ The owner finds the visuals underwhelming; placement delivery does not close the
 wetland atmosphere outcome.
 
 
+The [RF-06B continuation](../prototype/rf06b-fen-art-result-2026-09-16.md) replaces
+that small-clump kit with authored spreading sedge, curved rushes, arching ferns
+and shallow roots. Existing seed/profile eligibility drives connected masses,
+sparse passages and dry-bank reuse. Full mesh footprints use bounded surface
+sampling and paid-work clearance, staying in their owning chunk. The local
+litter/turf blend follows original top surfaces. Native terrain/water, arrival
+preparation and save schema are unchanged. Tuning and plain-language purposes
+are in `game/rf06b/settings.json`; editable master/recipe in `game/rf06b/SOURCE.md`.
+Final actual pictures demonstrate a stronger low/middle layer; tree-scale
+repetition, broad reservation gaps and shaded-bank readability remain limits.
+Owner assessment of this revision is pending; functional checks are separate.
+
+
 ## RF-05: lakes in fresh V8 worlds
 
 RF-05 is integrated on main as `5e5de06`, including its matching native DLL and

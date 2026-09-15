@@ -156,6 +156,21 @@ plant readability within its explicit art scope. Water glare, physical angular
 shores, unrelated tree art and new swim/wind animation remain cleanup/later notes;
 no broad lighting, terrain or performance overhaul is selected.
 
+
+RF-06B worker now delivers the [authored continuation](rf06b-fen-art-result-2026-09-16.md)
+for coordinator adoption: five original forms, connected low/middle planting and
+open passages in the ordinary seeded fen and dry bank. Actual pictures and
+34 placement / 16 Continue / 12 route assertions are retained. Owner response
+to the unseen revision remains pending. The worker stops after RF-06B; it has
+not adopted/pushed main or started highlands.
+
+RF-06B cleanup observations: repeated tree silhouettes and broad reservation
+clearings still interrupt the planted scene; the lake-facing new leaves lose
+detail in deep shade. See the final fen passage and bank pictures in the result.
+These constrain the broader atmosphere but do not prevent walking/building.
+Defer tree-scale composition, shadow readability and close-range plant repetition
+for owner prioritisation; doing them now would displace highland recovery.
+
 Initial cleanup notes: residual short group hitch (34.621 ms full frame in PLAY-07),
 Thrumroot construction (8.790 ms first / 4.238 ms repeat), older unassigned lag/underground
 correlation, long world entry, angular shore/steep-bank polish and missing dedicated

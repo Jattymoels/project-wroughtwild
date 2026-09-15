@@ -14,9 +14,13 @@
 
 [Worker result, limits and private playtest](rf06-fen-lakeside-result-2026-09-16.md).
 The owner selected [RF-06B](rf06b-fen-art-worker-2026-09-16.md) to address the visual
-shortfall now. Its target is connected rooted ground, distinct vegetation layers
-and a readable inviting fen passage/bank outlook in ordinary seeded play. These
-remain open until the continuation demonstrates them; functional tests are separate.
+shortfall. The [continuation result](rf06b-fen-art-result-2026-09-16.md) demonstrates
+connected spreading ground, distinct rush/fern layers and open walking space in
+ordinary seeded play, plus dry-bank reuse. Its revised kit passed 34 placement,
+16 Continue and 12 Forward+ route checks. Owner aesthetic feedback on this
+revision remains pending; the earlier rejection is not retroactively an approval.
+Broad tree clearances, repeated tree silhouettes and deep bank shade remain
+visible weaknesses. Functional checks do not establish aesthetic acceptance.
 
 
 ## RF-05 lakes and surface swimming
