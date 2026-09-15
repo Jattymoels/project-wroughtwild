@@ -39,3 +39,23 @@ integration. This request authorises documentation/reference preservation, not
 runtime implementation or another repair wave. Detailed terrain generation,
 vegetation placement, pulse tuning, performance targets and save compatibility
 choices are not supplied by the images and must be made in a later bounded plan.
+
+## Later owner direction — home-building excitement, 15 September 2026
+
+After RF-01 vegetation placement and RF-02 ground/grass art were integrated, the
+owner agreed to proceed with landform scoping and added:
+
+> Yep let's do it - maybe add some focus about having generations that gives
+> excitement/creativity to have your base there
+
+Carry this forward as a central landscape goal: places with outlooks, enclosure,
+interesting natural edges, useful approaches and room to extend a home should
+suggest things the player wants to build. Examples are an overlook veranda,
+sheltered woodland workshop or a base that steps with a gentle terrace. These
+interpretations use existing building mechanics; they do not add compulsory
+plots, site buffs, free structures or player-tested claims of excitement.
+
+The resulting bounded implementation and fresh-world compatibility contract
+are recorded in [RF-03](../../../../prototype/rf03-landforms-homes-worker-2026-09-15.md).
+This later work item supersedes the original backlog-only status for that slice;
+the six originals and their caveats remain unchanged.

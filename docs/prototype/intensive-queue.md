@@ -35,9 +35,11 @@ ground surface and asks about better Blender grass. The owner requested
 integrated on main as `7c1e3a7`: authored turf/litter maps and two new Blender
 grass clumps, with RF-01's terrain/save/placement boundary preserved.
 Both RF-01 and RF-02 are delivered; continuous cover and physical undulation are
-not claimed. Next proposed work is bounded landform scoping, with existing-save
-compatibility settled before implementation. No next worker is started;
-fen/mountain and era/boss work remain later.
+not claimed. The owner requested [RF-03 landforms and inspiring home sites](rf03-landforms-homes-worker-2026-09-15.md):
+fresh normal-world V7, varied useful home settings and rolling old-impact
+surroundings. Existing V6/LF worlds retain their geography and ownership.
+Its D: prompt/worktree is prepared for the owner to start; fen/mountain redesign,
+fresh-LF generation and era/boss work remain later.
 
 After MOB-02 the owner approved the current visuals and explicitly left full
 performance impact untested. They subsequently praised the nymph and confirmed

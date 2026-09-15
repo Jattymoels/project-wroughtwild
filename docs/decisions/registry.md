@@ -1,5 +1,18 @@
 # Decision Registry
 
+RF-03 scoped extension under D-013/D-030/D-032, 15 September 2026: after RF-02,
+the owner said "Yep let's do it" to landform scoping and asked for generation
+that gives excitement/creativity about building a base there. The
+[RF-03 work item](../prototype/rf03-landforms-homes-worker-2026-09-15.md) selects
+a separate `frontier_v7` for normal fresh random/chosen-seed worlds, retaining
+the 1 km scale, four useful starter home cores, existing supply/opening rules
+and adopted gameplay/art. Rolling meadow/woodland, varied home outlooks and
+expansion opportunities express that direction. Existing V1-V6 and LF inputs,
+geography, Continue ownership and campaign terrain events remain unchanged;
+new V7 inputs are separate from the V6/LF `worldgen.json`. No existing-world
+migration, new construction rule or fresh-LF successor is selected. This is
+scoped implementation, not a claim that V7 has already shipped.
+
 RF-02 delivery update, 15 September 2026: worker `9180001` is integrated on main
 as `7c1e3a7`; [result and focused evidence](../prototype/rf02-ground-grass-result-2026-09-15.md).
 Authored ground maps and two Blender grass forms retain the selected terrain,

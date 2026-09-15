@@ -1,5 +1,15 @@
 # World Generation, Settlements and Travel
 
+**RF-03 scoped, 15 September 2026:** the owner requested landforms that inspire
+excitement and creativity about where to build a base. The
+[worker contract](../prototype/rf03-landforms-homes-worker-2026-09-15.md) selects
+a separate V7 for normal fresh worlds: rolling meadow/woodland, old-impact
+surroundings and four useful home settings with varied outlooks, natural margins,
+approaches and expansion space. Existing construction, stock and opening rules
+remain. Keep V1-V6/LF generation and Continue identity unchanged; V7 inputs must
+be separate from the V6 table also used by LF. Existing LF flags/events stay on
+their current geography. This is prepared work, not implemented behavior yet.
+
 **RF-01 integrated on main as `66f3211`, 15 September 2026:**
 [Result and focused checks](../prototype/rf01-reclaimed-ground-result-2026-09-15.md).
 Seeded low grass/fern patches now dress eligible meadow/forest surfaces in the

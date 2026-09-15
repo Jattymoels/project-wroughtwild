@@ -56,9 +56,15 @@ New editable source remains at `D:/Wroughtwild/source-art/rf02-ground-grass`.
 
 The grass is still clumped, with gaps at shelves/reserved areas. Hardware cost,
 other lighting and personal owner acceptance remain unmeasured/deferred.
-The next proposed scope is rolling landforms and old-impact surroundings, with
-an explicit saved-world compatibility decision before implementation. No RF-03
-worker is prepared or started; fen/mountain and other biome expansion remain later.
+**Next worker: [RF-03 landforms and inspiring home sites](rf03-landforms-homes-worker-2026-09-15.md).**
+The owner said to proceed and asked for generation that inspires excitement and
+creativity about a base. Scope: rolling meadow/woodland, old-impact surroundings
+and four useful home settings with varied outlook/enclosure/expansion options.
+Normal fresh worlds get a separate V7 identity; existing V6/LF Continue geography,
+ownership and campaign events remain intact. V7 retains adopted art and gameplay.
+Prepared at `D:/Wroughtwild/work/rf03-landforms-homes`, branch
+`codex/rf03-landforms-homes`, setup `build/rf03/SETUP.md`. The owner starts it.
+Fen/mountain redesign and a fresh-LF successor remain later work.
 
 **PLAY-03 diagnostic delivery is integrated as `cbc6f67`.** The staged drop did
 not reproduce the owner's continuing slowdown; no causal fix is claimed. The
