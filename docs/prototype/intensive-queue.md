@@ -22,6 +22,11 @@ tortoise remain. The [shared-file boundary](mob-parallel-production-2026-09-15.m
 keeps independent production separate from completed gameplay adoption.
 R9 stays stopped.
 
+After MOB-02 the owner approved the current visuals and explicitly left full
+performance impact untested. **[MOB-04 beetle](mob04-beetle-worker-2026-09-15.md)**
+is the next prepared D: worker slice: fitted six-leg motion and normal-game
+Gloom Crawler adoption, followed by nymph and tortoise. PLAY-03 remains open.
+
 The owner currently cannot playtest and has approved continued prototype work
 until told otherwise. Human feedback remains deferred; it does not block the
 reported movement/terrain fixes or subsequent mob-production slices.

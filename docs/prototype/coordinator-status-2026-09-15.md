@@ -52,6 +52,12 @@ production assets plus native call/melee wiring and Continue cleanup.
 MOB-02's ram Stone Husk is integrated and pushed as `5493470`: native guard/melee
 presentation, pause/status priority and ordinary Continue are complete.
 [Ram result, native capture and playtest](mob02-ram-result-2026-09-15.md).
+The owner subsequently approved the current visual results: "Everything looks
+great - approved", while explicitly leaving full performance impact untested.
+This covers the delivered art, not a claim of full gameplay/performance clearance.
+**Next prepared slice: [MOB-04 playable beetle](mob04-beetle-worker-2026-09-15.md)**,
+`D:/Wroughtwild/work/mob04-beetle`, branch `codex/mob04-beetle`. The owner starts it;
+it delivers rigging, animation and native Gloom Crawler integration together.
 The inventory below preserves the original coordination inspection.
 
 At inspection, local main, origin/main and the live GitHub main all point to
@@ -127,7 +133,9 @@ to their own future decision/bug work; art adoption must not silently decide the
    separate from pecking and keeps the legs walking; Continue clears transient poses.
    **[MOB-02 ram](mob02-ram-result-2026-09-15.md) is integrated and pushed as `5493470`.**
    Its stationary brace, walk and forehead strike preserve native guard and combat.
-   Beetle, nymph and tortoise remain. Shared runtime changes stay with the coordinator.
+   **[MOB-04 beetle](mob04-beetle-worker-2026-09-15.md)** is prepared as the next
+   complete playable worker slice. Nymph and tortoise follow. Only this worker
+   owns new shared mob wiring; the coordinator integrates its checked commit.
    This is a production
    order, not new game rules; no extra visual approval is required at integration.
    Physical era variants and boss art retain explicit backlog entries.

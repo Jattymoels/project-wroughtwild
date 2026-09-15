@@ -50,6 +50,13 @@ The owner clarified in the movement worker on 15 September that PLAY-03 is
 significant lag underground, not difficulty or unintended access underground.
 Preserve legitimate cave/digging behavior; do not invent an access restriction.
 
+After ram integration on 15 September, the owner said: "Everything looks great -
+approved, I haven't done full performance impact yet though but that's fine".
+Record the current delivered visuals as approved, including the integrated
+porcupine, crane and ram. Full performance impact and broader gameplay feedback
+remain unmeasured/incomplete; this does not create a new adoption gate or close
+the reported underground-lag issue. Continue the agreed remaining mob sequence.
+
 ### Build the look, feel and atmosphere through playable iterations
 
 This is a one-person, spare-time indie prototype. The owner clarified on

@@ -7,8 +7,11 @@ stone_husk / guard enemy in ordinary worlds and Continue. Production is adopted
 as `fb9fe9d`; native runtime integration is `5493470`. Both were successfully
 pushed to origin/main on 15 September 2026.
 
-**Limits:** Owner playtesting is deferred under the 15 September standing
-approval; this is not a claim of personal playtest acceptance. The existing
+**Owner feedback:** after integration the owner said "Everything looks great -
+approved" and noted that full performance impact has not been tested. Visual
+approval is recorded; broader gameplay/performance playtesting remains incomplete.
+
+**Limits:** The existing
 upright collider does not fit the long animal silhouette. Small foot sliding,
 generated fur/fold detail, no terrain IK/facial articulation, later-era physical
 additions and unmeasured hardware remain limits.
