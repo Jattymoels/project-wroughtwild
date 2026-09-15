@@ -1,0 +1,39 @@
+{
+  "frames": 264,
+  "frames_per_second": 24,
+  "duration_seconds": 11,
+  "size": [
+    1080,
+    648
+  ],
+  "file": "game/tests/mob02/evidence/ram-motion.webp",
+  "bytes": 2569988,
+  "sha256": "2f6676144277d060e6f29fb05a1158f99b1f69f703865fc79f9535212ca20ae0",
+  "renderer": "Forward+",
+  "segments_seconds": {
+    "idle": [
+      0,
+      3
+    ],
+    "walk": [
+      3,
+      6.6
+    ],
+    "guard": [
+      6.6,
+      8.6
+    ],
+    "windup": [
+      8.6,
+      9.2
+    ],
+    "release": [
+      9.2,
+      9.52
+    ],
+    "guard_recovery": [
+      9.52,
+      11
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "saved_master": "D:\\Wroughtwild\\source-art\\mob02-ram\\rig-v05\\stone_husk-rigged.blend",
+  "mesh_valid_without_changes": true,
+  "bones": 23,
+  "triangles": 109998,
+  "packed_images": 3,
+  "max_weight_sum_error": 1.341104507446289e-07,
+  "clips": [
+    "idle",
+    "walk",
+    "windup",
+    "release",
+    "guard"
+  ],
+  "scope": "One selected saved master; unchanged ART-06C identity/depth evidence reused."
+}

@@ -1,0 +1,215 @@
+{
+	"animation_player": "AnimationPlayer",
+	"checks": [
+		"explicit disposable evidence output",
+		"23 fitted bones including four four-bone legs",
+		"runtime mesh is bound to the imported skeleton",
+		"every exported vertex has normalized four-slot weights",
+		"exactly five exported clips",
+		"clip present: idle",
+		"duration: idle",
+		"only bone transforms, no gameplay events: idle",
+		"in-place root: idle 0.00",
+		"bounded grounded skin: idle 0.00",
+		"in-place root: idle 0.23",
+		"bounded grounded skin: idle 0.23",
+		"in-place root: idle 0.50",
+		"bounded grounded skin: idle 0.50",
+		"in-place root: idle 1.00",
+		"bounded grounded skin: idle 1.00",
+		"matching loop endpoints: idle",
+		"clip present: walk",
+		"duration: walk",
+		"only bone transforms, no gameplay events: walk",
+		"in-place root: walk 0.00",
+		"bounded grounded skin: walk 0.00",
+		"in-place root: walk 0.23",
+		"bounded grounded skin: walk 0.23",
+		"in-place root: walk 0.50",
+		"bounded grounded skin: walk 0.50",
+		"in-place root: walk 1.00",
+		"bounded grounded skin: walk 1.00",
+		"matching loop endpoints: walk",
+		"clip present: windup",
+		"duration: windup",
+		"only bone transforms, no gameplay events: windup",
+		"in-place root: windup 0.00",
+		"bounded grounded skin: windup 0.00",
+		"rear torso stays independent of head action: windup 0.00",
+		"in-place root: windup 0.23",
+		"bounded grounded skin: windup 0.23",
+		"rear torso stays independent of head action: windup 0.23",
+		"in-place root: windup 0.50",
+		"bounded grounded skin: windup 0.50",
+		"rear torso stays independent of head action: windup 0.50",
+		"in-place root: windup 1.00",
+		"bounded grounded skin: windup 1.00",
+		"rear torso stays independent of head action: windup 1.00",
+		"clip present: release",
+		"duration: release",
+		"only bone transforms, no gameplay events: release",
+		"in-place root: release 0.00",
+		"bounded grounded skin: release 0.00",
+		"rear torso stays independent of head action: release 0.00",
+		"in-place root: release 0.23",
+		"bounded grounded skin: release 0.23",
+		"rear torso stays independent of head action: release 0.23",
+		"in-place root: release 0.50",
+		"bounded grounded skin: release 0.50",
+		"rear torso stays independent of head action: release 0.50",
+		"in-place root: release 1.00",
+		"bounded grounded skin: release 1.00",
+		"rear torso stays independent of head action: release 1.00",
+		"clip present: guard",
+		"duration: guard",
+		"only bone transforms, no gameplay events: guard",
+		"in-place root: guard 0.00",
+		"bounded grounded skin: guard 0.00",
+		"rear torso stays independent of head action: guard 0.00",
+		"in-place root: guard 0.23",
+		"bounded grounded skin: guard 0.23",
+		"rear torso stays independent of head action: guard 0.23",
+		"in-place root: guard 0.50",
+		"bounded grounded skin: guard 0.50",
+		"rear torso stays independent of head action: guard 0.50",
+		"in-place root: guard 1.00",
+		"bounded grounded skin: guard 1.00",
+		"rear torso stays independent of head action: guard 1.00",
+		"matching loop endpoints: guard",
+		"windup-to-release head continuity",
+		"independent instance skeleton and AnimationPlayer",
+		"sampling one instance cannot pose another",
+		"action interruption resets to idle without stale bones",
+		"independent material clock",
+		"one actual runtime mesh surface",
+		"actual imported triangle count",
+		"import suite reached completion"
+	],
+	"failures": [],
+	"mesh": "RamRig/Skeleton3D/RamSkin",
+	"renderer": "forward_plus",
+	"samples": [
+		{
+			"clip": "idle",
+			"fraction": 0.0,
+			"maximum_torso_shift": 0.0629114583134651,
+			"minimum_sample_y": 0.000000867628841660917
+		},
+		{
+			"clip": "idle",
+			"fraction": 0.23,
+			"maximum_torso_shift": 0.0629114583134651,
+			"minimum_sample_y": 0.000000867628841660917
+		},
+		{
+			"clip": "idle",
+			"fraction": 0.5,
+			"maximum_torso_shift": 0.0629114583134651,
+			"minimum_sample_y": 0.000000867628841660917
+		},
+		{
+			"clip": "idle",
+			"fraction": 1.0,
+			"maximum_torso_shift": 0.0629114583134651,
+			"minimum_sample_y": 0.000000867628841660917
+		},
+		{
+			"clip": "walk",
+			"fraction": 0.0,
+			"maximum_torso_shift": 0.0683552101254463,
+			"minimum_sample_y": 0.000099491560831666
+		},
+		{
+			"clip": "walk",
+			"fraction": 0.23,
+			"maximum_torso_shift": 0.0982580408453941,
+			"minimum_sample_y": 0.0000698429357726127
+		},
+		{
+			"clip": "walk",
+			"fraction": 0.5,
+			"maximum_torso_shift": 0.0713132992386818,
+			"minimum_sample_y": 0.0000598658516537398
+		},
+		{
+			"clip": "walk",
+			"fraction": 1.0,
+			"maximum_torso_shift": 0.0683552101254463,
+			"minimum_sample_y": 0.000099491560831666
+		},
+		{
+			"clip": "windup",
+			"fraction": 0.0,
+			"maximum_torso_shift": 0.0629114583134651,
+			"minimum_sample_y": 0.000000867628841660917
+		},
+		{
+			"clip": "windup",
+			"fraction": 0.23,
+			"maximum_torso_shift": 0.0629114583134651,
+			"minimum_sample_y": 0.000000867628841660917
+		},
+		{
+			"clip": "windup",
+			"fraction": 0.5,
+			"maximum_torso_shift": 0.0629114583134651,
+			"minimum_sample_y": 0.000000867628841660917
+		},
+		{
+			"clip": "windup",
+			"fraction": 1.0,
+			"maximum_torso_shift": 0.0629114583134651,
+			"minimum_sample_y": 0.000000867628841660917
+		},
+		{
+			"clip": "release",
+			"fraction": 0.0,
+			"maximum_torso_shift": 0.0629114583134651,
+			"minimum_sample_y": 0.000000867628841660917
+		},
+		{
+			"clip": "release",
+			"fraction": 0.23,
+			"maximum_torso_shift": 0.0629114583134651,
+			"minimum_sample_y": 0.000000867628841660917
+		},
+		{
+			"clip": "release",
+			"fraction": 0.5,
+			"maximum_torso_shift": 0.0629114583134651,
+			"minimum_sample_y": 0.000000867628841660917
+		},
+		{
+			"clip": "release",
+			"fraction": 1.0,
+			"maximum_torso_shift": 0.0629114583134651,
+			"minimum_sample_y": 0.000000867628841660917
+		},
+		{
+			"clip": "guard",
+			"fraction": 0.0,
+			"maximum_torso_shift": 0.0629114583134651,
+			"minimum_sample_y": 0.000000867628841660917
+		},
+		{
+			"clip": "guard",
+			"fraction": 0.23,
+			"maximum_torso_shift": 0.0629114583134651,
+			"minimum_sample_y": -0.000148510909639299
+		},
+		{
+			"clip": "guard",
+			"fraction": 0.5,
+			"maximum_torso_shift": 0.0629114583134651,
+			"minimum_sample_y": 0.000000867628841660917
+		},
+		{
+			"clip": "guard",
+			"fraction": 1.0,
+			"maximum_torso_shift": 0.0629114583134651,
+			"minimum_sample_y": 0.000000867628841660917
+		}
+	],
+	"scope": "Imported species asset only; no native Enemy, combat or save integration",
+	"skeleton": "RamRig/Skeleton3D"
+}
