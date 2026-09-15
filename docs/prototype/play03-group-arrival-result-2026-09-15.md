@@ -273,4 +273,5 @@ The normal C: owner game now contains this change; quit/relaunch before testing,
 then use normal Continue or New World. The separate D: horn/group launcher above
 also retains the complete fix and a ready private approach. Neither launcher was
 started by the coordinator. Owner playtesting of this continuation is deferred.
-PLAY-06 bearings/coordinates is next queued; no new worktree/task was started.
+PLAY-06 bearings/coordinates was next queued at adoption; the owner subsequently
+parked it on 16 September. No navigation worktree/task was started.

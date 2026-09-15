@@ -61,12 +61,21 @@ underground connection. Scenery resource preparation is a concrete separate
 follow-up lead, not an automatically launched repair wave. Owner playtesting of
 this continuation is deferred; do not claim owner confirmation of smoothness.
 
-**Next queued: [PLAY-06 bearings and optional coordinates](play06-navigation-worker-2026-09-15.md).**
-Its proposed D: checkout has not been created and
-implementation has not started. It will add a compact compass and optional X/Z/Y
-readout through existing H Display preferences. RF-01–05 and original art/base-mob
-adoption are complete. Fen/mountain recovery remains the next larger landscape
-direction to scope separately.
+**Parked by the owner, 16 September: [PLAY-06 bearings and optional coordinates](play06-navigation-worker-2026-09-15.md).**
+Its worktree has not been created and implementation has not started. Keep its
+brief for later; do not prepare or dispatch it now. RF-01–05 and original art/base-
+mob adoption are complete.
+
+Recommended next choices, not yet dispatched: first address the measured
+pullstone/scenery first-use stall with one focused resource-loading slice, using
+the retained trace and correcting shared causes where demonstrated. Then scope
+one fen/lakeside atmosphere slice: wet margins, reeds/roots, dry approaches and
+appealing nearby home space, building on existing water and the reclaimed-landscape
+references. Highland recovery can follow separately, with weathered rock shelves
+and appropriate vegetation pockets. New water geography, generation profiles and
+collision changes would need an explicit scoped choice; none is selected here.
+Later-era creature forms and boss art remain separate production backlog. Station/
+campaign feel still needs useful owner playtest notes, not a new verification wave.
 
 ## Working rhythm
 

@@ -53,11 +53,13 @@ underground connection. The creature-loading correction is complete within its
 scope; it does not certify all game performance. Keep scenery preparation as a
 concrete separate follow-up lead. No worker/review wave starts automatically.
 
-**[PLAY-06 navigation](play06-navigation-worker-2026-09-15.md) is next queued:**
-compact compass and optional X/Z/Y through existing H Display preferences, with
-no minimap or gameplay/save rule. Its new worktree was not created before this
-owner correction; implementation has not started. Original adoption/base-mob and
-RF-01–05 scopes are complete; fen/mountain recovery remains later scoped work.
+**[PLAY-06 navigation](play06-navigation-worker-2026-09-15.md) is parked by the
+owner on 16 September.** No worktree or implementation exists; retain the compact
+compass/optional-coordinate brief for later. Original adoption/base-mob and
+RF-01–05 scopes are complete. Recommended next choices are a focused correction
+of the measured scenery arrival stall, then a small fen/lakeside atmosphere slice
+and separate highland recovery. These are proposals awaiting selection, not
+dispatched workers or a new all-biome/performance intensive.
 
 **RF-01 is integrated on main as `66f3211`: [result and playtest](rf01-reclaimed-ground-result-2026-09-15.md).**
 Ordinary V6/LF play now has seeded low meadow/forest cover with actual support and

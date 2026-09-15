@@ -14,8 +14,10 @@ now corrected on main as `1bc19e9`; the original underground connection remains
 unconfirmed. The owner's subsequent full-roster arrival correction is adopted as
 `9dba2fd` on 16 September: [group result](play03-group-arrival-result-2026-09-15.md).
 The remaining short group frame and separate pullstone/scenery stall are recorded.
-[PLAY-06 navigation](play06-navigation-worker-2026-09-15.md) is next queued.
-Fen/mountain recovery remains the next larger biome direction to scope separately.
+[PLAY-06 navigation](play06-navigation-worker-2026-09-15.md) was parked by the
+owner on 16 September. A focused scenery-loading correction is recommended next;
+fen/lakeside atmosphere, then separate highland recovery, are the next creative
+choices to scope. No new biome worker or generation change is dispatched here.
 R9 stays stopped.
 
 ## Ground continuity and water — owner feedback, 15 September

@@ -11,7 +11,8 @@ headless import support adoption. The worker is finished; no automatic continuat
 The 40.869 ms group frame, separately measured 106.840 ms pullstone/scenery load,
 long world entry, old unassigned spike and underground connection remain open.
 This is a substantial creature-loading correction, not a claim of hitch-free
-play. PLAY-06 navigation is next queued; scenery loading is a specific later lead.
+play. The owner parked PLAY-06 navigation on 16 September; the measured scenery
+loading stall is now the recommended next focused fix, not yet dispatched.
 The previous scope and observations below are retained as history.
 
 Earlier status: both arrival slices were integrated: partial `87849bd` and the

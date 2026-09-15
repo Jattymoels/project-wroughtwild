@@ -1,9 +1,10 @@
 # PLAY-06: bearings and optional coordinates
 
-**Next queued, not dispatched, 16 September.** The full-roster mob-arrival fix
-is adopted as `9dba2fd`: [result and remaining limits](play03-group-arrival-result-2026-09-15.md).
-The proposed worktree below has not been created; do not start this prompt until
-the coordinator prepares it. No navigation implementation is done.
+**Parked by the owner, 16 September:** "compass/coords can be parked".
+Do not prepare a worktree or start this prompt until the owner returns to it.
+The brief below is retained for later; no navigation implementation is done.
+The full-roster mob-arrival fix is adopted as `9dba2fd`:
+[result and remaining limits](play03-group-arrival-result-2026-09-15.md).
 
 Prepared after the owner's direction/coordinate question and request for the
 next slice, under standing prototype approval. The owner starts this worker.

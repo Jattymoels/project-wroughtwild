@@ -107,9 +107,11 @@ creature-loading cost across the scoped roster; it does not establish hitch-free
 play. The residual 40.869 ms group frame, a separately attributed 106.840 ms
 pullstone/scenery arrival, long entry and the underground connection remain open.
 Reused lifecycle/restore/boss evidence and main's short headless import support
-adoption. PLAY-06 compass/coordinates is next in the agreed queue; its worktree
-is not yet prepared. Record the scenery finding for a separate focused follow-up,
-without automatically launching a worker or a broad performance wave.
+adoption. The owner parked PLAY-06 compass/coordinates on 16 September; do not
+prepare its worktree or start it until they return to it. Record the scenery
+finding for a separate focused follow-up. The coordinator recommends that known
+stall, then a small fen/lakeside atmosphere slice; these are proposed next choices,
+not dispatched workers. Do not automatically launch a broad performance wave.
 
 After ram integration on 15 September, the owner said: "Everything looks great -
 approved, I haven't done full performance impact yet though but that's fine".
