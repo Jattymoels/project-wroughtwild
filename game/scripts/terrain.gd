@@ -79,6 +79,7 @@ var last_chunk_profile: Dictionary = {}
 var last_collision_profile: Dictionary = {}
 var _sim: WroughtwildSim
 var _seed := 0
+var play03_trace: Node # Null unless the local PLAY-03 recorder is explicitly enabled.
 var _world_profile := "legacy_v1"
 var _habitat_refresh_queued := false
 var _augmentation_texture: ImageTexture
@@ -593,10 +594,18 @@ func _tick_streaming(delta: float, local_position: Vector3) -> void:
 	var preparation_turn := _stream_turn == StreamTurn.PREPARATION
 	var resource_focus_due := resource_stream != null and resource_stream.refresh_due(delta) and not preparation_turn
 	var terrain_focused := false
+	var trace_began := Time.get_ticks_usec() if play03_trace != null else 0
+	var trace_stage := "idle"
+	if play03_trace != null and chunk_stream != null:
+		if not chunk_stream._job.is_empty(): trace_stage = chunk_stream.PREPARATION_STAGES[int(chunk_stream._job.phase)+1]
+		elif not chunk_stream._pending.is_empty(): trace_stage = "payload"
 	if chunk_stream != null:
 		terrain_focused = chunk_stream.tick(delta,local_position,not resource_focus_due,_stream_turn == StreamTurn.ANY)
+	var trace_chunk_end := Time.get_ticks_usec() if play03_trace != null else 0
 	if resource_stream != null:
 		resource_stream.tick(delta,local_position,not terrain_focused,not preparation_turn)
+	if play03_trace != null:
+		play03_trace.note_stream((trace_chunk_end-trace_began)/1000.0,(Time.get_ticks_usec()-trace_chunk_end)/1000.0,trace_stage)
 	if terrain_focused and resource_stream != null:
 		_stream_turn = StreamTurn.RESOURCE_FOCUS
 	elif resource_focus_due:

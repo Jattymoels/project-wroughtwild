@@ -34,6 +34,7 @@ var _resonance_publishing := false
 
 
 func _ready() -> void:
+	preload("res://scripts/play03_trace.gd").install(self, OS.get_cmdline_user_args())
 	if OS.get_cmdline_user_args().has("--living-frontier"):
 		world_profile = "living_frontier_wave1"
 	if OS.get_cmdline_user_args().has("--living-frontier-wave3"):

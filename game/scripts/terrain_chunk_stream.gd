@@ -111,12 +111,15 @@ func _flush_mask() -> void:
 		_mask_dirty=false
 
 func ensure_area(point: Vector3,radius_m:=32.0) -> void:
+	var trace_began := Time.get_ticks_usec() if terrain.play03_trace != null else 0
+	var trace_built := chunks_built_total
 	# Restores and teleports also move the retirement focus. Otherwise repeated
 	# synchronous visits could keep whole regions alive without a player tick.
 	focus(point)
 	_finish_job()
 	for origin in _origins(point,radius_m): _build(origin)
 	_flush_mask()
+	if terrain.play03_trace != null: terrain.play03_trace.note_area(trace_began,point,radius_m,chunks_built_total-trace_built)
 
 func focus(point: Vector3) -> void:
 	_focus=point

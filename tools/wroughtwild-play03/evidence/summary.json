@@ -1,0 +1,129 @@
+{
+  "source_base": "85a67b22544f7525ec0bdf7cb74636dafefc4dda",
+  "status": "diagnostic_only_PLAY03_open",
+  "transition": {
+    "breach_selection_ms": 0.15,
+    "checks": 7,
+    "end": [
+      495.5,
+      24.9605445861816,
+      361.5
+    ],
+    "entry": [
+      495.5,
+      32.0999984741211,
+      361.5
+    ],
+    "failures": 0,
+    "fixture_edit_ms": 47.191,
+    "hardware": {
+      "api": "1.4.325",
+      "cpu": "AMD Ryzen 9 9950X3D 16-Core Processor",
+      "engine": "4.5-stable (official)",
+      "engine_arguments": [
+        "res://tests/play03_transition.tscn"
+      ],
+      "gpu": "NVIDIA GeForce RTX 5090",
+      "logical_processors": 32,
+      "low_processor_mode": false,
+      "settled_frames": 600,
+      "vendor": "NVIDIA"
+    },
+    "landed_at_s": 2.130526,
+    "retention": {
+      "built_total": 345,
+      "edited_chunk_bound": 2,
+      "horizon_build_ms": 51.56,
+      "horizon_triangles": 32768,
+      "near_chunk_bound": 434,
+      "partial_chunks": 1,
+      "resident_chunks": 242,
+      "retired_total": 105,
+      "safety_refills_total": 0
+    },
+    "scope": "Seed 1 V6 at (495.5,361.5), the prior documented cave. Synthetic 3x3 opening removes only voxels at Y>=25 via the existing saved-edit path, with its synchronous time retained. Synthetic relocation above it, two frames held for ordinary stream guard, then real gravity, collision, actors, world processing and stationary landing. No explicit ensure_area or extra warmup, no support queries/screenshots/disk writes during frame sampling. No active digging needed during the drop. Not the owner's route; edit preparation is fixture-only.",
+    "settings": {
+      "fps_cap": 120,
+      "renderer": "forward_plus",
+      "resolution": [
+        1280,
+        720
+      ],
+      "vsync": "disabled"
+    },
+    "windows": {
+      "before_fixture_relocation": {
+        "max_ms": 1.776,
+        "median_ms": 1.776,
+        "p95_ms": 1.776,
+        "samples": 1
+      },
+      "entry_and_fall": {
+        "max_ms": 51.603,
+        "median_ms": 8.172,
+        "p95_ms": 12.96,
+        "samples": 136
+      },
+      "fixture_edit_arrival_and_stream_guard": {
+        "max_ms": 864.844,
+        "median_ms": 864.844,
+        "p95_ms": 864.844,
+        "samples": 2
+      },
+      "landed_stationary": {
+        "max_ms": 14.414,
+        "median_ms": 8.035,
+        "p95_ms": 10.892,
+        "samples": 481
+      }
+    },
+    "world_setup_ms": 34358.161
+  },
+  "recorder": {
+    "checks": 19,
+    "exit_trace": {
+      "cpu": "AMD Ryzen 9 9950X3D 16-Core Processor",
+      "engine": "4.5-stable (official)",
+      "format": 1.0,
+      "frame_max_ms": 7.338,
+      "frame_p95_ms": 7.338,
+      "gpu": "",
+      "max_frames": 7200.0,
+      "observer_frame_max_ms": 0.049,
+      "observer_scope": "observer_frame_ms measures row collection including the 1Hz actor count; excludes small timing-hook overhead, storage allocations between callbacks, and post-stop JSON/file writing. This is an instrumented session, not an overhead-free benchmark.",
+      "overwritten_frames": 0.0,
+      "rendering_method": "forward_plus",
+      "retained_frames": 4.0,
+      "scope": "Consecutive process-frame intervals, including preceding idle/draw and following physics callbacks. Native surface_y is a reference, not a collision query. Engine monitors are sampled, draw_wall_ms is NOT GPU execution time. No save/inventory payloads. Normal controls and quality are unchanged.",
+      "stop_reason": "scene_exit"
+    },
+    "failures": 0,
+    "manual_trace": {
+      "cpu": "AMD Ryzen 9 9950X3D 16-Core Processor",
+      "engine": "4.5-stable (official)",
+      "format": 1.0,
+      "frame_max_ms": 31452.383,
+      "frame_p95_ms": 31452.383,
+      "gpu": "",
+      "max_frames": 7200.0,
+      "observer_frame_max_ms": 0.057,
+      "observer_scope": "observer_frame_ms measures row collection including the 1Hz actor count; excludes small timing-hook overhead, storage allocations between callbacks, and post-stop JSON/file writing. This is an instrumented session, not an overhead-free benchmark.",
+      "overwritten_frames": 0.0,
+      "rendering_method": "forward_plus",
+      "retained_frames": 6.0,
+      "scope": "Consecutive process-frame intervals, including preceding idle/draw and following physics callbacks. Native surface_y is a reference, not a collision query. Engine monitors are sampled, draw_wall_ms is NOT GPU execution time. No save/inventory payloads. Normal controls and quality are unchanged.",
+      "stop_reason": "check_manual_stop"
+    },
+    "scope": "Headless activation, unchanged normal world use, bounded ring, stop and tree-exit lifecycle. Not rendered performance or a paid-save replay."
+  },
+  "failed_attempts": [
+    "transition: no 3x3 native breach selected; no timing sample",
+    "transition-capsule: no six-metre capsule drop selected in loaded area; no timing sample",
+    "recorder: test-only original_size type inference parse error; owned process stopped"
+  ],
+  "unchanged_evidence_reused": [
+    "PLAY-01 paid-home Continue/save",
+    "A1/A2 and six adopted mob results"
+  ],
+  "raw_evidence_root": "D:/Wroughtwild/work/play03-underground/build/play03"
+}

@@ -595,7 +595,10 @@ func respawn_point() -> Vector3:
 	return spawn_position
 
 
+var play03_trace: Node # Diagnostic only; no saved state or control changes.
+
 func _physics_process(delta: float) -> void:
+	var trace_began := Time.get_ticks_usec() if play03_trace != null else 0
 	_horn_left = maxf(0.0, _horn_left - delta)
 	if hud.help_visible():
 		_jump_buffer_left = 0.0
@@ -647,6 +650,7 @@ func _physics_process(delta: float) -> void:
 	spring_arm.position.y = (FP_EYE_HEIGHT if first_person else _tp_arm_position.y) - _land_dip
 
 	_update_digging(delta)
+	if play03_trace != null: play03_trace.add_time("player_physics_ms",trace_began)
 
 
 func _apply_preferences() -> void:

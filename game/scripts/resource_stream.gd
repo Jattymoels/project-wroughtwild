@@ -121,6 +121,7 @@ func materialise(id: String, stream_projection := false) -> ResourceNode:
 	# Retain the packed scene: instantiated nodes do not retain the source
 	# PackedScene, so a local load can otherwise reread it for every arrival.
 	if _resource_scene == null: _resource_scene = load("res://scenes/resource_node.tscn")
+	var trace_began := Time.get_ticks_usec() if terrain.play03_trace != null else 0
 	var node: ResourceNode = G1Art.resource(_resource_scene,record)
 	node.name=id
 	for field in ["resource_id","habitat_id","presentation_label","remaining_units","units_per_harvest","heat_to_work","tool_item","drive_presses","drive_progress","wedge_set","cracked","visual"]:
@@ -138,6 +139,7 @@ func materialise(id: String, stream_projection := false) -> ResourceNode:
 	node.tree_exiting.connect(_exiting.bind(id))
 	node._refresh_wedge_look()
 	node.set_meta("stream_projection",true)
+	if terrain.play03_trace != null: terrain.play03_trace.note_resource(trace_began,String(node.visual),stream_projection)
 	return node
 
 func focus(at: Vector3, immediate := false) -> void:
