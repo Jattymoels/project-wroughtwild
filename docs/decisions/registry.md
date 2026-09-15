@@ -1,5 +1,12 @@
 # Decision Registry
 
+RF-04 worker implementation, 15 September 2026: the
+[result](../prototype/rf04-ground-continuity-result-2026-09-15.md) records the confirmed
+face-centre geometry cause and a V7-only upward-face correction. Side/underside contact,
+native saved geography and paid ownership are preserved. No new profile, save migration,
+controller rule or tuning is selected. Worker commit and matching DLL await coordinator
+adoption; RF-05 remains next.
+
 Owner landscape correction and water selection, 15 September 2026: following
 RF-03, small bumps between grass in the same biome feel too wavy and unnatural.
 [RF-04](../prototype/rf04-ground-continuity-worker-2026-09-15.md) will diagnose and

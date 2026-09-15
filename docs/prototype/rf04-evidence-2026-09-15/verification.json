@@ -1,0 +1,534 @@
+{
+  "native": {
+    "sources": {
+      "sim/src/items.cpp": "9223bb2b801a963a1a54ae90bb192996df49824f45b56dda4b0b743d50ac0ce9",
+      "sim/src/worldgen_living_frontier_wave3.inc": "1173b0f12570c1b80b733d7105bb19d6b6308a4e4c26ede31b0ae302a8730ca8",
+      "sim/src/json.cpp": "41ead1b7df9011b167102702c40d9c000deb9b5c4b95809541dfed1731341e0d",
+      "sim/src/save.cpp": "e080e0a2bee432a42629b49cc22af64b01985dfe4a99cde199885d504bd5e0cf",
+      "sim/src/resonance.cpp": "d240a4c2f1951ec9bf95479751f926de22d1e71520cb105b8d378a7a8997cba7",
+      "sim/src/worldgen_frontier_v6_noise.inc": "4538955c97527c85a0920c3be7827f88dc22cf45893bba2f12fe779e7c5cc64a",
+      "sim/include/wroughtwild/loot.h": "ed147dc5b442c7e812a2071c52c28a989e7723864227fa3a7db02f522e50b3f5",
+      "sim/src/worldgen_frontier_v5.inc": "de4ba542930a149db8a5bb687e4991b3662c4cf432620e4266f6bb5a5a938c54",
+      "sim/src/worldgen_frontier_v6_pressure.inc": "608937dfe4719f081d4cb41f97f16f54e2f388cb3970afc47c486d094f3dfe87",
+      "sim/include/wroughtwild/resonance.h": "5c54fe424575a789c91a3fc10724716df285149def22506485c30f863067c9ff",
+      "sim/src/worldgen_frontier_v3.inc": "9f1c319d354762d979db18a41fd364dafc7cd9fca3c9a384061137002d91b3ce",
+      "sim/src/foundry.cpp": "87133c7a2827900532640b8dbf2e9b57fa0badae07f8a1d11be22fde77400b97",
+      "sim/src/loot.cpp": "94cac4c8ebd27eecf64955d1660da3635543a235fc3e40fa0359e6de77988d61",
+      "game/extensions/wroughtwild_sim/src/wroughtwild_sim.h": "1ca702cdfb40fc9ef8e9f3f2a7f8c2ee501a36f766a2b0a377e40b0c6fa48dbd",
+      "sim/include/wroughtwild/grammar.h": "267f094b60c104b8a0fb8f66963eb844ee9de2f29fc1650ce9ca1ae873d9d73d",
+      "sim/include/wroughtwild/daycycle.h": "95a30bdee9a79b3926decd19895dfbb9831a66766c00a953c8901a953109e46a",
+      "sim/include/wroughtwild/worldgen.h": "c70d621dbc0711bbb4bd89a9ff4e0b307333a40bc894bc6fa136e3294878eead",
+      "tools/wroughtwild-rf04/build-native.ps1": "edf6c8abcc56fba5b0cb9888fcfe8f7ac11917a4933ee0b931f8a603cdd6a821",
+      "sim/src/worldgen_profiles.cpp": "4f1c3cacbf5af462d0504ab8ae1104a0226f782cc3e9805c671cfe8dfc2f44f5",
+      "sim/include/wroughtwild/tuning.h": "7e577b8468c08ecd5c07beca713c401f7914134e49009e4bb251892a03e79aa0",
+      "sim/src/lattice.cpp": "9a742aaec298d93cda325712a2017771716ed2b0bb1edc66edd26a20d24c69f3",
+      "sim/src/worldgen.cpp": "8a50695f273d57db5598dd028a39f38eec7287cff3af59df7fad6d5e98e41650",
+      "sim/src/contraptions.cpp": "11cf706db548a4f84f6ec40e3f82944a50a1e07330a67a3dea79f52fd5bc29e9",
+      "sim/include/wroughtwild/save.h": "84ada256eda3c8fb9b901dbe4b27a9686a1d0a429b41656bca152728c71f3876",
+      "sim/include/wroughtwild/json.h": "e3c82aba95be0b80a694ac82c512c8897e9f9f0e1a18870be74b867dcf823bc8",
+      "sim/src/daycycle.cpp": "ecd80cd63be977628acdf0d92adc3cc28aa0357f80c80a848ce71b73c7789fa5",
+      "sim/src/leyline.cpp": "f4384da9c98ebcd89613a7784663ffd6554bf782bcabe1e43331a5035051ae95",
+      "tools/wroughtwild-rf04/CMakeLists.txt": "5e550400f54cb16bb51e07e51909abe11db1abb3608d61811441ffb2b621120a",
+      "sim/src/worldgen_frontier_v4.inc": "237e8a078140b4e46be9fe7642babdf4b11ce2efc82d09f6d4ec51d6f13e6d00",
+      "sim/include/wroughtwild/foundry.h": "91f920b4d50e5859b17ec41ba12663c21d21a9137580bf267fada532db9dcbf8",
+      "sim/src/worldgen_frontier_v6_landscape.inc": "bc0a16d1f4f62c14c2a8792fe5446562a673fa0a72e500b2be1485f5e644215f",
+      "sim/include/wroughtwild/leyline.h": "8697ddbf0a09ea7a5c67c0bc51b1bf4056caa720901aa347c8ad0ba6624003af",
+      "sim/include/wroughtwild/items.h": "9ed26e8c450f0214ef9520dd74c67adbf372997d4660d851e7a77992c69df21c",
+      "sim/src/worldgen_frontier_v7.inc": "7a8489186fcf8e7b455f16f7985bb82a6ba870598504b60a08cff2a9254e1570",
+      "sim/include/wroughtwild/stats.h": "95442789b84715b62034488d343e1a712d976f6fe2a4b16c4ad09a9363a36604",
+      "sim/include/wroughtwild/contraptions.h": "4d6b96c5cad0b20de3484f067e4290a3caebedfa66fdee3e7903d33a5f3b5c62",
+      "sim/src/worldgen_frontier_v6_base.inc": "3b5bddf05a85e88ee941e965f9525de6b52f3b305cec6106fb5a7e02e5895c06",
+      "sim/src/worldgen_frontier_v6_opening.inc": "92af335c2c1a0f95b70381ad54770bfd52100f1f7e777811ac16e522b6413f4a",
+      "sim/src/economy.cpp": "6ab397b5ba9c7a3c0248fe1321718403b0335c92bb8034ab018690986559df74",
+      "sim/src/stats.cpp": "74bf8f6925b1daed0748f76d15a50284216f6a8fac08526781282ecc70f67571",
+      "sim/include/wroughtwild/boons.h": "50a83d1e08898e03472cbbea7e0a494ea6aec7cf5cc022b5c326fe48730a96a6",
+      "sim/src/grammar.cpp": "235050d195040b6adf42cdf5b23da1429ac2848f6b59ed18c0023e1dc0b38afd",
+      "game/extensions/wroughtwild_sim/src/wroughtwild_sim.cpp": "15684330244cd213dd26d982a9dd1bb1d05d8172459b3a4b4d880f90c04507cf",
+      "sim/README.md": "7333da881cf8ef37c2be2c68ecbc1e62f5f3d2799b62b0a1da7ac6c8445d3d48",
+      "game/extensions/wroughtwild_sim/CMakeLists.txt": "261791a79ef31154a6518a37a445f21d4bfd607aa4343d5f231c68192077a953",
+      "sim/src/worldgen_frontier_v2.inc": "f6fc97604f507c388469125afa366f3d1e687b3216bf101b00c3da7ed376504a",
+      "sim/include/wroughtwild/lattice.h": "b67e238202f4ac92d7b7ed9cda8efd2782b7830e5c57bdf3938eb5d7e93e82b7",
+      "sim/src/worldgen_legacy_v1.inc": "647d1df80daa12c344d9aa5b356d1b793ec687de22e4e6ef60070b6352875a41",
+      "sim/include/wroughtwild/economy.h": "e57ab80975405ea9a78e5dc3d31c13f9afc236f7c15ff2bca06f8150646eb7bd",
+      "game/extensions/wroughtwild_sim/src/leyline_bindings.inc": "e5766368194eb83352e9a73f57ab15d55abf927bf3e6d238cfea14bba500353b",
+      "game/extensions/wroughtwild_sim/src/strange_frontier_bindings.inc": "cc95fe5092979a8d580387e06d80d5dcfa5cdb43cdcdd4460efac4a395762c07",
+      "sim/include/wroughtwild/trial.h": "e3731fa697048e37b03b63ca306540babc840f75a360d7f1b04409396265b3d9",
+      "sim/include/wroughtwild/combat.h": "c041fa4d68dd9c33691eef951da92c2e5e46991352eaf300520b15921b4b48e6",
+      "sim/src/combat.cpp": "875b947638005ef37c451e4c35b0f06d5cdfbfba843c78c05edf388fed5ef086",
+      "sim/src/boons.cpp": "5cc99c173f9daffca435c5df552debcb79d2f07d78c7c0c49023b6b883a39c28",
+      "game/extensions/wroughtwild_sim/src/register_types.cpp": "4ada01a0c01130a72782188b8e6a4115baa92587c53c917a95d2e785a44573d9",
+      "sim/src/tuning.cpp": "49f325008cd0bd022fae859445be7339e50615f3654e86c29b55372774548eeb",
+      "sim/src/trial.cpp": "af643cd5a0d2acf079d6057753294d460c25688103738fd3be97545d5532441b"
+    },
+    "dll": "D:/Wroughtwild/work/rf04-ground-continuity/build/rf04/native/bin/libwroughtwild_sim.windows.x86_64.dll",
+    "built": "2026-09-15T20:04:03.6799813+09:30",
+    "dll_sha256": "bcfb358028cfa1ac3c6a7269001a6d3451a47b73ba74ed1d3b9d622ef3a72700",
+    "base_revision": "7a5f885587812f68c19e7d0b1abea2887286bb5c",
+    "compiler": "C:/Users/Matty/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/bin/g++.exe",
+    "abi": "owner depot Godot 4.5 existing ABI"
+  },
+  "cause": {
+    "upward_faces": 135,
+    "off_corner_mean_faces": 110,
+    "max_3d_centre_error_m": 0.257977485656738,
+    "max_vertical_error_m": 0.19583129882809658,
+    "native_height_digest": 534742892,
+    "native_block_digest": 1526520515,
+    "inherited_dll_sha256": "8d65d7331e445602c48e826cb5a1d280c24aae69b02a4c29f0ae3047ca3b65f2"
+  },
+  "continuity": {
+    "block_digest": 1526520515,
+    "checks": 40,
+    "dug": [
+      575,
+      32,
+      511
+    ],
+    "failures": 0,
+    "height_digest": 534742892,
+    "max_centre_error_m": 0.0,
+    "profile": "frontier_v7",
+    "scope": "One adjacent-cell patch, four chunk joins, actual ray/sampler/source-cell dig and restoration; same native geography as RF03.",
+    "seed": 77,
+    "top_faces": 135
+  },
+  "continuity_runner": {
+    "engineExitCode": 0,
+    "reportedErrors": 0,
+    "exitCode": 0,
+    "log": "D:/Wroughtwild/work/rf04-ground-continuity/build/rf04/logs/continuity-20260915-200505",
+    "seconds": 4.2
+  },
+  "continue": {
+    "checks": 23,
+    "failures": 0,
+    "scope": "One private RF03 paid V7 Continue; exact ownership, paid floor movement, station use, retained and new dig, sampled grass roots and footprint clearance. Reuses RF03 acquisition/cost evidence."
+  },
+  "continue_runner": {
+    "reportedErrors": 0,
+    "engineExitCode": 0,
+    "log": "D:/Wroughtwild/work/rf04-ground-continuity/build/rf04/logs/continue-20260915-195559",
+    "exitCode": 0,
+    "seconds": 58.08
+  },
+  "continue_evidence_reuse": {
+    "tested_dll_sha256": "9d02a74a65cc09b81f2cd5735a47a08cd9701f9e1dad949802eaee3598dd251f",
+    "reason": "Final code restores only side/underside fans; the flat paid-home surfaces and ownership paths remain unchanged. Reuse its passed ownership/use/roots evidence; final local dig/contact fixture and rendered paid-footprint clearance cover the affected side boundary."
+  },
+  "contact": {
+    "checks": 2,
+    "end": [
+      564.470275878906,
+      28.9608459472656,
+      511.964385986328
+    ],
+    "failures": 0,
+    "frames": 90,
+    "scope": "Only the concrete diagonal corner catch observed during the first RF04 walk; no controller change.",
+    "start": [
+      557.743957519531,
+      27.122350692749,
+      511.910369873047
+    ]
+  },
+  "contact_runner": {
+    "engineExitCode": 0,
+    "reportedErrors": 0,
+    "exitCode": 0,
+    "log": "D:/Wroughtwild/work/rf04-ground-continuity/build/rf04/logs/contact-20260915-200459",
+    "seconds": 6.32
+  },
+  "walk": {
+    "captured_frames": 120,
+    "checks": 12,
+    "clip_fps": 15,
+    "controller_frames": 723,
+    "distance_m": 60.3209847509861,
+    "end": [
+      607.501403808594,
+      39.9603500366211,
+      503.037475585938
+    ],
+    "failures": 0,
+    "profile": "frontier_v7",
+    "route_complete": true,
+    "rows": [
+      {
+        "frame": 30,
+        "grounded": false,
+        "position": [
+          557.807983398438,
+          27.624906539917,
+          511.000335693359
+        ]
+      },
+      {
+        "frame": 60,
+        "grounded": true,
+        "position": [
+          560.306823730469,
+          27.9608955383301,
+          511.049468994141
+        ]
+      },
+      {
+        "frame": 90,
+        "grounded": false,
+        "position": [
+          562.806213378906,
+          28.9193305969238,
+          511.099822998047
+        ]
+      },
+      {
+        "frame": 120,
+        "grounded": true,
+        "position": [
+          565.305603027344,
+          28.9602336883545,
+          511.150451660156
+        ]
+      },
+      {
+        "frame": 150,
+        "grounded": false,
+        "position": [
+          567.804992675781,
+          29.9699993133545,
+          511.201293945313
+        ]
+      },
+      {
+        "frame": 180,
+        "grounded": false,
+        "position": [
+          570.304809570313,
+          30.7995891571045,
+          511.252075195313
+        ]
+      },
+      {
+        "frame": 210,
+        "grounded": false,
+        "position": [
+          572.80419921875,
+          32.4672622680664,
+          511.302886962891
+        ]
+      },
+      {
+        "frame": 240,
+        "grounded": false,
+        "position": [
+          575.385070800781,
+          33.7968215942383,
+          511.355377197266
+        ]
+      },
+      {
+        "frame": 270,
+        "grounded": false,
+        "position": [
+          577.884460449219,
+          35.6846580505371,
+          511.406158447266
+        ]
+      },
+      {
+        "frame": 300,
+        "grounded": false,
+        "position": [
+          580.38232421875,
+          36.7968826293945,
+          511.456970214844
+        ]
+      },
+      {
+        "frame": 330,
+        "grounded": false,
+        "position": [
+          582.880004882813,
+          37.9672737121582,
+          511.496124267578
+        ]
+      },
+      {
+        "frame": 360,
+        "grounded": false,
+        "position": [
+          585.379150390625,
+          38.796802520752,
+          511.497222900391
+        ]
+      },
+      {
+        "frame": 390,
+        "grounded": true,
+        "position": [
+          587.878295898438,
+          38.9602584838867,
+          511.497222900391
+        ]
+      },
+      {
+        "frame": 420,
+        "grounded": true,
+        "position": [
+          590.37744140625,
+          39.9603500366211,
+          511.497222900391
+        ]
+      },
+      {
+        "frame": 450,
+        "grounded": true,
+        "position": [
+          592.876831054688,
+          39.9603500366211,
+          511.497283935547
+        ]
+      },
+      {
+        "frame": 480,
+        "grounded": true,
+        "position": [
+          595.376220703125,
+          39.9603500366211,
+          511.497802734375
+        ]
+      },
+      {
+        "frame": 510,
+        "grounded": true,
+        "position": [
+          597.875610351563,
+          39.9603500366211,
+          511.498260498047
+        ]
+      },
+      {
+        "frame": 540,
+        "grounded": true,
+        "position": [
+          600.375,
+          39.9603500366211,
+          511.498718261719
+        ]
+      },
+      {
+        "frame": 570,
+        "grounded": true,
+        "position": [
+          602.874389648438,
+          39.9603500366211,
+          511.499176025391
+        ]
+      },
+      {
+        "frame": 600,
+        "grounded": true,
+        "position": [
+          605.373779296875,
+          39.9603500366211,
+          511.499633789063
+        ]
+      },
+      {
+        "frame": 630,
+        "grounded": true,
+        "position": [
+          607.439758300781,
+          39.9603500366211,
+          510.784820556641
+        ]
+      },
+      {
+        "frame": 660,
+        "grounded": true,
+        "position": [
+          607.51318359375,
+          39.9603500366211,
+          508.288116455078
+        ]
+      },
+      {
+        "frame": 690,
+        "grounded": true,
+        "position": [
+          607.5078125,
+          39.9603500366211,
+          505.787811279297
+        ]
+      },
+      {
+        "frame": 720,
+        "grounded": true,
+        "position": [
+          607.501953125,
+          39.9603500366211,
+          503.287506103516
+        ]
+      }
+    ],
+    "scope": "One daylight Forward+ walk across the diagnosed patch, initial pose at (555.5, native height, 511.5); ordinary controller/world work with no jumps or teleports afterward. Same broad rise and paid overlook home.",
+    "seed": 77,
+    "start": [
+      555.5,
+      26.9601669311523,
+      511.5
+    ],
+    "stuck_frames": 0
+  },
+  "walk_runner": {
+    "engineExitCode": 0,
+    "seconds": 93.5,
+    "reportedErrors": 0,
+    "log": "D:/Wroughtwild/work/rf04-ground-continuity/build/rf04/logs/walk-20260915-200526",
+    "exitCode": 0
+  },
+  "import": {
+    "log": "D:/Wroughtwild/work/rf04-ground-continuity/build/rf04/logs/import-20260915-194849",
+    "engineExitCode": 0,
+    "exitCode": 0,
+    "seconds": 38.34,
+    "reportedErrors": 0
+  },
+  "initial_headless_check": {
+    "result": {
+      "checks": 23,
+      "failures": 1,
+      "scope": "One private RF03 paid V7 Continue; exact ownership, paid floor movement, station use, retained and new dig, sampled grass roots and footprint clearance. Reuses RF03 acquisition/cost evidence."
+    },
+    "runner": {
+      "engineExitCode": 1,
+      "log": "D:/Wroughtwild/work/rf04-ground-continuity/build/rf04/logs/continue-20260915-195334",
+      "exitCode": 1,
+      "reportedErrors": 0,
+      "seconds": 58.36
+    },
+    "cause": "Dummy renderer does not retain MultiMesh GPU buffers. Fixed diagnostic to inspect exact submitted CPU transforms and hidden flags; actual GPU clearance checked in Forward+."
+  },
+  "initial_walk": {
+    "captured_frames": 0,
+    "checks": 12,
+    "clip_fps": 15,
+    "controller_frames": 180,
+    "distance_m": 3.19367754412815,
+    "end": [
+      557.743957519531,
+      27.1223545074463,
+      511.910369873047
+    ],
+    "failures": 3,
+    "profile": "frontier_v7",
+    "route_complete": false,
+    "rows": [
+      {
+        "frame": 30,
+        "grounded": false,
+        "position": [
+          557.58203125,
+          27.2109394073486,
+          511.063537597656
+        ]
+      },
+      {
+        "frame": 60,
+        "grounded": true,
+        "position": [
+          557.709228515625,
+          27.1275234222412,
+          511.776763916016
+        ]
+      },
+      {
+        "frame": 90,
+        "grounded": true,
+        "position": [
+          557.743957519531,
+          27.1223545074463,
+          511.910369873047
+        ]
+      },
+      {
+        "frame": 120,
+        "grounded": true,
+        "position": [
+          557.743957519531,
+          27.1223545074463,
+          511.910369873047
+        ]
+      },
+      {
+        "frame": 150,
+        "grounded": true,
+        "position": [
+          557.743957519531,
+          27.1223545074463,
+          511.910369873047
+        ]
+      },
+      {
+        "frame": 180,
+        "grounded": true,
+        "position": [
+          557.743957519531,
+          27.1223545074463,
+          511.910369873047
+        ]
+      }
+    ],
+    "scope": "One daylight Forward+ walk across the diagnosed patch, initial pose at (555.5, native height, 511.5); ordinary controller/world work with no jumps or teleports afterward. Same broad rise and paid overlook home.",
+    "seed": 77,
+    "start": [
+      555.5,
+      26.9601669311523,
+      511.5
+    ],
+    "stuck_frames": 120
+  },
+  "initial_walk_runner": {
+    "seconds": 73.37,
+    "log": "D:/Wroughtwild/work/rf04-ground-continuity/build/rf04/logs/walk-20260915-195720",
+    "reportedErrors": 0,
+    "engineExitCode": 1,
+    "exitCode": 1
+  },
+  "side_contact_diagnosis": {
+    "initial_dll_sha256": "9d02a74a65cc09b81f2cd5735a47a08cd9701f9e1dad949802eaee3598dd251f",
+    "inherited": {
+      "seconds": 5.57,
+      "log": "D:/Wroughtwild/work/rf04-ground-continuity/build/rf04/logs/contact-20260915-200237",
+      "engineExitCode": 0,
+      "reportedErrors": 0,
+      "exitCode": 0
+    },
+    "all_face_candidate": {
+      "seconds": 5.65,
+      "log": "D:/Wroughtwild/work/rf04-ground-continuity/build/rf04/logs/contact-20260915-200243",
+      "engineExitCode": 0,
+      "reportedErrors": 0,
+      "exitCode": 0
+    },
+    "inherited_end": [
+      564.0979,
+      28.96023,
+      512.0667
+    ],
+    "all_face_end": [
+      557.7493,
+      27.12306,
+      511.9314
+    ],
+    "fix": "V7 averaging applies only to upward source faces; preserve old side/underside contact. Final actual movement asserted in contact fixture."
+  },
+  "reused_rf03_evidence": "docs/prototype/rf03-evidence-2026-09-15/verification.json",
+  "owner_playtesting": "deferred",
+  "rf05": "not started",
+  "publication": "worker commit for coordinator adoption; no remote push or owner DLL replacement",
+  "limits": [
+    "Native one-metre quantisation/side fans retain steeper terracing.",
+    "One seed and short route; no renderer/seed matrix, broad campaign check or hardware/performance test.",
+    "PLAY-03 remains unresolved and parked; R9 remains stopped."
+  ]
+}

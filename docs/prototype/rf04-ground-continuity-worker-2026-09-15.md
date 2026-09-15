@@ -1,6 +1,6 @@
 # RF-04 — natural ground continuity
 
-Status: next worker prepared for the owner to start, 15 September 2026.
+Status: implemented by the owner-started worker, 15 September 2026; see the [RF-04 result](rf04-ground-continuity-result-2026-09-15.md) for checks and coordinator adoption status.
 Worktree: `D:/Wroughtwild/work/rf04-ground-continuity`.
 Branch: `codex/rf04-ground-continuity`. Read `build/rf04/SETUP.md` for the exact
 base, inherited native DLL and build inputs. The coordinator adopts the finished

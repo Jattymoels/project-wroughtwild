@@ -1,6 +1,14 @@
 # World Generation, Settlements and Travel
 
-**Next selected work, 15 September 2026:** [RF-04 ground continuity](../prototype/rf04-ground-continuity-worker-2026-09-15.md)
+**RF-04 worker implementation, 15 September 2026:**
+[Result](../prototype/rf04-ground-continuity-result-2026-09-15.md). V7 upward
+source-face centres follow their existing averaged corners, removing extra local
+peaks/hollows. Side/underside contacts, native heights/blocks, profile/seed, resource
+anchors, four home cores and paid ownership remain. Render/collision/sampling share the
+corrected triangles; existing V7 Continue needs no migration. V1–V6/LF surfaces stay
+unchanged. Coordinator adoption is pending.
+
+**Selected sequence, 15 September 2026:** [RF-04 ground continuity](../prototype/rf04-ground-continuity-worker-2026-09-15.md)
 addresses reported unnatural small grassland bumps while retaining broad hills
 and saved native geography. The owner now requires **lakes with simple swimming**;
 [RF-05](../prototype/rf05-lakes-swimming-scope-2026-09-15.md) follows RF-04 with real

@@ -3050,9 +3050,14 @@ Dictionary build_world_chunk(const wroughtwild::tuning::WorldgenTable& table,
 
     // Codex faceted surface: average solid/air edge crossings in the eight
     // voxels surrounding a lattice vertex. Neighbour chunks read identical
-    // samples, so their vertices agree. Face centres remain at their voxel
-    // planes, preserving the ground at resource anchors. Both rendering and
-    // collision use these triangles; each triangle retains its source cell.
+    // samples, so their vertices agree. Published V1-V6/LF face centres retain
+    // their voxel planes. V7 top centres follow the same averaged corners: pinning
+    // them to the voxel plane introduces artificial peaks/hollows within each
+    // face on quantised slopes. Rendering, collision and ground samplers share
+    // these triangles; each triangle still retains its exact editable cell.
+    // Retain side/underside fans: moving a diagonal riser centre can turn its
+    // established capsule step/slide contact into an unwalkable corner catch.
+    const bool continuousSurface = map.profileId == "frontier_v7";
     std::map<int64_t, Vector3> surfaceCache;
     std::map<int64_t, Vector3> normalCache;
     // Material-independent occupancy gradient. The same eight samples are
@@ -3178,11 +3183,13 @@ Dictionary build_world_chunk(const wroughtwild::tuning::WorldgenTable& table,
                     visible = true;
                     const Vector3 base(x * cs, y * cs, z * cs);
                     if (faceted) {
-                        const Vector3 centre = (Vector3(x+0.5,y+0.5,z+0.5) + Vector3(dir.dx,dir.dy,dir.dz)*0.5) * cs;
+                        Vector3 centre = (Vector3(x+0.5,y+0.5,z+0.5) + Vector3(dir.dx,dir.dy,dir.dz)*0.5) * cs;
                         Vector3 corners[4];
                         Vector3 cornerNormals[4], centreNormal;
                         Color cornerColours[4], centreColour(0,0,0,0);
                         for (int i=0; i<4; ++i) corners[i] = surfaceVertex(x+int(dir.corners[i].x), y+int(dir.corners[i].y), z+int(dir.corners[i].z));
+                        if (continuousSurface && dir.dy > 0)
+                            centre = (corners[0]+corners[1]+corners[2]+corners[3])*0.25f;
                         for (int i=0; i<4; ++i) {
                             cornerNormals[i] = surfaceNormal(x+int(dir.corners[i].x), y+int(dir.corners[i].y), z+int(dir.corners[i].z));
                             centreNormal += cornerNormals[i];

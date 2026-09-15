@@ -66,12 +66,16 @@ generation/legacy identity, 31 paid-build and 19 V7 Continue checks, and a real
 exit 0, zero reported errors; its private logs/state are on D:. No test is running.
 Only two seeds and one rendered route were covered; owner feel remains feedback.
 
-**Next worker: [RF-04 ground continuity](rf04-ground-continuity-worker-2026-09-15.md).**
-The owner dislikes small bumps between grass in the same biome. Diagnose and
-correct the local surface while retaining broad landforms, home appeal and saved
-native geography. The mesher is one lead, not a confirmed cause. Prepared at
-`D:/Wroughtwild/work/rf04-ground-continuity`, branch `codex/rf04-ground-continuity`,
-setup `build/rf04/SETUP.md`. The owner starts it.
+**[RF-04 ground continuity](rf04-ground-continuity-result-2026-09-15.md) is complete in its worker and awaiting coordinator adoption.**
+The V7-only upward-face correction removes extra face-centre peaks/hollows while
+preserving native saved geography and the RF-03 home settings. A discovered side
+contact regression was fixed by retaining side/underside fans. Final geometry/dig
+checks, the exact corner-contact walk and a 60.32 m Forward+ walk pass; reuse the
+private paid-home Continue evidence as described in the result. Adopt the worker
+commit together with its matching DLL (`bcfb358028cfa1ac3c6a7269001a6d3451a47b73ba74ed1d3b9d622ef3a72700`).
+Source and runtime remain at `D:/Wroughtwild/work/rf04-ground-continuity`, branch
+`codex/rf04-ground-continuity`; no owner-depot DLL replacement or push was made.
+Owner playtesting remains deferred. RF-05 is not started by this worker.
 
 **Required next feature: [RF-05 lakes and simple swimming](rf05-lakes-swimming-scope-2026-09-15.md).**
 The owner now requires water and selected lakes with simple swimming. Include
