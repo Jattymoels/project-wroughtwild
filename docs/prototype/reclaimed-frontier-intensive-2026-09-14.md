@@ -24,6 +24,11 @@ The owner subsequently selected [RF-06B fen art/composition](rf06b-fen-art-worke
 now as a worthy tangent. Highlands and remaining impact/scar composition follow.
 A broader all-environment intensive remains later; this continuation addresses
 the fen with a small authored kit and a convincing ordinary game composition.
+RF-06B is now integrated as `f6131e4` / `046834d`, with a visibly stronger low/middle
+layer. The owner requests remaining refinements be recorded for cleanup and
+progression to [RF-07 highland recovery](rf07-highland-recovery-worker-2026-09-16.md).
+Its scoped brief carries the scene-first workflow forward; full reference
+atmosphere and personal owner aesthetic acceptance are not claimed.
 R9 stays stopped.
 
 ## Sequence protection — owner correction, 16 September
@@ -37,8 +42,8 @@ reprioritisation can change that; speculative risk and minor polish cannot.
 PLAY-07 is integrated. Return to:
 
 1. RF-06 fen/lakeside foundation (adopted; atmosphere target still open).
-2. RF-06B fen art/composition (explicitly selected continuation now).
-3. Highland character and recovery.
+2. RF-06B fen art/composition (adopted; remaining refinements recorded for cleanup).
+3. RF-07 highland character and recovery (next prepared).
 4. Remaining composition around reclaimed impacts and living scars.
 5. A bounded cleanup slice drawn from the recorded player-impact notes.
 
@@ -161,6 +166,8 @@ contract, with existing saves kept intact; no new generator profile is selected.
 | RF-04: ground continuity | Integrated as `27fc34d`; removes extra V7 top-face bumps, preserving broad landforms, saved native geography and ledge contacts. Steep terracing remains. |
 | RF-05: lakes and simple swimming | Integrated as `5e5de06`: one lake per fresh V8 world, wading/surface swimming, easy exits, floating recovery and dry lakeside home space. Static/angular shore edges and no dedicated swim animation remain limits. |
 | RF-06: fen/lakeside atmosphere | Foundation adopted as `12238ce` / `710a3c6`. Supported planting delivered; owner finds it underwhelming and visual target remains open. Native terrain/water/saves unchanged. |
+| RF-06B: fen art/composition | Adopted as `f6131e4` / `046834d`. Five original Blender forms, joined low growth, distinct rush/fern layers and seeded passages. Broader scene limits in cleanup; owner requests moving on. |
+| RF-07: highland recovery | Prepared in D:/Wroughtwild/work/rf07-highland-recovery. Weathered rock, settled debris and living pockets on existing Rocky Hills/Glasswind Uplands; no native terrain/save change. |
 | Remaining original outcomes | Separate highland recovery, then remaining recovered-impact/living-scar composition. Incidental additions wait for bounded cleanup. |
 
 Scoping evidence: all six owner references and their caveats were inspected,

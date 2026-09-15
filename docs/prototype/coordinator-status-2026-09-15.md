@@ -88,17 +88,23 @@ The owner calls it "definitely underwhelming"; the intended atmosphere is still
 open, not aesthetically signed off. See the assessment below. The D: worktree
 retains separate fen/lake private playtest slots and actual game pictures.
 
-**Next selected: [RF-06B fen art/composition](rf06b-fen-art-worker-2026-09-16.md).**
-The owner explicitly approved continuing the fen now as a worthy tangent and
-asked for better future prompting. Reuse `D:/Wroughtwild/work/rf06-fen-lakeside`
-on new branch `codex/rf06b-fen-art`, with `build/rf06b/SETUP.md`. The completed
-first-pass branch and private saves remain. The owner resumes the worker; it is
-not automatically launched. Deliver a purpose-made wetland kit, connected ground
-and layered groups in normal seeded play, starting with one convincing fen scene.
+**[RF-06B fen art/composition](rf06b-fen-art-result-2026-09-16.md) is integrated**
+as implementation `f6131e4` and handoff `046834d`. Five original Blender forms
+create wider joined low growth, distinct fern/rush layers and open passages in
+ordinary seeded fen/dry-bank play. Reused 34 placement, 16 fresh Continue and
+12 Forward+ route checks. Main hidden headless import passed in 4.87 s, exit 0,
+zero reported errors. Native DLL unchanged; all owned checks ended. Coordinator
+assessment of three actual game pictures: clear improvement at walking height,
+with broader scene weaknesses recorded below. Owner asked to move on; no personal
+owner aesthetic sign-off is inferred. Unrelated worker import metadata stayed
+local and was excluded from adoption. Its D: source/master and private saves remain.
 
-**Following original outcome: highland recovery**, with weathered rock shelves
-and appropriate vegetation pockets, then remaining original composition around
-recovered impacts and living scars. Its worker has not been prepared or started.
+**Next prepared: [RF-07 highland recovery](rf07-highland-recovery-worker-2026-09-16.md)**
+in `D:/Wroughtwild/work/rf07-highland-recovery`, branch
+`codex/rf07-highland-recovery`, with `build/rf07/SETUP.md`. Weathered rock shelves,
+settled debris and sheltered vegetation should create an inviting actual outlook
+on existing Rocky Hills/Glasswind Uplands geography. The owner starts it; no worker
+is launched automatically. Remaining impact/scar composition follows RF-07.
 New water geography, generation profiles and
 collision changes still need a scoped choice; none is selected by this agreement.
 Later-era creature forms and boss art remain separate production backlog. Station/
@@ -114,9 +120,9 @@ PLAY-07 is now integrated; return to the original creative outcomes.
 | Order | Work | Relationship to the original plan |
 | --- | --- | --- |
 | Done | PLAY-07 scenery arrival and normal integration | Approved additional fix, now adopted as `c5ceb9f` |
-| Foundation adopted; visual target open | RF-06 fen/lakeside atmosphere | Supported planting is playable; owner finds the result underwhelming. Strong wetland identity remains unresolved |
-| Next, explicitly selected | RF-06B fen art/composition | Resolve the underwhelming original visual outcome with a focused authored kit and scene composition |
-| Then | Highland recovery | Original mountain character: weathered shelves, settled debris and vegetation pockets |
+| Adopted | RF-06 fen/lakeside foundation | First pass was underwhelming; its support/water-preserving placement is retained by RF-06B |
+| Adopted; refinements in cleanup | RF-06B fen art/composition | Five authored forms, connected planting and distinct layers; visibly stronger at walking height, broader reference atmosphere still incomplete |
+| Next prepared | RF-07 highland recovery | Original mountain character: weathered shelves, settled debris and vegetation pockets |
 | Then | Remaining impact/scar composition | Original reclaimed-catastrophe identity: vegetation reconnects old damage while selected physical scars/pulses remain legible |
 | End | Bounded cleanup slice | Consolidate deferred issues by player impact; no exhaustive review wave |
 
@@ -157,19 +163,24 @@ shores, unrelated tree art and new swim/wind animation remain cleanup/later note
 no broad lighting, terrain or performance overhaul is selected.
 
 
-RF-06B worker now delivers the [authored continuation](rf06b-fen-art-result-2026-09-16.md)
-for coordinator adoption: five original forms, connected low/middle planting and
-open passages in the ordinary seeded fen and dry bank. Actual pictures and
-34 placement / 16 Continue / 12 route assertions are retained. Owner response
-to the unseen revision remains pending. The worker stops after RF-06B; it has
-not adopted/pushed main or started highlands.
+RF-06B is adopted; the owner explicitly requested assessment, cleanup notes and
+progression to the next slice. The coordinator inspected final fen ground, passage
+and bank PNGs, not a live playthrough. Broad curved leaves now join into masses,
+the ferns/rushes differ visibly and walking gaps remain. This is a material
+improvement over the first pass, without claiming the full reference atmosphere.
 
-RF-06B cleanup observations: repeated tree silhouettes and broad reservation
-clearings still interrupt the planted scene; the lake-facing new leaves lose
-detail in deep shade. See the final fen passage and bank pictures in the result.
-These constrain the broader atmosphere but do not prevent walking/building.
-Defer tree-scale composition, shadow readability and close-range plant repetition
-for owner prioritisation; doing them now would displace highland recovery.
+RF-06B notes for the bounded cleanup slice, in suggested visual-impact order:
+
+| Observation | Useful next adjustment and boundary |
+| --- | --- |
+| Broad bare ground around trees/resources interrupts the planted fen | Soften low-cover edges and material transitions after identifying the responsible reservations/support rejection. Preserve paid-work, finite-resource and route clearances; do not globally shrink them. |
+| New leaves lose detail in deep lake-bank shade | Improve local leaf/material readability in the existing lighting. Preserve the wider palette; no automatic global exposure overhaul. |
+| Fern/rush patches remain recognisable as repeated forms | Add modest silhouette/size/group-edge variation where it materially helps. Avoid filling the open passages with uniform density. |
+| Repeated distant trees, angular shores and water glare dominate wider views | Retain as broader scene limits for cleanup prioritisation. Scope any larger tree/shore revision separately if needed; do not silently turn bounded cleanup into all-asset production or terrain migration. |
+
+Evidence: [fen passage](rf06b-evidence-2026-09-16/02-fen-opening.png) and
+[bank](rf06b-evidence-2026-09-16/05-planted-bank.png). No further fen worker is
+selected. The protected original sequence resumes with RF-07.
 
 Initial cleanup notes: residual short group hitch (34.621 ms full frame in PLAY-07),
 Thrumroot construction (8.790 ms first / 4.238 ms repeat), older unassigned lag/underground

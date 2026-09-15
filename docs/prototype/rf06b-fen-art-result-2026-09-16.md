@@ -7,6 +7,23 @@ and open walking space. The same seeded rules plant suitable existing dry lake
 banks. This is a material scene improvement; owner response to this revision is
 still pending, and passing functional checks is not aesthetic approval.
 
+## Coordinator adoption and assessment, 16 September
+
+Integrated on main by fast-forward, retaining implementation `f6131e4` and handoff
+`046834d`. Reused the worker's 34 placement, 16 Continue and 12 route checks.
+Main's hidden headless import passed in 4.87 s, exit 0, zero reported errors.
+Native DLL unchanged; all owned checks ended. Unrelated local worker import
+metadata was not adopted or reset. The worker handoff below is historical.
+
+The coordinator inspected the three final game PNGs: the broader curved leaves
+form connected foreground/middle patches, rush and fern silhouettes differ, and
+walking space remains. This is a clear improvement over RF-06, not a claim of a
+live coordinator playtest or full reference atmosphere. The owner requested any
+remaining improvements be recorded for cleanup and progression to the next slice.
+The [coordination sheet](coordinator-status-2026-09-15.md#original-plan-sequence-and-end-of-wave-cleanup)
+prioritises bare-clearance transitions, shaded-leaf readability and repeated
+patches, with wider tree/shore limits retained. RF-07 highland recovery is next.
+
 ## Appearance, assessed from the actual game
 
 The initial in-game look established wider overlapping leaves and curved groups.

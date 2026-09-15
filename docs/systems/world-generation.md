@@ -26,6 +26,9 @@ are in `game/rf06b/settings.json`; editable master/recipe in `game/rf06b/SOURCE.
 Final actual pictures demonstrate a stronger low/middle layer; tree-scale
 repetition, broad reservation gaps and shaded-bank readability remain limits.
 Owner assessment of this revision is pending; functional checks are separate.
+RF-06B is integrated as `f6131e4` / `046834d`; coordinator image assessment finds
+a material low/middle-layer improvement, with the listed limits retained for
+cleanup. Main's short headless import passed; no native generation rule changed.
 
 
 ## RF-05: lakes in fresh V8 worlds

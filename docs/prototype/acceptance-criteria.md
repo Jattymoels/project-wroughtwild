@@ -6,9 +6,13 @@
   paid floor/station, local excavation and exact saved-world state checks pass.
 - [x] One player-height Forward+ fen/lake route, wading/swimming/dry exit and
   selected actual pictures/clip; no-focus/mouse opt-out retained.
-- [ ] Convincing wetland atmosphere: owner calls RF-06 "definitely underwhelming"
-  on 16 September; coordinator agrees from retained gameplay pictures. Supported
-  placement is delivered, but this visual outcome remains open.
+- [x] RF-06B materially improves connected low growth, distinct rush/fern layers
+  and open passages, demonstrated in the retained player-height game pictures
+  and inspected by the coordinator. This addresses the first pass the owner
+  called "definitely underwhelming"; full reference atmosphere is not claimed.
+- [ ] Broad bare clearances, repeated forms/tree silhouettes and shaded-bank/shore
+  presentation remain cleanup notes. The owner requests progression to highlands;
+  this is not a claim of personal aesthetic approval of the revised fen.
 - [ ] Broader comfort/seed/hardware/campaign feedback remains unmeasured; no new
   review wave is scheduled.
 

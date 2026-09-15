@@ -73,6 +73,15 @@ composition are selected; the broader all-environment intensive remains later.
 AGENTS.md now distinguishes creative outcomes from functional safeguards in
 future prompts. No native generation, water geography or save rule changed.
 
+**RF-06B is now integrated as `f6131e4` / `046834d`.** Reused 62 passed focused
+checks; main headless import passed in 4.87 s, zero errors. Coordinator picture
+assessment finds a clear improvement in connected low growth and distinct layers.
+The owner requested remaining issues go to cleanup and progression to
+**[RF-07 highland recovery](rf07-highland-recovery-worker-2026-09-16.md)**.
+Its D: worktree/branch are `rf07-highland-recovery` / `codex/rf07-highland-recovery`.
+The owner starts it. Bare clearances, repeated forms/trees and shaded banks/shore
+limits remain in the coordination sheet; no further fen work is scheduled now.
+
 **Owner scheduling correction, 16 September:** stick firmly to the original slice
 breakdown. Raise additions, but recommend recording them for a bounded cleanup
 slice at the end by default. A new observation is not automatic reprioritisation.

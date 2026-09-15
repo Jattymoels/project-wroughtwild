@@ -126,6 +126,17 @@ now, explicitly calling it a worthy tangent. It precedes highlands; a broader
 all-environment image-to-3D/Blender intensive remains later, not automatically
 authorised by this one-environment continuation.
 
+RF-06B is now integrated as `f6131e4` / `046834d`: five authored wetland forms,
+connected low/middle growth and seeded passages. Reused 62 passed worker checks;
+main headless import passed in 4.87 s, zero errors. The coordinator inspected three
+actual game pictures and finds a clear player-height improvement. This is not a
+claim of owner aesthetic approval or full reference atmosphere. The owner asked
+to record remaining improvements for cleanup and move on: broad bare clearances,
+close patch repetition, tree silhouettes and shaded-bank/shore presentation stay
+in the coordination sheet. [RF-07 highland recovery](docs/prototype/rf07-highland-recovery-worker-2026-09-16.md)
+is next, followed by impact/scar composition and bounded cleanup. The owner starts
+the prepared D: worker; do not keep extending fen work.
+
 After ram integration on 15 September, the owner said: "Everything looks great -
 approved, I haven't done full performance impact yet though but that's fine".
 Record the current delivered visuals as approved, including the integrated
