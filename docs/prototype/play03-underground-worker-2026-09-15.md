@@ -54,18 +54,26 @@ walking/falling. Timed worst frames were about 13.5/18.9 ms. One safety refill
 was recorded outside or across the wider session. It was not the owner's precise
 location and did not reproduce sustained lag.
 
+The owner subsequently clarified the remembered onset: lag began as soon as they
+went underground or fell into a hole. It felt as though something needed to load,
+and felt different from the stuttering above ground. This is a report of onset
+and character, not evidence that loading is the cause or that the slowdown was
+brief. Active digging was not identified as necessary to trigger it.
+
 **Do not merely repeat that prewarmed clean window.** First inspect the missing
-transition: work triggered by legitimate cave approach/entry or excavation,
-including relevant synchronous preparation/publication, followed by a stationary
-period. Choose one code-guided scenario and one seed/checkpoint. Keep setup costs
+transition from above ground into a cave or hole, including relevant synchronous
+preparation/publication, then continue through landing and a stationary period.
+Begin timing before the entry/drop so its first stalled frames are retained.
+Choose one code-guided scenario and one seed/checkpoint. Keep setup costs
 and ordinary play costs clearly labelled; never silently exclude the suspected
 event as warmup. Synthetic staging is allowed but must be labelled, with a clear
 distinction between fixture-only preparation and an actual production call path.
 
-The owner's exact incident seed/location/save and whether lag persisted while
-stationary are not established. The coordinator asked for the remembered symptom;
-use any answer supplied with dispatch, otherwise retain both phases in the single
-trace and report this missing context. Do not wait for unavailable owner playtesting.
+The owner's exact incident seed/location/save, duration and whether lag persisted
+while stationary remain unknown. Retain the transition and subsequent stationary
+phase in the single trace so an entry burst can be distinguished from continuing
+work. Do not wait for unavailable owner playtesting or assume the surface
+stone-seam cause explains this distinct report.
 
 Useful existing implementation:
 

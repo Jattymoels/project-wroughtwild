@@ -37,10 +37,13 @@ physical forms, boss art and Reclaimed Frontier landscapes remain separate backl
 
 After the published tortoise, the owner said "Awesome, love it - what's next".
 Its visuals are approved. **[PLAY-03 underground lag](play03-underground-worker-2026-09-15.md)**
-is the next prepared D: worker slice: one current-code entry/excavation-to-settled
+is the next prepared D: worker slice: one current-code entry/drop-to-settled
 diagnostic, followed by a cause-specific fix or a small opt-in capture if the
 incident cannot be reproduced. The old prewarmed cave sample is not a reason to
-mark the report fixed or rerun a whole performance programme.
+mark the report fixed or rerun a whole performance programme. The owner clarified
+that slowdown began immediately on going underground or falling into a hole,
+felt like loading and differed from surface stuttering. Capture that onset;
+loading is unconfirmed, and duration/persistence while stationary remain unknown.
 
 The owner currently cannot playtest and has approved continued prototype work
 until told otherwise. Human feedback remains deferred; it does not block the
