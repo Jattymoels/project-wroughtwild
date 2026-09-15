@@ -1,0 +1,7 @@
+FAIL RF01: generated wood work and ordinary pickups fund the paid fixture
+FAIL RF01: hand crafting offers the funded bench kit
+FAIL RF01: ordinary craft produces one paid kit
+RF01 placement reason: No kit left. Craft another at its station.
+FAIL RF01: ordinary station placement consumes the kit
+FAIL RF01: station has one paid physical owner
+FAIL RF01: station body and work margin clear RF cover

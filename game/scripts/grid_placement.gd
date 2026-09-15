@@ -835,6 +835,10 @@ func _place_kit() -> bool:
 	site.station_key = StationSite.key_at(String(station_id),site.global_position)
 	site.rotation.y = float(preview_rotation_step) * PI / 2.0
 	site.refresh_visual(_sim())
+	var terrain:=_find_terrain()
+	if terrain!=null and terrain.reclaimed_cover!=null:
+		_record_changed_bounds(terrain.reclaimed_cover.station_bounds(site))
+		refresh_trims()
 
 	# The pack may hold more kits; fall back to shapes when this was the last.
 	if _sim().material_count(selected_kit) <= 0:

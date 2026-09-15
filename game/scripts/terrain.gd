@@ -81,6 +81,7 @@ var _sim: WroughtwildSim
 var _seed := 0
 var play03_trace: Node # Null unless the local PLAY-03 recorder is explicitly enabled.
 var _world_profile := "legacy_v1"
+var reclaimed_cover: RefCounted # Recreated with the actual world identity; never saved.
 var _habitat_refresh_queued := false
 var _augmentation_texture: ImageTexture
 ## Mutable copy of the sim's block field with the player's digs applied.
@@ -241,8 +242,11 @@ func build(sim: WroughtwildSim, seed_value: int, profile_id: String = "") -> voi
 
 	var cell: float = map["cell_size"]
 	var geometry_start := Time.get_ticks_msec()
+	reclaimed_cover = null
 	if weathered:
 		HabitatCover.prepare(map)
+		if _world_profile in ["frontier_v6","living_frontier_wave1","living_frontier_wave3"]:
+			reclaimed_cover = preload("res://rf01/cover.gd").new(map,_seed,_world_profile,StrangeSites._reservations(self))
 	if _world_profile in ["frontier_v3", "frontier_v4", "frontier_v5", "frontier_v6","living_frontier_wave1","living_frontier_wave3"]:
 		chunk_stream=TerrainChunkStream.new()
 		chunk_stream.setup(self)
@@ -339,7 +343,7 @@ func _build_chunk_phase(chunk_data: Dictionary,cell: float,phase: int,chunk: Nod
 			chunk.add_child(instance)
 
 	elif phase==2:
-		GroundCover.build_for_chunk(chunk, chunk_data, map, cell, frontier_look,_world_profile in ["frontier_v3", "frontier_v4", "frontier_v5", "frontier_v6","living_frontier_wave1","living_frontier_wave3"])
+		GroundCover.build_for_chunk(chunk, chunk_data, map, cell, frontier_look,_world_profile in ["frontier_v3", "frontier_v4", "frontier_v5", "frontier_v6","living_frontier_wave1","living_frontier_wave3"],reclaimed_cover)
 		if weathered:
 			HabitatCover.build(chunk,chunk_data,map,cell,_world_profile in ["frontier_v3", "frontier_v4", "frontier_v5", "frontier_v6","living_frontier_wave1","living_frontier_wave3"])
 

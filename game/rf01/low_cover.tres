@@ -1,0 +1,42 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+[ext_resource type="Script" path="res://rf01/low_cover.gd" id="1"]
+[resource]
+script = ExtResource("1")
+visual_salt = 91073
+patch_metres = 14.0
+sparse_coverage = 0.28
+dense_coverage = 0.94
+grass_width_m = 0.94
+grass_height_m = 0.38
+fern_width_m = 0.96
+fern_height_m = 0.43
+meadow_fern_share = 0.025
+forest_fern_share = 0.22
+edge_grass_share = 0.28
+minimum_scale = 0.76
+grass_layers = 3
+layer_turn_radians = 2.4
+layer_scale_step = 0.08
+max_support_rise_m = 0.46
+max_plane_error_m = 0.075
+root_embed_m = 0.025
+design_purpose = {
+"visual_salt": "Independent seeded cosmetic pattern; never consumes gameplay RNG.",
+"patch_metres": "Fourteen-metre connected swathes join nearby plants while retaining broad quieter openings.",
+"sparse_coverage": "Chance of a low plant in the quietest eligible cells, leaving visible soil and room between swathes.",
+"dense_coverage": "Chance in lush swathes; support, approach and ownership clearances still take priority.",
+"grass_width_m": "Maximum horizontal diameter of the reused grass clump, including every source vertex before sway.",
+"grass_height_m": "38-centimetre grass keeps ground movement and combat sightlines readable; edge grass is two thirds as tall.",
+"fern_width_m": "Maximum fern spread stays within a single ground cell, so existing local excavation refreshes remain sufficient.",
+"fern_height_m": "43-centimetre fern accents form a lower woodland layer beneath the existing shrubs.",
+"meadow_fern_share": "Occasional ferns mix into meadow grass without turning open country into a fern bed.",
+"forest_fern_share": "Woodland has more fern accents; most low cover remains the cheaper, softer grass silhouette.",
+"edge_grass_share": "Shorter, asymmetric edge-grass clumps break up repeated meadow silhouettes.",
+"grass_layers": "Three crossed copies of the shipped grass crown fill each existing RF footprint; fern geometry remains a single crown.",
+"layer_turn_radians": "Turn each extra grass crown by 2.4 radians to fill gaps between the first crown leaves.",
+"layer_scale_step": "Each additional crown is eight percent smaller, keeping every layer inside the same supported radius.",
+"minimum_scale": "Smallest clump relative to the above sizes; yaw and size vary independently by world and cell.",
+"max_support_rise_m": "Reject abrupt ledges across a plant footprint instead of dressing cliffs or hiding holes.",
+"max_plane_error_m": "Reject bent or broken support where a single rooted plane would visibly bridge the terrain.",
+"root_embed_m": "Sink the root plane 2.5 centimetres to join the plant base to the sampled surface."
+}

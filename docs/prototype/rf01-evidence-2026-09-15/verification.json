@@ -1,0 +1,53 @@
+{
+  "base": "0a8c0477ceeb0669bfe8c871f6498824324f51cf",
+  "branch": "codex/rf01-reclaimed-ground",
+  "seed": 77,
+  "rendered_profile": "frontier_v6",
+  "renderer": "Forward+",
+  "engine": "Godot 4.5-stable",
+  "placement_lifecycle": {
+    "initial": {
+      "checks": 48,
+      "failures": 6,
+      "note": "All geometry/determinism/dig checks passed; six acquisition/station assertions failed because the fixture under-paced finite pickup."
+    },
+    "affected_use_rerun": {
+      "checks": 38,
+      "failures": 0,
+      "note": "Fixed only fixture resource capture/pickup pacing. Reused unchanged geometry passes."
+    }
+  },
+  "continue": {
+    "completed_run": {
+      "checks": 17,
+      "failures": 1,
+      "note": "Sixteen passed. The remaining station comparison used truncated test JSON floats; production full-precision save was correct."
+    },
+    "correction": "Fixture now uses the same full-precision JSON serialization as SaveManager. Exact saved station ownership/pose check passed in both planned/final Forward+ walks; no standalone Continue re-review.",
+    "earlier_fixture_abort": "Missing optional empty broken_blocks key caused a fixture error. Owned process 62524 was stopped; comparison now handles the optional field."
+  },
+  "final_walk": {
+    "engineExitCode": 0,
+    "seconds": 85.39,
+    "reportedErrors": 0,
+    "exitCode": 0,
+    "log": "D:/Wroughtwild/work/rf01-reclaimed-ground/build/rf01/logs/walk-20260915-164520"
+  },
+  "media": {
+    "stills": 3,
+    "clip": "walking.gif",
+    "duration_ms": 8000,
+    "fps": 10,
+    "size": [
+      640,
+      360
+    ],
+    "source": "120 actual 1280x720 viewport frames at 15 fps, captured in the middle of the 76.42 m real-controller walk. Only frame selection, resize and encoding; no retouching."
+  },
+  "limits": [
+    "Nearby route has no impact margin.",
+    "Coverage is still patchy beside ledges and reservations.",
+    "LF identities and exclusions checked at helper level; no LF campaign replay.",
+    "No hardware/performance matrix, broad regression or owner playtest. PLAY-03 remains parked."
+  ]
+}

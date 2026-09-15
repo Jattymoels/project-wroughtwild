@@ -94,7 +94,7 @@ static func _roll(x: int, z: int, kind: String, salt: int) -> float:
 ## by kind) and the map (heights and biomes per cell). Only a block whose
 ## top is the surface carries cover. Returns the instances placed.
 static func build_for_chunk(chunk: Node3D, chunk_data: Dictionary, map: Dictionary, cell: float,
-		frontier_look: Resource = null, retain_poses: bool = false) -> int:
+		frontier_look: Resource = null, retain_poses: bool = false, reclaimed: RefCounted = null) -> int:
 	if map.is_empty() or not map.has("heights") or not map.has("biomes"):
 		return 0
 	var width := int(map["width"])
@@ -128,6 +128,8 @@ static func build_for_chunk(chunk: Node3D, chunk_data: Dictionary, map: Dictiona
 			if biome_index < 0 or biome_index >= defs.size():
 				continue
 			for entry in cover_by_biome[biome_index]:
+				if reclaimed != null and String(entry.kind) in ["tuft","fern"] and reclaimed.eligible(reclaimed._profile,String(defs[biome_index].id),String(kind)):
+					continue
 				if not (String(kind) in entry["on"]):
 					continue
 				var salt := 11
@@ -205,4 +207,6 @@ static func build_for_chunk(chunk: Node3D, chunk_data: Dictionary, map: Dictiona
 			instance.visibility_range_fade_mode = GeometryInstance3D.VISIBILITY_RANGE_FADE_SELF
 		chunk.add_child(instance)
 		placed += transforms.size()
+	if reclaimed != null:
+		placed += reclaimed.build(chunk,chunk_data,cell,float(frontier_look.cover_distance))
 	return placed

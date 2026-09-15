@@ -110,23 +110,27 @@ static func refresh_buildings(root: Node3D, terrain: Terrain, changed: Array[AAB
 	var frontier := root.get_node_or_null("FrontierSites")
 	if frontier != null: frontier.refresh_buildings(changed,buildings)
 	if terrain.world_profile() in ["frontier_v3","frontier_v4","frontier_v5","frontier_v6","living_frontier_wave1","living_frontier_wave3"]:
-		for chunk: Node3D in terrain.chunks.values(): _clear_cover_chunk(chunk,buildings,changed)
+		var rf_buildings: Dictionary=terrain.reclaimed_cover.workspace_index(terrain,buildings) if terrain.reclaimed_cover!=null else {}
+		for chunk: Node3D in terrain.chunks.values(): _clear_cover_chunk(chunk,buildings,changed,rf_buildings)
 
 ## Terrain calls this before a streamed/rebuilt chunk is made visible. Older
 ## profiles neither retain these extra poses nor take the clearing path.
 static func refresh_cover_chunk(terrain: Terrain, chunk: Node3D) -> void:
 	if terrain==null or chunk==null or terrain.world_profile() not in ["frontier_v3","frontier_v4","frontier_v5","frontier_v6","living_frontier_wave1","living_frontier_wave3"]: return
-	_clear_cover_chunk(chunk,_building_index(terrain))
+	var buildings:=_building_index(terrain)
+	var rf_buildings: Dictionary=terrain.reclaimed_cover.workspace_index(terrain,buildings) if terrain.reclaimed_cover!=null else {}
+	_clear_cover_chunk(chunk,buildings,[],rf_buildings)
 
-static func _clear_cover_chunk(chunk: Node3D, buildings: Dictionary, changed: Array[AABB] = []) -> void:
+static func _clear_cover_chunk(chunk: Node3D, buildings: Dictionary, changed: Array[AABB] = [], rf_buildings: Dictionary = {}) -> void:
 	for part in chunk.get_children():
 		if not part is MultiMeshInstance3D or not part.has_meta("terrain_cover"): continue
 		if not touches_changes(part.get_meta("cover_bounds"),changed): continue
+		var index: Dictionary=rf_buildings if part.has_meta("rf01_cover") else buildings
 		# Most chunks are far from a home. Their aggregate exact bounds reject
 		# the whole batch before visiting individual grass/fern transforms.
-		if not bool(part.get_meta("cover_has_hidden",false)) and not _building_overlap(buildings,part.get_meta("cover_bounds")):
+		if not bool(part.get_meta("cover_has_hidden",false)) and not _building_overlap(index,part.get_meta("cover_bounds")):
 			continue
-		_clear_batch_buildings(part,buildings,changed)
+		_clear_batch_buildings(part,index,changed)
 		part.set_meta("cover_has_hidden",(part.get_meta("hidden_by_building",[]) as Array).has(true))
 
 ## Compare X/Z conservatively: terrain edits can move retained scenery vertically.
@@ -142,12 +146,13 @@ static func rect_touches_changes(bounds: Rect2, changed: Array[AABB]) -> bool:
 
 static func _clear_batch_buildings(part: MultiMeshInstance3D, buildings: Dictionary, changed: Array[AABB] = []) -> void:
 	var transforms: Array=part.get_meta("world_transforms",[])
+	var mesh_bounds: AABB=part.get_meta("clearance_bounds",part.multimesh.mesh.get_aabb())
 	# Computed during initial publication, including the actual mesh overhang.
 	# Regrounding retains X/Z, so this broad-phase bound stays valid after digging.
 	if not part.has_meta("building_xz_bounds"):
 		var bounds:=AABB()
 		for i in transforms.size():
-			var at: AABB=transforms[i]*part.multimesh.mesh.get_aabb()
+			var at: AABB=transforms[i]*mesh_bounds
 			bounds=at if i==0 else bounds.merge(at)
 		part.set_meta("building_xz_bounds",bounds)
 	if not touches_changes(part.get_meta("building_xz_bounds"),changed): return
@@ -157,7 +162,7 @@ static func _clear_batch_buildings(part: MultiMeshInstance3D, buildings: Diction
 	var hidden: Array=previous.duplicate()
 	if hidden.size()!=transforms.size(): hidden.resize(transforms.size()); hidden.fill(false)
 	for i in transforms.size():
-		var bounds: AABB=transforms[i]*part.multimesh.mesh.get_aabb()
+		var bounds: AABB=transforms[i]*mesh_bounds
 		if not touches_changes(bounds,changed): continue
 		var intersects:=_building_overlap(buildings,bounds)
 		hidden[i]=intersects

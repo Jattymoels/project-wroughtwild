@@ -1,0 +1,5 @@
+Godot Engine v4.5.stable.official.876b29033 - https://godotengine.org
+
+Sim tuning loaded: 76 recipes, 26 shapes
+RF01 gathered wood: 42
+RF01_PLACEMENT {"checks":38,"failures":0,"scope":"One native slope/boundary fixture, real excavation, paid octagonal floor/station, normal new-world creation and finite gathering. Acquisition/placement are harness-paced.","use_only":true}
