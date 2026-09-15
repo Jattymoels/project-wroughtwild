@@ -1,7 +1,7 @@
 # RF-01 — meadow and woodland recovery
 
-Status: implemented and checked in the worker, 15 September 2026; coordinator
-integration pending. See the [result](rf01-reclaimed-ground-result-2026-09-15.md)
+Status: implemented, checked and integrated on main as `66f3211`, 15 September
+2026. See the [result](rf01-reclaimed-ground-result-2026-09-15.md)
 for the achieved coverage, retained checks and limits. The original scope follows.
 The owner agreed to scope the first Reclaimed Frontier slice after the completed
 art/adoption and PLAY-05 batch. Standing prototype approval applies; the owner

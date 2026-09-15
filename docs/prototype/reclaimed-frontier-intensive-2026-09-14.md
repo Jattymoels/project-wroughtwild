@@ -1,10 +1,47 @@
 # Reclaimed Frontier — terrain and biome composition
 
-**Status: first slice scoped at the owner's request, 15 September 2026.**
-The owner agreed with Reclaimed Frontier as the next creative wave and asked to
-scope it. [RF-01 meadow and woodland recovery](rf01-reclaimed-ground-worker-2026-09-15.md)
-is the prepared first worker. Implementation has not started; later terrain and
-biome work remains proposed. This is separate from the stopped R9 review.
+**Status: RF-01 integrated on main as `66f3211`, 15 September 2026.**
+[RF-01 meadow and woodland recovery](rf01-reclaimed-ground-result-2026-09-15.md)
+adds supported low cover in ordinary V6/LF play. The recovered floor remains
+visibly patchy. The owner's latest feedback makes ground-surface quality and
+grass appearance the next discussion priority. Later terrain and biome work
+remains proposed. This is separate from the stopped R9 review.
+
+## Ground and grass feedback — 15 September
+
+After RF-01 the owner asked whether proper grass needs the Blender pipeline and
+described the actual ground texture as "icky", asking whether it is native Godot
+art and whether it can be improved. Do not record this as visual approval of the
+current floor or reopen RF-01's already checked placement work by default.
+
+Inspection found two relevant presentation layers:
+
+- The plants already come from the B2 Blender kit. RF-01 uses R7's shipped LOD2
+  (far-detail) mesh, making three progressively smaller crossed crowns for grass.
+  Thin silhouettes, colour and bounded cell placement all deserve consideration;
+  the distant mesh alone is not a proven explanation of every visible gap.
+- `Terrain._material_for` uses `wildland_look.tres` for modern geography, whose
+  `wildland_look.gd` selects `wildland_terrain.gdshader`. This is project-authored
+  world-space colour/noise, simulated grain and relief. Its augmentation map is
+  an influence mask, not an authored turf/soil texture. It is not a stock Godot
+  landscape asset. The adopted C1 forest-floor image dresses separate assets and
+  does not replace this continuous terrain surface.
+
+**Recommended next scope, not yet dispatched:** first improve one meadow turf/
+soil surface and one woodland leaf-litter/humus surface, including restrained
+apparent relief, texture scale and natural joins to existing rock. Then refine a
+small near-view grass kit through the existing Blender workflow: inspect useful
+retained near/mid assets, author fuller curved clumps where needed, and tune their
+colour, wind and rooting with the new ground beneath them. Keep both in ordinary
+play, with retained editable source on D:. No new pipeline infrastructure or
+third-party asset dependency is implied.
+
+Preserve native terrain/collision, excavation, resource/site anchors, RF-01's
+paid footprint handling, saved worlds and gameplay. Reuse the useful RF-01 route
+for a short walking-height visual check and the unchanged gameplay evidence;
+target only concrete changed behavior with further checks. No broad camera,
+seed or performance matrix. Surface art will not supply the later physical rises
+and dips. Give the ground/grass pass priority before proposing those landforms.
 
 ## RF-01 selection — 15 September
 
@@ -34,8 +71,9 @@ contract, with existing saves kept intact; no new generator profile is selected.
 
 | Milestone | Present scope/status |
 | --- | --- |
-| RF-01: meadow/woodland recovery | Plan and worker ready; normal-game low-cover composition, one useful walk, focused edit/build/Continue checks. |
-| Later landform slice | Proposed after RF-01: old-impact surroundings, rises/dips and routes. Decide whether a new-world-only successor is needed; never silently reshape existing saves. |
+| RF-01: meadow/woodland recovery | Integrated as `66f3211`; supported low-cover composition, focused lifecycle/use/Continue evidence and a real 76.42 m walk. Still patchy; no impact margin on that route. |
+| Ground and grass art | Recommended next from owner feedback above; no worker dispatched. |
+| Later landform slice | Proposed after the surface/grass response: old-impact surroundings, rises/dips and routes. Decide whether a new-world-only successor is needed; never silently reshape existing saves. |
 | Later biome expansion | Proposed: fen and mountain recovery based on what works in RF-01 and any landform decision. No all-biome production batch is dispatched now. |
 
 Scoping evidence: all six owner references and their caveats were inspected,
@@ -44,13 +82,13 @@ failed on the full-size file. Originals are untouched. Current cover, surface
 sampler hooks and building-mask code were read; R7's retained coverage limitation
 and PLAY-01's projection finding were reused. No new engine/Blender run, runtime
 visual capture, benchmark or source-package reconstruction was needed to scope.
-The expected visual improvement remains to be demonstrated by RF-01.
+That was scoping evidence; RF-01's delivered images and limits are now in its result.
 
 Worker location: `D:/Wroughtwild/work/rf01-reclaimed-ground`, branch
-`codex/rf01-reclaimed-ground`; setup is `build/rf01/SETUP.md`. The owner starts
-the worker, which returns a checked commit and inline images/clip. Current
-standing approval covers ordinary prototype delivery and main adoption without
-another visual/benchmark gate. Only this first slice is prepared.
+`codex/rf01-reclaimed-ground`; setup is `build/rf01/SETUP.md`. Worker `85d3ece`
+is complete and adopted as `66f3211`. Current standing approval covers ordinary
+prototype delivery and main adoption without another visual/benchmark gate.
+No successor worker is prepared or started yet.
 
 **Later owner workflow clarification, 14 September:** when the owner approves
 the result visually, integrate it into the game without separate rollout approval

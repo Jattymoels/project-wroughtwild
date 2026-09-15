@@ -32,17 +32,23 @@ merely because a historical checkbox still says human review pending.
 
 ## Current deliveries and remaining playtest feedback
 
-**Next creative slice: [RF-01 meadow and woodland recovery](rf01-reclaimed-ground-worker-2026-09-15.md).**
-The owner agreed to scope Reclaimed Frontier after the finished adoption/fix
-batch. Its first worker is prepared at `D:/Wroughtwild/work/rf01-reclaimed-ground`,
-branch `codex/rf01-reclaimed-ground`. Implementation is not started. Reuse current
-assets to connect low grass/fern cover across existing meadow/forest terrain;
-show one useful ordinary walk around old impact damage. Preserve native terrain,
-resource/site anchors, saves and all adopted art. New cosmetic placement must
-respect actual support and paid footprints. This enters ordinary V6/LF play;
-the route is evidence, not an isolated showcase. The owner starts the worker.
-Later physical landforms and other biomes remain scoped candidates, not an
-automatically dispatched batch. [Scope and compatibility](reclaimed-frontier-intensive-2026-09-14.md).
+**[RF-01 meadow and woodland recovery](rf01-reclaimed-ground-result-2026-09-15.md)
+is integrated on main as `66f3211`.** Seeded low grass/fern patches now respect
+actual support, excavation and paid building/station footprints in ordinary V6/LF
+play and Continue. Native terrain, resource/site anchors and saves are unchanged.
+Reuse the worker's placement, paid-use, corrected ownership and real 76.42 m
+Forward+ walk evidence. Main's hidden headless import passed in 4.68 seconds,
+exit 0, no reported errors. Its private logs/state are on D:; no test remains running.
+
+The owner reports that the ground texture looks unpleasant and asks whether the
+grass needs proper Blender production. RF-01 reused simplified B2 LOD2 grass;
+coverage is still patchy and its route did not reach an impact margin. It is an
+implemented placement iteration, not a claim of final visual acceptance.
+The active terrain uses the custom `wildland_terrain.gdshader` procedural surface.
+The recommended next art pass is authored meadow soil/turf and woodland litter,
+followed by fuller near-view grass with matching colour and rooted transitions.
+See the [feedback and proposed boundary](reclaimed-frontier-intensive-2026-09-14.md#ground-and-grass-feedback--15-september).
+No successor worker is dispatched. Physical landforms and other biomes remain later work.
 
 **PLAY-03 diagnostic delivery is integrated as `cbc6f67`.** The staged drop did
 not reproduce the owner's continuing slowdown; no causal fix is claimed. The

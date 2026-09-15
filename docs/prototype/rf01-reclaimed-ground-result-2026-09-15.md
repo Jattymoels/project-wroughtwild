@@ -6,6 +6,22 @@ and material motion while keeping native terrain, collision, trees, sites,
 paid ownership and save rules authoritative. A real 76.42 m walk and focused
 placement/Continue checks cover this first playable vegetation slice.
 
+## Mainline integration and owner feedback
+
+The coordinator adopted worker `85d3ece` onto main as `66f3211` on 15 September
+2026 under standing prototype permission. The worker's focused evidence below
+was reused. One additional hidden headless main import passed in **4.68 seconds,
+exit 0, zero reported errors**. Logs and private user/temp state are at
+`D:/Wroughtwild/work/rf01-reclaimed-ground/build/rf01/main-integration`.
+No owned test is still running and no desktop mouse interaction was used.
+The coordinator's final chat records the actual push outcome.
+
+The owner reports that the exposed ground texture looks unpleasant and asks
+whether grass needs proper Blender production. The current low-cover placement
+is delivered, but the grass/ground appearance remains an explicit visual issue.
+See the [material diagnosis and recommended next pass](reclaimed-frontier-intensive-2026-09-14.md#ground-and-grass-feedback--15-september).
+This does not claim final owner visual acceptance or measured performance.
+
 ## Remaining limits
 
 - Low growth remains visibly patchy, especially at steep native shelves, home
@@ -72,7 +88,7 @@ plain-language `design_purpose` for every exported setting.
 Use the normal main scene, not a test scene. From PowerShell:
 
 ```powershell
-& 'C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe' --path 'D:/Wroughtwild/work/rf01-reclaimed-ground/game' -- --world-seed=77
+& 'C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe' --path 'C:/Users/Matty/Dev/project-wroughtwild/game' -- --world-seed=77
 ```
 
 **New World:** enter `77` in **New world seed**, then choose a class (the fixture
@@ -90,7 +106,7 @@ its recorded seed, profile, edits, finite resources and paid structures remain
 in charge. Use that world's usual LF launch option, for example:
 
 ```powershell
-& 'C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe' --path 'D:/Wroughtwild/work/rf01-reclaimed-ground/game' -- --living-frontier-wave7
+& 'C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe' --path 'C:/Users/Matty/Dev/project-wroughtwild/game' -- --living-frontier-wave7
 ```
 
 The above fixed route belongs to V6 seed 77; it is not a promise that a different

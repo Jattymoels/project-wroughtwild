@@ -27,12 +27,13 @@ The [shared-file boundary](mob-parallel-production-2026-09-15.md)
 keeps independent production separate from completed gameplay adoption.
 R9 stays stopped.
 
-**Current next creative work, 15 September: [RF-01 meadow and woodland recovery](rf01-reclaimed-ground-worker-2026-09-15.md).**
-The owner agreed to scope Reclaimed Frontier. The prepared D: worker will use
-existing assets for connected low meadow/forest cover around old damage, with
-one representative ordinary route and normal-game adoption. No terrain, collision,
-resource-site or save migration is part of RF-01. Implementation has not started;
-later landforms, fen/mountain treatments and era/boss art are not dispatched.
+**RF-01 is integrated on main as `66f3211`: [result and playtest](rf01-reclaimed-ground-result-2026-09-15.md).**
+Ordinary V6/LF play now has seeded low meadow/forest cover with actual support and
+paid footprint handling. Coverage remains patchy; the owner dislikes the exposed
+ground surface and asks about better Blender grass. Prioritise the proposed
+[ground-material and near-grass art pass](reclaimed-frontier-intensive-2026-09-14.md#ground-and-grass-feedback--15-september)
+before broader landforms. No successor worker, fen/mountain batch or era/boss art
+has been dispatched. RF-01 changed no native terrain/collision or save schema.
 
 After MOB-02 the owner approved the current visuals and explicitly left full
 performance impact untested. They subsequently praised the nymph and confirmed

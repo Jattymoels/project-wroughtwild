@@ -1,5 +1,14 @@
 # Decision Registry
 
+RF-01 delivery update, 15 September 2026: the scoped presentation is integrated
+on main as `66f3211`; see its [result](../prototype/rf01-reclaimed-ground-result-2026-09-15.md).
+The owner dislikes the exposed ground surface and asks about better grass through
+the Blender pipeline. This feedback prioritises surface/plant art discussion;
+it does not approve a generator change or establish final visual acceptance.
+The [proposed follow-up](../prototype/reclaimed-frontier-intensive-2026-09-14.md#ground-and-grass-feedback--15-september)
+preserves RF-01's native terrain and save boundary. The scoping entry below records
+the original first-slice decision.
+
 Owner next-wave scoping request, 15 September 2026: after the completed mainline
 art/fix batch, the owner agreed with Reclaimed Frontier and asked to scope it.
 The [RF-01 work item](../prototype/rf01-reclaimed-ground-worker-2026-09-15.md)
