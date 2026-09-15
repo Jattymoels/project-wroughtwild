@@ -39,7 +39,7 @@ and long world entry remain open or unmeasured. No broad review, new worker or
 further performance slice is automatically launched. The completed D: worker
 retains a private playtest launcher with a staged approach and optional trace.
 
-**Immediate next: [PLAY-03 group arrivals](play03-group-arrival-worker-2026-09-15.md).**
+**Immediate next: [PLAY-03 full-roster arrivals](play03-group-arrival-worker-2026-09-15.md).**
 The owner reports considerable lag when many mobs appear, specifically "turtle +
 archers + cinder wisps". Hollow Knight/tortoise, Cinder Archer/porcupine and Cinder
 Wisp/moth are outside the previous fitted-fauna resource preparation. Measure
@@ -48,6 +48,14 @@ and same-frame batch work. The prior boar improvement remains; broader PLAY-03
 is open. Resume `D:/Wroughtwild/work/play03-mob-arrival` on `codex/play03-mob-arrival`,
 current worker `039bccf`, with `build/play03-group/SETUP.md` and the new owner-depot
 brief. The owner starts it; no new worker/checkout/game is launched automatically.
+
+Owner expansion: "make sure we fix all the creatures/mobs". The same worker now
+owns all 11 regular IDs, five LF aliases, elite/era variants and existing boss
+paths through the actual world/cave/noise/siege/site/trial/Continue entry points.
+It must resolve shared loading omissions and measured creation/group stalls
+throughout, with a compact coverage table. The trio starts diagnosis; it is not
+the delivery boundary. A bounded pass per distinct path is authorised, without
+a combinatorial performance/art matrix or full campaign replay.
 
 [PLAY-06 bearings and optional coordinates](play06-navigation-worker-2026-09-15.md)
 is queued behind that defect. Its proposed D: checkout has not been created and

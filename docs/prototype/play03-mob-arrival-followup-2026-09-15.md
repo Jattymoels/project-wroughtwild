@@ -29,6 +29,19 @@ The [group-arrival worker](play03-group-arrival-worker-2026-09-15.md) is next in
 the existing D: checkout at `039bccf`, ahead of queued PLAY-06. It uses the current
 source and retained runtime/evidence. No new worktree or task is launched.
 
+## Owner expansion to the full roster
+
+The owner then asked: "Sorry can we just make sure we fix all the creatures/mobs?
+is that all of them?" The same current worker brief now explicitly covers every
+current creature presentation and spawn entry, including passive fauna, both
+wisps, five LF aliases, elite/era variants and existing bosses. Eleven ordinary
+IDs use the ten familiar visual families; existing boss presentation paths are
+additional. The reported trio starts causal measurement, not the scope boundary.
+Resolve repeated known loading omissions consistently and account for distinct
+per-instance/group costs. Bounded checks of each distinct path are authorised;
+full species/seed/renderer/status combinations remain unnecessary. This is an
+expanded implementation scope, not a claim that those paths are fixed already.
+
 ## Owner observation
 
 The owner reported during playtesting on 15 September 2026:

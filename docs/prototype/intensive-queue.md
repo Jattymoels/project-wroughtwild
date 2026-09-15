@@ -40,13 +40,20 @@ The selected presentation freeze is resolved; broader PLAY-03 underground lag,
 the earlier non-arrival spike, other families and long entry remain open/unmeasured.
 The worker is complete; no broad performance/review wave starts automatically.
 
-**New immediate priority: [PLAY-03 grouped arrivals](play03-group-arrival-worker-2026-09-15.md).**
+**New immediate priority: [PLAY-03 all-creature arrivals](play03-group-arrival-worker-2026-09-15.md).**
 The owner reports considerable lag when many mobs appear: "turtle + archers +
 cinder wisps". These are the tortoise, porcupine and moth paths, outside the prior
 fitted-fauna preparation. Resume the existing D: mob-arrival worker at `039bccf`
 to measure that mixed/group arrival and correct its demonstrated cost. No automatic
 worker launch or new review wave. The previous selected boar improvement stands;
 the broader reported hitch remains open.
+
+The owner explicitly expanded this to all creatures/mobs. Cover the full current
+roster, both wisps, passive fauna, campaign/elite/era aliases and existing bosses,
+including the distinct world/cave/noise/siege/site/trial/Continue spawn paths.
+Use a compact coverage table and bounded distinct-path checks; do not stop at
+the trio or leave identical known omissions for separate per-species workers.
+This does not request every seed/renderer/status combination or full boss fights.
 
 [PLAY-06 navigation](play06-navigation-worker-2026-09-15.md) is queued afterward:
 compact compass and optional X/Z/Y through existing H Display preferences, with

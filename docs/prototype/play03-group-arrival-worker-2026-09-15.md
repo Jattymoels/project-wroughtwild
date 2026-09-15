@@ -1,4 +1,64 @@
-# PLAY-03: turtle, archer and Cinder Wisp arrival hitch
+# PLAY-03: arrival fixes across the full current creature roster
+
+## Owner expansion: all current creatures and mobs
+
+The owner explicitly asked: "Sorry can we just make sure we fix all the
+creatures/mobs? is that all of them?" This expands the existing task. The reported
+turtle/archer/wisp group remains the first causal reproduction, not the delivery
+boundary. Apply the shared correction throughout the current roster and address
+distinct measured creation/batch stalls. Do not wait for one owner report per
+species or stop with an identical known loading omission elsewhere.
+
+Derive a coverage list from native definitions and actual runtime dispatch, not
+only definitions containing `finished`. Coordinator inventory at main `8015564`:
+
+| Family | Current ordinary IDs | Presentation |
+| --- | --- | --- |
+| Boar, wolf, stag | `ember_whelp`, `ash_hound`, `valley_elk` | FinishedFauna; preserve the prior fix |
+| Porcupine | `cinder_archer` | PorcupinePresentation |
+| Crane | `shrieker` | CranePresentation |
+| Ram | `stone_husk` | RamPresentation |
+| Beetle | `gloom_crawler` | BeetlePresentation |
+| Nymph | `bog_lurker` | NymphPresentation |
+| Tortoise | `hollow_knight` | TortoisePresentation |
+| Both moth/wisp variants | `marsh_wisp`, `cinder_wisp` | RecoveredActorArt + articulated CreatureMotion |
+
+All five current LF aliases are also included: `lf_white_stag`, `lf_green_moth`,
+`lf_paired_boar`, `lf_red_boar`, `lf_blue_boar`. Resolve visual_id dependencies
+once while retaining separate actor materials, scar/status behavior and finite
+ownership. Include elite/era variants using these bodies. Include existing bosses:
+Boss/Forge Tyrant and the shared Warden/capstone body contract, plus Conservator's
+separate procedural human/harness path. Inspect live definitions for any additional
+reachable ID. This covers existing presentations, not production of new boss art.
+
+Account for real entry points: normal New World and validated Continue, passive
+fauna, surface/cave packs, noise recruitment, sleeping reactivation, sieges,
+resource-site defenders, trial initial groups/reinforcements/bosses and restored
+campaign/trial entry. Start with MobPacks, Enemy.spawn, player.gd site spawns,
+TrialController, Boss.spawn_boss and Conservator.configure. Shared entry points
+can cover several contexts, but a Sandpit-only helper is not proof of trial/boss
+coverage. Prepare resources before interactive first use at the appropriate
+lifecycle point without creating/activating dormant actors early.
+
+Deliver a compact coverage table for every current ID/family and entry path:
+shared implementation, relevant evidence and residual limitation. If a path is
+already safe, retain it and record why. If per-instance work still creates a
+substantial group pause, measure/fix it; cached textures alone do not close that.
+Do not declare full-roster arrival work complete while known actionable stalls
+or unaccounted-for presentation paths remain. Keep unrelated performance open
+separately; this does not authorise new gameplay rules, art or a general framework.
+
+The owner's all-roster request authorises one bounded coverage pass through each
+distinct live resource/presentation and shared entry path, with first-use and
+grouped creation. Include it in the after/lifecycle jobs below where practical;
+an extra focused job is justified for a distinct affected path. Do not exclude a
+family solely to satisfy the earlier three-job default. Reuse unchanged alias/
+elite evidence, but account for both wisp resource variants. This supersedes the
+old exclusion of species coverage for this task. It does not require species x
+seed x camera x renderer x status combinations, full boss fights or campaign
+replays. Keep one renderer and the normal mouse-comfort protections.
+
+## Reported reproduction and retained implementation guidance
 
 The owner reports "still some considerable lag when a lot of mobs spawn in at
 once unfortunately", then identifies "turtle + archers + cinder wisps".
@@ -13,9 +73,9 @@ commits are already adopted; commit only the continuation. No new checkout/reset
 
 ## Outcome and known paths
 
-Remove the substantial pause in the reported group arrival while preserving the
-full encounter/art. The prior first boar result, 324.760 to 7.529 ms, remains valid
-but does not establish smooth group arrivals or coverage of these creatures:
+Remove substantial arrival pauses across the full roster while preserving the
+complete encounters/art. The prior first boar result, 324.760 to 7.529 ms, remains
+valid but does not establish full-roster or group coverage. The reported trio is:
 
 - Turtle: `hollow_knight`, `TortoisePresentation`, knight/ward behavior.
 - Archers: `cinder_archer`, `PorcupinePresentation`, ranged/mark behavior.
@@ -95,7 +155,7 @@ Reuse current D: imports and RF-05 DLL; native changes are not currently expecte
 Use verified mouse opt-out, BOM-free no-focus override and render mutex; never
 move the pointer or stop owner processes. End owned tests. No automatic interactive
 playtest or new package. Write `docs/prototype/play03-group-arrival-result-2026-09-15.md`
-with cause/fix, actual group counts/family coverage, complete timings, checks,
+with cause/fix, actual group counts, full roster/entry-path coverage, timings, checks,
 remaining limits, tuning if any and native/commit status. Supply a private playtest
 approach facing the group, without relying on the missing compass. Use process-
 scoped PowerShell Bypass in launcher instructions and disclose the save slot.

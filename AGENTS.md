@@ -87,7 +87,15 @@ is the immediate priority, ahead of queued PLAY-06 navigation. Reuse the current
 mob-arrival worker and measure this actual mixed/group case; preserve the prior
 boar fix without presenting it as closure of the broader reported issue. Diagnose
 resource loading versus repeated construction/batch cost before choosing the fix.
-The owner starts the worker; do not launch it automatically.
+The owner subsequently expanded this task explicitly to "all the creatures/mobs".
+The current prompt covers all regular creatures, both wisps, passive fauna,
+LF/elite/era variants and existing boss presentation/spawn paths, including groups.
+The reported trio is the starting reproduction, not the completion boundary.
+Resolve shared first-use omissions throughout; do not leave the same known issue
+for another per-species report. A bounded pass over distinct current presentation/
+resource and entry paths is authorised, without renderer/seed/camera/status
+combinations or full campaign replay. The owner starts the worker; do not launch
+it automatically.
 
 After ram integration on 15 September, the owner said: "Everything looks great -
 approved, I haven't done full performance impact yet though but that's fine".
