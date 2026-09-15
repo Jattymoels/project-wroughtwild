@@ -274,6 +274,17 @@ Explicit immediate materialisation bypasses it for setup and restoration.
 The terrain slot count remains one, and all detail/retirement radii, geometry,
 finite stock, generation profiles and save schema remain unchanged.
 
+## Rare-source preparation - PLAY-07, 16 September 2026
+
+[PLAY-07](../prototype/play07-scenery-arrival-result-2026-09-16.md) retains the
+existing F1/F2/F3 rare-source and device scenes during actual New World/validated
+Continue loading, before controls release. Per-source work/animation materials
+remain independent; immutable F1 bore finishes stay with the cached scenes.
+All five finite-source families keep their exact art, LODs, collision, stages,
+quantities and saved ownership. The same helpers serve their existing crafted
+fixtures and F1 recovered cores. Streaming radii, the 2 ms soft creation budget,
+immediate safety paths, world profiles and save schema are unchanged.
+
 ## Travel presentation cost — INT-07D, 7 September 2026
 
 The [travel optimisation](../prototype/travel-performance-2026-09-07.md) preserves

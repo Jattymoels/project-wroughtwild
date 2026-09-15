@@ -3,6 +3,19 @@ extends Node3D
 const ASSETS := "res://f1/assets/"
 const SCAR := preload("res://f1/scar.gdshader")
 static var LOOK: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://f1/settings.json")).state_presentation
+# Instantiated nodes do not retain their source PackedScene. Keep this finite
+# source/device set alive across streaming retirement; live materials stay local.
+static var _scenes: Dictionary = {}
+static var _plain_materials: Dictionary = {}
+static func scene(file: String) -> PackedScene:
+	if not _scenes.has(file): _scenes[file] = load(ASSETS+file)
+	return _scenes[file]
+
+static func prepare_resources() -> void:
+	for kind_id: String in ["lanternheart", "stormglass"]:
+		for level: String in ["near","middle","far"]: scene(kind_id+"_"+level+".glb")
+	for kind_id: String in ["lantern_lamp", "stormglass_lever"]: scene(kind_id+".glb")
+
 var kind := ""
 var key := ""
 var rules: WroughtwildSim
@@ -19,7 +32,7 @@ static func fitted(kind_id: String) -> Node3D:
 	var root := load("res://f1/visuals.gd").new() as Node3D
 	root.kind = kind_id
 	root.name = "StrangeFixtureVisual"
-	var imported := (load(ASSETS+kind_id+".glb") as PackedScene).instantiate()
+	var imported := scene(kind_id+".glb").instantiate()
 	root.add_child(imported)
 	for name_id: String in ["Housing","Heart","Lever","Resonator"]:
 		var part := imported.find_child(name_id+"*",true,false)
@@ -43,13 +56,21 @@ static func attach_source(node: ResourceNode) -> void:
 	var core := Node3D.new()
 	core.name = "Core"
 	root.add_child(core)
+	var trace: Node = node.get_meta("arrival_trace") if node.has_meta("arrival_trace") else null
 	for level: String in ["near","middle","far"]:
-		var mesh := (load(ASSETS+root.kind+"_"+level+".glb") as PackedScene).instantiate() as Node3D
+		var began := Time.get_ticks_usec() if trace != null else 0
+		var packed := scene(root.kind+"_"+level+".glb")
+		if trace != null: trace.note_arrival("scenery_load",began,{"visual":root.kind,"lod":level})
+		began = Time.get_ticks_usec() if trace != null else 0
+		var mesh := packed.instantiate() as Node3D
+		if trace != null: trace.note_arrival("scenery_instance",began,{"visual":root.kind,"lod":level})
 		mesh.name = level
 		mesh.position.y = .12 if root.kind=="lanternheart" else .28
 		if root.kind=="stormglass": mesh.rotation.z = -.7
 		core.add_child(mesh)
+		began = Time.get_ticks_usec() if trace != null else 0
 		root._bind_materials(mesh)
+		if trace != null: trace.note_arrival("scenery_materials",began,{"visual":root.kind,"lod":level})
 		mesh.visible = level=="near"
 	for mat in root.materials: node._own_materials.append(mat)
 	var shape := BoxShape3D.new()
@@ -67,7 +88,7 @@ static func recovered(pickup: Pickup) -> void:
 	root.name="RecoveredCore"
 	root.kind=pickup.family
 	root.set_meta("source_geometry",pickup.family+"_near.glb")
-	var core := (load(ASSETS+pickup.family+"_near.glb") as PackedScene).instantiate() as Node3D
+	var core := scene(pickup.family+"_near.glb").instantiate() as Node3D
 	if pickup.family=="stormglass": core.position.y=.08
 	root.add_child(core)
 	root._bind_materials(core)
@@ -96,13 +117,19 @@ func _bind_materials(node: Node) -> void:
 				materials.append(mat)
 			else:
 				# COLOR_0 stores linear scar masks, never display RGB (including the bore).
-				var plain := original.duplicate() as StandardMaterial3D
-				plain.vertex_color_use_as_albedo=false
-				if "_skin" in original.resource_name:
-					var c: Array = LOOK.bore_colour
-					plain.albedo_color=Color(c[0],c[1],c[2])
-					plain.emission_enabled=false
-				plain.texture_filter=BaseMaterial3D.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS_ANISOTROPIC
+				# These bore/plain finishes never carry work or animation state. Keep
+				# them with the cached scene, including through renderer retirement.
+				var key_id := original.get_instance_id()
+				if not _plain_materials.has(key_id):
+					var finish := original.duplicate() as StandardMaterial3D
+					finish.vertex_color_use_as_albedo=false
+					if "_skin" in original.resource_name:
+						var c: Array = LOOK.bore_colour
+						finish.albedo_color=Color(c[0],c[1],c[2])
+						finish.emission_enabled=false
+					finish.texture_filter=BaseMaterial3D.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS_ANISOTROPIC
+					_plain_materials[key_id]=finish
+				var plain: StandardMaterial3D = _plain_materials[key_id]
 				mi.set_surface_override_material(i,plain)
 	for child in node.get_children(): _bind_materials(child)
 

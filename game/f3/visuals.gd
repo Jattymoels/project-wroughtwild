@@ -2,6 +2,18 @@ extends Node3D
 ## F3 isolated presentation adapter. Native calls own all payment/stock/work.
 const ASSETS := "res://f3/assets/"
 const SCAR := preload("res://f3/scar.gdshader")
+# Instantiated nodes do not retain their source PackedScene. Keep this finite
+# source/device set alive across streaming retirement; live materials stay local.
+static var _scenes: Dictionary = {}
+static func scene(file: String) -> PackedScene:
+	if not _scenes.has(file): _scenes[file] = load(ASSETS+file)
+	return _scenes[file]
+
+static func prepare_resources() -> void:
+	for kind_id: String in ["pullstone", "ventlung"]:
+		for level: String in ["near","middle","far"]: scene(kind_id+"_"+level+".glb")
+	for kind_id: String in ["magnetic_sorter", "ventlung_bellows"]: scene(kind_id+".glb")
+
 var kind := ""
 var key := ""
 var rules: WroughtwildSim
@@ -20,7 +32,7 @@ static func fitted(kind_id: String) -> Node3D:
 	var root := load("res://f3/visuals.gd").new() as Node3D
 	root.kind = kind_id
 	root.name = "StrangeFixtureVisual"
-	var imported := (load(ASSETS+kind_id+".glb") as PackedScene).instantiate()
+	var imported := scene(kind_id+".glb").instantiate()
 	root.add_child(imported)
 	var housing := imported.find_child("Housing*",true,false)
 	if housing != null: housing.name = "Housing"
@@ -42,8 +54,14 @@ static func attach_source(node: ResourceNode) -> void:
 	var core := Node3D.new()
 	core.name = "Core"
 	root.add_child(core)
+	var trace: Node = node.get_meta("arrival_trace") if node.has_meta("arrival_trace") else null
 	for level: String in ["near","middle","far"]:
-		var mesh := (load(ASSETS+root.kind+"_"+level+".glb") as PackedScene).instantiate() as Node3D
+		var began := Time.get_ticks_usec() if trace != null else 0
+		var packed := scene(root.kind+"_"+level+".glb")
+		if trace != null: trace.note_arrival("scenery_load",began,{"visual":root.kind,"lod":level})
+		began = Time.get_ticks_usec() if trace != null else 0
+		var mesh := packed.instantiate() as Node3D
+		if trace != null: trace.note_arrival("scenery_instance",began,{"visual":root.kind,"lod":level})
 		mesh.name = level
 		if root.kind == "pullstone":
 			mesh.scale = Vector3.ONE*.70
@@ -52,7 +70,9 @@ static func attach_source(node: ResourceNode) -> void:
 			mesh.scale = Vector3.ONE*.87
 			mesh.position.y = .19
 		core.add_child(mesh)
+		began = Time.get_ticks_usec() if trace != null else 0
 		root._bind_materials(mesh)
+		if trace != null: trace.note_arrival("scenery_materials",began,{"visual":root.kind,"lod":level})
 		mesh.visible = level == "near"
 	for mat in root.materials: node._own_materials.append(mat)
 	var shape := BoxShape3D.new()

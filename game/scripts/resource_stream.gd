@@ -133,7 +133,10 @@ func materialise(id: String, stream_projection := false) -> ResourceNode:
 	node.set_meta("rare_use",record.get("use_preview",""))
 	node.set_meta("site_id",record.get("site_id",""))
 	node.set_meta("stream_projection",stream_projection)
+	node.set_meta("arrival_trace", terrain.play03_trace)
+	var entry_began := Time.get_ticks_usec() if terrain.play03_trace != null else 0
 	terrain.nodes_root.add_child(node)
+	if terrain.play03_trace != null and StrangeResourceArt.supports(node.visual): terrain.play03_trace.note_arrival("scenery_tree_entry",entry_began,{"visual":String(node.visual),"id":id})
 	active[id]=node
 	if canopies != null: canopies.update(id)
 	node.tree_exiting.connect(_exiting.bind(id))

@@ -1,8 +1,15 @@
 extends RefCounted
 ## Production source and winch presentation.
 const ROOT := "res://f2/assets/"
+# Retain only this adapter's existing resources, including resolved R2 aliases.
+static var _resources: Dictionary = {}
+static func resource(file: String) -> Resource:
+	if not _resources.has(file): _resources[file] = R2Resources.resource(ROOT+file)
+	return _resources[file]
+static func prepare_resources() -> void:
+	for file: String in ["thrumroot-near.glb","thrumroot-albedo.png","winch.glb","landing.glb","basket.glb"]: resource(file)
 static func scene(file: String) -> Node3D:
-	return (R2Resources.resource(ROOT+file) as PackedScene).instantiate()
+	return (resource(file) as PackedScene).instantiate()
 static func fixture(kind: String) -> Node3D:
 	var imported:=scene({"cargo_winch":"winch.glb","winch_landing":"landing.glb","cargo_basket":"basket.glb"}[kind])
 	# Godot adds a GLB scene wrapper. Preserve the authored local origin and
@@ -20,7 +27,7 @@ static func attach_source(node: ResourceNode) -> void:
 	var source := scene("thrumroot-near.glb")
 	source.name="F2Source"
 	for child in source.find_children("*","MeshInstance3D",true,false):
-		var m:=ShaderMaterial.new();m.shader=preload("res://f2/source.gdshader");m.set_shader_parameter("albedo_tex",R2Resources.resource(ROOT+"thrumroot-albedo.png"));child.material_override=m
+		var m:=ShaderMaterial.new();m.shader=preload("res://f2/source.gdshader");m.set_shader_parameter("albedo_tex",resource("thrumroot-albedo.png"));child.material_override=m
 	node.add_child(source)
 	source.set_meta("authority","ResourceNode remaining_units and drive_progress; no item owner")
 static func source_state(node: ResourceNode, depleted: bool) -> void:
