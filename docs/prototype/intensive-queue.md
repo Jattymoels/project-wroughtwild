@@ -12,8 +12,12 @@ PLAY-03 remains significant underground lag, not an access defect (owner correct
 during the movement worker). [PLAY-02 is integrated and pushed as `870159e`](play02-canopy-result-2026-09-15.md): fuller active broadleaf/pine leaf
 surfaces and missing C1 runtime dependencies restored. Owner playtesting remains
 deferred. [MOB-01 porcupine Cinder Archer](mob01-porcupine-worker-2026-09-15.md)
-is next: real rigging, animation and native integration. Ram, crane, beetle,
-nymph and tortoise follow, one existing role per slice.
+is active: real rigging, animation and native integration.
+[MOB-02 ram](mob02-ram-worker-2026-09-15.md) and
+[MOB-03 crane](mob03-crane-worker-2026-09-15.md) are prepared for independent
+parallel rig/animation production under the [shared-file boundary](mob-parallel-production-2026-09-15.md).
+Normal-game integration remains sequential after porcupine; beetle, nymph and
+tortoise follow. These production handoffs are not complete gameplay adoption.
 R9 stays stopped.
 
 The owner currently cannot playtest and has approved continued prototype work

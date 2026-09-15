@@ -8,8 +8,14 @@ outrank historical review, packaging and rollout requirements.
 ## Working rhythm
 
 Build a small playable improvement, integrate it, run a short check, then use
-the owner's experience to choose the next improvement. Keep one integration
-worker active at a time. The owner starts worker sessions from supplied prompts;
+the owner's experience to choose the next improvement. Keep one worker responsible
+for shared runtime integration at a time. On 15 September the owner asked for
+parallel work: independent ram and crane rig/animation production can run beside
+the porcupine integration worker, in separate D: worktrees and file namespaces.
+They return checked production assets for sequential normal-game integration;
+production readiness does not mean that the role is already playable on main.
+See the [parallel production boundary](mob-parallel-production-2026-09-15.md).
+The owner starts worker sessions from supplied prompts;
 the coordinator brings completed, checked commits into main and pushes normally.
 Do not automatically launch workers, independent reviewers or repair waves.
 
@@ -107,8 +113,11 @@ to their own future decision/bug work; art adoption must not silently decide the
    Owner saw the corrected captures; hands-on playtesting remains deferred.
 5. **MOB-01 — porcupine Cinder Archer**, first of six existing enemy roles to rig,
    animate and integrate. [Exact prompt and D: workspace](mob01-porcupine-worker-2026-09-15.md).
-   Then ram Husk, crane Shrieker, beetle Crawler, nymph Lurker and tortoise Knight,
-   one complete role per slice. This is a production order, not new game rules.
+   [MOB-02 ram production](mob02-ram-worker-2026-09-15.md) and
+   [MOB-03 crane production](mob03-crane-worker-2026-09-15.md) are prepared to run
+   in parallel; shared adapters/manifests stay with MOB-01. Integrate their finished
+   assets after porcupine, then beetle, nymph and tortoise. This is a production
+   order, not new game rules; no extra visual approval is required at integration.
    Physical era variants and boss art retain explicit backlog entries.
 6. **Owner playtest when available.** Try the new stations and a useful home/workshop
    task, then a fresh campaign/combat session. Feed findings into the existing
