@@ -1,12 +1,15 @@
 # Decision Registry
 
-RF-05 worker delivery, 15 September 2026: the
+RF-05 integrated on main as `5e5de06`, 15 September 2026: the
 [result](../prototype/rf05-lakes-swimming-result-2026-09-15.md) implements the
 selected lake/wading/surface-swimming scope in fresh `frontier_v8` worlds.
 Existing saves keep their identity and ownership. Water uses generated original
-bed limits, and ordinary pickups/death packs float locally. The checked worker
-commit and matching native DLL are for coordinator integration; no mainline push
-is claimed by this worker. Owner playtesting remains deferred.
+bed limits, and ordinary pickups/death packs float locally. Worker `c3867bf` and
+its matching native DLL are adopted; the 94 focused checks were reused and main's
+short headless import passed. Owner lake playtesting remains deferred. The
+[PLAY-03 mob-arrival worker](../prototype/play03-mob-arrival-worker-2026-09-15.md)
+is prepared next in response to the reported brief hitch; no gameplay-rule change
+or assumed lag cause is selected by that diagnostic/fix brief.
 
 
 RF-05 worker preparation, 15 September 2026: [the implementation brief](../prototype/rf05-lakes-swimming-worker-2026-09-15.md)

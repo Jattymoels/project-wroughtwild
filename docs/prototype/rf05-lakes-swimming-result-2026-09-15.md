@@ -4,7 +4,24 @@ RF-05 puts one seeded lake into ordinary fresh V8 worlds, beside a dry buildable
 home setting. You can walk through shallow water, swim at the surface with normal
 movement input, and walk out onto shore. Paid drops and death packs float locally
 and remain recoverable. Existing V1–V7/LF saves keep their geography and ownership.
-The checked worker is ready for coordinator integration; owner playtesting is deferred.
+Worker `c3867bf` is integrated on main as `5e5de06`; owner lake playtesting is deferred.
+
+## Mainline adoption
+
+The coordinator adopted the source and matching DLL below, preserving the newer
+mob-hitch report and storage-retention update on main. No Godot process was
+running during DLL replacement. The worker's 94 focused checks were reused;
+main's one hidden headless import passed in **6.54 seconds**, exit 0, engine exit
+0 and zero reported errors. This supplies a successful integrated editor import
+without repeating the worker's scene checks. No coordinator test remains running.
+Private logs/state are at
+`D:/Wroughtwild/work/rf05-lakes-swimming/build/rf05/main-integration`.
+
+The native DLL is installed locally and remains ignored, not committed. The
+ordinary source push is reported separately in the coordinator handoff. Next is
+the prepared [PLAY-03 mob-arrival worker](play03-mob-arrival-worker-2026-09-15.md),
+addressing the owner's brief hitch when nearby mobs appear. It retains this lake
+behavior; no lag fix or personal owner acceptance of the lake is claimed here.
 
 ## Remaining limits
 
@@ -18,7 +35,8 @@ The checked worker is ready for coordinator integration; owner playtesting is de
   other renderers/hardware and broader combat/campaign play are not exhaustively checked.
 - Only seeds 77 and 78 have focused generation evidence. One daylight Forward+
   route was rendered. Owner feel/atmosphere acceptance and full performance impact
-  remain unmeasured; PLAY-03 underground lag stays unresolved and parked. R9 stays stopped.
+  remain unmeasured. PLAY-03 remains unresolved; its mob-arrival follow-up is now
+  prepared from this adopted result. R9 stays stopped.
 
 ## What changed
 
@@ -127,6 +145,16 @@ test fixture, not a free structure in a normal New World.
 
 ## Playtest
 
+For the integrated normal owner game:
+
+```powershell
+& 'C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe' --path 'C:/Users/Matty/Dev/project-wroughtwild/game' -- --world-seed=77
+```
+
+Choose **New World** for the lake route below; this uses the usual owner save slot.
+Existing V1–V7/LF Continue preserves its geography and gains no retroactive lake.
+Use the separate worker launcher below to retain your usual slot while trying V8.
+
 For ordinary play in a separate private save slot:
 
 ```powershell
@@ -157,10 +185,10 @@ normal new-world route above. Neither launcher changes the owner's save slot.
 
 ## Native handoff / publication
 
-The checked source, tuning, tools and selected evidence are committed on
-`codex/rf05-lakes-swimming`. The exact source SHA is in the worker response and
-`build/rf05/native/provenance.json` after commit; it identifies the commit containing
-this report. Coordinator adoption and push are pending, as instructed.
+The checked source, tuning, tools and selected evidence are committed as
+`c3867bf` on `codex/rf05-lakes-swimming` and adopted on main as `5e5de06` with the
+matching native DLL. The private provenance identifies the original worker source.
+The coordinator reports the ordinary push outcome separately.
 
 Matching DLL:
 
@@ -175,5 +203,5 @@ receipt retains those hashes. Build helpers resolve this worker's sources,
 reuse the owner's read-only ABI and retain incremental objects. No native binary,
 import cache, build folder or full package is committed.
 
-RF-05 stops here. Mainline integration/push belongs to the coordinator; no next
-slice, R9 review or PLAY-03 investigation is started.
+RF-05 is complete and adopted. Its worker stopped without launching another slice.
+The coordinator has prepared PLAY-03 mob arrival for the owner to start next.

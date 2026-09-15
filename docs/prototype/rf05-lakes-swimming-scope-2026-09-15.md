@@ -1,10 +1,10 @@
 # RF-05 — first lakes and simple swimming
 
-Status: next implementation worker prepared after RF-04 adoption, 15 September
-2026. [The final worker brief](rf05-lakes-swimming-worker-2026-09-15.md) settles the
-choices below. Workspace: `D:/Wroughtwild/work/rf05-lakes-swimming`, branch
-`codex/rf05-lakes-swimming`, setup `build/rf05/SETUP.md`. The owner starts it.
-No lake/swimming implementation is claimed yet.
+Status: implemented by worker `c3867bf` and integrated on main as `5e5de06`,
+15 September 2026. [The result](rf05-lakes-swimming-result-2026-09-15.md) records
+actual lake/swim behavior, limits and focused checks. The original selected scope
+below is retained as history; do not start RF-05 again. The worker and its private
+playtest launcher remain at `D:/Wroughtwild/work/rf05-lakes-swimming`.
 
 ## Owner decision and intended experience
 

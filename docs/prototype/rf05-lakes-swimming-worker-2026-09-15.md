@@ -1,6 +1,6 @@
 # RF-05 — a lake worth making a home beside
 
-Status: prepared for the owner to start after RF-04 adoption, 15 September 2026.
+Status: worker `c3867bf` completed and integrated on main as `5e5de06`, 15 September 2026. See the [result and playtest](rf05-lakes-swimming-result-2026-09-15.md). This brief is history; do not restart RF-05.
 Worktree: `D:/Wroughtwild/work/rf05-lakes-swimming`.
 Branch: `codex/rf05-lakes-swimming`. Exact base, inherited DLL and existing native
 build inputs are in `build/rf05/SETUP.md`. The coordinator integrates the finished

@@ -31,9 +31,10 @@ R9 stays stopped.
 mobs visibly appear, including above ground. The suspected connection to the
 earlier underground incident remains unconfirmed. They clarified **"A brief hitch,
 then recovers"**, so prioritise activation/creation/first display. [PLAY-03 mob arrival](play03-mob-arrival-followup-2026-09-15.md)
-is the next focused diagnostic/fix after the active RF-05 lake worker is adopted.
-The owner explicitly wants lakes to continue first. This new evidence supersedes
-the earlier parked status; it does not start a broad performance/review wave.
+is now [the next prepared worker](play03-mob-arrival-worker-2026-09-15.md) following
+RF-05 adoption. Its D: workspace uses the adopted lake runtime. This completes
+the owner's lake-first sequence and supersedes the earlier parked status;
+it does not start a broad performance/review wave. The owner starts the worker.
 
 **RF-01 is integrated on main as `66f3211`: [result and playtest](rf01-reclaimed-ground-result-2026-09-15.md).**
 Ordinary V6/LF play now has seeded low meadow/forest cover with actual support and
@@ -52,8 +53,9 @@ with the matching native DLL locally installed and main's short import passed.
 as `27fc34d`, removing extra V7 face-centre bumps while keeping broad hills and
 saved geography. Steeper native terracing remains. Its matching DLL is installed;
 focused worker evidence was reused and main's 6.76 s import passed.
-[RF-05 lakes with simple swimming](rf05-lakes-swimming-worker-2026-09-15.md) is next,
-with its D: prompt/worktree prepared from adopted RF-04 for the owner to start.
+[RF-05 lakes with simple swimming](rf05-lakes-swimming-result-2026-09-15.md) is
+integrated on main as `5e5de06`, with its matching native DLL locally installed.
+Its 94 focused checks were reused; main's 6.54 s headless import passed.
 One lake per fresh V8 world, accessible shores, dry home space and reachable
 floating drops/death packs form the first complete water feature. Existing saved
 worlds keep their geography. Small seas, fen/mountain redesign, fresh-LF generation

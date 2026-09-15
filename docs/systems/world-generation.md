@@ -2,7 +2,9 @@
 
 ## RF-05: lakes in fresh V8 worlds
 
-The [RF-05 worker](../prototype/rf05-lakes-swimming-worker-2026-09-15.md) adds
+RF-05 is integrated on main as `5e5de06`, including its matching native DLL and
+a successful short main import. The [result and playtest](../prototype/rf05-lakes-swimming-result-2026-09-15.md) records focused evidence and remaining limits.
+The implemented slice adds
 `frontier_v8` to normal fresh random/chosen-seed worlds at the same 1,024 × 1,024 ×
 96 one-metre extent. Continue selects its saved identity before generation.
 Published V1–V7/Living Frontier inputs and composition remain unchanged.

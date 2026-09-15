@@ -1,9 +1,10 @@
 # PLAY-03 follow-up — large hitches when nearby mobs appear
 
-Status: new owner evidence; focused follow-up queued immediately after RF-05
-adoption. The lake worker is already active and continues its selected scope.
-No second runtime worker, rendered diagnostic or performance review was started
-by this coordination update. Prepare the follow-up from adopted RF-05 main.
+Status: [the focused worker](play03-mob-arrival-worker-2026-09-15.md) is prepared
+after RF-05 adoption as `5e5de06`. Workspace: `D:/Wroughtwild/work/play03-mob-arrival`,
+branch `codex/play03-mob-arrival`, setup `build/play03-arrival/SETUP.md`.
+The owner starts it. No diagnostic run or performance review was started during
+coordination; the evidence and reasoning below remain the scoped starting point.
 
 ## Owner observation
 
@@ -56,8 +57,8 @@ do not repeat the old synthetic shaft test as the default reproduction.
 
 ## Next focused slice
 
-Prepare the implementation prompt/worktree after RF-05 adoption, incorporating
-its V8 water/ground eligibility changes. First add bounded opt-in phase markers
+The prepared worker incorporates RF-05's V8 water/ground eligibility changes.
+First add bounded opt-in phase markers
 around actual activation, per-member setup and first active frames. Capture one
 ordinary nearby-pack arrival, beginning before the pack is activated. Preserve
 the cold first encounter; do not preload away the trigger in the diagnostic.

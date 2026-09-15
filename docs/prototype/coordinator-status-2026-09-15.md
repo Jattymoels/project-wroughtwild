@@ -5,15 +5,21 @@ plan, not a new acceptance gate. The owner wants a solo indie prototype develope
 through playable iterations. Current AGENTS.md and the owner's approved work
 outrank historical review, packaging and rollout requirements.
 
-## RF-05 worker handoff
+## RF-05 adoption and next worker
 
 [RF-05 lakes and surface swimming](rf05-lakes-swimming-result-2026-09-15.md) is
-implemented on `codex/rf05-lakes-swimming` in the prepared D: worker. Adopt its
-checked source and matching DLL together; the result/provenance record and worker
-response identify both. Fresh normal worlds use V8; V1–V7/LF Continue keeps its
-saved geography and ownership. Worker delivery includes actual lake/home pictures
-and a short movement clip. Coordinator adoption/push remains separate. No next
-slice is started. R9 and PLAY-03 remain parked; owner playtesting is deferred.
+integrated on main as `5e5de06` from worker `c3867bf`, with its matching native DLL
+installed locally. Fresh normal worlds use V8; V1–V7/LF Continue keeps its saved
+geography and ownership. The 94 focused generation, lake use/recovery, Continue
+and 100.13 m Forward+ route checks were reused. Main's hidden headless import
+passed in 6.54 seconds, exit 0 and zero reported errors; no test remains running.
+Static water edges and the lack of dedicated swim animation remain limitations.
+Owner lake feel/performance feedback is deferred; R9 stays stopped.
+
+Next is the [PLAY-03 mob-arrival worker](play03-mob-arrival-worker-2026-09-15.md),
+prepared on D: from adopted RF-05. The owner starts it; no worker is automatically
+launched. Its target is the reported brief hitch followed by recovery when mobs
+appear, preserving the lake feature and earlier gameplay.
 
 ## Working rhythm
 
@@ -87,15 +93,12 @@ exit 0 and zero reported errors. Private output stays on D: and no test is runni
 V7 New World/Continue receive the correction; V1–V6/LF remain unchanged. Steep
 terracing and personal owner feel remain limitations. The RF-04 worker is finished.
 
-**Next worker: [RF-05 lakes and simple swimming](rf05-lakes-swimming-worker-2026-09-15.md).**
-The owner now requires water and selected lakes with simple swimming. Include
-wading, surface swimming, easy exits and appealing dry lakeside building space.
-Prepared from adopted RF-04 at `D:/Wroughtwild/work/rf05-lakes-swimming`, branch
-`codex/rf05-lakes-swimming`, setup `build/rf05/SETUP.md`. The owner starts it.
-The brief selects one lake per fresh V8 world, static bounded basin water and
-surface-floating drops/death packs using existing ownership. Existing saved
-geography remains intact. Small seas, fen/mountain
-redesign and a fresh-LF successor remain later possibilities.
+**RF-05 is delivered on main as `5e5de06`, as recorded above.** It includes one
+lake per fresh V8 world, wading/surface swimming, easy shore exits, useful dry home
+space and floating recovery under existing ownership. Its separate private
+playtest launcher remains in `D:/Wroughtwild/work/rf05-lakes-swimming`; do not
+restart the completed worker. Small seas, fen/mountain redesign and a fresh-LF
+successor remain later possibilities.
 
 **PLAY-03 diagnostic delivery is integrated as `cbc6f67`.** The staged drop did
 not reproduce the owner's continuing slowdown; no causal fix is claimed. The
@@ -106,10 +109,12 @@ the owner reports large lag coinciding with nearby mobs visibly appearing in the
 overworld and suspects the earlier underground incident had the same trigger.
 They clarified **"A brief hitch, then recovers"**. The correlation and recovery are
 observed; shared underground cause and exact costly phase are unconfirmed.
-[PLAY-03 mob-arrival follow-up](play03-mob-arrival-followup-2026-09-15.md) is queued
-immediately after RF-05 adoption. The owner explicitly continues the active lake
-worker first. No parallel runtime repair worker is launched; prepare its prompt
-from adopted RF-05 and reuse the existing recorder with targeted arrival markers.
+[PLAY-03 mob-arrival follow-up](play03-mob-arrival-followup-2026-09-15.md) is now
+the next prepared worker: `D:/Wroughtwild/work/play03-mob-arrival`, branch
+`codex/play03-mob-arrival`, setup `build/play03-arrival/SETUP.md`. RF-05 adoption
+completes the owner's lake-first sequence. Reuse the existing recorder with
+targeted arrival markers, one short causal comparison and relevant lifecycle
+checks. No independent reviewer or parallel runtime repair worker is launched.
 
 Reuse the worker's 7 transition and 19 recorder checks. Main's one hidden headless
 import passed in 6.8 seconds with exit 0 and no reported errors. Normal launch

@@ -9,8 +9,8 @@ controller/render observations without changing controls or quality.
 appearing in the overworld. The owner suspects that mob arrival also explains the
 earlier underground descent incident; that link is not yet proven. They clarified
 that the new observation is **a brief hitch, then recovery**. The
-[focused follow-up](play03-mob-arrival-followup-2026-09-15.md) is queued after the
-active RF-05 lake slice, which the owner explicitly continues first. The historical
+[focused follow-up](play03-mob-arrival-worker-2026-09-15.md) is now prepared after
+RF-05 adoption, completing the owner's lake-first sequence. The historical
 parked status below is superseded by this new evidence. Earlier checks remain
 valid within their recorded scope, not evidence that mob arrivals are inexpensive.
 
