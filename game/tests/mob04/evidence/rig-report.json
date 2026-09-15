@@ -1,0 +1,922 @@
+{
+  "stage": "saved rig and export",
+  "source_triangles": 293396,
+  "runtime_triangles": 79997,
+  "runtime_vertices": 36704,
+  "bones": [
+    {
+      "name": "root",
+      "head": [
+        0,
+        0,
+        0
+      ],
+      "tail": [
+        0,
+        0,
+        0.15
+      ],
+      "parent": null
+    },
+    {
+      "name": "body",
+      "head": [
+        0,
+        0.05,
+        0.44
+      ],
+      "tail": [
+        0,
+        0.46,
+        0.44
+      ],
+      "parent": "root"
+    },
+    {
+      "name": "head",
+      "head": [
+        0,
+        0.67,
+        0.46
+      ],
+      "tail": [
+        0,
+        0.89,
+        0.36
+      ],
+      "parent": "body"
+    },
+    {
+      "name": "mandible_L",
+      "head": [
+        -0.12,
+        0.8,
+        0.34
+      ],
+      "tail": [
+        -0.105,
+        0.91,
+        0.25
+      ],
+      "parent": "head"
+    },
+    {
+      "name": "antenna_L",
+      "head": [
+        -0.21,
+        0.755,
+        0.485
+      ],
+      "tail": [
+        -0.48,
+        0.9,
+        0.48
+      ],
+      "parent": "head"
+    },
+    {
+      "name": "mandible_R",
+      "head": [
+        0.12,
+        0.8,
+        0.34
+      ],
+      "tail": [
+        0.105,
+        0.91,
+        0.25
+      ],
+      "parent": "head"
+    },
+    {
+      "name": "antenna_R",
+      "head": [
+        0.21,
+        0.755,
+        0.485
+      ],
+      "tail": [
+        0.48,
+        0.9,
+        0.48
+      ],
+      "parent": "head"
+    },
+    {
+      "name": "fore_L_upper",
+      "head": [
+        -0.34,
+        0.49,
+        0.38
+      ],
+      "tail": [
+        -0.455,
+        0.61,
+        0.34
+      ],
+      "parent": "body"
+    },
+    {
+      "name": "fore_L_lower",
+      "head": [
+        -0.455,
+        0.61,
+        0.34
+      ],
+      "tail": [
+        -0.555,
+        0.79,
+        0.075
+      ],
+      "parent": "fore_L_upper"
+    },
+    {
+      "name": "fore_L_foot",
+      "head": [
+        -0.555,
+        0.79,
+        0.075
+      ],
+      "tail": [
+        -0.59,
+        0.92,
+        0.045
+      ],
+      "parent": "fore_L_lower"
+    },
+    {
+      "name": "mid_L_upper",
+      "head": [
+        -0.43,
+        0.23,
+        0.39
+      ],
+      "tail": [
+        -0.7,
+        0.2,
+        0.31
+      ],
+      "parent": "body"
+    },
+    {
+      "name": "mid_L_lower",
+      "head": [
+        -0.7,
+        0.2,
+        0.31
+      ],
+      "tail": [
+        -0.8,
+        0.165,
+        0.075
+      ],
+      "parent": "mid_L_upper"
+    },
+    {
+      "name": "mid_L_foot",
+      "head": [
+        -0.8,
+        0.165,
+        0.075
+      ],
+      "tail": [
+        -0.97,
+        0.165,
+        0.045
+      ],
+      "parent": "mid_L_lower"
+    },
+    {
+      "name": "hind_L_upper",
+      "head": [
+        -0.43,
+        -0.26,
+        0.37
+      ],
+      "tail": [
+        -0.635,
+        -0.405,
+        0.3
+      ],
+      "parent": "body"
+    },
+    {
+      "name": "hind_L_lower",
+      "head": [
+        -0.635,
+        -0.405,
+        0.3
+      ],
+      "tail": [
+        -0.7,
+        -0.51,
+        0.072
+      ],
+      "parent": "hind_L_upper"
+    },
+    {
+      "name": "hind_L_foot",
+      "head": [
+        -0.7,
+        -0.51,
+        0.072
+      ],
+      "tail": [
+        -0.84,
+        -0.615,
+        0.042
+      ],
+      "parent": "hind_L_lower"
+    },
+    {
+      "name": "fore_R_upper",
+      "head": [
+        0.34,
+        0.49,
+        0.38
+      ],
+      "tail": [
+        0.469,
+        0.647,
+        0.325
+      ],
+      "parent": "body"
+    },
+    {
+      "name": "fore_R_lower",
+      "head": [
+        0.469,
+        0.647,
+        0.325
+      ],
+      "tail": [
+        0.555,
+        0.79,
+        0.075
+      ],
+      "parent": "fore_R_upper"
+    },
+    {
+      "name": "fore_R_foot",
+      "head": [
+        0.555,
+        0.79,
+        0.075
+      ],
+      "tail": [
+        0.59,
+        0.92,
+        0.045
+      ],
+      "parent": "fore_R_lower"
+    },
+    {
+      "name": "mid_R_upper",
+      "head": [
+        0.43,
+        0.23,
+        0.39
+      ],
+      "tail": [
+        0.7,
+        0.2,
+        0.31
+      ],
+      "parent": "body"
+    },
+    {
+      "name": "mid_R_lower",
+      "head": [
+        0.7,
+        0.2,
+        0.31
+      ],
+      "tail": [
+        0.8,
+        0.165,
+        0.075
+      ],
+      "parent": "mid_R_upper"
+    },
+    {
+      "name": "mid_R_foot",
+      "head": [
+        0.8,
+        0.165,
+        0.075
+      ],
+      "tail": [
+        0.97,
+        0.165,
+        0.045
+      ],
+      "parent": "mid_R_lower"
+    },
+    {
+      "name": "hind_R_upper",
+      "head": [
+        0.43,
+        -0.26,
+        0.37
+      ],
+      "tail": [
+        0.635,
+        -0.405,
+        0.3
+      ],
+      "parent": "body"
+    },
+    {
+      "name": "hind_R_lower",
+      "head": [
+        0.635,
+        -0.405,
+        0.3
+      ],
+      "tail": [
+        0.7,
+        -0.51,
+        0.072
+      ],
+      "parent": "hind_R_upper"
+    },
+    {
+      "name": "hind_R_foot",
+      "head": [
+        0.7,
+        -0.51,
+        0.072
+      ],
+      "tail": [
+        0.84,
+        -0.615,
+        0.042
+      ],
+      "parent": "hind_R_lower"
+    }
+  ],
+  "weighted_vertices": {
+    "root": 0,
+    "body": 32110,
+    "head": 3202,
+    "mandible_L": 250,
+    "antenna_L": 202,
+    "mandible_R": 199,
+    "antenna_R": 204,
+    "fore_L_upper": 171,
+    "fore_L_lower": 254,
+    "fore_L_foot": 229,
+    "mid_L_upper": 190,
+    "mid_L_lower": 236,
+    "mid_L_foot": 230,
+    "hind_L_upper": 293,
+    "hind_L_lower": 340,
+    "hind_L_foot": 266,
+    "fore_R_upper": 168,
+    "fore_R_lower": 213,
+    "fore_R_foot": 252,
+    "mid_R_upper": 190,
+    "mid_R_lower": 221,
+    "mid_R_foot": 233,
+    "hind_R_upper": 264,
+    "hind_R_lower": 251,
+    "hind_R_foot": 273
+  },
+  "rigid_shell_vertices": 21466,
+  "max_weights": 3,
+  "max_weight_error": 3.4458935260772705e-08,
+  "max_foot_target_error": 1.8907453925087333e-07,
+  "max_segment_length_error": 1.1693015589120392e-07,
+  "pose_samples": {
+    "idle:0": {
+      "bounds": [
+        [
+          -0.9994081854820251,
+          -0.95180344581604,
+          -4.497996997088194e-08
+        ],
+        [
+          1.0008207559585571,
+          0.950597882270813,
+          0.8771259784698486
+        ]
+      ]
+    },
+    "idle:40": {
+      "bounds": [
+        [
+          -0.9994082450866699,
+          -0.95180344581604,
+          -5.413312464952469e-08
+        ],
+        [
+          1.0008208751678467,
+          0.9505980014801025,
+          0.8791259527206421
+        ]
+      ]
+    },
+    "idle:80": {
+      "bounds": [
+        [
+          -0.9994081854820251,
+          -0.95180344581604,
+          -4.497996997088194e-08
+        ],
+        [
+          1.0008207559585571,
+          0.950597882270813,
+          0.8771259784698486
+        ]
+      ]
+    },
+    "idle:120": {
+      "bounds": [
+        [
+          -0.9994083046913147,
+          -0.95180344581604,
+          -2.2118911147117615e-08
+        ],
+        [
+          1.0008206367492676,
+          0.950597882270813,
+          0.8751260042190552
+        ]
+      ]
+    },
+    "idle:160": {
+      "bounds": [
+        [
+          -0.9994081854820251,
+          -0.95180344581604,
+          -4.497996997088194e-08
+        ],
+        [
+          1.0008207559585571,
+          0.950597882270813,
+          0.8771259784698486
+        ]
+      ]
+    },
+    "walk:0": {
+      "bounds": [
+        [
+          -0.9994083046913147,
+          -0.95180344581604,
+          -2.9802322387695312e-08
+        ],
+        [
+          1.0008207559585571,
+          1.0102481842041016,
+          0.8771259784698486
+        ]
+      ]
+    },
+    "walk:8": {
+      "bounds": [
+        [
+          -0.9994083046913147,
+          -0.95180344581604,
+          -2.2584572434425354e-08
+        ],
+        [
+          1.0008208751678467,
+          0.9602482318878174,
+          0.8771259784698486
+        ]
+      ]
+    },
+    "walk:16": {
+      "bounds": [
+        [
+          -0.9994083046913147,
+          -0.95180344581604,
+          -2.601882442831993e-08
+        ],
+        [
+          1.0008208751678467,
+          1.0105979442596436,
+          0.8771259784698486
+        ]
+      ]
+    },
+    "walk:24": {
+      "bounds": [
+        [
+          -0.9994083046913147,
+          -0.95180344581604,
+          -8.731149137020111e-08
+        ],
+        [
+          1.0008207559585571,
+          0.9605980515480042,
+          0.8771259784698486
+        ]
+      ]
+    },
+    "walk:32": {
+      "bounds": [
+        [
+          -0.9994083046913147,
+          -0.95180344581604,
+          -2.9802322387695312e-08
+        ],
+        [
+          1.0008207559585571,
+          1.0102481842041016,
+          0.8771259784698486
+        ]
+      ]
+    },
+    "windup:0": {
+      "bounds": [
+        [
+          -0.9994081854820251,
+          -0.95180344581604,
+          -4.497996997088194e-08
+        ],
+        [
+          1.0008207559585571,
+          0.950597882270813,
+          0.8771259784698486
+        ]
+      ]
+    },
+    "windup:2": {
+      "bounds": [
+        [
+          -0.9994081854820251,
+          -0.95180344581604,
+          -4.497996997088194e-08
+        ],
+        [
+          1.0008207559585571,
+          0.950597882270813,
+          0.8771259784698486
+        ]
+      ]
+    },
+    "windup:5": {
+      "bounds": [
+        [
+          -0.9994081854820251,
+          -0.95180344581604,
+          -4.497996997088194e-08
+        ],
+        [
+          1.0008207559585571,
+          0.950597882270813,
+          0.8771259784698486
+        ]
+      ]
+    },
+    "windup:7": {
+      "bounds": [
+        [
+          -0.9994081854820251,
+          -0.95180344581604,
+          -4.497996997088194e-08
+        ],
+        [
+          1.0008207559585571,
+          0.950597882270813,
+          0.8771259784698486
+        ]
+      ]
+    },
+    "windup:10": {
+      "bounds": [
+        [
+          -0.9994081854820251,
+          -0.95180344581604,
+          -4.497996997088194e-08
+        ],
+        [
+          1.0008207559585571,
+          0.950597882270813,
+          0.8771259784698486
+        ]
+      ]
+    },
+    "release:0": {
+      "bounds": [
+        [
+          -0.9994081854820251,
+          -0.95180344581604,
+          -4.497996997088194e-08
+        ],
+        [
+          1.0008207559585571,
+          0.950597882270813,
+          0.8771259784698486
+        ]
+      ]
+    },
+    "release:2": {
+      "bounds": [
+        [
+          -0.9994081854820251,
+          -0.95180344581604,
+          -4.497996997088194e-08
+        ],
+        [
+          1.0008207559585571,
+          0.950597882270813,
+          0.8771259784698486
+        ]
+      ]
+    },
+    "release:4": {
+      "bounds": [
+        [
+          -0.9994081854820251,
+          -0.95180344581604,
+          -4.497996997088194e-08
+        ],
+        [
+          1.0008207559585571,
+          0.950597882270813,
+          0.8771259784698486
+        ]
+      ]
+    },
+    "release:6": {
+      "bounds": [
+        [
+          -0.9994081854820251,
+          -0.95180344581604,
+          -4.497996997088194e-08
+        ],
+        [
+          1.0008207559585571,
+          0.950597882270813,
+          0.8771259784698486
+        ]
+      ]
+    },
+    "release:9": {
+      "bounds": [
+        [
+          -0.9994081854820251,
+          -0.95180344581604,
+          -4.497996997088194e-08
+        ],
+        [
+          1.0008207559585571,
+          0.950597882270813,
+          0.8771259784698486
+        ]
+      ]
+    }
+  },
+  "clips_seconds": {
+    "idle": 4,
+    "walk": 0.8,
+    "windup": 0.25,
+    "release": 0.22
+  },
+  "settings": {
+    "target_triangles": 80000,
+    "source_fps": 40,
+    "stance_sink_units": 0.05,
+    "stance_fraction": 0.6,
+    "step_units": 0.12,
+    "foot_lift_units": 0.065,
+    "breath_units": 0.002,
+    "head_windup_radians": 0.12,
+    "head_followthrough_radians": -0.08,
+    "mandible_open_radians": 0.22,
+    "mandible_close_radians": -0.1,
+    "antenna_sweep_radians": 0.055,
+    "idle_duration": 4,
+    "walk_duration": 0.8,
+    "windup_duration": 0.25,
+    "release_duration": 0.22,
+    "uniform_metres_per_source_unit": 0.72,
+    "cosmetic_stride_metres": 1.0,
+    "cull_margin_source_units": 0.3,
+    "body": [
+      0,
+      0.05,
+      0.44
+    ],
+    "head": [
+      0,
+      0.67,
+      0.46
+    ],
+    "head_tip": [
+      0,
+      0.89,
+      0.36
+    ],
+    "legs": [
+      {
+        "name": "fore_L",
+        "side": -1,
+        "kind": "fore",
+        "hip": [
+          -0.34,
+          0.49,
+          0.38
+        ],
+        "knee": [
+          -0.455,
+          0.61,
+          0.34
+        ],
+        "ankle": [
+          -0.555,
+          0.79,
+          0.075
+        ],
+        "toe": [
+          -0.59,
+          0.92,
+          0.045
+        ],
+        "phase": 0,
+        "sole": -0.00019049789989367127
+      },
+      {
+        "name": "mid_L",
+        "side": -1,
+        "kind": "mid",
+        "hip": [
+          -0.43,
+          0.23,
+          0.39
+        ],
+        "knee": [
+          -0.7,
+          0.2,
+          0.31
+        ],
+        "ankle": [
+          -0.8,
+          0.165,
+          0.075
+        ],
+        "toe": [
+          -0.97,
+          0.165,
+          0.045
+        ],
+        "phase": 0.5,
+        "sole": 0.002688800683245063
+      },
+      {
+        "name": "hind_L",
+        "side": -1,
+        "kind": "hind",
+        "hip": [
+          -0.43,
+          -0.26,
+          0.37
+        ],
+        "knee": [
+          -0.635,
+          -0.405,
+          0.3
+        ],
+        "ankle": [
+          -0.7,
+          -0.51,
+          0.072
+        ],
+        "toe": [
+          -0.84,
+          -0.615,
+          0.042
+        ],
+        "phase": 0,
+        "sole": 0.0022122336085885763
+      },
+      {
+        "name": "fore_R",
+        "side": 1,
+        "kind": "fore",
+        "hip": [
+          0.34,
+          0.49,
+          0.38
+        ],
+        "knee": [
+          0.469,
+          0.647,
+          0.325
+        ],
+        "ankle": [
+          0.555,
+          0.79,
+          0.075
+        ],
+        "toe": [
+          0.59,
+          0.92,
+          0.045
+        ],
+        "phase": 0.5,
+        "sole": 0.0004921668441966176
+      },
+      {
+        "name": "mid_R",
+        "side": 1,
+        "kind": "mid",
+        "hip": [
+          0.43,
+          0.23,
+          0.39
+        ],
+        "knee": [
+          0.7,
+          0.2,
+          0.31
+        ],
+        "ankle": [
+          0.8,
+          0.165,
+          0.075
+        ],
+        "toe": [
+          0.97,
+          0.165,
+          0.045
+        ],
+        "phase": 0,
+        "sole": 0.002035566372796893
+      },
+      {
+        "name": "hind_R",
+        "side": 1,
+        "kind": "hind",
+        "hip": [
+          0.43,
+          -0.26,
+          0.37
+        ],
+        "knee": [
+          0.635,
+          -0.405,
+          0.3
+        ],
+        "ankle": [
+          0.7,
+          -0.51,
+          0.072
+        ],
+        "toe": [
+          0.84,
+          -0.615,
+          0.042
+        ],
+        "phase": 0.5,
+        "sole": 0.002822168404236436
+      }
+    ],
+    "purpose": {
+      "target_triangles": "One automatically simplified runtime mesh; the dense source is retained.",
+      "source_fps": "Bake rate of the source animation; independent of gameplay timing.",
+      "stance_sink_units": "Lower the body slightly to give the joint solver bend while feet remain planted.",
+      "stance_fraction": "Fraction of each cycle spent on the ground; opposite tripods overlap in stance.",
+      "step_units": "Forward/back foot sweep in source space; actual source cycle distance is step / stance_fraction.",
+      "foot_lift_units": "Clearance of the three swinging feet above a flat floor.",
+      "breath_units": "Small idle body movement while the six feet remain planted.",
+      "head_windup_radians": "Small head lift and mandibular brace on the native windup fraction.",
+      "head_followthrough_radians": "Short downward bite follow-through after the native strike event.",
+      "mandible_open_radians": "Open the supported mandibles during the existing melee warning.",
+      "mandible_close_radians": "Small closing follow-through; no new contact or damage.",
+      "antenna_sweep_radians": "Subtle supported sensory movement during idle and travel.",
+      "durations": "Authored sample ranges only; native Enemy and CreatureMotion own timing.",
+      "uniform_metres_per_source_unit": "Uniform animal size before family/elite scale; swarm has no 0.76 reduction.",
+      "cosmetic_stride_metres": "One metre per cycle gives five quick tripod cycles per second at native 5m/s; deliberate sliding, not a movement change.",
+      "cull_margin_source_units": "Keeps moving leg tips inside the visual culling envelope.",
+      "joints": "Measured asymmetric Blender Z-up, +Y-forward source landmarks."
+    }
+  },
+  "original_maps_sha256": {
+    "base.png": "c7aaa214c14cde471d81b0b54e4bb255cd1062ac1046f035d104b57395724737",
+    "orm.png": "e410e0a718f97ecdc5f02b61b034b648cf81fc031a06a47e7f2ad432201ccbdf",
+    "scar-mask.png": "d1729aafde39f050c0bcad16d7e1dab4ab655d9b2814b2e93f34f35931196d95"
+  },
+  "source_bounds": [
+    [
+      -0.9994083046913147,
+      -0.95180344581604,
+      -0.00019049789989367127
+    ],
+    [
+      1.0008208751678467,
+      0.9505978226661682,
+      0.9271259903907776
+    ]
+  ],
+  "post_simplification_validation_changed": true,
+  "root_motion": false,
+  "baked_clips_seconds": {
+    "idle": 4.0,
+    "walk": 0.8,
+    "windup": 0.25,
+    "release": 0.225
+  }
+}

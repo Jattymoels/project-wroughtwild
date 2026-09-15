@@ -849,7 +849,9 @@
       }
     },
     "stone_husk": {
-      "ram": {"descriptor": "res://assets/authored/roster/stone_husk/asset.json"},
+      "ram": {
+        "descriptor": "res://assets/authored/roster/stone_husk/asset.json"
+      },
       "source": "build/blender-study/90bcf4757796420fb8a292277d964158/stone_husk.glb",
       "sha256": "57cb71d6d9c8f784ed3f56faa2f4bf4c94f381a5bb7928b78119f571cc9c7a65",
       "role": "guard",
@@ -1061,6 +1063,9 @@
           0.0
         ],
         "source": "game/scenes/enemy.tscn"
+      },
+      "beetle": {
+        "descriptor": "res://assets/authored/roster/gloom_crawler/asset.json"
       }
     },
     "bog_lurker": {

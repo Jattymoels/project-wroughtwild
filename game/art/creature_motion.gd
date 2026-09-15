@@ -37,6 +37,15 @@ func _configure() -> void:
 	_points = LOOK.pivots(role)
 	var id := String(_mesh.get_meta("authored_actor_id",""))
 	var definition: Dictionary = RecoveredActorArt.definitions().get(id,{})
+	if definition.has("beetle"):
+		finished = BeetlePresentation.new()
+		finished.name = "BeetlePresentation"
+		add_child(finished)
+		finished.setup(_mesh, actor, definition.beetle)
+		rig = finished.rig
+		_previous = actor.global_position
+		actor.attack_released.connect(released)
+		return
 	if definition.has("ram"):
 		finished = RamPresentation.new()
 		finished.name = "RamPresentation"

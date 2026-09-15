@@ -1,0 +1,213 @@
+{
+  "target_triangles": 80000,
+  "source_fps": 40,
+  "stance_sink_units": 0.05,
+  "stance_fraction": 0.6,
+  "step_units": 0.12,
+  "foot_lift_units": 0.065,
+  "breath_units": 0.002,
+  "head_windup_radians": 0.12,
+  "head_followthrough_radians": -0.08,
+  "mandible_open_radians": 0.22,
+  "mandible_close_radians": -0.1,
+  "antenna_sweep_radians": 0.055,
+  "idle_duration": 4,
+  "walk_duration": 0.8,
+  "windup_duration": 0.25,
+  "release_duration": 0.22,
+  "uniform_metres_per_source_unit": 0.72,
+  "cosmetic_stride_metres": 1.0,
+  "cull_margin_source_units": 0.3,
+  "body": [
+    0,
+    0.05,
+    0.44
+  ],
+  "head": [
+    0,
+    0.67,
+    0.46
+  ],
+  "head_tip": [
+    0,
+    0.89,
+    0.36
+  ],
+  "legs": [
+    {
+      "name": "fore_L",
+      "side": -1,
+      "kind": "fore",
+      "hip": [
+        -0.34,
+        0.49,
+        0.38
+      ],
+      "knee": [
+        -0.455,
+        0.61,
+        0.34
+      ],
+      "ankle": [
+        -0.555,
+        0.79,
+        0.075
+      ],
+      "toe": [
+        -0.59,
+        0.92,
+        0.045
+      ],
+      "phase": 0
+    },
+    {
+      "name": "mid_L",
+      "side": -1,
+      "kind": "mid",
+      "hip": [
+        -0.43,
+        0.23,
+        0.39
+      ],
+      "knee": [
+        -0.7,
+        0.2,
+        0.31
+      ],
+      "ankle": [
+        -0.8,
+        0.165,
+        0.075
+      ],
+      "toe": [
+        -0.97,
+        0.165,
+        0.045
+      ],
+      "phase": 0.5
+    },
+    {
+      "name": "hind_L",
+      "side": -1,
+      "kind": "hind",
+      "hip": [
+        -0.43,
+        -0.26,
+        0.37
+      ],
+      "knee": [
+        -0.635,
+        -0.405,
+        0.3
+      ],
+      "ankle": [
+        -0.7,
+        -0.51,
+        0.072
+      ],
+      "toe": [
+        -0.84,
+        -0.615,
+        0.042
+      ],
+      "phase": 0
+    },
+    {
+      "name": "fore_R",
+      "side": 1,
+      "kind": "fore",
+      "hip": [
+        0.34,
+        0.49,
+        0.38
+      ],
+      "knee": [
+        0.469,
+        0.647,
+        0.325
+      ],
+      "ankle": [
+        0.555,
+        0.79,
+        0.075
+      ],
+      "toe": [
+        0.59,
+        0.92,
+        0.045
+      ],
+      "phase": 0.5
+    },
+    {
+      "name": "mid_R",
+      "side": 1,
+      "kind": "mid",
+      "hip": [
+        0.43,
+        0.23,
+        0.39
+      ],
+      "knee": [
+        0.7,
+        0.2,
+        0.31
+      ],
+      "ankle": [
+        0.8,
+        0.165,
+        0.075
+      ],
+      "toe": [
+        0.97,
+        0.165,
+        0.045
+      ],
+      "phase": 0
+    },
+    {
+      "name": "hind_R",
+      "side": 1,
+      "kind": "hind",
+      "hip": [
+        0.43,
+        -0.26,
+        0.37
+      ],
+      "knee": [
+        0.635,
+        -0.405,
+        0.3
+      ],
+      "ankle": [
+        0.7,
+        -0.51,
+        0.072
+      ],
+      "toe": [
+        0.84,
+        -0.615,
+        0.042
+      ],
+      "phase": 0.5
+    }
+  ],
+  "purpose": {
+    "target_triangles": "One automatically simplified runtime mesh; the dense source is retained.",
+    "source_fps": "Bake rate of the source animation; independent of gameplay timing.",
+    "stance_sink_units": "Lower the body slightly to give the joint solver bend while feet remain planted.",
+    "stance_fraction": "Fraction of each cycle spent on the ground; opposite tripods overlap in stance.",
+    "step_units": "Forward/back foot sweep in source space; actual source cycle distance is step / stance_fraction.",
+    "foot_lift_units": "Clearance of the three swinging feet above a flat floor.",
+    "breath_units": "Small idle body movement while the six feet remain planted.",
+    "head_windup_radians": "Small head lift and mandibular brace on the native windup fraction.",
+    "head_followthrough_radians": "Short downward bite follow-through after the native strike event.",
+    "mandible_open_radians": "Open the supported mandibles during the existing melee warning.",
+    "mandible_close_radians": "Small closing follow-through; no new contact or damage.",
+    "antenna_sweep_radians": "Subtle supported sensory movement during idle and travel.",
+    "durations": "Authored sample ranges only; native Enemy and CreatureMotion own timing.",
+    "uniform_metres_per_source_unit": "Uniform animal size before family/elite scale; swarm has no 0.76 reduction.",
+    "cosmetic_stride_metres": "One metre per cycle gives five quick tripod cycles per second at native 5m/s; deliberate sliding, not a movement change.",
+    "cull_margin_source_units": "Keeps moving leg tips inside the visual culling envelope.",
+    "joints": "Measured asymmetric Blender Z-up, +Y-forward source landmarks."
+  }
+}
