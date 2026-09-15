@@ -30,6 +30,24 @@ reported bugs and playtest questions. A checked implementation can be in the gam
 while feel/balance feedback remains open. Do not restart a completed intensive
 merely because a historical checkbox still says human review pending.
 
+## Current next slice after the completed art batch
+
+The owner approved the published tortoise visuals and asked to continue.
+**[PLAY-03 underground lag](play03-underground-worker-2026-09-15.md)** is prepared
+at `D:/Wroughtwild/work/play03-underground`, branch `codex/play03-underground`.
+The owner starts the worker; the coordinator publishes its checked result.
+It covers one evidence-led cave/dug-area transition and subsequent stationary
+state, addressing the warmup/preparation gap in the earlier clean sample. Deliver
+a narrow causal fix if reproduced, or a small opt-in capture if not. A diagnostic
+alone leaves the bug open. No broad performance clearance or art review is needed.
+
+The owner has not supplied the incident coordinate/save or remembered whether
+lag persisted while stationary. This is a useful optional question, not a reason
+to stall the independent code-guided diagnostic. Station/home and campaign feel
+remain subsequent playtest questions. Later-era creature growth, boss art and
+Reclaimed Frontier landscapes are longer-term scoped choices, not the next
+automatic batch. The original implementation sequence below is retained as history.
+
 ## Repository inventory
 
 Current adoption update: A1 is integrated on main as `35cee73` and successfully

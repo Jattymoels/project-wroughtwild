@@ -18,6 +18,11 @@ The owner's "Love it - next" approved the shown nymph and continued the agreed
 sequence to this tortoise. Standing prototype approval covers this implementation;
 it does not claim the owner has personally played or reviewed this new result.
 
+After mainline publication, the owner said "Awesome, love it - what's next",
+approving the shown tortoise visuals. Full gameplay/performance playtesting is
+still incomplete; the coordinator moves to the separate PLAY-03 underground-lag
+follow-up rather than reopening this finished base-roster batch.
+
 ## Mainline adoption — regular replacement roster complete
 
 The coordinator adopted `39fd76abd10bd72e46f187c9b306c4655958f03b` as `5c1b360`.

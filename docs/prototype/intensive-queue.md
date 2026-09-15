@@ -35,6 +35,13 @@ prompts. PLAY-03 significant underground lag remains open; owner combat/station/
 campaign feedback and broad performance coverage are still incomplete. Later-era
 physical forms, boss art and Reclaimed Frontier landscapes remain separate backlog.
 
+After the published tortoise, the owner said "Awesome, love it - what's next".
+Its visuals are approved. **[PLAY-03 underground lag](play03-underground-worker-2026-09-15.md)**
+is the next prepared D: worker slice: one current-code entry/excavation-to-settled
+diagnostic, followed by a cause-specific fix or a small opt-in capture if the
+incident cannot be reproduced. The old prewarmed cave sample is not a reason to
+mark the report fixed or rerun a whole performance programme.
+
 The owner currently cannot playtest and has approved continued prototype work
 until told otherwise. Human feedback remains deferred; it does not block the
 reported movement/terrain fixes or subsequent mob-production slices.
