@@ -81,6 +81,8 @@ func _begin_run(floor_id: String, legacy: bool) -> bool:
 	return true
 
 func _enter_run() -> void:
+	# Synchronous entry completes resource preparation before returning control.
+	load("res://art/creature_resources.gd").prepare(sim,player.get_tree().get_first_node_in_group("play03_trace"))
 	_cancel_transients()
 	return_position = player.global_position
 	elapsed_seconds=0
@@ -612,6 +614,7 @@ func capture_boundary() -> Dictionary:
 func restore_boundary(data: Dictionary) -> bool:
 	if int(data.get("version",0))!=1 or _find_arena()==null: return false
 	if not bool(sim.call("trial_restore_checkpoint",String(data.get("checkpoint","")))): return false
+	load("res://art/creature_resources.gd").prepare(sim,player.get_tree().get_first_node_in_group("play03_trace"))
 	spatial=true
 	layout=sim.call("trial_layout")
 	rules=sim.call("trial_rules")

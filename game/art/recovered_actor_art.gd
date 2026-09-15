@@ -20,7 +20,7 @@ static func apply(mesh: MeshInstance3D, actor: Node3D, role: String) -> void:
 	# The Warden/capstone retain the current shared Tyrant body/rig contract.
 	if actor is Boss: id="forge_tyrant"
 	if not definitions().has(id): return
-	var authored := mesh_for(id,role)
+	var authored := mesh_for(id,role,actor.arrival_trace)
 	if authored==null: return
 	mesh.mesh=authored
 	mesh.set_meta("authored_actor_id",id)
@@ -71,7 +71,7 @@ static func uses_finished_envelope(definition: Dictionary) -> bool:
 	# later replacement mobs retain their legacy path (it appends adornments).
 	return definition.has("finished") and definition.has("visual_bounds") and int(definition.get("rig_version",1)) == 2
 
-static func mesh_for(id: String, role: String) -> ArrayMesh:
+static func mesh_for(id: String, role: String, trace: Node = null) -> ArrayMesh:
 	if _meshes.has(id): return _meshes[id]
 	if not definitions().has(id): return null
 	var definition: Dictionary = definitions()[id]
@@ -91,9 +91,14 @@ static func mesh_for(id: String, role: String) -> ArrayMesh:
 		bounds_mesh.set_meta("finished_envelope",true)
 		_meshes[id] = bounds_mesh
 		return bounds_mesh
+	var began := Time.get_ticks_usec() if is_instance_valid(trace) and trace.active else 0
 	var packed := load("res://assets/authored/mobs/"+id+".glb") as PackedScene
+	if began > 0: trace.note_arrival("recovered_resource",began,{"enemy_id":id})
 	if packed==null: return null
+	began = Time.get_ticks_usec() if began > 0 else 0
 	var root := packed.instantiate()
+	if began > 0: trace.note_arrival("recovered_instantiate",began,{"enemy_id":id})
+	began = Time.get_ticks_usec() if began > 0 else 0
 	var found: Dictionary={}
 	_find_mesh(root,Transform3D.IDENTITY,found)
 	if found.is_empty():
@@ -146,6 +151,7 @@ static func mesh_for(id: String, role: String) -> ArrayMesh:
 	output.set_meta("authored_actor_id",id)
 	output.set_meta("source_triangles",definition.triangles)
 	root.free()
+	if began > 0: trace.note_arrival("recovered_rebuild",began,{"enemy_id":id})
 	_meshes[id]=output
 	return output
 

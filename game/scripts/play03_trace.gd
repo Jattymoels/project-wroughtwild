@@ -1,6 +1,7 @@
 extends Node
 ## Opt-in local ring recorder. Reads presentation state; never captures saves.
 ## No input bindings, quality changes, uploads or timed file writes.
+const MAX_ARRIVAL_EVENTS := 2048 # Whole capped groups plus substeps; overflow stays explicit.
 const MAX_FRAMES := 7200 # Last ~60 seconds at 120fps; bounded at any play duration.
 var world: Node3D
 var terrain: Terrain
@@ -84,7 +85,7 @@ func note_arrival(phase: String, began: int, details: Dictionary = {}) -> void:
 	if not active: return
 	if not _interval.has("arrivals"): _interval["arrivals"] = []
 	var events: Array = _interval.arrivals
-	if events.size() >= 128:
+	if events.size() >= MAX_ARRIVAL_EVENTS:
 		_interval["arrival_events_dropped"] = int(_interval.get("arrival_events_dropped", 0)) + 1
 		return
 	var event := details.duplicate()

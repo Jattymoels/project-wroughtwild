@@ -105,7 +105,7 @@ func _build_world(seed_value: int) -> void:
 		return
 	# Resource-only preparation belongs to normal New World and validated
 	# Continue loading, before control release. No dormant actor is instantiated.
-	FinishedFauna.prepare_world(terrain.play03_trace)
+	load("res://art/creature_resources.gd").prepare(_sim(),terrain.play03_trace)
 	# A new terrain map must not re-ground the previous world's decorative
 	# sites as its first streamed chunks arrive. Their state is wholly derived.
 	for name in ["FrontierSites", "LeylineSources", "PressurePockets", "CataclysmSites", "StrangeSites", "HabitatSites"]:

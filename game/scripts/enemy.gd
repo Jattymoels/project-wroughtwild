@@ -887,9 +887,11 @@ func _update_shot_tell() -> void:
 	if projectile_rules.is_empty():
 		return
 	if not is_instance_valid(_shot_tell):
+		var began := Time.get_ticks_usec() if _arrival_tracing() else 0
 		_shot_tell = EnemyProjectile.make_head(projectile_rules)
 		add_child(_shot_tell)
 		_shot_tell.position = Vector3(0, float(projectile_rules["muzzle_height_m"]), 0)
+		_note_arrival("shot_tell_first_use",began)
 	_shot_tell.visible = state == "windup" and life > 0.0 and not staggered()
 	var charge := clampf(1.0 - _windup_left / maxf(windup_seconds, 0.001), 0.0, 1.0)
 	_shot_tell.scale = Vector3.ONE * lerpf(SHOT_LOOK.charge_start_scale, SHOT_LOOK.charge_end_scale, charge)
@@ -1167,22 +1169,32 @@ func kindle(bonus: float) -> void:
 
 
 ## The warden's aura: a translucent sphere at its reach while it wards.
-func _refresh_aura() -> void:
-	if verb != "ward":
-		return
-	if _aura == null:
-		_aura = MeshInstance3D.new()
+static var _ward_meshes: Dictionary = {}
+
+static func prepare_ward(radius: float) -> SphereMesh:
+	if not _ward_meshes.has(radius):
 		var sphere := SphereMesh.new()
-		sphere.radius = verb_radius
-		sphere.height = verb_radius * 2.0
+		sphere.radius = radius
+		sphere.height = radius * 2.0
 		var material := StandardMaterial3D.new()
 		material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 		material.albedo_color = Color(0.7, 0.7, 0.95, 0.12)
 		material.cull_mode = BaseMaterial3D.CULL_DISABLED
 		sphere.material = material
-		_aura.mesh = sphere
+		sphere.surface_get_arrays(0)
+		_ward_meshes[radius] = sphere
+	return _ward_meshes[radius]
+
+func _refresh_aura() -> void:
+	if verb != "ward":
+		return
+	if _aura == null:
+		var began := Time.get_ticks_usec() if _arrival_tracing() else 0
+		_aura = MeshInstance3D.new()
+		_aura.mesh = prepare_ward(verb_radius)
 		_aura.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 		add_child(_aura)
+		_note_arrival("ward_first_use",began)
 	_aura.visible = wards()
 
 

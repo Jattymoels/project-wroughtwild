@@ -1,0 +1,1781 @@
+{
+  "before": {
+    "report": {
+      "checks": 26,
+      "expected_packs": [
+        {
+          "ids": [
+            "cinder_wisp",
+            "cinder_wisp",
+            "ash_hound",
+            "cinder_wisp"
+          ],
+          "index": 146,
+          "position": "(858.5, 46.0, 490.5)"
+        },
+        {
+          "ids": [
+            "shrieker",
+            "ember_whelp",
+            "ember_whelp",
+            "shrieker"
+          ],
+          "index": 149,
+          "position": "(890.5, 42.0, 494.5)"
+        },
+        {
+          "ids": [
+            "ash_hound",
+            "ash_hound",
+            "ash_hound",
+            "ash_hound"
+          ],
+          "index": 153,
+          "position": "(890.5, 43.0, 498.5)"
+        },
+        {
+          "ids": [
+            "cinder_archer",
+            "ember_whelp",
+            "ember_whelp"
+          ],
+          "index": 154,
+          "position": "(894.5, 42.0, 498.5)"
+        },
+        {
+          "ids": [
+            "shrieker",
+            "ember_whelp",
+            "ember_whelp",
+            "ember_whelp",
+            "ember_whelp"
+          ],
+          "index": 155,
+          "position": "(942.5, 35.0, 498.5)"
+        },
+        {
+          "ids": [
+            "ember_whelp",
+            "ember_whelp",
+            "ember_whelp"
+          ],
+          "index": 156,
+          "position": "(866.5, 51.0, 502.5)"
+        },
+        {
+          "ids": [
+            "ash_hound",
+            "ash_hound",
+            "ash_hound",
+            "ash_hound"
+          ],
+          "index": 159,
+          "position": "(874.5, 53.0, 514.5)"
+        },
+        {
+          "ids": [
+            "hollow_knight",
+            "cinder_wisp",
+            "hollow_knight"
+          ],
+          "index": 160,
+          "position": "(918.5, 40.0, 518.5)"
+        }
+      ],
+      "failures": 0,
+      "group": [
+        {
+          "ids": [
+            "cinder_wisp",
+            "cinder_wisp",
+            "ash_hound",
+            "cinder_wisp"
+          ],
+          "index": 146
+        },
+        {
+          "ids": [
+            "shrieker",
+            "ember_whelp",
+            "ember_whelp",
+            "shrieker"
+          ],
+          "index": 149
+        },
+        {
+          "ids": [
+            "ash_hound",
+            "ash_hound",
+            "ash_hound",
+            "ash_hound"
+          ],
+          "index": 153
+        },
+        {
+          "ids": [
+            "cinder_archer",
+            "ember_whelp",
+            "ember_whelp"
+          ],
+          "index": 154
+        },
+        {
+          "ids": [
+            "shrieker",
+            "ember_whelp",
+            "ember_whelp",
+            "ember_whelp",
+            "ember_whelp"
+          ],
+          "index": 155
+        },
+        {
+          "ids": [
+            "ember_whelp",
+            "ember_whelp",
+            "ember_whelp"
+          ],
+          "index": 156
+        },
+        {
+          "ids": [
+            "ash_hound",
+            "ash_hound",
+            "ash_hound",
+            "ash_hound"
+          ],
+          "index": 159
+        },
+        {
+          "ids": [
+            "hollow_knight",
+            "cinder_wisp",
+            "hollow_knight"
+          ],
+          "index": 160
+        }
+      ],
+      "initial_position": [
+        879.609130859375,
+        53.0999984741211,
+        557.390869140625
+      ],
+      "recovery_end_frame": 324,
+      "roster": [
+        {
+          "bones": 16,
+          "id": "ember_whelp",
+          "spawn_ms": 0.809,
+          "visible": true,
+          "visual_id": ""
+        },
+        {
+          "bones": 17,
+          "id": "cinder_archer",
+          "spawn_ms": 1.67,
+          "visible": true,
+          "visual_id": ""
+        },
+        {
+          "bones": 17,
+          "id": "ash_hound",
+          "spawn_ms": 0.8,
+          "visible": true,
+          "visual_id": ""
+        },
+        {
+          "bones": 23,
+          "id": "stone_husk",
+          "spawn_ms": 182.846,
+          "visible": true,
+          "visual_id": ""
+        },
+        {
+          "bones": 16,
+          "id": "shrieker",
+          "spawn_ms": 0.749,
+          "visible": true,
+          "visual_id": ""
+        },
+        {
+          "bones": 25,
+          "id": "gloom_crawler",
+          "spawn_ms": 195.485,
+          "visible": true,
+          "visual_id": ""
+        },
+        {
+          "bones": 27,
+          "id": "bog_lurker",
+          "spawn_ms": 215.169,
+          "visible": true,
+          "visual_id": ""
+        },
+        {
+          "bones": 21,
+          "id": "marsh_wisp",
+          "spawn_ms": 94.569,
+          "visible": true,
+          "visual_id": ""
+        },
+        {
+          "bones": 21,
+          "id": "cinder_wisp",
+          "spawn_ms": 0.526,
+          "visible": true,
+          "visual_id": ""
+        },
+        {
+          "bones": 17,
+          "id": "hollow_knight",
+          "spawn_ms": 0.763,
+          "visible": true,
+          "visual_id": ""
+        },
+        {
+          "bones": 17,
+          "id": "valley_elk",
+          "spawn_ms": 1.018,
+          "visible": true,
+          "visual_id": ""
+        }
+      ],
+      "trace": "D:/Wroughtwild/work/play03-mob-arrival/build/play03-group/before/play03-2026-09-15T22-57-47-41376-1992442.json",
+      "trigger_frame": 121,
+      "trigger_position": [
+        880.551513671875,
+        52.9601631164551,
+        556.448486328125
+      ],
+      "walk_start_frame": 91,
+      "world_setup_ms": 41923.093,
+      "yaw": -0.785398185253143
+    },
+    "hardware": {
+      "cpu": "AMD Ryzen 9 9950X3D 16-Core Processor",
+      "engine": "4.5-stable (official)",
+      "format": 1,
+      "frame_max_ms": 41910.145,
+      "frame_p95_ms": 17.012,
+      "gpu": "NVIDIA GeForce RTX 5090",
+      "max_frames": 7200,
+      "observer_frame_max_ms": 0.072,
+      "observer_scope": "observer_frame_ms measures row collection including the 1Hz actor count; excludes small timing-hook overhead, storage allocations between callbacks, and post-stop JSON/file writing. This is an instrumented session, not an overhead-free benchmark.",
+      "overwritten_frames": 0,
+      "rendering_method": "forward_plus",
+      "retained_frames": 348,
+      "scope": "Consecutive process-frame intervals, including preceding idle/draw and following physics callbacks. Native surface_y is a reference, not a collision query. Engine monitors are sampled, draw_wall_ms is NOT GPU execution time. No save/inventory payloads. Normal controls and quality are unchanged.",
+      "stop_reason": "group_complete"
+    },
+    "arrival": {
+      "chunk_tick_ms": 1.969,
+      "draw_process_frame": 121,
+      "draw_wall_ms": 14.723,
+      "frame": 122,
+      "frame_ms": 950.572,
+      "physics_callbacks_ms": 20.604,
+      "physics_ticks": 8,
+      "player_physics_ms": 0.828,
+      "process_to_draw_ms": 912.3,
+      "resource_arrival_max_ms": 1.196,
+      "resource_arrival_visual": "seam",
+      "resource_tick_ms": 2.251
+    },
+    "next_interval": {
+      "chunk_tick_ms": 2.448,
+      "draw_process_frame": 122,
+      "draw_wall_ms": 3.33,
+      "frame": 123,
+      "frame_ms": 12.063,
+      "physics_callbacks_ms": 3.517,
+      "physics_ticks": 2,
+      "player_physics_ms": 0.181,
+      "process_to_draw_ms": 3.928,
+      "resource_tick_ms": 0.003
+    },
+    "group_members": 30,
+    "arrival_phases": {
+      "instantiate": {
+        "count": 30,
+        "total_ms": 1.712,
+        "max_ms": 0.37
+      },
+      "support": {
+        "count": 30,
+        "total_ms": 0.743,
+        "max_ms": 0.076
+      },
+      "recovered_resource": {
+        "count": 4,
+        "total_ms": 9.649,
+        "max_ms": 6.633
+      },
+      "recovered_instantiate": {
+        "count": 4,
+        "total_ms": 0.258,
+        "max_ms": 0.1
+      },
+      "recovered_rebuild": {
+        "count": 4,
+        "total_ms": 108.872,
+        "max_ms": 62.403
+      },
+      "recovered_mesh": {
+        "count": 30,
+        "total_ms": 121.215,
+        "max_ms": 69.711
+      },
+      "presentation_setup": {
+        "count": 30,
+        "total_ms": 742.8240000000001,
+        "max_ms": 325.675
+      },
+      "motion_attach": {
+        "count": 30,
+        "total_ms": 864.593,
+        "max_ms": 339.782
+      },
+      "configure": {
+        "count": 30,
+        "total_ms": 895.728,
+        "max_ms": 346.808
+      },
+      "member": {
+        "count": 30,
+        "total_ms": 900.366,
+        "max_ms": 346.997
+      },
+      "fauna_model_acquire": {
+        "count": 20,
+        "total_ms": 0.067,
+        "max_ms": 0.007
+      },
+      "fauna_instantiate": {
+        "count": 20,
+        "total_ms": 1.147,
+        "max_ms": 0.095
+      },
+      "fauna_register": {
+        "count": 20,
+        "total_ms": 1.2610000000000001,
+        "max_ms": 0.12
+      },
+      "fauna_rig_bounds_fit": {
+        "count": 20,
+        "total_ms": 0.266,
+        "max_ms": 0.021
+      },
+      "fauna_material_acquire": {
+        "count": 20,
+        "total_ms": 0.061,
+        "max_ms": 0.005
+      },
+      "fauna_material_assign": {
+        "count": 20,
+        "total_ms": 1.159,
+        "max_ms": 0.102
+      },
+      "fauna_initial_seek": {
+        "count": 20,
+        "total_ms": 0.915,
+        "max_ms": 0.095
+      },
+      "pack": {
+        "count": 8,
+        "total_ms": 900.656,
+        "max_ms": 349.231
+      },
+      "adapter_scene": {
+        "count": 6,
+        "total_ms": 194.876,
+        "max_ms": 171.262
+      },
+      "adapter_instance_rig_fit": {
+        "count": 6,
+        "total_ms": 1.218,
+        "max_ms": 0.35
+      },
+      "adapter_material": {
+        "count": 6,
+        "total_ms": 538.783,
+        "max_ms": 232.565
+      },
+      "group_horn": {
+        "count": 1,
+        "total_ms": 900.999,
+        "max_ms": 900.999
+      },
+      "first_actor_tick": {
+        "count": 30,
+        "total_ms": 9.677999999999999,
+        "max_ms": 5.677
+      },
+      "activation_scan": {
+        "count": 1,
+        "total_ms": 0.075,
+        "max_ms": 0.075
+      }
+    },
+    "approach": {
+      "frames": 31,
+      "median_ms": 7.897,
+      "p95_ms": 13.433,
+      "max_ms": 18.389
+    },
+    "recovery": {
+      "frames": 201,
+      "median_ms": 9.41,
+      "p95_ms": 13.636,
+      "max_ms": 237.24
+    },
+    "slow_recovery": [
+      {
+        "chunk_tick_ms": 2.723,
+        "draw_process_frame": 134,
+        "draw_wall_ms": 108.781,
+        "frame": 135,
+        "frame_ms": 237.24,
+        "physics_callbacks_ms": 16.25,
+        "physics_ticks": 8,
+        "player_physics_ms": 0.886,
+        "process_to_draw_ms": 108.7,
+        "resource_arrival_max_ms": 104.571,
+        "resource_arrival_visual": "pullstone",
+        "resource_tick_ms": 104.586
+      }
+    ],
+    "slow_approach": [],
+    "preparation": [],
+    "fixture_interval": {
+      "chunk_tick_ms": 262.756,
+      "draw_process_frame": 1,
+      "draw_wall_ms": 37.301,
+      "ensure_area_ms": 261.19,
+      "frame": 2,
+      "frame_ms": 371.057,
+      "physics_callbacks_ms": 8.448,
+      "physics_ticks": 8,
+      "player_physics_ms": 7.649,
+      "process_to_draw_ms": 323.135,
+      "resource_tick_ms": 0.002
+    },
+    "settling": {
+      "frames": 88,
+      "median_ms": 8.2265,
+      "p95_ms": 11.561,
+      "max_ms": 111.087
+    },
+    "roster_draw_intervals": [
+      {
+        "id": "ember_whelp",
+        "rows": []
+      },
+      {
+        "id": "cinder_archer",
+        "rows": []
+      },
+      {
+        "id": "ash_hound",
+        "rows": []
+      },
+      {
+        "id": "stone_husk",
+        "rows": []
+      },
+      {
+        "id": "shrieker",
+        "rows": []
+      },
+      {
+        "id": "gloom_crawler",
+        "rows": []
+      },
+      {
+        "id": "bog_lurker",
+        "rows": []
+      },
+      {
+        "id": "marsh_wisp",
+        "rows": []
+      },
+      {
+        "id": "cinder_wisp",
+        "rows": []
+      },
+      {
+        "id": "hollow_knight",
+        "rows": []
+      },
+      {
+        "id": "valley_elk",
+        "rows": []
+      }
+    ]
+  },
+  "after": {
+    "report": {
+      "bosses": [
+        {
+          "frame": 395,
+          "id": "forge_tyrant",
+          "spawn_ms": 0.618
+        },
+        {
+          "frame": 397,
+          "id": "conservator",
+          "spawn_ms": 7.453
+        }
+      ],
+      "checks": 38,
+      "expected_packs": [
+        {
+          "ids": [
+            "cinder_wisp",
+            "cinder_wisp",
+            "ash_hound",
+            "cinder_wisp"
+          ],
+          "index": 146,
+          "position": "(858.5, 46.0, 490.5)"
+        },
+        {
+          "ids": [
+            "shrieker",
+            "ember_whelp",
+            "ember_whelp",
+            "shrieker"
+          ],
+          "index": 149,
+          "position": "(890.5, 42.0, 494.5)"
+        },
+        {
+          "ids": [
+            "ash_hound",
+            "ash_hound",
+            "ash_hound",
+            "ash_hound"
+          ],
+          "index": 153,
+          "position": "(890.5, 43.0, 498.5)"
+        },
+        {
+          "ids": [
+            "cinder_archer",
+            "ember_whelp",
+            "ember_whelp"
+          ],
+          "index": 154,
+          "position": "(894.5, 42.0, 498.5)"
+        },
+        {
+          "ids": [
+            "shrieker",
+            "ember_whelp",
+            "ember_whelp",
+            "ember_whelp",
+            "ember_whelp"
+          ],
+          "index": 155,
+          "position": "(942.5, 35.0, 498.5)"
+        },
+        {
+          "ids": [
+            "ember_whelp",
+            "ember_whelp",
+            "ember_whelp"
+          ],
+          "index": 156,
+          "position": "(866.5, 51.0, 502.5)"
+        },
+        {
+          "ids": [
+            "ash_hound",
+            "ash_hound",
+            "ash_hound",
+            "ash_hound"
+          ],
+          "index": 159,
+          "position": "(874.5, 53.0, 514.5)"
+        },
+        {
+          "ids": [
+            "hollow_knight",
+            "cinder_wisp",
+            "hollow_knight"
+          ],
+          "index": 160,
+          "position": "(918.5, 40.0, 518.5)"
+        }
+      ],
+      "failures": 1,
+      "group": [
+        {
+          "ids": [
+            "cinder_wisp",
+            "cinder_wisp",
+            "ash_hound",
+            "cinder_wisp"
+          ],
+          "index": 146
+        },
+        {
+          "ids": [
+            "shrieker",
+            "ember_whelp",
+            "ember_whelp",
+            "shrieker"
+          ],
+          "index": 149
+        },
+        {
+          "ids": [
+            "ash_hound",
+            "ash_hound",
+            "ash_hound",
+            "ash_hound"
+          ],
+          "index": 153
+        },
+        {
+          "ids": [
+            "cinder_archer",
+            "ember_whelp",
+            "ember_whelp"
+          ],
+          "index": 154
+        },
+        {
+          "ids": [
+            "shrieker",
+            "ember_whelp",
+            "ember_whelp",
+            "ember_whelp",
+            "ember_whelp"
+          ],
+          "index": 155
+        },
+        {
+          "ids": [
+            "ember_whelp",
+            "ember_whelp",
+            "ember_whelp"
+          ],
+          "index": 156
+        },
+        {
+          "ids": [
+            "ash_hound",
+            "ash_hound",
+            "ash_hound",
+            "ash_hound"
+          ],
+          "index": 159
+        },
+        {
+          "ids": [
+            "hollow_knight",
+            "cinder_wisp",
+            "hollow_knight"
+          ],
+          "index": 160
+        }
+      ],
+      "initial_position": [
+        879.609130859375,
+        53.0999984741211,
+        557.390869140625
+      ],
+      "recovery_end_frame": 363,
+      "roster": [
+        {
+          "bones": 16,
+          "frame": 363,
+          "id": "ember_whelp",
+          "spawn_ms": 0.828,
+          "visible": true,
+          "visual_id": ""
+        },
+        {
+          "bones": 17,
+          "frame": 365,
+          "id": "cinder_archer",
+          "spawn_ms": 1.561,
+          "visible": true,
+          "visual_id": ""
+        },
+        {
+          "bones": 17,
+          "frame": 367,
+          "id": "ash_hound",
+          "spawn_ms": 0.69,
+          "visible": true,
+          "visual_id": ""
+        },
+        {
+          "bones": 23,
+          "frame": 369,
+          "id": "stone_husk",
+          "spawn_ms": 0.67,
+          "visible": true,
+          "visual_id": ""
+        },
+        {
+          "bones": 16,
+          "frame": 371,
+          "id": "shrieker",
+          "spawn_ms": 0.658,
+          "visible": true,
+          "visual_id": ""
+        },
+        {
+          "bones": 25,
+          "frame": 373,
+          "id": "gloom_crawler",
+          "spawn_ms": 0.676,
+          "visible": true,
+          "visual_id": ""
+        },
+        {
+          "bones": 27,
+          "frame": 375,
+          "id": "bog_lurker",
+          "spawn_ms": 0.866,
+          "visible": true,
+          "visual_id": ""
+        },
+        {
+          "bones": 21,
+          "frame": 377,
+          "id": "marsh_wisp",
+          "spawn_ms": 0.456,
+          "visible": true,
+          "visual_id": ""
+        },
+        {
+          "bones": 21,
+          "frame": 379,
+          "id": "cinder_wisp",
+          "spawn_ms": 0.497,
+          "visible": true,
+          "visual_id": ""
+        },
+        {
+          "bones": 17,
+          "frame": 381,
+          "id": "hollow_knight",
+          "spawn_ms": 0.664,
+          "visible": true,
+          "visual_id": ""
+        },
+        {
+          "bones": 17,
+          "frame": 383,
+          "id": "valley_elk",
+          "spawn_ms": 0.698,
+          "visible": true,
+          "visual_id": ""
+        },
+        {
+          "bones": 17,
+          "frame": 385,
+          "id": "lf_white_stag",
+          "spawn_ms": 0.766,
+          "visible": true,
+          "visual_id": "valley_elk"
+        },
+        {
+          "bones": 21,
+          "frame": 387,
+          "id": "lf_green_moth",
+          "spawn_ms": 2.298,
+          "visible": true,
+          "visual_id": "marsh_wisp"
+        },
+        {
+          "bones": 16,
+          "frame": 389,
+          "id": "lf_paired_boar",
+          "spawn_ms": 3.362,
+          "visible": true,
+          "visual_id": "ember_whelp"
+        },
+        {
+          "bones": 16,
+          "frame": 391,
+          "id": "lf_red_boar",
+          "spawn_ms": 2.593,
+          "visible": true,
+          "visual_id": "ember_whelp"
+        },
+        {
+          "bones": 16,
+          "frame": 393,
+          "id": "lf_blue_boar",
+          "spawn_ms": 2.9,
+          "visible": true,
+          "visual_id": "ember_whelp"
+        }
+      ],
+      "trace": "D:/Wroughtwild/work/play03-mob-arrival/build/play03-group/after/play03-2026-09-15T23-04-23-66220-1957084.json",
+      "trigger_frame": 121,
+      "trigger_position": [
+        880.787109375,
+        52.9601631164551,
+        556.212890625
+      ],
+      "walk_start_frame": 91,
+      "world_setup_ms": 38256.204,
+      "yaw": -0.785398185253143
+    },
+    "hardware": {
+      "cpu": "AMD Ryzen 9 9950X3D 16-Core Processor",
+      "engine": "4.5-stable (official)",
+      "format": 1,
+      "frame_max_ms": 38243.259,
+      "frame_p95_ms": 15.544,
+      "gpu": "NVIDIA GeForce RTX 5090",
+      "max_frames": 7200,
+      "observer_frame_max_ms": 0.091,
+      "observer_scope": "observer_frame_ms measures row collection including the 1Hz actor count; excludes small timing-hook overhead, storage allocations between callbacks, and post-stop JSON/file writing. This is an instrumented session, not an overhead-free benchmark.",
+      "overwritten_frames": 0,
+      "rendering_method": "forward_plus",
+      "retained_frames": 401,
+      "scope": "Consecutive process-frame intervals, including preceding idle/draw and following physics callbacks. Native surface_y is a reference, not a collision query. Engine monitors are sampled, draw_wall_ms is NOT GPU execution time. No save/inventory payloads. Normal controls and quality are unchanged.",
+      "stop_reason": "group_complete"
+    },
+    "arrival": {
+      "chunk_tick_ms": 7.174,
+      "draw_process_frame": 121,
+      "draw_wall_ms": 5.151,
+      "frame": 122,
+      "frame_ms": 40.869,
+      "physics_callbacks_ms": 5.982,
+      "physics_ticks": 2,
+      "player_physics_ms": 0.232,
+      "process_to_draw_ms": 28.861,
+      "resource_arrival_max_ms": 1.474,
+      "resource_arrival_visual": "boulder",
+      "resource_tick_ms": 2.611
+    },
+    "next_interval": {
+      "chunk_tick_ms": 2.322,
+      "draw_process_frame": 122,
+      "draw_wall_ms": 3.703,
+      "frame": 123,
+      "frame_ms": 12.468,
+      "physics_callbacks_ms": 1.476,
+      "physics_ticks": 1,
+      "player_physics_ms": 0.118,
+      "process_to_draw_ms": 6.757,
+      "resource_arrival_max_ms": 1.878,
+      "resource_arrival_visual": "boulder",
+      "resource_tick_ms": 3.332
+    },
+    "group_members": 30,
+    "arrival_phases": {
+      "instantiate": {
+        "count": 30,
+        "total_ms": 1.085,
+        "max_ms": 0.252
+      },
+      "support": {
+        "count": 30,
+        "total_ms": 0.483,
+        "max_ms": 0.035
+      },
+      "recovered_mesh": {
+        "count": 30,
+        "total_ms": 0.34199999999999997,
+        "max_ms": 0.039
+      },
+      "presentation_setup": {
+        "count": 30,
+        "total_ms": 5.981,
+        "max_ms": 0.949
+      },
+      "motion_attach": {
+        "count": 30,
+        "total_ms": 6.639,
+        "max_ms": 0.969
+      },
+      "configure": {
+        "count": 30,
+        "total_ms": 9.798,
+        "max_ms": 1.061
+      },
+      "member": {
+        "count": 30,
+        "total_ms": 12.629,
+        "max_ms": 1.137
+      },
+      "fauna_model_acquire": {
+        "count": 20,
+        "total_ms": 0.043000000000000003,
+        "max_ms": 0.004
+      },
+      "fauna_instantiate": {
+        "count": 20,
+        "total_ms": 0.758,
+        "max_ms": 0.068
+      },
+      "fauna_register": {
+        "count": 20,
+        "total_ms": 0.833,
+        "max_ms": 0.079
+      },
+      "fauna_rig_bounds_fit": {
+        "count": 20,
+        "total_ms": 0.197,
+        "max_ms": 0.02
+      },
+      "fauna_material_acquire": {
+        "count": 20,
+        "total_ms": 0.043000000000000003,
+        "max_ms": 0.004
+      },
+      "fauna_material_assign": {
+        "count": 20,
+        "total_ms": 0.866,
+        "max_ms": 0.09
+      },
+      "fauna_initial_seek": {
+        "count": 20,
+        "total_ms": 0.6829999999999999,
+        "max_ms": 0.121
+      },
+      "pack": {
+        "count": 8,
+        "total_ms": 12.834,
+        "max_ms": 1.914
+      },
+      "adapter_scene": {
+        "count": 6,
+        "total_ms": 0.015,
+        "max_ms": 0.004
+      },
+      "adapter_instance_rig_fit": {
+        "count": 6,
+        "total_ms": 0.609,
+        "max_ms": 0.184
+      },
+      "adapter_material": {
+        "count": 6,
+        "total_ms": 0.013000000000000001,
+        "max_ms": 0.003
+      },
+      "group_horn": {
+        "count": 1,
+        "total_ms": 13.05,
+        "max_ms": 13.05
+      },
+      "shot_tell_first_use": {
+        "count": 5,
+        "total_ms": 0.175,
+        "max_ms": 0.077
+      },
+      "first_actor_tick": {
+        "count": 30,
+        "total_ms": 3.7369999999999997,
+        "max_ms": 2.586
+      },
+      "ward_first_use": {
+        "count": 2,
+        "total_ms": 0.016,
+        "max_ms": 0.009
+      }
+    },
+    "approach": {
+      "frames": 31,
+      "median_ms": 7.957,
+      "p95_ms": 11.686,
+      "max_ms": 106.84
+    },
+    "recovery": {
+      "frames": 240,
+      "median_ms": 8.994,
+      "p95_ms": 12.764,
+      "max_ms": 21.637
+    },
+    "slow_recovery": [],
+    "slow_approach": [
+      {
+        "chunk_tick_ms": 2.246,
+        "draw_process_frame": 112,
+        "draw_wall_ms": 1.97,
+        "frame": 113,
+        "frame_ms": 106.84,
+        "physics_callbacks_ms": 1.299,
+        "physics_ticks": 5,
+        "player_physics_ms": 0.843,
+        "process_to_draw_ms": 102.546,
+        "resource_arrival_max_ms": 99.276,
+        "resource_arrival_visual": "pullstone",
+        "resource_tick_ms": 99.289
+      }
+    ],
+    "preparation": [
+      {
+        "duration_ms": 2364.251,
+        "phase": "roster_preparation",
+        "physics_frame": 8,
+        "process_frame": 0,
+        "roles": 11,
+        "start_usec": 2025299
+      },
+      {
+        "duration_ms": 28.478,
+        "phase": "roster_preparation",
+        "physics_frame": 230,
+        "process_frame": 363,
+        "roles": 15,
+        "start_usec": 44009466
+      }
+    ],
+    "fixture_interval": {
+      "chunk_tick_ms": 248.454,
+      "draw_process_frame": 1,
+      "draw_wall_ms": 34.507,
+      "ensure_area_ms": 246.897,
+      "frame": 2,
+      "frame_ms": 353.298,
+      "physics_callbacks_ms": 8.226,
+      "physics_ticks": 8,
+      "player_physics_ms": 7.437,
+      "process_to_draw_ms": 308.564,
+      "resource_tick_ms": 0.002
+    },
+    "settling": {
+      "frames": 88,
+      "median_ms": 8.0425,
+      "p95_ms": 10.408,
+      "max_ms": 90.188
+    },
+    "roster_draw_intervals": [
+      {
+        "id": "ember_whelp",
+        "rows": [
+          {
+            "chunk_tick_ms": 1.533,
+            "draw_process_frame": 362,
+            "draw_wall_ms": 2.473,
+            "frame": 363,
+            "frame_ms": 12.971,
+            "physics_callbacks_ms": 5.759,
+            "physics_ticks": 1,
+            "player_physics_ms": 0.113,
+            "process_to_draw_ms": 4.289,
+            "resource_tick_ms": 2.015
+          },
+          {
+            "chunk_tick_ms": 0.2,
+            "draw_process_frame": 363,
+            "draw_wall_ms": 3.002,
+            "frame": 364,
+            "frame_ms": 51.674,
+            "physics_callbacks_ms": 10.639,
+            "physics_ticks": 2,
+            "player_physics_ms": 0.254,
+            "process_to_draw_ms": 36.895,
+            "resource_tick_ms": 2.005
+          },
+          {
+            "chunk_tick_ms": 2.493,
+            "draw_process_frame": 364,
+            "draw_wall_ms": 2.01,
+            "frame": 365,
+            "frame_ms": 17.559,
+            "physics_callbacks_ms": 9.268,
+            "physics_ticks": 2,
+            "player_physics_ms": 0.301,
+            "process_to_draw_ms": 5.596,
+            "resource_tick_ms": 2.014
+          }
+        ]
+      },
+      {
+        "id": "cinder_archer",
+        "rows": [
+          {
+            "chunk_tick_ms": 2.493,
+            "draw_process_frame": 364,
+            "draw_wall_ms": 2.01,
+            "frame": 365,
+            "frame_ms": 17.559,
+            "physics_callbacks_ms": 9.268,
+            "physics_ticks": 2,
+            "player_physics_ms": 0.301,
+            "process_to_draw_ms": 5.596,
+            "resource_tick_ms": 2.014
+          },
+          {
+            "chunk_tick_ms": 0.719,
+            "draw_process_frame": 365,
+            "draw_wall_ms": 2.051,
+            "frame": 366,
+            "frame_ms": 12.954,
+            "physics_callbacks_ms": 4.415,
+            "physics_ticks": 1,
+            "player_physics_ms": 0.1,
+            "process_to_draw_ms": 6.08,
+            "resource_tick_ms": 2.014
+          },
+          {
+            "chunk_tick_ms": 3.874,
+            "draw_process_frame": 366,
+            "draw_wall_ms": 2.182,
+            "frame": 367,
+            "frame_ms": 13.818,
+            "physics_callbacks_ms": 4.374,
+            "physics_ticks": 1,
+            "player_physics_ms": 0.082,
+            "process_to_draw_ms": 6.866,
+            "resource_tick_ms": 2.006
+          }
+        ]
+      },
+      {
+        "id": "ash_hound",
+        "rows": [
+          {
+            "chunk_tick_ms": 3.874,
+            "draw_process_frame": 366,
+            "draw_wall_ms": 2.182,
+            "frame": 367,
+            "frame_ms": 13.818,
+            "physics_callbacks_ms": 4.374,
+            "physics_ticks": 1,
+            "player_physics_ms": 0.082,
+            "process_to_draw_ms": 6.866,
+            "resource_tick_ms": 2.006
+          },
+          {
+            "chunk_tick_ms": 2454.78,
+            "draw_process_frame": 367,
+            "draw_wall_ms": 2.75,
+            "frame": 368,
+            "frame_ms": 2497.575,
+            "physics_callbacks_ms": 32.235,
+            "physics_ticks": 8,
+            "player_physics_ms": 1.061,
+            "process_to_draw_ms": 2459.502,
+            "resource_tick_ms": 2.024
+          },
+          {
+            "chunk_tick_ms": 0.005,
+            "draw_process_frame": 368,
+            "draw_wall_ms": 3.131,
+            "frame": 369,
+            "frame_ms": 18.482,
+            "physics_callbacks_ms": 11.881,
+            "physics_ticks": 3,
+            "player_physics_ms": 0.318,
+            "process_to_draw_ms": 2.292,
+            "resource_tick_ms": 1.076
+          }
+        ]
+      },
+      {
+        "id": "stone_husk",
+        "rows": [
+          {
+            "chunk_tick_ms": 0.005,
+            "draw_process_frame": 368,
+            "draw_wall_ms": 3.131,
+            "frame": 369,
+            "frame_ms": 18.482,
+            "physics_callbacks_ms": 11.881,
+            "physics_ticks": 3,
+            "player_physics_ms": 0.318,
+            "process_to_draw_ms": 2.292,
+            "resource_tick_ms": 1.076
+          },
+          {
+            "chunk_tick_ms": 2.657,
+            "draw_process_frame": 369,
+            "draw_wall_ms": 2.582,
+            "frame": 370,
+            "frame_ms": 12.522,
+            "physics_callbacks_ms": 2.149,
+            "physics_ticks": 1,
+            "player_physics_ms": 0.098,
+            "process_to_draw_ms": 7.219,
+            "resource_tick_ms": 2.008
+          },
+          {
+            "chunk_tick_ms": 0.687,
+            "draw_process_frame": 370,
+            "draw_wall_ms": 2.542,
+            "frame": 371,
+            "frame_ms": 9.519,
+            "physics_callbacks_ms": 2.815,
+            "physics_ticks": 1,
+            "player_physics_ms": 0.09,
+            "process_to_draw_ms": 3.721,
+            "resource_tick_ms": 2.006
+          }
+        ]
+      },
+      {
+        "id": "shrieker",
+        "rows": [
+          {
+            "chunk_tick_ms": 0.687,
+            "draw_process_frame": 370,
+            "draw_wall_ms": 2.542,
+            "frame": 371,
+            "frame_ms": 9.519,
+            "physics_callbacks_ms": 2.815,
+            "physics_ticks": 1,
+            "player_physics_ms": 0.09,
+            "process_to_draw_ms": 3.721,
+            "resource_tick_ms": 2.006
+          },
+          {
+            "chunk_tick_ms": 3.147,
+            "draw_process_frame": 371,
+            "draw_wall_ms": 2.451,
+            "frame": 372,
+            "frame_ms": 13.859,
+            "physics_callbacks_ms": 3.635,
+            "physics_ticks": 1,
+            "player_physics_ms": 0.17,
+            "process_to_draw_ms": 7.198,
+            "resource_tick_ms": 2.016
+          },
+          {
+            "chunk_tick_ms": 3.469,
+            "draw_process_frame": 372,
+            "draw_wall_ms": 2.379,
+            "frame": 373,
+            "frame_ms": 9.007,
+            "process_to_draw_ms": 6.421,
+            "resource_tick_ms": 2.007
+          }
+        ]
+      },
+      {
+        "id": "gloom_crawler",
+        "rows": [
+          {
+            "chunk_tick_ms": 3.469,
+            "draw_process_frame": 372,
+            "draw_wall_ms": 2.379,
+            "frame": 373,
+            "frame_ms": 9.007,
+            "process_to_draw_ms": 6.421,
+            "resource_tick_ms": 2.007
+          },
+          {
+            "chunk_tick_ms": 5.125,
+            "draw_process_frame": 373,
+            "draw_wall_ms": 2.544,
+            "frame": 374,
+            "frame_ms": 16.893,
+            "physics_callbacks_ms": 3.64,
+            "physics_ticks": 1,
+            "player_physics_ms": 0.112,
+            "process_to_draw_ms": 9.434,
+            "resource_tick_ms": 2.008
+          },
+          {
+            "chunk_tick_ms": 1.747,
+            "draw_process_frame": 374,
+            "draw_wall_ms": 2.085,
+            "frame": 375,
+            "frame_ms": 9.16,
+            "physics_callbacks_ms": 2.041,
+            "physics_ticks": 1,
+            "player_physics_ms": 0.093,
+            "process_to_draw_ms": 4.656,
+            "resource_tick_ms": 2.005
+          }
+        ]
+      },
+      {
+        "id": "bog_lurker",
+        "rows": [
+          {
+            "chunk_tick_ms": 1.747,
+            "draw_process_frame": 374,
+            "draw_wall_ms": 2.085,
+            "frame": 375,
+            "frame_ms": 9.16,
+            "physics_callbacks_ms": 2.041,
+            "physics_ticks": 1,
+            "player_physics_ms": 0.093,
+            "process_to_draw_ms": 4.656,
+            "resource_tick_ms": 2.005
+          },
+          {
+            "chunk_tick_ms": 1.211,
+            "draw_process_frame": 375,
+            "draw_wall_ms": 2.606,
+            "frame": 376,
+            "frame_ms": 8.419,
+            "process_to_draw_ms": 5.702,
+            "resource_tick_ms": 2.006
+          },
+          {
+            "chunk_tick_ms": 0.235,
+            "draw_process_frame": 376,
+            "draw_wall_ms": 1.957,
+            "frame": 377,
+            "frame_ms": 7.868,
+            "physics_callbacks_ms": 2.43,
+            "physics_ticks": 1,
+            "player_physics_ms": 0.105,
+            "process_to_draw_ms": 3.036,
+            "resource_tick_ms": 2.015
+          }
+        ]
+      },
+      {
+        "id": "marsh_wisp",
+        "rows": [
+          {
+            "chunk_tick_ms": 0.235,
+            "draw_process_frame": 376,
+            "draw_wall_ms": 1.957,
+            "frame": 377,
+            "frame_ms": 7.868,
+            "physics_callbacks_ms": 2.43,
+            "physics_ticks": 1,
+            "player_physics_ms": 0.105,
+            "process_to_draw_ms": 3.036,
+            "resource_tick_ms": 2.015
+          },
+          {
+            "chunk_tick_ms": 2.27,
+            "draw_process_frame": 377,
+            "draw_wall_ms": 2.305,
+            "frame": 378,
+            "frame_ms": 8.68,
+            "process_to_draw_ms": 6.249,
+            "resource_tick_ms": 2.012
+          },
+          {
+            "chunk_tick_ms": 0.726,
+            "draw_process_frame": 378,
+            "draw_wall_ms": 1.651,
+            "frame": 379,
+            "frame_ms": 8.581,
+            "physics_callbacks_ms": 2.932,
+            "physics_ticks": 1,
+            "player_physics_ms": 0.11,
+            "process_to_draw_ms": 3.56,
+            "resource_tick_ms": 2.019
+          }
+        ]
+      },
+      {
+        "id": "cinder_wisp",
+        "rows": [
+          {
+            "chunk_tick_ms": 0.726,
+            "draw_process_frame": 378,
+            "draw_wall_ms": 1.651,
+            "frame": 379,
+            "frame_ms": 8.581,
+            "physics_callbacks_ms": 2.932,
+            "physics_ticks": 1,
+            "player_physics_ms": 0.11,
+            "process_to_draw_ms": 3.56,
+            "resource_tick_ms": 2.019
+          },
+          {
+            "chunk_tick_ms": 1.575,
+            "draw_process_frame": 379,
+            "draw_wall_ms": 1.941,
+            "frame": 380,
+            "frame_ms": 7.702,
+            "process_to_draw_ms": 5.587,
+            "resource_tick_ms": 2.017
+          },
+          {
+            "chunk_tick_ms": 1.925,
+            "draw_process_frame": 380,
+            "draw_wall_ms": 1.99,
+            "frame": 381,
+            "frame_ms": 9.335,
+            "physics_callbacks_ms": 2.318,
+            "physics_ticks": 1,
+            "player_physics_ms": 0.117,
+            "process_to_draw_ms": 4.627,
+            "resource_tick_ms": 2.018
+          }
+        ]
+      },
+      {
+        "id": "hollow_knight",
+        "rows": [
+          {
+            "chunk_tick_ms": 1.925,
+            "draw_process_frame": 380,
+            "draw_wall_ms": 1.99,
+            "frame": 381,
+            "frame_ms": 9.335,
+            "physics_callbacks_ms": 2.318,
+            "physics_ticks": 1,
+            "player_physics_ms": 0.117,
+            "process_to_draw_ms": 4.627,
+            "resource_tick_ms": 2.018
+          },
+          {
+            "chunk_tick_ms": 1.039,
+            "draw_process_frame": 381,
+            "draw_wall_ms": 2.272,
+            "frame": 382,
+            "frame_ms": 11.28,
+            "physics_callbacks_ms": 2.427,
+            "physics_ticks": 1,
+            "player_physics_ms": 0.111,
+            "process_to_draw_ms": 6.076,
+            "resource_tick_ms": 2.246
+          },
+          {
+            "chunk_tick_ms": 0.338,
+            "draw_process_frame": 382,
+            "draw_wall_ms": 2.091,
+            "frame": 383,
+            "frame_ms": 5.55,
+            "process_to_draw_ms": 3.331,
+            "resource_tick_ms": 2.007
+          }
+        ]
+      },
+      {
+        "id": "valley_elk",
+        "rows": [
+          {
+            "chunk_tick_ms": 0.338,
+            "draw_process_frame": 382,
+            "draw_wall_ms": 2.091,
+            "frame": 383,
+            "frame_ms": 5.55,
+            "process_to_draw_ms": 3.331,
+            "resource_tick_ms": 2.007
+          },
+          {
+            "chunk_tick_ms": 2.217,
+            "draw_process_frame": 383,
+            "draw_wall_ms": 2.196,
+            "frame": 384,
+            "frame_ms": 11.472,
+            "physics_callbacks_ms": 2.344,
+            "physics_ticks": 1,
+            "player_physics_ms": 0.109,
+            "process_to_draw_ms": 6.413,
+            "resource_tick_ms": 2.013
+          },
+          {
+            "chunk_tick_ms": 0.723,
+            "draw_process_frame": 384,
+            "draw_wall_ms": 2.305,
+            "frame": 385,
+            "frame_ms": 6.045,
+            "process_to_draw_ms": 3.631,
+            "resource_tick_ms": 2.004
+          }
+        ]
+      },
+      {
+        "id": "lf_white_stag",
+        "rows": [
+          {
+            "chunk_tick_ms": 0.723,
+            "draw_process_frame": 384,
+            "draw_wall_ms": 2.305,
+            "frame": 385,
+            "frame_ms": 6.045,
+            "process_to_draw_ms": 3.631,
+            "resource_tick_ms": 2.004
+          },
+          {
+            "chunk_tick_ms": 1.3,
+            "draw_process_frame": 385,
+            "draw_wall_ms": 2.032,
+            "frame": 386,
+            "frame_ms": 10.344,
+            "physics_callbacks_ms": 2.4,
+            "physics_ticks": 1,
+            "player_physics_ms": 0.086,
+            "process_to_draw_ms": 5.444,
+            "resource_tick_ms": 2.006
+          },
+          {
+            "chunk_tick_ms": 4.372,
+            "draw_process_frame": 386,
+            "draw_wall_ms": 2.374,
+            "frame": 387,
+            "frame_ms": 9.721,
+            "process_to_draw_ms": 7.138,
+            "resource_tick_ms": 2.015
+          }
+        ]
+      },
+      {
+        "id": "lf_green_moth",
+        "rows": [
+          {
+            "chunk_tick_ms": 4.372,
+            "draw_process_frame": 386,
+            "draw_wall_ms": 2.374,
+            "frame": 387,
+            "frame_ms": 9.721,
+            "process_to_draw_ms": 7.138,
+            "resource_tick_ms": 2.015
+          },
+          {
+            "chunk_tick_ms": 0.056,
+            "draw_process_frame": 387,
+            "draw_wall_ms": 2.513,
+            "frame": 388,
+            "frame_ms": 13.293,
+            "physics_callbacks_ms": 2.438,
+            "physics_ticks": 1,
+            "player_physics_ms": 0.146,
+            "process_to_draw_ms": 7.831,
+            "resource_tick_ms": 2.009
+          },
+          {
+            "chunk_tick_ms": 2.133,
+            "draw_process_frame": 388,
+            "draw_wall_ms": 4.073,
+            "frame": 389,
+            "frame_ms": 14.042,
+            "physics_callbacks_ms": 3.45,
+            "physics_ticks": 1,
+            "player_physics_ms": 0.165,
+            "process_to_draw_ms": 5.903,
+            "resource_tick_ms": 2.004
+          }
+        ]
+      },
+      {
+        "id": "lf_paired_boar",
+        "rows": [
+          {
+            "chunk_tick_ms": 2.133,
+            "draw_process_frame": 388,
+            "draw_wall_ms": 4.073,
+            "frame": 389,
+            "frame_ms": 14.042,
+            "physics_callbacks_ms": 3.45,
+            "physics_ticks": 1,
+            "player_physics_ms": 0.165,
+            "process_to_draw_ms": 5.903,
+            "resource_tick_ms": 2.004
+          },
+          {
+            "chunk_tick_ms": 0.006,
+            "draw_process_frame": 389,
+            "draw_wall_ms": 2.443,
+            "frame": 390,
+            "frame_ms": 8.768,
+            "process_to_draw_ms": 6.255,
+            "resource_tick_ms": 1.073
+          },
+          {
+            "chunk_tick_ms": 1.377,
+            "draw_process_frame": 390,
+            "draw_wall_ms": 2.395,
+            "frame": 391,
+            "frame_ms": 9.729,
+            "physics_callbacks_ms": 2.423,
+            "physics_ticks": 1,
+            "player_physics_ms": 0.115,
+            "process_to_draw_ms": 4.368,
+            "resource_tick_ms": 2.011
+          }
+        ]
+      },
+      {
+        "id": "lf_red_boar",
+        "rows": [
+          {
+            "chunk_tick_ms": 1.377,
+            "draw_process_frame": 390,
+            "draw_wall_ms": 2.395,
+            "frame": 391,
+            "frame_ms": 9.729,
+            "physics_callbacks_ms": 2.423,
+            "physics_ticks": 1,
+            "player_physics_ms": 0.115,
+            "process_to_draw_ms": 4.368,
+            "resource_tick_ms": 2.011
+          },
+          {
+            "chunk_tick_ms": 0.262,
+            "draw_process_frame": 391,
+            "draw_wall_ms": 1.844,
+            "frame": 392,
+            "frame_ms": 8.556,
+            "process_to_draw_ms": 6.652,
+            "resource_tick_ms": 2.018
+          },
+          {
+            "chunk_tick_ms": 2.787,
+            "draw_process_frame": 392,
+            "draw_wall_ms": 2.405,
+            "frame": 393,
+            "frame_ms": 10.986,
+            "physics_callbacks_ms": 2.509,
+            "physics_ticks": 1,
+            "player_physics_ms": 0.105,
+            "process_to_draw_ms": 5.544,
+            "resource_tick_ms": 2.005
+          }
+        ]
+      },
+      {
+        "id": "lf_blue_boar",
+        "rows": [
+          {
+            "chunk_tick_ms": 2.787,
+            "draw_process_frame": 392,
+            "draw_wall_ms": 2.405,
+            "frame": 393,
+            "frame_ms": 10.986,
+            "physics_callbacks_ms": 2.509,
+            "physics_ticks": 1,
+            "player_physics_ms": 0.105,
+            "process_to_draw_ms": 5.544,
+            "resource_tick_ms": 2.005
+          },
+          {
+            "chunk_tick_ms": 1.018,
+            "draw_process_frame": 393,
+            "draw_wall_ms": 2.338,
+            "frame": 394,
+            "frame_ms": 9.917,
+            "process_to_draw_ms": 7.386,
+            "resource_tick_ms": 2.014
+          },
+          {
+            "chunk_tick_ms": 1.508,
+            "draw_process_frame": 394,
+            "draw_wall_ms": 1.856,
+            "frame": 395,
+            "frame_ms": 9.09,
+            "physics_callbacks_ms": 2.423,
+            "physics_ticks": 1,
+            "player_physics_ms": 0.112,
+            "process_to_draw_ms": 4.308,
+            "resource_tick_ms": 2.02
+          }
+        ]
+      }
+    ]
+  },
+  "lifecycle": {
+    "checks": 120,
+    "continue_ms": 49787.082,
+    "failures": 0,
+    "private_source": "RF05 private-world.json; only initial player pose changed for the arrival fixture",
+    "repeat_preparation_ms": 0.06,
+    "repeat_roster_ms": 0.054,
+    "roster": [
+      "ember_whelp",
+      "cinder_archer",
+      "ash_hound",
+      "stone_husk",
+      "shrieker",
+      "gloom_crawler",
+      "bog_lurker",
+      "marsh_wisp",
+      "cinder_wisp",
+      "hollow_knight",
+      "valley_elk",
+      "lf_white_stag",
+      "lf_green_moth",
+      "lf_paired_boar",
+      "lf_red_boar",
+      "lf_blue_boar"
+    ],
+    "trace": "D:/Wroughtwild/work/play03-mob-arrival/build/play03-group/lifecycle/play03-2026-09-15T23-07-26-21040-1318079.json",
+    "trial_entry_ms": 8.095,
+    "preparation": [
+      {
+        "duration_ms": 2161.114,
+        "phase": "roster_preparation",
+        "physics_frame": 1,
+        "process_frame": 0,
+        "roles": 11,
+        "start_usec": 6510440
+      },
+      {
+        "duration_ms": 0.05,
+        "phase": "roster_preparation",
+        "physics_frame": 1,
+        "process_frame": 0,
+        "roles": 11,
+        "start_usec": 51606297
+      },
+      {
+        "duration_ms": 6.551,
+        "phase": "roster_preparation",
+        "physics_frame": 1,
+        "process_frame": 0,
+        "roles": 15,
+        "start_usec": 51610227
+      }
+    ]
+  },
+  "restored_trial": {
+    "checks": 8,
+    "failures": 0,
+    "restore_ms": 2842.101,
+    "trace": "D:/Wroughtwild/work/play03-mob-arrival/build/play03-group/restore/play03-2026-09-15T23-09-45-59848-2420560.json",
+    "preparation": [
+      {
+        "duration_ms": 2503.416,
+        "phase": "roster_preparation",
+        "physics_frame": 1,
+        "process_frame": 0,
+        "roles": 15,
+        "start_usec": 2574202
+      }
+    ]
+  },
+  "rendered_limit": "Final rendered pass: 37/38 checks; temporary human trial was not abandoned before restoration. Corrected teardown passed in the 120-check headless lifecycle; rendered group/roster data retained, no claim of zero failures.",
+  "previous_commit": "039bccf49e6c99c1d40ec78102ccf6cc31efcc0e",
+  "native_dll_sha256": "fbf7067477d63693e35b5d15ccff0bbad86be7586d679e284a44c843b0404e2b",
+  "boss_display": {
+    "checks": 9,
+    "failures": 0,
+    "samples": [
+      {
+        "creation_through_first_post_draw_ms": 6.386,
+        "id": "forge_tyrant",
+        "next_post_draw_interval_ms": 0.611,
+        "spawn_ms": 0.797
+      },
+      {
+        "creation_through_first_post_draw_ms": 4.512,
+        "id": "conservator",
+        "next_post_draw_interval_ms": 0.551,
+        "spawn_ms": 2.616
+      }
+    ],
+    "scope": "Isolated first display after real resource preparation; world simulation intentionally absent from this separate body probe. Setup never overlaps measured draw."
+  },
+  "boss_before_human_cache": {
+    "checks": 6,
+    "failures": 0,
+    "samples": [
+      {
+        "creation_through_first_post_draw_ms": 10.697,
+        "id": "forge_tyrant",
+        "next_post_draw_interval_ms": 0.791,
+        "spawn_ms": 0.744
+      },
+      {
+        "creation_through_first_post_draw_ms": 22.251,
+        "id": "conservator",
+        "next_post_draw_interval_ms": 0.907,
+        "spawn_ms": 19.771
+      }
+    ],
+    "scope": "Isolated first display after real resource preparation; world simulation intentionally absent from this separate body probe. Setup never overlaps measured draw."
+  }
+}

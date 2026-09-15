@@ -12,12 +12,35 @@ var peck_age := -1.0
 var call_visible := false
 var _call_bones: Array[int] = []
 
-func setup(mesh: MeshInstance3D, owner_actor: Enemy, config: Dictionary) -> void:
-	actor = owner_actor
+static func prepare_resources() -> void:
+	_prepare_scene()
+	_prepare_material()
+
+static func _prepare_scene() -> void:
 	if _descriptor.is_empty():
 		_descriptor = JSON.parse_string(FileAccess.get_file_as_string(CRANE_ROOT + "asset.json"))
 	if _crane_scene == null:
 		_crane_scene = load(CRANE_ROOT + _descriptor.model)
+
+static func _prepare_material() -> void:
+	if _crane_material == null:
+		_crane_material = ShaderMaterial.new()
+		_crane_material.shader = CRANE_SHADER
+		for kind: String in _descriptor.maps:
+			_crane_material.set_shader_parameter(kind + "_texture", load(CRANE_ROOT + _descriptor.maps[kind]))
+		for field: String in ["peak_emission", "minimum_light", "period_seconds", "crest_width", "pulse_mode"]:
+			_crane_material.set_shader_parameter(field, _descriptor.material[field])
+		var colour: Array = _descriptor.material.core_colour
+		_crane_material.set_shader_parameter("core_colour", Color(colour[0], colour[1], colour[2]))
+		var tint: Array = _descriptor.material.damage_tint
+		_crane_material.set_shader_parameter("damage_tint", Vector3(tint[0], tint[1], tint[2]))
+
+func setup(mesh: MeshInstance3D, owner_actor: Enemy, config: Dictionary) -> void:
+	actor = owner_actor
+	var resource_began := Time.get_ticks_usec() if actor._arrival_tracing() else 0
+	_prepare_scene()
+	actor._note_arrival("adapter_scene",resource_began)
+	var instance_began := Time.get_ticks_usec() if actor._arrival_tracing() else 0
 	model = _crane_scene.instantiate()
 	add_child(model)
 	rig = model.get_node(NodePath(_descriptor.skeleton_path))
@@ -32,17 +55,10 @@ func setup(mesh: MeshInstance3D, owner_actor: Enemy, config: Dictionary) -> void
 	model.rotation_degrees = Vector3(rotation[0], rotation[1], rotation[2])
 	model.position = Vector3(offset[0], offset[1], offset[2])
 	settings = {"stride_m": float(_descriptor.walk_cycle_travel_source_units) * fit_scale, "idle_clip": "idle"}
-	if _crane_material == null:
-		_crane_material = ShaderMaterial.new()
-		_crane_material.shader = CRANE_SHADER
-		for kind: String in _descriptor.maps:
-			_crane_material.set_shader_parameter(kind + "_texture", load(CRANE_ROOT + _descriptor.maps[kind]))
-		for field: String in ["peak_emission", "minimum_light", "period_seconds", "crest_width", "pulse_mode"]:
-			_crane_material.set_shader_parameter(field, _descriptor.material[field])
-		var colour: Array = _descriptor.material.core_colour
-		_crane_material.set_shader_parameter("core_colour", Color(colour[0], colour[1], colour[2]))
-		var tint: Array = _descriptor.material.damage_tint
-		_crane_material.set_shader_parameter("damage_tint", Vector3(tint[0], tint[1], tint[2]))
+	actor._note_arrival("adapter_instance_rig_fit",instance_began)
+	var material_began := Time.get_ticks_usec() if actor._arrival_tracing() else 0
+	_prepare_material()
+	actor._note_arrival("adapter_material",material_began)
 	material = _crane_material.duplicate()
 	var phase := fposmod(actor.global_position.x * 2.17 + actor.global_position.z * 0.73, 1.0)
 	for part: MeshInstance3D in model.find_children("*", "MeshInstance3D", true, false):

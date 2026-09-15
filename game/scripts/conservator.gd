@@ -52,9 +52,10 @@ func configure_trial(controller: Node, rules: Dictionary) -> void:
 	_trial_rules=rules
 	controller.build_release_pedestals()
 
-func _build_human() -> void:
-	# Human shoulders, head, coat, hands and separate jointed arms; no Warden
-	# mesh, motion adapter or third-party asset. Dimensions are presentation.
+static var _human_meshes: Dictionary = {}
+
+static func prepare_resources() -> void:
+	if not _human_meshes.is_empty(): return
 	var st:=ArtGeometry.begin()
 	ArtGeometry.box(st,Vector3(0,1.35,0),Vector3(.66,.85,.4),Color("545b53"))
 	ArtGeometry.box(st,Vector3(0,1.0,0),Vector3(.8,.35,.48),Color("3c4442"))
@@ -65,27 +66,33 @@ func _build_human() -> void:
 		ArtGeometry.box(st,Vector3(side*.2,.43,0),Vector3(.24,.84,.28),Color("434944"))
 		ArtGeometry.box(st,Vector3(side*.2,.09,-.1),Vector3(.29,.18,.48),Color("323b39"))
 		ArtGeometry.box(st,Vector3(side*.26,1.47,-.24),Vector3(.08,.72,.08),Color("262f31"))
-	_mesh.mesh=st.commit()
+	var limb:=ArtGeometry.begin()
+	ArtGeometry.box(limb,Vector3(0,-.32,0),Vector3(.23,.64,.26),Color("61685b"))
+	ArtGeometry.box(limb,Vector3(0,-.72,-.06),Vector3(.18,.26,.22),Color("b0a28a"))
+	var scar:=ArtGeometry.begin()
+	for i in 5:
+		ArtGeometry.box(scar,Vector3((i%2)*.055,1.34+i*.15,-.225),Vector3(.025,.2,.03),Color.WHITE)
+	ArtGeometry.box(scar,Vector3(.08,2.07,-.225),Vector3(.025,.32,.03),Color.WHITE)
+	_human_meshes={"body":st.commit(),"limb":limb.commit(),"scar":scar.commit()}
+
+func _build_human() -> void:
+	# Human shoulders, head, coat, hands and separate jointed arms; no Warden
+	# mesh, motion adapter or third-party asset. Dimensions are presentation.
+	prepare_resources()
+	_mesh.mesh=_human_meshes.body
 	_mesh.position=Vector3.ZERO
 	for side in [-1.0,1.0]:
 		var joint:=Node3D.new()
 		_mesh.add_child(joint)
 		joint.position=Vector3(side*.43,1.7,0)
 		var part:=MeshInstance3D.new()
-		var limb:=ArtGeometry.begin()
-		ArtGeometry.box(limb,Vector3(0,-.32,0),Vector3(.23,.64,.26),Color("61685b"))
-		ArtGeometry.box(limb,Vector3(0,-.72,-.06),Vector3(.18,.26,.22),Color("b0a28a"))
-		part.mesh=limb.commit()
+		part.mesh=_human_meshes.limb
 		part.material_override=_material
 		joint.add_child(part)
 		arms.append(joint)
-	var scar:=ArtGeometry.begin()
-	for i in 5:
-		ArtGeometry.box(scar,Vector3((i%2)*.055,1.34+i*.15,-.225),Vector3(.025,.2,.03),Color.WHITE)
-	ArtGeometry.box(scar,Vector3(.08,2.07,-.225),Vector3(.025,.32,.03),Color.WHITE)
 	harness=MeshInstance3D.new()
 	harness.name="HarnessScars"
-	harness.mesh=scar.commit()
+	harness.mesh=_human_meshes.scar
 	var glow:=StandardMaterial3D.new()
 	glow.emission_enabled=true
 	glow.emission_energy_multiplier=.8

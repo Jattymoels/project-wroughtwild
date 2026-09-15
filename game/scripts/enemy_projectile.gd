@@ -13,19 +13,29 @@ var sweep: ShapeCast3D
 var spent := false
 var frostbitten := false
 
+static var _heads: Dictionary = {}
+
+static func prepare_head(rules: Dictionary) -> Dictionary:
+	var key := str([rules.radius_m,rules.colour,rules.glow_energy])
+	if not _heads.has(key):
+		var sphere := SphereMesh.new()
+		sphere.radius = float(rules["radius_m"])
+		sphere.height = sphere.radius * 2.0
+		sphere.radial_segments = 12
+		sphere.rings = 6
+		sphere.surface_get_arrays(0) # Materialize the same primitive during loading.
+		var material := ShaderMaterial.new()
+		material.shader = preload("res://art/enemy_shot.gdshader")
+		material.set_shader_parameter("shot_colour", Color(String(rules["colour"])))
+		material.set_shader_parameter("glow_energy", float(rules["glow_energy"]))
+		_heads[key] = {"mesh":sphere,"material":material}
+	return _heads[key]
+
 static func make_head(rules: Dictionary) -> MeshInstance3D:
+	var resources := prepare_head(rules)
 	var head := MeshInstance3D.new()
-	var sphere := SphereMesh.new()
-	sphere.radius = float(rules["radius_m"])
-	sphere.height = sphere.radius * 2.0
-	sphere.radial_segments = 12
-	sphere.rings = 6
-	head.mesh = sphere
-	var material := ShaderMaterial.new()
-	material.shader = preload("res://art/enemy_shot.gdshader")
-	material.set_shader_parameter("shot_colour", Color(String(rules["colour"])))
-	material.set_shader_parameter("glow_energy", float(rules["glow_energy"]))
-	head.material_override = material
+	head.mesh = resources.mesh
+	head.material_override = resources.material.duplicate()
 	head.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	return head
 
