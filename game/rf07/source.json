@@ -1,0 +1,30 @@
+{
+  "forms": {
+    "tussock": {
+      "triangles": 1620,
+      "width_m": 1.131485386385617,
+      "height_m": 0.6109371185302734,
+      "sha256": "4605a17c8f3fe61d647eaae48751e6914b6228302a972eff93e755044d4e1a36"
+    },
+    "heath": {
+      "triangles": 8100,
+      "width_m": 1.1568275267642163,
+      "height_m": 0.6675901412963867,
+      "sha256": "42f74502f0c1033bd008c6b260b6caae8059851a12811a13e605a69e1b3dfd8e"
+    },
+    "cushion": {
+      "triangles": 5940,
+      "width_m": 1.084298731292879,
+      "height_m": 0.21229715645313263,
+      "sha256": "2c10e8043a3456a0fce4273b8888f49ccc480a5fb63241fcbb4e2874f95fcfee"
+    },
+    "shingle": {
+      "triangles": 231,
+      "width_m": 1.1544687828988696,
+      "height_m": 0.1085023358464241,
+      "sha256": "6d137c6b840b974390162ddaa9a0c1913a4b91d29104830952f750a768bb3acd"
+    }
+  },
+  "method": "Original direct Blender modelling; no external assets or reference pixels.",
+  "source": "D:\\Wroughtwild\\source-art\\rf07-highland-recovery\\rf07-highland-master.blend"
+}

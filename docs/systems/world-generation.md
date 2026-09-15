@@ -1,5 +1,25 @@
 # World Generation, Settlements and Travel
 
+## RF-07: derived highland recovery
+
+The [RF-07 worker result](../prototype/rf07-highland-recovery-result-2026-09-16.md)
+adds weathered rock/lichen treatment, settled shingle and hardy growth pockets
+to actual Rocky Hills in V6/V7/V8 and existing LF profiles. Region-forced low
+highlands are eligible without an altitude shortcut. The established regional
+rib/outcrop anchor recipe remains; old independent sedge/scree gives way to
+supported chunk-local tussock, heath, cushion and debris. V1-V5 and unrelated
+biomes retain their presentation, including RF-06B fen/lakeside planting.
+
+Actual full footprints use bounded surface sampling, original top support,
+existing approach reservations and paid floor/station clearance. Native terrain,
+water, finite resources, collision, saves and generation inputs are unchanged.
+New World and validated Continue/publication reconstruct the transient context
+and prepare shared resources before control release. Tuning and source are in
+`game/rf07/settings.json` and `game/rf07/SOURCE.md`. One ordinary seed-77 outlook
+supports a paid floor and workbench; worker support/ownership/route checks pass.
+Visual limits and deferred owner feedback remain in the result; main adoption
+is a separate coordinator step.
+
 ## RF-06: derived fen and dry lake-bank presentation
 
 The [RF-06 worker result](../prototype/rf06-fen-lakeside-result-2026-09-16.md)

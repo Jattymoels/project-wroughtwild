@@ -1,0 +1,28 @@
+{
+	"bench": [
+		840.5,
+		69.0,
+		708.5
+	],
+	"counts": {
+		"RF07_cushion": 286,
+		"RF07_heath": 65,
+		"RF07_shingle": 71,
+		"RF07_tussock": 188
+	},
+	"cover_digest": 2762484568,
+	"height_digest": 1543054539,
+	"hidden": 26,
+	"station": [
+		840,
+		69,
+		712
+	],
+	"target": [
+		840,
+		69,
+		707
+	],
+	"water_digest": 2003974015,
+	"widest_m": 1.73807092316004
+}

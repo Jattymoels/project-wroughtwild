@@ -82,6 +82,7 @@ var _seed := 0
 var play03_trace: Node # Null unless the local PLAY-03 recorder is explicitly enabled.
 var _world_profile := "legacy_v1"
 var wetland_cover: RefCounted # RF06 transient dry-bank/fen composition.
+var highland_cover: RefCounted # RF07 transient rock/pocket composition.
 var reclaimed_cover: RefCounted # Recreated with the actual world identity; never saved.
 var _habitat_refresh_queued := false
 var _augmentation_texture: ImageTexture
@@ -179,6 +180,7 @@ func _material_for(kind: String) -> Material:
 			frontier_material.set_shader_parameter("augmentation_tint", preload("res://art/cataclysm_look.tres").ground_tint_strength)
 		preload("res://rf02/ground.tres").bind(frontier_material, kind, _rf02_biome_mask, map)
 		if wetland_cover!=null: wetland_cover.bind(frontier_material,kind)
+		if highland_cover!=null: highland_cover.bind(frontier_material,kind)
 		_materials[kind] = frontier_material
 		return frontier_material
 	var material := StandardMaterial3D.new()
@@ -251,12 +253,15 @@ func build(sim: WroughtwildSim, seed_value: int, profile_id: String = "") -> voi
 	var geometry_start := Time.get_ticks_msec()
 	reclaimed_cover = null
 	wetland_cover = null
+	highland_cover = null
 	if weathered:
 		HabitatCover.prepare(map)
 		if _world_profile in ["frontier_v6","frontier_v7","frontier_v8","living_frontier_wave1","living_frontier_wave3"]:
 			reclaimed_cover = preload("res://rf01/cover.gd").new(map,_seed,_world_profile,StrangeSites._reservations(self))
 			wetland_cover = preload("res://rf06/cover.gd").new(self,reclaimed_cover)
 			reclaimed_cover.wetland = wetland_cover
+			highland_cover = preload("res://rf07/cover.gd").new(self,reclaimed_cover)
+			reclaimed_cover.highland = highland_cover
 	if _world_profile in ["frontier_v3", "frontier_v4", "frontier_v5", "frontier_v6","frontier_v7","frontier_v8","living_frontier_wave1","living_frontier_wave3"]:
 		chunk_stream=TerrainChunkStream.new()
 		chunk_stream.setup(self)

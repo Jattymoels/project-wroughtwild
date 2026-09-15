@@ -452,6 +452,14 @@ static func _fen(group: Node3D, terrain: Terrain, centre: Vector3, radius: float
 
 static func _uplands(terrain: Terrain, centre: Vector3, radius: float, reserved: Dictionary,
 		rng: RandomNumberGenerator, batches: Dictionary, stats: Dictionary) -> void:
+	if terrain.highland_cover!=null:
+		batches.merge(terrain.highland_cover.regional_batches,true)
+		stats.merge(terrain.highland_cover.regional_stats,true)
+		return
+	_uplands_legacy(terrain,centre,radius,reserved,rng,batches,stats)
+
+static func _uplands_legacy(terrain: Terrain, centre: Vector3, radius: float, reserved: Dictionary,
+		rng: RandomNumberGenerator, batches: Dictionary, stats: Dictionary) -> void:
 	var shelves:=_clusters(terrain,centre,radius-ECOLOGY.outcrop_cluster_radius_m*.5,ECOLOGY.outcrop_cluster_count,ECOLOGY.outcrop_cluster_spacing_m,reserved,rng)
 	stats.cluster_count=shelves.size()
 	for shelf: Vector3 in shelves:
@@ -538,6 +546,8 @@ static func _batch(parent: Node3D, terrain: Terrain, kind: String, transforms: A
 		instance.visibility_range_end_margin=12
 		if not canopy and not middle: instance.cast_shadow=GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 		instance.material_override=null if mesh.has_meta("r7_composition") else _material(kind)
+		if terrain.highland_cover!=null and kind in ["stone_rib","low_outcrop"]:
+			instance.material_override=terrain.highland_cover.rock_material
 		instance.set_meta("mesh_kind",kind)
 		instance.set_meta("world_transforms",poses)
 		instance.set_meta("anchor_bounds",Rect2(Vector2(tile)*ECOLOGY.batch_width_m,Vector2.ONE*ECOLOGY.batch_width_m))

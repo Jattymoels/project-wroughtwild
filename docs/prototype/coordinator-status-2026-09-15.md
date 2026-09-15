@@ -99,12 +99,14 @@ with broader scene weaknesses recorded below. Owner asked to move on; no persona
 owner aesthetic sign-off is inferred. Unrelated worker import metadata stayed
 local and was excluded from adoption. Its D: source/master and private saves remain.
 
-**Next prepared: [RF-07 highland recovery](rf07-highland-recovery-worker-2026-09-16.md)**
+**Worker complete, awaiting coordinator adoption: [RF-07 highland recovery](rf07-highland-recovery-result-2026-09-16.md)**
 in `D:/Wroughtwild/work/rf07-highland-recovery`, branch
 `codex/rf07-highland-recovery`, with `build/rf07/SETUP.md`. Weathered rock shelves,
-settled debris and sheltered vegetation should create an inviting actual outlook
-on existing Rocky Hills/Glasswind Uplands geography. The owner starts it; no worker
-is launched automatically. Remaining impact/scar composition follows RF-07.
+settled debris and sheltered vegetation now frame a real paid outlook on existing
+Rocky Hills/Glasswind Uplands geography. The worker reports 34 placement, 16
+Continue and 11 Forward+ walk/use checks passed, with three actual game pictures.
+Owner aesthetic feedback remains deferred. Remaining impact/scar composition
+follows RF-07; no next worker is launched automatically.
 New water geography, generation profiles and
 collision changes still need a scoped choice; none is selected by this agreement.
 Later-era creature forms and boss art remain separate production backlog. Station/
@@ -122,7 +124,7 @@ PLAY-07 is now integrated; return to the original creative outcomes.
 | Done | PLAY-07 scenery arrival and normal integration | Approved additional fix, now adopted as `c5ceb9f` |
 | Adopted | RF-06 fen/lakeside foundation | First pass was underwhelming; its support/water-preserving placement is retained by RF-06B |
 | Adopted; refinements in cleanup | RF-06B fen art/composition | Five authored forms, connected planting and distinct layers; visibly stronger at walking height, broader reference atmosphere still incomplete |
-| Next prepared | RF-07 highland recovery | Original mountain character: weathered shelves, settled debris and vegetation pockets |
+| Worker complete; adoption pending | RF-07 highland recovery | Original mountain character: weathered shelves, settled debris and vegetation pockets |
 | Then | Remaining impact/scar composition | Original reclaimed-catastrophe identity: vegetation reconnects old damage while selected physical scars/pulses remain legible |
 | End | Bounded cleanup slice | Consolidate deferred issues by player impact; no exhaustive review wave |
 
@@ -502,3 +504,14 @@ the reported underground lag and useful owner combat/station/campaign feedback,
 with broad performance testing deferred to the owner's chosen playtest phase.
 Physical era variants, boss art and Reclaimed Frontier direction remain backlog;
 completion of this batch does not automatically start those larger art projects.
+
+### RF-07 cleanup notes from completed worker, 16 September
+
+The [result and pictures](rf07-highland-recovery-result-2026-09-16.md) improve
+recovered highland ground, low/middle growth and a usable outlook. Keep broader
+resource/work clearances, repeated close plants and tree silhouettes, faceted
+large outcrops, abrupt dark terrace edges and floor corner/joint presentation
+for the bounded cleanup slice. Fine debris/lichen remains subtle at distance.
+These are visual limits, not new blockers or automatically scheduled workers.
+Addressing them now would delay the original remaining impact/scar composition.
+Owner highland aesthetic/comfort feedback is deferred; no hitch-free claim.

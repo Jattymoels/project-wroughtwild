@@ -1,5 +1,19 @@
 # Vertical-Slice Acceptance Criteria
 
+## RF-07 highland recovery
+
+- [x] Actual Rocky Hills receives supported, seeded rock/pocket treatment,
+  including region-forced low terrain, without new native geography/save rules.
+- [x] Full footprints, excavation/rebuild, paid octagonal floor/station clearance
+  and exact fresh-process Continue pass in the focused worker fixture.
+- [x] One ordinary Forward+ approach/floor/workbench route and three actual game
+  pictures demonstrate the delivered highland iteration.
+- [ ] Owner aesthetic/comfort feedback remains deferred. Repeated trees/growth,
+  abrupt terraces and broad clearances remain end-of-wave cleanup notes.
+
+[RF-07 worker result and private playtest](rf07-highland-recovery-result-2026-09-16.md).
+Coordinator integration remains separate from checked worker completion.
+
 ## RF-06 fen/lakeside presentation
 
 - [x] Supported fen and actual dry-bank cover in ordinary New World/Continue;
