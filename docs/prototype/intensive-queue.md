@@ -56,10 +56,11 @@ concrete separate follow-up lead. No worker/review wave starts automatically.
 **[PLAY-06 navigation](play06-navigation-worker-2026-09-15.md) is parked by the
 owner on 16 September.** No worktree or implementation exists; retain the compact
 compass/optional-coordinate brief for later. Original adoption/base-mob and
-RF-01–05 scopes are complete. Recommended next choices are a focused correction
-of the measured scenery arrival stall, then a small fen/lakeside atmosphere slice
-and separate highland recovery. These are proposals awaiting selection, not
-dispatched workers or a new all-biome/performance intensive.
+RF-01–05 scopes are complete. The owner agreed to the proposed sequence:
+**[PLAY-07 scenery arrival](play07-scenery-arrival-worker-2026-09-16.md) is prepared
+next**, reusing the idle D: mob-arrival workspace at `43e7cf3` and retained trace.
+The owner starts it. Then scope fen/lakeside atmosphere and separate highland
+recovery; this does not select new generation rules or an all-biome intensive.
 
 **RF-01 is integrated on main as `66f3211`: [result and playtest](rf01-reclaimed-ground-result-2026-09-15.md).**
 Ordinary V6/LF play now has seeded low meadow/forest cover with actual support and

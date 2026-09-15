@@ -12,7 +12,8 @@ The 40.869 ms group frame, separately measured 106.840 ms pullstone/scenery load
 long world entry, old unassigned spike and underground connection remain open.
 This is a substantial creature-loading correction, not a claim of hitch-free
 play. The owner parked PLAY-06 navigation on 16 September; the measured scenery
-loading stall is now the recommended next focused fix, not yet dispatched.
+loading stall is now selected as [PLAY-07](play07-scenery-arrival-worker-2026-09-16.md).
+Its brief and existing D: workspace are prepared; the owner starts that worker.
 The previous scope and observations below are retained as history.
 
 Earlier status: both arrival slices were integrated: partial `87849bd` and the

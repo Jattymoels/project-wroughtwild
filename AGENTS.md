@@ -108,10 +108,13 @@ play. The residual 40.869 ms group frame, a separately attributed 106.840 ms
 pullstone/scenery arrival, long entry and the underground connection remain open.
 Reused lifecycle/restore/boss evidence and main's short headless import support
 adoption. The owner parked PLAY-06 compass/coordinates on 16 September; do not
-prepare its worktree or start it until they return to it. Record the scenery
-finding for a separate focused follow-up. The coordinator recommends that known
-stall, then a small fen/lakeside atmosphere slice; these are proposed next choices,
-not dispatched workers. Do not automatically launch a broad performance wave.
+prepare its worktree or start it until they return to it. The owner then agreed
+to fixing the measured scenery stall, followed by fen/lakeside atmosphere and
+later separate highland recovery. [PLAY-07 scenery arrival](docs/prototype/play07-scenery-arrival-worker-2026-09-16.md)
+is the prepared next slice in the existing D: mob-arrival workspace. It diagnoses
+the pullstone cost and corrects demonstrated shared causes; it is not a general
+performance audit. The owner starts it. Biome work will be scoped afterward;
+no new generation/save rule is selected by this sequence agreement.
 
 After ram integration on 15 September, the owner said: "Everything looks great -
 approved, I haven't done full performance impact yet though but that's fine".

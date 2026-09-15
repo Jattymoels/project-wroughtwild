@@ -66,14 +66,19 @@ Its worktree has not been created and implementation has not started. Keep its
 brief for later; do not prepare or dispatch it now. RF-01–05 and original art/base-
 mob adoption are complete.
 
-Recommended next choices, not yet dispatched: first address the measured
-pullstone/scenery first-use stall with one focused resource-loading slice, using
-the retained trace and correcting shared causes where demonstrated. Then scope
+The owner agreed to this sequence on 16 September. **Next prepared worker:
+[PLAY-07 scenery arrival](play07-scenery-arrival-worker-2026-09-16.md).** Reuse
+`D:/Wroughtwild/work/play03-mob-arrival`, branch `codex/play03-mob-arrival` at
+`43e7cf3`, with `build/play07-scenery/SETUP.md`. Diagnose the measured pullstone
+first-use stall and correct demonstrated shared causes using the retained trace.
+The existing task is idle; the owner starts it. No new checkout or runtime copy.
+Only new continuation commits will need adoption; the previous three are on main.
+Then scope
 one fen/lakeside atmosphere slice: wet margins, reeds/roots, dry approaches and
 appealing nearby home space, building on existing water and the reclaimed-landscape
 references. Highland recovery can follow separately, with weathered rock shelves
 and appropriate vegetation pockets. New water geography, generation profiles and
-collision changes would need an explicit scoped choice; none is selected here.
+collision changes still need a scoped choice; none is selected by this agreement.
 Later-era creature forms and boss art remain separate production backlog. Station/
 campaign feel still needs useful owner playtest notes, not a new verification wave.
 
