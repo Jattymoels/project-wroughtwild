@@ -1,0 +1,10 @@
+{
+	"checks": 348,
+	"detail": {
+		"fps": 20,
+		"frames": 160,
+		"renderer": "forward_plus"
+	},
+	"failures": [],
+	"passed": true
+}

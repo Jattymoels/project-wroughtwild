@@ -1,0 +1,159 @@
+{
+  "enemy_id": "shrieker",
+  "animal": "grounded augmented crane",
+  "stage": "checked source production; normal-game wiring pending coordinator",
+  "model": "model.glb",
+  "maps": {
+    "base": "base.png",
+    "orm": "orm.png",
+    "scar": "scar-mask.png"
+  },
+  "shader": "lifeline.gdshader",
+  "skeleton_path": "CraneRig/Skeleton3D",
+  "animation_player_path": "AnimationPlayer",
+  "mesh_paths": [
+    "CraneRig/Skeleton3D/CraneBody",
+    "CraneRig/Skeleton3D/CraneLowerBeak"
+  ],
+  "bone_count": 16,
+  "triangles": 65107,
+  "source_triangles": 296116,
+  "simplification": "One automated 65000-triangle target, fitted beak seam, nine duplicate collapse faces removed; final total includes seam splits. Original UVs and maps retained; no hand retopology or LOD matrix.",
+  "clips": {
+    "idle": {
+      "duration_seconds": 4.0,
+      "loop": true
+    },
+    "walk": {
+      "duration_seconds": 1.2,
+      "loop": true
+    },
+    "windup": {
+      "duration_seconds": 0.5,
+      "loop": false
+    },
+    "release": {
+      "duration_seconds": 0.3,
+      "loop": false
+    },
+    "call": {
+      "duration_seconds": 1.25,
+      "loop": false
+    }
+  },
+  "walk_cycle_travel_source_units": 0.7666666666666667,
+  "walk_stance_fraction": 0.6,
+  "fit": {
+    "uniform_scale": 0.8,
+    "ground_offset": [
+      0,
+      0,
+      0
+    ],
+    "rotation_degrees": [
+      0,
+      180,
+      0
+    ],
+    "export_forward": "+Z",
+    "actor_forward": "-Z",
+    "export_up": "+Y",
+    "rest_height_source_units": 2.0,
+    "animated_idle_height_source_units": 1.95,
+    "note": "Apply fit at ground-anchored visual root, retaining separate existing family/elite scaling. Root clip translation is zero; foot soles stay at Y=0. Old 0.35m radius / 1.3m high capsule remains unchanged and does not enclose the whole bird."
+  },
+  "markers": {
+    "windup": {
+      "native_duration_seconds": 0.5,
+      "anticipation_end_seconds": 0.5
+    },
+    "release": {
+      "native_hit_at_seconds": 0.0,
+      "visual_peck_peak_seconds": 0.15,
+      "return_to_idle_seconds": 0.3
+    },
+    "call": {
+      "native_recruit_at_seconds": 0.0,
+      "visible_beak_open_seconds": 0.1,
+      "full_throat_seconds": 0.2,
+      "settle_start_seconds": 0.675,
+      "return_to_idle_seconds": 1.25,
+      "observer": "Emit a dedicated presentation-only recruitment_called signal at the end of Enemy.force_scream(), after the unchanged timer reset, recruitment loop and ring. Never map this clip to attack_released, use clip keys to recruit, or run a second recruitment timer."
+    }
+  },
+  "material": {
+    "revision": "ART-06C",
+    "core_colour": [
+      0.32,
+      0.71,
+      0.76
+    ],
+    "core_colour_godot_parameter": "Pass Color(0.32,0.71,0.76) directly to the source_color uniform, matching the selected ART-06C viewer.",
+    "damage_tint": [
+      0.16,
+      0.14,
+      0.12
+    ],
+    "period_seconds": 4.0,
+    "peak_emission": 2.4,
+    "minimum_light": 0.32,
+    "crest_width": 0.2,
+    "pulse_mode": 3,
+    "channels": {
+      "base": "sRGB original animal colour",
+      "orm": "linear RGB = occlusion / roughness / metallic; selected shader uses G and B",
+      "scar": "linear RGB = contained light core / damage coverage / connected surface travel phase"
+    },
+    "clock": "Advance scar_clock with the owning presentation delta; freeze on pause. Ambient pulse is independent of recruitment. Set per-instance phase_offset separately. No whole-animal emission."
+  },
+  "source": {
+    "input_receipt": "D:/Wroughtwild/source-art/mob03-crane/input-art06c/source-selection.json",
+    "editable_master": "D:\\Wroughtwild\\source-art\\mob03-crane\\rig-v04\\shrieker-rigged.blend",
+    "recipe": "tools/wroughtwild-mob03-crane/build.py",
+    "settings": "tools/wroughtwild-mob03-crane/rig.json",
+    "rig_report": "D:\\Wroughtwild\\source-art\\mob03-crane\\rig-v04\\rig-report.json"
+  },
+  "limitations": [
+    "Native recruitment/combat/save/Continue integration remains for coordinator after MOB-01 and ram.",
+    "No terrain foot IK; modest sliding on uneven terrain and source feather/cavity roughness remain.",
+    "Existing upright capsule differs from the long-necked animal silhouette.",
+    "No later-era additional anatomy, hardware benchmark or broad regression performed.",
+    "Owner playtesting deferred under standing approval."
+  ],
+  "files": {
+    "base.png": {
+      "bytes": 8799415,
+      "sha256": "27b1ddedcbc860a2b99577e0f57ff3fbbe95b9be1883fff09ecf8844bbb7b806"
+    },
+    "lifeline.gdshader": {
+      "bytes": 1478,
+      "sha256": "69a87a4c07156f70d290f8210c528eede7f054ccd4b318704ccd0bca03fd07e6"
+    },
+    "model.glb": {
+      "bytes": 17924876,
+      "sha256": "8cb3a18c5fb9058c7dfae03550cfe4bce959a169d079258d43435b79a0ed5387"
+    },
+    "orm.png": {
+      "bytes": 4536974,
+      "sha256": "57e60f81f6097ee73a221b02c9255131cf3be121ca3328d5318edfa10102a296"
+    },
+    "scar-mask.png": {
+      "bytes": 3502757,
+      "sha256": "7dc058d80f194fdcd8c852b9766578e2f85d117b59ff68c54a09de890366abbe"
+    }
+  },
+  "playback": {
+    "manual_sampling": true,
+    "call_upper_body_bones": [
+      "neck",
+      "upper_neck",
+      "head",
+      "jaw",
+      "resonator"
+    ],
+    "call_while_moving": "Keep the actual-travel walk pose on root, body, tail, wings and both leg chains; layer only the five listed upper-body local poses from call.",
+    "priority": "Death/freeze/stagger retain the shared adapter policy. Melee windup/release takes visual priority over call; a suppressed call is not queued for later. Its presentation age still expires after 1.25 seconds.",
+    "reset": "Clear transient call presentation on actor removal, rebind, death, stagger and save restoration; do not persist or replay it.",
+    "walk_stride_at_suggested_scale_m": 0.6133333333333334
+  }
+}

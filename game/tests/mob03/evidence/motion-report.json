@@ -1,0 +1,20 @@
+{
+  "source": "One Forward+ viewport sequence using the actual selected GLB",
+  "source_frames": 160,
+  "source_fps": 20,
+  "duration_ms": 8000,
+  "gif_bytes": 1718321,
+  "dimensions": [
+    825,
+    570
+  ],
+  "segments": [
+    "0-2 idle",
+    "2-4.4 walk",
+    "4.4-5.65 call",
+    "5.8-6.3 windup",
+    "6.3-6.6 peck",
+    "6.6-8 idle"
+  ],
+  "pointer": "Visible throughout; no-focus window flag asserted; owning renderer exited before mutex release"
+}
