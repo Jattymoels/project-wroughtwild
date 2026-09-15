@@ -1,5 +1,17 @@
 # Decision Registry
 
+Owner next-wave scoping request, 15 September 2026: after the completed mainline
+art/fix batch, the owner agreed with Reclaimed Frontier and asked to scope it.
+The [RF-01 work item](../prototype/rf01-reclaimed-ground-worker-2026-09-15.md)
+defines the first prepared meadow/woodland presentation slice under D-013/D-030/
+D-032. Cosmetic cover can gain connected placement using the adopted assets;
+native terrain/collision, resource/site identities, paid ownership and campaign
+events remain unchanged. Existing V6/LF saves may receive the presentation with
+no migration; earlier geography profiles and other biomes retain their existing
+look. The owner starts the implementation worker. Later physical terrain,
+generator-profile decisions and biome expansion are not selected by this scope.
+Current standing approval and focused-check guidance apply; R9 stays stopped.
+
 Owner clarification, 15 September 2026: current [AGENTS.md](../../AGENTS.md)
 removes the hard ten-minute cutoff for routine completion. Use focused checks,
 reuse applicable evidence and finish authorised integration/pushes; do not revive

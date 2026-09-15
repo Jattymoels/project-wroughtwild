@@ -1,9 +1,56 @@
 # Reclaimed Frontier — terrain and biome composition
 
-**Status: future intensive queued at the owner's request, 14 September 2026.**
-Visual direction and reference preservation are accepted. Implementation has not
-started; the detailed generation/save/performance contract remains to be scoped.
-No additional R-wave number or worker prompt is assigned by this record.
+**Status: first slice scoped at the owner's request, 15 September 2026.**
+The owner agreed with Reclaimed Frontier as the next creative wave and asked to
+scope it. [RF-01 meadow and woodland recovery](rf01-reclaimed-ground-worker-2026-09-15.md)
+is the prepared first worker. Implementation has not started; later terrain and
+biome work remains proposed. This is separate from the stopped R9 review.
+
+## RF-01 selection — 15 September
+
+The previous adoption wave is complete on main through `dc6a8c0`: the environment,
+placeables, finished fauna and six replacement mobs, plus scoped movement,
+canopy and chest improvements. Underground investigation is parked for the
+owner's next playthrough; it does not hold up this separate creative work.
+
+The first outcome is connected low meadow/woodland growth around existing old
+damage, using the current B2/R7 assets and existing tree/shrub canopy. One roughly
+80–150 m ordinary route provides a useful visual slice; it is not a new map or a
+fixed acceptance distance. The dressing applies naturally to eligible meadow/
+forest chunks in current V6/LF geography, rather than only one staged corridor.
+
+RF-01 is presentation-only: existing eligible saves can receive the cosmetic
+change without reseeding, migration, new stock or moved buildings. Terrain
+height/voxels/collision, native resource/tree/site anchors, campaign events and
+old-world identities remain unchanged. V1–V5 and other biomes keep their existing
+presentation. Cosmetic plant roots/footprints may change; grounding, excavation
+and actual paid-building suppression must remain correct. Larger vegetation
+footprints must not leave grass over holes or inside octagonal buildings.
+
+This resolves the first slice's compatibility boundary. It does not claim that
+cover alone will deliver all the desired landform undulation. The worker records
+that visible limitation if present. Native terrain changes need a later scoped
+contract, with existing saves kept intact; no new generator profile is selected.
+
+| Milestone | Present scope/status |
+| --- | --- |
+| RF-01: meadow/woodland recovery | Plan and worker ready; normal-game low-cover composition, one useful walk, focused edit/build/Continue checks. |
+| Later landform slice | Proposed after RF-01: old-impact surroundings, rises/dips and routes. Decide whether a new-world-only successor is needed; never silently reshape existing saves. |
+| Later biome expansion | Proposed: fen and mountain recovery based on what works in RF-01 and any landform decision. No all-biome production batch is dispatched now. |
+
+Scoping evidence: all six owner references and their caveats were inspected,
+with image 6 read through a smaller inspection derivative after the image reader
+failed on the full-size file. Originals are untouched. Current cover, surface
+sampler hooks and building-mask code were read; R7's retained coverage limitation
+and PLAY-01's projection finding were reused. No new engine/Blender run, runtime
+visual capture, benchmark or source-package reconstruction was needed to scope.
+The expected visual improvement remains to be demonstrated by RF-01.
+
+Worker location: `D:/Wroughtwild/work/rf01-reclaimed-ground`, branch
+`codex/rf01-reclaimed-ground`; setup is `build/rf01/SETUP.md`. The owner starts
+the worker, which returns a checked commit and inline images/clip. Current
+standing approval covers ordinary prototype delivery and main adoption without
+another visual/benchmark gate. Only this first slice is prepared.
 
 **Later owner workflow clarification, 14 September:** when the owner approves
 the result visually, integrate it into the game without separate rollout approval
@@ -75,7 +122,7 @@ system, density target or implementation schedule by doing so.
   recovery correction into other biomes; 6 supplies undulation and everyday life.
   None selects exact silhouettes, UI, weapons, creatures, weather or map layouts.
 
-## Proposed bounded approach for later planning
+## Retained broader approach — beyond the RF-01 boundary above
 
 1. Inspect the then-current main game and available R9 findings. Use ordinary
    walking views with the adopted kit. Separate asset
@@ -99,9 +146,11 @@ system, density target or implementation schedule by doing so.
    default and stay within the prototype check budget. Publish the approved
    playable result with known limitations; no performance comparison is required.
 
-These are planning checkpoints, not dispatched implementation slices or a fixed
-count of future repair waves. No engine/source-generation work is part of adding
-this record.
+These are broader planning checkpoints, not a requirement to perform them all in
+RF-01 or a fixed count of repair waves. The first-slice work item above narrows
+them to one route, one lighting condition and the changed behavior. Later biome,
+landform and varied-world work requires its own scope; it does not become a new
+review matrix for this slice.
 
 ## Review questions and decisions still open
 

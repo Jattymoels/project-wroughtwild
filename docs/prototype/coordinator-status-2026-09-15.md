@@ -32,6 +32,18 @@ merely because a historical checkbox still says human review pending.
 
 ## Current deliveries and remaining playtest feedback
 
+**Next creative slice: [RF-01 meadow and woodland recovery](rf01-reclaimed-ground-worker-2026-09-15.md).**
+The owner agreed to scope Reclaimed Frontier after the finished adoption/fix
+batch. Its first worker is prepared at `D:/Wroughtwild/work/rf01-reclaimed-ground`,
+branch `codex/rf01-reclaimed-ground`. Implementation is not started. Reuse current
+assets to connect low grass/fern cover across existing meadow/forest terrain;
+show one useful ordinary walk around old impact damage. Preserve native terrain,
+resource/site anchors, saves and all adopted art. New cosmetic placement must
+respect actual support and paid footprints. This enters ordinary V6/LF play;
+the route is evidence, not an isolated showcase. The owner starts the worker.
+Later physical landforms and other biomes remain scoped candidates, not an
+automatically dispatched batch. [Scope and compatibility](reclaimed-frontier-intensive-2026-09-14.md).
+
 **PLAY-03 diagnostic delivery is integrated as `cbc6f67`.** The staged drop did
 not reproduce the owner's continuing slowdown; no causal fix is claimed. The
 [result and optional recording instructions](play03-underground-result-2026-09-15.md)
@@ -56,8 +68,9 @@ No new worker or review wave was started during adoption.
 
 PLAY-04 station/home and campaign feel remain owner playtest questions. They are
 not failed acceptance tests, and PLAY-05 does not close them. Later-era creature
-growth, boss art and Reclaimed Frontier landscapes remain longer-term scoped
-choices. The original implementation sequence below is retained as history.
+growth and boss art remain longer-term scoped choices. Reclaimed Frontier now
+has the first RF-01 brief above; broader terrain/biome ambitions are still future
+work. The original implementation sequence below is retained as history.
 
 ## Repository inventory
 

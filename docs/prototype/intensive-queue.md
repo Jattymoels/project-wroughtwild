@@ -27,6 +27,13 @@ The [shared-file boundary](mob-parallel-production-2026-09-15.md)
 keeps independent production separate from completed gameplay adoption.
 R9 stays stopped.
 
+**Current next creative work, 15 September: [RF-01 meadow and woodland recovery](rf01-reclaimed-ground-worker-2026-09-15.md).**
+The owner agreed to scope Reclaimed Frontier. The prepared D: worker will use
+existing assets for connected low meadow/forest cover around old damage, with
+one representative ordinary route and normal-game adoption. No terrain, collision,
+resource-site or save migration is part of RF-01. Implementation has not started;
+later landforms, fen/mountain treatments and era/boss art are not dispatched.
+
 After MOB-02 the owner approved the current visuals and explicitly left full
 performance impact untested. They subsequently praised the nymph and confirmed
 that its existing task could continue MOB-06 tortoise. That task and coordinator
@@ -148,9 +155,12 @@ No new resource, recipe, enemy cap, generator profile or save migration is part
 of this design delivery. Mob rigs/era augmentation and the ART-05 route
 performance/polish backlog remain open.
 
-## Future intensive — Reclaimed Frontier
+## Reclaimed Frontier — first slice scoped
 
-**Queued at the owner's request, 14 September 2026; implementation not started.**
+**Queued 14 September; RF-01 scoped at the owner's request on 15 September;
+implementation not started.** The first prepared
+[meadow/woodland worker](rf01-reclaimed-ground-worker-2026-09-15.md) changes low
+cosmetic cover in current V6/LF play while retaining native terrain and saves.
 The [Reclaimed Frontier brief](reclaimed-frontier-intensive-2026-09-14.md) preserves
 the new direction: rolling, living terrain years after the meteorite catastrophe,
 with established vegetation over much of the chaos, large impacts shaping the
@@ -165,7 +175,8 @@ adopted assets and actual performance. R9 remains stopped and is not a prerequis
 It does not add another condition to the current art integration or extend R9.
 R7's retained placement limits leave continuous ground cover unmet; this future
 pass addresses landform and ecological composition beyond individual asset finish.
-Detailed generation/save choices, density/pulse budgets and implementation prompts
+RF-01 now defines its presentation-only save boundary and first worker prompt.
+Detailed landform generation, other-biome density/pulse treatment and later prompts
 remain future planning. No new map extent, profile or live regrowth is selected.
 
 ## Previous art priority — remaining animal mobs, then era augmentation

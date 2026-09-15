@@ -1,5 +1,16 @@
 # World Generation, Settlements and Travel
 
+**RF-01 scoped, 15 September 2026; not implemented yet:** the owner agreed to
+scope the first [Reclaimed Frontier worker](../prototype/rf01-reclaimed-ground-worker-2026-09-15.md).
+It will compose connected low meadow/forest cover in existing V6/LF geography
+using adopted assets, without changing heights, voxels, collision, resource/site
+anchors or saved ownership. Cosmetic roots may change, with deterministic chunk
+rebuilds, surface support, excavation and paid-building suppression retained.
+Existing eligible Continue worlds receive the presentation without migration;
+V1–V5 and other biomes keep their current look. Physical landforms and other
+biome treatments remain later work. This is a scoped plan, not evidence of a
+runtime change; the result will record the actual implementation and checks.
+
 **Future direction recorded, 14 September 2026:** the
 [Reclaimed Frontier intensive](../prototype/reclaimed-frontier-intensive-2026-09-14.md)
 follows R9 and accepted ART-07 main-game integration. Its
