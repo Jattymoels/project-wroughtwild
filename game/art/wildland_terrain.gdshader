@@ -26,6 +26,7 @@ uniform sampler2D augmentation_map : filter_linear, repeat_disable;
 uniform vec2 augmentation_extent = vec2(512.0);
 uniform float augmentation_tint = 0.22;
 #include "res://rf02/ground.gdshaderinc"
+#include "res://rf06/ground.gdshaderinc"
 varying vec3 world_position;
 varying vec3 world_normal;
 
@@ -151,6 +152,7 @@ void fragment() {
 	gradient += stone * (wear_gradient + bedding_gradient * 0.15) * rock_bump_m;
 	float influence = augmentation_enabled ? texture(augmentation_map, p.xz / augmentation_extent).r * augmentation_tint : 0.0;
 	rf02_surface(p, n, stone, native_base, top_colour.rgb, loam_colour.rgb, broad, influence, ALBEDO, gradient, ROUGHNESS, AO);
+	rf06_surface(p,n,stone,broad,ALBEDO,ROUGHNESS);
 	vec3 bumped = normalize(n - (gradient - n * dot(n,gradient)));
 	NORMAL = normalize((VIEW_MATRIX * vec4(bumped, 0.0)).xyz);
 }

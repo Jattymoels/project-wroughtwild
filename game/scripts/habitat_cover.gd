@@ -10,7 +10,7 @@ static func prepare(map: Dictionary) -> void:
 				reserved[Vector2i(int(node.x)+dx,int(node.z)+dz)] = true
 	map["habitat_reserved"] = reserved
 
-static func build(chunk: Node3D, data: Dictionary, map: Dictionary, cell: float, retain_poses: bool = false) -> int:
+static func build(chunk: Node3D, data: Dictionary, map: Dictionary, cell: float, retain_poses: bool = false, wetland: RefCounted = null) -> int:
 	if not chunk.has_meta("surface_sampler"):
 		return 0
 	var sampler: SurfaceSampler = chunk.get_meta("surface_sampler")
@@ -40,6 +40,7 @@ static func build(chunk: Node3D, data: Dictionary, map: Dictionary, cell: float,
 			if patch<=0.0:
 				continue
 			var biome: String = map.biome_defs[map.biomes[z*width+x]].id
+			if wetland!=null and wetland.owns(centre,biome,kind): continue
 			for entry in LOOK.entries(biome):
 				if GroundCover._roll(x,z,entry.kind,79)>entry.density*patch:
 					continue

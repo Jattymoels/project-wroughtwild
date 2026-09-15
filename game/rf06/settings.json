@@ -1,0 +1,21 @@
+{
+ "patch_metres": 11.0, "shore_width_m": 7, "tall_band_m": 3,
+ "sparse_coverage": 0.10, "dense_coverage": 0.78, "tall_share": 0.46,
+ "plant_width_m": 0.68, "sedge_height_m": 0.29, "rush_height_m": 0.86,
+ "minimum_scale": 0.72, "home_open_radius_m": 11.0,
+ "ground_mix": 0.42,
+ "design_purpose": {
+  "patch_metres": "Eleven-metre living groups separated by quiet passages, seeded with the saved world.",
+  "shore_width_m": "Dry bank planting fades back to ordinary meadow/woodland over seven metres from actual lake columns.",
+  "tall_band_m": "Taller decorative rush leaves occupy only the inner three metres of bank or fen patch hearts.",
+  "sparse_coverage": "Ten percent low growth in openings keeps routes and shoreline visible.",
+  "dense_coverage": "Up to 78 percent of eligible supported roots grow in patch hearts; never a uniform reed ring.",
+  "tall_share": "Under half the patch-heart roots are tall, leaving gaps among the low sedge and fern.",
+  "plant_width_m": "A 68-centimetre moving footprint fits inside a one-metre native cell.",
+  "sedge_height_m": "Low splayed 29-centimetre leaves join damp ground to surrounding turf.",
+  "rush_height_m": "86-centimetre upright leaves frame water without harvestable seed heads or eye-height walls.",
+  "minimum_scale": "Seeded 72–100 percent variation breaks up repeated plant silhouettes.",
+  "home_open_radius_m": "Eleven metres around the lake home keeps only low cover and preserves the open outlook; not a building boundary.",
+  "ground_mix": "Restrained damp litter colour, matte and cosmetic; no water, displacement or changed support."
+ }
+}

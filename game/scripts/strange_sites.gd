@@ -24,6 +24,7 @@ static func build(root: Node3D, terrain: Terrain) -> Node3D:
 	var site_resources:=_site_resource_ids(terrain)
 	for region: Dictionary in terrain.map.get("regions",[]): _region(dressing,terrain,region,reservations)
 	for site: Dictionary in terrain.map.get("rare_sites",[]): _site(dressing,terrain,site,site_resources.get(String(site.id),[]))
+	if terrain.wetland_cover!=null: terrain.wetland_cover.reserve_existing(dressing)
 	refresh_buildings(root,terrain)
 	return dressing
 

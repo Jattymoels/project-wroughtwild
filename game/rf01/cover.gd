@@ -3,6 +3,7 @@ extends RefCounted
 const SETTINGS = preload("res://rf01/low_cover.tres")
 const PROFILES := ["frontier_v6","frontier_v7","frontier_v8","living_frontier_wave1","living_frontier_wave3"]
 const RESERVATION_CELL := 8.0
+var wetland: RefCounted
 var _map: Dictionary
 var _seed: int
 var _profile: String
@@ -109,6 +110,7 @@ func build(chunk: Node3D, data: Dictionary, cell: float, distance: float) -> int
    var expected := float(_map.heights[i])
    if absf(centre.y+cell*0.5-expected)>0.01: continue
    var biome: String = _map.biome_defs[_map.biomes[i]].id
+   if wetland!=null and wetland.owns(centre,biome,surface): continue
    if not eligible(_profile,biome,surface) or _roll(x,z,11)>density_at(centre.x,centre.z): continue
    var fern_share: float = SETTINGS.forest_fern_share if biome=="forest" else SETTINGS.meadow_fern_share
    var role := "fern-sparse" if _roll(x,z,17)<fern_share else "grass-edge" if _roll(x,z,19)<SETTINGS.edge_grass_share else "grass-meadow"

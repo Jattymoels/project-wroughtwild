@@ -129,6 +129,7 @@ static func build_for_chunk(chunk: Node3D, chunk_data: Dictionary, map: Dictiona
 			if biome_index < 0 or biome_index >= defs.size():
 				continue
 			for entry in cover_by_biome[biome_index]:
+				if reclaimed!=null and reclaimed.wetland!=null and String(entry.kind) in ["tuft","fern","reed"] and reclaimed.wetland.owns(centre,String(defs[biome_index].id),String(kind)): continue
 				if reclaimed != null and String(entry.kind) in ["tuft","fern"] and reclaimed.eligible(reclaimed._profile,String(defs[biome_index].id),String(kind)):
 					continue
 				if not (String(kind) in entry["on"]):
@@ -210,4 +211,5 @@ static func build_for_chunk(chunk: Node3D, chunk_data: Dictionary, map: Dictiona
 		placed += transforms.size()
 	if reclaimed != null:
 		placed += reclaimed.build(chunk,chunk_data,cell,float(frontier_look.cover_distance))
+		if reclaimed.wetland!=null: placed += reclaimed.wetland.build(chunk,chunk_data,cell,float(frontier_look.cover_distance))
 	return placed
