@@ -19,14 +19,18 @@ is integrated and pushed on main as `f0349c2`:
 [MOB-02 ram](mob02-ram-result-2026-09-15.md) is integrated and pushed as `5493470`,
 with native guard/melee presentation and ordinary Continue. [MOB-04 beetle](mob04-beetle-result-2026-09-15.md)
 is integrated and pushed as `a524870`, including native swarm/melee and Continue.
-Nymph and tortoise remain. The [shared-file boundary](mob-parallel-production-2026-09-15.md)
+[MOB-05 nymph](mob05-nymph-result-2026-09-15.md) is integrated and pushed as
+`0d552ba`, preserving native root/dash and Continue. Tortoise remains active.
+The [shared-file boundary](mob-parallel-production-2026-09-15.md)
 keeps independent production separate from completed gameplay adoption.
 R9 stays stopped.
 
 After MOB-02 the owner approved the current visuals and explicitly left full
-performance impact untested. **[MOB-05 nymph](mob05-nymph-worker-2026-09-15.md)**
-is the next prepared D: worker slice: fitted six-leg motion and normal-game
-Bog Lurker adoption, followed by tortoise. PLAY-03 remains open.
+performance impact untested. They subsequently praised the nymph and confirmed
+that its existing task may continue **MOB-06 tortoise** in
+`D:/Wroughtwild/work/mob06-tortoise`, branch `codex/mob06-tortoise`. The tortoise's
+nymph base is already adopted; do not duplicate the active worker. Coordinator
+integration/push remains separate. PLAY-03 remains open.
 
 The owner currently cannot playtest and has approved continued prototype work
 until told otherwise. Human feedback remains deferred; it does not block the

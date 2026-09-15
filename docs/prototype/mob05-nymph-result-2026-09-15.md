@@ -1,7 +1,7 @@
 # MOB-05 — playable dragonfly nymph Bog Lurker
 
 The approved six-legged v04 nymph replaces the Bog Lurker in ordinary new worlds
-and Continue on this worker branch. Its 27-bone rig carries a grounded tripod
+and Continue on main, published as `0d552ba`. Its 27-bone rig carries a grounded tripod
 walk, quiet idle, head/labium anticipation and a short release/recovery driven by
 the real native melee event. The legless layered abdomen, bog-iron crust and
 deep connected lifelines remain. Native pursuit and root gameplay are preserved.
@@ -15,8 +15,30 @@ playtesting remain deferred. Physical era additions, tortoise/boss art and
 significant underground lag remain open; legitimate caves/digging are unchanged.
 R9 stays stopped.
 
-Standing owner approval covers this agreed playable slice. This records actual
-implementation and checks, not personal owner playtesting or a new visual review.
+The owner praised the nymph in the worker task and confirmed with the coordinator
+that the same task should continue the tortoise. Visual approval is recorded;
+this is not a claim of broader hands-on gameplay or performance testing.
+
+## Mainline adoption and active tortoise continuation
+
+The checked worker commit `89bde373edae90005ee26888a140b34816eb82fb` was adopted
+without conflicts as `0d552ba`. Game and nymph-tool files match the checked
+worker exactly. Its **11 source, 42 native and 14 Continue checks** were reused;
+one headless main import passed in **7.94 seconds**, exit 0, no reported errors.
+The compact [main import result](../../game/tests/mob05/evidence/mainline-import.json)
+is retained; logs/private state are in
+`D:/Wroughtwild/work/mob05-nymph/build/mob05/mainline-adoption/`.
+
+The ordinary `577ac96..0d552ba` push to origin/main succeeded. No rendered review,
+new source inspection, combat matrix or performance gate was run. The owned
+import exited, no override remains, and owner captures were preserved.
+
+MOB-06 continues in the same owner-started task, in its separate
+`D:/Wroughtwild/work/mob06-tortoise` checkout on `codex/mob06-tortoise`. Its base
+is the original nymph worker commit `89bde37`, already equivalent to the mainline
+adoption above. Leave the active checkout unchanged; later integrate only its
+new tortoise commits. The coordinator retains mainline publication. The owner
+explicitly confirmed this continuation, so no duplicate tortoise worker is needed.
 
 ## Focused verification
 
@@ -109,14 +131,11 @@ purposes are documented in the recipe/descriptor. No gameplay tuning is added.
 
 ## Normal-game playtest later
 
-From this worker checkout:
+From the normal owner checkout:
 
 ```powershell
-& 'C:/Users/Matty/Godot/Godot_v4.5-stable_win64.exe' --path 'D:/Wroughtwild/work/mob05-nymph/game'
+& 'C:/Users/Matty/Godot/Godot_v4.5-stable_win64.exe' --path 'C:/Users/Matty/Dev/project-wroughtwild/game'
 ```
-
-After coordinator integration, use the same command with
-`C:/Users/Matty/Dev/project-wroughtwild/game` as the project path.
 
 1. Choose Continue or a new world; no art/showcase/test flag is required.
 2. For a reproducible new world, choose seed **77**. The checked native fen pack
@@ -140,7 +159,7 @@ idle, pursuit, naturally timed root strikes and freeze.
 
 ## Commit and publication
 
-The complete checked slice is committed on **`codex/mob05-nymph`** for coordinator
-integration. The exact worker commit SHA is returned in the task handoff. No
-worker push or mainline integration is claimed; the coordinator owns adoption,
-aggregate status and ordinary publication.
+The worker committed the complete slice as `89bde37` on **`codex/mob05-nymph`**
+without pushing. The coordinator adopted and pushed it as `0d552ba`, as recorded
+above, then updated the result and aggregate status. Tortoise work remains active
+and is not claimed complete by this nymph publication.
