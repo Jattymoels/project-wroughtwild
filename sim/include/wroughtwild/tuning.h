@@ -1039,6 +1039,12 @@ struct ReclaimedFrontierParams {
     double bankHeightM=5, overlookLiftM=5, woodlandRadiusM=62, woodlandDensity=.028, impactShoulderM=3;
 };
 
+// RF-05: independent generated lake and transient movement feel inputs.
+struct LakeParams {
+    int count=1, candidates=32;
+    double radiusMinM=28, radiusMaxM=36, aspect=.82, depthM=4, shoreM=10, blendM=28, homeGapM=22, variation=.035;
+    double swimEnterM=1.1, swimExitM=.85, swimSpeed=.7, supportOffsetM=.05, supportResponse=8;
+};
 struct FrontierHostDef { std::string id, sourceId, enemyId, influence; int homeIndex = 0; };
 struct FrontierLabDef { std::string id, label, regionId; };
 struct LivingFrontierTable {
@@ -1060,6 +1066,7 @@ struct WorldgenTable {
     PressureSiteParams pressureSite;
     WideFrontierParams wideFrontier;
     ReclaimedFrontierParams reclaimedFrontier;
+    LakeParams lake;
     uint64_t defaultSeed = 1;
     MapParams map;
     MountainParams mountains;
@@ -1336,6 +1343,7 @@ struct Tuning {
     std::map<std::string, double> centralRules;
     RealtimeTable realtime;
     WorldgenTable worldgen;
+    WorldgenTable frontierV8Worldgen;
     WorldgenTable frontierV7Worldgen; // separate fresh normal-world inputs; never derives LF
     WorldgenTable legacyWorldgen; // immutable legacy_v1 inputs for old saves
     WorldgenTable frontierV2Worldgen; // immutable frontier_v2 geography and placement inputs

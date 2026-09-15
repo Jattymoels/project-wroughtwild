@@ -1,5 +1,14 @@
 # Decision Registry
 
+RF-05 worker delivery, 15 September 2026: the
+[result](../prototype/rf05-lakes-swimming-result-2026-09-15.md) implements the
+selected lake/wading/surface-swimming scope in fresh `frontier_v8` worlds.
+Existing saves keep their identity and ownership. Water uses generated original
+bed limits, and ordinary pickups/death packs float locally. The checked worker
+commit and matching native DLL are for coordinator integration; no mainline push
+is claimed by this worker. Owner playtesting remains deferred.
+
+
 RF-05 worker preparation, 15 September 2026: [the implementation brief](../prototype/rf05-lakes-swimming-worker-2026-09-15.md)
 settles the selected lake scope under standing prototype approval. One seeded
 lake per fresh `frontier_v8` world, useful dry lakeside home space, wading and

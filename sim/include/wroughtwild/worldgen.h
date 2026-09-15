@@ -161,6 +161,17 @@ struct MobPack {
     std::string foreignBiome;
 };
 
+// Fixed original basin, one byte per metre column; no inventory or fluid state.
+struct PlacedLake {
+    std::string id, homeId;
+    int x=0,z=0,minX=0,minZ=0,width=0,height=0;
+    double surfaceY=0,radiusM=0,aspect=0,angle=0;
+    std::vector<uint8_t> beds;
+    int bedAt(int px,int pz) const {
+        if(px<minX||pz<minZ||px>=minX+width||pz>=minZ+height)return 255;
+        return beds[(pz-minZ)*width+px-minX];
+    }
+};
 struct WorldMap {
     std::string profileId;
     uint64_t seed = 0;
@@ -187,6 +198,7 @@ struct WorldMap {
     double starterQuietRadiusM = 0, hostileBoundaryM = 0;
     int starterFirstSiegeNight = 0; // 0 preserves historical host pacing.
     std::vector<PlacedHomeSite> homeSites;
+    std::vector<PlacedLake> lakes;
     std::vector<float> augmentationField; // v4 only; row-major cells, finite [0,1]
     int spawnX = 0, spawnZ = 0;
     int gateX = 0, gateZ = 0;

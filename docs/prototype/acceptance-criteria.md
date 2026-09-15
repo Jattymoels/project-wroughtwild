@@ -1,5 +1,15 @@
 # Vertical-Slice Acceptance Criteria
 
+## RF-05 lakes and surface swimming
+
+- [x] Fresh V8 lake with four dry home cores, land supplies/routes and old-save identity preservation.
+- [x] Connected shallow wading, surface swimming, jump/footstep handling and dry shore exit.
+- [x] Exact floating pickup/death-pack ownership, afloat save/Continue and paid support in shallows.
+- [x] One actual Forward+ route, selected pictures/clip and no-mouse-capture checks.
+- [ ] Owner feel/atmosphere playtest and broader hardware/campaign coverage remain deferred.
+
+[Worker result, limits and coordinator handoff](rf05-lakes-swimming-result-2026-09-15.md).
+
 These are player-visible outcomes, not a substitute for implementation-level tests.
 
 ## RF-03: inspiring home settings in fresh worlds

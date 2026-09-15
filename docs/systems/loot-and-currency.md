@@ -1,5 +1,16 @@
 # Loot and Crafting Economy
 
+## RF-05 floating recovery
+
+In a V8 lake, existing `Pickup` and `DroppedBundle` nodes settle at the surface at
+the same horizontal location when they enter the original basin volume. Native
+solids and paid-body ray occlusion prevent lifting underground loot through a
+roof. Ordinary attraction and death-pack interaction remain the claim paths;
+contents, full gear seed, page identity, material age/expiry and capacity keep
+existing ownership. Surface contact grants nothing and never resets age.
+`WorldDrops.capture/restore` retains the same schema/fields and replaces one set
+before resolving its water contact. Trial deposit and rewards are unchanged.
+
 **LF-7 captured runs:** selected Crossfire or Relentless pressure adds a 1.25
 multiplier solely to the offered building-source material in cache/secret,
 rounded down after existing reward multipliers. The exact cache, optional

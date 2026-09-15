@@ -66,11 +66,15 @@ These references describe design influences, not a promise to reproduce their co
 
 ### World and settlements
 
-Normal fresh prototype worlds now use `frontier_v7`, a finite 1,024 × 1,024 metre
+Normal fresh prototype worlds now use `frontier_v8`, a finite 1,024 × 1,024 metre
 region with four useful home settings in rolling meadow/woodland, alongside the
 existing three broad discoveries, impacts, ruins, habitats and finite supplies.
 RF-03 shapes outlooks, enclosure and extension space using existing construction.
-V1–V6 and Living Frontier saves retain their own profile, geography and ownership;
+RF-05 adds one seeded lake beside a dry home setting, with wading, surface
+swimming and locally floating recovery. Its fixed water volume preserves caves
+and ordinary paid construction; boats, diving and fluid simulation stay outside
+this slice.
+V1–V7 and Living Frontier saves retain their own profile, geography and ownership;
 LF flags continue their established campaigns. See [world generation](systems/world-generation.md)
 and the [RF-03 worker result](prototype/rf03-landforms-homes-result-2026-09-15.md).
 The longer-term hybrid model still calls for authored class halls and settlements;

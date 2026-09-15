@@ -1,0 +1,28 @@
+{
+  "checks": 19,
+  "failures": 0,
+  "records": [
+    {
+      "blocks_hash": 1308579517,
+      "home": "homev6_2",
+      "lake_x": 555,
+      "lake_z": 653,
+      "radius": 28.2019191792666,
+      "seed": 77,
+      "shallow_cells": 370,
+      "surface": 29.4,
+      "wet_cells": 1529
+    },
+    {
+      "blocks_hash": 919742140,
+      "home": "homev6_1",
+      "lake_x": 575,
+      "lake_z": 370,
+      "radius": 28.9790400412019,
+      "seed": 78,
+      "shallow_cells": 392,
+      "surface": 34.4,
+      "wet_cells": 1651
+    }
+  ]
+}

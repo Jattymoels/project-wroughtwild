@@ -1,5 +1,35 @@
 # World Generation, Settlements and Travel
 
+## RF-05: lakes in fresh V8 worlds
+
+The [RF-05 worker](../prototype/rf05-lakes-swimming-worker-2026-09-15.md) adds
+`frontier_v8` to normal fresh random/chosen-seed worlds at the same 1,024 × 1,024 ×
+96 one-metre extent. Continue selects its saved identity before generation.
+Published V1–V7/Living Frontier inputs and composition remain unchanged.
+
+V8 has separate `worldgen-frontier-v8.json` inputs and composition. A bounded
+seeded candidate search and four minimum-radius home fallbacks select one lake
+beside a useful dry home. Four radius-14 home cores, land-based supply/discovery
+routes, the ordinary pressure pocket, existing progression and paid construction
+remain. Underlying caves and their openings win over local grading; uncarved
+banks/islands can remain where a proposed cut would intercept a cave. Ordinary
+surface resource rolls are regrounded before excluding submerged placements;
+final guaranteed supplies use dry route eligibility. Terrestrial patrol segments
+avoid the lake and ground enemies stop at water contact.
+
+`WorldMap.lakes` carries the stable local ID, linked home ID, level, seeded
+position/orientation and a bounded byte grid of original beds. It is regenerated
+from profile/seed, not serialized as another owner. `LakeWater.column/contact`
+is the shared runtime query for cover, surface rendering, body contact and drop
+landing. The volume ends at the original bed and footprint and rejects current
+solid native cells; digging cannot drain, spread or flood a tunnel below it.
+Chunk edit hooks rebuild local water/cover with existing collision. Paid bodies
+still collide and occlude water. No no-dig zone or building exemption is added.
+
+All lake siting and swim feel controls are documented beside their values in
+V8's `lake.design_purpose`. One-metre terraces, fixed water boundaries and
+non-simulated shore water remain prototype limitations.
+
 **RF-04 integrated as `27fc34d`, 15 September 2026:**
 [Result](../prototype/rf04-ground-continuity-result-2026-09-15.md). V7 upward
 source-face centres follow their existing averaged corners, removing extra local

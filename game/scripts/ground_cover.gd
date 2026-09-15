@@ -120,6 +120,7 @@ static func build_for_chunk(chunk: Node3D, chunk_data: Dictionary, map: Dictiona
 			var cz := int(floor(centre.z / cell))
 			if cx < 0 or cz < 0 or cx >= width or cz >= height_cells:
 				continue
+			if not LakeWater.column(map,centre.x,centre.z).is_empty():continue
 			var surface := heights[cz * width + cx]
 			# The surface block's centre sits half a block under the surface height.
 			if absf(centre.y + cell * 0.5 - float(surface)) > 0.01:

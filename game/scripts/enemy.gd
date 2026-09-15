@@ -655,13 +655,13 @@ func _physics_process(delta: float) -> void:
 		velocity.x = 0.0
 		velocity.z = 0.0
 		_apply_shove(delta)
-		move_and_slide()
+		_move_on_land(delta)
 		return
 
 	var player := _find_player()
 	if player == null:
 		_apply_shove(delta)
-		move_and_slide()
+		_move_on_land(delta)
 		return
 
 	var distance := _horizontal_distance_to(player)
@@ -696,7 +696,7 @@ func _physics_process(delta: float) -> void:
 		if planar.length_squared() > 0.0001:
 			look_at(global_position + Vector3(planar.x, 0.0, planar.z), Vector3.UP)
 		_apply_shove(delta)
-		move_and_slide()
+		_move_on_land(delta)
 		return
 
 	match state:
@@ -816,7 +816,7 @@ func _physics_process(delta: float) -> void:
 	elif (state == "windup" or state == "release" or release_strike or release_contact) and (windup_advance > 0.0 or not release_shape.is_empty()) and not _strike_direction.is_zero_approx():
 		look_at(global_position + _strike_direction, Vector3.UP)
 	_apply_shove(delta)
-	move_and_slide()
+	_move_on_land(delta)
 	if release_contact and not _release_hit:
 		var closest := global_position
 		if release_shape == "held_burst": closest = _held_position
@@ -1236,3 +1236,14 @@ func _trial_spread_ailments() -> void:
 func status_move_multiplier() -> float:
 	var multiplier := 1.0-smoulder_slow if burning_left>0 else 1.0
 	return multiplier*(1.0-_rime_bind_loss) if _rime_bind_left>0 else multiplier
+
+func _move_on_land(delta: float) -> void:
+	if not trial_bound:
+		var ground:=LakeWater.terrain_for(self)
+		if ground!=null and not ground.map.get("lakes",[]).is_empty():
+			var next:=global_position+Vector3(velocity.x,0,velocity.z)*delta
+			var wet:=LakeWater.column(ground.map,next.x,next.z)
+			if not wet.is_empty() and global_position.y>=float(wet.bed)-.1 and global_position.y<float(wet.surface)+1.2:
+				velocity.x=0
+				velocity.z=0
+	move_and_slide()

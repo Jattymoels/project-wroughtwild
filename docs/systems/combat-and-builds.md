@@ -1,5 +1,21 @@
 # Combat and Persistent Builds
 
+## RF-05 surface swimming
+
+Normal fresh V8 worlds support grounded wading and surface swimming in their
+single generated lake. Water depth enters swimming at 1.1 m and exits below
+0.85 m; body immersion also gates entry/support so a player on a raised paid floor
+stays dry. Normal horizontal input swims at 70% walk speed. The capsule centre
+settles 0.05 m above the surface, retaining the first-person eye above water.
+Existing collision, roots, haste, dash, skill costs, damage and trial rules remain.
+Buffered jumps do not repeatedly launch an afloat player; normal grounded shore
+movement/jumps resume on exit. Walking footsteps and landing dips stop afloat.
+
+Swimming/wading are transient world/pose state, reset by existing environment
+reset paths and New World, then derived again during movement/Continue. No meter,
+drowning timer, swim skill, underwater attack system or invulnerability is added.
+See [RF-05](../prototype/rf05-lakes-swimming-worker-2026-09-15.md).
+
 **LF-6A (9 September 2026):** the existing Central Laboratory contains the human
 Conservator, with a dedicated articulated placeholder and independent channel
 loop. White commits one lane; Blue holds a target mark before Red releases;

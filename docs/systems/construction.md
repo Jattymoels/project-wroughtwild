@@ -1,5 +1,14 @@
 # Construction System
 
+## RF-05 lakeside construction
+
+Fresh V8 worlds offer a dry home core beside one lake, with ordinary paid
+construction and room to extend. There is no free house/dock, plot bonus or new
+kit. Native terrain and paid collision/support remain authoritative; raised
+floors can provide dry support above water. Water does not change placement
+costs, ownership, digging permission or save schema. Existing chunk/local cover
+refreshes exclude submerged grass and retain paid-footprint clearance.
+
 ## Living Frontier Red heat buffer — LF-2C, 8 September 2026
 
 A supported four-unit buffer pays two Red Salt per stored heat and serves one

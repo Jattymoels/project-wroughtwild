@@ -18,3 +18,10 @@ func interact(player: WroughtwildPlayer) -> void:
 	if player.hud != null:
 		player.hud.notify("You recover your pack: %s." % WorkPanel.amounts_text(recovered))
 	queue_free()
+
+func settle_water() -> void:
+	var surface:=LakeWater.landing(self)
+	if is_finite(surface):global_position.y=surface
+
+func _physics_process(_delta: float) -> void:
+	settle_water()

@@ -15,7 +15,7 @@ const SEED_CONTROLS := preload("res://scripts/world_seed_controls.gd")
 @export var world_seed: int = 1
 ## Fresh worlds use the new resource geography; old saves explicitly select
 ## legacy_v1 before restoring builds, resource depletion and excavation.
-@export var world_profile: String = "frontier_v7"
+@export var world_profile: String = "frontier_v8"
 var seed_controls: Node
 
 @onready var terrain: Terrain = $Terrain
@@ -137,6 +137,7 @@ func _build_world(seed_value: int) -> void:
 	var spawn := terrain.surface_position(terrain.map["spawn_x"], terrain.map["spawn_z"])
 	player.global_position = spawn + Vector3(0, 1.2, 0)
 	player.spawn_position = player.global_position
+	player.reset_environment_feedback()
 	player.velocity = Vector3.ZERO
 	# The art direction's mood dial (D-013): light follows the biome.
 	mood.setup(terrain, $WorldEnvironment.environment, $Sun)

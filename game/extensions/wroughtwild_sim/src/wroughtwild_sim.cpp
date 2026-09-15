@@ -2876,6 +2876,20 @@ Dictionary WroughtwildSim::world_map(int seed) {
         home_sites.push_back(h);
     }
     d["home_sites"] = home_sites;
+    Array lakes;
+    for(const auto& lake:map.lakes) {
+        Dictionary row;row["id"]=String(lake.id.c_str());row["home_id"]=String(lake.homeId.c_str());
+        row["x"]=lake.x;row["z"]=lake.z;row["surface_y"]=lake.surfaceY;row["radius_m"]=lake.radiusM;
+        row["aspect"]=lake.aspect;row["angle"]=lake.angle;row["min_x"]=lake.minX;row["min_z"]=lake.minZ;
+        row["width"]=lake.width;row["height"]=lake.height;
+        PackedByteArray beds;beds.resize(lake.beds.size());std::copy(lake.beds.begin(),lake.beds.end(),beds.ptrw());row["beds"]=beds;
+        lakes.push_back(row);
+    }
+    d["lakes"]=lakes;
+    const auto& water=table.lake;
+    Dictionary swim;swim["enter_m"]=water.swimEnterM;swim["exit_m"]=water.swimExitM;
+    swim["speed"]=water.swimSpeed;swim["offset_m"]=water.supportOffsetM;swim["response"]=water.supportResponse;
+    d["swimming"]=swim;
     Array regions;
     for (const auto& placed : map.regions) {
         Dictionary r;
@@ -3057,7 +3071,7 @@ Dictionary build_world_chunk(const wroughtwild::tuning::WorldgenTable& table,
     // these triangles; each triangle still retains its exact editable cell.
     // Retain side/underside fans: moving a diagonal riser centre can turn its
     // established capsule step/slide contact into an unwalkable corner catch.
-    const bool continuousSurface = map.profileId == "frontier_v7";
+    const bool continuousSurface = (map.profileId == "frontier_v7" || map.profileId == "frontier_v8");
     std::map<int64_t, Vector3> surfaceCache;
     std::map<int64_t, Vector3> normalCache;
     // Material-independent occupancy gradient. The same eight samples are

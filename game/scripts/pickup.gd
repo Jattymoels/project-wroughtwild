@@ -154,6 +154,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if _claimed or _absorbing or is_queued_for_deletion(): return
+	settle_water()
 	_age += delta
 	if kind == "material" and _age > MAX_AGE_SECONDS:
 		queue_free()
@@ -266,3 +267,12 @@ func _room_for(player: Node3D) -> bool:
 	if not (player is WroughtwildPlayer):
 		return true
 	return (player as WroughtwildPlayer).inventory.has_room(StringName(family))
+
+func settle_water() -> void:
+	var surface:=LakeWater.landing(self)
+	if not is_finite(surface):return
+	_floor_y=surface
+	if global_position.y<=surface:
+		global_position.y=surface
+		_resting=true
+		_velocity=Vector3.ZERO

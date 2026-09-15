@@ -109,14 +109,14 @@ static func refresh_buildings(root: Node3D, terrain: Terrain, changed: Array[AAB
 	if history != null: history.refresh_buildings(changed,buildings)
 	var frontier := root.get_node_or_null("FrontierSites")
 	if frontier != null: frontier.refresh_buildings(changed,buildings)
-	if terrain.world_profile() in ["frontier_v3","frontier_v4","frontier_v5","frontier_v6","frontier_v7","living_frontier_wave1","living_frontier_wave3"]:
+	if terrain.world_profile() in ["frontier_v3","frontier_v4","frontier_v5","frontier_v6","frontier_v7","frontier_v8","living_frontier_wave1","living_frontier_wave3"]:
 		var rf_buildings: Dictionary=terrain.reclaimed_cover.workspace_index(terrain,buildings) if terrain.reclaimed_cover!=null else {}
 		for chunk: Node3D in terrain.chunks.values(): _clear_cover_chunk(chunk,buildings,changed,rf_buildings)
 
 ## Terrain calls this before a streamed/rebuilt chunk is made visible. Older
 ## profiles neither retain these extra poses nor take the clearing path.
 static func refresh_cover_chunk(terrain: Terrain, chunk: Node3D) -> void:
-	if terrain==null or chunk==null or terrain.world_profile() not in ["frontier_v3","frontier_v4","frontier_v5","frontier_v6","frontier_v7","living_frontier_wave1","living_frontier_wave3"]: return
+	if terrain==null or chunk==null or terrain.world_profile() not in ["frontier_v3","frontier_v4","frontier_v5","frontier_v6","frontier_v7","frontier_v8","living_frontier_wave1","living_frontier_wave3"]: return
 	var buildings:=_building_index(terrain)
 	var rf_buildings: Dictionary=terrain.reclaimed_cover.workspace_index(terrain,buildings) if terrain.reclaimed_cover!=null else {}
 	_clear_cover_chunk(chunk,buildings,[],rf_buildings)
@@ -339,7 +339,7 @@ static func _inside(at: Vector3, centre: Vector3, radius: float) -> bool:
 
 static func _plant(terrain: Terrain, batches: Dictionary, kind: String, at: Vector3, size: Vector3,
 		yaw: float, reserved: Dictionary, footprint: float, rise: float) -> bool:
-	if terrain.world_profile() in ["frontier_v4", "frontier_v5", "frontier_v6","frontier_v7","living_frontier_wave1","living_frontier_wave3"] and at.is_finite():
+	if terrain.world_profile() in ["frontier_v4", "frontier_v5", "frontier_v6","frontier_v7","frontier_v8","living_frontier_wave1","living_frontier_wave3"] and at.is_finite():
 		var field: PackedFloat32Array = terrain.map.get("augmentation_field", PackedFloat32Array())
 		var cell := float(terrain.map.cell_size)
 		var x := floori(at.x / cell)

@@ -22,6 +22,7 @@ static func build(chunk: Node3D, data: Dictionary, map: Dictionary, cell: float,
 		if kind not in ["grass","forest_floor","marsh","ash"]:
 			continue
 		for centre: Vector3 in data.kinds[kind]:
+			if not LakeWater.column(map,centre.x,centre.z).is_empty(): continue
 			var x := floori(centre.x/cell)
 			var z := floori(centre.z/cell)
 			if reserved.has(Vector2i(x,z)) or Vector2(centre.x,centre.z).distance_to(spawn)<LOOK.clearing_metres:

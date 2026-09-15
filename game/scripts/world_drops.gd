@@ -4,7 +4,7 @@ extends RefCounted
 ## candidate against native tuning before calling restore; this helper never
 ## grants inventory, rolls gear, learns skills or generates a world.
 const VERSION := 1
-const BUNDLE_SCENE := preload("res://scenes/dropped_bundle.tscn")
+const BUNDLE_SCENE := "res://scenes/dropped_bundle.tscn"
 ## Native material inventory counts use signed int32. This is a representable
 ## count bound, not a new hauling cap or limit on the number of world drops.
 const MAX_MATERIAL_COUNT := 2147483647
@@ -166,11 +166,13 @@ static func restore(root: Node, payload: Dictionary) -> void:
 		pickup._age = float(row.age)
 		pickup._bob_phase = float(row.bob_phase)
 		pickup._mesh.position.y = float(row.mesh_y)
+		pickup.settle_water()
 	for row: Dictionary in payload.bundles:
-		var bundle: DroppedBundle = BUNDLE_SCENE.instantiate()
+		var bundle: DroppedBundle = (load(BUNDLE_SCENE) as PackedScene).instantiate()
 		# JSON parses numeric counts as floats; native ownership uses integers.
 		# Validation already proved each value is an exact positive int32.
 		for id in row.contents: bundle.contents[String(id)] = int(row.contents[id])
 		root.add_child(bundle)
 		bundle.global_position = _unvec(row.position)
 		bundle.global_rotation = _unvec(row.rotation)
+		bundle.settle_water()

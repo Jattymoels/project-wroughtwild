@@ -5,6 +5,16 @@ plan, not a new acceptance gate. The owner wants a solo indie prototype develope
 through playable iterations. Current AGENTS.md and the owner's approved work
 outrank historical review, packaging and rollout requirements.
 
+## RF-05 worker handoff
+
+[RF-05 lakes and surface swimming](rf05-lakes-swimming-result-2026-09-15.md) is
+implemented on `codex/rf05-lakes-swimming` in the prepared D: worker. Adopt its
+checked source and matching DLL together; the result/provenance record and worker
+response identify both. Fresh normal worlds use V8; V1–V7/LF Continue keeps its
+saved geography and ownership. Worker delivery includes actual lake/home pictures
+and a short movement clip. Coordinator adoption/push remains separate. No next
+slice is started. R9 and PLAY-03 remain parked; owner playtesting is deferred.
+
 ## Working rhythm
 
 Build a small playable improvement, integrate it, run a short check, then use

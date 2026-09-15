@@ -35,7 +35,7 @@ const TP_PITCH_LIMIT := PI / 3.0
 var _tp_arm_length := 4.5
 var _tp_arm_position := Vector3(0, 0.6, 0)
 
-const DROPPED_BUNDLE_SCENE := preload("res://scenes/dropped_bundle.tscn")
+const DROPPED_BUNDLE_SCENE := "res://scenes/dropped_bundle.tscn"
 
 var hud: Hud
 var work_panel: WorkPanel
@@ -77,6 +77,9 @@ var _jump_buffer_left := 0.0
 var _was_on_floor := true
 ## Landing camera dip: set on a hard landing, eased back to zero.
 var _land_dip := 0.0
+var swimming := false
+var wading := false
+var _water := {}
 
 ## Grammar-spike scaffolding: F1-F3 flip the three test mods on and off so
 ## the freeze-shatter sentence can be felt with and without each word.
@@ -187,6 +190,11 @@ func world_root() -> Node:
 ## Presentation has no saved stride or old-location bed. Explicit restoration
 ## also covers loading a checkpoint at exactly the position already occupied.
 func reset_environment_feedback() -> void:
+	swimming=false
+	wading=false
+	_water.clear()
+	_jump_buffer_left=0
+	_coyote_left=0
 	if is_instance_valid(footsteps): footsteps.reset_context()
 	if is_instance_valid(environment_ambience): environment_ambience.reset_context()
 
@@ -599,6 +607,7 @@ var play03_trace: Node # Diagnostic only; no saved state or control changes.
 
 func _physics_process(delta: float) -> void:
 	var trace_began := Time.get_ticks_usec() if play03_trace != null else 0
+	_refresh_water()
 	_horn_left = maxf(0.0, _horn_left - delta)
 	if hud.help_visible():
 		_jump_buffer_left = 0.0
@@ -607,7 +616,12 @@ func _physics_process(delta: float) -> void:
 	else:
 		_jump_buffer_left = maxf(0.0, _jump_buffer_left - delta)
 
-	if is_on_floor():
+	if swimming:
+		_jump_buffer_left=0
+		_coyote_left=0
+		var rules: Dictionary=_terrain.map.swimming
+		velocity.y=clampf((float(_water.surface)+float(rules.offset_m)-global_position.y)*float(rules.response),-3,3)
+	elif is_on_floor():
 		_coyote_left = COYOTE_SECONDS
 	else:
 		velocity += get_gravity() * delta
@@ -632,18 +646,20 @@ func _physics_process(delta: float) -> void:
 		if build_palette.is_open() or hud.help_visible():
 			input = Vector2.ZERO
 		var direction := (transform.basis * Vector3(input.x, 0.0, input.y)).normalized()
-		velocity.x = direction.x * move_speed * combat.haste_multiplier()
-		velocity.z = direction.z * move_speed * combat.haste_multiplier()
+		var speed := move_speed*combat.haste_multiplier()*(float(_terrain.map.swimming.speed) if swimming else 1.0)
+		velocity.x = direction.x * speed
+		velocity.z = direction.z * speed
 
 	var fall_speed := -velocity.y
 	var before_motion := global_position
 	var grounded_before := is_on_floor()
 	_step_up(delta)
 	move_and_slide()
-	footsteps.after_motion(before_motion, grounded_before, dash != Vector3.ZERO, delta)
+	if swimming: footsteps.reset_context()
+	else: footsteps.after_motion(before_motion, grounded_before, dash != Vector3.ZERO, delta)
 
 	# A hard landing dips the camera briefly - weight without screen shake.
-	if preferences.values.landing_motion and is_on_floor() and not _was_on_floor and fall_speed > 5.5:
+	if not swimming and preferences.values.landing_motion and is_on_floor() and not _was_on_floor and fall_speed > 5.5:
 		_land_dip = clampf(fall_speed * 0.014, 0.04, 0.13)
 	_was_on_floor = is_on_floor()
 	_land_dip = move_toward(_land_dip, 0.0, delta * 0.7)
@@ -652,6 +668,30 @@ func _physics_process(delta: float) -> void:
 	_update_digging(delta)
 	if play03_trace != null: play03_trace.add_time("player_physics_ms",trace_began)
 
+
+func _refresh_water() -> void:
+	if not is_instance_valid(_terrain): _terrain=LakeWater.terrain_for(self)
+	_water={}
+	wading=false
+	if _terrain==null or (trial!=null and trial.active()):
+		swimming=false
+		return
+	var feet:=global_position-Vector3.UP*.94
+	_water=LakeWater.contact(_terrain,feet)
+	if _water.is_empty():
+		swimming=false
+		return
+	var col:=LakeWater.column(_terrain.map,feet.x,feet.z)
+	var bed: float=_terrain.rendered_height(feet.x,feet.z,float(col.bed))
+	if not is_finite(bed):bed=float(col.bed)
+	var depth:=float(_water.surface)-bed
+	var immersion:=float(_water.surface)-feet.y
+	var threshold: float=_terrain.map.swimming.exit_m if swimming else _terrain.map.swimming.enter_m
+	wading=immersion>0
+	# Dry floors above the surface put the feet outside contact. A shallow paid
+	# floor inside water still supplies physical support; no body teleport occurs.
+	swimming=depth>=threshold and (immersion>=.8 if swimming else immersion>=1.0)
+	if swimming:_land_dip=0
 
 func _apply_preferences() -> void:
 	preferences.apply_device()
@@ -818,10 +858,11 @@ func _on_died() -> void:
 	var sim := inventory.get_sim()
 	var dropped: Dictionary = sim.drop_inventory()
 	if not dropped.is_empty():
-		var bundle: DroppedBundle = DROPPED_BUNDLE_SCENE.instantiate()
+		var bundle: DroppedBundle = (load(DROPPED_BUNDLE_SCENE) as PackedScene).instantiate()
 		world_root().add_child(bundle)
 		bundle.global_position = global_position
 		bundle.contents = dropped
+		bundle.settle_water()
 		hud.notify("You fell. Your pack lies where you died; go back for it.")
 	else:
 		hud.notify("You fell.")

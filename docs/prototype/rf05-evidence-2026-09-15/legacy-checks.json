@@ -1,0 +1,17 @@
+{
+  "captured_frames": 0,
+  "checks": 11,
+  "clip_fps": 15,
+  "distance_m": 0.0,
+  "failures": 0,
+  "lake": {
+    "home": {},
+    "surface": null,
+    "x": null,
+    "z": null
+  },
+  "rows": [],
+  "swim_frames": 0,
+  "transitions": 0,
+  "wade_frames": 0
+}

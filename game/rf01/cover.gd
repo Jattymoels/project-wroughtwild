@@ -1,7 +1,7 @@
 extends RefCounted
 ## One world's transient low-cover composition. No owned state or geometry edits.
 const SETTINGS = preload("res://rf01/low_cover.tres")
-const PROFILES := ["frontier_v6","frontier_v7","living_frontier_wave1","living_frontier_wave3"]
+const PROFILES := ["frontier_v6","frontier_v7","frontier_v8","living_frontier_wave1","living_frontier_wave3"]
 const RESERVATION_CELL := 8.0
 var _map: Dictionary
 var _seed: int
@@ -28,7 +28,7 @@ func _init(map: Dictionary, world_seed: int, profile: String, reservations: Dict
  for site: Dictionary in map.get("home_sites",[]):
   # V7 cores are useful ground, not visible plots. Low grass remains until
   # ordinary paid footprints clear it; published V6/LF reservations stay exact.
-  if profile != "frontier_v7":
+  if profile not in ["frontier_v7","frontier_v8"]:
    _reserve(Vector3((float(site.x)+0.5)*cell,float(site.radius_m),(float(site.z)+0.5)*cell))
   for point: Vector3 in site.get("approach",[]): _reserve(Vector3(point.x,StrangeSites.LOOK.approach_clearance_m,point.z))
  for site: Dictionary in map.get("landmarks",[]):
@@ -105,6 +105,7 @@ func build(chunk: Node3D, data: Dictionary, cell: float, distance: float) -> int
    var x := floori(centre.x/cell)
    var z := floori(centre.z/cell)
    var i := z*int(_map.width)+x
+   if not LakeWater.column(_map,centre.x,centre.z).is_empty(): continue
    var expected := float(_map.heights[i])
    if absf(centre.y+cell*0.5-expected)>0.01: continue
    var biome: String = _map.biome_defs[_map.biomes[i]].id
