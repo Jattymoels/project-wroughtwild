@@ -1,0 +1,195 @@
+{
+  "stage": "MOB-02 ram production, ART-06C v03 surface; in-place presentation only",
+  "target_triangles": 110000,
+  "weight_smoothing_passes": 14,
+  "stance_sink_units": 0.055,
+  "breath_units": 0.004,
+  "step_units": 0.38,
+  "hoof_lift_units": 0.08,
+  "stance_fraction": 0.66,
+  "walk_duration": 1.4,
+  "idle_duration": 4,
+  "windup_duration": 0.6,
+  "release_duration": 0.32,
+  "guard_duration": 2.8,
+  "guard_neck_radians": 0.22,
+  "guard_head_radians": 0.2,
+  "windup_neck_radians": 0.34,
+  "windup_head_radians": 0.3,
+  "strike_neck_radians": 0.42,
+  "strike_head_radians": 0.23,
+  "source_fps": 50,
+  "recommended_scale": 0.85,
+  "body": {
+    "pelvis": [
+      -0.015,
+      0.53,
+      1.1
+    ],
+    "spine": [
+      -0.02,
+      0.08,
+      1.16
+    ],
+    "chest": [
+      -0.025,
+      -0.24,
+      1.16
+    ],
+    "neck": [
+      -0.025,
+      -0.37,
+      1.25
+    ],
+    "head": [
+      -0.02,
+      -0.57,
+      1.62
+    ],
+    "muzzle": [
+      -0.02,
+      -0.86,
+      1.46
+    ],
+    "tail_root": [
+      0.015,
+      0.78,
+      1.2
+    ],
+    "tail_tip": [
+      0.02,
+      0.92,
+      1.05
+    ]
+  },
+  "legs": [
+    {
+      "name": "fore_L",
+      "side": -1,
+      "front": true,
+      "hip": [
+        -0.215,
+        -0.23,
+        0.98
+      ],
+      "knee": [
+        -0.212,
+        -0.185,
+        0.62
+      ],
+      "hock": [
+        -0.21,
+        -0.275,
+        0.34
+      ],
+      "ankle": [
+        -0.226,
+        -0.25,
+        0.12
+      ],
+      "phase": 0
+    },
+    {
+      "name": "fore_R",
+      "side": 1,
+      "front": true,
+      "hip": [
+        0.162,
+        -0.15,
+        0.98
+      ],
+      "knee": [
+        0.164,
+        -0.13,
+        0.62
+      ],
+      "hock": [
+        0.158,
+        -0.21,
+        0.34
+      ],
+      "ankle": [
+        0.183,
+        -0.177,
+        0.12
+      ],
+      "phase": 0.5
+    },
+    {
+      "name": "hind_L",
+      "side": -1,
+      "front": false,
+      "hip": [
+        -0.185,
+        0.56,
+        1.1
+      ],
+      "knee": [
+        -0.18,
+        0.49,
+        0.82
+      ],
+      "hock": [
+        -0.162,
+        0.75,
+        0.54
+      ],
+      "ankle": [
+        -0.204,
+        0.704,
+        0.12
+      ],
+      "phase": 0.25
+    },
+    {
+      "name": "hind_R",
+      "side": 1,
+      "front": false,
+      "hip": [
+        0.176,
+        0.66,
+        1.1
+      ],
+      "knee": [
+        0.17,
+        0.56,
+        0.84
+      ],
+      "hock": [
+        0.18,
+        0.855,
+        0.55
+      ],
+      "ankle": [
+        0.246,
+        0.916,
+        0.12
+      ],
+      "phase": 0.75
+    }
+  ],
+  "purposes": {
+    "target_triangles": "One evaluated runtime detail level, preserving long legs, horn openings and physical channels; automatic triangle collapse, not hand retopology.",
+    "weight_smoothing_passes": "Diffuse connected skin joins while retaining rigid head/horns and hoof anchors.",
+    "stance_sink_units": "Small presentation-only settling makes planted hoof targets reachable without stretching the leg bones.",
+    "breath_units": "Subtle idle rib/spine rise with feet held on the floor.",
+    "step_units": "Forward-to-back travel of each planted hoof in one stance; native translation remains external.",
+    "hoof_lift_units": "Swing clearance above a flat support plane; no runtime terrain IK.",
+    "stance_fraction": "Fraction of the gait cycle spent planted. Distance per cycle is step_units / stance_fraction.",
+    "walk_duration": "Authoring speed for the four-beat gait, resampled by actual movement in the shared adapter.",
+    "idle_duration": "One quiet breathing loop.",
+    "windup_duration": "Matches current ordinary guard windup, 0.6 seconds. Integration samples native normalized progress.",
+    "release_duration": "Cosmetic short forehead follow-through/recovery after native melee release; never a damage clock.",
+    "guard_duration": "Looped braced forehead pose for stationary alert presentation, not a gameplay state.",
+    "guard_neck_radians": "Lower the neck moderately in the guard stance while retaining curled horn clearance.",
+    "guard_head_radians": "Tilt the supported forehead toward the threat.",
+    "windup_neck_radians": "Anticipation lowers the supported head before the existing melee release.",
+    "windup_head_radians": "Present the forehead at native release without inventing horn contact.",
+    "strike_neck_radians": "Bounded grounded follow-through; no root movement or charge.",
+    "strike_head_radians": "Short skull counter-rotation during release, with horns rigidly attached.",
+    "source_fps": "Dense baked bone sampling preserves fitted foot targets through interpolation.",
+    "recommended_scale": "Suggested uniform metres-per-studio-unit, not a collider change; source longest dimension is two units.",
+    "body": "Joints fitted to the approved uneven neck and animal torso in Blender Z-up, -Y-forward source coordinates.",
+    "legs": "Four individually fitted upper/lower/pastern/hoof chains. Phase offsets make a four-beat walk."
+  }
+}

@@ -1,0 +1,15 @@
+{
+	"animation_player": "AnimationPlayer",
+	"checks": [
+		"explicit disposable evidence output",
+		"capture keeps visible pointer and unfocusable window",
+		"pointer/focus policy held through capture",
+		"264 actual GLB frames captured at 24 fps"
+	],
+	"failures": [],
+	"mesh": "RamRig/Skeleton3D/RamSkin",
+	"renderer": "forward_plus",
+	"samples": [],
+	"scope": "Imported species asset only; no native Enemy, combat or save integration",
+	"skeleton": "RamRig/Skeleton3D"
+}
