@@ -915,6 +915,12 @@
       }
     },
     "shrieker": {
+      "crane": {
+        "cull_margin_m": 0.4,
+        "purpose": {
+          "cull_margin_m": "Keep the fitted neck, beak and moving feet visible without changing native collision. Fit and stride use the selected crane asset descriptor."
+        }
+      },
       "source": "build/blender-study/90bcf4757796420fb8a292277d964158/shrieker.glb",
       "sha256": "542f6338cd72538cd560d619568df7d64b0b46444c756258d0f308c2f2b6e05b",
       "role": "shrieker",

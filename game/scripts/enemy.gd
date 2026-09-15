@@ -9,6 +9,8 @@ extends CharacterBody3D
 signal died(enemy: Enemy)
 ## Presentation event at the existing attack instant, including a missed blow.
 signal attack_released(kind: String)
+## Presentation observer after the unchanged native recruiting call has resolved.
+signal recruitment_called
 const SHOT_LOOK = preload("res://art/enemy_shot_look.tres")
 
 ## True for a trial room's own enemies: the room contains, counts and
@@ -988,6 +990,7 @@ func force_scream() -> void:
 			continue
 		other.state = "chase"
 	_pulse_ring(_scream_radius, Color(1.0, 0.9, 0.35, 0.4))
+	recruitment_called.emit()
 
 
 ## An expanding translucent ring (scream, death burst): greybox VFX that

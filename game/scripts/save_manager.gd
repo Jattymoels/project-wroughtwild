@@ -425,6 +425,10 @@ func _apply_prepared(player: WroughtwildPlayer, data: Dictionary, prepared: Dict
 	# Replace only after the world and any trial checkpoint have restored. This
 	# is loose world ownership, never a second deposit or trial reward payout.
 	WorldDrops.restore(root,drops)
+	# Same-world loads can retain living actors. Their transient presentation
+	# events belong to the previous live state, not to the restored checkpoint.
+	for presentation in root.get_tree().get_nodes_in_group("transient_actor_presentations"):
+		if root.is_ancestor_of(presentation): presentation.reset_transient_pose()
 	player.reset_environment_feedback()
 	if player.hud != null:
 		player.hud.refresh()
