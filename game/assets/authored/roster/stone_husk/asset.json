@@ -133,6 +133,10 @@
     "status_priority": "Keep existing freeze, hit, burn and bleed presentation over ambient scars."
   },
   "integration": {
+    "legacy_mesh_scale": 0.76,
+    "legacy_mesh_scale_purpose": "Undo the current Enemy humanoid mesh reduction for ram visual size and cosmetic stride; family and elite scale still apply once.",
+    "guard_blend_seconds": 0.12,
+    "guard_blend_purpose": "Soften the stationary idle/alert brace transition without delaying movement, combat or native guard eligibility.",
     "timing": "Sample windup by native normalized _windup_left / windup_seconds; resample release into existing CreatureMotion release_left (currently 0.22 s), not a new 0.32 s gameplay timer.",
     "guard": "No native guard state exists. Use guard only as a stationary alert pose or upper-body blend. Keep walk while moving; guard mitigation always uses native facing/arc, life and stagger.",
     "locomotion": "Measured source travel is 0.5757575758 units/cycle (0.4893939394 m at 0.85 scale). This is shorter than the legacy cosmetic stride setting. Coordinator should retain an explicit cosmetic cadence choice; exact distance matching at native 2.8 m/s produces rapid steps.",

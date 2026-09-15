@@ -56,5 +56,25 @@ fixture's private project/data live under ignored build output on D:.
   bind the supplied unchanged ART-06C maps and damage_tint shader behavior.
   The descriptor records channels, settings, intended loops and exact paths.
 
-The current checks are species fixtures, not a normal-game combat/save test.
-No test override, cache or executable belongs in the production commit.
+The original checks above cover the species export. Coordinator integration also
+adds `game/art/ram_presentation.gd`, the existing Stone Husk dispatch and the
+focused `native.gd` / `restore.gd` fixtures. Native guard and combat rules stay in
+Enemy. The descriptor explains uniform size, deliberate cosmetic stride and the
+0.12-second stationary idle/brace blend. SaveManager clears the unsaved visual
+strike through the existing transient presentation group.
+
+From the owner depot, rerun only a relevant check:
+
+```powershell
+./tools/wroughtwild-mob02-ram/run_native.ps1 -Job native -Capture
+./tools/wroughtwild-mob02-ram/run_native.ps1 -Job restore
+```
+
+The first checks actual guard facing/stagger, melee timing and presentation on
+one native actor with one Forward+ capture; the second uses a real seed-77 pack
+and ordinary SaveManager/Continue. `-Job import` refreshes Godot resources. Private
+saves, temporary data and logs default to D:/Wroughtwild/work/mob02-ram/build/mob02/integration.
+The renderer shares the nonblocking mutex, asserts a visible pointer and
+unfocusable window, and removes its own override on exit. The evidence directory
+is documentation, excluded from Godot resource imports by `.gdignore` (the engine
+cannot import its animated WebP preview). No cache or executable is committed.
