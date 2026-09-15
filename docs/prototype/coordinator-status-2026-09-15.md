@@ -9,11 +9,11 @@ outrank historical review, packaging and rollout requirements.
 
 Build a small playable improvement, integrate it, run a short check, then use
 the owner's experience to choose the next improvement. Keep one worker responsible
-for shared runtime integration at a time. On 15 September the owner asked for
-parallel work: independent ram and crane rig/animation production can run beside
-the porcupine integration worker, in separate D: worktrees and file namespaces.
-They return checked production assets for sequential normal-game integration;
-production readiness does not mean that the role is already playable on main.
+for shared runtime integration at a time. The owner-requested parallel ram/crane
+production and subsequent playable beetle/nymph/tortoise slices are now complete.
+All six regular replacements are integrated on main. For future work, independent
+production may use separate D: worktrees and file namespaces; source readiness
+alone does not mean that a role is already playable on main.
 See the [parallel production boundary](mob-parallel-production-2026-09-15.md).
 The owner starts worker sessions from supplied prompts;
 the coordinator brings completed, checked commits into main and pushes normally.
@@ -60,12 +60,12 @@ native swarm/melee presentation and ordinary Continue.
 [Beetle result, motion and playtest](mob04-beetle-result-2026-09-15.md).
 MOB-05's six-legged nymph Bog Lurker is integrated and pushed as `0d552ba`.
 [Nymph result, root/dash checks and playtest](mob05-nymph-result-2026-09-15.md).
-The owner praised its visuals and confirmed that its existing task may continue
-MOB-06 tortoise. **Tortoise is active**, in `D:/Wroughtwild/work/mob06-tortoise`,
-branch `codex/mob06-tortoise`; do not prepare or start a duplicate worker. Its
-base `89bde37` is the checked nymph commit, now adopted equivalently as `0d552ba`.
-The worker retains native Hollow Knight ward/melee behavior and returns new
-tortoise commits for coordinator integration; leave its running checkout alone.
+The owner praised the nymph and confirmed continuation to MOB-06 tortoise.
+**MOB-06 is now integrated and pushed as `5c1b360`**, preserving native Hollow
+Knight ward/melee behavior. [Tortoise result and roster completion](mob06-tortoise-result-2026-09-15.md).
+Its nymph dependency was already adopted; only the new tortoise commit was brought
+in. **All six base replacement mobs are complete on main.** No regular-mob worker
+is still running and no duplicate/new art-review wave is needed.
 The inventory below preserves the original coordination inspection.
 
 At inspection, local main, origin/main and the live GitHub main all point to
@@ -103,7 +103,7 @@ this coordination document's own commit, not a reset target.
 | Existing normal-game art | A1 supplies the R8 kit; A2 supplies boar/wolf/stag with moths preserved. PLAY-01 reduces demonstrated seam-arrival stalls; PLAY-02 improves active broadleaf/pine crowns. All use normal world/Continue entry. | Significant underground lag remains unresolved. Movement comfort and canopy feel await hands-on feedback; blunt limb ends remain visual polish. |
 | R8 environment/placeables | All 26 original ART-07 deliveries and R1–R8 are published as source/handoff work; their selected production runtime is now adopted on main. | **A1 integrated and pushed as `35cee73`.** [Result and playtest](mainline-art-a1-result-2026-09-15.md). |
 | Finished fauna | A2 adopts ART-01 boar and ART-03 wolf/stag, including existing LF visual aliases, on native actor clocks. Moths retain their earlier art/motion. | **A2 integrated and pushed as `27e742d`.** Mid detail, foot sliding and no terrain IK/distance switching are recorded limits. [Result](mainline-fauna-a2-result-2026-09-15.md). |
-| Six replacement mobs | Porcupine Archer (`f0349c2`), crane Shrieker (`d9e6b90`), ram Stone Husk (`5493470`), beetle Gloom Crawler (`a524870`) and nymph Bog Lurker (`0d552ba`) are rigged, animated and integrated on main. | Tortoise is active in the existing nymph worker task, using its own D: worktree. Preserve native roles; production assets alone do not establish gameplay adoption. |
+| Six replacement mobs | All six are rigged, animated and integrated on main: porcupine (`f0349c2`), crane (`d9e6b90`), ram (`5493470`), beetle (`a524870`), nymph (`0d552ba`) and tortoise (`5c1b360`). | Base adoption is complete. Foot sliding/collider mismatches, unmeasured performance and human combat feel remain; later-era physical forms and boss art are separate. |
 | Later art/world ambition | Later-era physical augmentation, remaining boss/host art and Reclaimed Frontier references/direction are recorded. | Future scoped production/design. Reclaimed Frontier means living, rolling terrain years after impact, vegetation reclaiming damage and surviving pulsing cracks; no new generator/save rule is selected. |
 | Broader game ambition | Class halls, substantial outpost/transport progression, larger production networks and richer late-game content remain longer-term design. | Choose only what the current prototype loop demonstrates it needs. Multiplayer, infinite generation and broad factory/trading systems remain outside scope. |
 
@@ -143,9 +143,9 @@ to their own future decision/bug work; art adoption must not silently decide the
    Its stationary brace, walk and forehead strike preserve native guard and combat.
    **[MOB-04 beetle](mob04-beetle-result-2026-09-15.md)** is integrated and pushed
    as `a524870`. **[MOB-05 nymph](mob05-nymph-result-2026-09-15.md)** is integrated
-   and pushed as `0d552ba`. **MOB-06 tortoise is active** in the same worker task,
-   on its separate `codex/mob06-tortoise` checkout. Only that worker owns new shared
-   mob wiring; the coordinator integrates its checked commit. Do not duplicate it.
+   and pushed as `0d552ba`. **[MOB-06 tortoise](mob06-tortoise-result-2026-09-15.md)**
+   is integrated and pushed as `5c1b360`. All six regular replacements are complete.
+   Do not dispatch further base-mob rig/adoption work from historical prompts.
    This is a production
    order, not new game rules; no extra visual approval is required at integration.
    Physical era variants and boss art retain explicit backlog entries.
@@ -209,4 +209,10 @@ import. MOB-04 is integrated/pushed as `a524870`, reusing 10 rig, 45 native and
 hands-on beetle feedback remain deferred. MOB-05 is integrated/pushed as `0d552ba`,
 reusing 11 source, 42 native and 14 Continue checks plus a 7.94-second main import.
 Nymph visuals are approved; broader gameplay/performance feedback remains open.
-Tortoise is the sole remaining regular replacement mob and its worker is active.
+MOB-06 is integrated/pushed as `5c1b360`, reusing its selected rig, native ward/
+melee, corrected capture and Continue evidence with one 5.05-second main import.
+All six regular replacement mobs are now playable. Remaining near-term work is
+the reported underground lag and useful owner combat/station/campaign feedback,
+with broad performance testing deferred to the owner's chosen playtest phase.
+Physical era variants, boss art and Reclaimed Frontier direction remain backlog;
+completion of this batch does not automatically start those larger art projects.

@@ -11,7 +11,7 @@ remain prototype limits. The low, wide animal differs from the unchanged upright
 .35 m radius / 1.3 m collider; the native radial contact envelope extends beyond
 the visible compact mouthpart. No squash, new reach, tongue tether, grab, wings,
 extra hurtboxes or bleed change was added. Full performance impact and owner
-playtesting remain deferred. Physical era additions, tortoise/boss art and
+playtesting remain deferred. Physical era additions, boss art and
 significant underground lag remain open; legitimate caves/digging are unchanged.
 R9 stays stopped.
 
@@ -19,7 +19,7 @@ The owner praised the nymph in the worker task and confirmed with the coordinato
 that the same task should continue the tortoise. Visual approval is recorded;
 this is not a claim of broader hands-on gameplay or performance testing.
 
-## Mainline adoption and active tortoise continuation
+## Mainline adoption and completed tortoise continuation
 
 The checked worker commit `89bde373edae90005ee26888a140b34816eb82fb` was adopted
 without conflicts as `0d552ba`. Game and nymph-tool files match the checked
@@ -33,12 +33,12 @@ The ordinary `577ac96..0d552ba` push to origin/main succeeded. No rendered revie
 new source inspection, combat matrix or performance gate was run. The owned
 import exited, no override remains, and owner captures were preserved.
 
-MOB-06 continues in the same owner-started task, in its separate
-`D:/Wroughtwild/work/mob06-tortoise` checkout on `codex/mob06-tortoise`. Its base
-is the original nymph worker commit `89bde37`, already equivalent to the mainline
-adoption above. Leave the active checkout unchanged; later integrate only its
-new tortoise commits. The coordinator retains mainline publication. The owner
-explicitly confirmed this continuation, so no duplicate tortoise worker is needed.
+MOB-06 continued in the same owner-started task, in the separate
+`D:/Wroughtwild/work/mob06-tortoise` checkout on `codex/mob06-tortoise`, based on
+the original nymph worker commit `89bde37`. The coordinator subsequently adopted
+only the new tortoise commit as `5c1b360` and pushed it. Both tasks' slices are
+complete; [the tortoise result](mob06-tortoise-result-2026-09-15.md) records the
+final regular-roster adoption. No duplicate worker or repeated nymph merge is needed.
 
 ## Owner visual approval
 
@@ -167,5 +167,5 @@ idle, pursuit, naturally timed root strikes and freeze.
 
 The worker committed the complete slice as `89bde37` on **`codex/mob05-nymph`**
 without pushing. The coordinator adopted and pushed it as `0d552ba`, as recorded
-above, then updated the result and aggregate status. Tortoise work remains active
-and is not claimed complete by this nymph publication.
+above, then updated the result and aggregate status. Tortoise completion was
+published separately as `5c1b360`; the nymph commit was not reapplied.

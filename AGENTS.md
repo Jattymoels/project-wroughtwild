@@ -41,9 +41,10 @@ Make reasonable choices within the existing design and report them with the slic
 Record owner playtesting as deferred; do not claim the owner has personally tried
 or liked an unplayed result. Known bugs remain open until fixed, and unavailable
 feedback is not evidence that an issue passed. Preserve saves, progression and
-existing gameplay rules. The current priorities are finished fauna adoption,
-reported stuttering/significant underground lag, canopy completeness, then the
-remaining replacement-mob rigs in small playable slices. Deferred owner station/campaign
+existing gameplay rules. A1/A2 and all six base replacement mobs are now adopted
+on main, along with the scoped movement and canopy improvements. Consult the
+current coordination sheet before scheduling work from older prompts. Reported
+significant underground lag and useful playtest feedback remain open. Deferred owner station/campaign
 feedback does not hold up this sequence. R9 remains stopped.
 
 The owner clarified in the movement worker on 15 September that PLAY-03 is
@@ -208,6 +209,14 @@ explicit, and mention unavoidable foreground interaction before running them.
 Preserve normal play controls, source seals, active peer jobs and benchmark
 conditions; do not silently throttle measurements or edit running worktrees.
 This is a workflow preference, not evidence that existing launchers implement it.
+
+On Windows, write temporary Godot overrides as **BOM-free UTF-8**. MOB-06 caught
+Godot ignoring a BOM-prefixed no-focus override. The corrected
+`tools/wroughtwild-mob06-tortoise/run_checks.ps1` retains the process handle before
+waiting, verifies its exit code and asserts capture comfort. Reuse that correction
+for future captures; do not assume `Set-Content -Encoding utf8` behaves identically
+across Windows PowerShell and PowerShell versions. Do not rerun old captures solely
+to retrofit this launcher fix.
 
 ## Prototype boundaries
 

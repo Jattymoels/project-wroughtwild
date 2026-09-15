@@ -1,7 +1,7 @@
 # MOB-06 — playable tortoise Hollow Knight
 
 The approved living tortoise now replaces Hollow Knight in ordinary new worlds
-and Continue on this worker branch. Its fitted 17-bone rig gives it a heavy
+and Continue on main, published as `5c1b360`. Its fitted 17-bone rig gives it a heavy
 four-leg walk, quiet breathing, supported neck/head anticipation and a short
 melee release. The hollow mineral mantle, intact scutes and pale connected
 lifelines remain. Native ward, pursuit, defenses and melee rules are preserved.
@@ -17,6 +17,33 @@ stopped; legitimate caves/digging are unchanged.
 The owner's "Love it - next" approved the shown nymph and continued the agreed
 sequence to this tortoise. Standing prototype approval covers this implementation;
 it does not claim the owner has personally played or reviewed this new result.
+
+## Mainline adoption — regular replacement roster complete
+
+The coordinator adopted `39fd76abd10bd72e46f187c9b306c4655958f03b` as `5c1b360`.
+The nymph dependency was already on main as `0d552ba`; it was not reapplied.
+The worker's nymph-approval note merged without losing the newer coordinator
+publication record. Runtime art/assets/scripts, native tuning, tortoise tools
+and fixtures match the checked worker commit exactly.
+
+The worker's **12 source checks, 50 native assertions covered by passed evidence,
+corrected capture and 14 Continue checks** were reused with the original failure
+history below intact. One headless main import passed in **5.05 seconds**, with
+exit 0 and no reported errors. The compact
+[main import result](../../game/tests/mob06/evidence/mainline-import.json) is
+retained; detailed logs/private data are in
+`D:/Wroughtwild/work/mob06-tortoise/build/mob06/mainline-adoption/`.
+
+The ordinary `2044d5d..5c1b360` push to origin/main succeeded. No new renderer,
+combat replay, parent reconstruction or performance gate was run. The owned
+import process exited and no override remains. Owner captures were preserved.
+
+**All six approved regular replacements are now integrated on main:** porcupine
+Cinder Archer, ram Stone Husk, crane Shrieker, beetle Gloom Crawler, nymph Bog
+Lurker and tortoise Hollow Knight. This completes their base rigs, animation and
+native adoption; full performance coverage, later-era physical forms, boss art
+and owner station/campaign feedback remain distinct. Significant underground lag
+is still unresolved. R9 remains stopped; no further review wave was launched.
 
 ## Focused verification
 
@@ -112,10 +139,9 @@ purposes in the recipe/descriptor; no gameplay tuning was added.
 ## Ordinary play later
 
 ```powershell
-& 'C:/Users/Matty/Godot/Godot_v4.5-stable_win64.exe' --path 'D:/Wroughtwild/work/mob06-tortoise/game'
+& 'C:/Users/Matty/Godot/Godot_v4.5-stable_win64.exe' --path 'C:/Users/Matty/Dev/project-wroughtwild/game'
 ```
 
-After coordinator integration, use the owner's normal depot `game` path instead.
 Choose Continue or a new world without test/showcase flags. Seed 77's checked
 ember-wastes pack is near **X 898.5, Y 42, Z 374.5**; approach through ordinary
 traversal. Watch the heavy walk and neck warning, fight a nearby ally within the
@@ -124,11 +150,10 @@ owner's usual saves were not touched by these private fixtures.
 
 ## Commit and coordinator handoff
 
-Completed as a local checked commit on **codex/mob06-tortoise**, based on the
-checked nymph **89bde373edae90005ee26888a140b34816eb82fb**. The exact tortoise SHA
-is returned in chat. Coordinator must include the nymph dependency before this
-commit. This worker did **not** integrate main or push; publication remains with
-the coordinator. Main and the owner's existing captures/imports were preserved.
+The worker committed `39fd76abd10bd72e46f187c9b306c4655958f03b` on
+**codex/mob06-tortoise**, based on the checked nymph `89bde37`, without pushing.
+The coordinator adopted only the new tortoise commit and pushed it as `5c1b360`,
+then updated the result/aggregate status. Existing owner captures were preserved.
 
 ## Selected native media
 
