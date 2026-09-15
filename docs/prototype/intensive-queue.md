@@ -57,10 +57,20 @@ concrete separate follow-up lead. No worker/review wave starts automatically.
 owner on 16 September.** No worktree or implementation exists; retain the compact
 compass/optional-coordinate brief for later. Original adoption/base-mob and
 RF-01–05 scopes are complete. The owner agreed to the proposed sequence:
-**[PLAY-07 scenery arrival](play07-scenery-arrival-worker-2026-09-16.md) is prepared
-next**, reusing the idle D: mob-arrival workspace at `43e7cf3` and retained trace.
-The owner starts it. Then scope fen/lakeside atmosphere and separate highland
-recovery; this does not select new generation rules or an all-biome intensive.
+**[PLAY-07 scenery arrival](play07-scenery-arrival-worker-2026-09-16.md) is running**,
+started by the owner in the existing D: mob-arrival workspace from `43e7cf3`.
+Let it finish its approved scope. Then return to the original Reclaimed Frontier
+outcomes: fen/lakeside atmosphere, highland recovery and remaining recovered-impact/
+living-scar composition; this does not select new generation rules or an all-biome intensive.
+
+**Owner scheduling correction, 16 September:** stick firmly to the original slice
+breakdown. Raise additions, but recommend recording them for a bounded cleanup
+slice at the end by default. A new observation is not automatic reprioritisation.
+See the [core sequence and cleanup notes](coordinator-status-2026-09-15.md#original-plan-sequence-and-end-of-wave-cleanup).
+Keep residual hitches, loading time and incidental shore/terrain/swim polish there;
+only a concrete blocker to the current scope or save/ownership risk needs urgent
+attention. Optional features remain proposals; compass stays parked. Do not turn
+the current scenery fix into a succession of new performance workers.
 
 **RF-01 is integrated on main as `66f3211`: [result and playtest](rf01-reclaimed-ground-result-2026-09-15.md).**
 Ordinary V6/LF play now has seeded low meadow/forest cover with actual support and

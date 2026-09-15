@@ -66,26 +66,64 @@ Its worktree has not been created and implementation has not started. Keep its
 brief for later; do not prepare or dispatch it now. RF-01–05 and original art/base-
 mob adoption are complete.
 
-The owner agreed to this sequence on 16 September. **Next prepared worker:
+The owner agreed to this sequence on 16 September. **Current worker:
 [PLAY-07 scenery arrival](play07-scenery-arrival-worker-2026-09-16.md).** Reuse
 `D:/Wroughtwild/work/play03-mob-arrival`, branch `codex/play03-mob-arrival` at
 `43e7cf3`, with `build/play07-scenery/SETUP.md`. Diagnose the measured pullstone
 first-use stall and correct demonstrated shared causes using the retained trace.
-The existing task is idle; the owner starts it. No new checkout or runtime copy.
+The owner has started the existing task. No new checkout or runtime copy.
 Only new continuation commits will need adoption; the previous three are on main.
 Then scope
 one fen/lakeside atmosphere slice: wet margins, reeds/roots, dry approaches and
 appealing nearby home space, building on existing water and the reclaimed-landscape
 references. Highland recovery can follow separately, with weathered rock shelves
-and appropriate vegetation pockets. New water geography, generation profiles and
+and appropriate vegetation pockets, then the remaining original composition
+around recovered impacts and living scars. New water geography, generation profiles and
 collision changes still need a scoped choice; none is selected by this agreement.
 Later-era creature forms and boss art remain separate production backlog. Station/
 campaign feel still needs useful owner playtest notes, not a new verification wave.
 
+## Original-plan sequence and end-of-wave cleanup
+
+On 16 September the owner asked the coordinator to hold firmly to the original
+slice breakdown, raise additions but default to recording them for a cleanup
+slice at the end. This supersedes making each new finding the immediate next job.
+The running PLAY-07 can finish its current scope; do not expand or interrupt it.
+
+| Order | Work | Relationship to the original plan |
+| --- | --- | --- |
+| Finish current | PLAY-07 scenery arrival and normal integration | Already approved additional fix, already running |
+| Next | Fen/lakeside atmosphere | Original wetland recovery: planted margins, roots, dry approaches and appealing living/building spaces |
+| Then | Highland recovery | Original mountain character: weathered shelves, settled debris and vegetation pockets |
+| Then | Remaining impact/scar composition | Original reclaimed-catastrophe identity: vegetation reconnects old damage while selected physical scars/pulses remain legible |
+| End | Bounded cleanup slice | Consolidate deferred issues by player impact; no exhaustive review wave |
+
+The three creative outcomes need small worker scopes using existing assets and
+delivered RF-01–05 foundations; this schedule does not select new world/save rules
+or promise all-biome production. RF-01–05 stay delivered. Keep original outcomes
+separate from refinements rather than restarting them for minor remaining polish.
+
+Initial cleanup notes: residual short group hitch, older unassigned lag/underground
+correlation, long world entry, angular shore/steep-bank polish and missing dedicated
+swim animation. Preserve each item's existing evidence and uncertainty; none is
+claimed fixed or newly blocking. New findings join these notes by default. The
+scenery cause currently being worked belongs to PLAY-07, not another immediate
+follow-up. Grass/impact composition that directly delivers the original creative
+outcomes stays in those scopes; incidental cosmetic refinements wait for cleanup.
+
+Compass/coordinates remain a parked optional feature, not an automatically approved
+cleanup fix. Station/campaign feel remains a feedback question until concrete
+issues are known. Later-era creature forms and boss art are separate backlog.
+When raising an addition, explain its benefit/impact, recommend deferral and name
+the core slice it would displace. Escalate only concrete current-slice blockers or
+save/ownership risks, or follow an explicit owner reprioritisation. No new worker
+is launched by recording this queue.
+
 ## Working rhythm
 
-Build a small playable improvement, integrate it, run a short check, then use
-the owner's experience to choose the next improvement. Keep one worker responsible
+Build the next agreed original-plan improvement, integrate it and run a short
+check. Use owner feedback to inform the cleanup backlog; change sequence when the
+owner explicitly reprioritises or a concrete blocker requires attention. Keep one worker responsible
 for shared runtime integration at a time. The owner-requested parallel ram/crane
 production and subsequent playable beetle/nymph/tortoise slices are now complete.
 All six regular replacements are integrated on main. For future work, independent

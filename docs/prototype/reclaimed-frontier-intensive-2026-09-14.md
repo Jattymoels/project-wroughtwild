@@ -21,6 +21,27 @@ creative slices still need small implementation scopes after PLAY-07; no new
 biome worker or generation change is dispatched here.
 R9 stays stopped.
 
+## Sequence protection — owner correction, 16 September
+
+The owner wants the original intent and slice breakdown to remain the main plan.
+Raise new ideas/findings, but recommend logging additions and non-blocking bugs
+for one bounded end-of-wave cleanup slice. Do not let every new observation
+replace the next planned creative outcome. A concrete blocker or explicit owner
+reprioritisation can change that; speculative risk and minor polish cannot.
+
+Finish the already-running PLAY-07 within its agreed scope, then return to:
+
+1. Fen/lakeside atmosphere and recovery.
+2. Highland character and recovery.
+3. Remaining composition around reclaimed impacts and living scars.
+4. A bounded cleanup slice drawn from the recorded player-impact notes.
+
+These are the remaining original landscape outcomes, to be broken into small
+playable implementations using the completed RF foundations. Do not retroactively
+reopen RF-01–05 or make new generation/feature decisions through scheduling alone.
+See the [current cleanup notes](coordinator-status-2026-09-15.md#original-plan-sequence-and-end-of-wave-cleanup).
+Compass remains parked; it is not automatically included as a cleanup fix.
+
 ## Ground continuity and water — owner feedback, 15 September
 
 After RF-03 the owner dislikes the small bumps between grass in the same biome,

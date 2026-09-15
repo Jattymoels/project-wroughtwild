@@ -176,6 +176,43 @@ handoffs, SETUP files and copied worktrees. It does not authorise broad review w
 For copied/older project worktrees, read this section from the current owner depot
 at `C:/Users/Matty/Dev/project-wroughtwild/AGENTS.md` before applying an old prompt.
 
+### Protect the original plan — owner correction, 16 September 2026
+
+The owner wants to "largely stick to the original plan" and make the default for
+additions that "we note them and do a slice at the end to fix them up". They report
+getting lost in tangents and losing the original intent. The coordinator should
+raise additions, but take a firm stance toward the original slice breakdown.
+
+- Keep the agreed original outcomes and slice sequence as the main schedule.
+  Show which original outcome each new worker advances. Do not silently insert
+  another feature, optimisation or polish pass whenever an issue is discovered.
+- Record additions and non-blocking bugs in the current wave's end-of-wave cleanup
+  backlog, with the observation, impact and any useful evidence. Briefly raise
+  them with the owner and recommend deferral by default, explaining which planned
+  slice would be delayed if handled now. A suggestion or playtest observation is
+  not, by itself, a direction to reorder the plan. Standing approval is not a
+  licence for the coordinator to keep expanding the sequence.
+- Continue small fixes necessary to deliver the current agreed behavior. Flag a
+  concrete blocker to that behavior, inability to load/play, or save/ownership
+  risk promptly and explain why it needs attention now. Do not use hypothetical
+  risk, missing exhaustive evidence or minor polish as an exception. The owner
+  can explicitly reprioritise at any time; record that decision and its effect.
+- At the end of the original wave, consolidate the recorded fixes into a bounded
+  cleanup slice based on their actual player impact. Do not create a new task per
+  note or an exhaustive final review/benchmark wave. Optional new features remain
+  proposals; recording them does not automatically approve their implementation.
+- Handoffs should identify original-plan progress, the next planned slice and
+  additions deferred. Keep known issues open and honest without making each one
+  the next automatic assignment. Preserve the original intent in future prompts.
+
+For the current wave, let the already-running PLAY-07 scenery task finish its
+existing approved scope and integrate it. Then return to the Reclaimed Frontier
+outcomes: fen/lakeside atmosphere, highland recovery, and remaining composition
+around recovered impacts/living scars. Scope these as small playable iterations
+of the original direction, then address the cleanup backlog. Compass/coordinates
+remain parked. Do not extend PLAY-07 into another performance tangent or interrupt
+its running work to retrofit this scheduling clarification.
+
 ### Standard game development practices at prototype scale
 
 The owner asked why established game-development techniques were not the default
