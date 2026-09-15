@@ -5,6 +5,13 @@ Counts and messages update immediately, while retired controls cannot move stock
 again after refresh, close/reopen or switching to another chest. Native transfer
 quantities, capacities, paid storage, save format and approved art are unchanged.
 
+Coordinator adoption, 15 September: worker `ffa1451` is integrated on main as
+`66c9ff9`. The 196 transfer/lifecycle and 45 fresh-process Continue checks below
+were reused. One hidden headless import on main passed in 4.66 seconds, exit 0,
+no engine errors. Its logs are at
+`D:/Wroughtwild/work/play05-chest/build/play05/main-integration/`. No rendering,
+additional gameplay matrix or underground investigation ran during integration.
+
 Owner playtesting remains deferred. This is a focused interaction fix, not a
 station enjoyment review or a performance result. PLAY-04 remains owner feedback;
 PLAY-03 underground lag/diagnosis stays parked and unresolved. R9 remains stopped.
@@ -80,8 +87,14 @@ Evidence is local and ignored:
 
 ## Normal-game use / Continue steps
 
-After coordinator integration, launch the normal game or Continue an existing
-world. Default keys below follow existing bindings if remapped.
+The fix is in the normal game. Launch it and Continue an existing world:
+
+```powershell
+& 'C:/Users/Matty/Godot/Godot_v4.5-stable_win64.exe' --path 'C:/Users/Matty/Dev/project-wroughtwild/game'
+```
+
+Keep the usual `-- --living-frontier-wave7` option if playing that campaign.
+Default keys below follow existing bindings if remapped.
 
 1. Open a paid chest with **E**. To place one, use **B → Tab → Chest → Timber**;
    normal placement costs six wood. For the example, start with an empty chest
@@ -102,7 +115,8 @@ from INT-03D was reused. No new observed gameplay failure remains in this scope.
 
 ## Delivery
 
-The checked worker commit is returned by exact SHA for coordinator integration.
-This worker does not integrate into main, push, rebuild a playtest package or
-start the next task. Main publication and aggregate tracking remain with the
-coordinator.
+The worker finished at `ffa145179867fa03edbf1d5a3b23801ab2c59a4d`; coordinator
+integration is `66c9ff9e4b694ed84fb110cb7f1187e8cc3e017b`. Main publication and
+aggregate tracking belong to the coordinator. No playtest package was rebuilt,
+no real save was changed and no further task was launched. Remaining owner
+station/campaign feedback and the parked underground issue remain separate.

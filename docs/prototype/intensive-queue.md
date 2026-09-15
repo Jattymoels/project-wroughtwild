@@ -41,11 +41,13 @@ claimed. Entry/fall and stationary sampling did not reproduce the owner's
 continuing slowdown. The owner is happy to wait for their next playthrough;
 park further underground diagnosis while keeping the bug open.
 
-**[PLAY-05 chest transfer reliability](play05-chest-worker-2026-09-15.md)** is the
-next prepared D: worker. Address the preview's concrete signal-emitter lifetime
-errors during chest Store/Take, preserving quantities, caps and saves. This is
-one interaction fix, not a full station review. PLAY-04 station/home usefulness
-and campaign feel still await owner playtesting. No new art or review wave starts.
+**[PLAY-05 chest transfer reliability](play05-chest-result-2026-09-15.md)** is
+integrated as `66c9ff9`. The reproduced Store-button error is corrected; retired
+controls cannot transfer twice or target another chest. Quantities, capacities
+and paid-store Continue remain intact. The worker's 196 transfer/lifecycle and
+45 Continue checks were reused; main's headless import passed. PLAY-04 station/
+home usefulness and campaign feel still await owner playtesting. No further
+repair, art or review wave is automatically started by this completion.
 
 The owner currently cannot playtest and has approved continued prototype work
 until told otherwise. Human feedback remains deferred; it does not block the

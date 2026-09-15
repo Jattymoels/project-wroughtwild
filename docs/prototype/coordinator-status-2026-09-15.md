@@ -30,7 +30,7 @@ reported bugs and playtest questions. A checked implementation can be in the gam
 while feel/balance feedback remains open. Do not restart a completed intensive
 merely because a historical checkbox still says human review pending.
 
-## Current next slice after the completed art batch
+## Current deliveries and remaining playtest feedback
 
 **PLAY-03 diagnostic delivery is integrated as `cbc6f67`.** The staged drop did
 not reproduce the owner's continuing slowdown; no causal fix is claimed. The
@@ -43,14 +43,16 @@ Reuse the worker's 7 transition and 19 recorder checks. Main's one hidden headle
 import passed in 6.8 seconds with exit 0 and no reported errors. Normal launch
 leaves recording off; saves, controls, art and streaming behavior remain unchanged.
 
-**Next prepared slice: [PLAY-05 chest transfer reliability](play05-chest-worker-2026-09-15.md)**,
-at `D:/Wroughtwild/work/play05-chest`, branch `codex/play05-chest`. The retained
-owner preview log has three errors from freeing a signal emitter during
-`ChestPanel.refresh()` called by `store()`. Current main still synchronously
-frees row children in this path. Reproduce using the actual transfer buttons,
-then correct their lifecycle while preserving exact native ownership and caps.
-This is one concrete UI fix, not a new home/workshop audit or performance wave.
-The owner starts the worker; the coordinator publishes its checked result.
+**[PLAY-05 chest transfer reliability](play05-chest-result-2026-09-15.md) is
+integrated as `66c9ff9`.** Worker `ffa1451` reproduced the original signal-emitter
+error through a real Store button. Old controls are now disabled/disconnected
+immediately, with deletion queued until the signal finishes. Counts/messages and
+transfers remain synchronous; retired buttons cannot affect another chest.
+Native capacities, exact ownership, saved paid chests and art remain unchanged.
+The worker is finished; its local import outputs are preserved on D: and excluded
+from integration. Reuse its 196 transfer/lifecycle and 45 fresh-process Continue
+checks. Main's hidden headless import passed in 4.66 seconds, exit 0, no errors.
+No new worker or review wave was started during adoption.
 
 PLAY-04 station/home and campaign feel remain owner playtest questions. They are
 not failed acceptance tests, and PLAY-05 does not close them. Later-era creature
@@ -187,9 +189,9 @@ art. PLAY-01 has a published causal improvement awaiting owner
 comfort feedback; PLAY-02 is published with known visual limits and deferred
 hands-on feedback. PLAY-03/04 remain open. PLAY-03 is lag underground, not access.
 
-The retained preview log also records three signal-lifetime errors in
-`chest_panel.gd` refresh/store. This is a separate concrete UI diagnostic for the
-prepared PLAY-05 slice; no evidence links it to the reported movement stutter. The preview's
+The retained preview log's three signal-lifetime errors in `chest_panel.gd`
+refresh/store were reproduced and corrected by PLAY-05 on main as `66c9ff9`.
+No evidence links this UI error to the reported movement stutter. The preview's
 configured `user/ART07G1/g1-play.json` was absent at this inspection, while
 `runtime/game/g1/paid-home.json` exists. The owner's exact underground location
 is unavailable; do not invent it or block scoped diagnosis awaiting playtesting.
