@@ -1,0 +1,24 @@
+[gd_resource type="Resource" load_steps=6 format=3]
+[ext_resource type="Script" path="res://rf02/ground.gd" id="1"]
+[ext_resource type="Texture2D" path="res://rf02/textures/meadow-albedo.png" id="2"]
+[ext_resource type="Texture2D" path="res://rf02/textures/meadow-detail.png" id="3"]
+[ext_resource type="Texture2D" path="res://rf02/textures/woodland-albedo.png" id="4"]
+[ext_resource type="Texture2D" path="res://rf02/textures/woodland-detail.png" id="5"]
+[resource]
+script = ExtResource("1")
+meadow_albedo = ExtResource("2")
+meadow_detail = ExtResource("3")
+woodland_albedo = ExtResource("4")
+woodland_detail = ExtResource("5")
+tile_metres = 2.4
+detail_strength = 0.32
+broad_variation = 0.16
+design_purpose = {
+"meadow_albedo": "Original fine turf, old thatch, tiny fallen leaves and visible olive soil; sRGB colour.",
+"meadow_detail": "Signed RG surface slopes and B matte roughness, linear data; no displaced terrain.",
+"woodland_albedo": "Original muted fallen leaves, needles and broken twigs over visible humus; sRGB colour.",
+"woodland_detail": "Quiet leaf edges and humus relief in RG, roughness in B; linear data.",
+"tile_metres": "A 2.4-metre map puts turf fibres at centimetre scale. A rotated second scale and world-space patches soften repetition.",
+"detail_strength": "Restrained apparent relief keeps close ground readable without embossed grain or implied terrain displacement.",
+"broad_variation": "Sixteen-percent landscape variation joins the close detail into calmer worn and living patches."
+}

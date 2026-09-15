@@ -84,6 +84,7 @@ var _world_profile := "legacy_v1"
 var reclaimed_cover: RefCounted # Recreated with the actual world identity; never saved.
 var _habitat_refresh_queued := false
 var _augmentation_texture: ImageTexture
+var _rf02_biome_mask: ImageTexture # Derived visual data, never saved.
 ## Mutable copy of the sim's block field with the player's digs applied.
 var _blocks := PackedByteArray()
 
@@ -175,6 +176,7 @@ func _material_for(kind: String) -> Material:
 			frontier_material.set_shader_parameter("augmentation_map", _augmentation_texture)
 			frontier_material.set_shader_parameter("augmentation_extent", Vector2(map.width, map.height) * float(map.cell_size))
 			frontier_material.set_shader_parameter("augmentation_tint", preload("res://art/cataclysm_look.tres").ground_tint_strength)
+		preload("res://rf02/ground.tres").bind(frontier_material, kind, _rf02_biome_mask, map)
 		_materials[kind] = frontier_material
 		return frontier_material
 	var material := StandardMaterial3D.new()
@@ -216,6 +218,7 @@ func build(sim: WroughtwildSim, seed_value: int, profile_id: String = "") -> voi
 	_world_profile = sim.world_profile()
 	atmosphere_look = null
 	_augmentation_texture = null
+	_rf02_biome_mask = null
 	if weathered and _world_profile in ["frontier_v3", "frontier_v4", "frontier_v5", "frontier_v6","living_frontier_wave1","living_frontier_wave3"]:
 		frontier_look = preload("res://art/wildland_look.tres")
 		atmosphere_look = preload("res://art/wildland_atmosphere.tres")
@@ -230,6 +233,8 @@ func build(sim: WroughtwildSim, seed_value: int, profile_id: String = "") -> voi
 		var field: PackedFloat32Array = map.get("augmentation_field", PackedFloat32Array())
 		if field.size() == int(map.width) * int(map.height):
 			_augmentation_texture = ImageTexture.create_from_image(Image.create_from_data(int(map.width), int(map.height), false, Image.FORMAT_RF, field.to_byte_array()))
+	if weathered:
+		_rf02_biome_mask = preload("res://rf02/ground.tres").mask_for(map, _world_profile)
 	_blocks = (map["blocks"] as PackedByteArray).duplicate()
 	block_rules = sim.block_rules()
 	fire_rules = sim.fire_setting()

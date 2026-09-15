@@ -1,7 +1,9 @@
-[gd_resource type="Resource" load_steps=2 format=3]
+[gd_resource type="Resource" load_steps=3 format=3]
 [ext_resource type="Script" path="res://rf01/low_cover.gd" id="1"]
+[ext_resource type="Resource" path="res://rf02/grass.tres" id="2"]
 [resource]
 script = ExtResource("1")
+grass_art = ExtResource("2")
 visual_salt = 91073
 patch_metres = 14.0
 sparse_coverage = 0.28
@@ -21,6 +23,7 @@ max_support_rise_m = 0.46
 max_plane_error_m = 0.075
 root_embed_m = 0.025
 design_purpose = {
+"grass_art": "RF02 replaces only RF grass geometry and materials with one finished Blender clump; the legacy crown-layer controls below are unused while this binding is present.",
 "visual_salt": "Independent seeded cosmetic pattern; never consumes gameplay RNG.",
 "patch_metres": "Fourteen-metre connected swathes join nearby plants while retaining broad quieter openings.",
 "sparse_coverage": "Chance of a low plant in the quietest eligible cells, leaving visible soil and room between swathes.",

@@ -25,6 +25,7 @@ uniform bool augmentation_enabled = false;
 uniform sampler2D augmentation_map : filter_linear, repeat_disable;
 uniform vec2 augmentation_extent = vec2(512.0);
 uniform float augmentation_tint = 0.22;
+#include "res://rf02/ground.gdshaderinc"
 varying vec3 world_position;
 varying vec3 world_normal;
 
@@ -90,6 +91,7 @@ void fragment() {
 		base = COLOR.rgb;
 		stone = COLOR.a;
 	}
+	vec3 native_base = base;
 	// Incommensurate rotated scales make weathering belong to the landscape,
 	// rather than repeating a noisy tile on each metre of ground.
 	mat3 rotation = mat3(vec3(0.8,0.0,0.6),vec3(0.18,0.95,-0.24),vec3(-0.57,0.3,0.76));
@@ -147,6 +149,8 @@ void fragment() {
 	// Pixel derivatives are used only for the distant grain filter above.
 	vec3 gradient = (chips_gradient + grit_gradient * 0.65) * bump_height_m;
 	gradient += stone * (wear_gradient + bedding_gradient * 0.15) * rock_bump_m;
+	float influence = augmentation_enabled ? texture(augmentation_map, p.xz / augmentation_extent).r * augmentation_tint : 0.0;
+	rf02_surface(p, n, stone, native_base, top_colour.rgb, loam_colour.rgb, broad, influence, ALBEDO, gradient, ROUGHNESS, AO);
 	vec3 bumped = normalize(n - (gradient - n * dot(n,gradient)));
 	NORMAL = normalize((VIEW_MATRIX * vec4(bumped, 0.0)).xyz);
 }

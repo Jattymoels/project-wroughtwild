@@ -19,12 +19,14 @@ extends Resource
 @export var max_plane_error_m := 0.075
 @export var root_embed_m := 0.025
 @export var design_purpose: Dictionary = {}
+@export var grass_art: Resource # RF02 source/material only; scatter and envelopes remain RF01.
 var meshes: Dictionary = {}
 
 func mesh_for(role: String) -> ArrayMesh:
  var key := str([role,grass_width_m,grass_height_m,fern_width_m,fern_height_m,grass_layers,layer_turn_radians,layer_scale_step])
  if meshes.has(key): return meshes[key]
- var source: ArrayMesh = R7Cover.source(role)
+ var authored_grass := grass_art != null and role.begins_with("grass")
+ var source: ArrayMesh = grass_art.source(role) if authored_grass else R7Cover.source(role)
  var box := source.get_aabb()
  var centre := Vector3(box.get_center().x,box.position.y,box.get_center().z)
  var fern := role.begins_with("fern")
@@ -45,11 +47,11 @@ func mesh_for(role: String) -> ArrayMesh:
   surface.begin(Mesh.PRIMITIVE_TRIANGLES)
   # Cross additional existing grass crowns at the same supported root.
   # Each layer is smaller, retaining the already checked radial footprint.
-  for layer in (1 if fern else grass_layers):
+  for layer in (1 if fern or authored_grass else grass_layers):
    var gain := 1.0-float(layer)*layer_scale_step
    var local := Transform3D(Basis(Vector3.UP,float(layer)*layer_turn_radians).scaled(Vector3.ONE*gain),Vector3.ZERO)
    surface.append_from(source,i,local*pose)
-  surface.set_material(R7Cover.material_for(source.surface_get_material(i),0.0))
+  surface.set_material(grass_art.material_for(source.surface_get_material(i)) if authored_grass else R7Cover.material_for(source.surface_get_material(i),0.0))
   surface.commit(mesh)
  mesh.set_meta("rf01_role",role)
  # These bounds describe moving leaves too; StrangeSites uses them rather

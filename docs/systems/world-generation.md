@@ -12,7 +12,12 @@ and reserved areas. The one nearby seed-77 walk has no impact-margin beat; physi
 landforms remain later work. The owner requested
 [RF-02 ground materials and grass](../prototype/rf02-ground-grass-worker-2026-09-15.md)
 next: authored ground surfaces and a small Blender grass kit, preserving this
-placement and native terrain/save boundary. RF-02 is prepared, not implemented.
+placement and native terrain/save boundary. RF-02 is now
+[delivered on its worker branch](../prototype/rf02-ground-grass-result-2026-09-15.md)
+for coordinator integration: original turf/litter maps and two Blender grass
+forms use the same placement, support and paid-work clearances. A transient native
+biome mask scopes materials to eligible V6/LF meadow/forest surfaces;
+no generator, save, ownership or collision change is introduced.
 
 **Future direction recorded, 14 September 2026:** the
 [Reclaimed Frontier intensive](../prototype/reclaimed-frontier-intensive-2026-09-14.md)

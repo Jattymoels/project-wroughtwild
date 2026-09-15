@@ -1,0 +1,35 @@
+{
+  "maps": [
+    {
+      "role": "meadow",
+      "pixels": 1024,
+      "repeat_metres": 2.4,
+      "seed": 90277,
+      "mean_srgb": [
+        0.31353276196648094,
+        0.3557497435925054,
+        0.1837249381869447
+      ],
+      "relief": "RG signed tangent slopes, B roughness; apparent detail only"
+    },
+    {
+      "role": "woodland",
+      "pixels": 1024,
+      "repeat_metres": 2.4,
+      "seed": 90377,
+      "mean_srgb": [
+        0.30800641003777,
+        0.26804658852371516,
+        0.17505521213307101
+      ],
+      "relief": "RG signed tangent slopes, B roughness; apparent detail only"
+    }
+  ],
+  "method": "Original seamless RF-02 surface maps. No reference-image pixels are used.\nDeterministic painted turf blades, thatch, humus and curled litter; packed RG\nholds signed X/Z relief slope, B matte roughness. Blender/terrain stay undisplaced.\n",
+  "sha256": {
+    "meadow-albedo.png": "1a6cb7bb0de4f9a8112a1e0aa9c85f94e31ca94e544dead04024326edff7e7a7",
+    "meadow-detail.png": "0a338db157c78b5217dc8d4de62265b45beffc04b65ed5ae56de313de7af5fa0",
+    "woodland-albedo.png": "67a2989e2859ca977f23074e2b126cf88be136fd0b041334b758cfd3763ee886",
+    "woodland-detail.png": "c08b967c66146ceefa705f603c1ffd658ed9605399c48ad79c6635eee7425c2d"
+  }
+}

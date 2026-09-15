@@ -1,0 +1,22 @@
+{
+	"checks": 29,
+	"failures": 0,
+	"meshes": [
+		{
+			"height_m": 0.38,
+			"radius_m": 0.469999969005585,
+			"role": "grass-meadow",
+			"support_radius_m": 0.4782044,
+			"sway_m": 0.00684,
+			"triangles": 1404
+		},
+		{
+			"height_m": 0.2508,
+			"radius_m": 0.469999998807907,
+			"role": "grass-edge",
+			"support_radius_m": 0.4782044,
+			"sway_m": 0.0045144,
+			"triangles": 828
+		}
+	]
+}

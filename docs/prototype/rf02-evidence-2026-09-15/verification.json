@@ -1,0 +1,78 @@
+{
+  "base": "97034740da9e515b17d3910f1105393f23310184",
+  "branch": "codex/rf02-ground-grass",
+  "engine": "Godot 4.5-stable",
+  "renderer": "Forward+",
+  "seed": 77,
+  "profile": "frontier_v6",
+  "groups": {
+    "import": {
+      "engineExitCode": 0,
+      "seconds": 36.87,
+      "log": "D:/Wroughtwild/work/rf02-ground-grass/build/rf02/logs/import-20260915-173242",
+      "exitCode": 0,
+      "reportedErrors": 0
+    },
+    "assets": {
+      "seconds": 1.23,
+      "log": "D:/Wroughtwild/work/rf02-ground-grass/build/rf02/logs/assets-20260915-173508",
+      "engineExitCode": 0,
+      "reportedErrors": 0,
+      "exitCode": 0
+    },
+    "walk": {
+      "log": "D:/Wroughtwild/work/rf02-ground-grass/build/rf02/logs/walk-20260915-173550",
+      "seconds": 58.01,
+      "engineExitCode": 0,
+      "exitCode": 0,
+      "reportedErrors": 0
+    },
+    "continue": {
+      "log": "D:/Wroughtwild/work/rf02-ground-grass/build/rf02/logs/continue-20260915-174224",
+      "seconds": 54.93,
+      "exitCode": 0,
+      "reportedErrors": 0,
+      "engineExitCode": 0
+    }
+  },
+  "initial_asset_failure": "Three missing explicit float types in check script; parser failed before assertions. Owned PID 5444 stopped; corrected assertions passed.",
+  "initial_continue_failures": {
+    "runs": 2,
+    "checks_per_run": 22,
+    "failures_per_run": 1,
+    "reason": "Headless GPU getter returned identity transforms although the eight overlaps had hidden flags. Same assertion passed on published Forward+ transforms; no production clearance change."
+  },
+  "reuse": "RF01 unchanged scatter/support/lifecycle/paid-economy evidence, documented in its result.",
+  "media": {
+    "stills": 3,
+    "clip": "walking.gif",
+    "width": 640,
+    "height": 360,
+    "fps": 10,
+    "duration_ms": 8000,
+    "source": "120 actual viewport captures, 15 fps. Selection/resize/encoding only."
+  },
+  "source_master": "D:/Wroughtwild/source-art/rf02-ground-grass/rf02-grass-master.blend",
+  "limits": [
+    "Patchy cover at shelves/reservations.",
+    "Route has no impact margin.",
+    "No other-condition/hardware/campaign matrix or owner playtest.",
+    "PLAY03 remains parked; R9 stopped."
+  ],
+  "publication": "Worker commit only; checked SHA in final chat. Coordinator integrates and pushes.",
+  "delivery_cache_preparation": {
+    "reportedErrors": 0,
+    "log": "D:/Wroughtwild/work/rf02-ground-grass/build/rf02/logs/import-20260915-175436",
+    "engineExitCode": 0,
+    "seconds": 33.64,
+    "exitCode": 0,
+    "note": "Recreated importer metadata needed for local play after cleanup. Exit 0, no errors; warnings reported UID files restored from the existing cache. Runtime art unchanged; no replay of passed walking/use checks."
+  },
+  "delivery_checks": {
+    "python_syntax": "passed",
+    "powershell_syntax": "passed",
+    "json_and_local_links": "passed",
+    "gif": "80 frames, 8000 ms",
+    "owned_processes_remaining": 0
+  }
+}

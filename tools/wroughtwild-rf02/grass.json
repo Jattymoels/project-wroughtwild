@@ -1,0 +1,18 @@
+{
+  "seed": 9277,
+  "blades": {
+    "meadow": 78,
+    "edge": 46
+  },
+  "sections": 5,
+  "half_width_m": [
+    0.008,
+    0.017
+  ],
+  "design_purpose": {
+    "seed": "Repeatable original blade/root variation independent of runtime scatter.",
+    "blades": "78 blades make a full meadow crown with basal growth; 46 form a lower one-sided edge.",
+    "sections": "Five shaped sections retain curved silhouettes with a folded central ridge.",
+    "half_width_m": "8–17 mm half-widths give readable blades at walking distance."
+  }
+}

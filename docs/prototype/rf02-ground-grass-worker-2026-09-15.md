@@ -1,7 +1,8 @@
 # RF-02 — ground materials and grass
 
-Status: prepared at the owner's request, 15 September 2026. The owner starts
-this worker; the coordinator integrates its checked commit into main and pushes.
+Status: completed on the worker branch, 15 September 2026.
+[Result, checked evidence and normal-game playtest](rf02-ground-grass-result-2026-09-15.md).
+The coordinator integrates the checked worker commit into main and pushes.
 
 Work in `D:/Wroughtwild/work/rf02-ground-grass`, branch
 `codex/rf02-ground-grass`. Read `build/rf02/SETUP.md` for the exact main base,

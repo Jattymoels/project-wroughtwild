@@ -1,0 +1,89 @@
+{
+  "inspected_inputs": {
+    "grass-meadow-lod0.glb": {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b2\\worktree\\build\\art07\\b2\\v10\\handoff\\review\\assets\\grass-meadow-lod0.glb",
+      "sha256": "755aab6c17df6fd9221f87b98e223f43e5d64a7e2440a305bd4adf34da4830ed",
+      "vertices": 1224,
+      "triangles": 1080,
+      "min": [
+        -0.5073289275169373,
+        -0.4684157371520996,
+        0.0010000000474974513
+      ],
+      "max": [
+        0.5607473850250244,
+        0.5861467123031616,
+        0.5796685218811035
+      ]
+    },
+    "grass-meadow-lod1.glb": {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b2\\worktree\\build\\art07\\b2\\v10\\handoff\\review\\assets\\grass-meadow-lod1.glb",
+      "sha256": "bf6210327301d8ff1182cb28bfe2517cb86764940e801a2d6a72243842de026a",
+      "vertices": 648,
+      "triangles": 504,
+      "min": [
+        -0.5073289275169373,
+        -0.4684157371520996,
+        0.0010000000474974513
+      ],
+      "max": [
+        0.5607473850250244,
+        0.5861467123031616,
+        0.5656254291534424
+      ]
+    },
+    "grass-edge-lod0.glb": {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b2\\worktree\\build\\art07\\b2\\v10\\handoff\\review\\assets\\grass-edge-lod0.glb",
+      "sha256": "9355e9f258b7ab608ca2e7c601024dbd9aefa5ca4e75d64919fe9014c6e059da",
+      "vertices": 612,
+      "triangles": 540,
+      "min": [
+        -0.4062219262123108,
+        -0.42312467098236084,
+        0.0010000000474974513
+      ],
+      "max": [
+        0.4159349799156189,
+        0.5578914880752563,
+        0.24492986500263214
+      ]
+    },
+    "grass-edge-lod1.glb": {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b2\\worktree\\build\\art07\\b2\\v10\\handoff\\review\\assets\\grass-edge-lod1.glb",
+      "sha256": "669890461ce40a166638a0098d758904ff305e8be3e3414f20716db40acd4d1b",
+      "vertices": 324,
+      "triangles": 252,
+      "min": [
+        -0.4062219262123108,
+        -0.42312467098236084,
+        0.0010000000474974513
+      ],
+      "max": [
+        0.4159349799156189,
+        0.5578914880752563,
+        0.23901017010211945
+      ]
+    }
+  },
+  "forms": {
+    "meadow": {
+      "blades": 78,
+      "triangles": 1404,
+      "vertices": 1248,
+      "radius_m": 0.47,
+      "height_m": 0.38,
+      "surfaces": 1,
+      "sha256": "1f275d0b8ef8fee9ec9572a24d4dc2998be5ee3e697c4b4ddbecb20b6641c799"
+    },
+    "edge": {
+      "blades": 46,
+      "triangles": 828,
+      "vertices": 736,
+      "radius_m": 0.47,
+      "height_m": 0.2508,
+      "surfaces": 1,
+      "sha256": "e1060be9b21d42e9d6784e6771b7437c6afb475678cbca28b8395c089455647c"
+    }
+  },
+  "coordinates": "metres, Blender Z up; standard glTF Y-up export"
+}
