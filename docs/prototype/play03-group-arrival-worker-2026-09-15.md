@@ -1,5 +1,9 @@
 # PLAY-03: arrival fixes across the full current creature roster
 
+**Completed and adopted, 16 September:** worker `43e7cf3` is on main as `9dba2fd`.
+See the [result, coverage and remaining hitches](play03-group-arrival-result-2026-09-15.md).
+The brief below is retained history; do not restart it automatically.
+
 ## Owner expansion: all current creatures and mobs
 
 The owner explicitly asked: "Sorry can we just make sure we fix all the

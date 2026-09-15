@@ -11,9 +11,10 @@ inspiring home sites](rf03-landforms-homes-result-2026-09-15.md) is adopted as
 RF-04's local ground correction is adopted as `27fc34d`; RF-05 lakes with simple
 swimming are adopted as `5e5de06`. The selected mob-arrival presentation hitch is
 now corrected on main as `1bc19e9`; the original underground connection remains
-unconfirmed. The owner's newer turtle/archer/Cinder Wisp report makes
-[group-arrival lag](play03-group-arrival-worker-2026-09-15.md) the immediate priority.
-[PLAY-06 navigation](play06-navigation-worker-2026-09-15.md) is queued afterward.
+unconfirmed. The owner's subsequent full-roster arrival correction is adopted as
+`9dba2fd` on 16 September: [group result](play03-group-arrival-result-2026-09-15.md).
+The remaining short group frame and separate pullstone/scenery stall are recorded.
+[PLAY-06 navigation](play06-navigation-worker-2026-09-15.md) is next queued.
 Fen/mountain recovery remains the next larger biome direction to scope separately.
 R9 stays stopped.
 

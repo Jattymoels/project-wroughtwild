@@ -1,16 +1,16 @@
 # PLAY-06: bearings and optional coordinates
 
-**Queued, not dispatched.** The owner's new turtle/archer/Cinder Wisp group hitch
-takes priority: [current worker brief](play03-group-arrival-worker-2026-09-15.md).
+**Next queued, not dispatched, 16 September.** The full-roster mob-arrival fix
+is adopted as `9dba2fd`: [result and remaining limits](play03-group-arrival-result-2026-09-15.md).
 The proposed worktree below has not been created; do not start this prompt until
-the coordinator prepares it after the reported defect. No implementation is done.
+the coordinator prepares it. No navigation implementation is done.
 
 Prepared after the owner's direction/coordinate question and request for the
 next slice, under standing prototype approval. The owner starts this worker.
 
 Workspace: `D:/Wroughtwild/work/play06-navigation`.
 Branch: `codex/play06-navigation`. Read `build/play06/SETUP.md` for the exact base
-and inherited native runtime. Preserve RF-05 and both mob-arrival corrections.
+and inherited native runtime. Preserve RF-05 and all three mob-arrival corrections.
 
 ## Player outcome
 

@@ -1,6 +1,6 @@
 # Wroughtwild intensive queue
 
-Current coordination, 15 September 2026: see the [whole-project inventory and
+Current coordination, 16 September 2026: see the [whole-project inventory and
 immediate sequence](coordinator-status-2026-09-15.md) and [A1 worker prompt](mainline-art-a1-worker-2026-09-15.md).
 The older entries below preserve history: Living Frontier is implemented through
 Wave 7, and thirty apparently unmerged art branches have equivalent patches on
@@ -36,26 +36,24 @@ partial `87849bd` removed unused hidden mesh work; `1bc19e9` moves shared fitted
 fauna resource acquisition into New World/Continue loading before control release.
 The selected first boar arrival fell from 324.760 to 7.529 ms, for roughly 0.9 s
 of added entry preparation. The owner describes a seemingly massive improvement.
-The selected presentation freeze is resolved; broader PLAY-03 underground lag,
-the earlier non-arrival spike, other families and long entry remain open/unmeasured.
-The worker is complete; no broad performance/review wave starts automatically.
+The owner then reported grouped turtle/archer/Cinder Wisp lag and expanded the
+task to all creatures. **[Full-roster arrival correction](play03-group-arrival-result-2026-09-15.md)
+is adopted as `9dba2fd` from completed worker `43e7cf3`.** It covers all ordinary
+and LF bodies, elite/era variants and distinct bosses/entry paths. The unchanged
+30-mob/eight-pack group measured 900.999 to 13.050 ms arrival work; its full frame
+fell from 950.572 to 40.869 ms. Reused 120 lifecycle, eight trial-restore and nine
+boss checks; main headless import passed in 9.88 s with zero errors. The rendered
+fixture's teardown failure was corrected and checked, not hidden. Art, encounters,
+saves, lakes and RF-05 DLL remain unchanged. Preparation costs roughly 2–2.5 s
+at entry, including the prior fitted fauna work; memory cost is unmeasured.
 
-**New immediate priority: [PLAY-03 all-creature arrivals](play03-group-arrival-worker-2026-09-15.md).**
-The owner reports considerable lag when many mobs appear: "turtle + archers +
-cinder wisps". These are the tortoise, porcupine and moth paths, outside the prior
-fitted-fauna preparation. Resume the existing D: mob-arrival worker at `039bccf`
-to measure that mixed/group arrival and correct its demonstrated cost. No automatic
-worker launch or new review wave. The previous selected boar improvement stands;
-the broader reported hitch remains open.
+Remaining: the short 40.869 ms combined group hitch, separately measured 106.840 ms
+pullstone/scenery loading, old unassigned spike, long world entry and unconfirmed
+underground connection. The creature-loading correction is complete within its
+scope; it does not certify all game performance. Keep scenery preparation as a
+concrete separate follow-up lead. No worker/review wave starts automatically.
 
-The owner explicitly expanded this to all creatures/mobs. Cover the full current
-roster, both wisps, passive fauna, campaign/elite/era aliases and existing bosses,
-including the distinct world/cave/noise/siege/site/trial/Continue spawn paths.
-Use a compact coverage table and bounded distinct-path checks; do not stop at
-the trio or leave identical known omissions for separate per-species workers.
-This does not request every seed/renderer/status combination or full boss fights.
-
-[PLAY-06 navigation](play06-navigation-worker-2026-09-15.md) is queued afterward:
+**[PLAY-06 navigation](play06-navigation-worker-2026-09-15.md) is next queued:**
 compact compass and optional X/Z/Y through existing H Display preferences, with
 no minimap or gameplay/save rule. Its new worktree was not created before this
 owner correction; implementation has not started. Original adoption/base-mob and

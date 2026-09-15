@@ -83,8 +83,8 @@ Further owner evidence on 15 September: considerable lag remains when many mobs
 appear together, specifically "turtle + archers + cinder wisps". These map to
 Hollow Knight/tortoise, Cinder Archer/porcupine and Cinder Wisp/moth; they are outside
 the previous fitted-fauna preparation path. The [group-arrival continuation](docs/prototype/play03-group-arrival-worker-2026-09-15.md)
-is the immediate priority, ahead of queued PLAY-06 navigation. Reuse the current
-mob-arrival worker and measure this actual mixed/group case; preserve the prior
+was prioritised ahead of queued PLAY-06 navigation. Its completed adoption is
+recorded below. The brief required measuring this actual mixed/group case, preserving the prior
 boar fix without presenting it as closure of the broader reported issue. Diagnose
 resource loading versus repeated construction/batch cost before choosing the fix.
 The owner subsequently expanded this task explicitly to "all the creatures/mobs".
@@ -96,6 +96,20 @@ for another per-species report. A bounded pass over distinct current presentatio
 resource and entry paths is authorised, without renderer/seed/camera/status
 combinations or full campaign replay. The owner starts the worker; do not launch
 it automatically.
+
+On 16 September the coordinator adopted the completed full-roster continuation
+as `9dba2fd`, from worker `43e7cf3`: [result and coverage](docs/prototype/play03-group-arrival-result-2026-09-15.md).
+All current ordinary/LF bodies, elite/era variants and distinct boss paths now
+share resource preparation during real world/trial entry and validated restore.
+The unchanged 30-mob/eight-pack group measured 900.999 to 13.050 ms creation and
+950.572 to 40.869 ms for its complete frame. This resolves the demonstrated large
+creature-loading cost across the scoped roster; it does not establish hitch-free
+play. The residual 40.869 ms group frame, a separately attributed 106.840 ms
+pullstone/scenery arrival, long entry and the underground connection remain open.
+Reused lifecycle/restore/boss evidence and main's short headless import support
+adoption. PLAY-06 compass/coordinates is next in the agreed queue; its worktree
+is not yet prepared. Record the scenery finding for a separate focused follow-up,
+without automatically launching a worker or a broad performance wave.
 
 After ram integration on 15 September, the owner said: "Everything looks great -
 approved, I haven't done full performance impact yet though but that's fine".

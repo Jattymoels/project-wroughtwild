@@ -252,3 +252,25 @@ The unchanged inherited RF-05 native DLL was rechecked, not rebuilt:
 `fbf7067477d63693e35b5d15ccff0bbad86be7586d679e284a44c843b0404e2b`.
 Coordinator should retain it. Generated import/cache artifacts and unrelated
 untracked files are excluded and left in place. PLAY-06 is not part of this slice.
+
+### Mainline adoption — 16 September 2026
+
+Worker `43e7cf3f24933999630fefe65d505104cda31188` was adopted on main as
+`9dba2fd7f7085a1c4012018fd217068f0068e9ff`. The existing RF-05 native DLL matched
+the hash above and was retained. The coordinator checked the changed resource/
+entry paths, full-roster evidence and clean worker source/index, then reused the
+worker's functional evidence including its disclosed corrected teardown failure.
+No renderer, campaign, native build or performance matrix was repeated.
+
+Main's hidden headless asset/script import passed in **9.88 seconds**, engine
+and harness exit 0, **zero reported errors**. Output/private state:
+`D:/Wroughtwild/work/play03-mob-arrival/build/play03-group/main-integration-2026-09-16/`.
+The process exited and no owned test remains running. Owner captures and unrelated
+untracked/import files were preserved. Ordinary publication uses the standing
+`origin/main` permission; the coordinator handoff records its final push outcome.
+
+The normal C: owner game now contains this change; quit/relaunch before testing,
+then use normal Continue or New World. The separate D: horn/group launcher above
+also retains the complete fix and a ready private approach. Neither launcher was
+started by the coordinator. Owner playtesting of this continuation is deferred.
+PLAY-06 bearings/coordinates is next queued; no new worktree/task was started.

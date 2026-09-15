@@ -1,6 +1,20 @@
 # PLAY-03 follow-up — large hitches when nearby mobs appear
 
-Status: both arrival slices are integrated: partial `87849bd` and the
+**Current status, 16 September:** the [full-roster continuation](play03-group-arrival-result-2026-09-15.md)
+is integrated as `9dba2fd` from worker `43e7cf3`, in addition to the two earlier
+fixes below. Its unchanged 30-mob/eight-pack arrival measured 900.999 to 13.050 ms
+creation and 950.572 to 40.869 ms for the full frame. Preparation covers all
+ordinary/LF bodies, variants and both distinct boss paths at real world/trial
+entry and restore. Reused lifecycle/restore/boss evidence and main's 9.88-second
+headless import support adoption. The worker is finished; no automatic continuation.
+
+The 40.869 ms group frame, separately measured 106.840 ms pullstone/scenery load,
+long world entry, old unassigned spike and underground connection remain open.
+This is a substantial creature-loading correction, not a claim of hitch-free
+play. PLAY-06 navigation is next queued; scenery loading is a specific later lead.
+The previous scope and observations below are retained as history.
+
+Earlier status: both arrival slices were integrated: partial `87849bd` and the
 [selected presentation fix `1bc19e9`](play03-presentation-hitch-result-2026-09-15.md).
 After the initial 443 to 324 ms improvement, preparing shared fitted-fauna
 resources during real world entry reduced the selected first boar arrival from
@@ -25,9 +39,9 @@ still have lazy scene/material acquisition; the moth's visible skinned mesh and
 rig path is distinct. Synchronous MobPacks member/pack construction can also
 combine work. These are leads to time, not a completed diagnosis.
 
-The [group-arrival worker](play03-group-arrival-worker-2026-09-15.md) is next in
-the existing D: checkout at `039bccf`, ahead of queued PLAY-06. It uses the current
-source and retained runtime/evidence. No new worktree or task is launched.
+The [group-arrival worker](play03-group-arrival-worker-2026-09-15.md) was prepared
+in the existing D: checkout at `039bccf`, ahead of PLAY-06, using the retained
+runtime/evidence. Its completed adoption is recorded above.
 
 ## Owner expansion to the full roster
 

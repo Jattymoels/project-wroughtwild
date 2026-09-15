@@ -1,6 +1,6 @@
 # Wroughtwild current coordination sheet
 
-Updated 15 September 2026, Adelaide. This is a lightweight inventory and dispatch
+Updated 16 September 2026, Adelaide. This is a lightweight inventory and dispatch
 plan, not a new acceptance gate. The owner wants a solo indie prototype developed
 through playable iterations. Current AGENTS.md and the owner's approved work
 outrank historical review, packaging and rollout requirements.
@@ -33,32 +33,36 @@ the result seems a massive improvement and asks that established game-developmen
 practice be the default. AGENTS.md records proportionate resource/first-use
 discipline without adding an exhaustive review gate.
 
-The selected presentation freeze is resolved in the measured case. The earlier
-unassigned 115 ms non-arrival spike, underground connection, other mob pipelines
-and long world entry remain open or unmeasured. No broad review, new worker or
-further performance slice is automatically launched. The completed D: worker
-retains a private playtest launcher with a staged approach and optional trace.
+**Full-roster arrival work is now adopted as `9dba2fd` from worker `43e7cf3`.**
+The [result and coverage](play03-group-arrival-result-2026-09-15.md) account for
+all 11 ordinary IDs, five LF aliases, elite/era variants and both distinct boss
+paths, through world/cave/noise/siege/site/trial/Continue entry. The reported trio
+is included in an unchanged 30-mob, eight-pack native encounter. Synchronous
+arrival work fell from 900.999 to 13.050 ms; its full frame from 950.572 to
+40.869 ms. The next interval was 12.468 ms. Resource loading and shared mesh
+construction now happen during actual entry, without creating dormant actors.
+The previous boar fix, art, full encounters, native rules, saves and lakes remain.
+Full-roster preparation measured roughly 2.2–2.5 seconds, including prior fauna
+preparation; the final small Conservator cache's additional entry cost was not
+separately timed. Memory residency impact remains unmeasured.
 
-**Immediate next: [PLAY-03 full-roster arrivals](play03-group-arrival-worker-2026-09-15.md).**
-The owner reports considerable lag when many mobs appear, specifically "turtle +
-archers + cinder wisps". Hollow Knight/tortoise, Cinder Archer/porcupine and Cinder
-Wisp/moth are outside the previous fitted-fauna resource preparation. Measure
-this actual group and distinguish first-use resource loading, per-actor setup
-and same-frame batch work. The prior boar improvement remains; broader PLAY-03
-is open. Resume `D:/Wroughtwild/work/play03-mob-arrival` on `codex/play03-mob-arrival`,
-current worker `039bccf`, with `build/play03-group/SETUP.md` and the new owner-depot
-brief. The owner starts it; no new worker/checkout/game is launched automatically.
+The worker is idle and finished at `43e7cf3`. Reused checks: 120 Continue/LF/trial/
+material lifecycle, eight fresh suspended-trial restore and nine boss checks.
+Its final rendered run was 37/38: a fixture teardown failure was corrected and
+verified by the later focused jobs; do not call that original run failure-free.
+Main's hidden headless import passed in 9.88 s, exit 0, zero reported errors.
+The RF-05 DLL is unchanged. No owned test remains running. Raw evidence and the
+private horn/group playtest launcher remain in the existing D: worktree.
 
-Owner expansion: "make sure we fix all the creatures/mobs". The same worker now
-owns all 11 regular IDs, five LF aliases, elite/era variants and existing boss
-paths through the actual world/cave/noise/siege/site/trial/Continue entry points.
-It must resolve shared loading omissions and measured creation/group stalls
-throughout, with a compact coverage table. The trio starts diagnosis; it is not
-the delivery boundary. A bounded pass per distinct path is authorised, without
-a combinatorial performance/art matrix or full campaign replay.
+The large demonstrated creature-loading freeze is fixed; broader lag is open.
+Retain the 40.869 ms combined group frame, the separate measured 106.840 ms
+pullstone/scenery arrival, older unassigned spike, long world entry and unconfirmed
+underground connection. Scenery resource preparation is a concrete separate
+follow-up lead, not an automatically launched repair wave. Owner playtesting of
+this continuation is deferred; do not claim owner confirmation of smoothness.
 
-[PLAY-06 bearings and optional coordinates](play06-navigation-worker-2026-09-15.md)
-is queued behind that defect. Its proposed D: checkout has not been created and
+**Next queued: [PLAY-06 bearings and optional coordinates](play06-navigation-worker-2026-09-15.md).**
+Its proposed D: checkout has not been created and
 implementation has not started. It will add a compact compass and optional X/Z/Y
 readout through existing H Display preferences. RF-01–05 and original art/base-mob
 adoption are complete. Fen/mountain recovery remains the next larger landscape
