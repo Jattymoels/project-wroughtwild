@@ -116,8 +116,13 @@ is now integrated as `c5ceb9f` from worker `29e90e4`: pullstone creation measure
 families retain shared resources during actual entry. Main's short headless
 import passed; residual Thrumroot construction, group-frame and loading-time
 limits go to cleanup. [RF-06 fen/lakeside atmosphere](docs/prototype/rf06-fen-lakeside-worker-2026-09-16.md)
-is prepared next on D: from that integrated source. It is cosmetic composition
-using existing terrain/water, not a new generation/save rule. The owner starts it.
+is integrated as `12238ce` with handoff `710a3c6`. Reused 60 focused worker checks;
+main's hidden headless import passed in 4.91 s with zero errors. The owner called
+the result "definitely underwhelming" on 16 September. Placement is delivered,
+but convincing wetland atmosphere remains an unmet visual outcome. Record that
+honestly rather than treating passing functional checks as aesthetic success.
+The suggested later image-to-3D/Blender environment intensive is a proposal,
+not an instruction to start or reorder this wave. Highland recovery remains next.
 
 After ram integration on 15 September, the owner said: "Everything looks great -
 approved, I haven't done full performance impact yet though but that's fine".

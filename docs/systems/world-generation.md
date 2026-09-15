@@ -10,7 +10,9 @@ are unchanged. V1–V5 retain their presentation. New cosmetic roots use actual
 surface support, existing approaches and paid floor/station clearance. Existing
 regional roots/pools remain distinct. Continue/publication derive the treatment
 through the existing world build path; there is no migration or new ecology.
-Worker `928fb4c` is checked locally; coordinator adoption is pending.
+Integrated on main as `12238ce`, handoff `710a3c6`, from worker `928fb4c` / `5785711`.
+The owner finds the visuals underwhelming; placement delivery does not close the
+wetland atmosphere outcome.
 
 
 ## RF-05: lakes in fresh V8 worlds

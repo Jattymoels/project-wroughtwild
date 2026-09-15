@@ -61,11 +61,14 @@ as `c5ceb9f`, worker `29e90e4`.** Pullstone creation fell from 154.202 to 2.174 
 its full frame from 178.281 to 8.656 ms. Reused final route, corrected device and
 passed ownership/Continue evidence; main import passed in 5.36 s, zero errors.
 Thrumroot construction and remaining short group/loading costs go to cleanup.
-**[RF-06 fen/lakeside atmosphere](rf06-fen-lakeside-worker-2026-09-16.md) is prepared**
-in `D:/Wroughtwild/work/rf06-fen-lakeside`, branch `codex/rf06-fen-lakeside`, base
-`c5ceb9f`. The owner starts it. It returns to the original wetland recovery scope,
-then highlands and recovered-impact/living-scar composition. No new native
-generation, water geography or save rule is selected for RF-06.
+**[RF-06 fen/lakeside foundation](rf06-fen-lakeside-result-2026-09-16.md) is integrated**
+as `12238ce` / `710a3c6`, from `928fb4c` / `5785711`. Reused 60 passed focused
+worker checks; main import passed in 4.91 s, zero errors. The owner calls it
+"definitely underwhelming": supported planting is delivered, convincing wetland
+atmosphere remains open. Highland recovery is next, then impact/scar composition.
+The owner's suggested later image-to-3D/Blender environment intensive is recorded
+as a proposal in the coordination sheet, not started or slipped into cleanup as
+an all-asset rebuild. No native generation, water geography or save rule changed.
 
 **Owner scheduling correction, 16 September:** stick firmly to the original slice
 breakdown. Raise additions, but recommend recording them for a bounded cleanup

@@ -9,8 +9,25 @@ outcome; it adds no terrain, water or gameplay rules.
 The finish remains sparse in places, especially exposed terraces; bank edges are
 still angular, deep tree shade obscures some plants, and bright water glare is
 visible. These are recorded for end-of-wave cleanup, not claimed solved.
-Owner playtesting is deferred; standing prototype approval applies, without a
-claim that the owner personally tried or liked this result.
+At worker handoff, owner playtesting was deferred. On 16 September the owner
+subsequently called the result "definitely underwhelming" and suggested a later
+image-to-3D/Blender intensive. The coordinator agrees from four retained gameplay
+screenshots: sparse isolated clumps and weak ground/bank transitions do not yet
+create convincing wetland identity. Existing tree silhouettes, broad ground and
+shore geometry still dominate. No live coordinator playtest is claimed.
+
+The usable placement foundation is adopted, but the intended atmosphere remains
+an open outcome. This is not an aesthetic sign-off. A later art/composition
+intensive is a proposal; highland recovery remains the next original slice.
+
+## Coordinator adoption, 16 September
+
+Implementation is on main as `12238ce`, worker handoff as `710a3c6`, from
+`928fb4c` / `5785711`. Worker placement 32/32, Continue 16/16 and Forward+ route
+12/12 evidence was reused. Main's hidden headless import passed in 4.91 seconds,
+exit 0, zero reported errors. No game source changed during adoption. Native DLL
+unchanged; all owned checks ended. Publication is recorded by the coordinator's
+Git handoff. The worker publication section below describes its historical handoff.
 
 ## Checked branch and publication
 

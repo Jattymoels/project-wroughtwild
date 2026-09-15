@@ -16,10 +16,12 @@ unconfirmed. The owner's subsequent full-roster arrival correction is adopted as
 The remaining short group frame is recorded; PLAY-07's pullstone/scenery loading
 correction is adopted as `c5ceb9f`: [result](play07-scenery-arrival-result-2026-09-16.md).
 [PLAY-06 navigation](play06-navigation-worker-2026-09-15.md) was parked by the
-owner on 16 September. [RF-06 fen/lakeside atmosphere](rf06-fen-lakeside-worker-2026-09-16.md)
-is now prepared on D: from integrated main, for the owner to start. This is
-cosmetic composition around existing fen and V8 lake geography; no new native
-generation or save rule. Highlands and remaining impact/scar composition follow.
+owner on 16 September. [RF-06 fen/lakeside foundation](rf06-fen-lakeside-result-2026-09-16.md)
+is integrated as `12238ce` / `710a3c6`: cosmetic planting around existing fen and
+V8 lake geography, with no new native generation or save rule. The owner finds
+it "definitely underwhelming"; the wetland atmosphere target remains open.
+Highlands and remaining impact/scar composition follow. A later environment-art
+intensive is proposed, not scheduled; see the coordination sheet's assessment.
 R9 stays stopped.
 
 ## Sequence protection — owner correction, 16 September
@@ -32,7 +34,7 @@ reprioritisation can change that; speculative risk and minor polish cannot.
 
 PLAY-07 is integrated. Return to:
 
-1. RF-06 fen/lakeside atmosphere and recovery (prepared, owner starts worker).
+1. RF-06 fen/lakeside foundation (adopted; atmosphere target still open).
 2. Highland character and recovery.
 3. Remaining composition around reclaimed impacts and living scars.
 4. A bounded cleanup slice drawn from the recorded player-impact notes.
@@ -155,7 +157,7 @@ contract, with existing saves kept intact; no new generator profile is selected.
 | RF-03: landforms and inspiring home sites | Integrated as `d4aa817`: fresh normal-world V7, rolling land and four distinctive useful home settings. Existing V1–V6/LF saves keep their geography. Small-bump feedback remains open. |
 | RF-04: ground continuity | Integrated as `27fc34d`; removes extra V7 top-face bumps, preserving broad landforms, saved native geography and ledge contacts. Steep terracing remains. |
 | RF-05: lakes and simple swimming | Integrated as `5e5de06`: one lake per fresh V8 world, wading/surface swimming, easy exits, floating recovery and dry lakeside home space. Static/angular shore edges and no dedicated swim animation remain limits. |
-| RF-06: fen/lakeside atmosphere | Prepared from `c5ceb9f`, D:/Wroughtwild/work/rf06-fen-lakeside. Original wetland recovery via cosmetic composition; native terrain/water/saves unchanged. Owner starts worker. |
+| RF-06: fen/lakeside atmosphere | Foundation adopted as `12238ce` / `710a3c6`. Supported planting delivered; owner finds it underwhelming and visual target remains open. Native terrain/water/saves unchanged. |
 | Remaining original outcomes | Separate highland recovery, then remaining recovered-impact/living-scar composition. Incidental additions wait for bounded cleanup. |
 
 Scoping evidence: all six owner references and their caveats were inspected,

@@ -6,7 +6,11 @@
   paid floor/station, local excavation and exact saved-world state checks pass.
 - [x] One player-height Forward+ fen/lake route, wading/swimming/dry exit and
   selected actual pictures/clip; no-focus/mouse opt-out retained.
-- [ ] Owner aesthetic/comfort playtest and broader seed/hardware/campaign coverage.
+- [ ] Convincing wetland atmosphere: owner calls RF-06 "definitely underwhelming"
+  on 16 September; coordinator agrees from retained gameplay pictures. Supported
+  placement is delivered, but this visual outcome remains open.
+- [ ] Broader comfort/seed/hardware/campaign feedback remains unmeasured; no new
+  review wave is scheduled.
 
 [Worker result, limits and private playtest](rf06-fen-lakeside-result-2026-09-16.md).
 

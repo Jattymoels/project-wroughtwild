@@ -77,17 +77,21 @@ Main hidden headless import passed in 5.36 s, exit 0, zero errors. All owned tes
 ended. The existing D: scenery task is idle at `29e90e4` and retains private playtest
 state. Remaining costs belong to cleanup, not another immediate lag worker.
 
-**Next prepared: [RF-06 fen/lakeside atmosphere](rf06-fen-lakeside-worker-2026-09-16.md).**
-Workspace `D:/Wroughtwild/work/rf06-fen-lakeside`, branch `codex/rf06-fen-lakeside`,
-base `c5ceb9f`, with `build/rf06/SETUP.md` and the current owner-depot prompt.
-Only the required native DLL was copied/verified; no package, imports or player
-saves were copied. The owner starts it; no worker/game was launched automatically.
-This original-plan slice covers existing fen and actual V8 lake margins: cosmetic
-wet margins, reeds/roots, dry approaches and
-appealing nearby home space, building on existing water and the reclaimed-landscape
-references. Highland recovery can follow separately, with weathered rock shelves
-and appropriate vegetation pockets, then the remaining original composition
-around recovered impacts and living scars. New water geography, generation profiles and
+**[RF-06 fen/lakeside foundation](rf06-fen-lakeside-result-2026-09-16.md) is integrated
+as `12238ce`, with handoff `710a3c6`, from worker `928fb4c` / `5785711`.**
+Existing fen and actual dry lake banks receive grouped sedge/rush leaves, fern,
+occasional deadfall and damp ground colour. Terrain, water, native DLL and saves
+remain unchanged. Reused worker evidence: 32 placement, 16 fresh Continue and
+12 Forward+ route checks passed. Main's hidden headless import passed in 4.91 s,
+exit 0, zero reported errors. All owned tests ended; the worker is idle.
+The owner calls it "definitely underwhelming"; the intended atmosphere is still
+open, not aesthetically signed off. See the assessment below. The D: worktree
+retains separate fen/lake private playtest slots and actual game pictures.
+
+**Next original outcome: highland recovery**, with weathered rock shelves
+and appropriate vegetation pockets, then remaining original composition around
+recovered impacts and living scars. Its worker has not been prepared or started.
+New water geography, generation profiles and
 collision changes still need a scoped choice; none is selected by this agreement.
 Later-era creature forms and boss art remain separate production backlog. Station/
 campaign feel still needs useful owner playtest notes, not a new verification wave.
@@ -102,8 +106,8 @@ PLAY-07 is now integrated; return to the original creative outcomes.
 | Order | Work | Relationship to the original plan |
 | --- | --- | --- |
 | Done | PLAY-07 scenery arrival and normal integration | Approved additional fix, now adopted as `c5ceb9f` |
-| Next prepared | RF-06 fen/lakeside atmosphere | Original wetland recovery: planted margins, roots, dry approaches and appealing living/building spaces |
-| Then | Highland recovery | Original mountain character: weathered shelves, settled debris and vegetation pockets |
+| Foundation adopted; visual target open | RF-06 fen/lakeside atmosphere | Supported planting is playable; owner finds the result underwhelming. Strong wetland identity remains unresolved |
+| Next | Highland recovery | Original mountain character: weathered shelves, settled debris and vegetation pockets |
 | Then | Remaining impact/scar composition | Original reclaimed-catastrophe identity: vegetation reconnects old damage while selected physical scars/pulses remain legible |
 | End | Bounded cleanup slice | Consolidate deferred issues by player impact; no exhaustive review wave |
 
@@ -112,9 +116,30 @@ delivered RF-01–05 foundations; this schedule does not select new world/save r
 or promise all-biome production. RF-01–05 stay delivered. Keep original outcomes
 separate from refinements rather than restarting them for minor remaining polish.
 
-RF-06 worker completed on 16 September as `928fb4c`; [result and private playtest](rf06-fen-lakeside-result-2026-09-16.md).
-Coordinator adoption remains pending. This advances the original wetland outcome;
-highland recovery is the next original slice after adoption. This worker stopped.
+RF-06 is adopted; [result and private playtest](rf06-fen-lakeside-result-2026-09-16.md).
+On 16 September the owner said "definitely underwhelming" and suggested a proper
+image-to-3D-to-Blender intensive later for these environments. The coordinator's
+assessment of four retained gameplay screenshots agrees: small isolated clumps,
+sparse middle-height vegetation and weak ground/bank transitions leave broad
+ground, repeated existing trees and angular shores visually dominant. The slice
+reuses existing sedge/fern/deadfall rather than producing a new wetland art kit.
+This is a shortfall against the atmosphere brief, not simply an unchecked box or
+minor cosmetic polish. Functional placement completion and visual success differ.
+
+**Later environment-art intensive — proposal, not scheduled:** establish one
+convincing in-game representative scene first, then expand its reusable kit and
+seeded biome placement. Possible workflow: reference/concept image, selective
+image-to-3D or direct Blender modelling, Blender cleanup/materials/game export,
+then actual player-height composition. Include silhouette, patch scale/layering,
+ground-to-bank transitions and readability; better isolated models alone will
+not establish the scene. No specific service, dependency or all-asset rebuild is
+approved. Starting this now would displace highlands and impact/scar work, so
+retain the original sequence and revisit scope at the end. Do not bury this
+potentially larger art task inside a supposedly small cleanup slice.
+
+Upcoming creative briefs should describe a visible scene-level improvement;
+passing placement checks alone does not fulfil a look/feel/atmosphere outcome.
+This requires artistic focus within the slice, not an extra approval/review wave.
 
 RF-06 additions for end-of-wave cleanup: the actual pictures show sparse fen
 terrace gaps, plants lost in strong bank shade and bright swimming-view water
