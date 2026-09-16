@@ -1,5 +1,20 @@
 # Vertical-Slice Acceptance Criteria
 
+## LAND-02B Scarwater foundation and art (adopted; owner look approved)
+
+- [x] Fresh V10 carries the improved surface/contact/edit foundation and rooted
+  woodland art; previous profiles retain their Continue identities.
+- [x] Worker generation, paid use, digging and Continue evidence was reused;
+  main's matching DLL import passed in 12.80 s with zero errors.
+- [x] Owner approves the current look, including odd/campy cliffs, and asks to
+  proceed to LAND-03. The extra art-continuation recommendation is superseded.
+- [ ] Significant frequent stutters and some large hitches curtailed the owner's
+  playtest. Cause unknown; explicitly deferred to LAND-05, not a passed check.
+- [ ] Owner requests fewer elk/stags later; exact adjustment and any relationship
+  to lag are unestablished. Broader gameplay coverage remains incomplete.
+
+[Current result and owner feedback](land02b-scarwater-production-result-2026-09-16.md).
+
 ## LAND-02 Scarwater Basin (worker complete; main adoption pending)
 
 - [x] Ordinary fresh V9 delivers seeded displaced ridge/lake, Gallery Woodland,

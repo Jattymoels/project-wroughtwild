@@ -1,5 +1,15 @@
 # Decision Registry
 
+Owner LAND-02B acceptance and next slice, 17 September 2026: after a limited
+playtest the owner said "I love how it looks" and explicitly likes the odd/campy
+cliffs. Preserve the approved art character; the coordinator's suggested extra
+Scarwater continuation is superseded. Proceed to LAND-03 fresh V11, then LAND-04
+and LAND-05. Significant frequent stuttering/occasional large hitches curtailed
+play; excessive elk/stag abundance is a separate requested tuning change. The
+owner explicitly marked both for later. Neither cause nor exact spawn adjustment
+is established; retain both in the [closeout backlog](../prototype/coordinator-status-2026-09-15.md).
+Approval covers appearance, not smooth performance or untested gameplay.
+
 LAND-02B implementation adopted on main, 17 September 2026 (`3759782` / `5c41ed2`):
 [result and ordinary game pictures](../prototype/land02b-scarwater-production-result-2026-09-16.md).
 Fresh V10 carries continuous-density fractured terrain, matching render/contact/

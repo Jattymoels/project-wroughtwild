@@ -1,15 +1,16 @@
 # LAND-03: Dry Steppe, Red and useful four-force acquisition
 
-**Draft for after LAND-02B; workspace not prepared and worker not started.**
-The owner explicitly selected [Scarwater corrective production](land02b-scarwater-production-worker-2026-09-16.md)
-before this slice. Refresh this draft from its completed result before dispatch.
-V10 is assigned to that correction; this task is expected to use fresh V11.
+**Ready for the owner-started session, refreshed 17 September.** LAND-02B is
+integrated (`3759782` / `5c41ed2`, adoption `a02ddbf`) and the owner approves its
+current look, including odd/campy cliffs. They explicitly said "Okay next".
+The extra Scarwater visual continuation is superseded. This slice uses fresh V11
+on the adopted V10 foundation; preserve the approved Scarwater character.
 
 Workspace: `D:/Wroughtwild/work/land03-dry-steppe`
 
 Branch: `codex/land03-dry-steppe`
 
-Read current owner-depot `C:/Users/Matty/Dev/project-wroughtwild/AGENTS.md` and its required foundations, then `build/land03/SETUP.md`, this brief, the [selected LAND plan](landscape-biomes-influences-plan-2026-09-16.md), [four-force reference](land00-influence-generation-reference-2026-09-16.md), [world premise](../world-premise.md) and [LAND-02 result](land02-scarwater-result-2026-09-16.md). View boards 03/04 in `land00-visuals-2026-09-16/`, their caveats and LAND-02's actual evidence. Use current [world generation](../systems/world-generation.md) and implemented [Living Frontier](living-frontier-roadmap-2026-09-08.md) contracts for the concrete dependencies below. Do not repeat LAND-00/01 or reopen the selected direction.
+Read current owner-depot `C:/Users/Matty/Dev/project-wroughtwild/AGENTS.md` and its required foundations, then `build/land03/SETUP.md`, this brief, the [selected LAND plan](landscape-biomes-influences-plan-2026-09-16.md), [four-force reference](land00-influence-generation-reference-2026-09-16.md), [world premise](../world-premise.md), [adopted LAND-02B result including latest owner feedback](land02b-scarwater-production-result-2026-09-16.md) and [implemented foundation](land02b-environment-foundation-2026-09-16.md). View boards 03/04 in `land00-visuals-2026-09-16/`, their caveats and LAND-02B's actual evidence. Use current [world generation](../systems/world-generation.md) and implemented [Living Frontier](living-frontier-roadmap-2026-09-08.md) contracts for the concrete dependencies below. Do not repeat LAND-00/01 or reopen the selected direction.
 
 ## Player-visible result
 
@@ -23,9 +24,21 @@ The player can perform existing Red source work, collect the real material, use 
 
 ## Carry the creative requirement forward
 
-LAND-02 delivered real geography, walking, paid work and restoration. The coordinator's picture assessment finds the full visual ambition **still unmet**: broad mesa-like walls and regular bands dominate; trees repeat; the inset seam remains thin. These are recorded LAND closeout weaknesses, not evidence that functional checks establish atmosphere. Stay on the selected sequence, but do not reproduce those weaknesses as Dry Steppe's artistic target.
+LAND-02B delivers the approved playable Scarwater look and shared surface/contact
+foundation. The owner likes the odd cliffs and is happy with a campy style;
+photorealism or naturalising the approved forms is not an acceptance requirement.
+Keep the ambition for a coherent game world whose lore visibly causes its forms.
+The earlier coordinator recommendation for more Scarwater art is superseded.
 
-Build one representative ordinary generated Steppe scene early. Inspect at player height against the references. If it reads as flat tinted grass, a uniform wall or isolated decorative objects, revise the dominant form/composition weakness before expanding rules. Art and readable terrain are part of this task. A greybox or source-port-only delivery is incomplete. Reuse LAND-02/RF materials and systems where suitable; purpose-made land/plant/host joins are authorised. No new dependency, paid service, engine change or general art overhaul.
+The owner's short playtest reported frequent small stutters and some large
+hitches, severe enough to limit play, plus excessive elk/stag abundance. They
+explicitly listed these as later fixes and asked to proceed. Both are recorded
+in LAND-05; cause and exact population reduction are not established. Do not
+start a broad performance investigation, reduce fauna, or redesign Scarwater
+inside this task. Keep existing resource preparation/reuse discipline, fix
+concrete failures introduced by this slice and report observed limitations.
+
+Build one representative ordinary generated Steppe scene early. Inspect at player height against the references. If it reads as flat tinted grass or isolated decorative objects, revise the dominant form/composition weakness before expanding rules. Art and readable terrain are part of this task. A greybox or source-port-only delivery is incomplete. Reuse LAND-02B/RF materials and systems where suitable; purpose-made land/plant/host joins are authorised. No new dependency, paid service, engine change or general art overhaul.
 
 ## Generation and compatibility
 
@@ -47,7 +60,8 @@ Use the existing source/host placement and behavior contracts without importing 
 
 Concrete source leads:
 
-- LAND-02B's completed successor composer/foundation, profile dispatch, tuning loaders, native bridge mesh/export and engine profile gates: create isolated LAND-03 successor inputs and retain the corrected terrain/contact/art paths. Refresh exact source leads after LAND-02B.
+- `sim/src/worldgen_frontier_v10.inc`, `worldgen_profiles.cpp`, `sim/include/wroughtwild/worldgen.h`, `data/tuning/worldgen-frontier-v10.json`, tuning loaders: create isolated V11 inputs/composition while retaining V10 geometry, source stock and ownership for Continue.
+- `game/extensions/wroughtwild_sim/src/terrain_density_vertex.inc`, `wroughtwild_sim.cpp`, `game/scripts/terrain.gd`, `terrain_chunk_stream.gd`, `resource_node.gd`, `game/r1/native_tree.gd`, `game/land02b/`: carry component-aware extraction, honest triangle/contact/edit ownership, exact landmark handoff, materials and selected tree overrides into the successor. Existing V10-only guards must deliberately support V11 where appropriate; avoid silently falling back to the old surface or replacing the approved tree meshes. Preserve V10 behavior while extending support.
 - `sim/include/wroughtwild/leyline.h`, `sim/src/leyline.cpp`, `data/tuning/leyline.json`: supports, four-source state, formation/claims and restore. Legacy LF's internal ledger profile tag is not a reason to change old payloads or skip new-world identity validation.
 - `game/extensions/wroughtwild_sim/src/leyline_bindings.inc`, `strange_frontier_bindings.inc`, `sim/src/contraptions.cpp`: bind/validate/load, geometry anchors, device availability and independent placement/save gates. World rebinding must not carry another world's stock merely because its seed matches.
 - `game/scripts/leyline_source.gd`, `frontier_sites.gd`, `data/tuning/crafting.json`, existing selected LF host and mob presentation paths: ordinary reach/UI/recipes/behavior and resource preparation. Update experiment-only UI text for the new ordinary use where needed.
@@ -61,7 +75,7 @@ Make the representative place first, then complete the source-to-craft/device lo
 
 1. **New generation and ownership:** deterministic LAND-03 successor composition on one representative and one contrasting seed, usable fallback/approaches, all four real source anchors, protected starter/homes and separate finite ledgers. Reuse old-profile evidence; target only changed dispatch/identity paths.
 2. **Actual ordinary use and appearance:** real New World entry, player-height Steppe exploration, existing Red host behavior, manual source work/collection, paid Red manufacture/buffer use and a paid home placement. Exercise existing White/Blue/Green request semantics through a small real paid setup so adoption is usable, without a campaign replay. Staged recipe inputs are allowed for a short check but must be disclosed; they do not prove acquisition pacing/balance. Retain roughly three useful actual-game images covering reveal, affected host/source and home/workshop context.
-3. **Restore and rejection:** targeted Continue retaining partial source work, outstanding claim/depletion, paid device state, terrain edit and builds; reject wrong-world/missing ownership atomically and preserve the relevant old V9/LF restore behavior. Reuse existing eligible-time/device tests rather than another timed ten-minute gameplay wait or broad matrix. Test pause/trial/no-offline semantics through focused state advancement where the adoption changed support.
+3. **Restore and rejection:** targeted Continue retaining partial source work, outstanding claim/depletion, paid device state, terrain edit and builds; reject wrong-world/missing ownership atomically and preserve the relevant old V10/LF restore behavior, reusing older V9 evidence for unchanged paths. Reuse existing eligible-time/device tests rather than another timed ten-minute gameplay wait or broad matrix. Test pause/trial/no-offline semantics through focused state advancement where the adoption changed support.
 
 Inspect and improve visible form during normal development; do not substitute a large screenshot matrix. Follow current no-mouse-capture/non-focusing rendering requirements and isolated test saves. No benchmarks, whole-package copying/hashing, all-profile replay, repeated art-master reopening or independent review wave. End owned test processes.
 

@@ -8,13 +8,14 @@ Selection authorises the direction, two-biome wave and later reuse of existing L
 
 ## The delivery sequence
 
-**17 September coordination:** LAND-02B's V10 foundation and art are integrated
-(`3759782` / `5c41ed2`), but inspection finds central visual targets still open.
-The [result](land02b-scarwater-production-result-2026-09-16.md) recommends finishing
-Scarwater's geology/scar/woodland composition before dispatching LAND-03. Its
-continuation prompt is prepared, not launched. V10 is now published; if further
-physical geography changes need V11, update LAND-03 to the next successor rather
-than silently rewriting V10. Version expectations below predate that recommendation.
+**17 September owner approval:** LAND-02B's V10 foundation and art are integrated
+(`3759782` / `5c41ed2`, adoption `a02ddbf`). The owner loves the current look and
+likes the odd/campy cliffs. This supersedes the coordinator's suggested extra art
+continuation. Proceed to LAND-03 fresh V11, preserving approved Scarwater and old
+saves, then LAND-04 and LAND-05. Significant stuttering curtailed the owner's short
+playtest; that and excessive elk/stag abundance are explicitly deferred fixes in
+the coordination sheet. Do not infer a cause or turn this into a new art/performance
+tangent before the selected next slice.
 
 **Owner-approved sequence correction after LAND-02:** the first playable basin
 did not achieve the requested visual ambition. The owner has now authorised

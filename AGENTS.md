@@ -403,6 +403,22 @@ not a separate open-ended architecture study.
 
 ### LAND-02B adopted foundation and remaining visual outcome, 17 September
 
+**Later owner feedback supersedes the continuation recommendation below.** After
+a short playtest the owner said "I love how it looks" and specifically likes the
+odd cliffs, happy for them to be "a bit campy". The current LAND-02B look is
+approved; do not replace that character to satisfy the coordinator's preference
+for more naturalistic rocks. The owner said "Notes to fix/figure later" and
+"Okay next": proceed to LAND-03 Dry Steppe/Red, then LAND-04 and LAND-05.
+The proposed extra Scarwater visual continuation is superseded, not dispatched.
+Record frequent small stutters and some large hitches, severe enough to curtail
+the playtest, as an unresolved high-impact LAND-05 item. Cause is unmeasured.
+Separately record the request to reduce excessive elk/stag spawning; the owner
+does not think that explains the lag, and no causal connection is established.
+Do not start a performance tangent or tune fauna during LAND-03 on this evidence;
+the owner explicitly deferred those fixes. Limited playtesting occurred, but
+broader gameplay coverage and smoothness are not approved. LAND-03 uses fresh V11
+and preserves the approved V10 foundation/art and all old Continue identities.
+
 LAND-02B's playable implementation is now adopted on main (17 September) through
 `3759782` / `5c41ed2`, with its matching native DLL and a clean 12.80 s headless
 import. Worker gameplay/Continue evidence was reused. See the

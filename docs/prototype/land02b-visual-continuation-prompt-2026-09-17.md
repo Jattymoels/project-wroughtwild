@@ -1,5 +1,10 @@
 # Continue Scarwater's unfinished visual production
 
+**SUPERSEDED — do not dispatch.** On 17 September the owner approved the current
+look, explicitly liked the odd/campy cliffs and said "Okay next". LAND-03 is next.
+Keep this unexecuted recommendation as history only. Lag and excessive elk/stag
+abundance go to the owner-requested later cleanup; no extra Scarwater art pass.
+
 Coordinator recommendation following adoption on 17 September. This is a
 continuation of the selected LAND-02B outcomes, not a launched worker or a new
 feature slice. Send the following to the existing LAND-02B session when resuming.

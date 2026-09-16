@@ -15,7 +15,26 @@ on main on 17 September. The matching DLL is installed in the owner checkout.
 Publication is recorded by the coordinator's subsequent adoption commit.
 No subsequent worker or LAND-03 was started. Owner playtesting remains deferred.
 
-## Coordinator assessment and adoption, 17 September
+## Owner approval and limited playtest, 17 September
+
+After adoption the owner said "I love how it looks", specifically liked the odd
+cliff generation and was happy for it to be "a bit campy". This approves the
+delivered visual direction and supersedes the coordinator's proposed further
+Scarwater art continuation below. Preserve the current character; proceed to
+LAND-03, then LAND-04 and LAND-05. The unused continuation prompt is superseded.
+
+The owner also reported significant lag: many small stutters with some large
+hitches, enough to curtail their playtest. They separately requested fewer elk,
+while saying they did not think elk abundance explained the lag. Both were
+explicitly notes to fix/figure out later. The cause and exact population tuning
+remain undetermined; no performance investigation or spawn change has been run.
+The coordination sheet records high-impact stuttering and elk/stag abundance for
+LAND-05. Aesthetic approval is not smoothness or broad gameplay acceptance.
+
+## Earlier coordinator assessment and adoption, 17 September
+
+The following assessment preceded owner feedback above. Its extra production
+recommendation is superseded; observations are retained as history.
 
 The playable foundation is integrated; the central visual outcome is **partially
 delivered and remains open**. The coordinator inspected reveal, contrasting-basin,

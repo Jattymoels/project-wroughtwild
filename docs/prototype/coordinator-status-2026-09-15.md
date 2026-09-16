@@ -7,7 +7,35 @@ outrank historical review, packaging and rollout requirements.
 
 ## Current adoption and next worker
 
-**LAND-02B playable foundation adopted; central visual outcome remains open.** The
+**Next: LAND-03 Dry Steppe/Red and ordinary four-force acquisition.** The owner
+played briefly, said "I love how it looks", likes the odd/campy cliffs and asked
+to move on. This approves the current LAND-02B appearance and supersedes the
+coordinator's suggested extra art continuation. Preserve that character.
+[Worker brief](land03-dry-steppe-worker-2026-09-16.md) and
+[copyable prompt](land03-session-prompt-2026-09-16.md) are refreshed for fresh V11
+on the adopted V10 foundation. Workspace `D:/Wroughtwild/work/land03-dry-steppe`,
+branch `codex/land03-dry-steppe`; owner starts the session, no worker launched.
+LAND-04 remains after LAND-03, then one bounded LAND-05 closeout.
+
+### LAND-05 owner playtest backlog, 17 September
+
+- **High impact: frequent small stutters plus occasional large hitches.** The
+  owner could not play much because of significant lag in the current game.
+  They explicitly requested fixing/figuring it out later. Cause, seed, route
+  and timing are not established. At closeout use a focused ordinary-play
+  reproduction and timings to identify the dominant cause; do not assume the
+  previous arrival fixes or current import checks establish smoothness. This
+  is real impaired play, not a cosmetic note or a resolved issue.
+- **Excessive elk/stag population.** Reduce the perceived abundance in a later
+  tuning pass after identifying the actual spawning path. Exact reduction is
+  not selected. The owner suspects it is unrelated to lag; keep these as
+  separate observations and preserve existing ownership/reward rules.
+- Prior residual visual observations are optional refinement. Odd/campy cliff
+  character is approved and must not be recorded as a defect to naturalise.
+
+### Adopted LAND-02B evidence and earlier coordinator assessment
+
+**LAND-02B playable foundation and current appearance approved.** The
 [production result](land02b-scarwater-production-result-2026-09-16.md) delivers
 fresh V10 shared density/extraction/contact/edit foundations and ordinary
 Scarwater art: separated leaning cliff masses, rooted living canopy, a deep dry
@@ -16,25 +44,23 @@ checks and exact matching DLL/editable-source paths. Functional evidence covers
 two seeds, both bank routes, both fissure exits, paid building, finite pressure,
 digging and fresh-process Continue. The report preserves failed intermediate
 checks and their focused corrections rather than relabelling them passes.
-The coordinator inspected four actual pictures: planar/ribbed cliffs still read
+Before the owner's approval, the coordinator inspected four actual pictures: planar/ribbed cliffs read
 as cut slabs, the scar as a smooth trench, upper forks/crowns as simple repeated
-assemblies, and ground transitions as sparse. These central shortcomings remain
-in the selected production correction, not automatically in LAND-05 cleanup.
-Recommend finishing the connected reveal/scar/home outcomes before LAND-03;
-[continuation prompt](land02b-visual-continuation-prompt-2026-09-17.md) is ready for
-the owner to send. No worker was launched or messaged. LAND-03/04/05 remain queued;
-LAND-03's worktree is unprepared. V10 is published; further changed geography
-requires its successor, so refresh later profile numbering at dispatch.
+assemblies, and ground transitions as sparse. These are retained historical
+observations, not a blocker after owner approval. The
+[continuation prompt](land02b-visual-continuation-prompt-2026-09-17.md) is superseded;
+do not dispatch it. V10 is published; LAND-03 takes fresh V11.
 Checked worker implementation: `37597824f73b8600504c8b6f294f0d0c0a1f329f`.
 Handoff `5c41ed253e5b6b0c31ebecb8dea046552a4ac43a` is on main. Nine changed
 native/tuning hashes and the matching installed DLL checked against provenance.
 Main's isolated headless import passed in 12.80 s, exit 0, zero errors; worker
-gameplay/save evidence was reused. All owned checks ended. Owner aesthetic
-feedback/playtesting remain deferred; integration is not aesthetic acceptance.
+gameplay/save evidence was reused. All owned checks ended. The later owner
+approval establishes aesthetic acceptance; their limited playtest also establishes
+the unresolved lag report above, not general gameplay or performance clearance.
 
 ### LAND-02B selection and preparation history
 
-**Next, explicitly selected by the owner: [LAND-02B Scarwater art and terrain production](land02b-scarwater-production-worker-2026-09-16.md).**
+**Historical selection, now delivered: [LAND-02B Scarwater art and terrain production](land02b-scarwater-production-worker-2026-09-16.md).**
 After questioning the visual gap, the owner authorised substantial generated-asset
 and mathematical/development work for collisions/world building to get it right.
 This moves the central Scarwater visual shortfall out of deferred cleanup and
@@ -83,9 +109,9 @@ as LAND-02B above; central visual gaps are its task, not incidental cleanup.
 LAND-00 recommendations/rules and the [selected LAND plan](landscape-biomes-influences-plan-2026-09-16.md)
 remain the direction. LAND-01 is complete; do not restart its old worktree.
 The selected sequence names [LAND-03 Dry Steppe/Red and coherent LF acquisition reuse](land03-dry-steppe-worker-2026-09-16.md)
-after LAND-02B. Its brief and [copyable prompt](land03-session-prompt-2026-09-16.md) are drafts;
-`D:/Wroughtwild/work/land03-dry-steppe` and branch `codex/land03-dry-steppe` have
-not been prepared. Refresh from the completed LAND-02B before dispatch.
+after LAND-02B. Its brief and [copyable prompt](land03-session-prompt-2026-09-16.md)
+are now refreshed for the prepared `D:/Wroughtwild/work/land03-dry-steppe`, branch
+`codex/land03-dry-steppe`, following the owner's approval and instruction to proceed.
 Remaining force journeys and one LAND-05 closeout remain the later plan.
 No next worker was started. LAND-02's regular ridge bands, abrupt bank transitions,
 repeated tree/root forms and richer scar material now belong to LAND-02B; owner

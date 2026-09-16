@@ -28,11 +28,13 @@ creature concept sheets with modelling notes. The selected creatures now have an
 
 ## Current phase
 
-LAND-02 adds **Scarwater Basin** to ordinary fresh `frontier_v9` worlds: a
-seed-varied displaced ridge above a fixed lake, Gallery Woodland, a real dry
-fissure and existing finite smithy work with paid home building. Existing saved
-profiles remain. See the [worker result and actual game pictures](docs/prototype/land02-scarwater-result-2026-09-16.md);
-main integration/push is reserved for the coordinator.
+LAND-02B's **Scarwater Basin** is integrated for ordinary fresh `frontier_v10`
+worlds: seeded fractured terrain, rooted Gallery Woodland, a dry fissure and
+existing finite smithy work with paid home building. Older saves retain their
+profiles. The owner approves the current look; significant stuttering and excess
+elk/stag abundance remain deferred playtest issues. See the
+[result and actual game pictures](docs/prototype/land02b-scarwater-production-result-2026-09-16.md).
+LAND-03 Dry Steppe/Red and ordinary four-force acquisition is next, on fresh V11.
 
 The [current whole-project coordination sheet](docs/prototype/coordinator-status-2026-09-15.md)
 distinguishes implemented gameplay, ready art adoption, remaining production and

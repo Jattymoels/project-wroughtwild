@@ -12,8 +12,10 @@ grid, finite stock, paid ownership and older saved profiles remain intact.
 See the [production result](../prototype/land02b-scarwater-production-result-2026-09-16.md)
 and [source-backed foundation](../prototype/land02b-environment-foundation-2026-09-16.md).
 V9 below records main's previous adoption. V10 is now published and must retain
-its saved geography during later production. Central visual goals remain open
-in the result's coordinator assessment; working geometry is not art acceptance.
+its saved geography during later production. The owner subsequently approved the
+current look, including its odd/campy cliffs. Their limited playtest reported
+significant stuttering and excessive elk/stag abundance, deferred to LAND-05.
+Working geometry and aesthetic approval do not establish smooth performance.
 
 ### Selected production scope
 
