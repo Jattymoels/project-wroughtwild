@@ -122,8 +122,9 @@ Worker: `D:/Wroughtwild/work/land02-scarwater-basin` on
 Final matching DLL SHA-256:
 `f47813e2e9e20b5be2979944a3886661eda70e1baf3f553c9970ea6a38907a76`.
 
-The checked implementation commit is recorded by the subsequent documentation
-handoff commit and in the final worker response. Native binaries, editable master,
+Checked implementation commit: `1f03247b132f27f1aada4f6c5f9780f7f153b4a8`.
+The following documentation-only handoff records that identity; native inputs
+and the checked runtime are unchanged. Native binaries, editable master,
 private saves and import caches remain local; the original GLBs and recipe are committed.
 
 The coordinator handles main integration and ordinary push. No main merge or
