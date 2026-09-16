@@ -7,6 +7,26 @@ outrank historical review, packaging and rollout requirements.
 
 ## Current adoption and next worker
 
+**Next, explicitly selected by the owner: [LAND-02B Scarwater art and terrain production](land02b-scarwater-production-worker-2026-09-16.md).**
+After questioning the visual gap, the owner authorised substantial generated-asset
+and mathematical/development work for collisions/world building to get it right.
+This moves the central Scarwater visual shortfall out of deferred cleanup and
+puts a convincing ordinary art/terrain scene before more biome breadth. The
+worker must revise dominant shape/material/composition gaps and then generalise
+the successful result across seeds. Functional checks alone cannot close it.
+Use fresh V10 if physical geography changes; preserve V9/LF saves and ownership.
+Workspace: `D:/Wroughtwild/work/land02b-scarwater-art`; branch
+`codex/land02b-scarwater-art`; [copyable prompt](land02b-session-prompt-2026-09-16.md).
+The owner starts it. No worker or production job was launched during preparation.
+LAND-03 Steppe/acquisition follows this correction (expected V11), then LAND-04
+remaining journeys and LAND-05 bounded residual cleanup. This is an explicit
+owner-approved sequence exception, not an automatic coordinator tangent.
+The owner's follow-up specifically raises early base Godot implementation limits.
+LAND-02B starts with the shared world/rendering/contact foundation and implements
+the necessary changes, using Scarwater as the ordinary playable proof before
+future biomes. It is not restricted to a biome-specific dressing pass or another
+planning-only investigation.
+
 **LAND-02's playable iteration is adopted on main; visual-production concern is now open.**
 The [Scarwater result](land02-scarwater-result-2026-09-16.md) delivers normal fresh
 V9, seeded displaced ridge/fixed lake, Gallery Woodland, dry native fissure,
@@ -30,19 +50,18 @@ reference-to-game gap and asked whether the model, pipeline or local image-to-3D
 tool was responsible. The [source-backed diagnosis](land02-visual-pipeline-diagnosis-2026-09-16.md)
 finds scripted shape approximations, missing large fracture geometry and insufficient
 material/composition follow-through; image-to-3D was not used for this kit.
-The coordinator recommends proving one convincing ordinary art scene before more
-breadth, rather than treating the central visual gap as incidental cleanup.
-This recommendation has not yet changed the owner's selected sequence.
+The owner has now selected the recommended ordinary-scene production correction
+as LAND-02B above; central visual gaps are its task, not incidental cleanup.
 
 LAND-00 recommendations/rules and the [selected LAND plan](landscape-biomes-influences-plan-2026-09-16.md)
 remain the direction. LAND-01 is complete; do not restart its old worktree.
-The selected sequence still names [LAND-03 Dry Steppe/Red and coherent LF acquisition reuse](land03-dry-steppe-worker-2026-09-16.md)
-next. Its brief and [copyable prompt](land03-session-prompt-2026-09-16.md) are drafts;
+The selected sequence names [LAND-03 Dry Steppe/Red and coherent LF acquisition reuse](land03-dry-steppe-worker-2026-09-16.md)
+after LAND-02B. Its brief and [copyable prompt](land03-session-prompt-2026-09-16.md) are drafts;
 `D:/Wroughtwild/work/land03-dry-steppe` and branch `codex/land03-dry-steppe` have
-not been prepared. Resolve the production approach with the owner before dispatch.
+not been prepared. Refresh from the completed LAND-02B before dispatch.
 Remaining force journeys and one LAND-05 closeout remain the later plan.
 No next worker was started. LAND-02's regular ridge bands, abrupt bank transitions,
-repeated tree/root forms and richer scar material belong to that closeout; owner
+repeated tree/root forms and richer scar material now belong to LAND-02B; owner
 playtesting, loading-time work and broader hardware/campaign coverage remain open.
 Historical adoption details follow.
 

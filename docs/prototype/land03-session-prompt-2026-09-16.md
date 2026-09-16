@@ -1,8 +1,8 @@
 # Copy into the LAND-03 implementation session
 
-**Draft, not ready to dispatch:** the workspace is not prepared. The owner's
-LAND-02 visual-pipeline concern is under discussion; see the worker brief and
-`land02-visual-pipeline-diagnosis-2026-09-16.md` before starting a new session.
+**Draft for after LAND-02B, not ready to dispatch:** the workspace is not prepared.
+The owner selected substantial Scarwater art/terrain correction first. Refresh
+this prompt from that result and the worker brief before starting a new session.
 
 Implement LAND-03: Dry Steppe, Red and useful four-force acquisition for Wroughtwild.
 
@@ -25,7 +25,7 @@ and appealing home ground. Red Excitation should visibly affect eligible hosts,
 and the existing Red boar/source relationship should lead to useful paid crafting.
 
 Adopt the existing complete four-source/device acquisition system into fresh
-ordinary frontier_v10 worlds, retaining the ordinary campaign and exact source,
+ordinary successor worlds (expected frontier_v11), retaining the ordinary campaign and exact source,
 cost, claim and device rules. Give Red the substantial authored environment here;
 the other three sources/devices must be reachable and usable, with their fuller
 journeys left for LAND-04. Preserve Scarwater and all old saves/profiles/ownership.

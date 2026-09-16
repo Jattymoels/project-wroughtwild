@@ -362,6 +362,45 @@ terrain, substantial art and existing four-force acquisition into ordinary fresh
 V10 independently of the LF campaign, preserving V9/LF Continue. LAND-04's
 remaining force journeys and LAND-05 closeout stay next.
 
+### LAND-02B substantial visual production approved, 16 September
+
+The owner accepted the visual-pipeline correction: "Yes can we go ahead with
+those suggestions. If we need to spend substantial time getting it right either
+through generated assets or maths/Dev work for collisions and world building,
+do it." This is an explicit sequence change: **LAND-02B Scarwater art and terrain
+production now precedes LAND-03**. The [production brief](docs/prototype/land02b-scarwater-production-worker-2026-09-16.md)
+authorises substantial focused generated/direct asset work, materials, terrain
+mathematics, meshing, collision, picking and edit/Continue integration needed for
+the intended appearance. Do not keep the dominant visual mismatch in cleanup or
+finish merely because functionality works. A convincing ordinary scene comes
+first, then reusable seeded rules and focused changed-behavior checks.
+
+Retain random generation, lore/host relationships, paid ownership and old saves.
+Changed geography uses fresh `frontier_v10`; V9/LF Continue stays intact. The
+later LAND-03 acquisition/Steppe successor is expected to be V11. No new biome,
+combat rule, LF campaign, engine migration, global framework or exhaustive review
+is implied by this art/terrain production authority. Existing local image-to-3D,
+Blender and native tools may be used; judge actual output instead of assuming a
+tool or polygon count guarantees quality. Routine art/engineering iteration may
+take substantial time; the owner has not requested a benchmark or package wave.
+
+The coordinator prepares `D:/Wroughtwild/work/land02b-scarwater-art`, branch
+`codex/land02b-scarwater-art`, and the owner starts the separate session. No worker
+starts automatically. LAND-03/04/05 resume after this corrective result. This
+selection supersedes the earlier "not yet selected" status above.
+
+The owner then asked whether early choices in the base Godot implementation have
+limited the result across biomes, and invited continued work without treating that
+thought as an interruption. LAND-02B therefore starts with a bounded source-backed
+assessment and implementation of the necessary shared environment foundation:
+terrain representation/extraction, material/lighting path, near/far rendering,
+collision and edit mapping. Scarwater proves the improved foundation in ordinary
+play. Do not limit this correction to another biome-specific art layer or claim a
+Godot/model ceiling without evidence. Current terrain is a full 3D block field;
+its one-metre data and custom surface choices are project decisions. Keep legacy
+profiles intact and carry the chosen shared changes into the playable result,
+not a separate open-ended architecture study.
+
 ### Standard game development practices at prototype scale
 
 The owner asked why established game-development techniques were not the default

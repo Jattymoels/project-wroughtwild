@@ -8,10 +8,20 @@ Selection authorises the direction, two-biome wave and later reuse of existing L
 
 ## The delivery sequence
 
+**Owner-approved sequence correction after LAND-02:** the first playable basin
+did not achieve the requested visual ambition. The owner has now authorised
+substantial art and mathematical/terrain/collision work to get it right.
+[LAND-02B](land02b-scarwater-production-worker-2026-09-16.md) precedes LAND-03;
+this is no longer a suggestion or minor cleanup. Its changed geography takes
+fresh V10, leaving V9/older saves intact. Later LAND-03 uses the next unpublished
+profile, expected V11. The original effort estimates below are historical planning
+allowances, not a cutoff for this authorised corrective production.
+
 | Slice | Playable result and original outcome advanced | Scope and exit |
 | --- | --- | --- |
 | **LAND-01 — this plan, complete** | Makes the approved lore, seed rules and first place actionable | This contract, reference boards, first implementation prompt and prepared workspace. Documentation only. |
 | **LAND-02 — Scarwater Basin, next** | A memorable recovered ridge/lake, Gallery Woodland, a genuinely deep living scar, two approaches, two home settings and the existing finite pressure workshop | New `frontier_v9` geography for ordinary New World. Terrain, authored forms, habitat and useful play together. Current ordinary acquisition/campaign. First representative ordinary scene early, then varied seeded composition. |
+| **LAND-02B — environment foundations and Scarwater production** | Close the major reference-to-game gap: fractured landmark, rooted canopy, deep structured scar, materials and composed lighting | Diagnose and fix required shared world/rendering/contact limitations, then prove one convincing ordinary scene and seeded variation. Substantial focused production is authorised. Fresh V10; no new biome or LF adoption. |
 | **LAND-03 — Dry Steppe and Red** | A second country with different ground, visibility, plants and building choices; Red's activity and accumulation become understandable and useful | Fresh successor geography. Dry Steppe kit and Red place/selected LF boar. Adopt the existing four-source/recipe/device ownership system coherently into normal fresh worlds, with useful reachable existing source presentation for the other channels. Preserve existing LF semantics and campaign separation. |
 | **LAND-04 — complete the four-force journeys** | Blue, Green and White places connect distinctive physical hosts to materials and devices useful in the player's own workshop | Develop the remaining selected host forms, source approaches and existing LF teaching hosts within existing habitats. No third new biome. New geography identity if anchors/terrain change; retain LAND-03 worlds. |
 | **LAND-05 — one bounded closeout** | These places feel connected on an ordinary expedition and home return | Consolidate actual seam, readability, access and composition problems recorded during this wave. No automatic new biome, optimisation wave, campaign replay or catalogue of separate fixes. |

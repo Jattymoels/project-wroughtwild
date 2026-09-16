@@ -1,5 +1,21 @@
 # Decision Registry
 
+Owner LAND-02B selection, 16 September 2026: the owner authorised substantial
+asset and mathematical/development work for collisions and world building to
+get the intended look right. [Scarwater corrective production](../prototype/land02b-scarwater-production-worker-2026-09-16.md)
+now precedes Dry Steppe/LAND-03. A convincing ordinary game scene, substantial
+forms/materials and honest editable terrain contact are required before broader
+seeded production. Fresh V10 preserves published V9/older/LF saves; later LAND-03
+uses the next unpublished successor, expected V11. Random generation, ordinary
+rules and finite ownership remain. This selects production scope and substantial
+effort, not a new engine, gameplay economy or unlimited verification wave. No
+corrective runtime changes are claimed by this planning/preparation commit.
+The owner's follow-up explicitly raises possible constraints in the early base
+Godot implementation. The same production task must diagnose and implement the
+required shared environment/rendering/contact changes, then prove them through
+Scarwater; it is not limited to a biome-specific asset pass. This does not select
+an engine migration or permit changes to old saved-world identities.
+
 LAND-02 adopted, 16 September 2026: implementation `1f03247` and handoff `4113c8b`, with matching native DLL, implement the selected fresh V9 Scarwater/Gallery scope. The [result](../prototype/land02-scarwater-result-2026-09-16.md) records reused functional evidence and main's clean 5.90 s headless import. Coordinator picture assessment finds partial aesthetic delivery; owner playtesting remains deferred. Existing saved profiles and LF adoption boundaries remain. The owner questioned the visual-production gap; the [diagnosis](../prototype/land02-visual-pipeline-diagnosis-2026-09-16.md) records facts and a recommendation, not an approved new slice. LAND-03's brief is a draft; no workspace or worker was started.
 
 Owner LAND production selection, 16 September 2026: “Okay agree with the

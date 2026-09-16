@@ -1,5 +1,11 @@
 # LAND-02: why the game is far from the reference
 
+**Subsequent owner selection:** the owner accepted these suggestions and explicitly
+authorised substantial generated-asset and mathematical/development work for
+collisions and world building. [LAND-02B corrective production](land02b-scarwater-production-worker-2026-09-16.md)
+now precedes LAND-03. The findings below remain the evidence for that task; earlier
+"not selected" wording records the diagnosis's initial status.
+
 The owner asked why the result remains nowhere near the designs and whether the
 limitation is the agent model, design pipeline or local image-to-3D model. This
 note answers from LAND-02's actual source and retained pictures. No new renderer,
@@ -71,7 +77,7 @@ to a realistic game-native target with explicit geometry/material/lighting work,
 rather than promising that a short procedural kit will approximate it automatically.
 
 This is a recommendation to correct the production approach before more breadth.
-The owner has not yet selected a replacement slice or changed the sequence.
+The owner subsequently selected LAND-02B before LAND-03, as recorded above.
 LAND-03's brief exists as a draft; its workspace and worker have not been started.
 LAND-02's checked playable work remains adopted. No additional implementation or
 new review wave is authorised merely by recording this diagnosis.

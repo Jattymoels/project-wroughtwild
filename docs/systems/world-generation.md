@@ -1,5 +1,19 @@
 # World Generation, Settlements and Travel
 
+## Selected next: LAND-02B corrective art and terrain production
+
+The owner authorised substantial asset/terrain/meshing/collision work to close
+Scarwater's large visual gap. The [LAND-02B contract](../prototype/land02b-scarwater-production-worker-2026-09-16.md)
+requires large broken rock forms, rooted canopy, structured fissure, materials
+and composition in an ordinary generated scene, then meaningful seed variation.
+Changed physical geography uses fresh V10 with shared honest render/contact/edit
+behavior; old V9/LF saves keep their existing identity. Local geometry/surface
+development is within scope where required; a global-resolution increase, engine
+migration or general framework is not selected. V9 below remains the currently
+implemented normal profile until this worker completes. LAND-03 follows on the
+next unpublished successor, expected V11. No corrective runtime change is claimed
+by preparation of its brief.
+
 ## LAND-02: Scarwater Basin / fresh V9
 
 The owner-selected [LAND plan](../prototype/landscape-biomes-influences-plan-2026-09-16.md)
