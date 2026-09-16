@@ -1,5 +1,20 @@
 # Vertical-Slice Acceptance Criteria
 
+## LAND-02 Scarwater Basin (worker complete; main adoption pending)
+
+- [x] Ordinary fresh V9 delivers seeded displaced ridge/lake, Gallery Woodland,
+  a native dry fissure and the existing finite smithy opportunity.
+- [x] Actual controller walking, both approaches and scar ramps, finite gathering,
+  paid building at both homes and paid pressure charge/work/withdraw pass.
+- [x] Focused Continue retains dig/ownership/stock; an existing V8 payload retains
+  its profile and geography. The result records the station-name harness correction.
+- [x] Two ordinary seed pictures and original editable/runtime art are retained.
+- [ ] Owner playtesting and full concept quality remain open. Regular ridge bands,
+  some abrupt banks and repeated tree/root forms are bounded closeout notes.
+
+[Actual appearance, precise checks and handoff](land02-scarwater-result-2026-09-16.md).
+Coordinator integration/push remains separate; no later slice was started.
+
 ## RF-09 wave material cleanup
 
 - [x] Existing highland outcrops/ground use distinct weathered mineral and textured

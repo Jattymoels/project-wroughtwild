@@ -1,6 +1,6 @@
 extends Resource
 ## Only visual data, reconstructed from the loaded world's existing biome map.
-const PROFILES := ["frontier_v6","frontier_v7","frontier_v8", "living_frontier_wave1", "living_frontier_wave3"]
+const PROFILES := ["frontier_v6","frontier_v7","frontier_v8","frontier_v9", "living_frontier_wave1", "living_frontier_wave3"]
 const SURFACES := ["grass", "forest_floor", "dirt"]
 @export var meadow_albedo: Texture2D
 @export var meadow_detail: Texture2D
@@ -18,8 +18,8 @@ func mask_for(map: Dictionary, profile: String) -> ImageTexture:
 	var definitions: Array = map.biome_defs
 	for i in map.biomes.size():
 		var biome: String = definitions[int(map.biomes[i])].id
-		pixels[i * 2] = 255 if biome in ["meadow", "forest"] else 0
-		pixels[i * 2 + 1] = 255 if biome == "forest" else 0
+		pixels[i * 2] = 255 if biome in ["meadow", "forest","gallery_woodland"] else 0
+		pixels[i * 2 + 1] = 255 if biome in ["forest","gallery_woodland"] else 0
 	return ImageTexture.create_from_image(Image.create_from_data(int(map.width), int(map.height), false, Image.FORMAT_RG8, pixels))
 
 func bind(material: ShaderMaterial, kind: String, mask: ImageTexture, map: Dictionary) -> void:

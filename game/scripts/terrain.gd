@@ -82,6 +82,7 @@ var _seed := 0
 var play03_trace: Node # Null unless the local PLAY-03 recorder is explicitly enabled.
 var _world_profile := "legacy_v1"
 var wetland_cover: RefCounted # RF06 transient dry-bank/fen composition.
+var scarwater_cover: RefCounted
 var highland_cover: RefCounted # RF07 transient rock/pocket composition.
 var reclaimed_cover: RefCounted # Recreated with the actual world identity; never saved.
 var _habitat_refresh_queued := false
@@ -173,7 +174,7 @@ func _material_for(kind: String) -> Material:
 	if frontier_look != null:
 		var frontier_material: Material = frontier_look.terrain_material(kind, float(map.get("cell_size", 1.0)))
 		frontier_material.set_shader_parameter("world_mesh", faceted_surface)
-		if _world_profile in ["frontier_v4", "frontier_v5", "frontier_v6","frontier_v7","frontier_v8","living_frontier_wave1","living_frontier_wave3"] and _augmentation_texture != null:
+		if _world_profile in ["frontier_v4", "frontier_v5", "frontier_v6","frontier_v7","frontier_v8","frontier_v9","living_frontier_wave1","living_frontier_wave3"] and _augmentation_texture != null:
 			frontier_material.set_shader_parameter("augmentation_enabled", true)
 			frontier_material.set_shader_parameter("augmentation_map", _augmentation_texture)
 			frontier_material.set_shader_parameter("augmentation_extent", Vector2(map.width, map.height) * float(map.cell_size))
@@ -182,6 +183,7 @@ func _material_for(kind: String) -> Material:
 		if wetland_cover!=null: wetland_cover.bind(frontier_material,kind)
 		if highland_cover!=null: highland_cover.bind(frontier_material,kind)
 		if reclaimed_cover!=null: reclaimed_cover.recovery.bind(frontier_material)
+		if _world_profile=="frontier_v9": preload("res://land02/kit.gd").bind_ground(frontier_material,map)
 		_materials[kind] = frontier_material
 		return frontier_material
 	var material := StandardMaterial3D.new()
@@ -224,9 +226,10 @@ func build(sim: WroughtwildSim, seed_value: int, profile_id: String = "") -> voi
 	atmosphere_look = null
 	_augmentation_texture = null
 	_rf02_biome_mask = null
-	if weathered and _world_profile in ["frontier_v3", "frontier_v4", "frontier_v5", "frontier_v6","frontier_v7","frontier_v8","living_frontier_wave1","living_frontier_wave3"]:
+	if weathered and _world_profile in ["frontier_v3", "frontier_v4", "frontier_v5", "frontier_v6","frontier_v7","frontier_v8","frontier_v9","living_frontier_wave1","living_frontier_wave3"]:
 		frontier_look = preload("res://art/wildland_look.tres")
 		atmosphere_look = preload("res://art/wildland_atmosphere.tres")
+		if _world_profile=="frontier_v9": atmosphere_look=preload("res://land02/atmosphere.tres")
 	current_era = int(sim.era().get("index", 1))
 	_pending_nodes.clear()
 	resource_stream = null
@@ -234,7 +237,7 @@ func build(sim: WroughtwildSim, seed_value: int, profile_id: String = "") -> voi
 	if map.is_empty():
 		push_error("Terrain: sim.world_map returned nothing")
 		return
-	if _world_profile in ["frontier_v4", "frontier_v5", "frontier_v6","frontier_v7","frontier_v8","living_frontier_wave1","living_frontier_wave3"]:
+	if _world_profile in ["frontier_v4", "frontier_v5", "frontier_v6","frontier_v7","frontier_v8","frontier_v9","living_frontier_wave1","living_frontier_wave3"]:
 		var field: PackedFloat32Array = map.get("augmentation_field", PackedFloat32Array())
 		if field.size() == int(map.width) * int(map.height):
 			_augmentation_texture = ImageTexture.create_from_image(Image.create_from_data(int(map.width), int(map.height), false, Image.FORMAT_RF, field.to_byte_array()))
@@ -255,15 +258,17 @@ func build(sim: WroughtwildSim, seed_value: int, profile_id: String = "") -> voi
 	reclaimed_cover = null
 	wetland_cover = null
 	highland_cover = null
+	scarwater_cover = null
 	if weathered:
 		HabitatCover.prepare(map)
-		if _world_profile in ["frontier_v6","frontier_v7","frontier_v8","living_frontier_wave1","living_frontier_wave3"]:
+		if _world_profile in ["frontier_v6","frontier_v7","frontier_v8","frontier_v9","living_frontier_wave1","living_frontier_wave3"]:
 			reclaimed_cover = preload("res://rf01/cover.gd").new(map,_seed,_world_profile,StrangeSites._reservations(self,true))
 			wetland_cover = preload("res://rf06/cover.gd").new(self,reclaimed_cover)
 			reclaimed_cover.wetland = wetland_cover
 			highland_cover = preload("res://rf07/cover.gd").new(self,reclaimed_cover)
 			reclaimed_cover.highland = highland_cover
-	if _world_profile in ["frontier_v3", "frontier_v4", "frontier_v5", "frontier_v6","frontier_v7","frontier_v8","living_frontier_wave1","living_frontier_wave3"]:
+			if _world_profile=="frontier_v9": scarwater_cover=preload("res://land02/cover.gd").new(self)
+	if _world_profile in ["frontier_v3", "frontier_v4", "frontier_v5", "frontier_v6","frontier_v7","frontier_v8","frontier_v9","living_frontier_wave1","living_frontier_wave3"]:
 		chunk_stream=TerrainChunkStream.new()
 		chunk_stream.setup(self)
 	else:
@@ -274,7 +279,7 @@ func build(sim: WroughtwildSim, seed_value: int, profile_id: String = "") -> voi
 	nodes_root = Node3D.new()
 	nodes_root.name = "ResourceNodes"
 	add_child(nodes_root)
-	if _world_profile in ["frontier_v3", "frontier_v4", "frontier_v5", "frontier_v6","frontier_v7","frontier_v8","living_frontier_wave1","living_frontier_wave3"]:
+	if _world_profile in ["frontier_v3", "frontier_v4", "frontier_v5", "frontier_v6","frontier_v7","frontier_v8","frontier_v9","living_frontier_wave1","living_frontier_wave3"]:
 		resource_stream = ResourceStream.new()
 		resource_stream.setup(self,map["nodes"])
 		resource_stream.focus(surface_position(int(map.spawn_x),int(map.spawn_z)),true)
@@ -360,9 +365,11 @@ func _build_chunk_phase(chunk_data: Dictionary,cell: float,phase: int,chunk: Nod
 
 	elif phase==2:
 		LakeWater.build_chunk(self,chunk,chunk_data)
-		GroundCover.build_for_chunk(chunk, chunk_data, map, cell, frontier_look,_world_profile in ["frontier_v3", "frontier_v4", "frontier_v5", "frontier_v6","frontier_v7","frontier_v8","living_frontier_wave1","living_frontier_wave3"],reclaimed_cover)
+		GroundCover.build_for_chunk(chunk, chunk_data, map, cell, frontier_look,_world_profile in ["frontier_v3", "frontier_v4", "frontier_v5", "frontier_v6","frontier_v7","frontier_v8","frontier_v9","living_frontier_wave1","living_frontier_wave3"],reclaimed_cover)
 		if weathered:
-			HabitatCover.build(chunk,chunk_data,map,cell,_world_profile in ["frontier_v3", "frontier_v4", "frontier_v5", "frontier_v6","frontier_v7","frontier_v8","living_frontier_wave1","living_frontier_wave3"],wetland_cover)
+			HabitatCover.build(chunk,chunk_data,map,cell,_world_profile in ["frontier_v3", "frontier_v4", "frontier_v5", "frontier_v6","frontier_v7","frontier_v8","frontier_v9","living_frontier_wave1","living_frontier_wave3"],wetland_cover)
+
+		if scarwater_cover!=null: scarwater_cover.build(chunk,chunk_data)
 
 	elif phase==3:
 		last_collision_profile = {"collision_faces":0.0, "collision_body":0.0, "cover_suppression":0.0}
@@ -399,7 +406,7 @@ func _build_chunk_phase(chunk_data: Dictionary,cell: float,phase: int,chunk: Nod
 		# A placed floor can predate this streamed/rebuilt chunk. Suppress
 		# intersecting V3 cover before publishing any visible grass or shrubs.
 		var suppression_began := Time.get_ticks_usec()
-		if _world_profile in ["frontier_v3", "frontier_v4", "frontier_v5", "frontier_v6","frontier_v7","frontier_v8","living_frontier_wave1","living_frontier_wave3"]: StrangeSites.refresh_cover_chunk(self,chunk)
+		if _world_profile in ["frontier_v3", "frontier_v4", "frontier_v5", "frontier_v6","frontier_v7","frontier_v8","frontier_v9","living_frontier_wave1","living_frontier_wave3"]: StrangeSites.refresh_cover_chunk(self,chunk)
 		last_collision_profile.cover_suppression = (Time.get_ticks_usec()-suppression_began)/1000.0
 		chunks["%d_%d" % [int(chunk_data.x),int(chunk_data.z)]]=chunk
 		chunk.visible=true
@@ -524,7 +531,7 @@ func apply_broken_blocks(list: Array) -> void:
 		for origin in _touched_chunk_origins(v.x, v.z):
 			touched[origin] = true
 	broken.clear()
-	if _world_profile in ["frontier_v4", "frontier_v5", "frontier_v6","frontier_v7","frontier_v8","living_frontier_wave1","living_frontier_wave3"]:
+	if _world_profile in ["frontier_v4", "frontier_v5", "frontier_v6","frontier_v7","frontier_v8","frontier_v9","living_frontier_wave1","living_frontier_wave3"]:
 		var field: PackedFloat32Array = map.get("augmentation_field", PackedFloat32Array())
 		if field.size() == int(map.width) * int(map.height):
 			_augmentation_texture = ImageTexture.create_from_image(Image.create_from_data(int(map.width), int(map.height), false, Image.FORMAT_RF, field.to_byte_array()))

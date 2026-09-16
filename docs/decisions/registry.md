@@ -1,5 +1,7 @@
 # Decision Registry
 
+LAND-02 implementation, 16 September 2026: the [worker result](../prototype/land02-scarwater-result-2026-09-16.md) implements the selected fresh V9 Scarwater/Gallery scope below. The source branch is ready for coordinator adoption after its recorded focused checks; this worker does not merge or push main. Existing saved profiles and LF adoption boundaries remain. This records implementation under the existing owner selection, not new gameplay rules or owner playtest acceptance.
+
 Owner LAND production selection, 16 September 2026: “Okay agree with the
 recommendations and the rules.” The [selected implementation plan](../prototype/landscape-biomes-influences-plan-2026-09-16.md)
 completes LAND-01 in the coordinator session. Select The Inherited Landscape,

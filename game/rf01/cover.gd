@@ -1,7 +1,7 @@
 extends RefCounted
 ## One world's transient low-cover composition. No owned state or geometry edits.
 const SETTINGS = preload("res://rf01/low_cover.tres")
-const PROFILES := ["frontier_v6","frontier_v7","frontier_v8","living_frontier_wave1","living_frontier_wave3"]
+const PROFILES := ["frontier_v6","frontier_v7","frontier_v8","frontier_v9","living_frontier_wave1","living_frontier_wave3"]
 const RESERVATION_CELL := 8.0
 var recovery: RefCounted
 var wetland: RefCounted
@@ -13,7 +13,7 @@ var _noise := FastNoiseLite.new()
 var _reserved: Dictionary = {}
 
 static func eligible(profile: String, biome: String, surface: String) -> bool:
- return profile in PROFILES and biome in ["meadow","forest"] and surface in ["grass","forest_floor"]
+ return profile in PROFILES and biome in ["meadow","forest","gallery_woodland"] and surface in ["grass","forest_floor"]
 
 func _init(map: Dictionary, world_seed: int, profile: String, reservations: Dictionary) -> void:
  _map = map
@@ -32,7 +32,7 @@ func _init(map: Dictionary, world_seed: int, profile: String, reservations: Dict
  for site: Dictionary in map.get("home_sites",[]):
   # V7 cores are useful ground, not visible plots. Low grass remains until
   # ordinary paid footprints clear it; published V6/LF reservations stay exact.
-  if profile not in ["frontier_v7","frontier_v8"]:
+  if profile not in ["frontier_v7","frontier_v8","frontier_v9"]:
    _reserve(Vector3((float(site.x)+0.5)*cell,float(site.radius_m),(float(site.z)+0.5)*cell))
   for point: Vector3 in site.get("approach",[]): _reserve(Vector3(point.x,StrangeSites.LOOK.approach_clearance_m,point.z))
  for site: Dictionary in map.get("landmarks",[]):
@@ -60,6 +60,7 @@ func _reserve(point: Vector3) -> void:
    _reserved[key].append(point)
 
 func clear(at: Vector3, radius: float) -> bool:
+ if preload("res://land02/kit.gd").in_cut(_map,at,radius+.6):return false
  for point: Vector3 in _reserved.get(Vector2i(floori(at.x/RESERVATION_CELL),floori(at.z/RESERVATION_CELL)),[]):
   if Vector2(at.x-point.x,at.z-point.z).length_squared() < (point.y+radius)*(point.y+radius): return false
  return true
@@ -115,7 +116,7 @@ func build(chunk: Node3D, data: Dictionary, cell: float, distance: float) -> int
    var biome: String = _map.biome_defs[_map.biomes[i]].id
    if wetland!=null and wetland.owns(centre,biome,surface): continue
    var recovery_sample: Vector2 = recovery.sample(centre.x,centre.z)
-   var recovered := recovery_sample.x>float(recovery.settings.eligible_weight) and biome in ["meadow","forest"]
+   var recovered := recovery_sample.x>float(recovery.settings.eligible_weight) and biome in ["meadow","forest","gallery_woodland"]
    if not (eligible(_profile,biome,surface) or recovered) or _roll(x,z,11)>density_at(centre.x,centre.z): continue
    var fern_share: float = SETTINGS.forest_fern_share if biome=="forest" else SETTINGS.meadow_fern_share
    var role := "fern-sparse" if _roll(x,z,17)<fern_share else "grass-edge" if _roll(x,z,19)<SETTINGS.edge_grass_share else "grass-meadow"

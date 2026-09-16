@@ -172,6 +172,17 @@ struct PlacedLake {
         return beds[(pz-minZ)*width+px-minX];
     }
 };
+// LAND-02 regenerated place relationships; no stock or new saved owner.
+struct ScarwaterPlace {
+    std::string id="scarwater_0", channel="impulse", host="layered_rock_and_gallery_roots";
+    std::string lakeId, ruinId, pressureId, outlookHomeId, groveHomeId;
+    SurfacePoint centre, scar, smithy, reveal;
+    WorldDirection direction;
+    double ridgeHalfLengthM=0, reliefM=0, ridgeWidthM=0, ridgeOffsetM=0, ridgeArcM=0;
+    double fissureWidthM=0,fissureDepthM=0,fissureLengthM=0,woodlandBandM=0;
+    bool fallback=false;
+    std::vector<SurfacePoint> ridge, shelteredRoute, outlookRoute;
+};
 struct WorldMap {
     std::string profileId;
     uint64_t seed = 0;
@@ -199,6 +210,7 @@ struct WorldMap {
     int starterFirstSiegeNight = 0; // 0 preserves historical host pacing.
     std::vector<PlacedHomeSite> homeSites;
     std::vector<PlacedLake> lakes;
+    std::vector<ScarwaterPlace> scarwater;
     std::vector<float> augmentationField; // v4 only; row-major cells, finite [0,1]
     int spawnX = 0, spawnZ = 0;
     int gateX = 0, gateZ = 0;

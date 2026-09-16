@@ -1045,6 +1045,12 @@ struct LakeParams {
     double radiusMinM=28, radiusMaxM=36, aspect=.82, depthM=4, shoreM=10, blendM=28, homeGapM=22, variation=.035;
     double swimEnterM=1.1, swimExitM=.85, swimSpeed=.7, supportOffsetM=.05, supportResponse=8;
 };
+struct ScarwaterParams {
+    double ridgeHalfLengthM=76, ridgeReliefM=24, ridgeWidthM=36;
+    double fissureWidthM=7, fissureDepthM=4, fissureLengthM=24;
+    double woodlandBandM=22, routeWidthM=5, lakeAspectDelta=.10;
+    int candidateCount=24;
+};
 struct FrontierHostDef { std::string id, sourceId, enemyId, influence; int homeIndex = 0; };
 struct FrontierLabDef { std::string id, label, regionId; };
 struct LivingFrontierTable {
@@ -1067,6 +1073,7 @@ struct WorldgenTable {
     WideFrontierParams wideFrontier;
     ReclaimedFrontierParams reclaimedFrontier;
     LakeParams lake;
+    ScarwaterParams scarwater;
     uint64_t defaultSeed = 1;
     MapParams map;
     MountainParams mountains;
@@ -1343,6 +1350,7 @@ struct Tuning {
     std::map<std::string, double> centralRules;
     RealtimeTable realtime;
     WorldgenTable worldgen;
+    WorldgenTable frontierV9Worldgen; // LAND-02 immutable normal fresh-world inputs
     WorldgenTable frontierV8Worldgen;
     WorldgenTable frontierV7Worldgen; // separate fresh normal-world inputs; never derives LF
     WorldgenTable legacyWorldgen; // immutable legacy_v1 inputs for old saves

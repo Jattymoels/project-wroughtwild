@@ -96,7 +96,7 @@ func setup(from_terrain: Terrain, seed_value: int) -> void:
 			"members": [],
 		})
 	load_rules()
-	_indexed = terrain.world_profile() in ["frontier_v6","frontier_v7","frontier_v8","living_frontier_wave1","living_frontier_wave3"]
+	_indexed = terrain.world_profile() in ["frontier_v6","frontier_v7","frontier_v8","frontier_v9","living_frontier_wave1","living_frontier_wave3"]
 	_first_siege_night = int(terrain.map.get("starter_first_siege_night",0)) if _indexed else 0
 	_siege_rolled_day = -1
 	siege_tonight = false

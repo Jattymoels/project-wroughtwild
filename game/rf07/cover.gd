@@ -1,6 +1,6 @@
 extends RefCounted
 ## RF07: derived highland recovery, no native geography or persistent state.
-const PROFILES := ["frontier_v6","frontier_v7","frontier_v8","living_frontier_wave1","living_frontier_wave3"]
+const PROFILES := ["frontier_v6","frontier_v7","frontier_v8","frontier_v9","living_frontier_wave1","living_frontier_wave3"]
 const SURFACES := ["rock","grass","dirt"]
 static var settings: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://rf07/settings.json"))
 static var meshes: Dictionary={}

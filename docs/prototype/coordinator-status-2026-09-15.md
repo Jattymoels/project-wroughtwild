@@ -7,19 +7,22 @@ outrank historical review, packaging and rollout requirements.
 
 ## Current adoption and next worker
 
-**Next: owner starts [LAND-02 Scarwater Basin](land02-landscape-foundation-worker-2026-09-16.md).**
-The owner agreed with LAND-00's recommendations/rules and appointed that session
-coordinator. LAND-00 commits `d0c3ac6` and `8f3f735` are now adopted on main.
-LAND-01 planning is completed here in the [selected implementation plan](landscape-biomes-influences-plan-2026-09-16.md);
-do not restart its old planning worktree. The sequence is Scarwater/Gallery
-Woodland with ordinary pressure, Dry Steppe/Red plus coherent LF acquisition
-reuse, remaining four-force journeys, then one bounded closeout. Terrain and
-substantial art must deliver a complete place in each slice. New normal V9 is
-selected for LAND-02; it is not implemented yet. Old Continue worlds stay intact.
-Prepared LAND-02 path: `D:/Wroughtwild/work/land02-scarwater-basin`, branch
-`codex/land02-scarwater-basin`, local base/tools in `build/land02/SETUP.md`.
-No implementation worker, game import, build or renderer is started by this
-planning/preparation session. Historical adoption details follow.
+**LAND-02 is complete on its worker branch, pending coordinator adoption.**
+The [Scarwater result](land02-scarwater-result-2026-09-16.md) delivers normal fresh
+V9, seeded displaced ridge/fixed lake, Gallery Woodland, dry native fissure,
+existing finite smithy work and two paid home settings. Existing saved profiles
+remain intact. Worker: `D:/Wroughtwild/work/land02-scarwater-basin`, branch
+`codex/land02-scarwater-basin`. Actual pictures, focused checks, matching native
+DLL and editable art paths are in the result. This worker does not merge or push.
+
+LAND-00 recommendations/rules and the [selected LAND plan](landscape-biomes-influences-plan-2026-09-16.md)
+remain the direction. LAND-01 is complete; do not restart its old worktree.
+Next selected slice is LAND-03 Dry Steppe/Red and coherent existing LF acquisition
+reuse, followed by remaining force journeys and one bounded LAND-05 closeout.
+No next worker was started. LAND-02's regular ridge bands, abrupt bank transitions,
+repeated tree/root forms and richer scar material belong to that closeout; owner
+playtesting, loading-time work and broader hardware/campaign coverage remain open.
+Historical adoption details follow.
 
 [RF-05 lakes and surface swimming](rf05-lakes-swimming-result-2026-09-15.md) is
 integrated on main as `5e5de06` from worker `c3867bf`, with its matching native DLL

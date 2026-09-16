@@ -286,7 +286,7 @@ func _build_horizon() -> void:
 	var began := Time.get_ticks_usec()
 	var surface:=SurfaceTool.new()
 	surface.begin(Mesh.PRIMITIVE_TRIANGLES)
-	var step:=int(_settings.terrain_far_step_cells)
+	var step:=4 if terrain.world_profile()=="frontier_v9" else int(_settings.terrain_far_step_cells)
 	var width:=int(terrain.map.width)
 	var height:=int(terrain.map.height)
 	var cell:=float(terrain.map.cell_size)
@@ -310,12 +310,33 @@ func _build_horizon() -> void:
 			for index in [a,a+columns,a+1,a+1,a+columns,a+columns+1]:
 				surface.set_color(colours[index])
 				surface.add_vertex(positions[index])
+	# V9 has taller displaced faces. A conventional coarse-mesh skirt closes
+	# the height difference at detailed chunk boundaries; it has no collision.
+	# The same mask removes skirts inside exact/edited chunks, preserving digs.
+	if terrain.world_profile()=="frontier_v9":
+		for iz in rows-1:
+			for ix in columns-1:
+				var a:=iz*columns+ix
+				for edge in [[a,a+1,iz*step%Terrain.CHUNK_CELLS==0],[a,a+columns,ix*step%Terrain.CHUNK_CELLS==0]]:
+					if not edge[2]:continue
+					var pa: Vector3=positions[edge[0]]
+					var pb: Vector3=positions[edge[1]]
+					var across:=Vector3(-(pb.z-pa.z),0,pb.x-pa.x).normalized()*.04
+					for side in [-1,1]:
+						var topa: Vector3=pa+across*int(side)
+						var topb: Vector3=pb+across*int(side)
+						for v in [topa,topb,topa-Vector3.UP*12,topb,topb-Vector3.UP*12,topa-Vector3.UP*12]:
+							surface.set_color(colours[edge[0]])
+							surface.add_vertex(v)
 	surface.generate_normals()
 	_horizon=MeshInstance3D.new()
 	_horizon.name="StrangeFrontierHorizon"
 	_horizon.mesh=surface.commit()
 	var material:=ShaderMaterial.new()
 	material.shader=preload("res://art/strange_horizon.gdshader")
+	if terrain.world_profile()=="frontier_v9":
+		material.shader=preload("res://land02/horizon.gdshader")
+		preload("res://land02/kit.gd").bind_ground(material,terrain.map)
 	material.set_shader_parameter("detail_mask",_mask_texture)
 	material.set_shader_parameter("world_size",Vector2(width*cell,height*cell))
 	_horizon.material_override=material

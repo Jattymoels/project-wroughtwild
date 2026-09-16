@@ -1,17 +1,48 @@
 # World Generation, Settlements and Travel
 
-## Selected LAND successor work, not yet implemented
+## LAND-02: Scarwater Basin / fresh V9
 
-The owner approved the [LAND implementation plan](../prototype/landscape-biomes-influences-plan-2026-09-16.md)
-after creative discovery. [LAND-02](../prototype/land02-landscape-foundation-worker-2026-09-16.md)
-will introduce ordinary fresh-world `frontier_v9`: a seed-varied Scarwater family
-with White displacement affecting native ridge/basin/fissure shape, Gallery
-Woodland hosts, linked existing pressure work, routes and home settings. Influence
-enters before final terrain/habitat composition. Existing V1–V8/LF Continue keeps
-its saved identity and owners. The complete force table, bounded composition,
-fallback, real-terrain contact and later LF adoption boundary are in the plan.
-Current implemented normal geography is still V8. No generator change is claimed
-by these planning documents; implementation starts only in the owner's worker.
+The owner-selected [LAND plan](../prototype/landscape-biomes-influences-plan-2026-09-16.md)
+is implemented for normal random/chosen-seed New World as `frontier_v9` on the
+LAND-02 worker branch. Main adoption belongs to the coordinator. Existing
+V1–V8/LF Continue retains its saved profile, geography and owners; no migration
+or LF coloured-source/device adoption is included.
+
+`worldgen-frontier-v9.json` is a separate successor input. The existing finite
+country, four radius-14 homes and fixed lake are drafted first. White/Impulse
+then selects an eligible dry layered-rock host outside water, protected cores
+and original cave openings. Its seeded direction, ridge proportions, offset,
+arc, host candidate and bank bands produce a long displaced skyline, Gallery
+Woodland, an open dry native fissure and two bank approaches. Primary host
+selection is bounded at 24 candidates with eight wider-shoulder fallbacks that
+retain the scar and existing work. It does not place a fixed concept map.
+The separate `scarwater.lake_aspect_delta` tuning chooses two seeded lake-proportion
+families (0.82 and 0.72 at the selected 0.10 delta), keeping fixed water ownership.
+Bank route planning uses the same roof-corner gradients, a maximum 0.75 slope and
+one-cell clearance from non-walkable terrain so the player capsule fits.
+
+The fissure is seven metres wide, four deep and 24 long with tapered walkout
+ends. Uplift adds native solid above the inherited roof; lowering stops above
+shallow cave air. Original air below the changed cap is retained. The same
+editable voxel field owns rendered geometry, collision, sampling and picking.
+V9 unbroken shallow roofs use shared heightfield corners to avoid steep voxel
+riser catches on gentle slopes; cave/edit stencils retain voxel geometry. Old
+profiles keep their published mesh path. Coarse horizon skirts close the larger
+near/far elevation seam and carry no collision or ownership.
+
+The old Ventlung-linked smithy is seated beside the scar, and its existing
+accidental pressure source, recipe costs, finite 24-stroke ledger and local
+feeder/paid-forge rules remain. Three discovery regions and fourteen placements
+of the five rare families remain. Gallery is an ecological biome, not a fourth
+discovery region. Ordinary wood sources gain two braced canopy forms and
+connected underwood/root-bank dressing; existing ordinary grazers occupy banks.
+White host powers and coloured LF acquisitions remain later selected slices.
+
+The lake outlook and sheltered grove use two of the four existing home cores.
+No compulsory plot, free station or altered construction cost is added. All kit
+resources prepare at real entry and are shared through streaming/rebuilds.
+The [LAND-02 result](../prototype/land02-scarwater-result-2026-09-16.md) separates
+actual appearance, functional evidence and remaining limits.
 
 ## RF-09: material continuity cleanup
 

@@ -1,6 +1,7 @@
 // Frontier v3: continuous natural materials. These fields affect only colour,
 // surface relief and roughness; editable geometry and collision stay intact.
 shader_type spatial;
+#include "res://land02/ground.gdshaderinc"
 render_mode diffuse_burley, specular_schlick_ggx;
 
 uniform vec4 top_colour : source_color;
@@ -157,6 +158,7 @@ void fragment() {
 	rf06_surface(p,n,stone,broad,ALBEDO,ROUGHNESS);
 	rf07_surface(p,n,broad,wear,ALBEDO,gradient,ROUGHNESS);
 	rf08_surface(p,n,ALBEDO,ROUGHNESS);
+	land02_surface(p,n,ALBEDO);
 	vec3 bumped = normalize(n - (gradient - n * dot(n,gradient)));
 	NORMAL = normalize((VIEW_MATRIX * vec4(bumped, 0.0)).xyz);
 }

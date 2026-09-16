@@ -18,7 +18,7 @@ static func build(root: Node3D, ground: Terrain) -> void:
 	if old!=null:
 		root.remove_child(old)
 		old.queue_free()
-	if ground.world_profile() not in ["frontier_v5", "frontier_v6","frontier_v7","frontier_v8","living_frontier_wave1","living_frontier_wave3"]:return
+	if ground.world_profile() not in ["frontier_v5", "frontier_v6","frontier_v7","frontier_v8","frontier_v9","living_frontier_wave1","living_frontier_wave3"]:return
 	var group:=Node3D.new()
 	group.name="PressurePockets"
 	root.add_child(group)

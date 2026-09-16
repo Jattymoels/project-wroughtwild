@@ -189,6 +189,12 @@ func _apply_visual() -> void:
 			mesh_instance.mesh = PropMesh.build_vein(_visual_seed(), PropMesh.SILVER)
 			shape.size = Vector3(1.2, 0.9, 1.2)
 			collider.position = Vector3(0, 0.45, 0)
+	if _is_tree() and _terrain()!=null and _terrain().world_profile()=="frontier_v9" and _biome_id()=="gallery_woodland":
+		mesh_instance.mesh=preload("res://land02/kit.gd").tree(_visual_seed())
+		mesh_instance.material_override=null
+		mesh_instance.visibility_range_end=220.0
+		shape.size=Vector3(.9,3,.9)
+		collider.position=Vector3(0,1.5,0)
 	collider.shape = shape
 	refresh_surface()
 	_refresh_wedge_look()
@@ -212,7 +218,7 @@ func _use_authored(mesh_instance: MeshInstance3D, id: String) -> void:
 	# profiles have no field and keep their ordinary common-resource surfaces.
 	var influence := 0.0
 	var terrain := _terrain()
-	if terrain!=null and terrain.world_profile() in ["frontier_v4", "frontier_v5", "frontier_v6","frontier_v7","frontier_v8","living_frontier_wave1","living_frontier_wave3"]:
+	if terrain!=null and terrain.world_profile() in ["frontier_v4", "frontier_v5", "frontier_v6","frontier_v7","frontier_v8","frontier_v9","living_frontier_wave1","living_frontier_wave3"]:
 		var field: PackedFloat32Array=terrain.map.get("augmentation_field",PackedFloat32Array())
 		var width: int=int(terrain.map.get("width",0))
 		var height: int=int(terrain.map.get("height",0))

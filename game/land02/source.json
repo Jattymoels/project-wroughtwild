@@ -1,0 +1,53 @@
+{
+  "author": "Original scripted Blender kit, 16 September 2026",
+  "recipe": "tools/wroughtwild-land02/build_kit.py",
+  "master": "D:\\Wroughtwild\\work\\land02-scarwater-basin\\build\\land02\\source-art\\scarwater-kit.blend",
+  "units": "metres, Blender Z up / glTF Y up",
+  "forms": {
+    "gallery-column": {
+      "triangles": 23398,
+      "purpose": "Harvestable existing tree; tall interlocking bank canopy and asymmetric braced roots, unchanged resource rules.",
+      "sha256": "603dadfa679d75502edb873398d2988d3345379b3695e0233d1d9101afff1f01"
+    },
+    "gallery-fork": {
+      "triangles": 23398,
+      "purpose": "Harvestable existing tree; tall interlocking bank canopy and asymmetric braced roots, unchanged resource rules.",
+      "sha256": "cb8f3a2db8b7e4a7b2c5f3226e93c85476d7600784d8ae3098100fe2bd06037e"
+    },
+    "strata-0": {
+      "triangles": 160,
+      "purpose": "Low layered mineral ribs seated into the native displaced ridge; decorative, no separate uneditable collider.",
+      "sha256": "626e2771bf4899851bfe98d03f69d959c1c4679c519244335a503e631ea0e0cd"
+    },
+    "strata-1": {
+      "triangles": 160,
+      "purpose": "Low layered mineral ribs seated into the native displaced ridge; decorative, no separate uneditable collider.",
+      "sha256": "78620eaccc6223c79362cfcb88a553e012b9a77545da27dfa5385beeee678db4"
+    },
+    "strata-2": {
+      "triangles": 160,
+      "purpose": "Low layered mineral ribs seated into the native displaced ridge; decorative, no separate uneditable collider.",
+      "sha256": "e801f84f1d6f8a54cf2d1f4317f172a0c4b3804ac4c1181fdc458529a3e5d039"
+    },
+    "root-bank-0": {
+      "triangles": 480,
+      "purpose": "Irregular shallow stone/root join for native lips and gallery banks; no bridge across fissure.",
+      "sha256": "f1348a30aeb42542b450d236f65083974287c8d0e72c5ee72304500c92b0ab32"
+    },
+    "root-bank-1": {
+      "triangles": 480,
+      "purpose": "Irregular shallow stone/root join for native lips and gallery banks; no bridge across fissure.",
+      "sha256": "6ad2672ef9e3278a9e834dbb355453c88be5f3139ba59059ff0529726f76bbc7"
+    },
+    "underwood-0": {
+      "triangles": 2320,
+      "purpose": "Connected broad-leaf middle growth with open passage edges, sheltered root fans and living meadow joins.",
+      "sha256": "5376ef34c31ed947fe56cfd9b67a10375c9d21ab65a2c91a064fcc6b70552ce1"
+    },
+    "underwood-1": {
+      "triangles": 2320,
+      "purpose": "Connected broad-leaf middle growth with open passage edges, sheltered root fans and living meadow joins.",
+      "sha256": "de19fe39bf15687ba4bd96e5177065ce6dfbf7b965f48a824c619566c8e11c7d"
+    }
+  }
+}

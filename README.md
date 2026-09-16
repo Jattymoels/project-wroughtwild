@@ -28,6 +28,12 @@ creature concept sheets with modelling notes. The selected creatures now have an
 
 ## Current phase
 
+LAND-02 adds **Scarwater Basin** to ordinary fresh `frontier_v9` worlds: a
+seed-varied displaced ridge above a fixed lake, Gallery Woodland, a real dry
+fissure and existing finite smithy work with paid home building. Existing saved
+profiles remain. See the [worker result and actual game pictures](docs/prototype/land02-scarwater-result-2026-09-16.md);
+main integration/push is reserved for the coordinator.
+
 The [current whole-project coordination sheet](docs/prototype/coordinator-status-2026-09-15.md)
 distinguishes implemented gameplay, ready art adoption, remaining production and
 owner playtest questions. It includes the first mainline art worker handoff;

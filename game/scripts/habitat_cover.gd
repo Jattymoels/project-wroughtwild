@@ -22,6 +22,7 @@ static func build(chunk: Node3D, data: Dictionary, map: Dictionary, cell: float,
 		if kind not in ["grass","forest_floor","marsh","ash"]:
 			continue
 		for centre: Vector3 in data.kinds[kind]:
+			if preload("res://land02/kit.gd").in_cut(map,centre,1.2):continue
 			if not LakeWater.column(map,centre.x,centre.z).is_empty(): continue
 			var x := floori(centre.x/cell)
 			var z := floori(centre.z/cell)
