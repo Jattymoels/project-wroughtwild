@@ -1,0 +1,28 @@
+{
+  "patch_m": 9.0,
+  "outer_radius_gain": 1.32,
+  "quiet_density": 0.16,
+  "grown_density": 0.98,
+  "debris_share": 0.13,
+  "ground_mix": 0.9,
+  "fragment_clearance_m": 0.16,
+  "design_purpose": {
+    "patch_m": "Connected nine metre tongues of growth follow irregular old damage, not concentric planted rings.",
+    "outer_radius_gain": "Blend recovery into ordinary biome cover outside the native impact margin.",
+    "quiet_density": "Leave the eroded channels and broken host visible between grown tongues.",
+    "grown_density": "Dense low growth in recovered pockets, still subject to full support and protected footprints.",
+    "debris_share": "Sparse settled chips tie exposed host into the grass without adding harvestable stock.",
+    "ground_mix": "Blend loam and the existing authored turf/litter into the same recovery mask on original supported tops only.",
+    "fragment_clearance_m": "Extra sixteen centimetres beyond each actual transformed fragment footprint.",
+    "woodland_mat_share": "Share of eligible woodland recovery roots using the low broadleaf mat instead of upright grass/ferns.",
+    "mat_footprint_m": "Moving radius includes the authored 0.315 metre leaves and their small wind travel.",
+    "chip_footprint_m": "Support clearance includes the fitted 0.40 metre settled chips.",
+    "inner_radius_gain": "The inner margin retains full recovery influence before blending into the ordinary biome.",
+    "eligible_weight": "Ignore imperceptible outer-mask tails for recovered rock planting and old scree replacement."
+  },
+  "woodland_mat_share": 0.74,
+  "mat_footprint_m": 0.34,
+  "chip_footprint_m": 0.42,
+  "inner_radius_gain": 0.72,
+  "eligible_weight": 0.05
+}

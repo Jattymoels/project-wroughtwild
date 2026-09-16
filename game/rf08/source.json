@@ -1,0 +1,8 @@
+{
+  "master": "D:\\Wroughtwild\\source-art\\rf08-impact-scars\\rf08-creeping-mat.blend",
+  "recipe": "tools/wroughtwild-rf08/build_mat.py",
+  "triangles": 540,
+  "radius_m": 0.315,
+  "height_m": 0.1420133262872696,
+  "method": "Original direct Blender geometry; no external inputs."
+}

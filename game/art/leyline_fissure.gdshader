@@ -1,6 +1,8 @@
 shader_type spatial;
 render_mode cull_disabled;
 
+uniform bool use_clock = false;
+uniform float clock_seconds = 0.0;
 uniform float emission_strength = 1.25;
 uniform float light_variation = 0.025;
 uniform float light_period_seconds = 47.0;
@@ -27,8 +29,9 @@ void fragment() {
 	float detail = 1.0 - smoothstep(0.45, 1.1, coverage);
 	vec3 mineral = pow(COLOR.rgb, vec3(2.2));
 	ALBEDO = mineral * (1.0 + (fleck - 0.5) * 2.0 * grain_contrast * detail);
+	if (use_clock) ALBEDO *= mix(1.0,0.22,COLOR.a);
 	ROUGHNESS = mineral_roughness;
 	SPECULAR = 0.18;
-	float quiet = 1.0 + light_variation * sin(TIME * 6.283185 / light_period_seconds + UV.y);
+	float quiet = 1.0 + light_variation * sin((use_clock ? clock_seconds : TIME) * 6.283185 / light_period_seconds + UV.y);
 	EMISSION = mineral * COLOR.a * emission_strength * quiet;
 }

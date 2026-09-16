@@ -25,6 +25,9 @@ static func build(root: Node3D, ground: Terrain) -> CataclysmSites:
 	result._compose()
 	return result
 
+func _process(delta: float) -> void:
+	_fissures.tick(delta) # Pauses with the scene tree; no native state involved.
+
 func _compose() -> void:
 	for data: Dictionary in terrain.map.get("impacts", []): _impact(data)
 	for data: Dictionary in terrain.map.get("ruins", []): _ruin(data)

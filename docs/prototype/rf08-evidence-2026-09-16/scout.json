@@ -1,0 +1,88 @@
+{
+	"candidates": [
+		{
+			"a": [
+				479.5,
+				29.0,
+				171.5
+			],
+			"at": [
+				482.0,
+				32,
+				175.5
+			],
+			"b": [
+				484.5,
+				35.0,
+				179.5
+			],
+			"biome": "forest",
+			"centre": [
+				479.5,
+				29.0,
+				171.5
+			],
+			"distance": 4.71699047088623,
+			"impact": "imv6_rootvault_wildwood",
+			"line": "lyv6_branch_thrumroot",
+			"radius": 13.0,
+			"segment": 0
+		},
+		{
+			"a": [
+				463.5,
+				38.0,
+				191.5
+			],
+			"at": [
+				471.5,
+				40,
+				181.5
+			],
+			"b": [
+				479.5,
+				29.0,
+				171.5
+			],
+			"biome": "forest",
+			"centre": [
+				479.5,
+				29.0,
+				171.5
+			],
+			"distance": 12.806248664856,
+			"impact": "imv6_rootvault_wildwood",
+			"line": "lyv6_lantern_fen_rootvault_wildwood",
+			"radius": 13.0,
+			"segment": 23
+		},
+		{
+			"a": [
+				479.5,
+				29.0,
+				171.5
+			],
+			"at": [
+				489.0,
+				35,
+				180.5
+			],
+			"b": [
+				498.5,
+				32.0,
+				189.5
+			],
+			"biome": "forest",
+			"centre": [
+				479.5,
+				29.0,
+				171.5
+			],
+			"distance": 13.0862522125244,
+			"impact": "imv6_rootvault_wildwood",
+			"line": "lyv6_rootvault_wildwood_glasswind_uplands",
+			"radius": 13.0,
+			"segment": 0
+		}
+	]
+}

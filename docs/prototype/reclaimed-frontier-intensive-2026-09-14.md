@@ -49,7 +49,7 @@ PLAY-07 is integrated. Return to:
 1. RF-06 fen/lakeside foundation (adopted; atmosphere target still open).
 2. RF-06B fen art/composition (adopted; remaining refinements recorded for cleanup).
 3. RF-07 highland character and recovery (adopted; visual weaknesses in cleanup).
-4. RF-08 composition around reclaimed impacts and living scars (next prepared).
+4. RF-08 reclaimed impacts and living scars (worker complete; coordinator adoption pending).
 5. A bounded cleanup slice drawn from the recorded player-impact notes.
 
 These are the remaining original landscape outcomes, to be broken into small
@@ -173,8 +173,8 @@ contract, with existing saves kept intact; no new generator profile is selected.
 | RF-06: fen/lakeside atmosphere | Foundation adopted as `12238ce` / `710a3c6`. Supported planting delivered; owner finds it underwhelming and visual target remains open. Native terrain/water/saves unchanged. |
 | RF-06B: fen art/composition | Adopted as `f6131e4` / `046834d`. Five original Blender forms, joined low growth, distinct rush/fern layers and seeded passages. Broader scene limits in cleanup; owner requests moving on. |
 | RF-07: highland recovery | Adopted as `1312c20`. Rock/debris/growth on existing Rocky Hills; useful prototype but atmosphere partial. Owner agrees to move on; refinements recorded for cleanup. |
-| RF-08: recovered impacts/living scars | Prepared in D:/Wroughtwild/work/rf08-impact-scars. Recovered margins and readable physical scars with restrained light, on existing native geography/network. |
-| Remaining original work | RF-08, then bounded cleanup selected from recorded player-impact notes. Larger native landforms/all-asset production remain separate future decisions. |
+| RF-08: recovered impacts/living scars | Worker complete; [result](rf08-impact-scars-result-2026-09-16.md). Supported recovery and physical/pulsing scars in ordinary eligible play; shade, bare slopes and angular traces remain cleanup notes. Coordinator adoption pending. |
+| Remaining original work | Coordinator RF-08 adoption, then bounded cleanup selected from recorded player-impact notes. Larger native landforms/all-asset production remain separate future decisions. |
 
 Scoping evidence: all six owner references and their caveats were inspected,
 with image 6 read through a smaller inspection derivative after the image reader

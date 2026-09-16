@@ -28,6 +28,7 @@ uniform float augmentation_tint = 0.22;
 #include "res://rf02/ground.gdshaderinc"
 #include "res://rf06/ground.gdshaderinc"
 #include "res://rf07/ground.gdshaderinc"
+#include "res://rf08/ground.gdshaderinc"
 varying vec3 world_position;
 varying vec3 world_normal;
 
@@ -155,6 +156,7 @@ void fragment() {
 	rf02_surface(p, n, stone, native_base, top_colour.rgb, loam_colour.rgb, broad, influence, ALBEDO, gradient, ROUGHNESS, AO);
 	rf06_surface(p,n,stone,broad,ALBEDO,ROUGHNESS);
 	rf07_surface(p,n,broad,wear,ALBEDO,gradient,ROUGHNESS);
+	rf08_surface(p,n,ALBEDO,ROUGHNESS);
 	vec3 bumped = normalize(n - (gradient - n * dot(n,gradient)));
 	NORMAL = normalize((VIEW_MATRIX * vec4(bumped, 0.0)).xyz);
 }

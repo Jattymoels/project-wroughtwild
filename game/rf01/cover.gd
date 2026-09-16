@@ -3,6 +3,7 @@ extends RefCounted
 const SETTINGS = preload("res://rf01/low_cover.tres")
 const PROFILES := ["frontier_v6","frontier_v7","frontier_v8","living_frontier_wave1","living_frontier_wave3"]
 const RESERVATION_CELL := 8.0
+var recovery: RefCounted
 var wetland: RefCounted
 var highland: RefCounted
 var _map: Dictionary
@@ -18,6 +19,7 @@ func _init(map: Dictionary, world_seed: int, profile: String, reservations: Dict
  _map = map
  _seed = world_seed
  _profile = profile
+ recovery = preload("res://rf08/context.gd").new(map,world_seed,profile)
  _noise.seed = int(hash(str(world_seed)+"/"+profile+"/"+str(SETTINGS.visual_salt)) & 0x7fffffff)
  _noise.frequency = 1.0/SETTINGS.patch_metres
  # Reuse the established site/resource/approach reservations. Expanding their
@@ -67,7 +69,7 @@ func _roll(x: int, z: int, salt: int) -> float:
 
 func density_at(x: float, z: float) -> float:
  var patch := smoothstep(-0.3,0.3,_noise.get_noise_2d(x,z))
- return lerpf(SETTINGS.sparse_coverage,SETTINGS.dense_coverage,patch)
+ return recovery.density(x,z,lerpf(SETTINGS.sparse_coverage,SETTINGS.dense_coverage,patch))
 
 ## Nine bounded triangle queries, never per-vertex projection or cave-floor search.
 ## The root plane follows ordinary slopes; the mesh's X/Z footprint stays fixed.
@@ -102,7 +104,7 @@ func build(chunk: Node3D, data: Dictionary, cell: float, distance: float) -> int
  var sampler: SurfaceSampler = chunk.get_meta("surface_sampler")
  var batches: Dictionary = {}
  for surface in data.kinds:
-  if surface not in ["grass","forest_floor"]: continue
+  if surface not in ["grass","forest_floor","dirt","rock"]: continue
   for centre: Vector3 in data.kinds[surface]:
    var x := floori(centre.x/cell)
    var z := floori(centre.z/cell)
@@ -112,15 +114,20 @@ func build(chunk: Node3D, data: Dictionary, cell: float, distance: float) -> int
    if absf(centre.y+cell*0.5-expected)>0.01: continue
    var biome: String = _map.biome_defs[_map.biomes[i]].id
    if wetland!=null and wetland.owns(centre,biome,surface): continue
-   if not eligible(_profile,biome,surface) or _roll(x,z,11)>density_at(centre.x,centre.z): continue
+   var recovery_sample: Vector2 = recovery.sample(centre.x,centre.z)
+   var recovered := recovery_sample.x>float(recovery.settings.eligible_weight) and biome in ["meadow","forest"]
+   if not (eligible(_profile,biome,surface) or recovered) or _roll(x,z,11)>density_at(centre.x,centre.z): continue
    var fern_share: float = SETTINGS.forest_fern_share if biome=="forest" else SETTINGS.meadow_fern_share
    var role := "fern-sparse" if _roll(x,z,17)<fern_share else "grass-edge" if _roll(x,z,19)<SETTINGS.edge_grass_share else "grass-meadow"
-   var mesh: ArrayMesh = SETTINGS.mesh_for(role)
+   if recovered and biome=="forest" and _roll(x,z,37)<float(recovery.settings.woodland_mat_share): role="rf08-groundleaf"
+   if recovered and _roll(x,z,31)<float(recovery.settings.debris_share)*(1.0-recovery_sample.y): role="rf08-shingle"
+   var mesh: ArrayMesh = recovery.mesh_for(role) if role.begins_with("rf08-") else SETTINGS.mesh_for(role)
    var size := lerpf(SETTINGS.minimum_scale,1.0,_roll(x,z,23))
    var basis := Basis(Vector3.UP,_roll(x,z,29)*TAU).scaled(Vector3.ONE*size)
    # Radius includes inherited wind. Cell-centred roots retain room for full
    # leaves at chunk edges; visual asymmetry comes from authored forms and yaw.
    var radius := (SETTINGS.fern_width_m if role.begins_with("fern") else SETTINGS.grass_width_m)*0.5*size+SETTINGS.fern_height_m*float(R7Cover.settings.wind_bend_per_m)*1.06
+   if role.begins_with("rf08-"): radius=(float(recovery.settings.chip_footprint_m) if role=="rf08-shingle" else float(recovery.settings.mat_footprint_m))*size
    var at := Vector3(centre.x,expected,centre.z)
    if not clear(at,radius): continue
    var pose: Variant = supported_pose(sampler,at,basis,radius,cell)
@@ -130,7 +137,7 @@ func build(chunk: Node3D, data: Dictionary, cell: float, distance: float) -> int
  var count := 0
  for role: String in batches:
   var poses: Array = batches[role]
-  var mesh: ArrayMesh = SETTINGS.mesh_for(role)
+  var mesh: ArrayMesh = recovery.mesh_for(role) if role.begins_with("rf08-") else SETTINGS.mesh_for(role)
   var local_bounds: AABB = mesh.get_meta("rf01_clearance")
   var mm := MultiMesh.new()
   mm.transform_format = MultiMesh.TRANSFORM_3D

@@ -230,7 +230,7 @@ static func _reserve(index: Dictionary, at: Vector3, radius: float) -> void:
 	index[key].append(Vector3(at.x,radius,at.z))
 	index["max_radius"]=maxf(float(index.get("max_radius",0)),radius)
 
-static func _reservations(terrain: Terrain) -> Dictionary:
+static func _reservations(terrain: Terrain, recovered_impacts := false) -> Dictionary:
 	var result: Dictionary={}
 	var cell:=float(terrain.map.get("cell_size",1.0))
 	for node: Dictionary in terrain.map.get("nodes",[]):
@@ -240,7 +240,12 @@ static func _reservations(terrain: Terrain) -> Dictionary:
 		for route in ["approach","discovery_route"]:
 			for point: Vector3 in ruin.get(route,[]): _reserve(result,point,LOOK.approach_clearance_m)
 	for impact: Dictionary in terrain.map.get("impacts",[]):
-		_reserve(result,Vector3((float(impact.x)+.5)*cell,0,(float(impact.z)+.5)*cell),float(impact.radius_m)*.6)
+		# Only low RF cover replaces the cosmetic blanket. Regional trees retain it;
+		# all source/ruin/route reservations above and below remain exact.
+		if recovered_impacts and preload("res://rf08/context.gd").eligible(terrain.world_profile()) and impact.get("kind", "") != "blacksmith_strike":
+			preload("res://rf08/context.gd").reserve_fragments(result,impact,cell)
+		else:
+			_reserve(result,Vector3((float(impact.x)+.5)*cell,0,(float(impact.z)+.5)*cell),float(impact.radius_m)*.6)
 	for collection in ["regions","rare_sites","habitats"]:
 		for area: Dictionary in terrain.map.get(collection,[]):
 			if collection=="rare_sites":

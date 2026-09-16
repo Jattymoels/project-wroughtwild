@@ -1,0 +1,23 @@
+{
+	"bench": [
+		489.0,
+		35.0,
+		180.5
+	],
+	"cover_digest": 3442641315,
+	"height_digest": 1543054539,
+	"hidden": 8,
+	"native_digest": 3210282182,
+	"reclaimed_inside_old_blanket": 17,
+	"station": [
+		484,
+		37,
+		183
+	],
+	"target": [
+		490,
+		35,
+		180
+	],
+	"water_digest": 2003974015
+}

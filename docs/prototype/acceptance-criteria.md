@@ -1,5 +1,19 @@
 # Vertical-Slice Acceptance Criteria
 
+## RF-08 recovered impacts and living scars
+
+- [x] Ordinary eligible worlds derive recovery from existing impact/trace records;
+  original fragment and source/work/approach protections remain.
+- [x] Exposed physical scars persist without emission, use a quiet real-time pulse,
+  and disappear over excavated original support. Native buried/broken traces stay dark.
+- [x] Focused paid placement, exact fresh-process Continue and a 19.54 m native
+  approach walk pass. Actual pictures, pulse clip and private playtest are retained.
+- [ ] Fuller recovered-landscape atmosphere and owner acceptance remain open:
+  sparse steep slopes, deep shade, repeated low forms and angular scars need cleanup.
+
+[RF-08 worker result](rf08-impact-scars-result-2026-09-16.md). Worker complete;
+coordinator main adoption pending. No broad campaign/hardware claim.
+
 ## RF-07 highland recovery
 
 - [x] Actual Rocky Hills receives supported, seeded rock/pocket treatment,

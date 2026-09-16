@@ -110,13 +110,15 @@ The coordinator reviewed three game PNGs and judged the visual outcome partial:
 still sparse scrubland with weak rock/ground separation and a modest outlook.
 The owner agreed and said "let's move on"; this is not full aesthetic sign-off.
 
-**Next prepared: [RF-08 impact and living-scar composition](rf08-impact-scars-worker-2026-09-16.md).**
-Workspace `D:/Wroughtwild/work/rf08-impact-scars`, branch `codex/rf08-impact-scars`,
-with `build/rf08/SETUP.md`. Recovered impact margins, physical dark fractures and
-restrained living light should form one ordinary seeded place on current terrain.
-This is the last planned creative implementation slice before bounded cleanup,
-not a claim that the full reference atmosphere is achieved. The owner starts it;
-no worker is launched automatically. Historical ART repair R8/R9 is unrelated.
+**RF-08 worker complete: [result and private playtest](rf08-impact-scars-result-2026-09-16.md).**
+Workspace `D:/Wroughtwild/work/rf08-impact-scars`, branch `codex/rf08-impact-scars`.
+Recovered impact margins, an original creeping mat, physical exposed scars and
+7.5-second living light are in ordinary eligible play. 37 support/ownership,
+17 Continue and 10 Forward+ route checks pass. Main adoption belongs to the
+coordinator; worker completion is not a claim of full reference atmosphere or
+owner playtesting. This completes the scheduled RF creative worker sequence.
+Bounded cleanup is next only when dispatched. R9 stays stopped.
+
 New water geography, generation profiles and
 collision changes still need a scoped choice; none is selected by this agreement.
 Later-era creature forms and boss art remain separate production backlog. Station/
@@ -135,7 +137,7 @@ PLAY-07 is now integrated; return to the original creative outcomes.
 | Adopted | RF-06 fen/lakeside foundation | First pass was underwhelming; its support/water-preserving placement is retained by RF-06B |
 | Adopted; refinements in cleanup | RF-06B fen art/composition | Five authored forms, connected planting and distinct layers; visibly stronger at walking height, broader reference atmosphere still incomplete |
 | Adopted; atmosphere partial | RF-07 highland recovery | Usable rock/pocket iteration; owner agrees stronger rock/ground definition and composition belong in cleanup |
-| Next prepared | RF-08 impact/scar composition | Original reclaimed-catastrophe identity: vegetation reconnects old damage while selected physical scars/pulses remain legible |
+| Worker complete; adoption pending | RF-08 impact/scar composition | Original reclaimed-catastrophe identity: vegetation reconnects old damage while selected physical scars/pulses remain legible |
 | End | Bounded cleanup slice | Consolidate deferred issues by player impact; no exhaustive review wave |
 
 The three creative outcomes need small worker scopes using existing assets and
@@ -211,6 +213,15 @@ Evidence: [highland outlook](rf07-evidence-2026-09-16/02-outlook-floor.png).
 Floor joints/corner transitions are a lower-priority cosmetic note. These visible
 limits are not silently marked fixed by passing tests or by the owner's decision
 to proceed. No immediate RF-07 continuation is selected.
+
+RF-08 cleanup notes from actual game pictures: growth still breaks on steep
+terraces/large clearances; the small mat repeats; strong tree shade obscures the
+fragment and emission-off mouth; some traces remain angular ribbons. Prioritise
+local ground/growth and physical scar contrast within the bounded cleanup, not
+another crater/generation or all-environment art wave. The raised paid test floor
+needs a suitable approach; the direct downslope capture route was blocked, while
+the existing native approach was walked successfully. See the RF-08 result for
+failed development observations and retained final evidence. No next worker started.
 
 Initial cleanup notes: residual short group hitch (34.621 ms full frame in PLAY-07),
 Thrumroot construction (8.790 ms first / 4.238 ms repeat), older unassigned lag/underground

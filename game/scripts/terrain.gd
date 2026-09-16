@@ -181,6 +181,7 @@ func _material_for(kind: String) -> Material:
 		preload("res://rf02/ground.tres").bind(frontier_material, kind, _rf02_biome_mask, map)
 		if wetland_cover!=null: wetland_cover.bind(frontier_material,kind)
 		if highland_cover!=null: highland_cover.bind(frontier_material,kind)
+		if reclaimed_cover!=null: reclaimed_cover.recovery.bind(frontier_material)
 		_materials[kind] = frontier_material
 		return frontier_material
 	var material := StandardMaterial3D.new()
@@ -257,7 +258,7 @@ func build(sim: WroughtwildSim, seed_value: int, profile_id: String = "") -> voi
 	if weathered:
 		HabitatCover.prepare(map)
 		if _world_profile in ["frontier_v6","frontier_v7","frontier_v8","living_frontier_wave1","living_frontier_wave3"]:
-			reclaimed_cover = preload("res://rf01/cover.gd").new(map,_seed,_world_profile,StrangeSites._reservations(self))
+			reclaimed_cover = preload("res://rf01/cover.gd").new(map,_seed,_world_profile,StrangeSites._reservations(self,true))
 			wetland_cover = preload("res://rf06/cover.gd").new(self,reclaimed_cover)
 			reclaimed_cover.wetland = wetland_cover
 			highland_cover = preload("res://rf07/cover.gd").new(self,reclaimed_cover)

@@ -1,5 +1,22 @@
 # World Generation, Settlements and Travel
 
+## RF-08: recovered impact margins and living scars
+
+[RF-08 worker result](../prototype/rf08-impact-scars-result-2026-09-16.md) adds
+map-derived meadow/forest growth and moss/litter transitions around existing
+impacts, plus scoped physical/pulsing exposed traces in V6/V7/V8/LF. Only the
+cosmetic impact blanket is replaced for low cover; real source/ruin/approach and
+actual fragment/paid footprints remain protected. Fen/highland retain their kits;
+V1-V5 and Ember Wastes ecology retain their presentation. The smithy stays separate.
+
+Native topology/exposure, terrain/collision, water, finite work, saves and campaign
+remain unchanged. Only exposure 2 draws; new scars also reject removed native top
+cells, with per-tile cached support and the established deferred refresh. Shared
+resources prepare at entry. See `game/rf08/settings.json`, `fissure.tres` and
+`SOURCE.md` for purposes. Scoped support/Continue/walk checks pass; bare steep
+slopes, deep shade and angular scar shapes remain visual cleanup notes. Worker
+publication does not imply coordinator main adoption or owner aesthetic approval.
+
 ## RF-07: derived highland recovery
 
 The [RF-07 worker result](../prototype/rf07-highland-recovery-result-2026-09-16.md)
