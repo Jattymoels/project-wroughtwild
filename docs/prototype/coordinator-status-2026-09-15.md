@@ -142,12 +142,18 @@ lore-shaped recovered ridge/lake/gallery-woodland place, a real dry fissure,
 meaningful approaches, useful home choices and the existing finite pressure
 workshop opportunity. This directly addresses the owner's correction that the
 world should follow its lore and feel like a connected game world, rather than
-bare ground with sporadic assets. Two planning visuals are labelled concepts,
+bare ground with sporadic assets. Four planning visuals are labelled concepts,
 not runtime evidence. The proposed sequence combines terrain/art/play per place,
 then adds Dry Steppe/Red use, remaining four-force connections and one closeout.
 The three choices are direction, two-biome breadth, and later explicit adoption
 of LF acquisition/device vocabulary into fresh normal successors without LF
-campaign migration. None is marked accepted. Old V8/LF saves and rules remain.
+campaign migration. The owner subsequently endorsed the clarified random-seed
+foundation and four-force effect families, and requested implementation references.
+The [generation/host guide and added boards](land00-influence-generation-reference-2026-09-16.md)
+make that explicit: consistent lore rules produce different terrain/biome/host
+outcomes across seeds; the same seed/version remains deterministic. Exact image
+forms, production choices and LF acquisition adoption remain proposals. Old V8/LF
+saves and rules remain.
 The [concrete proposed LAND-01 handoff](land00-land01-recommended-brief-2026-09-16.md)
 replaces the provisional highland-first idea only if selected. The historical
 sequence below is background, not a competing dispatch instruction. Planning-only

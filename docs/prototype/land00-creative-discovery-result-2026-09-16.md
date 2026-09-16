@@ -1,18 +1,28 @@
 # LAND-00 — A world shaped by what happened to it
 
-**Creative discovery and planning, 16 September 2026. Status: recommendations for owner/coordinator assessment, not accepted design or implementation.**
+**Creative discovery and planning, 16 September 2026, updated after owner clarification. Status: seeded generation and lore-defined influence effects are owner-endorsed direction; exact place designs, production choices and gameplay changes remain recommendations.**
 
-This session turns the owner's lore-first correction into a proposed world vision, compares three genuinely different approaches, and supplies a researched roadmap and a concrete replacement brief for LAND-01. No game behavior or accepted decision changes here.
+This session turns the owner's lore-first correction into a world vision, compares three genuinely different approaches, and supplies a researched roadmap and a concrete replacement brief for LAND-01. The follow-up records the owner's endorsement of random seeded worlds whose four influences change terrain, growth and fauna through biome-specific hosts. No game behavior changes here.
 
 ## Recommendation for the owner
 
-**Build a reclaimed world in which the player learns the same forces that shaped the landscape, then uses them to make a home and a working frontier.** The production unit should be a complete place: its history, large forms, habitats, inhabitants, approaches and useful discovery.
+**Build a randomly seeded reclaimed world in which four lore-defined forces shape terrain, growth and fauna, and the player learns to use those same forces to make a home and a working frontier.** The production unit should be a complete generated place: its history, large forms, habitats, inhabitants, approaches and useful discovery. Authored rules and forms guide generation; the map varies with the seed.
 
-Begin with **Scarwater Basin**: a glancing old impact has displaced a long ridge, interrupted a valley and left a lake. Established growth occupies sheltered ground; exposed fractures carry the force that transformed it. A pre-cataclysm smithy happens to lie across the damage. From a wooded approach, the player sees the broken ridge, understands two ways toward the smithy, and notices a dry shelf where a veranda and workshop would belong. At the source, they can eventually build the existing finite pressure workshop. The place joins awe, discovery and making in one visible loop.
+Begin with **Scarwater Basin**, a proposed family of seeded compositions rather than a fixed map: a glancing old impact has displaced a long ridge, interrupted a valley and left a lake. Established growth occupies sheltered ground; exposed fractures carry the force that transformed it. A pre-cataclysm smithy happens to lie across the damage. From a wooded approach, the player sees the broken ridge, understands two ways toward the smithy, and notices a dry shelf where a veranda and workshop would belong. At the source, they can eventually build the existing finite pressure workshop. The place joins awe, discovery and making in one visible loop.
 
 Choose Direction A below, **The Inherited Landscape**, as the foundation. Borrow a limited vocabulary of observable host responses from C, and the existing local workshop interactions from B. Do not import B's regional controls or C's live ecosystem. First deliver one outstanding ordinary seeded place; then a contrasting dry biome and usable four-influence connections. This prioritises finished environmental experiences over separate terrain, asset and scatter deliveries.
 
-The key decisions are: choose this place-first direction; favour two convincing new biomes before four shallow ones; and select whether the later new-world successor should gain the existing LF extraction/device vocabulary without importing its campaign. My recommendation is yes to all three, with source acquisition scheduled after the first White workshop place. None is marked accepted.
+The owner has endorsed the seed-driven, four-force foundation clarified below. The remaining recommendations are the specific Scarwater-first production approach, two convincing new biomes before broader coverage, and later adoption of LF extraction/device vocabulary without its campaign. I recommend those choices, with source acquisition after the first White workshop place; the latest endorsement does not silently select their exact implementation scope.
+
+## Owner clarification: random generation is the foundation
+
+The owner asked whether this plan would abandon randomly generated terrain and clarified that magic/technology must influence generation in biomes through each colour's effects. After the four-colour explanation, they replied: **“Yes, love all of that”**, and requested its inclusion with reference images for future agents.
+
+Record this as endorsed direction: **random seed and saved version → underlying country/biome hosts → meteorite influence → changed terrain, growth and fauna → coherent present-day places and useful play**. The same seed/version reproduces the same geography. Different seeds vary landforms, biome arrangement, impacts, influence distribution and approaches within selected guarantees.
+
+“Authored” refers to designed rules and reusable asset forms, not a hand-placed world. Influence participates before the final landform and habitat are complete. Applying colours after ordinary generation would miss the requirement. A biome keeps its identity: Green in dry steppe produces different hosts and structures from Green in moist woodland, while both express propagation.
+
+The [four-force generation reference](land00-influence-generation-reference-2026-09-16.md) supplies two contrasting biome applications per force, two new concept boards, existing-system boundaries and a handoff card. Exact image anatomy, dimensions, host eligibility and gameplay effects remain design/implementation choices.
 
 ## What the latest correction means
 
@@ -226,7 +236,7 @@ A biome is not a colour territory. A Green-influenced dry steppe and an ordinary
 
 ### Four forces expressed through hosts
 
-The verbs and existing LF functions are established foundations. The proposed land/growth expressions below are art/ecology interpretations to assess, not new physics.
+The owner endorsed these four verbs and their broad generation-effect families in the clarification above. The specific land/growth expressions below are proposed applications, not newly implemented physics. The [expanded reference](land00-influence-generation-reference-2026-09-16.md) shows how each force changes different biome hosts and provides the new visual boards.
 
 | Force | Proposed land/rock expression | Proposed living-host expression | Current usable foundation and boundary |
 | --- | --- | --- | --- |
@@ -254,16 +264,16 @@ The existing meadow, forest, fen, rocky hills and wastes remain useful contrasts
 
 ## Compose random worlds as connected places
 
-This is a proposed generation order, not a replacement algorithm implemented in this session.
+This is the proposed implementation order for the endorsed generation direction, not an algorithm implemented in this session. Influence enters before the resulting terrain and habitat are final.
 
-1. **Establish the old country.** Choose a compact arrangement of ridge, low ground, substrate and surviving settlement use. Keep the finite extent and adequate vertical headroom. These simple shared descriptions explain natural home terraces and former travel/work sites.
-2. **Apply the catastrophe to that country.** Choose bounded impact position, direction and affected host. Deform a ridge/valley relationship and connect selected traces; retain a mix of buried, broken and exposed evidence. The smithy survives where old access and the later accident intersect. It was not built to serve a meteorite.
-3. **Compose the present catchment and recovery.** Position the fixed lake consistently with the basin and preserve legitimate cave openings. Old dry swales can imply interrupted drainage without adding active rivers. Use shelter, moisture, slope and surviving soil to produce vegetation masses and transitions.
-4. **Place promises and useful space.** Reserve the approach reveal, reachable source, two routes, useful home cores and source work access before vegetation. Resolve source/ruin/cave conflicts rather than covering them with cosmetic art.
-5. **Attach influence to compatible hosts.** Carry explicit channel identity separately from strength, exposure and history. Use existing impact/trace/site relationships as anchors. Influence shapes a few concentrated places and paths between them, with quiet recovery and interruptions; it is not uniform colour noise.
-6. **Place resources and encounters with their habitat.** Reground existing finite owners after terrain, preserve economy guarantees and opening safety. Choose suitable existing bodies and data. Later selected teaching hosts receive source-linked routes; they do not appear simply wherever a matching colour occurs.
-7. **Fit the authored kit and readable light.** Orient rock strata and root forms to the actual landform. Place connected canopy/middle growth with material continuity and clear feet-level paths. Keep both near bank and distant landmark readable under ordinary lighting.
-8. **Use bounded fallback composition.** A candidate that cannot fit lake/cave/home/source constraints switches to a simpler authored basin arrangement. It must not silently delete the source payoff or turn the hero region into generic scatter. LAND-01 specifies that fallback and its tunables.
+1. **Seed the underlying country.** Choose relief, substrate, moisture/exposure potential and pre-cataclysm craft-site relationships within the finite world. These provide physical hosts rather than a finished map to recolour.
+2. **Select the catastrophe and its forces.** Choose bounded impacts, direction, typed influence, reach and compatible hosts. Keep channel identity separate from strength, exposure and recovery. Do not infer a White source from a cool-white cosmetic seam.
+3. **Generate the resulting landform.** Apply the selected host response: White displacement, Red concentration/release forms, Blue retained layering or Green connected branching. Compose ridge/basin/trace relationships together. The accidental smithy intersection belongs to this history.
+4. **Derive present habitat and recovery.** Resolve the fixed lake, dry drainage forms, soil, shelter and vegetation structure from that affected country. Preserve cave access. Biome-specific recovery changes how the force appears, leaving quiet transitions and surviving ordinary hosts.
+5. **Compose useful places and journeys.** Fit the reveal, reachable source/work area, two routes and useful home cores to those relationships before detailed cover. Resolve source/ruin/cave conflicts rather than masking them with art.
+6. **Place resources and fauna coherently.** Preserve finite ownership, economy guarantees and the quiet opening. Select suitable existing bodies/data. Later approved teaching-host adoption links habits to actual source owners; matching colour alone never creates a new ability or reward.
+7. **Fit art, motion and light to structure.** Orient rock strata and roots to the generated host response. Connect canopy, middle growth and ground while retaining ordinary movement and readable views. Colour reinforces an already visible physical change.
+8. **Use bounded fallback composition.** If the selected history cannot fit lake/cave/home/source constraints, choose a simpler compatible arrangement with the same causal identity and usable payoff. Do not fall back to unrelated scatter. LAND-01 supplies the exact fallback and tunables.
 
 **What varies:** basin orientation and asymmetry, shoulder silhouette chosen from a small family, shoreline indentations, which approach is enclosed, home position, surviving grove distribution, minor source exposure and secondary biome adjacency. Later, compatible influence-host pairings can vary from a curated list.
 
@@ -281,7 +291,7 @@ A first scene should be composed at player height immediately, then expressed th
 
 The first two belong in the initial playable place. The third enters only when selected LF host/acquisition behavior is deliberately adapted to the successor. Ordinary fauna provides immediate life without falsely implying that adaptation is already done.
 
-## Two planning visuals
+## Planning visuals and generation references
 
 ![Concept target: recovered Scarwater Basin, not a game screenshot](land00-visuals-2026-09-16/01-scarwater-concept.png)
 
@@ -296,6 +306,14 @@ The image's tiny clamp sketch is an illustrative containment idea, not a new ite
 The approximate 250–350 m composition span and 20–35 m relief are initial design targets, not tested values. Four radius-14 m home cores and the quiet starter boundary are existing constraints; two illustrated home candidates are part of those four, not new compulsory plots. The exact source/home layout must preserve existing progression and opening protections.
 
 [Visual provenance and production caveats](land00-visuals-2026-09-16/README.md) include the [exact image prompt](land00-visuals-2026-09-16/image-prompt.txt). Original owner references remain in their library. No external image licences or runtime reuse rights are assumed.
+
+### Added after the owner's seeded-generation clarification
+
+![Concept board: the four forces across land, plant and animal hosts](land00-visuals-2026-09-16/03-four-forces-reference.png)
+
+![Concept board: Green propagation across two biomes and varied layouts](land00-visuals-2026-09-16/04-biomes-and-seeds-reference.png)
+
+These are **concept studies, not generated game captures**. Board 03 distinguishes physical effect families; board 04 demonstrates biome-specific hosts and different arrangements under shared rules. Neither is a fixed terrain template or a request for every animal in every colour. The [reference guide](land00-influence-generation-reference-2026-09-16.md) explains what to carry forward, what remains proposed and how the four forces relate to current LF functions. The [exact prompt set](land00-visuals-2026-09-16/influence-image-prompts.md) records built-in imagegen and the targeted corrections.
 
 ## Source-backed implementation boundaries
 
@@ -347,7 +365,7 @@ The earlier outline separated landscape structure, landmark art and biome dressi
 
 | Order | Visible/playable outcome | Original ambition advanced | Scope and dependencies |
 | --- | --- | --- | --- |
-| **LAND-01 — Commit the place contract** | A concrete Scarwater implementation brief, kit specification and chosen successor/policy boundary | Connected landscape, lore and production plan | Assess this recommendation; resolve terrain/fissure contact, full scene budget, new-biome data and LF adoption dependency. Planning only; no second ideation round by default. |
+| **LAND-01 — Commit the generation/place contract** | Four explicit influence/host generation contracts, plus the concrete first Scarwater implementation brief and kit | Connected landscape, lore and production plan | Carry the endorsed seeded foundation forward; resolve terrain/fissure contact, new-biome data and LF adoption dependency. Define all four effects now, implement selected cases incrementally. Planning only. |
 | **LAND-02 — Make Scarwater real** | Walk from ordinary starter country into a memorable basin; choose between two approaches and home settings; reach and use the existing finite pressure workshop opportunity | Awe, recovered impacts, home-building desire, first new biome, deep living scar | New saved geography, Gallery Woodland, terrain and substantial art together. Current ordinary rules. A complete seeded place, not a greybox followed by an indefinitely deferred art task. |
 | **LAND-03 — A contrasting country with a reason to go** | A Dry Steppe place with different visibility, growth, landform and base choices; understand a Red host and seek its usable material | More biome variety; technology changes area, growth and fauna; useful discovery | Depends on LAND-02's composition language. If acquisition adoption is selected, deliberately reuse the relevant LF Red source/recipe/host behavior in a fresh successor. Preserve current costs and owners. Without that decision, this capability outcome stays pending rather than being marked complete through red decoration. |
 | **LAND-04 — Read and use all four forces** | Connected optional excursions demonstrate Blue retention, Green propagation and White requests; bring useful materials/devices into the player's actual workshop | Lore-to-crafting/automation relationship and meaningful reasons to return | Complete selected LF acquisition/device reuse in the successor; use existing habitats plus small host-form additions. No new biome, campaign, broad factory or all-animal colour matrix is required. Distinguish ordinary pressure from White material/request semantics. |
@@ -361,11 +379,11 @@ LAND-02 is the first playable demonstration and primary investment. Do not start
 
 ## Consequential owner decisions
 
-These are recommendations to assess with the coordinator after this session, not blockers to completing this planning record.
+The random-seed and four-force foundation is now endorsed. These remaining production recommendations can be assessed with the coordinator; they do not reopen that settled direction.
 
 | Decision | Recommendation and consequence | Alternative |
 | --- | --- | --- |
-| **1. What should organise the world?** | Select A: Inherited Landscape, beginning at Scarwater. Lore supplies a shared place history; exploration and building realise it. Spend on one full scene before further breadth. | Select B for active terrain intervention first, accepting new gameplay/save work and later environmental breadth; or C for ecology-led discovery with greater AI work. |
+| **1. Which first production outcome?** | Select A: Inherited Landscape, beginning at Scarwater. Lore supplies a shared place history; exploration and building realise it. Spend on one full scene before further breadth. | Select B for active terrain intervention first, accepting new gameplay/save work and later environmental breadth; or C for ecology-led discovery with greater AI work. |
 | **2. What breadth belongs in the first wave?** | Two substantial additions: Gallery Woodland and Dry Steppe. Show all four influences through selected hosts, not four copies of every biome. Keep the 1 km world. | Build four biomes now, with substantially more authored kit and integration, or stop after Scarwater if the first place consumes the available effort. |
 | **3. Should normal new worlds learn the existing LF source/device vocabulary?** | Yes, as an explicitly scoped fresh-successor acquisition adoption after the first ordinary pressure place. Reuse costs/renewal/ownership and host rules; leave LF campaign geography/events intact. | Retain normal acquisition throughout; magic remains useful through pressure, combat loot and current crafting, while four-colour source/device play remains LF-only. LAND-03/04 must then be rewritten rather than claim that payoff. |
 
@@ -391,8 +409,11 @@ These remain proposals/backlog, not automatic next tasks. Requested deep fissure
 
 ## Delivery and verification record
 
-**Achieved:** a recommended lore-driven world vision, three alternatives, selected primary-source research, two annotated planning visuals, a bounded biome/influence proposal, revised roadmap and concrete LAND-01 handoff. The coordination sheet records the recommendation as awaiting assessment.
+**Achieved:** a recommended lore-driven world vision, three alternatives, selected primary-source research, four planning visuals, a bounded biome/influence proposal, revised roadmap and concrete LAND-01 handoff. The continuation records the endorsed seeded-generation foundation and adds an explicit four-force host/generation reference. The coordination sheet records the recommendation as awaiting assessment.
 
 **Limits:** no feasibility build, new game capture, runtime import, benchmark, save fixture, package reconstruction or owner playtest. Estimates and target dimensions are unmeasured. The concept is not current game quality. Gameplay departures and acquisition adoption remain proposals. Retained RF-09 evidence is reused only for observations, not as proof that proposed work succeeds.
 
-**Planning checks completed:** nine cited primary-source pages/paper references checked with review depth disclosed; 35 local link/anchor targets resolved; both selected PNGs decoded and were visually inspected; scoped whitespace/diff and repository status checked. No game checks were run. The checked commit is returned in chat for coordinator integration. Only planning documents and selected visuals belong in it. No main integration or remote push is performed by this worker. No follow-on implementation task or LAND-01 task is launched; stop after this handoff.
+**Initial discovery checks completed:** nine cited primary-source pages/paper references checked with review depth disclosed; 35 local link/anchor targets resolved; both selected PNGs decoded and were visually inspected; scoped whitespace/diff and repository status checked. No game checks were run. The checked commit is returned in chat for coordinator integration. Only planning documents and selected visuals belong in it. No main integration or remote push is performed by this worker. No follow-on implementation task or LAND-01 task is launched; stop after this handoff.
+
+
+**Owner-clarification continuation checks completed:** 78 local link/anchor targets resolved across the updated references and affected guidance; both added concept PNGs decoded and were visually inspected. The final four-force board corrects misleading White-water/Blue-masonry readings, and the seed board uses different-seed wording. Scoped diff/whitespace checks pass. Existing research/source findings were reused; no new game checks or follow-on task launches. This continuation records endorsed creative direction while keeping exact concept forms and implementation scope distinct.

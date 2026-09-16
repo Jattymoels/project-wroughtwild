@@ -5,6 +5,19 @@ first. Hold this prepared brief until that direction is assessed, then revise it
 from the selected recommendations. The old six-slice outline and initial region
 are provisional; do not treat this file as an instruction to bypass LAND-00.
 
+## LAND-00 follow-up: carry the clarified foundation forward
+
+The owner has now endorsed **random seeded terrain whose four lore-defined
+influences shape biome-specific land, growth and fauna**. Authored rules/forms do
+not mean a fixed map. The same seed/version reproduces the same world; influence
+participates before final terrain and habitat, not as a later tint/scatter pass.
+Read the [updated discovery result](land00-creative-discovery-result-2026-09-16.md),
+[four-force generation reference and boards](land00-influence-generation-reference-2026-09-16.md)
+and [proposed revised LAND-01 brief](land00-land01-recommended-brief-2026-09-16.md).
+They refine this older provisional highland-first brief. The seeded/four-force
+foundation is endorsed; the specific first-region recommendation and acquisition
+scope still need the coordinator's task selection. No worker is started here.
+
 ## Selected next task
 
 RF-01–09 and RF-06B are adopted. The owner wants the next visual effort to "go big

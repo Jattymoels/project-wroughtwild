@@ -161,6 +161,40 @@ The owner explicitly chose [RF-09 cleanup](prototype/rf09-wave-cleanup-worker-20
 first. Scope the larger landscape work after that single closeout, preserving
 the years-after recovery sentiment and useful places to explore and build.
 
+## Seeded generation and four-force effects — owner clarification, 16 September
+
+During LAND-00, the owner explicitly retained randomly generated terrain and asked
+for magic/technology to influence biome generation through the effects associated
+with each colour. They endorsed the clarification with “Yes, love all of that”
+and requested durable creative references for later implementation sessions.
+
+The accepted direction is **seeded country and biome hosts → meteorite influence
+→ changed terrain, vegetation and fauna → coherent places and useful play**.
+The same seed and saved generation version recreate the same geography.
+Authored rules and asset forms guide generation; they do not imply a fixed map.
+Influence participates in creating the place, rather than only colouring a
+completed landscape.
+
+| Colour | Lore effect family to carry through generation |
+| --- | --- |
+| White / Impulse | Force, motion and displacement; directional offset/stress/bracing through suitable hosts |
+| Red / Excitation | Intensified activity, concentrated accumulation and release; exaggerated active structures |
+| Blue / Retention | Holding and preservation; retained layers, protected or persistent structures |
+| Green / Propagation | Spreading, branching and connection; connected repeated structures through compatible hosts |
+
+Biome and host change the expression. Green in dry steppe can remain low and
+interrupted while Green in moist woodland can follow substantial connected roots.
+Neither force replaces the biome's identity. Colour alone is insufficient, and
+every biome/animal need not receive every influence.
+
+The [LAND-00 generation reference](prototype/land00-influence-generation-reference-2026-09-16.md)
+and its two new concept boards develop this direction. Their exact landforms,
+anatomy and pulse timing remain illustrative proposals, not new combat/resource
+rules or approved replacements for adopted models. Ordinary V8/LF acquisition,
+campaign, finite ownership and saved geography remain unchanged by this record.
+The specific production sequence and later normal-world LF acquisition adoption
+remain scoped recommendations.
+
 ## Mysteries left open
 
 The sender and purpose of the meteorites, whether the shower was deliberate,

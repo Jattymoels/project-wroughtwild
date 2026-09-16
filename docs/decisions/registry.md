@@ -1,5 +1,17 @@
 # Decision Registry
 
+Owner LAND-00 clarification, 16 September 2026: **random seeded terrain remains
+central**, with White/Impulse, Red/Excitation, Blue/Retention and Green/Propagation
+changing biome-specific land, growth and fauna through their effects on hosts.
+The owner endorsed the explanation and requested reference images for later
+sessions. This extends the D-030/D-032 creative direction: authored rules/forms,
+variable seeded worlds, the same seed/version reproducing the same geography.
+Influence belongs before final terrain/habitat composition, not just in a colour
+pass. [Canonical clarification](../world-premise.md#seeded-generation-and-four-force-effects--owner-clarification-16-september),
+[effect/host reference and concepts](../prototype/land00-influence-generation-reference-2026-09-16.md).
+Exact new forms, source/device acquisition adoption and production assignments
+remain proposals; no runtime, save migration or gameplay-rule change is recorded.
+
 RF-05 integrated on main as `5e5de06`, 15 September 2026: the
 [result](../prototype/rf05-lakes-swimming-result-2026-09-15.md) implements the
 selected lake/wading/surface-swimming scope in fresh `frontier_v8` worlds.
