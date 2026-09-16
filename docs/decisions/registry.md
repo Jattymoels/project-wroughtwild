@@ -1,6 +1,6 @@
 # Decision Registry
 
-LAND-02 implementation, 16 September 2026: the [worker result](../prototype/land02-scarwater-result-2026-09-16.md) implements the selected fresh V9 Scarwater/Gallery scope below. The source branch is ready for coordinator adoption after its recorded focused checks; this worker does not merge or push main. Existing saved profiles and LF adoption boundaries remain. This records implementation under the existing owner selection, not new gameplay rules or owner playtest acceptance.
+LAND-02 adopted, 16 September 2026: implementation `1f03247` and handoff `4113c8b`, with matching native DLL, implement the selected fresh V9 Scarwater/Gallery scope. The [result](../prototype/land02-scarwater-result-2026-09-16.md) records reused functional evidence and main's clean 5.90 s headless import. Coordinator picture assessment finds partial aesthetic delivery; owner playtesting remains deferred. Existing saved profiles and LF adoption boundaries remain. The owner questioned the visual-production gap; the [diagnosis](../prototype/land02-visual-pipeline-diagnosis-2026-09-16.md) records facts and a recommendation, not an approved new slice. LAND-03's brief is a draft; no workspace or worker was started.
 
 Owner LAND production selection, 16 September 2026: “Okay agree with the
 recommendations and the rules.” The [selected implementation plan](../prototype/landscape-biomes-influences-plan-2026-09-16.md)

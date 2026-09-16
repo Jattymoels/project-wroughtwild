@@ -6,6 +6,25 @@ worlds. It connects exploration and existing finite pressure work to two of the
 four paid home settings. Existing saves retain their own profiles and owners.
 This worker stops at LAND-02; coordinator adoption and push are separate.
 
+## Coordinator adoption, 16 September
+
+Implementation `1f03247` and handoff `4113c8b` are now integrated on main with the
+matching DLL below. The coordinator matched its build record and eight changed
+native/tuning inputs, reused the focused worker evidence and ran one isolated
+hidden headless import on main: 5.90 s, exit 0, zero reported errors. No game
+matrix or new renderer run was performed. All owned checking is finished.
+
+Four actual pictures were inspected. The linked basin, usable home setting and
+real scar depth are useful progress. The broad mesa-like ridge, regular bands,
+repeated canopy/root forms and thin light seam still fall short of the intended
+visual ambition. Record this as partial aesthetic delivery, not full concept
+achievement or owner visual acceptance. The owner subsequently questioned this
+large gap; the [pipeline diagnosis](land02-visual-pipeline-diagnosis-2026-09-16.md)
+records the actual production method and recommended correction. LAND-03 remains
+the planned next slice, with its draft unstarted pending that discussion. Owner
+playtesting remains deferred. Historical worker results and failures below remain
+unchanged; adoption does not turn the original Continue run into 24/24.
+
 ## Appearance and play
 
 The lake reveal is dominated by an offset, bedded ridge rather than isolated

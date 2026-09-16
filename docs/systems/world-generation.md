@@ -4,7 +4,8 @@
 
 The owner-selected [LAND plan](../prototype/landscape-biomes-influences-plan-2026-09-16.md)
 is implemented for normal random/chosen-seed New World as `frontier_v9` on the
-LAND-02 worker branch. Main adoption belongs to the coordinator. Existing
+main through implementation `1f03247` and handoff `4113c8b`, with its matching
+native DLL and clean 5.90 s main headless import. Existing
 V1–V8/LF Continue retains its saved profile, geography and owners; no migration
 or LF coloured-source/device adoption is included.
 

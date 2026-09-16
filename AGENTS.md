@@ -339,6 +339,29 @@ later slices are selected sequence, not automatically launched work. No new
 combat/resource rules or blanket creature redesign follows from a concept image.
 Owner playtesting stays deferred; selecting direction is not gameplay verification.
 
+LAND-02 is now adopted on main through implementation `1f03247` and handoff
+`4113c8b`, with the matching native DLL and a clean 5.90 s main headless import.
+The [result](docs/prototype/land02-scarwater-result-2026-09-16.md) preserves the
+actual worker evidence and the station-name-only Continue assertion resolution.
+The coordinator inspected four game pictures: connected basin/home geography and
+real scar depth are useful progress, but broad mesa-like walls, regular bands,
+repeated trees/roots and a thin seam still fall short of the visual ambition.
+Record partial aesthetic delivery, not owner acceptance or full concept success.
+The owner then questioned why the result is nowhere near the references, asking
+whether the agent, pipeline or local image-to-3D model is the limitation. The
+[pipeline diagnosis](docs/prototype/land02-visual-pipeline-diagnosis-2026-09-16.md)
+records that the LAND-02 kit used scripted Blender geometry, not image-to-3D,
+and that major form/material/composition work remains. The coordinator recommends
+proving one convincing ordinary art scene before more breadth; this is not yet
+an owner-selected sequence change or automatic new worker. Do not describe the
+central visual shortfall merely as incidental polish.
+[LAND-03 Dry Steppe/Red](docs/prototype/land03-dry-steppe-worker-2026-09-16.md) is
+a draft; its worktree has not been prepared. Resolve the production approach
+before dispatch; no worker launches automatically. Its selected scope would bring
+terrain, substantial art and existing four-force acquisition into ordinary fresh
+V10 independently of the LF campaign, preserving V9/LF Continue. LAND-04's
+remaining force journeys and LAND-05 closeout stay next.
+
 ### Standard game development practices at prototype scale
 
 The owner asked why established game-development techniques were not the default
