@@ -1,5 +1,10 @@
 # LAND-01: landscape, biome and influence plan
 
+**Sequence update:** the owner has requested [LAND-00 creative discovery and research](land00-creative-discovery-prompt-2026-09-16.md)
+first. Hold this prepared brief until that direction is assessed, then revise it
+from the selected recommendations. The old six-slice outline and initial region
+are provisional; do not treat this file as an instruction to bypass LAND-00.
+
 ## Selected next task
 
 RF-01–09 and RF-06B are adopted. The owner wants the next visual effort to "go big

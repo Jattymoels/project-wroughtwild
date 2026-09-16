@@ -306,6 +306,16 @@ concrete first implementation brief. It is planning only, with source/evidence
 reuse and documentation checks; do not start a generator rewrite or another review
 wave. The owner starts its D: worker. Proposed LAND-02 is not yet dispatched.
 
+The owner subsequently requested a **high-effort ideation, research and planning
+session before those slices**, to develop creative introductions/proposals that
+inform the plan. [LAND-00 creative discovery](docs/prototype/land00-creative-discovery-prompt-2026-09-16.md)
+now precedes LAND-01. The six-slice outline and first-region suggestion are
+provisional inputs to challenge, not constraints on ideation. External research,
+alternative creative directions and a revised recommended roadmap are selected;
+implementation and automatic worker launches are not. Preserve existing rules as
+facts while clearly labelling proposed departures. Routine verification limits
+do not turn this expressly requested deep creative session into a quick triage.
+
 ### Standard game development practices at prototype scale
 
 The owner asked why established game-development techniques were not the default

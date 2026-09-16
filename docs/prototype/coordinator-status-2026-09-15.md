@@ -135,7 +135,17 @@ landscape/biome/influence effort requires its own scope; no worker is dispatched
 The selected first-pass wave and its cleanup are now integrated. Do not append
 another cleanup automatically or declare the owner's dramatic visual target met.
 
-**Prepared next: [LAND-01 landscape, biome and influence plan](land01-landscape-plan-worker-2026-09-16.md).**
+**Next by owner direction: [LAND-00 creative discovery and research](land00-creative-discovery-prompt-2026-09-16.md).**
+The owner likes the broad flow but explicitly requests a high-effort ideation,
+research and planning session before the slices, to develop creative game
+introductions/proposals and inform them. Workspace
+`D:/Wroughtwild/work/land00-creative-discovery`, branch `codex/land00-creative-discovery`.
+The owner starts it. Research useful precedents, compare distinct directions and
+recommend a world vision, player experiences and revised roadmap. The earlier
+six-slice estimate and highland-region suggestion are provisional, not mandates.
+No implementation or automatic worker launch is selected by this change.
+
+**Prepared for later: [LAND-01 landscape, biome and influence plan](land01-landscape-plan-worker-2026-09-16.md).**
 Workspace `D:/Wroughtwild/work/land01-landscape-plan`, branch
 `codex/land01-landscape-plan`; exact base in `build/land01/SETUP.md`. The owner
 starts it. Deliver a recommended compelling region, a small new-biome candidate
@@ -143,7 +153,8 @@ set, linked influence/host expressions, generation/terrain/art choices and the
 first concrete proposed implementation brief. This is one planning task with a
 visual/layout, not a new runtime implementation or review wave. Existing V8/LF
 systems and saves are preserved; no game imports, builds or captures are needed.
-The next implementation is selected from its output; it is not auto-started.
+Refresh this brief from LAND-00's selected direction before using it. LAND-01 and
+implementation remain later; neither is auto-started by creative discovery.
 
 The owner selected **[RF-09 wave cleanup](rf09-wave-cleanup-worker-2026-09-16.md)**.
 Workspace `D:/Wroughtwild/work/rf09-wave-cleanup`, branch `codex/rf09-wave-cleanup`;
