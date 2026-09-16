@@ -134,8 +134,14 @@ claim of owner aesthetic approval or full reference atmosphere. The owner asked
 to record remaining improvements for cleanup and move on: broad bare clearances,
 close patch repetition, tree silhouettes and shaded-bank/shore presentation stay
 in the coordination sheet. [RF-07 highland recovery](docs/prototype/rf07-highland-recovery-worker-2026-09-16.md)
-is next, followed by impact/scar composition and bounded cleanup. The owner starts
-the prepared D: worker; do not keep extending fen work.
+is now integrated as `1312c20`. Reused 61 passed worker checks; main headless
+import passed in 4.87 s with zero errors. After the coordinator assessed its three
+game pictures as useful groundwork but only partly achieving highland atmosphere,
+the owner said "I agree, let's move on". Keep rock/ground definition, connected
+growth transitions, outcrop/tree repetition and stronger outlook composition in
+cleanup; do not record this as full aesthetic acceptance. [RF-08 impact and living-scar composition](docs/prototype/rf08-impact-scars-worker-2026-09-16.md)
+is next, then bounded cleanup. The owner starts the prepared D: worker; do not
+keep extending fen/highland work or resume R9.
 
 After ram integration on 15 September, the owner said: "Everything looks great -
 approved, I haven't done full performance impact yet though but that's fine".

@@ -17,8 +17,10 @@ New World and validated Continue/publication reconstruct the transient context
 and prepare shared resources before control release. Tuning and source are in
 `game/rf07/settings.json` and `game/rf07/SOURCE.md`. One ordinary seed-77 outlook
 supports a paid floor and workbench; worker support/ownership/route checks pass.
-Visual limits and deferred owner feedback remain in the result; main adoption
-is a separate coordinator step.
+Integrated as `1312c20`; main's short headless import passed. The coordinator finds
+highland atmosphere only partly achieved from the game pictures, and the owner
+agrees to move on. Rock/ground and composition refinements remain cleanup work;
+no new generation/save rule or full aesthetic acceptance is implied.
 
 ## RF-06: derived fen and dry lake-bank presentation
 

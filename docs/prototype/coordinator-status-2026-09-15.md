@@ -99,14 +99,24 @@ with broader scene weaknesses recorded below. Owner asked to move on; no persona
 owner aesthetic sign-off is inferred. Unrelated worker import metadata stayed
 local and was excluded from adoption. Its D: source/master and private saves remain.
 
-**Worker complete, awaiting coordinator adoption: [RF-07 highland recovery](rf07-highland-recovery-result-2026-09-16.md)**
-in `D:/Wroughtwild/work/rf07-highland-recovery`, branch
-`codex/rf07-highland-recovery`, with `build/rf07/SETUP.md`. Weathered rock shelves,
-settled debris and sheltered vegetation now frame a real paid outlook on existing
-Rocky Hills/Glasswind Uplands geography. The worker reports 34 placement, 16
-Continue and 11 Forward+ walk/use checks passed, with three actual game pictures.
-Owner aesthetic feedback remains deferred. Remaining impact/scar composition
-follows RF-07; no next worker is launched automatically.
+**[RF-07 highland recovery](rf07-highland-recovery-result-2026-09-16.md) is integrated
+as `1312c20`.** Four original forms add shingle, tussock, heath and cushion growth
+to existing Rocky Hills/Glasswind Uplands. Its real paid outlook remains usable.
+Reused 34 placement, 16 Continue and 11 Forward+ route/use checks; main hidden
+headless import passed in 4.87 s, exit 0, zero reported errors. Native DLL unchanged;
+all owned checks ended. Only committed worker changes were adopted. Unrelated
+local import metadata and the private highland playtest remain in its D: worktree.
+The coordinator reviewed three game PNGs and judged the visual outcome partial:
+still sparse scrubland with weak rock/ground separation and a modest outlook.
+The owner agreed and said "let's move on"; this is not full aesthetic sign-off.
+
+**Next prepared: [RF-08 impact and living-scar composition](rf08-impact-scars-worker-2026-09-16.md).**
+Workspace `D:/Wroughtwild/work/rf08-impact-scars`, branch `codex/rf08-impact-scars`,
+with `build/rf08/SETUP.md`. Recovered impact margins, physical dark fractures and
+restrained living light should form one ordinary seeded place on current terrain.
+This is the last planned creative implementation slice before bounded cleanup,
+not a claim that the full reference atmosphere is achieved. The owner starts it;
+no worker is launched automatically. Historical ART repair R8/R9 is unrelated.
 New water geography, generation profiles and
 collision changes still need a scoped choice; none is selected by this agreement.
 Later-era creature forms and boss art remain separate production backlog. Station/
@@ -124,8 +134,8 @@ PLAY-07 is now integrated; return to the original creative outcomes.
 | Done | PLAY-07 scenery arrival and normal integration | Approved additional fix, now adopted as `c5ceb9f` |
 | Adopted | RF-06 fen/lakeside foundation | First pass was underwhelming; its support/water-preserving placement is retained by RF-06B |
 | Adopted; refinements in cleanup | RF-06B fen art/composition | Five authored forms, connected planting and distinct layers; visibly stronger at walking height, broader reference atmosphere still incomplete |
-| Worker complete; adoption pending | RF-07 highland recovery | Original mountain character: weathered shelves, settled debris and vegetation pockets |
-| Then | Remaining impact/scar composition | Original reclaimed-catastrophe identity: vegetation reconnects old damage while selected physical scars/pulses remain legible |
+| Adopted; atmosphere partial | RF-07 highland recovery | Usable rock/pocket iteration; owner agrees stronger rock/ground definition and composition belong in cleanup |
+| Next prepared | RF-08 impact/scar composition | Original reclaimed-catastrophe identity: vegetation reconnects old damage while selected physical scars/pulses remain legible |
 | End | Bounded cleanup slice | Consolidate deferred issues by player impact; no exhaustive review wave |
 
 The three creative outcomes need small worker scopes using existing assets and
@@ -182,7 +192,25 @@ RF-06B notes for the bounded cleanup slice, in suggested visual-impact order:
 
 Evidence: [fen passage](rf06b-evidence-2026-09-16/02-fen-opening.png) and
 [bank](rf06b-evidence-2026-09-16/05-planted-bank.png). No further fen worker is
-selected. The protected original sequence resumes with RF-07.
+selected. The protected original sequence continues with RF-08 after RF-07 adoption.
+
+RF-07 visual assessment and owner direction, 16 September: the coordinator
+reviewed the three retained PNGs, not a live playthrough. Short vegetation,
+usable open sightlines and shelter around the bench work, but the larger scene
+reads as sparse grey-green scrubland. The owner agreed and selected moving on.
+Record these in cleanup, ordered by likely visible benefit:
+
+| Observation | Focus for cleanup |
+| --- | --- |
+| Ground and large rocks merge into similar grey-green values | Improve rock/soil distinction, restrained weathering and transitions at rock bases first. |
+| Vegetation reads as isolated clumps on bare ground | Join selected pockets with lower growth and irregular exposed-rock margins; keep usable open space and paid/source clearances. |
+| Large outcrops have simple flat faces, with repeated trees above | Improve complementary shape/surface definition where practical; more scattered pebbles alone will not fix this. A larger tree-production pass needs its own later scope. |
+| The outlook is usable but not especially memorable | Strengthen the relationship between one recognisable rock formation, sheltered growth and the view. More dramatic mountain landforms require a separate native-generation decision. |
+
+Evidence: [highland outlook](rf07-evidence-2026-09-16/02-outlook-floor.png).
+Floor joints/corner transitions are a lower-priority cosmetic note. These visible
+limits are not silently marked fixed by passing tests or by the owner's decision
+to proceed. No immediate RF-07 continuation is selected.
 
 Initial cleanup notes: residual short group hitch (34.621 ms full frame in PLAY-07),
 Thrumroot construction (8.790 ms first / 4.238 ms repeat), older unassigned lag/underground
@@ -514,4 +542,5 @@ large outcrops, abrupt dark terrace edges and floor corner/joint presentation
 for the bounded cleanup slice. Fine debris/lichen remains subtle at distance.
 These are visual limits, not new blockers or automatically scheduled workers.
 Addressing them now would delay the original remaining impact/scar composition.
-Owner highland aesthetic/comfort feedback is deferred; no hitch-free claim.
+The owner agrees with the coordinator's partial visual assessment and requests
+moving on. Live comfort/performance feedback remains unmeasured; no hitch-free claim.

@@ -6,6 +6,26 @@ to low tussocks, woody heath and cushion growth. A real seed-77 bench supports a
 paid octagonal floor and workbench, reached and used through ordinary controls.
 The treatment is installed in normal New World/Continue on this worker branch.
 
+## Coordinator adoption and owner direction, 16 September
+
+Integrated on main by fast-forward as `1312c20fe8853da770984f221b3fa1048ad186ee`.
+Reused 34 placement, 16 Continue and 11 Forward+ route/use checks. Main's hidden
+headless import passed in 4.87 s, exit 0, zero reported errors. Native DLL unchanged;
+all owned checks ended. Only committed work was adopted; unrelated local import
+metadata and private worker progress were preserved. The handoff below is historical.
+
+The coordinator assessed the three retained game pictures: useful open space and
+hardy growth, but the scene still reads as sparse grey-green scrubland. Ground
+and large rocks blend together; plant clumps, simple outcrops and repeated trees
+weaken the intended recovered-highland identity. The outlook is usable but not
+yet especially memorable. This is a partial visual outcome, not full reference
+atmosphere or a live coordinator playtest. The owner replied: "I agree, let's move on".
+
+The [coordination sheet](coordinator-status-2026-09-15.md#original-plan-sequence-and-end-of-wave-cleanup)
+prioritises rock/ground definition, then connected growth transitions and wider
+shape/outlook composition for cleanup. Floor joints are lower priority. RF-08
+impact/living-scar composition is next; no further RF-07 revision is selected now.
+
 ## Appearance and remaining weaknesses
 
 The first player-height view was too pale and scattered. Correcting the local

@@ -8,11 +8,13 @@
   and exact fresh-process Continue pass in the focused worker fixture.
 - [x] One ordinary Forward+ approach/floor/workbench route and three actual game
   pictures demonstrate the delivered highland iteration.
-- [ ] Owner aesthetic/comfort feedback remains deferred. Repeated trees/growth,
-  abrupt terraces and broad clearances remain end-of-wave cleanup notes.
+- [ ] Highland atmosphere is only partly achieved: rock/ground definition,
+  connected plant pockets, outcrop/tree shapes and outlook composition remain
+  cleanup priorities. The owner agreed with the coordinator's picture assessment
+  and requested moving on; no full aesthetic or live comfort acceptance is claimed.
 
 [RF-07 worker result and private playtest](rf07-highland-recovery-result-2026-09-16.md).
-Coordinator integration remains separate from checked worker completion.
+Integrated as `1312c20`; main hidden headless import passed in 4.87 s, zero errors.
 
 ## RF-06 fen/lakeside presentation
 

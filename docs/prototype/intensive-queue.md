@@ -82,6 +82,15 @@ Its D: worktree/branch are `rf07-highland-recovery` / `codex/rf07-highland-recov
 The owner starts it. Bare clearances, repeated forms/trees and shaded banks/shore
 limits remain in the coordination sheet; no further fen work is scheduled now.
 
+**RF-07 is now integrated as `1312c20`.** Reused 61 passed focused checks; main
+headless import passed in 4.87 s, zero errors. Coordinator image assessment finds
+the highland atmosphere only partly achieved. The owner agrees and requests moving
+on. Rock/ground distinction, connected pockets and outcrop/tree/outlook weaknesses
+are recorded for cleanup. **[RF-08 impact and living-scar composition](rf08-impact-scars-worker-2026-09-16.md)
+is next**, in `D:/Wroughtwild/work/rf08-impact-scars`, branch `codex/rf08-impact-scars`.
+The owner starts it. It is the final planned creative implementation slice before
+bounded cleanup, not an automatic declaration of full environment-art completion.
+
 **Owner scheduling correction, 16 September:** stick firmly to the original slice
 breakdown. Raise additions, but recommend recording them for a bounded cleanup
 slice at the end by default. A new observation is not automatic reprioritisation.
