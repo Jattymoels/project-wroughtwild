@@ -1046,6 +1046,7 @@ struct LakeParams {
     double swimEnterM=1.1, swimExitM=.85, swimSpeed=.7, supportOffsetM=.05, supportResponse=8;
 };
 struct ScarwaterParams {
+    double fractureSpacingM=18, fractureJointM=2.6, fractureLean=.29;
     double ridgeHalfLengthM=76, ridgeReliefM=24, ridgeWidthM=36;
     double fissureWidthM=7, fissureDepthM=4, fissureLengthM=24;
     double woodlandBandM=22, routeWidthM=5, lakeAspectDelta=.10;
@@ -1350,6 +1351,7 @@ struct Tuning {
     std::map<std::string, double> centralRules;
     RealtimeTable realtime;
     WorldgenTable worldgen;
+    WorldgenTable frontierV10Worldgen; // LAND-02B frozen density/fracture inputs
     WorldgenTable frontierV9Worldgen; // LAND-02 immutable normal fresh-world inputs
     WorldgenTable frontierV8Worldgen;
     WorldgenTable frontierV7Worldgen; // separate fresh normal-world inputs; never derives LF

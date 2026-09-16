@@ -1,6 +1,19 @@
 # World Generation, Settlements and Travel
 
-## Selected next: LAND-02B corrective art and terrain production
+## LAND-02B worker: fresh V10 environment foundation and Scarwater
+
+LAND-02B is implemented on `codex/land02b-scarwater-art`, pending coordinator
+adoption. Normal fresh worlds select `frontier_v10`. Its independent immutable
+tuning/generator adds continuous density in the Scarwater envelope, fractured
+solid volumes, component-aware surface extraction and a wider stepped dry scar.
+Rendering, collision, surface queries and edit owners share native triangles;
+an exact distant landmark hands off by owning chunk. The one-metre gameplay
+grid, finite stock, paid ownership and older saved profiles remain intact.
+See the [production result](../prototype/land02b-scarwater-production-result-2026-09-16.md)
+and [source-backed foundation](../prototype/land02b-environment-foundation-2026-09-16.md).
+V9 below records main's previous adoption, not this worker's New World default.
+
+### Selected production scope
 
 The owner authorised substantial asset/terrain/meshing/collision work to close
 Scarwater's large visual gap. The [LAND-02B contract](../prototype/land02b-scarwater-production-worker-2026-09-16.md)
@@ -9,10 +22,8 @@ and composition in an ordinary generated scene, then meaningful seed variation.
 Changed physical geography uses fresh V10 with shared honest render/contact/edit
 behavior; old V9/LF saves keep their existing identity. Local geometry/surface
 development is within scope where required; a global-resolution increase, engine
-migration or general framework is not selected. V9 below remains the currently
-implemented normal profile until this worker completes. LAND-03 follows on the
-next unpublished successor, expected V11. No corrective runtime change is claimed
-by preparation of its brief.
+migration or general framework is not selected. LAND-03 follows on the next
+unpublished successor, expected V11; this worker does not start it.
 
 ## LAND-02: Scarwater Basin / fresh V9
 

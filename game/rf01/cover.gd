@@ -1,7 +1,7 @@
 extends RefCounted
 ## One world's transient low-cover composition. No owned state or geometry edits.
 const SETTINGS = preload("res://rf01/low_cover.tres")
-const PROFILES := ["frontier_v6","frontier_v7","frontier_v8","frontier_v9","living_frontier_wave1","living_frontier_wave3"]
+const PROFILES := ["frontier_v6","frontier_v7","frontier_v8","frontier_v9","frontier_v10","living_frontier_wave1","living_frontier_wave3"]
 const RESERVATION_CELL := 8.0
 var recovery: RefCounted
 var wetland: RefCounted

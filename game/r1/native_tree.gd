@@ -6,6 +6,9 @@ static var _controls:Dictionary={}
 static var _models:Dictionary={}
 func _apply_visual()->void:
 	super._apply_visual()
+	# The selected V10 Gallery assembly already supplies its own solid-wood
+	# contact and mesh. Do not erase it with the earlier broadleaf replacement.
+	if _terrain()!=null and _terrain().world_profile()=="frontier_v10" and _biome_id()=="gallery_woodland":return
 	var pivot:MeshInstance3D=get_node("MeshInstance3D")
 	pivot.mesh=null
 	if _controls.is_empty():
@@ -26,6 +29,9 @@ func _apply_visual()->void:
 	set_meta("b1_fit",{"native_body":get_node("CollisionShape3D").shape.size,"horizontal_scale":1.0,"vertical_scale":1.0,"burial_m":art_burial,"r1_lower_radius_m":controls.lower_radius_m,"source_walk_height_radius":controls.lower_radius_m})
 	set_meta("r1_canopy",true)
 func _leave_stump()->void:
+	if _terrain()!=null and _terrain().world_profile()=="frontier_v10" and _biome_id()=="gallery_woodland":
+		super._leave_stump()
+		return
 	if get_parent()==null:return
 	var stump:Node3D=load("res://r1/assets/"+source_kind+"-stump.glb").instantiate()
 	get_parent().add_child(stump)

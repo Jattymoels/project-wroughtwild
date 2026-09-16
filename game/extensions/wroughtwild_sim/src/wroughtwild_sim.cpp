@@ -3087,7 +3087,7 @@ Dictionary build_world_chunk(const wroughtwild::tuning::WorldgenTable& table,
     // these triangles; each triangle still retains its exact editable cell.
     // Retain side/underside fans: moving a diagonal riser centre can turn its
     // established capsule step/slide contact into an unwalkable corner catch.
-    const bool continuousSurface = (map.profileId == "frontier_v7" || map.profileId == "frontier_v8" || map.profileId == "frontier_v9");
+    const bool continuousSurface = (map.profileId == "frontier_v7" || map.profileId == "frontier_v8" || (map.profileId=="frontier_v9" || map.profileId=="frontier_v10"));
     std::map<int64_t, Vector3> surfaceCache;
     std::map<int64_t, Vector3> normalCache;
     // Material-independent occupancy gradient. The same eight samples are
@@ -3107,26 +3107,37 @@ Dictionary build_world_chunk(const wroughtwild::tuning::WorldgenTable& table,
         normalCache[key] = n;
         return n;
     };
-    auto surfaceVertex = [&](int x, int y, int z) {
+    #include "terrain_density_vertex.inc"
+    auto surfaceVertex = [&](int x, int y, int z,int ownerX,int ownerY,int ownerZ) {
         const int64_t key = (int64_t(z) * (map.width + 1) + x) * (map.depth + 1) + y;
         auto found = surfaceCache.find(key);
         if (found != surfaceCache.end()) return found->second;
         // V9 shallow unbroken roofs use the conventional shared heightfield
         // corner. Quantised voxel riser fans otherwise leave ~60-degree faces
         // on gentle routes. Cave/dig stencils retain the editable voxel surface.
-        if (map.profileId == "frontier_v9") {
+        if ((map.profileId=="frontier_v9" || map.profileId=="frontier_v10")) {
             int low=map.depth, high=0; double total=0; bool roof=true;
             for (int dz=-1;dz<=0;++dz) for (int dx=-1;dx<=0;++dx) {
                 const int a=x+dx,b=z+dz;
                 if (!map.inBounds(a,b)) {roof=false;continue;}
                 const int h=map.at(a,b).height;
-                low=std::min(low,h);high=std::max(high,h);total+=h;
+                low=std::min(low,h);high=std::max(high,h);
+                double surface=h;
+                if(map.profileId=="frontier_v10") {
+                    const double lower=map.surfaceDensity.at(a,h-1,b),upper=map.surfaceDensity.at(a,h,b);
+                    if(lower>0&&upper<0)surface=h-.5+lower/(lower-upper);
+                }
+                total+=surface;
                 if (eff(a,h-1,b)==kAir || eff(a,h-2,b)==kAir || eff(a,h,b)!=kAir) roof=false;
             }
-            if (roof && high-low<=2 && y>=low && y<=high) {
+            if (roof && high-low<=(map.profileId=="frontier_v10"?1:2) && y>=low && y<=high) {
                 const Vector3 result=Vector3(x,total*.25,z)*cs;
                 surfaceCache[key]=result;return result;
             }
+        }
+        if(map.profileId=="frontier_v10" &&
+           (map.surfaceDensity.at(x-1,y-1,z-1)!=0 || map.surfaceDensity.at(x,y,z)!=0)) {
+            return densityVertex(x,y,z,ownerX,ownerY,ownerZ);
         }
         Vector3 sum;
         int count = 0;
@@ -3234,8 +3245,8 @@ Dictionary build_world_chunk(const wroughtwild::tuning::WorldgenTable& table,
                         Vector3 corners[4];
                         Vector3 cornerNormals[4], centreNormal;
                         Color cornerColours[4], centreColour(0,0,0,0);
-                        for (int i=0; i<4; ++i) corners[i] = surfaceVertex(x+int(dir.corners[i].x), y+int(dir.corners[i].y), z+int(dir.corners[i].z));
-                        if (continuousSurface && (dir.dy > 0 || map.profileId == "frontier_v9"))
+                        for (int i=0; i<4; ++i) corners[i] = surfaceVertex(x+int(dir.corners[i].x), y+int(dir.corners[i].y), z+int(dir.corners[i].z),x,y,z);
+                        if (continuousSurface && (dir.dy > 0 || (map.profileId=="frontier_v9" || map.profileId=="frontier_v10")))
                             centre = (corners[0]+corners[1]+corners[2]+corners[3])*0.25f;
                         for (int i=0; i<4; ++i) {
                             cornerNormals[i] = surfaceNormal(x+int(dir.corners[i].x), y+int(dir.corners[i].y), z+int(dir.corners[i].z));
@@ -3260,8 +3271,11 @@ Dictionary build_world_chunk(const wroughtwild::tuning::WorldgenTable& table,
                                 surfaceBucket[kind].push_back(vertex);
                                 normalBucket[kind].push_back(normal);
                             }
-                            for (const auto& soft : {centreNormal,na,nb})
-                                softNormalBucket[kind].push_back(soft.length_squared() > 0.01 ? soft : normal);
+                            for (const auto& soft : {centreNormal,na,nb}) {
+                                const bool rockPlane=map.profileId=="frontier_v10" &&
+                                    map.surfaceDensity.at(x,y,z)!=0 && (kind=="stone"||kind=="rock") && normal.y<.7;
+                                softNormalBucket[kind].push_back(rockPlane ? normal : (soft.length_squared() > 0.01 ? soft : normal));
+                            }
                             sourceCells.push_back(Vector3(x,y,z));
                             if (!palette.is_empty())
                                 for (const auto& colour : {centreColour,ca,cb}) colourBucket[kind].push_back(colour);
@@ -3286,7 +3300,7 @@ Dictionary build_world_chunk(const wroughtwild::tuning::WorldgenTable& table,
     for (const auto& [kind, centres] : bucket) {
         // A shallow V9 riser can collapse completely into the shared roof.
         // Export only material buckets that still own actual triangles.
-        if (faceted && map.profileId=="frontier_v9" && surfaceBucket.find(kind)==surfaceBucket.end()) continue;
+        if (faceted && (map.profileId=="frontier_v9" || map.profileId=="frontier_v10") && surfaceBucket.find(kind)==surfaceBucket.end()) continue;
         kinds[kind] = centres;
     }
     chunk["kinds"] = kinds;

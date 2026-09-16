@@ -15,7 +15,7 @@ const SEED_CONTROLS := preload("res://scripts/world_seed_controls.gd")
 @export var world_seed: int = 1
 ## Fresh worlds use the new resource geography; old saves explicitly select
 ## legacy_v1 before restoring builds, resource depletion and excavation.
-@export var world_profile: String = "frontier_v9"
+@export var world_profile: String = "frontier_v10"
 var seed_controls: Node
 
 @onready var terrain: Terrain = $Terrain
@@ -108,6 +108,7 @@ func _build_world(seed_value: int) -> void:
 	load("res://art/creature_resources.gd").prepare(_sim(),terrain.play03_trace)
 	load("res://art/scenery_resources.gd").prepare(terrain.play03_trace)
 	if world_profile=="frontier_v9": preload("res://land02/kit.gd").prepare()
+	if world_profile=="frontier_v10": preload("res://land02b/kit.gd").prepare()
 	# A new terrain map must not re-ground the previous world's decorative
 	# sites as its first streamed chunks arrive. Their state is wholly derived.
 	for name in ["FrontierSites", "LeylineSources", "PressurePockets", "CataclysmSites", "StrangeSites", "HabitatSites"]:

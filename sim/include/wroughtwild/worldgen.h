@@ -183,6 +183,19 @@ struct ScarwaterPlace {
     bool fallback=false;
     std::vector<SurfacePoint> ridge, shelteredRoute, outlookRoute;
 };
+// Regenerated local surface detail, not saved ownership. Zero is an absent
+// sample. Signs always agree with the generated voxel field; digs override it.
+struct SurfaceDensityField {
+    int minX=0,minZ=0,width=0,height=0,depth=0;
+    std::vector<float> values;
+    float at(int x,int y,int z) const {
+        if(x<minX||z<minZ||x>=minX+width||z>=minZ+height||y<0||y>=depth)return 0;
+        return values[(static_cast<size_t>(z-minZ)*width+x-minX)*depth+y];
+    }
+    float& sample(int x,int y,int z) {
+        return values[(static_cast<size_t>(z-minZ)*width+x-minX)*depth+y];
+    }
+};
 struct WorldMap {
     std::string profileId;
     uint64_t seed = 0;
@@ -211,6 +224,7 @@ struct WorldMap {
     std::vector<PlacedHomeSite> homeSites;
     std::vector<PlacedLake> lakes;
     std::vector<ScarwaterPlace> scarwater;
+    SurfaceDensityField surfaceDensity;
     std::vector<float> augmentationField; // v4 only; row-major cells, finite [0,1]
     int spawnX = 0, spawnZ = 0;
     int gateX = 0, gateZ = 0;

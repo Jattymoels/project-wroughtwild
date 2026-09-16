@@ -7,6 +7,23 @@ outrank historical review, packaging and rollout requirements.
 
 ## Current adoption and next worker
 
+**LAND-02B worker complete, pending coordinator integration and push.** The
+[production result](land02b-scarwater-production-result-2026-09-16.md) delivers
+fresh V10 shared density/extraction/contact/edit foundations and ordinary
+Scarwater art: separated leaning cliff masses, rooted living canopy, a deep dry
+fissure, mineral surfaces and seeded lighting. It includes actual game pictures,
+checks and exact matching DLL/editable-source paths. Functional evidence covers
+two seeds, both bank routes, both fissure exits, paid building, finite pressure,
+digging and fresh-process Continue. The report preserves failed intermediate
+checks and their focused corrections rather than relabelling them passes.
+Remaining planar/ribbed rock faces, two-form canopy repetition, some coarse
+ground transitions and outer-country horizon are recorded visual limits;
+owner aesthetic feedback remains deferred. No main adoption or push is claimed.
+LAND-03/04/05 remain the selected next sequence; this worker stopped at LAND-02B
+and started no further worker. Refresh LAND-03 from the adopted V10 result.
+
+### LAND-02B selection and preparation history
+
 **Next, explicitly selected by the owner: [LAND-02B Scarwater art and terrain production](land02b-scarwater-production-worker-2026-09-16.md).**
 After questioning the visual gap, the owner authorised substantial generated-asset
 and mathematical/development work for collisions/world building to get it right.

@@ -1,0 +1,19 @@
+{
+  "method": "Local TRELLIS 0.6.0 textured source; actual detached component removed; Blender authored crown and reduced contact",
+  "raw_glb": "D:\\Wroughtwild\\work\\land02b-scarwater-art\\build\\land02b\\trellis-root-v1\\source.glb",
+  "raw_sha256": "65f507d4f7d5addb205e8f1c19fa4de6a33e4981a3c2d445167582b164591e5a",
+  "removed_detached_vertices": 9015,
+  "master": "D:\\Wroughtwild\\work\\land02b-scarwater-art\\build\\land02b\\source-art\\gallery-production.blend",
+  "forms": {
+    "gallery-column": {
+      "triangles": 146640,
+      "surfaces": 3,
+      "purpose": "Existing finite tree; cleaned generated bole with authored attached living crown"
+    },
+    "gallery-arch": {
+      "triangles": 122088,
+      "surfaces": 3,
+      "purpose": "Existing finite tree; cleaned generated bole with authored attached living crown"
+    }
+  }
+}
