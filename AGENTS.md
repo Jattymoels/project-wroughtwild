@@ -300,6 +300,11 @@ recognisable forms and relationships, beyond colour swaps. Specific biome lists,
 influence distribution/mixing and new gameplay rules remain to be scoped.
 RF-09 cleanup is adopted; the next task is scoping that larger connected effort.
 RF-09 is unrelated to the historical ART R9 review, which remains stopped.
+The prepared [LAND-01 planning task](docs/prototype/land01-landscape-plan-worker-2026-09-16.md)
+turns that direction into one recommended region, biome/influence design and a
+concrete first implementation brief. It is planning only, with source/evidence
+reuse and documentation checks; do not start a generator rewrite or another review
+wave. The owner starts its D: worker. Proposed LAND-02 is not yet dispatched.
 
 ### Standard game development practices at prototype scale
 

@@ -2,6 +2,11 @@
 
 **Status: RF-01 through RF-09, including RF-06B, integrated on main, 16 September 2026.
 The selected first-pass wave and cleanup are adopted; full reference atmosphere remains open.**
+
+Next planning handoff: [LAND-01 landscape, biome and influence plan](land01-landscape-plan-worker-2026-09-16.md).
+It connects the owner's stronger visual ambition and biome/colour requirements
+to a concrete first implementation brief. The owner starts the prepared D: task;
+this handoff does not change generation, saves or existing gameplay.
 [RF-01 meadow and woodland recovery](rf01-reclaimed-ground-result-2026-09-15.md)
 adds supported low cover in ordinary V6/LF play. The recovered floor remains
 visibly patchy. [RF-02 ground materials and grass](rf02-ground-grass-result-2026-09-15.md)

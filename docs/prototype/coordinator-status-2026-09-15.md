@@ -135,6 +135,16 @@ landscape/biome/influence effort requires its own scope; no worker is dispatched
 The selected first-pass wave and its cleanup are now integrated. Do not append
 another cleanup automatically or declare the owner's dramatic visual target met.
 
+**Prepared next: [LAND-01 landscape, biome and influence plan](land01-landscape-plan-worker-2026-09-16.md).**
+Workspace `D:/Wroughtwild/work/land01-landscape-plan`, branch
+`codex/land01-landscape-plan`; exact base in `build/land01/SETUP.md`. The owner
+starts it. Deliver a recommended compelling region, a small new-biome candidate
+set, linked influence/host expressions, generation/terrain/art choices and the
+first concrete proposed implementation brief. This is one planning task with a
+visual/layout, not a new runtime implementation or review wave. Existing V8/LF
+systems and saves are preserved; no game imports, builds or captures are needed.
+The next implementation is selected from its output; it is not auto-started.
+
 The owner selected **[RF-09 wave cleanup](rf09-wave-cleanup-worker-2026-09-16.md)**.
 Workspace `D:/Wroughtwild/work/rf09-wave-cleanup`, branch `codex/rf09-wave-cleanup`;
 runtime/base instructions in `build/rf09/SETUP.md`. The owner started it. Its focus was
@@ -338,6 +348,8 @@ The instruction "But let's do the clean up" selected RF-09, now complete and
 adopted. Next is scoping the connected landscape/biome/influence effort, beginning
 with a compelling playable region and its reusable generation/art rules. This
 does not make every deferred bug part of that effort or dispatch it automatically.
+LAND-01 is now the prepared planning task for that scope. A future biome catalogue,
+new profile and gameplay changes remain proposals until specifically selected.
 
 Build the next agreed original-plan improvement, integrate it and run a short
 check. Use owner feedback to inform the cleanup backlog; change sequence when the

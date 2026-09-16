@@ -104,6 +104,13 @@ new request for more biome types and generation-linked colour influences on
 areas, growth and fauna. Detailed biome/influence rules remain to be scoped;
 see the current coordination sheet and world premise. ART R9 remains stopped.
 
+**Prepared next: [LAND-01 landscape/biome/influence plan](land01-landscape-plan-worker-2026-09-16.md).**
+The owner starts `D:/Wroughtwild/work/land01-landscape-plan` on
+`codex/land01-landscape-plan`. One source-informed design delivery chooses the
+first compelling region, new biome candidates and connected influence expression,
+then supplies a concrete proposed LAND-02 implementation brief. No runtime change,
+new test wave or automatic next-worker launch is included.
+
 **Owner scheduling correction, 16 September:** stick firmly to the original slice
 breakdown. Raise additions, but recommend recording them for a bounded cleanup
 slice at the end by default. A new observation is not automatic reprioritisation.
