@@ -1,13 +1,13 @@
 # Wroughtwild current coordination sheet
 
-Updated 16 September 2026, Adelaide. This is a lightweight inventory and dispatch
+Updated 17 September 2026, Adelaide. This is a lightweight inventory and dispatch
 plan, not a new acceptance gate. The owner wants a solo indie prototype developed
 through playable iterations. Current AGENTS.md and the owner's approved work
 outrank historical review, packaging and rollout requirements.
 
 ## Current adoption and next worker
 
-**LAND-02B worker complete, pending coordinator integration and push.** The
+**LAND-02B playable foundation adopted; central visual outcome remains open.** The
 [production result](land02b-scarwater-production-result-2026-09-16.md) delivers
 fresh V10 shared density/extraction/contact/edit foundations and ordinary
 Scarwater art: separated leaning cliff masses, rooted living canopy, a deep dry
@@ -16,14 +16,21 @@ checks and exact matching DLL/editable-source paths. Functional evidence covers
 two seeds, both bank routes, both fissure exits, paid building, finite pressure,
 digging and fresh-process Continue. The report preserves failed intermediate
 checks and their focused corrections rather than relabelling them passes.
-Remaining planar/ribbed rock faces, two-form canopy repetition, some coarse
-ground transitions and outer-country horizon are recorded visual limits;
-owner aesthetic feedback remains deferred. No main adoption or push is claimed.
-LAND-03/04/05 remain the selected next sequence; this worker stopped at LAND-02B
-and started no further worker. Refresh LAND-03 from the adopted V10 result.
+The coordinator inspected four actual pictures: planar/ribbed cliffs still read
+as cut slabs, the scar as a smooth trench, upper forks/crowns as simple repeated
+assemblies, and ground transitions as sparse. These central shortcomings remain
+in the selected production correction, not automatically in LAND-05 cleanup.
+Recommend finishing the connected reveal/scar/home outcomes before LAND-03;
+[continuation prompt](land02b-visual-continuation-prompt-2026-09-17.md) is ready for
+the owner to send. No worker was launched or messaged. LAND-03/04/05 remain queued;
+LAND-03's worktree is unprepared. V10 is published; further changed geography
+requires its successor, so refresh later profile numbering at dispatch.
 Checked worker implementation: `37597824f73b8600504c8b6f294f0d0c0a1f329f`.
-Use the result's matching DLL, SHA-256 and editable-master paths. Final art
-import passed in 6.26 s with zero engine errors; all owned processes are ended.
+Handoff `5c41ed253e5b6b0c31ebecb8dea046552a4ac43a` is on main. Nine changed
+native/tuning hashes and the matching installed DLL checked against provenance.
+Main's isolated headless import passed in 12.80 s, exit 0, zero errors; worker
+gameplay/save evidence was reused. All owned checks ended. Owner aesthetic
+feedback/playtesting remain deferred; integration is not aesthetic acceptance.
 
 ### LAND-02B selection and preparation history
 

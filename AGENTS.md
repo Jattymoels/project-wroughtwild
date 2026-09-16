@@ -401,6 +401,24 @@ its one-metre data and custom surface choices are project decisions. Keep legacy
 profiles intact and carry the chosen shared changes into the playable result,
 not a separate open-ended architecture study.
 
+### LAND-02B adopted foundation and remaining visual outcome, 17 September
+
+LAND-02B's playable implementation is now adopted on main (17 September) through
+`3759782` / `5c41ed2`, with its matching native DLL and a clean 12.80 s headless
+import. Worker gameplay/Continue evidence was reused. See the
+[production result and coordinator assessment](docs/prototype/land02b-scarwater-production-result-2026-09-16.md).
+Four actual game pictures show useful shared terrain/contact/edit foundations
+and improved rooted trees, but the central visual target remains incomplete:
+cut-slab cliffs/regular ribs, a smooth trench-like fissure, simple repeated upper
+tree forks/crowns and sparse ground transitions. Do not call this full aesthetic
+delivery or infer owner approval from integration. The coordinator recommends
+finishing those existing Scarwater outcomes before LAND-03; the
+[continuation prompt](docs/prototype/land02b-visual-continuation-prompt-2026-09-17.md)
+is prepared for the owner to send, not launched. No new biome or architecture
+programme is selected. V10 is now published: preserve its Continue geography;
+further physical-generation changes require the next profile, and later LAND-03
+numbering must be refreshed accordingly. Owner playtesting remains deferred.
+
 ### Standard game development practices at prototype scale
 
 The owner asked why established game-development techniques were not the default

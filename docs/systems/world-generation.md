@@ -1,9 +1,9 @@
 # World Generation, Settlements and Travel
 
-## LAND-02B worker: fresh V10 environment foundation and Scarwater
+## LAND-02B: adopted fresh V10 environment foundation and Scarwater
 
-LAND-02B is implemented on `codex/land02b-scarwater-art`, pending coordinator
-adoption. Normal fresh worlds select `frontier_v10`. Its independent immutable
+LAND-02B is adopted on main through `3759782` / `5c41ed2`, with the matching DLL
+and clean 12.80 s headless import. Normal fresh worlds select `frontier_v10`. Its independent immutable
 tuning/generator adds continuous density in the Scarwater envelope, fractured
 solid volumes, component-aware surface extraction and a wider stepped dry scar.
 Rendering, collision, surface queries and edit owners share native triangles;
@@ -11,7 +11,9 @@ an exact distant landmark hands off by owning chunk. The one-metre gameplay
 grid, finite stock, paid ownership and older saved profiles remain intact.
 See the [production result](../prototype/land02b-scarwater-production-result-2026-09-16.md)
 and [source-backed foundation](../prototype/land02b-environment-foundation-2026-09-16.md).
-V9 below records main's previous adoption, not this worker's New World default.
+V9 below records main's previous adoption. V10 is now published and must retain
+its saved geography during later production. Central visual goals remain open
+in the result's coordinator assessment; working geometry is not art acceptance.
 
 ### Selected production scope
 

@@ -1,13 +1,16 @@
 # Decision Registry
 
-LAND-02B worker implemented, 16 September 2026, pending coordinator adoption:
+LAND-02B implementation adopted on main, 17 September 2026 (`3759782` / `5c41ed2`):
 [result and ordinary game pictures](../prototype/land02b-scarwater-production-result-2026-09-16.md).
 Fresh V10 carries continuous-density fractured terrain, matching render/contact/
 editable owners and exact distant geology, plus generated/authored rooted canopy,
-mineral materials and seeded basin lighting. This executes the selected scope;
+mineral materials and seeded basin lighting. This advances the selected scope;
 it adds no combat, resource or acquisition rule. V9/older/LF saved profiles remain.
-Owner playtesting and final aesthetic feedback remain deferred. LAND-03 is queued,
-not dispatched, and expects the next unpublished profile, V11.
+Owner playtesting and final aesthetic feedback remain deferred. Coordinator
+inspection finds central cliff/scar/canopy/composition targets still incomplete;
+integration does not close the visual correction. The result records a recommended
+continuation of the existing scope. LAND-03 is queued, not dispatched; refresh its
+next unpublished profile after any further physical-geography changes.
 
 Owner LAND-02B selection, 16 September 2026: the owner authorised substantial
 asset and mathematical/development work for collisions and world building to

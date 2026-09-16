@@ -10,9 +10,57 @@ digging and Continue remain usable in the checked ordinary generated scene.
 Worktree: `D:/Wroughtwild/work/land02b-scarwater-art`; branch
 `codex/land02b-scarwater-art`; base `cc60bf748662272283b10d4b087f41f8db0aa019`.
 Checked implementation: `37597824f73b8600504c8b6f294f0d0c0a1f329f`.
-Coordinator integration and push are pending. This subsequent documentation-only
-handoff records the implementation SHA; it changes no checked runtime input.
+Coordinator adopted implementation and handoff `5c41ed253e5b6b0c31ebecb8dea046552a4ac43a`
+on main on 17 September. The matching DLL is installed in the owner checkout.
+Publication is recorded by the coordinator's subsequent adoption commit.
 No subsequent worker or LAND-03 was started. Owner playtesting remains deferred.
+
+## Coordinator assessment and adoption, 17 September
+
+The playable foundation is integrated; the central visual outcome is **partially
+delivered and remains open**. The coordinator inspected reveal, contrasting-basin,
+fissure and rooted-canopy at their original player-height framing. These show
+better separated skyline masses, substantial textured lower trunks and a more
+coherent basin. They do not yet establish the convincing recovered landscape
+requested in the production brief.
+
+The dominant remaining problems are visible, not speculative: broad flat cliff
+faces and regular vertical cuts still read as cut slabs; the fissure reads as a
+smooth trench with bright isolated patches; the new textured boles meet simple
+straight branch forks and repetitive crowns; open bank/ground transitions still
+feel sparsely dressed. The seed-78 scene makes the regular cliff ribbing especially
+clear. These are central form/composition shortcomings, not merely a demand for
+concept-image fidelity or more polygons. The worker's narrower achievement table
+below is retained as its report, with this assessment governing coordination.
+
+The source changes substantiate early project implementation constraints: the
+previous extraction, far geometry and resource-tree override restricted the
+selected shapes. Their correction is useful reusable progress. Neither these
+screenshots nor the code establish a Godot or image-to-3D model ceiling. The
+remaining diagnosis is an inference from the visible result: geological shape
+hierarchy and finished asset/composition work need further production. Replacing
+the engine or redoing the foundation audit is not the recommended next action.
+
+Recommended next action: finish those three connected scene outcomes within the
+existing Scarwater correction before expanding biome breadth. A
+[copyable continuation prompt](land02b-visual-continuation-prompt-2026-09-17.md)
+is prepared for the owner-started worker; it has not been sent or launched.
+LAND-03 remains an unprepared draft. This recommendation introduces no new biome,
+mechanic or separate architecture programme. V10 is now published geography;
+any continuation that changes generated physical shape needs a new profile and
+must preserve V10 Continue. Recalculate LAND-03's expected profile at dispatch.
+
+Adoption verification addressed mismatched native/runtime inputs and main import
+failures. All nine changed native/tuning files matched the worker's source
+provenance, and installed DLL SHA-256 is
+`fc1b1bb1a467c38794a40a92aa05085e24538d0500beb9e4b11bca01ec6c3749`.
+Main's isolated hidden headless import passed in **12.80 s**, exit 0, zero reported
+errors. The worker's focused gameplay/Continue evidence below was reused; no
+renderer, benchmark or full campaign replay was added. No owned test remains
+running. Local adoption record and the retained previous V9 DLL are under
+`D:/Wroughtwild/work/land02b-scarwater-art/build/land02b/coordinator-adoption/`.
+Unrelated local captures/import metadata were preserved. Broader loading/lag,
+hardware performance and owner playtesting remain unverified.
 
 ## Appearance compared with the selected direction
 
