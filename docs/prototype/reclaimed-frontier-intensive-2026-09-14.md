@@ -1,7 +1,7 @@
 # Reclaimed Frontier — terrain and biome composition
 
-**Status: RF-01 through RF-08, including RF-06B, integrated on main, 16 September 2026.
-Playable iterations are adopted; the full reference atmosphere remains open.**
+**Status: RF-01 through RF-09, including RF-06B, integrated on main, 16 September 2026.
+The selected first-pass wave and cleanup are adopted; full reference atmosphere remains open.**
 [RF-01 meadow and woodland recovery](rf01-reclaimed-ground-result-2026-09-15.md)
 adds supported low cover in ordinary V6/LF play. The recovered floor remains
 visibly patchy. [RF-02 ground materials and grass](rf02-ground-grass-result-2026-09-15.md)
@@ -38,7 +38,7 @@ and living-scar composition](rf08-impact-scars-result-2026-09-16.md) is adopted 
 zero errors. The owner approves this good start for merging, while requesting
 meatier cracks with different coloured magic pulses deep inside. That physical
 depth/colour direction remains unmet; a focused fissure-art production pass is
-recommended separately. Bounded cleanup is next in the original sequence;
+recommended separately. The selected RF-09 cleanup is now also adopted as below;
 neither a wider art intensive nor a new worker is automatically dispatched.
 R9 stays stopped.
 
@@ -48,8 +48,11 @@ with world generation linking the technology/magic colours to effects on areas,
 growth and fauna. This is a connected requirement for the next landscape effort,
 recorded in [world premise](../world-premise.md#biome-variety-and-generation-linked-influences--owner-direction-16-september).
 Specific biome choices and new influence/gameplay rules need scoping; they are
-not added to this cleanup. RF-09 addresses rock/ground distinction, planting
-transitions and shaded readability. Its D: worker is started by the owner.
+not added to this cleanup. RF-09 is adopted as `e3a4967`: stronger mineral/ground
+distinction, textured growth joins and local leaf response. Reused 38 passed
+worker checks; main headless import passed in 5.08 s, zero errors. The coordinator
+inspected three game pictures; deep bank/impact shade and larger scene forms
+remain open. [Result and playtest](rf09-wave-cleanup-result-2026-09-16.md).
 
 ## Sequence protection — owner correction, 16 September
 
@@ -65,7 +68,7 @@ PLAY-07 is integrated. Return to:
 2. RF-06B fen art/composition (adopted; remaining refinements recorded for cleanup).
 3. RF-07 highland character and recovery (adopted; visual weaknesses in cleanup).
 4. RF-08 reclaimed impacts and living scars (adopted; deeper fissure art remains open).
-5. RF-09 bounded cleanup (selected; owner starts the prepared D: worker).
+5. RF-09 bounded cleanup (adopted; selected first-pass wave closed).
 
 These are the remaining original landscape outcomes, to be broken into small
 playable implementations using the completed RF foundations. Do not retroactively
@@ -189,7 +192,8 @@ contract, with existing saves kept intact; no new generator profile is selected.
 | RF-06B: fen art/composition | Adopted as `f6131e4` / `046834d`. Five original Blender forms, joined low growth, distinct rush/fern layers and seeded passages. Broader scene limits in cleanup; owner requests moving on. |
 | RF-07: highland recovery | Adopted as `1312c20`. Rock/debris/growth on existing Rocky Hills; useful prototype but atmosphere partial. Owner agrees to move on; refinements recorded for cleanup. |
 | RF-08: recovered impacts/living scars | Adopted as `ef9601b`. Recovered margins, supported exposed scars/pulses and actual-game route. Owner approves this start; meatier fractures and recessed coloured magic remain an art follow-up. |
-| Remaining original work | Bounded cleanup selected from recorded player-impact notes. Dedicated fissure-art production is a separate recommendation; larger native landforms/all-asset production remain future decisions. |
+| RF-09: material cleanup | Adopted as `e3a4967`. Clearer mineral/ground separation, textured growth joins and local leaf response; deep shade and broader forms remain open. |
+| Next scoped work | The selected first-pass wave is adopted. Scope the larger landscape effort with dramatic composition, additional biome types and linked colour influences on land/growth/fauna; existing saves remain protected. |
 
 Scoping evidence: all six owner references and their caveats were inspected,
 with image 6 read through a smaller inspection derivative after the image reader

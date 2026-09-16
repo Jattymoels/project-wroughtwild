@@ -120,14 +120,20 @@ calls it a good start and explicitly approves merging, while wanting meatier
 cracks and different coloured magic pulses deep within. The coordinator agrees
 the present surface ribbons lack that physical depth. Adoption completes the
 scheduled RF creative implementation sequence, not the full reference atmosphere.
-**[RF-09 worker cleanup is complete](rf09-wave-cleanup-result-2026-09-16.md), pending coordinator adoption.**
+**[RF-09 cleanup is adopted as `e3a4967`](rf09-wave-cleanup-result-2026-09-16.md).**
 Delivered: distinct weathered highland mineral, textured turf/litter pocket joins
 and shared local leaf response in fen/bank, highlands and impact planting. Exact
 cover/paid-clearance transforms and native save/geography checks pass; the paid
-floor/workbench route remains usable. Three actual game pictures are retained.
+floor/workbench route remains usable. Reused 22 final route/material and 16
+fresh-process Continue checks; main hidden headless import passed in 5.08 s,
+exit 0, zero errors. Native DLL unchanged; owned checks ended. The coordinator
+inspected all three actual game pictures. Rock/green-ground separation is the
+clearest improvement; bank and impact shade still conceal much of the scene.
 Deep whole-scene shade, simple outcrop/tree silhouettes, bare steep/reserved
 margins and deep coloured fissure art remain unresolved visual limits. The next
 landscape/biome/influence effort requires its own scope; no worker is dispatched.
+The selected first-pass wave and its cleanup are now integrated. Do not append
+another cleanup automatically or declare the owner's dramatic visual target met.
 
 The owner selected **[RF-09 wave cleanup](rf09-wave-cleanup-worker-2026-09-16.md)**.
 Workspace `D:/Wroughtwild/work/rf09-wave-cleanup`, branch `codex/rf09-wave-cleanup`;
@@ -153,10 +159,10 @@ PLAY-07 is now integrated; return to the original creative outcomes.
 | --- | --- | --- |
 | Done | PLAY-07 scenery arrival and normal integration | Approved additional fix, now adopted as `c5ceb9f` |
 | Adopted | RF-06 fen/lakeside foundation | First pass was underwhelming; its support/water-preserving placement is retained by RF-06B |
-| Adopted; refinements in cleanup | RF-06B fen art/composition | Five authored forms, connected planting and distinct layers; visibly stronger at walking height, broader reference atmosphere still incomplete |
-| Adopted; atmosphere partial | RF-07 highland recovery | Usable rock/pocket iteration; owner agrees stronger rock/ground definition and composition belong in cleanup |
+| Adopted; material cleanup included | RF-06B fen art/composition | Five authored forms and joined planting, with RF-09 material transitions/leaf response; broader atmosphere and deep shade remain open |
+| Adopted; atmosphere partial | RF-07 highland recovery | RF-09 improves mineral/green-ground distinction; terrain, outcrop/tree shapes and outlook composition remain for later landscape work |
 | Adopted; deeper fissure art remains open | RF-08 impact/scar composition | Recovered margins and exposed pulses are in game; owner approves this start but wants substantial broken-rock depth and coloured energy inside |
-| Worker complete; adoption pending | RF-09 bounded wave cleanup | Weathered mineral, textured growth joins and local leaf response delivered; larger composition, deep shade/fragment limits, biome/influence art and unassigned performance notes carried forward |
+| Adopted; selected wave closed | RF-09 bounded wave cleanup | `e3a4967`: weathered mineral, textured growth joins and local leaf response; larger composition, deep shade/fragment limits, biome/influence art and unassigned performance notes carried forward |
 
 The three creative outcomes now have adopted playable iterations using the
 delivered RF-01–05 foundations; this does not select new world/save rules or claim
@@ -212,7 +218,8 @@ RF-06B notes for the bounded cleanup slice, in suggested visual-impact order:
 
 Evidence: [fen passage](rf06b-evidence-2026-09-16/02-fen-opening.png) and
 [bank](rf06b-evidence-2026-09-16/05-planted-bank.png). No further fen worker is
-selected. RF-07 and RF-08 have since been adopted; bounded cleanup is next.
+selected. RF-07, RF-08 and RF-09 cleanup have since been adopted; remaining large
+visual gaps belong to the next scoped landscape effort.
 
 RF-07 visual assessment and owner direction, 16 September: the coordinator
 reviewed the three retained PNGs, not a live playthrough. Short vegetation,
@@ -327,9 +334,10 @@ Future scoping should relate biome identity and local influence to landform,
 vegetation structure and animal expression, using the existing White/Impulse,
 Red/Excitation, Blue/Retention and Green/Propagation foundations. Specific new
 biomes, distribution/overlap and additional gameplay effects are not yet selected.
-The immediate instruction was "But let's do the clean up": RF-09 is the only
-new prepared implementation task. This does not make the entire deferred backlog
-part of cleanup or dispatch the subsequent landscape intensive.
+The instruction "But let's do the clean up" selected RF-09, now complete and
+adopted. Next is scoping the connected landscape/biome/influence effort, beginning
+with a compelling playable region and its reusable generation/art rules. This
+does not make every deferred bug part of that effort or dispatch it automatically.
 
 Build the next agreed original-plan improvement, integrate it and run a short
 check. Use owner feedback to inform the cleanup backlog; change sequence when the

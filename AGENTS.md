@@ -144,8 +144,15 @@ is now integrated as `ef9601b`. Reused 64 passed worker checks; main headless
 import passed in 4.88 s with zero errors. The owner called it a good start and
 explicitly approved merging, while asking for meatier cracks with different
 coloured magic pulses deep inside. Record that desired direction as unmet, not
-as final aesthetic acceptance. The owner has now selected the bounded
-[RF-09 wave cleanup](docs/prototype/rf09-wave-cleanup-worker-2026-09-16.md).
+as final aesthetic acceptance. The selected
+[RF-09 wave cleanup](docs/prototype/rf09-wave-cleanup-result-2026-09-16.md) is now
+integrated as `e3a4967`: mineral/ground distinction, textured pocket joins and
+local leaf response. Reused 38 passed worker checks; main headless import passed
+in 5.08 s, zero errors. The coordinator inspected three actual game pictures:
+rock definition is improved, while deep bank/impact shade and simple/repeated
+large forms remain. This closes the selected first-pass wave, not its full
+visual ambition. Scope the next landscape/biome/influence effort; do not open
+another cleanup or treat functional checks as owner aesthetic acceptance.
 A dedicated fissure-art production pass is a recommendation recorded in the
 coordination sheet, not an automatically dispatched all-environment intensive.
 Do not keep extending previous slices or resume R9.
@@ -291,7 +298,7 @@ effort, building on D-030 and the existing influence identities in
 [world-premise.md](docs/world-premise.md). Different biomes and altered hosts need
 recognisable forms and relationships, beyond colour swaps. Specific biome lists,
 influence distribution/mixing and new gameplay rules remain to be scoped.
-The immediate selected task is RF-09 cleanup; the owner starts its D: worker.
+RF-09 cleanup is adopted; the next task is scoping that larger connected effort.
 RF-09 is unrelated to the historical ART R9 review, which remains stopped.
 
 ### Standard game development practices at prototype scale

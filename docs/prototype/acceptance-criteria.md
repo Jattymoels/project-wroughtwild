@@ -1,5 +1,19 @@
 # Vertical-Slice Acceptance Criteria
 
+## RF-09 wave material cleanup
+
+- [x] Existing highland outcrops/ground use distinct weathered mineral and textured
+  growth joins; shared fen/highland/impact plants receive the local leaf response.
+- [x] The unchanged cover/native state, paid route/use and fresh-process Continue
+  pass the worker's 38 focused checks. Main headless import passes in 5.08 s.
+- [x] Coordinator inspected three actual game pictures and adopted `e3a4967`.
+- [ ] Full visual ambition remains unmet: deep bank/impact shade, large landform
+  and tree/outcrop character, new biome variety and generation-linked influences
+  need the next scoped effort. Owner visual/comfort feedback remains open.
+
+[RF-09 result, assessment and private playtest](rf09-wave-cleanup-result-2026-09-16.md).
+The selected cleanup is complete; these open outcomes do not start another cleanup.
+
 ## RF-08 recovered impacts and living scars
 
 - [x] Ordinary eligible worlds derive recovery from existing impact/trace records;

@@ -91,14 +91,15 @@ is adopted as `ef9601b`**, retaining `D:/Wroughtwild/work/rf08-impact-scars` for
 private play. Reused 64 passed worker checks; main headless import passed in
 4.88 s, zero errors. The owner approves merging this good start but wants meatier
 cracks with different coloured magic pulses deep inside. This remains unmet.
-The original creative implementation sequence is adopted; bounded cleanup is
-next, not an automatic declaration of full environment-art completion. A dedicated
-fissure-art production pass is recommended separately, not automatically started
-or hidden inside small cleanup. The owner has now selected
-**[RF-09 cleanup](rf09-wave-cleanup-worker-2026-09-16.md)** in
+The original creative implementation sequence and selected cleanup are adopted;
+full environment-art completion is not claimed. A dedicated fissure-art
+production pass remains part of later scoping. **[RF-09 cleanup](rf09-wave-cleanup-result-2026-09-16.md)
+is integrated as `e3a4967`**, retaining private play in
 `D:/Wroughtwild/work/rf09-wave-cleanup`, branch `codex/rf09-wave-cleanup`.
-Rock/ground definition, growth transitions and shade readability are its scope;
-the owner starts the worker. The next landscape effort also carries the owner's
+Rock/ground definition, textured growth joins and local leaf response improved.
+Reused 38 passed worker checks; main headless import passed in 5.08 s, zero errors.
+Deep whole-scene shade and large terrain/tree/outcrop forms remain open. Next is
+scoping the larger landscape effort, which also carries the owner's
 new request for more biome types and generation-linked colour influences on
 areas, growth and fauna. Detailed biome/influence rules remain to be scoped;
 see the current coordination sheet and world premise. ART R9 remains stopped.

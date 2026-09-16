@@ -3,8 +3,8 @@
 RF-09 makes existing highland outcrops read as weathered mineral against green
 recovery pockets, carries turf/litter through low-growth edges and protected open
 ground, and improves the local leaf response in highland, fen/bank and impact
-planting. It is installed in ordinary eligible New World/Continue presentation on
-`codex/rf09-wave-cleanup`; coordinator adoption and main publication remain pending.
+planting. The checked implementation `e3a4967` is now integrated into ordinary
+eligible New World/Continue on main.
 
 The strongest delivered change is the highland rock/ground separation. This is a
 material cleanup of the existing environment, not the later dramatic-landscape
@@ -13,6 +13,30 @@ protected openings remain conspicuous. Deep bank/impact shadow still limits the
 whole scene; local leaf readability is improved without making the environment
 uniformly bright. The large fragment and deep fissure artwork remain unfinished
 visual goals. Owner playtesting is deferred, not recorded as aesthetic acceptance.
+
+## Coordinator adoption and visual assessment — 16 September
+
+Fast-forwarded `e3a4967aacfa5720d4892e367fa9b33e8970e2d5` into main under the
+owner's standing approval. Reused 22 passed final route/material checks and
+16 passed fresh-process Continue checks. Main's hidden headless import passed
+in **5.08 s**, exit 0 with zero reported errors; output is in the worker's
+`build/rf09/main-integration-2026-09-16`. The native DLL is unchanged. Only committed
+worker changes were adopted; unrelated local captures/import metadata and all
+prior private progress remain untouched. The coordinator import has ended.
+
+The coordinator inspected all three final game PNGs, not a new live playthrough.
+The highland's standing rock now separates clearly from its green pockets, with
+more legible mineral surfaces. Broad flat faces, native terraces and repeated
+tree silhouettes still dominate its shape. Bank leaves are distinguishable,
+but the foreground remains very dark beside the bright water/sky. The impact
+fragment is still largely a silhouette and the scar remains a fine surface line.
+Local leaf changes do not close the broader shaded-scene readability gap.
+
+This is a useful material cleanup and closes the selected first-pass wave. It is
+not the owner's requested dramatic landscape, new biome variety or connected
+colour-influence generation. Carry those outcomes and the remaining limits into
+the next explicitly scoped landscape effort; do not start another cleanup or
+claim full aesthetic/comfort acceptance from functional checks.
 
 ## Actual game pictures and assessment
 
@@ -126,10 +150,10 @@ previous-worker saves stay untouched. Process environment is restored on exit.
 
 ## Handoff and stop
 
-This completes the original wave's selected material cleanup. The worker commit
-SHA is returned in chat for coordinator adoption and ordinary push to main; this
-worker neither merges nor pushes main. There is no sealed package or new review
-wave. No other worker or subagent was launched.
+This completes the original wave's selected material cleanup, now adopted as
+recorded above. The worker returned its checked commit; coordinator publication
+is handled separately. There is no sealed package or new review wave. No other
+worker or subagent was launched.
 
 Carry forward: dramatic terrain/landmark composition; varied biome forms and
 linked colour influences on areas, growth and fauna; deeper coloured fissures;

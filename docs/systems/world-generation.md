@@ -8,7 +8,8 @@ blends retained turf/litter textures through existing pockets and improves the
 shared fen/highland/impact leaf response. Existing biome/original-top masks,
 seeded roots, full support/paid clearances, native terrain/lakes/saves and arrival
 preparation stay unchanged. No density, reservation or world-generation change.
-The worker is ready for adoption; broad shape/composition and deep-shadow limits
+Integrated as `e3a4967`; 38 passed worker checks reused and main headless import
+passed in 5.08 s, zero errors. Broad shape/composition and deep-shadow limits
 remain for the separately scoped landscape effort. See `game/rf07/SOURCE.md` for
 visible tuning. This is not new biome or colour-influence generation.
 
