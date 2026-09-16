@@ -139,9 +139,15 @@ import passed in 4.87 s with zero errors. After the coordinator assessed its thr
 game pictures as useful groundwork but only partly achieving highland atmosphere,
 the owner said "I agree, let's move on". Keep rock/ground definition, connected
 growth transitions, outcrop/tree repetition and stronger outlook composition in
-cleanup; do not record this as full aesthetic acceptance. [RF-08 impact and living-scar composition](docs/prototype/rf08-impact-scars-worker-2026-09-16.md)
-is next, then bounded cleanup. The owner starts the prepared D: worker; do not
-keep extending fen/highland work or resume R9.
+cleanup; do not record this as full aesthetic acceptance. [RF-08 impact and living-scar composition](docs/prototype/rf08-impact-scars-result-2026-09-16.md)
+is now integrated as `ef9601b`. Reused 64 passed worker checks; main headless
+import passed in 4.88 s with zero errors. The owner called it a good start and
+explicitly approved merging, while asking for meatier cracks with different
+coloured magic pulses deep inside. Record that desired direction as unmet, not
+as final aesthetic acceptance. Bounded cleanup is next in the original sequence.
+A dedicated fissure-art production pass is a recommendation recorded in the
+coordination sheet, not an automatically dispatched all-environment intensive.
+Do not keep extending previous slices or resume R9.
 
 After ram integration on 15 September, the owner said: "Everything looks great -
 approved, I haven't done full performance impact yet though but that's fine".

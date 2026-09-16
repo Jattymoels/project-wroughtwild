@@ -86,10 +86,15 @@ limits remain in the coordination sheet; no further fen work is scheduled now.
 headless import passed in 4.87 s, zero errors. Coordinator image assessment finds
 the highland atmosphere only partly achieved. The owner agrees and requests moving
 on. Rock/ground distinction, connected pockets and outcrop/tree/outlook weaknesses
-are recorded for cleanup. **[RF-08 impact and living-scar composition](rf08-impact-scars-worker-2026-09-16.md)
-is next**, in `D:/Wroughtwild/work/rf08-impact-scars`, branch `codex/rf08-impact-scars`.
-The owner starts it. It is the final planned creative implementation slice before
-bounded cleanup, not an automatic declaration of full environment-art completion.
+are recorded for cleanup. **[RF-08 impact and living-scar composition](rf08-impact-scars-result-2026-09-16.md)
+is adopted as `ef9601b`**, retaining `D:/Wroughtwild/work/rf08-impact-scars` for
+private play. Reused 64 passed worker checks; main headless import passed in
+4.88 s, zero errors. The owner approves merging this good start but wants meatier
+cracks with different coloured magic pulses deep inside. This remains unmet.
+The original creative implementation sequence is adopted; bounded cleanup is
+next, not an automatic declaration of full environment-art completion. A dedicated
+fissure-art production pass is recommended separately, not automatically started
+or hidden inside small cleanup. See the current coordination sheet.
 
 **Owner scheduling correction, 16 September:** stick firmly to the original slice
 breakdown. Raise additions, but recommend recording them for a bounded cleanup

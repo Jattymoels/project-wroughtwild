@@ -3,9 +3,45 @@
 RF-08 brings low woodland growth, moss/litter transitions and settled chips into
 previously bare impact margins, while exposed native fractures retain a physical
 dark mouth and a quiet visible pulse. It is installed in normal eligible New World
-and Continue on the worker branch. The result is a usable presentation iteration;
+and Continue on main as `ef9601b`. The result is a usable presentation iteration;
 its steep bare slopes, strong tree shadows and angular scars still fall short of
-the fuller reference atmosphere. Owner playtesting remains deferred.
+the fuller reference atmosphere. The owner called it a good start and approved
+merging on 16 September; full aesthetic success is not claimed.
+
+## Coordinator adoption and owner feedback — 16 September
+
+The owner wants more "meaty" cracks with different coloured magic pulses deep
+within, like the AI image placeholders, and asks whether a proper art pipeline
+is needed. The coordinator agrees after inspecting all four retained game PNGs:
+the narrow angular surface ribbons and pale fine light do not yet read as broken
+rock enclosing a deep, living interior. Strong shade further conceals their
+physical form. This assessment uses stills and source, not a new live playthrough
+or a claim to have watched the retained pulse animation.
+
+The implementation explains part of the gap: its mouth remains a surface mesh
+with at most 4.2 cm of raised lip relief and the existing cool-white core colour.
+It does not create a recessed terrain cavity or multi-coloured interior layers.
+Increasing emission alone will not supply missing shape, depth or material.
+
+Recommended separate art scope: establish one convincing fissure section in
+ordinary player-height play, using a reference/concept, authored broken rock
+lips and inner walls, a dark recessed reading, irregular embedded coloured
+mineral light and slow layered pulses. Resolve its fit/occlusion against actual
+editable terrain before expanding into reusable branching/end sections along
+the native exposed network. Direct Blender modelling/material work is suitable;
+image-to-3D can be considered for solid rock forms, without making it mandatory
+for the whole fissure. Do not add colour-to-gameplay rules or a second network.
+This is a substantive art follow-up, not a small glow adjustment or an implicit
+all-asset rebuild. It is recorded for later scoping, not started by this adoption.
+
+Fast-forwarded the checked worker commit `ef9601b93f487abdedad054482648f62933a87f6`
+onto main, reusing its 37 support/ownership, 17 Continue and 10 Forward+ route
+checks. Main's hidden headless import passed in **4.88 s**, exit 0 and zero
+reported errors; output is in the D: worker's `build/rf08/main-integration-2026-09-16`.
+Native DLL unchanged. Only committed worker changes were adopted; unrelated local
+capture/import files and all private progress remain untouched. The coordinator
+import ended; no test remains running. This completes adoption of the scheduled
+creative slices. Bounded cleanup is next; full reference atmosphere remains open.
 
 ## Delivered appearance
 
@@ -116,7 +152,6 @@ production remain separate scope, not claimed solved here. Loading time and the
 previously recorded lag questions remain unmeasured/open.
 
 These notes feed the original wave's bounded cleanup; they do not dispatch it.
-RF-08 is complete on `codex/rf08-impact-scars`, based on
-`535fb1edeb2399323cb288917cf15ae9f507a2f6`. The checked worker SHA is returned in the
-chat handoff. Main integration and ordinary push belong to the coordinator;
-this worker makes neither claim. Stop after RF-08. R9 and PLAY-06 remain parked.
+RF-08 was completed on `codex/rf08-impact-scars`, based on
+`535fb1edeb2399323cb288917cf15ae9f507a2f6`, and subsequently adopted by the
+coordinator as recorded above. R9 and PLAY-06 remain parked.

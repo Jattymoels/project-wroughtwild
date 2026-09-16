@@ -110,14 +110,18 @@ The coordinator reviewed three game PNGs and judged the visual outcome partial:
 still sparse scrubland with weak rock/ground separation and a modest outlook.
 The owner agreed and said "let's move on"; this is not full aesthetic sign-off.
 
-**RF-08 worker complete: [result and private playtest](rf08-impact-scars-result-2026-09-16.md).**
-Workspace `D:/Wroughtwild/work/rf08-impact-scars`, branch `codex/rf08-impact-scars`.
+**RF-08 adopted as `ef9601b`: [result, assessment and private playtest](rf08-impact-scars-result-2026-09-16.md).**
+Retained workspace `D:/Wroughtwild/work/rf08-impact-scars`, branch `codex/rf08-impact-scars`.
 Recovered impact margins, an original creeping mat, physical exposed scars and
-7.5-second living light are in ordinary eligible play. 37 support/ownership,
-17 Continue and 10 Forward+ route checks pass. Main adoption belongs to the
-coordinator; worker completion is not a claim of full reference atmosphere or
-owner playtesting. This completes the scheduled RF creative worker sequence.
-Bounded cleanup is next only when dispatched. R9 stays stopped.
+7.5-second living light are in ordinary eligible play. Reused 37 support/ownership,
+17 Continue and 10 Forward+ route checks; main hidden headless import passed in
+4.88 s, exit 0, zero errors. Native DLL unchanged; owned checks ended. The owner
+calls it a good start and explicitly approves merging, while wanting meatier
+cracks and different coloured magic pulses deep within. The coordinator agrees
+the present surface ribbons lack that physical depth. Adoption completes the
+scheduled RF creative implementation sequence, not the full reference atmosphere.
+Bounded cleanup is next only when dispatched. A dedicated fissure-art proposal
+is recorded below; no additional worker has started. R9 stays stopped.
 
 New water geography, generation profiles and
 collision changes still need a scoped choice; none is selected by this agreement.
@@ -137,13 +141,13 @@ PLAY-07 is now integrated; return to the original creative outcomes.
 | Adopted | RF-06 fen/lakeside foundation | First pass was underwhelming; its support/water-preserving placement is retained by RF-06B |
 | Adopted; refinements in cleanup | RF-06B fen art/composition | Five authored forms, connected planting and distinct layers; visibly stronger at walking height, broader reference atmosphere still incomplete |
 | Adopted; atmosphere partial | RF-07 highland recovery | Usable rock/pocket iteration; owner agrees stronger rock/ground definition and composition belong in cleanup |
-| Worker complete; adoption pending | RF-08 impact/scar composition | Original reclaimed-catastrophe identity: vegetation reconnects old damage while selected physical scars/pulses remain legible |
+| Adopted; deeper fissure art remains open | RF-08 impact/scar composition | Recovered margins and exposed pulses are in game; owner approves this start but wants substantial broken-rock depth and coloured energy inside |
 | End | Bounded cleanup slice | Consolidate deferred issues by player impact; no exhaustive review wave |
 
-The three creative outcomes need small worker scopes using existing assets and
-delivered RF-01–05 foundations; this schedule does not select new world/save rules
-or promise all-biome production. RF-01–05 stay delivered. Keep original outcomes
-separate from refinements rather than restarting them for minor remaining polish.
+The three creative outcomes now have adopted playable iterations using the
+delivered RF-01–05 foundations; this does not select new world/save rules or claim
+all-biome production or visual completion. RF-01–05 stay delivered. Keep the
+remaining aesthetic gaps visible without automatically extending each worker.
 
 RF-06 is adopted; [result and private playtest](rf06-fen-lakeside-result-2026-09-16.md).
 On 16 September the owner said "definitely underwhelming" and suggested a proper
@@ -194,7 +198,7 @@ RF-06B notes for the bounded cleanup slice, in suggested visual-impact order:
 
 Evidence: [fen passage](rf06b-evidence-2026-09-16/02-fen-opening.png) and
 [bank](rf06b-evidence-2026-09-16/05-planted-bank.png). No further fen worker is
-selected. The protected original sequence continues with RF-08 after RF-07 adoption.
+selected. RF-07 and RF-08 have since been adopted; bounded cleanup is next.
 
 RF-07 visual assessment and owner direction, 16 September: the coordinator
 reviewed the three retained PNGs, not a live playthrough. Short vegetation,
@@ -222,6 +226,26 @@ another crater/generation or all-environment art wave. The raised paid test floo
 needs a suitable approach; the direct downslope capture route was blocked, while
 the existing native approach was walked successfully. See the RF-08 result for
 failed development observations and retained final evidence. No next worker started.
+
+**RF-08 owner feedback and art proposal, 16 September:** "more 'meaty' with the
+cracks and different colour magic pulses deep within, like the AI image
+placeholders"; it is a good start and approved for merging. The coordinator's
+four-PNG assessment agrees: narrow surface strips, shallow lips and pale fine
+light lack the broken-rock volume and dark interior that would contain the magic.
+The current implementation provides surface relief, not a recessed terrain cavity.
+This remains an unmet artistic outcome, not a failed save/gameplay check.
+
+Recommend a separately bounded fissure-art slice: reference/concept, Blender
+fracture shape and materials, convincing recessed coloured light in one ordinary
+in-game section, then a small reusable kit fitted to the native exposed network.
+Solve terrain fit/occlusion first; do not bury geometry below an opaque ground
+surface and assume it will read as depth. Image-to-3D is optional for solid rock
+forms, not a requirement for the negative space of a fissure. Use colour as an
+art direction without inventing new source/network gameplay meanings. This is
+more than pulse tuning and should not be hidden inside small cleanup. The owner
+asked for an opinion, not automatic dispatch of this or an all-environment art
+intensive. Finish the original sequence with bounded cleanup; present this
+focused production proposal separately when selecting subsequent art work.
 
 Initial cleanup notes: residual short group hitch (34.621 ms full frame in PLAY-07),
 Thrumroot construction (8.790 ms first / 4.238 ms repeat), older unassigned lag/underground

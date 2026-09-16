@@ -1,6 +1,7 @@
 # Reclaimed Frontier — terrain and biome composition
 
-**Status: RF-01 through RF-05 integrated on main, 15 September 2026.**
+**Status: RF-01 through RF-08, including RF-06B, integrated on main, 16 September 2026.
+Playable iterations are adopted; the full reference atmosphere remains open.**
 [RF-01 meadow and woodland recovery](rf01-reclaimed-ground-result-2026-09-15.md)
 adds supported low cover in ordinary V6/LF play. The recovered floor remains
 visibly patchy. [RF-02 ground materials and grass](rf02-ground-grass-result-2026-09-15.md)
@@ -32,8 +33,13 @@ atmosphere and personal owner aesthetic acceptance are not claimed.
 RF-07 is now integrated as `1312c20`. The owner agrees with the coordinator that
 its atmosphere is only partly achieved and requests moving on. Rock/ground
 definition and growth/outlook composition remain cleanup priorities. [RF-08 impact
-and living-scar composition](rf08-impact-scars-worker-2026-09-16.md) is prepared next,
-followed by bounded cleanup; this sequence does not imply the references are met.
+and living-scar composition](rf08-impact-scars-result-2026-09-16.md) is adopted as
+`ef9601b`. Reused 64 passed worker checks; main headless import passed in 4.88 s,
+zero errors. The owner approves this good start for merging, while requesting
+meatier cracks with different coloured magic pulses deep inside. That physical
+depth/colour direction remains unmet; a focused fissure-art production pass is
+recommended separately. Bounded cleanup is next in the original sequence;
+neither a wider art intensive nor a new worker is automatically dispatched.
 R9 stays stopped.
 
 ## Sequence protection — owner correction, 16 September
@@ -49,7 +55,7 @@ PLAY-07 is integrated. Return to:
 1. RF-06 fen/lakeside foundation (adopted; atmosphere target still open).
 2. RF-06B fen art/composition (adopted; remaining refinements recorded for cleanup).
 3. RF-07 highland character and recovery (adopted; visual weaknesses in cleanup).
-4. RF-08 reclaimed impacts and living scars (worker complete; coordinator adoption pending).
+4. RF-08 reclaimed impacts and living scars (adopted; deeper fissure art remains open).
 5. A bounded cleanup slice drawn from the recorded player-impact notes.
 
 These are the remaining original landscape outcomes, to be broken into small
@@ -173,8 +179,8 @@ contract, with existing saves kept intact; no new generator profile is selected.
 | RF-06: fen/lakeside atmosphere | Foundation adopted as `12238ce` / `710a3c6`. Supported planting delivered; owner finds it underwhelming and visual target remains open. Native terrain/water/saves unchanged. |
 | RF-06B: fen art/composition | Adopted as `f6131e4` / `046834d`. Five original Blender forms, joined low growth, distinct rush/fern layers and seeded passages. Broader scene limits in cleanup; owner requests moving on. |
 | RF-07: highland recovery | Adopted as `1312c20`. Rock/debris/growth on existing Rocky Hills; useful prototype but atmosphere partial. Owner agrees to move on; refinements recorded for cleanup. |
-| RF-08: recovered impacts/living scars | Worker complete; [result](rf08-impact-scars-result-2026-09-16.md). Supported recovery and physical/pulsing scars in ordinary eligible play; shade, bare slopes and angular traces remain cleanup notes. Coordinator adoption pending. |
-| Remaining original work | Coordinator RF-08 adoption, then bounded cleanup selected from recorded player-impact notes. Larger native landforms/all-asset production remain separate future decisions. |
+| RF-08: recovered impacts/living scars | Adopted as `ef9601b`. Recovered margins, supported exposed scars/pulses and actual-game route. Owner approves this start; meatier fractures and recessed coloured magic remain an art follow-up. |
+| Remaining original work | Bounded cleanup selected from recorded player-impact notes. Dedicated fissure-art production is a separate recommendation; larger native landforms/all-asset production remain future decisions. |
 
 Scoping evidence: all six owner references and their caveats were inspected,
 with image 6 read through a smaller inspection derivative after the image reader

@@ -8,11 +8,15 @@
   and disappear over excavated original support. Native buried/broken traces stay dark.
 - [x] Focused paid placement, exact fresh-process Continue and a 19.54 m native
   approach walk pass. Actual pictures, pulse clip and private playtest are retained.
-- [ ] Fuller recovered-landscape atmosphere and owner acceptance remain open:
-  sparse steep slopes, deep shade, repeated low forms and angular scars need cleanup.
+- [x] Owner approves this iteration for merging, calling it a good start.
+- [ ] Fuller recovered-landscape atmosphere remains open: the owner wants meatier
+  fractures and different coloured magic pulses deep inside. Current shallow
+  seams do not meet that direction; dedicated fissure art needs separate scope.
+  Sparse steep slopes, deep shade and repeated low forms remain cleanup notes.
 
-[RF-08 worker result](rf08-impact-scars-result-2026-09-16.md). Worker complete;
-coordinator main adoption pending. No broad campaign/hardware claim.
+[RF-08 result and assessment](rf08-impact-scars-result-2026-09-16.md). Integrated
+as `ef9601b`; main headless import passed in 4.88 s, zero errors. No broad
+campaign/hardware claim or full aesthetic acceptance.
 
 ## RF-07 highland recovery
 
