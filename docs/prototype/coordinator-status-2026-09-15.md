@@ -7,6 +7,20 @@ outrank historical review, packaging and rollout requirements.
 
 ## Current adoption and next worker
 
+**Next: owner starts [LAND-02 Scarwater Basin](land02-landscape-foundation-worker-2026-09-16.md).**
+The owner agreed with LAND-00's recommendations/rules and appointed that session
+coordinator. LAND-00 commits `d0c3ac6` and `8f3f735` are now adopted on main.
+LAND-01 planning is completed here in the [selected implementation plan](landscape-biomes-influences-plan-2026-09-16.md);
+do not restart its old planning worktree. The sequence is Scarwater/Gallery
+Woodland with ordinary pressure, Dry Steppe/Red plus coherent LF acquisition
+reuse, remaining four-force journeys, then one bounded closeout. Terrain and
+substantial art must deliver a complete place in each slice. New normal V9 is
+selected for LAND-02; it is not implemented yet. Old Continue worlds stay intact.
+Prepared LAND-02 path: `D:/Wroughtwild/work/land02-scarwater-basin`, branch
+`codex/land02-scarwater-basin`, local base/tools in `build/land02/SETUP.md`.
+No implementation worker, game import, build or renderer is started by this
+planning/preparation session. Historical adoption details follow.
+
 [RF-05 lakes and surface swimming](rf05-lakes-swimming-result-2026-09-15.md) is
 integrated on main as `5e5de06` from worker `c3867bf`, with its matching native DLL
 installed locally. Fresh normal worlds use V8; V1–V7/LF Continue keeps its saved
@@ -135,7 +149,7 @@ landscape/biome/influence effort requires its own scope; no worker is dispatched
 The selected first-pass wave and its cleanup are now integrated. Do not append
 another cleanup automatically or declare the owner's dramatic visual target met.
 
-**LAND-00 creative discovery is complete; recommendation awaits owner/coordinator assessment.**
+**LAND-00 creative discovery is complete and its recommendations are now selected.**
 The [result, alternatives, cited research and roadmap](land00-creative-discovery-result-2026-09-16.md)
 recommends **The Inherited Landscape**, beginning with Scarwater Basin: one
 lore-shaped recovered ridge/lake/gallery-woodland place, a real dry fissure,
@@ -152,26 +166,21 @@ foundation and four-force effect families, and requested implementation referenc
 The [generation/host guide and added boards](land00-influence-generation-reference-2026-09-16.md)
 make that explicit: consistent lore rules produce different terrain/biome/host
 outcomes across seeds; the same seed/version remains deterministic. Exact image
-forms, production choices and LF acquisition adoption remain proposals. Old V8/LF
-saves and rules remain.
+forms remain illustrative. Production sequence and later LF acquisition adoption
+are now selected in the implementation plan; old V8/LF saves and rules remain.
 The [concrete proposed LAND-01 handoff](land00-land01-recommended-brief-2026-09-16.md)
-replaces the provisional highland-first idea only if selected. The historical
+replaced the provisional highland-first idea after selection. The historical
 sequence below is background, not a competing dispatch instruction. Planning-only
 link/source/diff checks; no game imports, benchmarks, package rebuilding or
 follow-on task launches. Worker branch: `codex/land00-creative-discovery` in
 `D:/Wroughtwild/work/land00-creative-discovery`; checked commit returned for
-coordinator integration. LAND-01 remains held for the owner's assessment/start.
+coordinator integration; both discovery commits are now integrated. LAND-01 was
+completed by the coordinator following the owner's latest request.
 
-**Prepared for later: [LAND-01 landscape, biome and influence plan](land01-landscape-plan-worker-2026-09-16.md).**
-Workspace `D:/Wroughtwild/work/land01-landscape-plan`, branch
-`codex/land01-landscape-plan`; exact base in `build/land01/SETUP.md`. The owner
-starts it. Deliver a recommended compelling region, a small new-biome candidate
-set, linked influence/host expressions, generation/terrain/art choices and the
-first concrete proposed implementation brief. This is one planning task with a
-visual/layout, not a new runtime implementation or review wave. Existing V8/LF
-systems and saves are preserved; no game imports, builds or captures are needed.
-Refresh this brief from LAND-00's selected direction before using it. LAND-01 and
-implementation remain later; neither is auto-started by creative discovery.
+**LAND-01 planning is complete; its old prepared workspace is historical.**
+`D:/Wroughtwild/work/land01-landscape-plan` and `codex/land01-landscape-plan`
+remain preserved. Their older SETUP/proposed brief must not trigger another
+planning round. Use the selected plan and LAND-02 prompt linked above.
 
 The owner selected **[RF-09 wave cleanup](rf09-wave-cleanup-worker-2026-09-16.md)**.
 Workspace `D:/Wroughtwild/work/rf09-wave-cleanup`, branch `codex/rf09-wave-cleanup`;

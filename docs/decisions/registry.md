@@ -1,5 +1,16 @@
 # Decision Registry
 
+Owner LAND production selection, 16 September 2026: “Okay agree with the
+recommendations and the rules.” The [selected implementation plan](../prototype/landscape-biomes-influences-plan-2026-09-16.md)
+completes LAND-01 in the coordinator session. Select The Inherited Landscape,
+Scarwater/Gallery Woodland first, Dry Steppe second, then remaining four-force
+journeys and bounded closeout. Later normal-world reuse of current LF acquisition
+and devices is selected independently of its campaign. LAND-02 introduces a
+separate `frontier_v9` normal New World profile; old saved geography and ownership
+remain. The [first implementation brief](../prototype/land02-landscape-foundation-worker-2026-09-16.md)
+is ready for the owner to start. This records selected scope, not implemented
+behavior, an old-save migration or approval of every illustrated model.
+
 Owner LAND-00 clarification, 16 September 2026: **random seeded terrain remains
 central**, with White/Impulse, Red/Excitation, Blue/Retention and Green/Propagation
 changing biome-specific land, growth and fauna through their effects on hosts.
@@ -9,8 +20,8 @@ variable seeded worlds, the same seed/version reproducing the same geography.
 Influence belongs before final terrain/habitat composition, not just in a colour
 pass. [Canonical clarification](../world-premise.md#seeded-generation-and-four-force-effects--owner-clarification-16-september),
 [effect/host reference and concepts](../prototype/land00-influence-generation-reference-2026-09-16.md).
-Exact new forms, source/device acquisition adoption and production assignments
-remain proposals; no runtime, save migration or gameplay-rule change is recorded.
+Exact illustrated forms remain references; the later production selection above
+settles the sequence and acquisition direction. No runtime change is claimed here.
 
 RF-05 integrated on main as `5e5de06`, 15 September 2026: the
 [result](../prototype/rf05-lakes-swimming-result-2026-09-15.md) implements the

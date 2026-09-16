@@ -316,6 +316,29 @@ implementation and automatic worker launches are not. Preserve existing rules as
 facts while clearly labelling proposed departures. Routine verification limits
 do not turn this expressly requested deep creative session into a quick triage.
 
+### LAND direction selected and first implementation prepared, 16 September
+
+After LAND-00's research and four-force reference continuation, the owner said
+"Okay agree with the recommendations and the rules", requested the implementation
+plan/first separate-session prompt and appointed that session coordinator.
+The [selected LAND plan](docs/prototype/landscape-biomes-influences-plan-2026-09-16.md)
+completes LAND-01 planning in the coordinator session; do not restart the older
+LAND-01 worktree. **The Inherited Landscape** is selected: seeded geography whose
+lore-defined forces change biome-specific terrain, growth and selected fauna.
+Authored rules/forms must produce varied worlds, not a fixed map or tinted scatter.
+
+The first owner-started implementation is
+[LAND-02 Scarwater Basin](docs/prototype/land02-landscape-foundation-worker-2026-09-16.md):
+`frontier_v9` for ordinary fresh worlds, Gallery Woodland, displaced ridge/fixed
+lake, a real dry fissure, useful existing finite pressure and appealing homes.
+Existing saves retain their profiles, ownership and rules. Terrain and substantial
+art belong in one complete playable slice. LAND-03 adds Dry Steppe/Red and coherent
+existing LF acquisition/device reuse independently of its campaign; LAND-04
+develops the remaining force journeys; LAND-05 is one bounded closeout. These
+later slices are selected sequence, not automatically launched work. No new
+combat/resource rules or blanket creature redesign follows from a concept image.
+Owner playtesting stays deferred; selecting direction is not gameplay verification.
+
 ### Standard game development practices at prototype scale
 
 The owner asked why established game-development techniques were not the default

@@ -1,5 +1,13 @@
 # LAND-00 — A world shaped by what happened to it
 
+**Subsequent owner selection:** the owner agreed with the recommendations and
+rules and appointed this session coordinator. The [selected LAND-01 implementation
+plan](landscape-biomes-influences-plan-2026-09-16.md) now settles Direction A,
+Scarwater first, two-biome breadth and later LF acquisition/device adoption.
+The [LAND-02 implementation brief](land02-landscape-foundation-worker-2026-09-16.md)
+is the next owner-started task. Remaining “proposed/awaiting selection” wording
+below records the discovery's earlier status, not a new approval gate.
+
 **Creative discovery and planning, 16 September 2026, updated after owner clarification. Status: seeded generation and lore-defined influence effects are owner-endorsed direction; exact place designs, production choices and gameplay changes remain recommendations.**
 
 This session turns the owner's lore-first correction into a world vision, compares three genuinely different approaches, and supplies a researched roadmap and a concrete replacement brief for LAND-01. The follow-up records the owner's endorsement of random seeded worlds whose four influences change terrain, growth and fauna through biome-specific hosts. No game behavior changes here.

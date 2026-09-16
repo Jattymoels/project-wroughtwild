@@ -192,8 +192,11 @@ and its two new concept boards develop this direction. Their exact landforms,
 anatomy and pulse timing remain illustrative proposals, not new combat/resource
 rules or approved replacements for adopted models. Ordinary V8/LF acquisition,
 campaign, finite ownership and saved geography remain unchanged by this record.
-The specific production sequence and later normal-world LF acquisition adoption
-remain scoped recommendations.
+The owner subsequently agreed with the recommendations and rules. The
+[selected LAND implementation plan](prototype/landscape-biomes-influences-plan-2026-09-16.md)
+now settles Scarwater/Gallery Woodland first, Dry Steppe second and later scoped
+normal-world reuse of LF acquisition/devices independently of its campaign.
+Existing runtime behavior has not changed in this planning session.
 
 ## Mysteries left open
 

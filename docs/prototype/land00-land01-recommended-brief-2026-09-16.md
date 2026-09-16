@@ -1,5 +1,10 @@
 # Proposed LAND-01 brief after LAND-00
 
+**Completed by the coordinator after owner selection.** This historical brief's
+outputs are now the [selected implementation plan](landscape-biomes-influences-plan-2026-09-16.md)
+and [LAND-02 worker brief](land02-landscape-foundation-worker-2026-09-16.md).
+Do not launch another LAND-01 session from the instructions below.
+
 **Status: ready for owner/coordinator selection, not dispatched.** This brief recommends Direction A from [LAND-00](land00-creative-discovery-result-2026-09-16.md). The owner has since endorsed the random-seed and four-force foundation; carry that direction forward without reopening it. Exact Scarwater-first production, biome breadth and LF acquisition scope remain recommendations. This brief does not itself dispatch implementation.
 
 ## Task and intended result

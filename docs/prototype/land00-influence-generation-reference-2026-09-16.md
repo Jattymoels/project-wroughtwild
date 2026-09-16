@@ -1,5 +1,10 @@
 # LAND-00 reference: seeded worlds shaped by four forces
 
+**Production follow-through:** the owner subsequently agreed with the recommendations
+and rules. The [selected implementation plan](landscape-biomes-influences-plan-2026-09-16.md)
+and [first worker brief](land02-landscape-foundation-worker-2026-09-16.md) now carry
+this reference into production. Exact illustrated anatomy remains illustrative.
+
 **Owner-approved direction, 16 September 2026:** random seeded terrain remains central. White/Impulse, Red/Excitation, Blue/Retention and Green/Propagation influence biome generation through their effects on physical and living hosts. The owner endorsed the clarification with “Yes, love all of that” and requested that it be folded into the creative record with references for subsequent implementation sessions.
 
 **Status of the examples:** the effect families are endorsed creative direction. The particular landforms, anatomy, pulse animations and arrangements shown here are design proposals. These are not new damage, resource, growth or campaign rules, nor approval to replace adopted creature models.

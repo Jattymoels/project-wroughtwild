@@ -1,5 +1,11 @@
 # LAND-01: landscape, biome and influence plan
 
+**Superseded as a dispatch prompt:** the owner selected LAND-00's recommendations
+and asked the creative session to coordinate. LAND-01 planning was completed
+there as the [selected implementation plan](landscape-biomes-influences-plan-2026-09-16.md).
+The next owner-started session is [LAND-02 Scarwater](land02-landscape-foundation-worker-2026-09-16.md).
+Do not restart this older prepared planning worker. Its text below is historical.
+
 **Sequence update:** the owner has requested [LAND-00 creative discovery and research](land00-creative-discovery-prompt-2026-09-16.md)
 first. Hold this prepared brief until that direction is assessed, then revise it
 from the selected recommendations. The old six-slice outline and initial region

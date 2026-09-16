@@ -1,5 +1,18 @@
 # World Generation, Settlements and Travel
 
+## Selected LAND successor work, not yet implemented
+
+The owner approved the [LAND implementation plan](../prototype/landscape-biomes-influences-plan-2026-09-16.md)
+after creative discovery. [LAND-02](../prototype/land02-landscape-foundation-worker-2026-09-16.md)
+will introduce ordinary fresh-world `frontier_v9`: a seed-varied Scarwater family
+with White displacement affecting native ridge/basin/fissure shape, Gallery
+Woodland hosts, linked existing pressure work, routes and home settings. Influence
+enters before final terrain/habitat composition. Existing V1–V8/LF Continue keeps
+its saved identity and owners. The complete force table, bounded composition,
+fallback, real-terrain contact and later LF adoption boundary are in the plan.
+Current implemented normal geography is still V8. No generator change is claimed
+by these planning documents; implementation starts only in the owner's worker.
+
 ## RF-09: material continuity cleanup
 
 The [RF-09 worker result](../prototype/rf09-wave-cleanup-result-2026-09-16.md)
