@@ -135,15 +135,26 @@ landscape/biome/influence effort requires its own scope; no worker is dispatched
 The selected first-pass wave and its cleanup are now integrated. Do not append
 another cleanup automatically or declare the owner's dramatic visual target met.
 
-**Next by owner direction: [LAND-00 creative discovery and research](land00-creative-discovery-prompt-2026-09-16.md).**
-The owner likes the broad flow but explicitly requests a high-effort ideation,
-research and planning session before the slices, to develop creative game
-introductions/proposals and inform them. Workspace
-`D:/Wroughtwild/work/land00-creative-discovery`, branch `codex/land00-creative-discovery`.
-The owner starts it. Research useful precedents, compare distinct directions and
-recommend a world vision, player experiences and revised roadmap. The earlier
-six-slice estimate and highland-region suggestion are provisional, not mandates.
-No implementation or automatic worker launch is selected by this change.
+**LAND-00 creative discovery is complete; recommendation awaits owner/coordinator assessment.**
+The [result, alternatives, cited research and roadmap](land00-creative-discovery-result-2026-09-16.md)
+recommends **The Inherited Landscape**, beginning with Scarwater Basin: one
+lore-shaped recovered ridge/lake/gallery-woodland place, a real dry fissure,
+meaningful approaches, useful home choices and the existing finite pressure
+workshop opportunity. This directly addresses the owner's correction that the
+world should follow its lore and feel like a connected game world, rather than
+bare ground with sporadic assets. Two planning visuals are labelled concepts,
+not runtime evidence. The proposed sequence combines terrain/art/play per place,
+then adds Dry Steppe/Red use, remaining four-force connections and one closeout.
+The three choices are direction, two-biome breadth, and later explicit adoption
+of LF acquisition/device vocabulary into fresh normal successors without LF
+campaign migration. None is marked accepted. Old V8/LF saves and rules remain.
+The [concrete proposed LAND-01 handoff](land00-land01-recommended-brief-2026-09-16.md)
+replaces the provisional highland-first idea only if selected. The historical
+sequence below is background, not a competing dispatch instruction. Planning-only
+link/source/diff checks; no game imports, benchmarks, package rebuilding or
+follow-on task launches. Worker branch: `codex/land00-creative-discovery` in
+`D:/Wroughtwild/work/land00-creative-discovery`; checked commit returned for
+coordinator integration. LAND-01 remains held for the owner's assessment/start.
 
 **Prepared for later: [LAND-01 landscape, biome and influence plan](land01-landscape-plan-worker-2026-09-16.md).**
 Workspace `D:/Wroughtwild/work/land01-landscape-plan`, branch
