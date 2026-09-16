@@ -29,7 +29,7 @@
   "root_embed_m": 0.045,
   "ground_mix": 0.82,
   "wind_bend_per_m": 0.017,
-  "normal_up_mix": 0.42,
+  "normal_up_mix": 0.64,
   "backlight": 0.1,
   "design_purpose": {
     "patch_metres": "Broad thirteen-metre masses group complementary silhouettes rather than isolated dots.",
@@ -59,7 +59,7 @@
     "root_embed_m": "Seat low growing points 4.5 cm into real supported ground.",
     "ground_mix": "Stronger local leaf-litter/low-turf blend joins physical leaves and ground.",
     "wind_bend_per_m": "Restrained anchored leaf sway; included in actual clearance bounds.",
-    "normal_up_mix": "Moderate soft leaf lighting without changing global exposure.",
+    "normal_up_mix": "Upward sky-facing leaf normals retain shaded blade form; surface lighting remains directional and global exposure stays unchanged.",
     "backlight": "Quiet transmitted leaf light maintains middle-layer readability.",
     "tall_patch_threshold": "Rushes concentrate in patch hearts.",
     "fern_patch_threshold": "Ferns bridge low patch edges and taller hearts.",

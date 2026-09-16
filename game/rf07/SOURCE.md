@@ -41,3 +41,36 @@ MultiMeshes use the existing chunk lifetime, full triangle support and RF paid
 floor/station clearance. Wind uses the existing pause-aware clock. No live
 whole-world scan, per-frame resource load, new ecology, terrain profile or save
 field is added. Legacy V1-V5 and non-highland eligibility remain unchanged.
+
+## RF-09 material cleanup, 16 September 2026
+
+RF-09 keeps these original meshes, seeded roots, support probes and reservations.
+The large regional ribs/outcrops and shingle use `stone.gdshader`, now sharing
+`mineral.gdshaderinc` with the ground. World-space nonperiodic weathering replaces
+sine bands. The GLTF plant vertex colours are already linear; they are not decoded
+again. Only the scoped shared leaf material changes; tree materials do not.
+
+Visible tuning (shader uniforms, reconstructed material data, never save state):
+
+- `rf07_mineral_dark` / `rf07_mineral_light`: cool slate to warm weathered mineral,
+  authored as sRGB (.265,.29,.315) / (.57,.55,.50), converted once by source_color.
+- `rf07_oxide` / `rf07_lichen`: sparse warm face weathering and olive upper-shelf
+  growth. Irregular noise and surface orientation limit their coverage.
+- `rf07_mineral_relief=.045`: 4.5 cm apparent weathering, normal response only;
+  detail fades with pixel footprint. Geometry/collision do not move.
+- `rf07_ground_mineral_gain=.76`: ground mineral is darker than standing outcrops.
+- `rf07_pocket_fringe=.10`: existing pocket context begins its turf/litter blend
+  early enough to join low plant edges and clear working ground. No extra roots.
+- RF-02's retained turf/litter/detail maps tile at 2.4 m with a rotated second
+  sample. They now bind on highland rock as well as grass/dirt during world entry.
+- Shared `leaf_colour_gain=1.90`: lifted leaf reflectance with wrapped diffuse
+  and retained backlight. Sky-facing normal blend is .64 for fen/impact and .52 for
+  highland leaves, following the established RF-02 grass lighting pattern. No
+  emission, global exposure or clock change.
+
+The fen material interpolates its existing patch colour (exact eligibility and
+original top height still gate it) and uses less dark turf/litter multipliers.
+This connects material below the adopted fen/bank groups without shrinking real
+source/work/route reservations or defeating narrow-terrace support rejection.
+The RF-08 creeping mat receives the same leaf response; its masks, ground/scar
+materials, digging checks and exposed-only pulse remain unchanged.

@@ -1,5 +1,17 @@
 # World Generation, Settlements and Travel
 
+## RF-09: material continuity cleanup
+
+The [RF-09 worker result](../prototype/rf09-wave-cleanup-result-2026-09-16.md)
+replaces flat highland mineral colour with irregular weathering/apparent relief,
+blends retained turf/litter textures through existing pockets and improves the
+shared fen/highland/impact leaf response. Existing biome/original-top masks,
+seeded roots, full support/paid clearances, native terrain/lakes/saves and arrival
+preparation stay unchanged. No density, reservation or world-generation change.
+The worker is ready for adoption; broad shape/composition and deep-shadow limits
+remain for the separately scoped landscape effort. See `game/rf07/SOURCE.md` for
+visible tuning. This is not new biome or colour-influence generation.
+
 ## RF-08: recovered impact margins and living scars
 
 [RF-08 worker result](../prototype/rf08-impact-scars-result-2026-09-16.md) adds

@@ -122,7 +122,7 @@ static func prepare() -> void:
    var material:=ShaderMaterial.new()
    material.shader=preload("res://rf06b/plant.gdshader")
    material.set_shader_parameter("plant_bend",float(settings.wind_bend_per_m) if role!="shingle" else 0.0)
-   material.set_shader_parameter("leaf_normal_up_mix",.32 if role!="shingle" else 0.0)
+   material.set_shader_parameter("leaf_normal_up_mix",.52 if role!="shingle" else 0.0)
    material.set_shader_parameter("leaf_backlight",.08 if role!="shingle" else 0.0)
    if role!="shingle":R7Cover.materials.append(material)
    mesh.surface_set_material(surface,rock_material if role=="shingle" else material)
@@ -164,6 +164,9 @@ func bind(material: ShaderMaterial, kind: String) -> void:
  material.set_shader_parameter("rf07_enabled",true)
  material.set_shader_parameter("rf07_mask",mask)
  material.set_shader_parameter("rf07_ground_mix",float(settings.ground_mix))
+ material.set_shader_parameter("rf07_turf",preload("res://rf02/ground.tres").meadow_albedo)
+ material.set_shader_parameter("rf07_litter",preload("res://rf02/ground.tres").woodland_albedo)
+ material.set_shader_parameter("rf07_turf_detail",preload("res://rf02/ground.tres").meadow_detail)
 
 func build(chunk: Node3D,data: Dictionary,cell: float) -> int:
  if not chunk.has_meta("surface_sampler"):return 0

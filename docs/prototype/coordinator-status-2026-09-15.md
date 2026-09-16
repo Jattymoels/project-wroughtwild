@@ -120,9 +120,18 @@ calls it a good start and explicitly approves merging, while wanting meatier
 cracks and different coloured magic pulses deep within. The coordinator agrees
 the present surface ribbons lack that physical depth. Adoption completes the
 scheduled RF creative implementation sequence, not the full reference atmosphere.
-The owner has now selected **[RF-09 wave cleanup](rf09-wave-cleanup-worker-2026-09-16.md)**.
+**[RF-09 worker cleanup is complete](rf09-wave-cleanup-result-2026-09-16.md), pending coordinator adoption.**
+Delivered: distinct weathered highland mineral, textured turf/litter pocket joins
+and shared local leaf response in fen/bank, highlands and impact planting. Exact
+cover/paid-clearance transforms and native save/geography checks pass; the paid
+floor/workbench route remains usable. Three actual game pictures are retained.
+Deep whole-scene shade, simple outcrop/tree silhouettes, bare steep/reserved
+margins and deep coloured fissure art remain unresolved visual limits. The next
+landscape/biome/influence effort requires its own scope; no worker is dispatched.
+
+The owner selected **[RF-09 wave cleanup](rf09-wave-cleanup-worker-2026-09-16.md)**.
 Workspace `D:/Wroughtwild/work/rf09-wave-cleanup`, branch `codex/rf09-wave-cleanup`;
-runtime/base instructions in `build/rf09/SETUP.md`. The owner starts it. Focus on
+runtime/base instructions in `build/rf09/SETUP.md`. The owner started it. Its focus was
 rock/ground definition, connected planting transitions and shaded-material
 readability, reusing existing art and evidence. No worker has been launched by
 the coordinator. Dedicated fissure art and wider landscape production follow
@@ -147,7 +156,7 @@ PLAY-07 is now integrated; return to the original creative outcomes.
 | Adopted; refinements in cleanup | RF-06B fen art/composition | Five authored forms, connected planting and distinct layers; visibly stronger at walking height, broader reference atmosphere still incomplete |
 | Adopted; atmosphere partial | RF-07 highland recovery | Usable rock/pocket iteration; owner agrees stronger rock/ground definition and composition belong in cleanup |
 | Adopted; deeper fissure art remains open | RF-08 impact/scar composition | Recovered margins and exposed pulses are in game; owner approves this start but wants substantial broken-rock depth and coloured energy inside |
-| Selected next | RF-09 bounded wave cleanup | Rock/ground distinction, planting transitions and shade readability; retain larger art/generation and unassigned performance notes, no exhaustive review wave |
+| Worker complete; adoption pending | RF-09 bounded wave cleanup | Weathered mineral, textured growth joins and local leaf response delivered; larger composition, deep shade/fragment limits, biome/influence art and unassigned performance notes carried forward |
 
 The three creative outcomes now have adopted playable iterations using the
 delivered RF-01–05 foundations; this does not select new world/save rules or claim
