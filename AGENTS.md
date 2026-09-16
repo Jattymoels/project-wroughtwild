@@ -269,6 +269,20 @@ perfection requirement or camera/baseline matrix. Report achieved appearance,
 remaining visual weaknesses and functional checks separately, with actual game
 pictures. Keep the normal prototype limits and current worker-start workflow.
 
+After RF-08 adoption, the owner emphasised "go big and graphically awe" for
+future visual work, and raised world generation as a possible underlying issue.
+Treat visual ambition as a requirement: lead with memorable landscape silhouettes,
+scale, depth, strong landmarks and places that inspire exploration or a home.
+A bounded task means a focused area/outcome, not a barely perceptible change.
+Identify whether the dominant gap is landform generation, terrain rendering,
+asset shape/material, or their composition before prescribing more scatter.
+Keep the recovered, living landscape direction and useful quiet/buildable spaces;
+dramatic scenery does not mean cliffs, bare craters or glowing surfaces everywhere.
+This direction does not itself select a new generation profile, rewrite existing
+saves or dispatch a broad art overhaul. Close the agreed wave with bounded
+cleanup, then scope the proposed larger landscape work explicitly. Use one
+convincing ordinary game area to establish the result and reusable seeded rules.
+
 ### Standard game development practices at prototype scale
 
 The owner asked why established game-development techniques were not the default

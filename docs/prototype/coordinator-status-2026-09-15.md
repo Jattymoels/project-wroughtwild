@@ -266,6 +266,45 @@ is launched by recording this queue.
 
 ## Working rhythm
 
+### Visual ambition and recommended next sequence — 16 September
+
+After RF-08 adoption the owner said future visual updates should "go big and
+graphically awe", and suspects a world-generation issue as well. This strengthens
+the visible outcome expected from future art briefs; it is not an implementation
+decision for a new generator or permission to replace old saved geography.
+
+The coordinator's source-informed assessment: RF-03/V8 already has physical
+landforms and home settings, while RF-06–08 chiefly dress existing geography.
+The remaining visual ceiling plausibly spans large terrain composition, stepped
+surface presentation and repeated/simple tree and rock forms. More small plants,
+brighter emission or higher terrain amplitudes alone are not a complete answer.
+This is a scoping assessment, not a newly measured diagnosis of every seed.
+
+Recommended sequence (larger work remains proposed; no worker dispatched):
+
+1. One bounded wave cleanup, prioritising the shared rock/ground distinction,
+   growth-to-ground transitions and deep-shadow readability. Select only changes
+   that materially improve the existing scenes; retain larger art, terrain and
+   unassigned performance issues explicitly rather than promising to fix every
+   backlog item or starting a new review wave.
+2. A landscape-structure slice: establish a memorable ordinary in-game region
+   with a strong skyline, coherent valley/ridge/impact shapes, an approach/reveal
+   and an appealing usable home setting. Diagnose generation versus surface-mesh
+   limitations before choosing the implementation. Any changed native geography
+   needs a scoped fresh-world successor; preserve existing Continue worlds.
+3. A landmark-art slice supporting that composition: substantial fractured rock,
+   biome-defining tree forms and recessed coloured living scars through the
+   existing concept/Blender/game pipeline. Small reusable kit, substantial visible
+   effect; procedural dressing alone is not the target.
+4. Carry the established composition into seeded biome rules with complementary
+   vegetation masses, ground transitions and legible atmospheric depth. Variation
+   must preserve the large shapes and useful routes, rather than scatter the same
+   assets uniformly. The final destination is ordinary random/chosen-seed play.
+
+These are suggested boundaries for the next major landscape effort, not a new
+four-worker dispatch pack or a claim that all four need separate jobs. Begin
+with one convincing playable area and expand from demonstrated artistic results.
+
 Build the next agreed original-plan improvement, integrate it and run a short
 check. Use owner feedback to inform the cleanup backlog; change sequence when the
 owner explicitly reprioritises or a concrete blocker requires attention. Keep one worker responsible
