@@ -21,6 +21,9 @@ ground transitions and outer-country horizon are recorded visual limits;
 owner aesthetic feedback remains deferred. No main adoption or push is claimed.
 LAND-03/04/05 remain the selected next sequence; this worker stopped at LAND-02B
 and started no further worker. Refresh LAND-03 from the adopted V10 result.
+Checked worker implementation: `37597824f73b8600504c8b6f294f0d0c0a1f329f`.
+Use the result's matching DLL, SHA-256 and editable-master paths. Final art
+import passed in 6.26 s with zero engine errors; all owned processes are ended.
 
 ### LAND-02B selection and preparation history
 

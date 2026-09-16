@@ -9,8 +9,9 @@ digging and Continue remain usable in the checked ordinary generated scene.
 
 Worktree: `D:/Wroughtwild/work/land02b-scarwater-art`; branch
 `codex/land02b-scarwater-art`; base `cc60bf748662272283b10d4b087f41f8db0aa019`.
-Coordinator integration and push are pending. The checked implementation SHA
-will be recorded in the handoff update after the implementation commit.
+Checked implementation: `37597824f73b8600504c8b6f294f0d0c0a1f329f`.
+Coordinator integration and push are pending. This subsequent documentation-only
+handoff records the implementation SHA; it changes no checked runtime input.
 No subsequent worker or LAND-03 was started. Owner playtesting remains deferred.
 
 ## Appearance compared with the selected direction
