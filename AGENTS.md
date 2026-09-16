@@ -144,7 +144,8 @@ is now integrated as `ef9601b`. Reused 64 passed worker checks; main headless
 import passed in 4.88 s with zero errors. The owner called it a good start and
 explicitly approved merging, while asking for meatier cracks with different
 coloured magic pulses deep inside. Record that desired direction as unmet, not
-as final aesthetic acceptance. Bounded cleanup is next in the original sequence.
+as final aesthetic acceptance. The owner has now selected the bounded
+[RF-09 wave cleanup](docs/prototype/rf09-wave-cleanup-worker-2026-09-16.md).
 A dedicated fissure-art production pass is a recommendation recorded in the
 coordination sheet, not an automatically dispatched all-environment intensive.
 Do not keep extending previous slices or resume R9.
@@ -282,6 +283,16 @@ This direction does not itself select a new generation profile, rewrite existing
 saves or dispatch a broad art overhaul. Close the agreed wave with bounded
 cleanup, then scope the proposed larger landscape work explicitly. Use one
 convincing ordinary game area to establish the result and reusable seeded rules.
+
+The owner then endorsed that sequence and requested more biome types, with
+world generation tying the technology/magic colours to effects on areas, growth
+and fauna. Carry this as a connected design requirement for the next landscape
+effort, building on D-030 and the existing influence identities in
+[world-premise.md](docs/world-premise.md). Different biomes and altered hosts need
+recognisable forms and relationships, beyond colour swaps. Specific biome lists,
+influence distribution/mixing and new gameplay rules remain to be scoped.
+The immediate selected task is RF-09 cleanup; the owner starts its D: worker.
+RF-09 is unrelated to the historical ART R9 review, which remains stopped.
 
 ### Standard game development practices at prototype scale
 

@@ -139,6 +139,28 @@ not a final campaign length or accepted detailed generation/save policy.
 Current curio-driven eras and acquisition remain implemented until a selected
 compatible successor replaces them.
 
+## Biome variety and generation-linked influences — owner direction, 16 September
+
+After the Reclaimed Frontier first-pass adoption, the owner endorsed the proposed
+landscape/art sequence and added: more biome types, with world generation tying
+the technology/magic colours to how areas, growth and fauna are affected.
+This carries the existing catastrophe/augmentation premise into the next
+landscape effort as one connected requirement. Biome character, visible terrain
+and growth patterns, altered animal forms and the local influence should relate;
+the desired variety is more than changing the colour of otherwise identical land.
+
+Build from the established White/Impulse, Red/Excitation, Blue/Retention and
+Green/Propagation foundations and current campaign behavior. The new biome
+catalogue, seeded distribution/overlap, strength of influence, host-specific
+expressions and any additional encounter/resource rules need a scoped proposal.
+This records direction, not an implemented ecology, an all-animal colour matrix
+or an automatic replacement of saved geography. Existing implemented systems
+remain authoritative; historical proposals are not automatically current rules.
+
+The owner explicitly chose [RF-09 cleanup](prototype/rf09-wave-cleanup-worker-2026-09-16.md)
+first. Scope the larger landscape work after that single closeout, preserving
+the years-after recovery sentiment and useful places to explore and build.
+
 ## Mysteries left open
 
 The sender and purpose of the meteorites, whether the shower was deliberate,

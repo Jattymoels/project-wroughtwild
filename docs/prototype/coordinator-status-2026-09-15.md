@@ -120,8 +120,13 @@ calls it a good start and explicitly approves merging, while wanting meatier
 cracks and different coloured magic pulses deep within. The coordinator agrees
 the present surface ribbons lack that physical depth. Adoption completes the
 scheduled RF creative implementation sequence, not the full reference atmosphere.
-Bounded cleanup is next only when dispatched. A dedicated fissure-art proposal
-is recorded below; no additional worker has started. R9 stays stopped.
+The owner has now selected **[RF-09 wave cleanup](rf09-wave-cleanup-worker-2026-09-16.md)**.
+Workspace `D:/Wroughtwild/work/rf09-wave-cleanup`, branch `codex/rf09-wave-cleanup`;
+runtime/base instructions in `build/rf09/SETUP.md`. The owner starts it. Focus on
+rock/ground definition, connected planting transitions and shaded-material
+readability, reusing existing art and evidence. No worker has been launched by
+the coordinator. Dedicated fissure art and wider landscape production follow
+later scoping; historical ART R9 stays stopped.
 
 New water geography, generation profiles and
 collision changes still need a scoped choice; none is selected by this agreement.
@@ -142,7 +147,7 @@ PLAY-07 is now integrated; return to the original creative outcomes.
 | Adopted; refinements in cleanup | RF-06B fen art/composition | Five authored forms, connected planting and distinct layers; visibly stronger at walking height, broader reference atmosphere still incomplete |
 | Adopted; atmosphere partial | RF-07 highland recovery | Usable rock/pocket iteration; owner agrees stronger rock/ground definition and composition belong in cleanup |
 | Adopted; deeper fissure art remains open | RF-08 impact/scar composition | Recovered margins and exposed pulses are in game; owner approves this start but wants substantial broken-rock depth and coloured energy inside |
-| End | Bounded cleanup slice | Consolidate deferred issues by player impact; no exhaustive review wave |
+| Selected next | RF-09 bounded wave cleanup | Rock/ground distinction, planting transitions and shade readability; retain larger art/generation and unassigned performance notes, no exhaustive review wave |
 
 The three creative outcomes now have adopted playable iterations using the
 delivered RF-01–05 foundations; this does not select new world/save rules or claim
@@ -304,6 +309,18 @@ Recommended sequence (larger work remains proposed; no worker dispatched):
 These are suggested boundaries for the next major landscape effort, not a new
 four-worker dispatch pack or a claim that all four need separate jobs. Begin
 with one convincing playable area and expand from demonstrated artistic results.
+
+The owner subsequently endorsed the sequence, added **more biome types** and
+asked for the magic/technology colours to affect generated areas, growth and
+fauna together. This reinforces the accepted augmentation premise and is now
+recorded in [world premise](../world-premise.md#biome-variety-and-generation-linked-influences--owner-direction-16-september).
+Future scoping should relate biome identity and local influence to landform,
+vegetation structure and animal expression, using the existing White/Impulse,
+Red/Excitation, Blue/Retention and Green/Propagation foundations. Specific new
+biomes, distribution/overlap and additional gameplay effects are not yet selected.
+The immediate instruction was "But let's do the clean up": RF-09 is the only
+new prepared implementation task. This does not make the entire deferred backlog
+part of cleanup or dispatch the subsequent landscape intensive.
 
 Build the next agreed original-plan improvement, integrate it and run a short
 check. Use owner feedback to inform the cleanup backlog; change sequence when the

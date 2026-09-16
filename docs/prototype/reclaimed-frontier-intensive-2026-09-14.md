@@ -42,6 +42,15 @@ recommended separately. Bounded cleanup is next in the original sequence;
 neither a wider art intensive nor a new worker is automatically dispatched.
 R9 stays stopped.
 
+The owner subsequently selected [RF-09 wave cleanup](rf09-wave-cleanup-worker-2026-09-16.md)
+and endorsed the next landscape/art direction. They want **more biome types**,
+with world generation linking the technology/magic colours to effects on areas,
+growth and fauna. This is a connected requirement for the next landscape effort,
+recorded in [world premise](../world-premise.md#biome-variety-and-generation-linked-influences--owner-direction-16-september).
+Specific biome choices and new influence/gameplay rules need scoping; they are
+not added to this cleanup. RF-09 addresses rock/ground distinction, planting
+transitions and shaded readability. Its D: worker is started by the owner.
+
 ## Sequence protection — owner correction, 16 September
 
 The owner wants the original intent and slice breakdown to remain the main plan.
@@ -56,7 +65,7 @@ PLAY-07 is integrated. Return to:
 2. RF-06B fen art/composition (adopted; remaining refinements recorded for cleanup).
 3. RF-07 highland character and recovery (adopted; visual weaknesses in cleanup).
 4. RF-08 reclaimed impacts and living scars (adopted; deeper fissure art remains open).
-5. A bounded cleanup slice drawn from the recorded player-impact notes.
+5. RF-09 bounded cleanup (selected; owner starts the prepared D: worker).
 
 These are the remaining original landscape outcomes, to be broken into small
 playable implementations using the completed RF foundations. Do not retroactively

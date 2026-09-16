@@ -94,7 +94,14 @@ cracks with different coloured magic pulses deep inside. This remains unmet.
 The original creative implementation sequence is adopted; bounded cleanup is
 next, not an automatic declaration of full environment-art completion. A dedicated
 fissure-art production pass is recommended separately, not automatically started
-or hidden inside small cleanup. See the current coordination sheet.
+or hidden inside small cleanup. The owner has now selected
+**[RF-09 cleanup](rf09-wave-cleanup-worker-2026-09-16.md)** in
+`D:/Wroughtwild/work/rf09-wave-cleanup`, branch `codex/rf09-wave-cleanup`.
+Rock/ground definition, growth transitions and shade readability are its scope;
+the owner starts the worker. The next landscape effort also carries the owner's
+new request for more biome types and generation-linked colour influences on
+areas, growth and fauna. Detailed biome/influence rules remain to be scoped;
+see the current coordination sheet and world premise. ART R9 remains stopped.
 
 **Owner scheduling correction, 16 September:** stick firmly to the original slice
 breakdown. Raise additions, but recommend recording them for a bounded cleanup
