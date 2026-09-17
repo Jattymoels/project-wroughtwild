@@ -8,6 +8,12 @@ Selection authorises the direction, two-biome wave and later reuse of existing L
 
 ## The delivery sequence
 
+LAND-03 is now adopted (`ea87ef0` / `a22a771`) as fresh V11 with all four existing
+sources/devices usable in ordinary play. The next prepared
+[LAND-04 brief](land04-force-journeys-worker-2026-09-17.md) develops the remaining
+journeys in V12, followed by LAND-05. No worker starts automatically. Earlier
+version expectations and "next" labels below record original planning history.
+
 **17 September owner approval:** LAND-02B's V10 foundation and art are integrated
 (`3759782` / `5c41ed2`, adoption `a02ddbf`). The owner loves the current look and
 likes the odd/campy cliffs. This supersedes the coordinator's suggested extra art

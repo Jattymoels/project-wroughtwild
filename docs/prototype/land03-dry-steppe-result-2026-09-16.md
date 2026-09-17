@@ -1,9 +1,39 @@
 # LAND-03 — living Dry Steppe and useful four-force acquisition
 
 Worker result, 17 September 2026. Branch `codex/land03-dry-steppe` in
-`D:/Wroughtwild/work/land03-dry-steppe`. Coordinator integration/push pending.
+`D:/Wroughtwild/work/land03-dry-steppe`. Adopted on main on 17 September through
+implementation and handoff `a22a771cee9d8280d654c4062ea86369f22cc9a3`; publication
+is recorded by the coordinator's subsequent adoption commit.
 All focused changed-behavior checks are complete. Checked implementation:
 `ea87ef04638bbaa4674144d46cde75b51a02233b`. The following handoff commit changes documentation only.
+
+## Coordinator adoption, 17 September
+
+The matching DLL is installed in the owner checkout. All 14 changed native build
+inputs and the DLL matched worker provenance. Main's isolated hidden headless
+import passed in **8.66 s**, exit 0, zero reported errors; no owned process remains.
+The worker's focused native, generation, paid-use, corrected-route and Continue
+evidence below was reused. The 198/200 full-use run remains recorded as such;
+the later 8/8 interaction check resolves its two incorrect interior endpoints.
+No new renderer, campaign replay or performance benchmark was run.
+
+The coordinator inspected reveal, Red release and paid workshop pictures. The
+low dry growth, exposed ribs and long open views distinguish Steppe from Gallery
+Woodland. Broad sandy slopes, repeated grass and subtle Red release deposits
+remain visible; the workshop view also shows scalloped outer slopes. These are
+closeout notes, not a request to naturalise the owner-approved Scarwater cliffs.
+This is a usable original-plan iteration, not owner aesthetic approval of the
+unplayed Steppe or proof of smooth performance. Stutters and elk abundance remain
+the explicit deferred LAND-05 items.
+
+[LAND-04's remaining force journeys](land04-force-journeys-worker-2026-09-17.md)
+are next, followed by LAND-05. Its owner-started workspace and prompt are prepared;
+no worker is launched. The four sources already work: LAND-04 develops their
+physical hosts, approaches and selected existing fauna, without redoing adoption.
+
+Local integration record and retained previous V10 DLL:
+`D:/Wroughtwild/work/land03-dry-steppe/build/land03/coordinator-adoption/`.
+Unrelated owner captures/import metadata were preserved.
 
 ## Playable result and original-plan progress
 

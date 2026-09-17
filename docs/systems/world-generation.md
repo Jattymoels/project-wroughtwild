@@ -1,6 +1,6 @@
 # World Generation, Settlements and Travel
 
-## LAND-03: worker V11 Dry Steppe and ordinary acquisition
+## LAND-03: adopted V11 Dry Steppe and ordinary acquisition
 
 **Worker implementation, 17 September 2026.** Fresh ordinary worlds select
 `frontier_v11` using independent `worldgen-frontier-v11.json` inputs and a
@@ -8,7 +8,8 @@ separate native Steppe composer. Focused generation and initial appearance
 checks below have passed. Ordinary paid work, final 8-check aimed source-route
 use and 27-check fresh-process Continue/rejection are complete; see the
 [worker result](../prototype/land03-dry-steppe-result-2026-09-16.md) for exact evidence.
-This is not yet coordinator adoption or owner aesthetic approval.
+Adopted on main through `ea87ef0` / `a22a771`, with matching DLL and clean 8.66 s
+headless import. Owner Steppe aesthetic/playtest feedback remains open.
 
 The approved Scarwater basin, campy cliffs, lake, Gallery Woodland and two linked
 homes are composed through the unchanged V10 foundation. A seeded opposite-side

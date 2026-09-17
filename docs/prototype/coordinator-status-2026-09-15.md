@@ -7,18 +7,24 @@ outrank historical review, packaging and rollout requirements.
 
 ## Current adoption and next worker
 
-**LAND-03 complete and checked; ready for coordinator integration.**
+**LAND-03 adopted; next is LAND-04 White/Blue/Green journeys.**
 Implementation `ea87ef04638bbaa4674144d46cde75b51a02233b`; matching native DLL is recorded in the result.
 [Dry Steppe/Red result](land03-dry-steppe-result-2026-09-16.md) records the V11
 landforms, original low-growth kit and ordinary four-source/device adoption.
 The approved Scarwater look, old Continue identities and ordinary campaign stay
 intact. Worker `D:/Wroughtwild/work/land03-dry-steppe`, branch
-`codex/land03-dry-steppe`; coordinator handles main adoption and push.
+`codex/land03-dry-steppe`; handoff `a22a771` and implementation are on main with
+the matching DLL. Fourteen changed native inputs match provenance; main's
+isolated headless import passed in 8.66 s, exit 0, zero errors. Checks ended.
 Generation 34, native 63, corrected-route 8 and Continue 27 checks pass. The full
 200-assertion use run passed 198; its two solid-source endpoint fixture failures
 are resolved by the focused aimed-interaction check, without relabelling that
 original run. Four actual game pictures and exact DLL provenance are retained.
-LAND-04's White/Blue/Green journeys remain next, then one bounded LAND-05 closeout.
+LAND-04's [full brief](land04-force-journeys-worker-2026-09-17.md) and
+[copyable prompt](land04-session-prompt-2026-09-17.md) are prepared in
+`D:/Wroughtwild/work/land04-force-journeys`, branch `codex/land04-force-journeys`.
+It uses fresh V12 for changed sites/host geography, preserving V11 and earlier
+Continue; then one bounded LAND-05 closeout follows.
 No later worker has been launched. New Steppe visual feedback remains unplayed by
 the owner; standing implementation approval is not an aesthetic playtest claim.
 
@@ -35,7 +41,7 @@ the owner; standing implementation approval is not an aesthetic playtest claim.
   tuning pass after identifying the actual spawning path. Exact reduction is
   not selected. The owner suspects it is unrelated to lag; keep these as
   separate observations and preserve existing ownership/reward rules.
-- Steppe closeout notes: broad exposed slopes, repeated grass/fringe forms and
+- Steppe closeout notes: subdued distant Red deposits, broad exposed slopes, repeated grass/fringe forms and
   scalloped outer terrain remain visible in the worker pictures. Local form and
   atmosphere can improve in the bounded closeout; these do not change the selected
   LAND-04 sequence. No acquisition pacing or combat-balance claim follows from

@@ -34,7 +34,8 @@ approaches and contrasting home ground. The owner-approved Scarwater appearance
 and all older Continue profiles remain intact. The existing Red/White/Blue/Green
 sources and paid devices work under the ordinary campaign; no LF laboratories or
 new economy are enabled. See the [worker result and actual game pictures](docs/prototype/land03-dry-steppe-result-2026-09-16.md).
-Coordinator integration is pending. LAND-04's remaining journeys stay next;
+Integrated on main through `ea87ef0` / `a22a771`, with its matching native DLL.
+LAND-04's remaining journeys are prepared for the owner-started session;
 reported stutters/hitches and excessive elk/stag abundance remain LAND-05 items.
 
 The [current whole-project coordination sheet](docs/prototype/coordinator-status-2026-09-15.md)

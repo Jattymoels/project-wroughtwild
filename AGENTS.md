@@ -435,6 +435,24 @@ programme is selected. V10 is now published: preserve its Continue geography;
 further physical-generation changes require the next profile, and later LAND-03
 numbering must be refreshed accordingly. Owner playtesting remains deferred.
 
+### LAND-03 adoption and LAND-04 preparation, 17 September
+
+LAND-03 is adopted on main on 17 September through `ea87ef0` / `a22a771`, with
+its matching DLL and a clean 8.66 s main headless import. The
+[result](docs/prototype/land03-dry-steppe-result-2026-09-16.md) records reused
+native/generation, paid work, corrected source interaction and Continue evidence;
+its 198/200 full-use run is not relabelled clean. Fresh V11 adds distinct Dry
+Steppe/Red and ordinary four-source/device acquisition while preserving the
+approved Scarwater and old profiles. Owner Steppe feedback remains open.
+Next is the prepared [LAND-04 force journeys](docs/prototype/land04-force-journeys-worker-2026-09-17.md)
+in `D:/Wroughtwild/work/land04-force-journeys`, branch `codex/land04-force-journeys`.
+The owner starts it; no worker launches automatically. It develops the remaining
+White/Blue/Green hosts, approaches and existing fauna within current habitats;
+no third new biome or LF campaign adoption. Changed geography takes fresh V12
+and preserves V11/older/LF Continue. LAND-05 follows, including the owner's
+high-impact stuttering and separate elk-abundance request; neither is fixed by
+LAND-03 or a passing import. Do not start an intermediate performance/art tangent.
+
 ### Standard game development practices at prototype scale
 
 The owner asked why established game-development techniques were not the default

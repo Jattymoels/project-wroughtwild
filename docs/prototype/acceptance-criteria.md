@@ -1,6 +1,6 @@
 # Vertical-Slice Acceptance Criteria
 
-## LAND-03 Dry Steppe and ordinary acquisition (worker)
+## LAND-03 Dry Steppe and ordinary acquisition (adopted)
 
 - [x] Fresh V11 adds seeded physical Dry Steppe and an original supported low-growth
   kit while retaining the approved Scarwater character and all four home cores.
@@ -16,7 +16,8 @@
   gameplay remain open. Lag/hitches and excessive elk are deferred LAND-05 items.
 
 [LAND-03 result and actual game pictures](land03-dry-steppe-result-2026-09-16.md).
-Coordinator integration/push remains pending; LAND-04 is next, not launched.
+Adopted through `ea87ef0` / `a22a771`; matching DLL and main's clean 8.66 s
+headless import checked. LAND-04 is prepared next, not launched.
 
 ## LAND-02B Scarwater foundation and art (adopted; owner look approved)
 

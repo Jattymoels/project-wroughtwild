@@ -1,5 +1,13 @@
 # Decision Registry
 
+LAND-03 adoption and LAND-04 preparation, 17 September 2026: `ea87ef0` / `a22a771`
+are integrated with the matching DLL and clean 8.66 s main import. The selected
+next outcome is [White/Blue/Green force journeys](../prototype/land04-force-journeys-worker-2026-09-17.md),
+building on already usable acquisition. Fresh V12 isolates changed source/host
+geography; V11/older/LF Continue stays intact. Existing fauna, rules, costs and
+ordinary campaign remain; no third new biome. The owner starts the prepared
+worker. Lag and elk tuning remain deferred LAND-05 work.
+
 LAND-03 implementation, 17 September 2026: the selected fresh V11 successor adds
 living Dry Steppe/Red geography and the complete existing four-source/device
 acquisition set under ordinary `legacy` campaign policy. The approved Scarwater
