@@ -41,6 +41,14 @@ lag-free playthrough and the latest positive initial feedback both remain eviden
 
 ## Recommended next sequence — proposed, not dispatched
 
+**Later playtest update, 17 September:** the owner supplied substantial
+[scarcity, extraction, combat, caves and building feedback](playtest-progression-extraction-building-notes-2026-09-17.md).
+The coordinator now recommends designing the early resource-to-tool progression
+and resource rewards before expanding weighted generation. This refines the
+proposal below; it does not dispatch a new wave or adopt the suggested mechanics.
+Keep the weighted catalogue as the world-generation follow-on, informed by what
+players need to discover and why dangerous resource areas are worthwhile.
+
 1. **Finish this playtest round.** Consolidate actual observations; address any
    concrete progression/save blocker first. Reopen performance work on relevant
    evidence, not a speculative benchmark wave. No automatic additional LAND slice.

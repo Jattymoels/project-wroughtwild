@@ -7,6 +7,15 @@ outrank historical review, packaging and rollout requirements.
 
 ## LAND-05 adopted; selected LAND wave integrated
 
+**Further playtest notes, 17 September:** early scarcity and building feel good;
+early Foundry power, house-scale stone supply, cave usefulness/escape and building
+controls need attention. The owner proposes earned lore-based extraction modules,
+local resource danger, starter weapons, revised statuses and diagonal walls.
+[Full observations, source findings and recommendations](playtest-progression-extraction-building-notes-2026-09-17.md)
+preserve these as feedback/proposals. Recommended next planning priority is the
+early resource-to-tool loop before broader weighted-generation expansion. No new
+mechanics, wave or worker are dispatched; LAND's delivered count is unchanged.
+
 **Latest owner feedback:** generation and the world feel much better from initial
 looks/play; playtesting continues. This is positive initial feedback, not broad
 performance or gameplay clearance. The owner proposes future weighted biome
