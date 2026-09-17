@@ -2,7 +2,7 @@
 
 // Seed-generated bounded sandpit world (D-003). In plain terms: given one
 // number (the seed) and the rules in worldgen.json, this produces the same
-// world every time — a full 3D block field (terrain, strata, carved caves),
+// world every time â€” a full 3D block field (terrain, strata, carved caves),
 // the biome per column, where every tree, boulder, iron vein and mob pack
 // stands, where the player starts and where the trial gate waits. The
 // engine renders this data; it never invents terrain of its own, so tests
@@ -198,6 +198,17 @@ struct DrySteppePlace {
     bool fallback=false;
     std::vector<SurfacePoint> ridgeRoute, lowRoute, mineralHosts, releasePockets;
 };
+// LAND-04 physical force/host relationships, regenerated from V12 and seed.
+// These records describe geography only; source stock and finite host death
+// retain their existing LeylineWorld and MobWorld owners.
+struct ForceJourney {
+    std::string id, sourceId, channel, biome, host, hostId;
+    SurfacePoint at, reveal, workStance, hostAt;
+    WorldDirection direction;
+    double radiusM=0, phase=0;
+    bool fallback=false, secondary=false;
+    std::vector<SurfacePoint> approach, sourceRoute, hostRoute, formAnchors, growthAnchors;
+};
 // Regenerated local surface detail, not saved ownership. Zero is an absent
 // sample. Signs always agree with the generated voxel field; digs override it.
 struct SurfaceDensityField {
@@ -241,6 +252,7 @@ struct WorldMap {
     std::vector<ScarwaterPlace> scarwater;
     std::vector<DrySteppePlace> drySteppe;
     std::vector<PlacedLeylineSource> leylineSourceSites;
+    std::vector<ForceJourney> forceJourneys;
     SurfaceDensityField surfaceDensity;
     std::vector<float> augmentationField; // v4 only; row-major cells, finite [0,1]
     int spawnX = 0, spawnZ = 0;

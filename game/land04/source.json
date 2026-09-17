@@ -1,0 +1,117 @@
+{
+  "method": "Original directly authored procedural Blender geometry, not image-to-3D or concept pixels.",
+  "recipe": "tools/wroughtwild-land04/build_hosts.py",
+  "seed": 170904,
+  "source": "D:\\Wroughtwild\\work\\land04-force-journeys\\build\\land04\\source-art\\force-hosts.blend",
+  "coordinates": "Metres; standard glTF Y up.",
+  "forms": {
+    "blue-sheaths": {
+      "purpose": "Nested, persistent overlapping bracts shelter a pale retained centre; living fen/bank foliage.",
+      "triangles": 5984,
+      "vertices": 4240,
+      "sha256": "9eb4ef7a7856988192dbefefe48fe646d28b40b8046796231843faf5eca8ab93",
+      "bounds_blender": [
+        [
+          -1.47151517868042,
+          -1.5915899276733398,
+          -0.03999999910593033
+        ],
+        [
+          1.4953997135162354,
+          1.483336329460144,
+          1.2866286039352417
+        ]
+      ]
+    },
+    "blue-lamination": {
+      "purpose": "Thin irregular mineral scales cling to native supported nested banks; no freestanding solid shell.",
+      "triangles": 552,
+      "vertices": 378,
+      "sha256": "4f05847c656572ef0cc02ef207c222913319480587879666a852f09a71e7209e",
+      "bounds_blender": [
+        [
+          -2.131802558898926,
+          -0.9669250249862671,
+          -0.03500000014901161
+        ],
+        [
+          2.452754497528076,
+          1.1056689023971558,
+          0.17400000989437103
+        ]
+      ]
+    },
+    "white-brace": {
+      "purpose": "Asymmetric loaded roots and offset mineral flakes follow one common displacement direction.",
+      "triangles": 9643,
+      "vertices": 7173,
+      "sha256": "3140a763d4c4c3adce6628bd4b7f585552bc1a1619200f2110d65d477c72b89e",
+      "bounds_blender": [
+        [
+          -2.3473446369171143,
+          -1.8678808212280273,
+          -0.03849976509809494
+        ],
+        [
+          2.7176976203918457,
+          2.3935909271240234,
+          0.8954874873161316
+        ]
+      ]
+    },
+    "green-root-fan": {
+      "purpose": "Broad connected branching woody roots with attached moist woodland fronds.",
+      "triangles": 9342,
+      "vertices": 6984,
+      "sha256": "1b8c25d813a7a277aabb63d538cbf332bdf8bd77ef81250c48c676f8085ffc68",
+      "bounds_blender": [
+        [
+          -2.545691728591919,
+          -1.8678808212280273,
+          -0.03849976509809494
+        ],
+        [
+          2.7234139442443848,
+          2.3127169609069824,
+          2.008519411087036
+        ]
+      ]
+    },
+    "green-steppe-colony": {
+      "purpose": "Low horizontal connected woody colony with small stiff dry-host leaves and real gaps.",
+      "triangles": 12110,
+      "vertices": 9104,
+      "sha256": "b6f49c15f2ccb33b0b9babb33888fc8e4ea9ec1206bb0ea70d3420deb02d114c",
+      "bounds_blender": [
+        [
+          -1.8873003721237183,
+          -1.6118824481964111,
+          0.013776160776615143
+        ],
+        [
+          2.3591713905334473,
+          2.346132755279541,
+          0.5648879408836365
+        ]
+      ]
+    },
+    "blue-bracts-dry": {
+      "purpose": "Short compact perennial overlapping bracts for the sheltered Rocky Hills fallback.",
+      "triangles": 4488,
+      "vertices": 3180,
+      "sha256": "b41c6a75038e7b7f744c50e70abe41cca7d9169882f7d7dc74ce4efc5fa90b02",
+      "bounds_blender": [
+        [
+          -1.084553599357605,
+          -1.1728920936584473,
+          -0.03999999910593033
+        ],
+        [
+          0.7278665900230408,
+          1.0050568580627441,
+          0.8342831134796143
+        ]
+      ]
+    }
+  }
+}

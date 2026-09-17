@@ -15,7 +15,7 @@ const STONE := Color("555e5b")
 const METAL := Color("727a77")
 
 static func build(root: Node3D, ground: Terrain) -> FrontierSites:
-	if ground.world_profile() not in ["living_frontier_wave3","frontier_v11"]: return null
+	if ground.world_profile() not in ["living_frontier_wave3","frontier_v11","frontier_v12"]: return null
 	var result := FrontierSites.new()
 	result.name = "FrontierSites"
 	result.terrain = ground
@@ -63,6 +63,9 @@ func _compose() -> void:
 			for i in range(0,route.size(),int(LeylineSource.LOOK.clue_spacing_m)):
 				_scar(route[i],influence)
 	for habitat: Dictionary in terrain.map.frontier_hosts:
+		# V12's White/Blue/Green signs are actual native bank/root-host forms.
+		# Keep the published Red journey and all older LF/V11 cues unchanged.
+		if terrain.world_profile()=="frontier_v12" and String(habitat.influence)!="red": continue
 		var path: PackedVector3Array = habitat.source_route
 		var spacing := int(terrain.map.frontier_rules.habitat_cue_spacing_m)
 		for i in range(0,path.size(),spacing): _scar(path[i],String(habitat.influence))
@@ -134,7 +137,7 @@ func _artificial_trail() -> void:
 
 func _scar(at: Vector3, influence: String, growth := false) -> void:
 	var first_part := dressing.size()
-	if terrain.world_profile()=="frontier_v11":
+	if terrain.world_profile() in ["frontier_v11","frontier_v12"]:
 		at = StrangeSites._ground(terrain,at.x,at.z)
 		if not at.is_finite(): return
 	var colour: Color = FrontierHostLook.PALETTE[influence]
@@ -153,7 +156,7 @@ func _scar(at: Vector3, influence: String, growth := false) -> void:
 				branch.rotation.y = -.4 if i==0 else .4
 			if growth: _box(at+Vector3(0,.45,0),Vector3(.07,.6,.07),Color("66724b"))
 
-	if terrain.world_profile()=="frontier_v11":
+	if terrain.world_profile() in ["frontier_v11","frontier_v12"]:
 		for i in range(first_part,dressing.size()): dressing[i].set_meta("support_anchor",at)
 
 func _laboratory(data: Dictionary) -> void:

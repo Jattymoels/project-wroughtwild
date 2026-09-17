@@ -17,7 +17,7 @@ static func build(root: Node3D, ground: Terrain) -> CataclysmSites:
 	if old != null:
 		root.remove_child(old)
 		old.queue_free()
-	if ground.world_profile() not in ["frontier_v4","frontier_v5","frontier_v6","frontier_v7","frontier_v8","frontier_v9","frontier_v10","frontier_v11","living_frontier_wave1","living_frontier_wave3"]: return null
+	if ground.world_profile() not in ["frontier_v4","frontier_v5","frontier_v6","frontier_v7","frontier_v8","frontier_v9","frontier_v10","frontier_v11","frontier_v12","living_frontier_wave1","living_frontier_wave3"]: return null
 	var result := CataclysmSites.new()
 	result.name = "CataclysmSites"
 	result.terrain = ground

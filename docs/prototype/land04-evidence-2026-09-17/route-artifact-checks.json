@@ -1,0 +1,37 @@
+{
+  "checks": 6,
+  "failures": 0,
+  "details": [
+    {
+      "passed": true,
+      "label": "expected field set remains exact"
+    },
+    {
+      "passed": true,
+      "label": "decoded expectation differs from original backup only in journey_hash"
+    },
+    {
+      "passed": true,
+      "label": "old and new journey hashes exactly match the retained route report"
+    },
+    {
+      "passed": true,
+      "label": "paid checkpoint SHA-256 exactly matches the completed corrected-route run"
+    },
+    {
+      "passed": true,
+      "label": "original 33/34 rendered result remains explicitly recorded"
+    },
+    {
+      "passed": true,
+      "label": "all four input evidence artifacts remain byte-for-byte unchanged"
+    }
+  ],
+  "prior_journey_hash": 2197875037,
+  "final_journey_hash": 1669597966,
+  "checkpoint_sha256": "8b35dfb69332385447cf317bdfd7e2ebd4637e1bbc7c188b873e3b4f8adcdccb",
+  "original_route_report_sha256": "e4c9fe5e2467590766c22dab861407da4d81c7a7ffc02b55bf9ca0f6d855b69a",
+  "original_expectation_sha256": "dd17e88c922cf3630a5fcf5cb86dfc3003a436998b6e7b9e21d810a9320e91d2",
+  "diagnosis": "Final engine artifact assertion compared JSON-parsed float to newly inserted int hash in deep Variant equality. Exact Decimal decoding confirms only journey_hash value changed; prior dug/height numeric spellings changed from integer to .0 without value changes. corrected_route.gd now JSON-normalizes both assertion operands.",
+  "scope": "Standalone artifact verification only. Original 33/34 renderer result and 183/184 use result retained; no game, source work, native build or renderer rerun."
+}

@@ -196,7 +196,7 @@ func _apply_visual() -> void:
 		shape.size=Vector3(.9,3,.9)
 		collider.position=Vector3(0,1.5,0)
 	collider.shape = shape
-	if _is_tree() and _terrain()!=null and _terrain().world_profile() in ["frontier_v10","frontier_v11"] and _biome_id()=="gallery_woodland":
+	if _is_tree() and _terrain()!=null and _terrain().world_profile() in ["frontier_v10","frontier_v11","frontier_v12"] and _biome_id()=="gallery_woodland":
 		mesh_instance.mesh=preload("res://land02b/kit.gd").tree(_visual_seed())
 		mesh_instance.material_override=null
 		mesh_instance.visibility_range_end=235.0
@@ -225,7 +225,7 @@ func _use_authored(mesh_instance: MeshInstance3D, id: String) -> void:
 	# profiles have no field and keep their ordinary common-resource surfaces.
 	var influence := 0.0
 	var terrain := _terrain()
-	if terrain!=null and terrain.world_profile() in ["frontier_v4", "frontier_v5", "frontier_v6","frontier_v7","frontier_v8","frontier_v9","frontier_v10","frontier_v11","living_frontier_wave1","living_frontier_wave3"]:
+	if terrain!=null and terrain.world_profile() in ["frontier_v4", "frontier_v5", "frontier_v6","frontier_v7","frontier_v8","frontier_v9","frontier_v10","frontier_v11","frontier_v12","living_frontier_wave1","living_frontier_wave3"]:
 		var field: PackedFloat32Array=terrain.map.get("augmentation_field",PackedFloat32Array())
 		var width: int=int(terrain.map.get("width",0))
 		var height: int=int(terrain.map.get("height",0))
@@ -328,7 +328,7 @@ func refresh_surface() -> void:
 		var y := terrain.rendered_height(position.x,position.z,position.y)
 		if is_finite(y):
 			mesh.position.y = y-position.y-0.025
-			if terrain.world_profile() in ["frontier_v10","frontier_v11"] and _biome_id()=="gallery_woodland" and _is_tree():collider.position.y=mesh.position.y
+			if terrain.world_profile() in ["frontier_v10","frontier_v11","frontier_v12"] and _biome_id()=="gallery_woodland" and _is_tree():collider.position.y=mesh.position.y
 			if HabitatResourceArt.supports(visual):
 				collider.position.y = y-position.y+(collider.shape as BoxShape3D).size.y*0.5
 

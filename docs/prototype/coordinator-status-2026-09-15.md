@@ -7,7 +7,35 @@ outrank historical review, packaging and rollout requirements.
 
 ## Current adoption and next worker
 
-**LAND-03 adopted; next is LAND-04 White/Blue/Green journeys.**
+**LAND-04 worker complete; ready for coordinator integration.**
+The [force-journey result](land04-force-journeys-result-2026-09-17.md) records fresh
+V12 White/Blue/Green physical hosts, four-source ownership, selected finite fauna,
+the six authored host forms and four actual final game pictures. Worktree
+`D:/Wroughtwild/work/land04-force-journeys`, branch `codex/land04-force-journeys`.
+Main remains at adopted LAND-03 until the coordinator integrates this result;
+the worker has not pushed or started LAND-05.
+
+Generation/ownership 42 and native fallback 12 assertions passed. Full use passed
+183/184; the actual White route crossed the source body. A final route-only
+correction preserves all terrain and placements while avoiding source footprints.
+Its White controller/physical-identity checks passed; the 33/34 correction run's
+sole remaining failure was a JSON numeric-type report comparison, resolved by
+six separate artifact checks without rerendering. Fresh-process Continue/rejection
+passed 33/33 on the final DLL, and final import passed in 4.40 s with zero errors.
+The failed original runs remain identified in the result. All owned checks ended.
+Twelve changed native inputs and six selected GLBs match provenance. Matching DLL
+SHA-256: `2c9916bfc0ae30a6ad04b8f13da5546b95045bfd360087285b763d8979836561`.
+
+Blue retained pockets/sheaths, White braced shoulders and taller woodland versus
+low Steppe Green hosts are delivered as playable seeded places. Repeated forms,
+thin roots/stems, open work clearances and subtle distant light cues remain
+refinement notes, not owner aesthetic acceptance. The approved Scarwater look
+and old profiles remain intact. After coordinator adoption, the original plan's
+single bounded LAND-05 closeout is next; no later worker is launched here.
+
+### Previous adoption: LAND-03
+
+**LAND-03 adopted.**
 Implementation `ea87ef04638bbaa4674144d46cde75b51a02233b`; matching native DLL is recorded in the result.
 [Dry Steppe/Red result](land03-dry-steppe-result-2026-09-16.md) records the V11
 landforms, original low-growth kit and ordinary four-source/device adoption.
@@ -23,8 +51,8 @@ original run. Four actual game pictures and exact DLL provenance are retained.
 LAND-04's [full brief](land04-force-journeys-worker-2026-09-17.md) and
 [copyable prompt](land04-session-prompt-2026-09-17.md) are prepared in
 `D:/Wroughtwild/work/land04-force-journeys`, branch `codex/land04-force-journeys`.
-It uses fresh V12 for changed sites/host geography, preserving V11 and earlier
-Continue; then one bounded LAND-05 closeout follows.
+Its completed worker result above uses fresh V12 for changed sites/host geography,
+preserving V11 and earlier Continue; then one bounded LAND-05 closeout follows.
 No later worker has been launched. New Steppe visual feedback remains unplayed by
 the owner; standing implementation approval is not an aesthetic playtest claim.
 
@@ -46,6 +74,11 @@ the owner; standing implementation approval is not an aesthetic playtest claim.
   atmosphere can improve in the bounded closeout; these do not change the selected
   LAND-04 sequence. No acquisition pacing or combat-balance claim follows from
   staged test materials and a forced finite-host death.
+- LAND-04 refinement notes: repeated sheath/frond/root groups, simple shoulder
+  cuts and sparse woodland middle growth; narrow pulse cues can be lost at
+  approach distance. Keep useful work clearances. Dry Rocky Hills Blue fallback
+  art is implemented/imported but not an inspected final scene. No additional
+  source, biome or art/performance worker is automatically dispatched for these.
 - Prior residual visual observations are optional refinement. Odd/campy cliff
   character is approved and must not be recorded as a defect to naturalise.
 

@@ -8,7 +8,7 @@
 
 namespace wroughtwild::leyline {
 inline constexpr const char* profile = "living_frontier_wave1";
-inline bool supports(const std::string& id) { return id == profile || id == "living_frontier_wave3" || id == "frontier_v11"; }
+inline bool supports(const std::string& id) { return id == profile || id == "living_frontier_wave3" || (id == "frontier_v11" || id == "frontier_v12"); }
 inline constexpr int saveVersion = 4;
 struct Source {
     std::string id, label, material, rareItem;
@@ -36,7 +36,7 @@ public:
     const std::string& worldProfile() const { return worldProfile_; }
     const State& state(const std::string& id) const;
     const Source& source(const std::string& id) const;
-    // Published LF keeps its home margin; V11 uses its typed reachable source site.
+    // Published LF keeps its home margin; V11/V12 use their own typed reachable source sites.
     static worldgen::SurfacePoint anchor(const Source&, const worldgen::WorldMap&);
     Result work(const std::string& id);
     Result collect(const std::string& id, const std::string& item, economy::PlayerEconomy& player);

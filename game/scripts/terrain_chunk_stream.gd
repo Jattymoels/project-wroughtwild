@@ -286,7 +286,7 @@ func _build_horizon() -> void:
 	var began := Time.get_ticks_usec()
 	var surface:=SurfaceTool.new()
 	surface.begin(Mesh.PRIMITIVE_TRIANGLES)
-	var step:=4 if terrain.world_profile() in ["frontier_v9","frontier_v10","frontier_v11"] else int(_settings.terrain_far_step_cells)
+	var step:=4 if terrain.world_profile() in ["frontier_v9","frontier_v10","frontier_v11","frontier_v12"] else int(_settings.terrain_far_step_cells)
 	var width:=int(terrain.map.width)
 	var height:=int(terrain.map.height)
 	var cell:=float(terrain.map.cell_size)
@@ -313,7 +313,7 @@ func _build_horizon() -> void:
 	# V9 has taller displaced faces. A conventional coarse-mesh skirt closes
 	# the height difference at detailed chunk boundaries; it has no collision.
 	# The same mask removes skirts inside exact/edited chunks, preserving digs.
-	if terrain.world_profile() in ["frontier_v9","frontier_v10","frontier_v11"]:
+	if terrain.world_profile() in ["frontier_v9","frontier_v10","frontier_v11","frontier_v12"]:
 		for iz in rows-1:
 			for ix in columns-1:
 				var a:=iz*columns+ix
@@ -337,7 +337,7 @@ func _build_horizon() -> void:
 	if terrain.world_profile()=="frontier_v9":
 		material.shader=preload("res://land02/horizon.gdshader")
 		preload("res://land02/kit.gd").bind_ground(material,terrain.map)
-	if terrain.world_profile() in ["frontier_v10","frontier_v11"]:
+	if terrain.world_profile() in ["frontier_v10","frontier_v11","frontier_v12"]:
 		material.shader=preload("res://land02b/horizon.gdshader")
 		preload("res://land02b/kit.gd").bind_ground(material,terrain.map)
 		material.set_shader_parameter("landmark_mask",preload("res://land02b/landmark.gd").build(terrain,_mask_texture))

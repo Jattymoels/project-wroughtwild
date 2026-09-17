@@ -1,0 +1,64 @@
+{
+	"art": {
+		"blue-final": {
+			"instances": 12,
+			"journey": "journey_blue_source",
+			"parts": 12,
+			"placement": {
+				"placed_blue-lamination": 3,
+				"placed_blue-sheaths": 9,
+				"reserved": 3,
+				"surface_support": 2
+			},
+			"roles": {
+				"blue-lamination": 3,
+				"blue-sheaths": 9
+			}
+		},
+		"green-final": {
+			"instances": 15,
+			"journey": "journey_green_source",
+			"parts": 15,
+			"placement": {
+				"placed_green-root-fan": 15
+			},
+			"roles": {
+				"green-root-fan": 15
+			}
+		},
+		"green-steppe-final": {
+			"instances": 13,
+			"journey": "journey_green_steppe",
+			"parts": 13,
+			"placement": {
+				"chunk_edge": 1,
+				"placed_green-steppe-colony": 15
+			},
+			"roles": {
+				"green-steppe-colony": 13
+			}
+		},
+		"white-final": {
+			"instances": 15,
+			"journey": "journey_white_source",
+			"parts": 15,
+			"placement": {
+				"placed_white-brace": 15,
+				"surface_support": 1
+			},
+			"roles": {
+				"white-brace": 15
+			}
+		}
+	},
+	"checkpoint_sha256": "8b35dfb69332385447cf317bdfd7e2ebd4637e1bbc7c188b873e3b4f8adcdccb",
+	"checkpoint_updated": false,
+	"checks": 34,
+	"distance_m": 29.663752682507,
+	"expected_journey_hash_updated": true,
+	"failures": 1,
+	"final_journey_hash": 1669597966,
+	"prior_journey_hash": 2197875037,
+	"reason": "Only route metadata changed to avoid the solid source footprint. Exact terrain and all non-route journey fields passed against retained original seed77 evidence; corrected White controller route passed. Existing paid source/host/device/build/edit evidence and original 183/184 run are reused unchanged.",
+	"segments_checked": 380
+}
