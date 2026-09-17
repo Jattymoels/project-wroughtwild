@@ -1,0 +1,135 @@
+{
+  "method": "Original directly authored procedural Blender geometry, not image-to-3D or concept pixels.",
+  "recipe": "tools/wroughtwild-land05/build_hosts.py",
+  "seed": 170904,
+  "source": "D:\\Wroughtwild\\work\\land05-closeout\\build\\land05\\source-art\\force-hosts.blend",
+  "coordinates": "Metres; standard glTF Y up.",
+  "forms": {
+    "blue-sheaths": {
+      "purpose": "Nested, persistent overlapping bracts shelter a pale retained centre; living fen/bank foliage.",
+      "triangles": 5984,
+      "vertices": 4240,
+      "sha256": "4d733ed560859b6f8ddf6b3f78f606ad8ed1bcae0ea95238e7d20657f3518bde",
+      "bounds_blender": [
+        [
+          -1.8774189949035645,
+          -2.0307834148406982,
+          -0.03999999910593033
+        ],
+        [
+          1.9453880786895752,
+          1.921320915222168,
+          1.5216580629348755
+        ]
+      ]
+    },
+    "blue-lamination": {
+      "purpose": "Thin irregular mineral scales cling to native supported nested banks; no freestanding solid shell.",
+      "triangles": 552,
+      "vertices": 378,
+      "sha256": "bab5acd22b9fcccc1508ad9aa89824f10d60e518945a76304e1e6cc6945e1be9",
+      "bounds_blender": [
+        [
+          -2.2820072174072266,
+          -1.1833361387252808,
+          -0.03500000014901161
+        ],
+        [
+          2.6215548515319824,
+          1.3215217590332031,
+          0.21400000154972076
+        ]
+      ]
+    },
+    "white-brace": {
+      "purpose": "Asymmetric loaded roots and offset mineral flakes follow one common displacement direction.",
+      "triangles": 5975,
+      "vertices": 4401,
+      "sha256": "ed46518e750b290e7f460d51012841e1cb3c8045094779891c29a7313b9eb809",
+      "bounds_blender": [
+        [
+          -2.7097554206848145,
+          -2.3288803100585938,
+          -0.05438484624028206
+        ],
+        [
+          3.1207258701324463,
+          2.4147167205810547,
+          0.8608108758926392
+        ]
+      ]
+    },
+    "green-root-fan": {
+      "purpose": "Broad connected branching woody roots with attached moist woodland fronds.",
+      "triangles": 6010,
+      "vertices": 4380,
+      "sha256": "8663ed4e8626e67bb3c746ace633fbde28a9586be49752ee57a08418947add18",
+      "bounds_blender": [
+        [
+          -3.5834460258483887,
+          -2.3288803100585938,
+          -0.05438484624028206
+        ],
+        [
+          3.5949859619140625,
+          3.138589382171631,
+          2.806204080581665
+        ]
+      ]
+    },
+    "green-steppe-colony": {
+      "purpose": "Low horizontal connected woody colony with small stiff dry-host leaves and real gaps.",
+      "triangles": 4186,
+      "vertices": 3052,
+      "sha256": "6593fec80dcfc6b010e254053ce6b2e0f0ffc0ea3f22fc4208f0a6c4fed7b045",
+      "bounds_blender": [
+        [
+          -2.3055472373962402,
+          -1.9187605381011963,
+          0.010273654945194721
+        ],
+        [
+          2.5683844089508057,
+          2.284501552581787,
+          0.6697040796279907
+        ]
+      ]
+    },
+    "root-link": {
+      "purpose": "Connected low branching bark follows actual host ground and stops at dry gaps.",
+      "triangles": 176,
+      "vertices": 98,
+      "sha256": "cab3ccea75b9a083e65a2bde17c793dddb95de632b2361d45f3fe07d95f44e25",
+      "bounds_blender": [
+        [
+          -0.4507804214954376,
+          -0.5337854623794556,
+          -0.029792292043566704
+        ],
+        [
+          0.4515233039855957,
+          0.5288410186767578,
+          0.18000000715255737
+        ]
+      ]
+    },
+    "blue-bracts-dry": {
+      "purpose": "Short compact perennial overlapping bracts for the sheltered Rocky Hills fallback.",
+      "triangles": 4488,
+      "vertices": 3180,
+      "sha256": "e738ad18e995495189ab49759a4d931c16fa323cbf9d038f6ff25d6fd1e84172",
+      "bounds_blender": [
+        [
+          -1.3321549892425537,
+          -1.4408001899719238,
+          -0.03999999910593033
+        ],
+        [
+          1.0023634433746338,
+          1.2725270986557007,
+          0.9750113487243652
+        ]
+      ]
+    }
+  }
+}

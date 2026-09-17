@@ -1,5 +1,20 @@
 # Vertical-Slice Acceptance Criteria
 
+## LAND-05 closeout (worker delivery)
+
+- [x] V13 retains V12 geography/source/finite-host identities and deterministically
+  reduces whole ambient elk herds; older populations are not rewritten.
+- [x] Measured smaller lakeside cover stutters are reduced on the same bounded
+  V12 route, with normal collision and no safety refill. Exact selected cover
+  output, actual source walks, paid home work and digging pass.
+- [x] Connected Green source roots and tall/low host contrast, stronger White
+  bracing and Blue nested forms are integrated into ordinary presentation.
+- [ ] The owner's large hitch is unreproduced. Universal smoothness, long-entry
+  improvement and new-player/owner discovery acceptance are not established.
+
+[Result, checks and integration handoff](land05-closeout-result-2026-09-17.md).
+No LAND-06 is selected or automatically launched.
+
 ## LAND-04 force journeys (adopted)
 
 - [x] Fresh V12 carries native White/Blue/Green host-dependent terrain, selected

@@ -30,7 +30,7 @@ struct Recipe {
     std::string excludedWorldProfile; // a selected replacement keeps legacy costs intact
     bool availableIn(const std::string& profile) const {
         // Wave 3 deliberately inherits the published experimental recipe policy.
-        const std::string policy = (profile == "living_frontier_wave3" || (profile == "frontier_v11" || profile == "frontier_v12")) ? "living_frontier_wave1" : profile;
+        const std::string policy = (profile == "living_frontier_wave3" || (profile == "frontier_v11" || (profile == "frontier_v12" || profile == "frontier_v13"))) ? "living_frontier_wave1" : profile;
         return (worldProfile.empty() || worldProfile == policy) &&
                (excludedWorldProfile.empty() || excludedWorldProfile != policy);
     }
@@ -1075,6 +1075,7 @@ struct LivingFrontierTable {
     std::vector<FrontierLabDef> labs;
 };
 struct WorldgenTable {
+    double ambientElkKeepFraction = 1.0; // V13 whole ambient herds retained; finite hosts excluded.
     std::string generationProfile;
     std::vector<std::string> generationEliteIds;
     std::vector<HabitatDef> habitats;
@@ -1367,6 +1368,7 @@ struct Tuning {
     WorldgenTable worldgen;
     WorldgenTable frontierV11Worldgen; // LAND-03 separate Dry Steppe / Red inputs
     WorldgenTable frontierV12Worldgen; // LAND-04 physical White/Blue/Green journeys
+    WorldgenTable frontierV13Worldgen; // LAND-05 same country, fewer ambient elk
     WorldgenTable frontierV10Worldgen; // LAND-02B frozen density/fracture inputs
     WorldgenTable frontierV9Worldgen; // LAND-02 immutable normal fresh-world inputs
     WorldgenTable frontierV8Worldgen;

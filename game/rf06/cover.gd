@@ -135,7 +135,7 @@ func bind(material: ShaderMaterial, kind: String) -> void:
 func build(chunk: Node3D, data: Dictionary, cell: float, distance: float) -> int:
  if not chunk.has_meta("surface_sampler"): return 0
  var sampler: SurfaceSampler = chunk.get_meta("surface_sampler")
- var batches: Dictionary = {}
+ var batches: Dictionary=chunk.get_meta("pending_rf06_cover",{})
  for surface in data.kinds:
   if surface not in ["marsh","grass","forest_floor"]: continue
   for centre: Vector3 in data.kinds[surface]:
@@ -187,6 +187,10 @@ func build(chunk: Node3D, data: Dictionary, cell: float, distance: float) -> int
    if pose==null:continue
    if not batches.has(role): batches[role]=[]
    batches[role].append(pose)
+ if int(data.get("cover_slice",0))+1<int(data.get("cover_slices",1)):
+  chunk.set_meta("pending_rf06_cover",batches)
+  return 0
+ if chunk.has_meta("pending_rf06_cover"):chunk.remove_meta("pending_rf06_cover")
  return publish(chunk,batches,distance)
 
 static func publish(chunk: Node3D, batches: Dictionary, distance: float) -> int:

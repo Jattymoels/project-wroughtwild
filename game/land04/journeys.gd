@@ -27,15 +27,73 @@ func _init(t: Terrain) -> void:
 				var scale := lerpf(.87,float(settings.maximum_scale),_roll(at,index))
 				anchors[key].append({"at":at,"role":role,"yaw":yaw+(_roll(at,index+71)-.5)*.4,"scale":scale,"journey":journey,"family":family})
 				index += 1
+		if channel=="green": _connect(journey,yaw)
+
+func _store(record: Dictionary) -> void:
+	var at: Vector3=record.at
+	var key:=Vector2i(floori(at.x/16)*16,floori(at.z/16)*16)
+	if not anchors.has(key):anchors[key]=[]
+	anchors[key].append(record)
+
+func _connect(journey: Dictionary, yaw: float) -> void:
+	# Read the published approach, never move an owner or invent another source.
+	# Wide, low buttressed roots follow its margins and feed living fan junctions.
+	var route: PackedVector3Array=journey.source_route
+	if route.size()<2:return
+	for sign_value in [-1.0,1.0]:
+		var previous:=Vector3.INF
+		var travelled:=0.0
+		for i in route.size():
+			var point: Vector3=route[i]
+			var tangent: Vector3=(route[mini(i+2,route.size()-1)]-route[maxi(0,i-2)])*Vector3(1,0,1)
+			if tangent.length()<.01:continue
+			tangent=tangent.normalized()
+			var side:=Vector3(-tangent.z,0,tangent.x)
+			var at: Vector3=point+side*float(settings.network_offset_m)*sign_value
+			at.y=float(terrain.height_at(floori(at.x),floori(at.z)))
+			if previous.is_finite():
+				var delta: Vector3=(at-previous)*Vector3(1,0,1)
+				if delta.length()<4.0:
+					var count:=maxi(1,ceili(delta.length()/float(settings.network_segment_m)))
+					for part in count:
+						var start: Vector3=previous.lerp(at,float(part)/count)
+						var end: Vector3=previous.lerp(at,float(part+1)/count)
+						var centre: Vector3=(start+end)*.5
+						_store({"at":centre,"role":"root-link","yaw":atan2(delta.x,delta.z),"scale":1.0,"stretch":Vector3(1,1,delta.length()/count),"journey":journey,"family":"network"})
+					travelled+=delta.length()
+			if travelled>=float(settings.network_fan_spacing_m) or not previous.is_finite():
+				var role:="green-steppe-colony" if bool(journey.secondary) else "green-root-fan"
+				_store({"at":at,"role":role,"yaw":yaw+sign_value*.4,"scale":.9,"journey":journey,"family":"junction"})
+				travelled=0
+			previous=at
+	if not bool(journey.secondary):
+		# The workplace is the root junction, not an isolated object in a bare
+		# circle. Low bark skins meet its outer roots and branch into the banks.
+		var source: Vector3=journey.position
+		var direction: Vector3=journey.direction
+		var side:=Vector3(-direction.z,0,direction.x)
+		for sign_value in [-1.0,1.0]:
+			var fork: Vector3=source+side*sign_value*3.4
+			_link(source+side*sign_value*.85,fork,journey)
+			_link(fork,source+side*sign_value*8.0+direction*4.0,journey)
+			_link(fork,source+side*sign_value*6.5-direction*5.0,journey)
+
+func _link(start: Vector3,end: Vector3,journey: Dictionary) -> void:
+	var delta: Vector3=(end-start)*Vector3(1,0,1)
+	var count:=maxi(1,ceili(delta.length()/float(settings.network_segment_m)))
+	for i in count:
+		var a:=start.lerp(end,float(i)/count)
+		var b:=start.lerp(end,float(i+1)/count)
+		_store({"at":(a+b)*.5,"role":"root-link","yaw":atan2(delta.x,delta.z),"scale":1.0,"stretch":Vector3(1.4,1,delta.length()/count),"journey":journey,"family":"network"})
 
 func _roll(at: Vector3,salt: int) -> float:
 	return float(hash("%s/%s/%s/%s" % [terrain._seed,at.x,at.z,salt]) & 0xffff)/65535.0
 
-func _reserved(at: Vector3, journey: Dictionary, radius: float) -> bool:
+func _reserved(at: Vector3, journey: Dictionary, radius: float, network := false) -> bool:
 	if not bool(journey.get("secondary",false)):
 		var source: Vector3 = journey.position
-		if Vector2(at.x-source.x,at.z-source.z).length()<float(settings.source_clearance_m)+radius*.55: return true
-	for route: String in ["source_route","host_route"]:
+		if Vector2(at.x-source.x,at.z-source.z).length()<(.65 if network else float(settings.source_clearance_m))+radius*.55: return true
+	for route: String in ([] if network else ["source_route","host_route"]):
 		for point: Vector3 in journey.get(route,[]):
 			if Vector2(at.x-point.x,at.z-point.z).length()<float(settings.route_clearance_m)+radius*.35: return true
 	for home: Dictionary in terrain.map.get("home_sites",[]):
@@ -55,18 +113,19 @@ func build(chunk: Node3D,data: Dictionary) -> void:
 func _add(chunk: Node3D,sampler: SurfaceSampler,record: Dictionary) -> String:
 	var at: Vector3 = record.at
 	var original: ArrayMesh = KIT.meshes[String(record.role)]
-	var basis := Basis(Vector3.UP,float(record.yaw))
+	var basis := Basis(Vector3.UP,float(record.yaw)).scaled(record.get("stretch",Vector3.ONE))
 	var projected := Transform3D(basis,Vector3.ZERO)*original.get_aabb()
 	var half := maxf(maxf(absf(projected.position.x),absf(projected.end.x)),maxf(absf(projected.position.z),absf(projected.end.z)))
 	var edge := minf(minf(fposmod(at.x,16),16-fposmod(at.x,16)),minf(fposmod(at.z,16),16-fposmod(at.z,16)))-.04
 	var scale := minf(float(record.scale),edge/maxf(half,.01))
-	if scale<float(settings.minimum_scale): return "chunk_edge"
+	if scale<(.15 if record.family=="network" else float(settings.minimum_scale)): return "chunk_edge"
 	var radius := half*scale
-	if _reserved(at,record.journey,radius): return "reserved"
+	if _reserved(at,record.journey,radius,record.family=="network"): return "reserved"
 	basis = basis.scaled(Vector3.ONE*scale)
 	# Per-quarter-metre sample reuse keeps vertex-rich foliage from asking the
 	# same native triangle thousands of times during a normal chunk arrival.
 	var heights: Dictionary = {}
+	var cells: Dictionary = {}
 	var grounded := sampler.height_at(at.x,at.z,float(terrain.height_at(floori(at.x),floori(at.z))),1.8)
 	if not is_finite(grounded): return "root_support"
 	var output := ArrayMesh.new()
@@ -84,8 +143,12 @@ func _add(chunk: Node3D,sampler: SurfaceSampler,record: Dictionary) -> String:
 				var delta := Vector3(x,0,z)-Vector3(record.journey.position.x,0,record.journey.position.z)
 				var u := delta.dot(record.journey.direction)
 				regions.append(0 if u < -5.3 else 1 if u > -.7 and u < 11.2 else 2 if u > 14.8 else -1)
-			var native_y := terrain.height_at(floori(x),floori(z))
-			if terrain.block_at(floori(x),native_y-1,floori(z))==0 or not LakeWater.column(terrain.map,x,z).is_empty(): return "water_or_dig"
+			var cell := Vector2i(floori(x),floori(z))
+			if not cells.has(cell):
+				var height := terrain.height_at(cell.x,cell.y)
+				cells[cell] = height if terrain.block_at(cell.x,height-1,cell.y)!=0 and LakeWater.column(terrain.map,x,z).is_empty() else -1
+			var native_y: int = cells[cell]
+			if native_y<0: return "water_or_dig"
 			var sample_key := Vector2i(roundi(x*8),roundi(z*8))
 			if not heights.has(sample_key): heights[sample_key] = sampler.height_at(x,z,float(native_y),1.8)
 			var y: float = heights[sample_key]

@@ -3,11 +3,11 @@ extends RefCounted
 ## Immutable authored growth meshes/materials are retained at actual entry.
 static var ready := false
 static var meshes: Dictionary = {}
-static var settings: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://land04/settings.json"))
+static var settings: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://land05/settings.json"))
 static func prepare_resources() -> void:
 	if ready: return
-	for role: String in ["blue-sheaths","blue-lamination","white-brace","green-root-fan","green-steppe-colony","blue-bracts-dry"]:
-		var scene: PackedScene = load("res://land04/assets/"+role+".glb")
+	for role: String in ["blue-sheaths","blue-lamination","white-brace","green-root-fan","green-steppe-colony","blue-bracts-dry","root-link"]:
+		var scene: PackedScene = load("res://land05/assets/"+role+".glb")
 		var root: Node3D = scene.instantiate()
 		var mesh := ArrayMesh.new()
 		AuthoredAssets._collect(root,Transform3D.IDENTITY,mesh)

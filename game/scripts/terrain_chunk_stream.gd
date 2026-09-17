@@ -242,8 +242,16 @@ func _step_job() -> void:
 			_job={"origin":origin,"data":data,"phase":0,"node":null}
 			break
 	else:
-		_job.node=terrain._build_chunk_phase(_job.data,float(terrain.map.cell_size),int(_job.phase),_job.node)
-		_job.phase=int(_job.phase)+1
+		var data: Dictionary = _job.data
+		var cover_slice := int(_job.get("cover_slice",0))
+		if int(_job.phase)==2:
+			data = data.duplicate()
+			data.cover_slice = cover_slice
+			data.cover_slices = int(_settings.cover_strips_per_chunk)
+		_job.node=terrain._build_chunk_phase(data,float(terrain.map.cell_size),int(_job.phase),_job.node)
+		if int(_job.phase)==2 and cover_slice+1<int(_settings.cover_strips_per_chunk):
+			_job.cover_slice=cover_slice+1
+		else: _job.phase=int(_job.phase)+1
 		if int(_job.phase)==5:
 			set_detail(_job.origin,true)
 			for stage: String in terrain.last_collision_profile:
@@ -253,6 +261,7 @@ func _step_job() -> void:
 			chunks_built_total+=1
 			_job.clear()
 	var elapsed_ms := (Time.get_ticks_usec()-began)/1000.0
+	if terrain.play03_trace != null: terrain.play03_trace.note_arrival("terrain_"+PREPARATION_STAGES[stage_index],began)
 	_record(phase_build_ms,elapsed_ms)
 	_record(_preparation_samples[PREPARATION_STAGES[stage_index]],elapsed_ms)
 
@@ -286,7 +295,7 @@ func _build_horizon() -> void:
 	var began := Time.get_ticks_usec()
 	var surface:=SurfaceTool.new()
 	surface.begin(Mesh.PRIMITIVE_TRIANGLES)
-	var step:=4 if terrain.world_profile() in ["frontier_v9","frontier_v10","frontier_v11","frontier_v12"] else int(_settings.terrain_far_step_cells)
+	var step:=4 if terrain.world_profile() in ["frontier_v9","frontier_v10","frontier_v11","frontier_v12","frontier_v13"] else int(_settings.terrain_far_step_cells)
 	var width:=int(terrain.map.width)
 	var height:=int(terrain.map.height)
 	var cell:=float(terrain.map.cell_size)
@@ -313,7 +322,7 @@ func _build_horizon() -> void:
 	# V9 has taller displaced faces. A conventional coarse-mesh skirt closes
 	# the height difference at detailed chunk boundaries; it has no collision.
 	# The same mask removes skirts inside exact/edited chunks, preserving digs.
-	if terrain.world_profile() in ["frontier_v9","frontier_v10","frontier_v11","frontier_v12"]:
+	if terrain.world_profile() in ["frontier_v9","frontier_v10","frontier_v11","frontier_v12","frontier_v13"]:
 		for iz in rows-1:
 			for ix in columns-1:
 				var a:=iz*columns+ix
@@ -337,7 +346,7 @@ func _build_horizon() -> void:
 	if terrain.world_profile()=="frontier_v9":
 		material.shader=preload("res://land02/horizon.gdshader")
 		preload("res://land02/kit.gd").bind_ground(material,terrain.map)
-	if terrain.world_profile() in ["frontier_v10","frontier_v11","frontier_v12"]:
+	if terrain.world_profile() in ["frontier_v10","frontier_v11","frontier_v12","frontier_v13"]:
 		material.shader=preload("res://land02b/horizon.gdshader")
 		preload("res://land02b/kit.gd").bind_ground(material,terrain.map)
 		material.set_shader_parameter("landmark_mask",preload("res://land02b/landmark.gd").build(terrain,_mask_texture))

@@ -8,7 +8,7 @@
 
 namespace wroughtwild::leyline {
 inline constexpr const char* profile = "living_frontier_wave1";
-inline bool supports(const std::string& id) { return id == profile || id == "living_frontier_wave3" || (id == "frontier_v11" || id == "frontier_v12"); }
+inline bool supports(const std::string& id) { return id == profile || id == "living_frontier_wave3" || (id == "frontier_v11" || (id == "frontier_v12" || id == "frontier_v13")); }
 inline constexpr int saveVersion = 4;
 struct Source {
     std::string id, label, material, rareItem;

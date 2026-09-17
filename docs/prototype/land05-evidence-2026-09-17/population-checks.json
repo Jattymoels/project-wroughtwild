@@ -1,0 +1,12 @@
+{
+	"checks": 189,
+	"failures": 0,
+	"population": {
+		"keep_fraction": 0.5,
+		"seed": 77,
+		"v12_elk": 552,
+		"v12_herds": 310,
+		"v13_elk": 307,
+		"v13_herds": 171
+	}
+}

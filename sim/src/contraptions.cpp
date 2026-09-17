@@ -710,7 +710,7 @@ std::string MachineWorld::serialize() const {
 std::map<std::string, State> MachineWorld::parse(const std::string& source, std::map<std::string,int>* stocks) const {
     const auto document = json::parse(source);
     const int schema=integer(document->get("schema"),1,saveSchema);
-    if ((identity_.profile=="frontier_v11" || identity_.profile=="frontier_v12") && schema!=saveSchema) throw std::runtime_error("contraptions: ordinary worlds require their complete device ledger");
+    if ((identity_.profile=="frontier_v11" || (identity_.profile == "frontier_v12" || identity_.profile == "frontier_v13")) && schema!=saveSchema) throw std::runtime_error("contraptions: ordinary worlds require their complete device ledger");
     if (schema>=3 && !leyline::supports(identity_.profile)) throw std::runtime_error("contraptions: coloured-device schema outside its world");
     std::map<std::string,int> restoredStocks;
     if (schema==1) {

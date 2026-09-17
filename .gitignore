@@ -28,3 +28,7 @@ __pycache__/
 *.pyc
 
 # Engine-specific (Godot) rules live in game/.gitignore, per ADR-0001.
+
+# LAND-05 exact-output fixture generated from its pinned Git baseline.
+/game/tests/land05/baseline_ground.gd
+/game/tests/land05/baseline_ground.gd.uid

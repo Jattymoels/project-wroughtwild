@@ -28,14 +28,13 @@ creature concept sheets with modelling notes. The selected creatures now have an
 
 ## Current phase
 
-LAND-04 is integrated as fresh `frontier_v12`: White, Blue and Green physical
-host journeys join Scarwater, Dry Steppe/Red and ordinary four-force acquisition.
-Older Continue profiles and paid ownership remain intact; no LF laboratories or
-new economy are enabled. See the [result and game pictures](docs/prototype/land04-force-journeys-result-2026-09-17.md).
-The prepared [LAND-05 closeout](docs/prototype/land05-closeout-worker-2026-09-17.md)
-targets first/lakeside-biome stutters, excessive ambient elk and clearer connected
-augmentation forms/discovery. The owner reinforces heightened host properties
-with colour-specific effects; the approved campy Scarwater look stays protected.
+LAND-05 closes the selected LAND wave on its worker branch: fresh `frontier_v13`
+reduces ambient elk while retaining V12 country and the finite teaching stag.
+The measured lakeside cover stutters are reduced; Green connections and White/
+Blue host forms are stronger. The unknown large hitch, long entry and owner
+feedback remain open. Approved campy Scarwater and old Continue identities stay
+intact. See the [result and actual game pictures](docs/prototype/land05-closeout-result-2026-09-17.md).
+Coordinator main integration is pending; no further worker is scheduled.
 
 The [current whole-project coordination sheet](docs/prototype/coordinator-status-2026-09-15.md)
 distinguishes implemented gameplay, ready art adoption, remaining production and

@@ -1,0 +1,23 @@
+{
+  "native_changed_inputs": {
+    "data/tuning/worldgen-frontier-v13.json": "5dda4ea5cf173fd7e8fb437b834335bcaf175d5a756e9ae391410911828de549",
+    "game/extensions/wroughtwild_sim/src/wroughtwild_sim.cpp": "9c0c0f126c52149a19e3d222a45653fbbcb1d26f425b78948b72e1733539c881",
+    "sim/include/wroughtwild/leyline.h": "1bc0a32ed6b85d93a0c1c046a4e207080c9c65165f779d1c4c2ef144bcde349e",
+    "sim/include/wroughtwild/tuning.h": "5dd1d1ef9bd66c2740d5a318bac83ddca71dc997cd822d90e8695963b33e7c9f",
+    "sim/src/contraptions.cpp": "513d40046d627ebf4ec745c658443c7891d0d98fcca84629b3a4cc4766f56b77",
+    "sim/src/leyline.cpp": "e06c0e1d750c7569e00cfc0f6a7e8827b561f32ca228e0779555d82f70a97537",
+    "sim/src/tuning.cpp": "fc43b7557202f31cfc96c0e35359ee3f166a46401d40ccfc3694e73e4245a4d6",
+    "sim/src/worldgen_profiles.cpp": "254a975a60909a70eb6b04a8165c157a925e1293c582da9673076e1f64837f0c"
+  },
+  "dll_sha256": "01dc846192c5358f65b012a867a15c852373e94226b2a162dc78045140a9fc10",
+  "art_forms_matched": [
+    "blue-sheaths",
+    "blue-lamination",
+    "white-brace",
+    "green-root-fan",
+    "green-steppe-colony",
+    "root-link",
+    "blue-bracts-dry"
+  ],
+  "checks": "All changed native inputs matched build provenance; installed DLL matched output; seven selected GLBs matched their manifest."
+}

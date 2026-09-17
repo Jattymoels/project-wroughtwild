@@ -1,6 +1,6 @@
 extends RefCounted
 ## RF07: derived highland recovery, no native geography or persistent state.
-const PROFILES := ["frontier_v6","frontier_v7","frontier_v8","frontier_v9","frontier_v10","frontier_v11","frontier_v12","living_frontier_wave1","living_frontier_wave3"]
+const PROFILES := ["frontier_v6","frontier_v7","frontier_v8","frontier_v9","frontier_v10","frontier_v11","frontier_v12","frontier_v13","living_frontier_wave1","living_frontier_wave3"]
 const SURFACES := ["rock","grass","dirt"]
 static var settings: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://rf07/settings.json"))
 static var meshes: Dictionary={}
@@ -171,7 +171,7 @@ func bind(material: ShaderMaterial, kind: String) -> void:
 func build(chunk: Node3D,data: Dictionary,cell: float) -> int:
  if not chunk.has_meta("surface_sampler"):return 0
  var sampler: SurfaceSampler=chunk.get_meta("surface_sampler")
- var batches: Dictionary={}
+ var batches: Dictionary=chunk.get_meta("pending_rf07_cover",{})
  for surface: String in data.kinds:
   if surface not in SURFACES:continue
   for centre: Vector3 in data.kinds[surface]:
@@ -211,6 +211,10 @@ func build(chunk: Node3D,data: Dictionary,cell: float) -> int:
    if pose==null:continue
    if not batches.has(role):batches[role]=[]
    batches[role].append(pose)
+ if int(data.get("cover_slice",0))+1<int(data.get("cover_slices",1)):
+  chunk.set_meta("pending_rf07_cover",batches)
+  return 0
+ if chunk.has_meta("pending_rf07_cover"):chunk.remove_meta("pending_rf07_cover")
  return publish(chunk,batches)
 
 static func publish(chunk: Node3D,batches: Dictionary) -> int:

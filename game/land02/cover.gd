@@ -81,7 +81,7 @@ func build(chunk: Node3D,data: Dictionary) -> void:
    if not batches.has(role):batches[role]=[]
    batches[role].append(pose)
  publish(chunk,batches)
- if terrain.world_profile() not in ["frontier_v10","frontier_v11","frontier_v12"]:pulse(chunk,data,sampler)
+ if terrain.world_profile() not in ["frontier_v10","frontier_v11","frontier_v12","frontier_v13"]:pulse(chunk,data,sampler)
 func pulse(chunk: Node3D,data: Dictionary,sampler: SurfaceSampler) -> void:
  # Recessed fragments follow the actual floor. Small broken segments, no beam,
  # fake hole or implied extractable stock. Missing native support makes them go.

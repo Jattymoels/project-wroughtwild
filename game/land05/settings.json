@@ -1,0 +1,28 @@
+{
+  "cover_distance_m": 135.0,
+  "root_embed_m": 0.035,
+  "minimum_scale": 0.62,
+  "maximum_scale": 1.18,
+  "source_clearance_m": 2.0,
+  "route_clearance_m": 1.5,
+  "maximum_bank_rise_m": 4.4,
+  "wind_bend_per_m": 0.018,
+  "pulse_strength": 0.55,
+  "design_purpose": {
+    "cover_distance_m": "Keeps the original close host forms visible on approach; native landforms carry longer vistas.",
+    "root_embed_m": "Seats thin bark/mineral skins into exact native terrain without making another solid shell.",
+    "minimum_scale": "Rejects cramped anchors instead of reducing a substantial host to a tiny prop.",
+    "maximum_scale": "Bounded seeded variation of the authored growth forms.",
+    "source_clearance_m": "Leaves the actual source's dry stance and interaction ray open.",
+    "route_clearance_m": "Keeps the capsule walking lane clear of tall leaves and roots.",
+    "maximum_bank_rise_m": "Rejects a root fan spanning an unrelated cliff/void rather than draping across it.",
+    "wind_bend_per_m": "Small cosmetic leaf movement; woody roots and mineral layers remain still.",
+    "pulse_strength": "Restrained narrow inner seams explain direction, retention and forks without lighting whole plants.",
+    "network_offset_m": "Root spine follows the outside of the reserved walking lane; broad fans flank rather than block discovery.",
+    "network_segment_m": "Short shared low bark segments follow actual support and chunk-local suppression/dig refresh.",
+    "network_fan_spacing_m": "Connected fan junctions punctuate one approach; avoids uniformly scattering more plants."
+  },
+  "network_offset_m": 5.8,
+  "network_segment_m": 1.8,
+  "network_fan_spacing_m": 6.0
+}

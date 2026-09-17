@@ -1,5 +1,36 @@
 # World Generation, Settlements and Travel
 
+## LAND-05: V13 population and presentation closeout
+
+Ordinary fresh worlds now select `frontier_v13`. Its terrain, resource/source
+sites, journeys, finite teaching hosts and native edit/contact path inherit V12
+exactly. After composition, `ambient_elk_keep_fraction: 0.5` retains whole ambient
+Valley Elk herds using a stable seed/coordinate roll (salt 950517). Groups remain
+one or two animals; other families and the finite White stag are excluded.
+This preserves geography and owners while reducing encounter frequency. Published
+V12 and all older/LF saves keep their own populations and profiles. V13 has exact
+profile/seed source and device ledgers; ordinary campaign remains `legacy`.
+
+The runtime repair filters non-surface blocks before ground-cover queries and
+builds streamed cover in four strips (`cover_strips_per_chunk`). Complete shared
+batches and authoritative collision publish together; edits/restores still use
+the synchronous safe path. Cancellation frees the unpublished chunk and temporary
+batches. No quality, collision or visibility range reduction is involved. Opt-in
+PLAY03 traces now attribute each terrain phase and cover family. The selected
+V12 lakeside timings improve; the unknown owner's large freeze is unreproduced.
+
+The retained LAND04 entry path prepares the original LAND05 kit. Green's broad
+root junctions feed attached tall woodland fronds versus low Steppe colonies;
+short connected bark follows approach margins and branches into the existing
+resin workplace. Actual dry interruptions clip secondary Green triangles. White
+heightens directional bracing and offset mineral skins, with shorter dry growth;
+Blue heightens nested sheaths and held layers. Native banks remain the substantial
+solids, with thin conformed bark/mineral dressing and flexible foliage. Paid
+building suppression and support loss on digging remain active. Red's existing
+swollen/deposit/release composition and all four source/device rules are retained.
+
+[Measurements, actual appearance, limitations and handoff](../prototype/land05-closeout-result-2026-09-17.md).
+
 ## LAND-04: V12 White, Blue and Green journeys
 
 Adopted on main through `6e0c248` from `159a188` / `f116f6f`, with matching native

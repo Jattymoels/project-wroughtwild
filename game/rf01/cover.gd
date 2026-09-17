@@ -1,7 +1,7 @@
 extends RefCounted
 ## One world's transient low-cover composition. No owned state or geometry edits.
 const SETTINGS = preload("res://rf01/low_cover.tres")
-const PROFILES := ["frontier_v6","frontier_v7","frontier_v8","frontier_v9","frontier_v10","frontier_v11","frontier_v12","living_frontier_wave1","living_frontier_wave3"]
+const PROFILES := ["frontier_v6","frontier_v7","frontier_v8","frontier_v9","frontier_v10","frontier_v11","frontier_v12","frontier_v13","living_frontier_wave1","living_frontier_wave3"]
 const RESERVATION_CELL := 8.0
 var recovery: RefCounted
 var wetland: RefCounted
@@ -50,7 +50,7 @@ func _init(map: Dictionary, world_seed: int, profile: String, reservations: Dict
   for route in ["approach","source_route"]:
    for point: Vector3 in host.get(route,[]): _reserve(Vector3(point.x,StrangeSites.LOOK.approach_clearance_m,point.z))
  for point: Vector3 in map.get("laboratory_trail",[]): _reserve(Vector3(point.x,StrangeSites.LOOK.approach_clearance_m,point.z))
- if profile=="frontier_v12":
+ if profile in ["frontier_v12","frontier_v13"]:
   for journey: Dictionary in map.get("force_journeys",[]):
    if bool(journey.secondary): continue
    var source: Vector3=journey.position
@@ -110,7 +110,7 @@ func supported_pose(sampler: SurfaceSampler, at: Vector3, basis: Basis, radius: 
 func build(chunk: Node3D, data: Dictionary, cell: float, distance: float) -> int:
  if not chunk.has_meta("surface_sampler"): return 0
  var sampler: SurfaceSampler = chunk.get_meta("surface_sampler")
- var batches: Dictionary = {}
+ var batches: Dictionary=chunk.get_meta("pending_rf01_cover",{})
  for surface in data.kinds:
   if surface not in ["grass","forest_floor","dirt","rock"]: continue
   for centre: Vector3 in data.kinds[surface]:
@@ -142,6 +142,10 @@ func build(chunk: Node3D, data: Dictionary, cell: float, distance: float) -> int
    if pose == null: continue
    if not batches.has(role): batches[role] = []
    batches[role].append(pose)
+ if int(data.get("cover_slice",0))+1<int(data.get("cover_slices",1)):
+  chunk.set_meta("pending_rf01_cover",batches)
+  return 0
+ if chunk.has_meta("pending_rf01_cover"):chunk.remove_meta("pending_rf01_cover")
  var count := 0
  for role: String in batches:
   var poses: Array = batches[role]

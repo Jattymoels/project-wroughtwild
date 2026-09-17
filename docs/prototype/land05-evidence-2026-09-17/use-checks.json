@@ -1,0 +1,68 @@
+{
+	"art": {
+		"green-steppe": {
+			"instances": 54,
+			"journey": "journey_green_steppe",
+			"parts": 54,
+			"placement": {
+				"chunk_edge": 11,
+				"dry_break": 9,
+				"placed_green-steppe-colony": 16,
+				"placed_root-link": 40,
+				"surface_support": 1,
+				"water_or_dig": 1
+			},
+			"roles": {
+				"green-steppe-colony": 14,
+				"root-link": 40
+			}
+		},
+		"lifecycle": {
+			"anchor": "(404.5, 38.70412, 423.5)",
+			"candidates": 1,
+			"floor": "(404, 39, 423)",
+			"journey": "journey_green_steppe",
+			"role": "green-steppe-colony",
+			"support_dig": "(404, 38, 423)"
+		}
+	},
+	"checks": 222,
+	"distance_m": 88.5954804718494,
+	"failures": 0,
+	"placement": {
+		"journey_blue_source": {
+			"placed_blue-lamination": 6,
+			"placed_blue-sheaths": 20,
+			"reserved": 6,
+			"surface_support": 2
+		},
+		"journey_green_source": {
+			"chunk_edge": 28,
+			"placed_green-root-fan": 38,
+			"placed_root-link": 174,
+			"surface_support": 4
+		},
+		"journey_green_steppe": {
+			"chunk_edge": 11,
+			"dry_break": 9,
+			"placed_green-steppe-colony": 17,
+			"placed_root-link": 40,
+			"surface_support": 1,
+			"water_or_dig": 2
+		},
+		"journey_white_source": {
+			"placed_white-brace": 15,
+			"surface_support": 1
+		}
+	},
+	"population": {
+		"keep_fraction": 0.5,
+		"matched_cover_instances": 44,
+		"seed": 77,
+		"v12_elk": 552,
+		"v12_herds": 310,
+		"v13_elk": 307,
+		"v13_herds": 171
+	},
+	"scope": "Arrivals and two wood staged; actual local walks, source UI, paid placement, native dig, forced finite-host death. Existing complete device-chain evidence reused."
+}

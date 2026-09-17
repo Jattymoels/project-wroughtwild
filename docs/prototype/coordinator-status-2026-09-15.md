@@ -5,9 +5,42 @@ plan, not a new acceptance gate. The owner wants a solo indie prototype develope
 through playable iterations. Current AGENTS.md and the owner's approved work
 outrank historical review, packaging and rollout requirements.
 
-## Current adoption and next worker
+## LAND-05 worker complete; coordinator integration pending
 
-**LAND-04 adopted; next is the single LAND-05 closeout.**
+LAND-05 closes the selected LAND wave on `codex/land05-closeout` in
+`D:/Wroughtwild/work/land05-closeout`. See [result, pictures, limits and matching
+DLL](land05-closeout-result-2026-09-17.md). No next worker is selected or launched.
+
+- **Measured smaller lakeside stutters reduced:** same chosen V12 seed-77 walk
+  38.022 → 24.755 ms worst frame, revisit 31.919 → 26.199 ms; no final walking
+  interval >33.3 ms and no safety refill. Repeated ground-cover construction is
+  measured; the owner's large freeze and asset-loading hypothesis are not
+  confirmed. Later owner lag-free playthrough remains relevant evidence.
+- **Ambient elk reduced independently in fresh V13:** 50% deterministic whole-
+  herd retention after exact V12 country/owner placement. Seed 77: 552 → 307 elk;
+  all other packs and the finite White teaching stag remain exact. V12/older
+  saves retain their population. This is tuning, not a proven lag correction.
+- **Connected augmentation delivered as a bounded refinement:** Green woodland
+  fans/root junctions connect into the resin source, Steppe stays low with real
+  dry breaks, White exposes loaded/offset forms, and Blue layers held sheaths.
+  Approved campy Scarwater is preserved. Repeated forms, broad quiet clearances,
+  understated distant source discovery and full owner/new-player response remain
+  limits; passing use checks are not owner aesthetic approval.
+- **Evidence:** final diagnostic 4, use 222 and Continue/rejection 29 checks pass;
+  failed import/helper attempts remain explicit. Final import 4.18 s, zero errors.
+  Exact selected cover output and targeted V12/LF ownership/Continue are checked.
+  All owned jobs ended. Coordinator copies the matching DLL with checked source.
+
+Consolidated remaining LAND notes (no automatic implementation): the unknown large
+hitch, long ~46 s entry, residual collision/payload frame costs, unconfirmed
+underground connection, elk-density feel in fresh worlds, natural discovery and
+remaining repeated/bare transitions. Red's existing composition remains; no new
+Red art completion is claimed. Owner playtesting is pending. No broader campaign,
+hardware or universal smoothness clearance was attempted.
+
+### Previous main adoption and closeout preparation
+
+**LAND-04 adopted. LAND-05 is now complete in its worker, as recorded above.**
 The [force-journey result](land04-force-journeys-result-2026-09-17.md) records fresh
 V12 White/Blue/Green physical hosts, four-source ownership, selected finite fauna,
 the six authored host forms and four actual final game pictures. Worktree
@@ -36,7 +69,7 @@ low Steppe Green hosts are delivered as playable seeded places. Repeated forms,
 thin roots/stems, open work clearances and subtle distant light cues remain
 refinement notes, not owner aesthetic acceptance. The approved Scarwater look
 and old profiles remain intact. After coordinator adoption, the original plan's
-single bounded LAND-05 closeout is next; no later worker is launched here.
+single bounded LAND-05 closeout was selected and is now completed above.
 
 The [LAND-05 brief](land05-closeout-worker-2026-09-17.md) and
 [copyable prompt](land05-session-prompt-2026-09-17.md) are prepared for
@@ -89,10 +122,10 @@ the owner; standing implementation approval is not an aesthetic playtest claim.
   not a measured cause. At the deferred investigation, start with that lakeside
   area and distinguish first-use loading from ongoing cost. This does not establish
   a universal performance fix or change the selected LAND-04/05 sequence.
-- **Excessive elk/stag population.** Reduce the perceived abundance in a later
-  tuning pass after identifying the actual spawning path. Exact reduction is
-  not selected. The owner suspects it is unrelated to lag; keep these as
-  separate observations and preserve existing ownership/reward rules.
+- **Excessive elk/stag population:** the LAND-05 worker implements V13-only
+  50% whole-herd retention, as recorded above. The owner's exact preferred density
+  remains unplayed; older saves intentionally retain their populations. No causal
+  connection to the lag was established.
 - Steppe closeout notes: subdued distant Red deposits, broad exposed slopes, repeated grass/fringe forms and
   scalloped outer terrain remain visible in the worker pictures. Local form and
   atmosphere can improve in the bounded closeout; these do not change the selected

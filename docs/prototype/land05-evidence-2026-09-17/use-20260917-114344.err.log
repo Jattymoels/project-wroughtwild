@@ -1,0 +1,168 @@
+ERROR: Can't get instance color on a Multimesh that isn't using colors. Ensure that you have `use_colors` property of this Multimesh set to `true`.
+   at: get_instance_color (scene/resources/multimesh.cpp:290)
+   GDScript backtrace (most recent call first):
+       [0] cover_rows (res://tests/land05/use.gd:41)
+       [1] exact_cover (res://tests/land05/use.gd:55)
+       [2] run (res://tests/land05/use.gd:80)
+ERROR: Can't get instance color on a Multimesh that isn't using colors. Ensure that you have `use_colors` property of this Multimesh set to `true`.
+   at: get_instance_color (scene/resources/multimesh.cpp:290)
+   GDScript backtrace (most recent call first):
+       [0] cover_rows (res://tests/land05/use.gd:41)
+       [1] exact_cover (res://tests/land05/use.gd:55)
+       [2] run (res://tests/land05/use.gd:80)
+ERROR: Can't get instance color on a Multimesh that isn't using colors. Ensure that you have `use_colors` property of this Multimesh set to `true`.
+   at: get_instance_color (scene/resources/multimesh.cpp:290)
+   GDScript backtrace (most recent call first):
+       [0] cover_rows (res://tests/land05/use.gd:41)
+       [1] exact_cover (res://tests/land05/use.gd:55)
+       [2] run (res://tests/land05/use.gd:80)
+ERROR: Can't get instance color on a Multimesh that isn't using colors. Ensure that you have `use_colors` property of this Multimesh set to `true`.
+   at: get_instance_color (scene/resources/multimesh.cpp:290)
+   GDScript backtrace (most recent call first):
+       [0] cover_rows (res://tests/land05/use.gd:41)
+       [1] exact_cover (res://tests/land05/use.gd:55)
+       [2] run (res://tests/land05/use.gd:80)
+ERROR: Can't get instance color on a Multimesh that isn't using colors. Ensure that you have `use_colors` property of this Multimesh set to `true`.
+   at: get_instance_color (scene/resources/multimesh.cpp:290)
+   GDScript backtrace (most recent call first):
+       [0] cover_rows (res://tests/land05/use.gd:41)
+       [1] exact_cover (res://tests/land05/use.gd:55)
+       [2] run (res://tests/land05/use.gd:80)
+ERROR: Can't get instance color on a Multimesh that isn't using colors. Ensure that you have `use_colors` property of this Multimesh set to `true`.
+   at: get_instance_color (scene/resources/multimesh.cpp:290)
+   GDScript backtrace (most recent call first):
+       [0] cover_rows (res://tests/land05/use.gd:41)
+       [1] exact_cover (res://tests/land05/use.gd:55)
+       [2] run (res://tests/land05/use.gd:80)
+ERROR: Can't get instance color on a Multimesh that isn't using colors. Ensure that you have `use_colors` property of this Multimesh set to `true`.
+   at: get_instance_color (scene/resources/multimesh.cpp:290)
+   GDScript backtrace (most recent call first):
+       [0] cover_rows (res://tests/land05/use.gd:41)
+       [1] exact_cover (res://tests/land05/use.gd:55)
+       [2] run (res://tests/land05/use.gd:80)
+ERROR: Can't get instance color on a Multimesh that isn't using colors. Ensure that you have `use_colors` property of this Multimesh set to `true`.
+   at: get_instance_color (scene/resources/multimesh.cpp:290)
+   GDScript backtrace (most recent call first):
+       [0] cover_rows (res://tests/land05/use.gd:41)
+       [1] exact_cover (res://tests/land05/use.gd:55)
+       [2] run (res://tests/land05/use.gd:80)
+ERROR: Can't get instance color on a Multimesh that isn't using colors. Ensure that you have `use_colors` property of this Multimesh set to `true`.
+   at: get_instance_color (scene/resources/multimesh.cpp:290)
+   GDScript backtrace (most recent call first):
+       [0] cover_rows (res://tests/land05/use.gd:41)
+       [1] exact_cover (res://tests/land05/use.gd:55)
+       [2] run (res://tests/land05/use.gd:80)
+ERROR: Can't get instance color on a Multimesh that isn't using colors. Ensure that you have `use_colors` property of this Multimesh set to `true`.
+   at: get_instance_color (scene/resources/multimesh.cpp:290)
+   GDScript backtrace (most recent call first):
+       [0] cover_rows (res://tests/land05/use.gd:41)
+       [1] exact_cover (res://tests/land05/use.gd:55)
+       [2] run (res://tests/land05/use.gd:80)
+ERROR: Can't get instance color on a Multimesh that isn't using colors. Ensure that you have `use_colors` property of this Multimesh set to `true`.
+   at: get_instance_color (scene/resources/multimesh.cpp:290)
+   GDScript backtrace (most recent call first):
+       [0] cover_rows (res://tests/land05/use.gd:41)
+       [1] exact_cover (res://tests/land05/use.gd:55)
+       [2] run (res://tests/land05/use.gd:80)
+ERROR: Can't get instance color on a Multimesh that isn't using colors. Ensure that you have `use_colors` property of this Multimesh set to `true`.
+   at: get_instance_color (scene/resources/multimesh.cpp:290)
+   GDScript backtrace (most recent call first):
+       [0] cover_rows (res://tests/land05/use.gd:41)
+       [1] exact_cover (res://tests/land05/use.gd:55)
+       [2] run (res://tests/land05/use.gd:80)
+ERROR: Can't get instance color on a Multimesh that isn't using colors. Ensure that you have `use_colors` property of this Multimesh set to `true`.
+   at: get_instance_color (scene/resources/multimesh.cpp:290)
+   GDScript backtrace (most recent call first):
+       [0] cover_rows (res://tests/land05/use.gd:41)
+       [1] exact_cover (res://tests/land05/use.gd:55)
+       [2] run (res://tests/land05/use.gd:80)
+ERROR: Can't get instance color on a Multimesh that isn't using colors. Ensure that you have `use_colors` property of this Multimesh set to `true`.
+   at: get_instance_color (scene/resources/multimesh.cpp:290)
+   GDScript backtrace (most recent call first):
+       [0] cover_rows (res://tests/land05/use.gd:41)
+       [1] exact_cover (res://tests/land05/use.gd:55)
+       [2] run (res://tests/land05/use.gd:80)
+ERROR: Can't get instance color on a Multimesh that isn't using colors. Ensure that you have `use_colors` property of this Multimesh set to `true`.
+   at: get_instance_color (scene/resources/multimesh.cpp:290)
+   GDScript backtrace (most recent call first):
+       [0] cover_rows (res://tests/land05/use.gd:41)
+       [1] exact_cover (res://tests/land05/use.gd:55)
+       [2] run (res://tests/land05/use.gd:80)
+ERROR: Can't get instance color on a Multimesh that isn't using colors. Ensure that you have `use_colors` property of this Multimesh set to `true`.
+   at: get_instance_color (scene/resources/multimesh.cpp:290)
+   GDScript backtrace (most recent call first):
+       [0] cover_rows (res://tests/land05/use.gd:41)
+       [1] exact_cover (res://tests/land05/use.gd:55)
+       [2] run (res://tests/land05/use.gd:80)
+ERROR: Can't get instance color on a Multimesh that isn't using colors. Ensure that you have `use_colors` property of this Multimesh set to `true`.
+   at: get_instance_color (scene/resources/multimesh.cpp:290)
+   GDScript backtrace (most recent call first):
+       [0] cover_rows (res://tests/land05/use.gd:41)
+       [1] exact_cover (res://tests/land05/use.gd:55)
+       [2] run (res://tests/land05/use.gd:80)
+ERROR: Can't get instance color on a Multimesh that isn't using colors. Ensure that you have `use_colors` property of this Multimesh set to `true`.
+   at: get_instance_color (scene/resources/multimesh.cpp:290)
+   GDScript backtrace (most recent call first):
+       [0] cover_rows (res://tests/land05/use.gd:41)
+       [1] exact_cover (res://tests/land05/use.gd:55)
+       [2] run (res://tests/land05/use.gd:80)
+ERROR: Can't get instance color on a Multimesh that isn't using colors. Ensure that you have `use_colors` property of this Multimesh set to `true`.
+   at: get_instance_color (scene/resources/multimesh.cpp:290)
+   GDScript backtrace (most recent call first):
+       [0] cover_rows (res://tests/land05/use.gd:41)
+       [1] exact_cover (res://tests/land05/use.gd:55)
+       [2] run (res://tests/land05/use.gd:80)
+ERROR: Can't get instance color on a Multimesh that isn't using colors. Ensure that you have `use_colors` property of this Multimesh set to `true`.
+   at: get_instance_color (scene/resources/multimesh.cpp:290)
+   GDScript backtrace (most recent call first):
+       [0] cover_rows (res://tests/land05/use.gd:41)
+       [1] exact_cover (res://tests/land05/use.gd:55)
+       [2] run (res://tests/land05/use.gd:80)
+ERROR: Can't get instance color on a Multimesh that isn't using colors. Ensure that you have `use_colors` property of this Multimesh set to `true`.
+   at: get_instance_color (scene/resources/multimesh.cpp:290)
+   GDScript backtrace (most recent call first):
+       [0] cover_rows (res://tests/land05/use.gd:41)
+       [1] exact_cover (res://tests/land05/use.gd:55)
+       [2] run (res://tests/land05/use.gd:80)
+ERROR: Can't get instance color on a Multimesh that isn't using colors. Ensure that you have `use_colors` property of this Multimesh set to `true`.
+   at: get_instance_color (scene/resources/multimesh.cpp:290)
+   GDScript backtrace (most recent call first):
+       [0] cover_rows (res://tests/land05/use.gd:41)
+       [1] exact_cover (res://tests/land05/use.gd:55)
+       [2] run (res://tests/land05/use.gd:80)
+ERROR: Can't get instance color on a Multimesh that isn't using colors. Ensure that you have `use_colors` property of this Multimesh set to `true`.
+   at: get_instance_color (scene/resources/multimesh.cpp:290)
+   GDScript backtrace (most recent call first):
+       [0] cover_rows (res://tests/land05/use.gd:41)
+       [1] exact_cover (res://tests/land05/use.gd:55)
+       [2] run (res://tests/land05/use.gd:80)
+ERROR: Can't get instance color on a Multimesh that isn't using colors. Ensure that you have `use_colors` property of this Multimesh set to `true`.
+   at: get_instance_color (scene/resources/multimesh.cpp:290)
+   GDScript backtrace (most recent call first):
+       [0] cover_rows (res://tests/land05/use.gd:41)
+       [1] exact_cover (res://tests/land05/use.gd:55)
+       [2] run (res://tests/land05/use.gd:80)
+ERROR: Can't get instance color on a Multimesh that isn't using colors. Ensure that you have `use_colors` property of this Multimesh set to `true`.
+   at: get_instance_color (scene/resources/multimesh.cpp:290)
+   GDScript backtrace (most recent call first):
+       [0] cover_rows (res://tests/land05/use.gd:41)
+       [1] exact_cover (res://tests/land05/use.gd:55)
+       [2] run (res://tests/land05/use.gd:80)
+ERROR: Can't get instance color on a Multimesh that isn't using colors. Ensure that you have `use_colors` property of this Multimesh set to `true`.
+   at: get_instance_color (scene/resources/multimesh.cpp:290)
+   GDScript backtrace (most recent call first):
+       [0] cover_rows (res://tests/land05/use.gd:41)
+       [1] exact_cover (res://tests/land05/use.gd:55)
+       [2] run (res://tests/land05/use.gd:80)
+ERROR: Can't get instance color on a Multimesh that isn't using colors. Ensure that you have `use_colors` property of this Multimesh set to `true`.
+   at: get_instance_color (scene/resources/multimesh.cpp:290)
+   GDScript backtrace (most recent call first):
+       [0] cover_rows (res://tests/land05/use.gd:41)
+       [1] exact_cover (res://tests/land05/use.gd:55)
+       [2] run (res://tests/land05/use.gd:80)
+ERROR: Can't get instance color on a Multimesh that isn't using colors. Ensure that you have `use_colors` property of this Multimesh set to `true`.
+   at: get_instance_color (scene/resources/multimesh.cpp:290)
+   GDScript backtrace (most recent call first):
+       [0] cover_rows (res://tests/land05/use.gd:41)
+       [1] exact_cover (res://tests/land05/use.gd:55)
+       [2] run (res://tests/land05/use.gd:80)

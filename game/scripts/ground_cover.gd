@@ -109,10 +109,26 @@ static func build_for_chunk(chunk: Node3D, chunk_data: Dictionary, map: Dictiona
 			for variant in 3:
 				entries.append(frontier_look.scree_entry(variant))
 		cover_by_biome.append(entries)
-	var kinds: Dictionary = chunk_data.get("kinds", {})
+	# A native chunk includes exposed cliff/cave wall blocks too. All ground
+	# families only grow on the original top. Filter once before expensive
+	# water/recovery/footprint queries instead of rediscovering this in each kit.
+	var surface_data := chunk_data.duplicate()
+	var slice_index := int(chunk_data.get("cover_slice",0))
+	var slice_count := int(chunk_data.get("cover_slices",1))
+	var kinds: Dictionary = {}
+	for kind: String in chunk_data.get("kinds", {}):
+		var tops := PackedVector3Array()
+		for centre: Vector3 in chunk_data.kinds[kind]:
+			var x := floori(centre.x/cell)
+			var z := floori(centre.z/cell)
+			if (z-int(chunk_data.z))*slice_count/Terrain.CHUNK_CELLS != slice_index: continue
+			if x<0 or z<0 or x>=width or z>=height_cells: continue
+			if absf(centre.y+cell*.5-float(heights[z*width+x]))<=.01: tops.append(centre)
+		if not tops.is_empty(): kinds[kind]=tops
+	surface_data["kinds"] = kinds
 	var placed := 0
 	# Gather instances per cover kind, then one MultiMesh each.
-	var batches := {}
+	var batches: Dictionary = chunk.get_meta("pending_ground_cover",{})
 	for kind in kinds:
 		var centres: PackedVector3Array = kinds[kind]
 		for centre in centres:
@@ -157,62 +173,65 @@ static func build_for_chunk(chunk: Node3D, chunk_data: Dictionary, map: Dictiona
 				if not batches.has(entry["kind"]):
 					batches[entry["kind"]] = {"entry": entry, "transforms": []}
 				(batches[entry["kind"]]["transforms"] as Array).append(Transform3D(basis, at))
-	for kind in batches:
-		var transforms: Array = batches[kind]["transforms"]
-		var entry: Dictionary = batches[kind]["entry"]
-		var multimesh := MultiMesh.new()
-		multimesh.transform_format = MultiMesh.TRANSFORM_3D
-		# A MultiMesh carries colour per instance, not per vertex: each card
-		# is tinted somewhere between the kind's two colours by its cell.
-		multimesh.use_colors = true
-		multimesh.mesh = _mesh_for(entry) if frontier_look == null else frontier_look.cover_mesh(entry)
-		multimesh.instance_count = transforms.size()
-		# Visibility ranges are measured from the instance origin. Keep each
-		# batch centred on its plants, not at the world's distant (0,0,0).
-		var batch_origin := Vector3.ZERO
-		for transform: Transform3D in transforms:
-			batch_origin += transform.origin
-		batch_origin /= float(transforms.size())
-		var displayed: Array=[]
-		var cover_bounds:=AABB()
-		for i in transforms.size():
-			var local: Transform3D = transforms[i]
-			local.origin -= batch_origin
-			multimesh.set_instance_transform(i, local)
+	if slice_index+1==slice_count:
+		for kind in batches:
+			var transforms: Array = batches[kind]["transforms"]
+			var entry: Dictionary = batches[kind]["entry"]
+			var multimesh := MultiMesh.new()
+			multimesh.transform_format = MultiMesh.TRANSFORM_3D
+			# A MultiMesh carries colour per instance, not per vertex: each card
+			# is tinted somewhere between the kind's two colours by its cell.
+			multimesh.use_colors = true
+			multimesh.mesh = _mesh_for(entry) if frontier_look == null else frontier_look.cover_mesh(entry)
+			multimesh.instance_count = transforms.size()
+			# Visibility ranges are measured from the instance origin. Keep each
+			# batch centred on its plants, not at the world's distant (0,0,0).
+			var batch_origin := Vector3.ZERO
+			for transform: Transform3D in transforms:
+				batch_origin += transform.origin
+			batch_origin /= float(transforms.size())
+			var displayed: Array=[]
+			var cover_bounds:=AABB()
+			for i in transforms.size():
+				var local: Transform3D = transforms[i]
+				local.origin -= batch_origin
+				multimesh.set_instance_transform(i, local)
+				if retain_poses:
+					displayed.append(local)
+					var bounds: AABB=transforms[i]*multimesh.mesh.get_aabb()
+					cover_bounds=bounds if i==0 else cover_bounds.merge(bounds)
+				var origin: Vector3 = (transforms[i] as Transform3D).origin
+				var blend := _roll(int(floor(origin.x)), int(floor(origin.z)), String(entry["kind"]), 53)
+				var tint := (entry["dark"] as Color).lerp(entry["colour"], 0.35 + 0.65 * blend)
+				if frontier_look != null:
+					tint = Color.WHITE.darkened(blend * 0.15)
+				multimesh.set_instance_color(i, tint)
+			var instance := MultiMeshInstance3D.new()
+			instance.name = "Cover_%s" % kind
+			instance.position = batch_origin
+			instance.multimesh = multimesh
 			if retain_poses:
-				displayed.append(local)
-				var bounds: AABB=transforms[i]*multimesh.mesh.get_aabb()
-				cover_bounds=bounds if i==0 else cover_bounds.merge(bounds)
-			var origin: Vector3 = (transforms[i] as Transform3D).origin
-			var blend := _roll(int(floor(origin.x)), int(floor(origin.z)), String(entry["kind"]), 53)
-			var tint := (entry["dark"] as Color).lerp(entry["colour"], 0.35 + 0.65 * blend)
-			if frontier_look != null:
-				tint = Color.WHITE.darkened(blend * 0.15)
-			multimesh.set_instance_color(i, tint)
-		var instance := MultiMeshInstance3D.new()
-		instance.name = "Cover_%s" % kind
-		instance.position = batch_origin
-		instance.multimesh = multimesh
-		if retain_poses:
-			# V3 construction clears only the view. Keep the exact original
-			# positions and colours so demolition can restore this same growth.
-			instance.set_meta("terrain_cover",true)
-			instance.set_meta("world_transforms",transforms)
-			instance.set_meta("display_transforms",displayed)
-			instance.set_meta("cover_bounds",cover_bounds)
-			instance.set_meta("hidden_by_building",[])
-		instance.material_override = _shared_material() if frontier_look == null else frontier_look.cover_material()
-		if String(kind).begins_with("scree") and frontier_look != null:
-			instance.material_override = frontier_look.scree_material()
-		instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-		if frontier_look != null and frontier_look.cover_distance>0:
-			instance.visibility_range_end = frontier_look.cover_distance
-			instance.visibility_range_end_margin = 8.0
-			instance.visibility_range_fade_mode = GeometryInstance3D.VISIBILITY_RANGE_FADE_SELF
-		chunk.add_child(instance)
-		placed += transforms.size()
+				# V3 construction clears only the view. Keep the exact original
+				# positions and colours so demolition can restore this same growth.
+				instance.set_meta("terrain_cover",true)
+				instance.set_meta("world_transforms",transforms)
+				instance.set_meta("display_transforms",displayed)
+				instance.set_meta("cover_bounds",cover_bounds)
+				instance.set_meta("hidden_by_building",[])
+			instance.material_override = _shared_material() if frontier_look == null else frontier_look.cover_material()
+			if String(kind).begins_with("scree") and frontier_look != null:
+				instance.material_override = frontier_look.scree_material()
+			instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+			if frontier_look != null and frontier_look.cover_distance>0:
+				instance.visibility_range_end = frontier_look.cover_distance
+				instance.visibility_range_end_margin = 8.0
+				instance.visibility_range_fade_mode = GeometryInstance3D.VISIBILITY_RANGE_FADE_SELF
+			chunk.add_child(instance)
+			placed += transforms.size()
+		if chunk.has_meta("pending_ground_cover"): chunk.remove_meta("pending_ground_cover")
+	else: chunk.set_meta("pending_ground_cover",batches)
 	if reclaimed != null:
-		placed += reclaimed.build(chunk,chunk_data,cell,float(frontier_look.cover_distance))
-		if reclaimed.wetland!=null: placed += reclaimed.wetland.build(chunk,chunk_data,cell,float(frontier_look.cover_distance))
-		if reclaimed.highland!=null: placed += reclaimed.highland.build(chunk,chunk_data,cell)
+		placed += reclaimed.build(chunk,surface_data,cell,float(frontier_look.cover_distance))
+		if reclaimed.wetland!=null: placed += reclaimed.wetland.build(chunk,surface_data,cell,float(frontier_look.cover_distance))
+		if reclaimed.highland!=null: placed += reclaimed.highland.build(chunk,surface_data,cell)
 	return placed
