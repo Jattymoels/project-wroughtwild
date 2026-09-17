@@ -9,7 +9,9 @@ outrank historical review, packaging and rollout requirements.
 
 LAND-05 closes the selected LAND wave on `codex/land05-closeout` in
 `D:/Wroughtwild/work/land05-closeout`. See [result, pictures, limits and matching
-DLL](land05-closeout-result-2026-09-17.md). No next worker is selected or launched.
+DLL](land05-closeout-result-2026-09-17.md). Checked implementation:
+`540222a7a49177c678e75c62fb9a80a81521d88e`; the subsequent handoff is documentation-only.
+No next worker is selected or launched.
 
 - **Measured smaller lakeside stutters reduced:** same chosen V12 seed-77 walk
   38.022 → 24.755 ms worst frame, revisit 31.919 → 26.199 ms; no final walking

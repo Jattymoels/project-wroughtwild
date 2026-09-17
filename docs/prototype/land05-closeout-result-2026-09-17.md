@@ -187,8 +187,13 @@ dependency, source archive or full parent package is required. The DLL itself
 is intentionally not committed.
 
 Selected source, runtime art, recipes, tuning, pictures and reports are committed
-on `codex/land05-closeout`. The subsequent handoff records the checked implementation
-SHA. Main integration and push are not performed by this worker.
+on `codex/land05-closeout`. Checked implementation SHA:
+**`540222a7a49177c678e75c62fb9a80a81521d88e`**. The following documentation-only handoff commit
+records this SHA; its hash is returned with the task. Both apply after base
+`0240b5a5561c46084848f152c0ab464b71b2723d`. The retained DLL provenance was
+written before the implementation commit, so its `base_revision` is that base;
+the changed-input manifest links the built sources to this implementation.
+Main integration and push are not performed by this worker.
 
 Remaining notes are consolidated in the coordination sheet: unreproduced large
 hitches, long entry, residual smaller frame costs, unknown underground connection,
