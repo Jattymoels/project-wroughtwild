@@ -37,6 +37,13 @@ the owner; standing implementation approval is not an aesthetic playtest claim.
   reproduction and timings to identify the dominant cause; do not assume the
   previous arrival fixes or current import checks establish smoothness. This
   is real impaired play, not a cosmetic note or a resolved issue.
+  **Later owner clarification:** the subsequent playthrough did not lag at all.
+  The owner reports that the earlier lag was specific to the first/lakeside biome
+  and wonders whether an asset loading there caused it. Record the biome-specific
+  observation and lag-free subsequent playthrough; asset loading is a hypothesis,
+  not a measured cause. At the deferred investigation, start with that lakeside
+  area and distinguish first-use loading from ongoing cost. This does not establish
+  a universal performance fix or change the selected LAND-04/05 sequence.
 - **Excessive elk/stag population.** Reduce the perceived abundance in a later
   tuning pass after identifying the actual spawning path. Exact reduction is
   not selected. The owner suspects it is unrelated to lag; keep these as
