@@ -59,6 +59,24 @@ and corrupted, giving rise to the enhanced enemies encountered by the player.
 The resulting nightmare includes both destruction and things amplified beyond
 their former limits.
 
+**Owner reinforcement, 17 September 2026:** meteorite magic/technology is an
+augmentation/enhancement effect. Affected land, plants, materials and creatures
+should have their existing qualities visibly heightened; the colour determines
+how they are heightened. Do not reduce the forces to restrained colour labels
+or merely different decorations. White amplifies force/motion/displacement and
+load-bearing response; Red amplifies activity, accumulation and release; Blue
+amplifies holding, preservation and layered retention; Green amplifies branching,
+spread and connection. Host identity determines the resulting form: heightened
+woodland roots and heightened dry scrub must remain different structures.
+
+This reinforces the existing extreme-augmentation premise, not a new power or
+stat multiplier. Heightening can mean stronger structure, exaggerated layering,
+denser branching, concentrated activity or greater reach, not uniform enlargement
+or brightness. Keep quiet/recovered ground and readable contrasts in influence
+strength; not every surface must glow. Existing combat, loot, resource and device
+rules remain authoritative. LAND-05 applies this through the selected readability
+and composition refinements, not an unbounded all-world/all-creature remake.
+
 **Owner clarification, 6 September 2026:** any empowerment found in an old
 workshop is accidental. An asteroid struck a blacksmith's ruin from the world
 before the catastrophe; its pressure crossed the surviving material. The ruin

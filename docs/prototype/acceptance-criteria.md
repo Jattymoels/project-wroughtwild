@@ -1,5 +1,20 @@
 # Vertical-Slice Acceptance Criteria
 
+## LAND-04 force journeys (adopted)
+
+- [x] Fresh V12 carries native White/Blue/Green host-dependent terrain, selected
+  existing finite fauna, four source owners and paid request/delay/branch work.
+- [x] Worker route corrections and fresh-process Continue support adoption;
+  original failed runs remain explicit. Main matching-DLL import passed in 5.51 s.
+- [ ] Visual journey ambition is partly delivered: connected Green propagation
+  and natural source discovery need the selected LAND-05 refinement.
+- [ ] Owner LAND-04 playtest feedback and broader performance remain open.
+
+[Result and assessment](land04-force-journeys-result-2026-09-17.md).
+LAND-05 is the selected closeout, with first/lakeside stuttering and ambient elk
+addressed before bounded enhancement/readability improvements. No universal
+performance or owner aesthetic acceptance is inferred from passing checks.
+
 ## LAND-03 Dry Steppe and ordinary acquisition (adopted)
 
 - [x] Fresh V11 adds seeded physical Dry Steppe and an original supported low-growth

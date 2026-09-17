@@ -2,6 +2,10 @@
 
 ## LAND-04: V12 White, Blue and Green journeys
 
+Adopted on main through `6e0c248` from `159a188` / `f116f6f`, with matching native
+DLL and a clean 5.51 s main import. LAND-05 is the selected bounded closeout;
+use a successor profile if frozen geometry, site or population generation changes.
+
 The [LAND-04 implementation](../prototype/land04-force-journeys-worker-2026-09-17.md)
 selects `frontier_v12` for ordinary fresh worlds, with its own
 `worldgen-frontier-v12.json` and isolated native journey composer. V11 and all

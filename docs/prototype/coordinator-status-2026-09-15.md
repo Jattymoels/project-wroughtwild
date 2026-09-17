@@ -7,13 +7,16 @@ outrank historical review, packaging and rollout requirements.
 
 ## Current adoption and next worker
 
-**LAND-04 worker complete; ready for coordinator integration.**
+**LAND-04 adopted; next is the single LAND-05 closeout.**
 The [force-journey result](land04-force-journeys-result-2026-09-17.md) records fresh
 V12 White/Blue/Green physical hosts, four-source ownership, selected finite fauna,
 the six authored host forms and four actual final game pictures. Worktree
 `D:/Wroughtwild/work/land04-force-journeys`, branch `codex/land04-force-journeys`.
-Main remains at adopted LAND-03 until the coordinator integrates this result;
-the worker has not pushed or started LAND-05.
+Main integrates implementation `159a188` and handoff `f116f6f` through `6e0c248`.
+The matching DLL is installed; all 12 changed native build inputs match provenance.
+Main's isolated headless import passed in 5.51 s, exit 0, zero errors; no owned
+tests remain running. Worker evidence below was reused. Latest lakeside-specific
+playtest notes were preserved through the merge.
 Checked implementation: `159a188cac5a05408815e45f7d8aa3d040649f67`; the following
 documentation-only handoff records that SHA. Use the result's matching DLL.
 
@@ -34,6 +37,18 @@ thin roots/stems, open work clearances and subtle distant light cues remain
 refinement notes, not owner aesthetic acceptance. The approved Scarwater look
 and old profiles remain intact. After coordinator adoption, the original plan's
 single bounded LAND-05 closeout is next; no later worker is launched here.
+
+The [LAND-05 brief](land05-closeout-worker-2026-09-17.md) and
+[copyable prompt](land05-session-prompt-2026-09-17.md) are prepared for
+`D:/Wroughtwild/work/land05-closeout`, branch `codex/land05-closeout`.
+Priority: first/lakeside-biome stutter diagnosis and repair; separately reduce
+excess ambient elk; then Green-led connected host/readability improvements.
+The owner's reinforcement is that every meteorite force augments/enhances its
+hosts in its own way: heightened physical forms, not just coloured decorations.
+The coordinator assessment found Green's connected network and unstaged discovery
+the weakest outcomes. Keep stronger shape and source-route cues within existing
+places, preserve campy Scarwater, and do not start another all-environment art wave.
+V12 is published; use V13 if changing frozen physical/population generation.
 
 ### Previous adoption: LAND-03
 

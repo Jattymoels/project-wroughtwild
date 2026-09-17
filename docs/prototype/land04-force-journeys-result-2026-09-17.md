@@ -11,6 +11,34 @@ was performed. Selected code, runtime art, recipes and evidence are committed;
 generated local Godot import/UID outputs and ignored build/private-save outputs
 are excluded.
 
+## Coordinator adoption and assessment, 17 September
+
+The historical worker-only handoff above is now integrated: `159a188` / `f116f6f`
+through main merge `6e0c2482f6aadcf1f2802a3c442741b87bee0339`. Latest owner notes
+about first/lakeside-specific lag and a subsequent lag-free playthrough survive
+the merge. Twelve changed native build inputs and installed DLL matched worker
+provenance. Main's isolated hidden headless import passed in **5.51 s**, exit 0,
+zero errors. No owned test remains; worker gameplay/Continue evidence was reused
+without relabelling the original failed runs below. Local record and previous
+V11 DLL are retained under `build/land04/coordinator-adoption/` in the D: worker.
+
+The coordinator inspected all five actual game images and relevant native host
+composition, shader and check records. Functional and lore-driven generation
+requirements are supported: substantial terrain forms differ by force, existing
+source-to-paid-workshop actions work, and owners survive Continue. The visual
+journey ambition is only partly delivered. Blue has the clearest distinct plant
+forms; White shows displacement and bracing; Green's tall/low contrast exists but
+its connected propagation network is difficult to read in the supplied views.
+Broad source clearings still separate focal resources from surrounding host art.
+Staged arrivals prove local use, not natural discovery or comprehension.
+
+Recommendation accepted as next-prompt preparation: retain this playable
+iteration and address the bounded priorities in [LAND-05](land05-closeout-worker-2026-09-17.md).
+The owner additionally reinforced that every meteorite colour is an enhancement
+mode, so selected visual improvements must heighten host properties visibly.
+This is not owner approval of the unplayed LAND-04 appearance, a performance pass
+or a request to replace the approved campy cliffs.
+
 ## Original-plan outcome
 
 Ordinary fresh worlds select **frontier_v12**. Seeded physical hosts now connect

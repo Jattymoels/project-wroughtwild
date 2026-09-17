@@ -28,15 +28,14 @@ creature concept sheets with modelling notes. The selected creatures now have an
 
 ## Current phase
 
-LAND-03 adds **Dry Steppe** and ordinary four-force acquisition to fresh
-`frontier_v11` worlds: broken mineral ribs, low living growth, two Red-source
-approaches and contrasting home ground. The owner-approved Scarwater appearance
-and all older Continue profiles remain intact. The existing Red/White/Blue/Green
-sources and paid devices work under the ordinary campaign; no LF laboratories or
-new economy are enabled. See the [worker result and actual game pictures](docs/prototype/land03-dry-steppe-result-2026-09-16.md).
-Integrated on main through `ea87ef0` / `a22a771`, with its matching native DLL.
-LAND-04's remaining journeys are prepared for the owner-started session;
-reported stutters/hitches and excessive elk/stag abundance remain LAND-05 items.
+LAND-04 is integrated as fresh `frontier_v12`: White, Blue and Green physical
+host journeys join Scarwater, Dry Steppe/Red and ordinary four-force acquisition.
+Older Continue profiles and paid ownership remain intact; no LF laboratories or
+new economy are enabled. See the [result and game pictures](docs/prototype/land04-force-journeys-result-2026-09-17.md).
+The prepared [LAND-05 closeout](docs/prototype/land05-closeout-worker-2026-09-17.md)
+targets first/lakeside-biome stutters, excessive ambient elk and clearer connected
+augmentation forms/discovery. The owner reinforces heightened host properties
+with colour-specific effects; the approved campy Scarwater look stays protected.
 
 The [current whole-project coordination sheet](docs/prototype/coordinator-status-2026-09-15.md)
 distinguishes implemented gameplay, ready art adoption, remaining production and

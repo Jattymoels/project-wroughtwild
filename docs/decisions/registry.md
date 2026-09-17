@@ -1,5 +1,17 @@
 # Decision Registry
 
+Owner augmentation reinforcement and LAND-05 preparation, 17 September 2026:
+meteorite magic/technology heightens existing properties in every affected host;
+White/Red/Blue/Green determine the mode of enhancement. This reinforces D-030,
+not new combat or economic effects. See [world premise](../world-premise.md).
+LAND-04 `159a188` / `f116f6f` is adopted through `6e0c248` with matching DLL and
+clean 5.51 s main import. The requested next prompt is the single
+[LAND-05 closeout](../prototype/land05-closeout-worker-2026-09-17.md): lakeside-specific
+stutter diagnosis/repair, separately reduced ambient elk, then stronger connected
+force forms/discovery within the existing wave. Preserve approved campy Scarwater,
+all saved identities and existing source/device/finite-host rules. No new worker
+starts automatically; no biome/roster expansion or broad verification programme.
+
 LAND-03 adoption and LAND-04 preparation, 17 September 2026: `ea87ef0` / `a22a771`
 are integrated with the matching DLL and clean 8.66 s main import. The selected
 next outcome is [White/Blue/Green force journeys](../prototype/land04-force-journeys-worker-2026-09-17.md),

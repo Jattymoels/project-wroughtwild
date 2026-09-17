@@ -8,6 +8,14 @@ Selection authorises the direction, two-biome wave and later reuse of existing L
 
 ## The delivery sequence
 
+LAND-04 is now adopted (`159a188` / `f116f6f`, merge `6e0c248`) as fresh V12.
+The owner requested [LAND-05 closeout](land05-closeout-worker-2026-09-17.md), with
+the reinforcement that all colours visibly heighten host properties. Priority is
+lakeside stutter diagnosis/repair, separately lower ambient elk abundance, then
+connected augmented forms and source discovery led by Green. Preserve the approved
+campy Scarwater look. This is the original wave's final bounded slice; no new
+biome/roster or automatic follow-on intensive. Use V13 if frozen generation changes.
+
 LAND-03 is now adopted (`ea87ef0` / `a22a771`) as fresh V11 with all four existing
 sources/devices usable in ordinary play. The next prepared
 [LAND-04 brief](land04-force-journeys-worker-2026-09-17.md) develops the remaining

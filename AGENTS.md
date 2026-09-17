@@ -453,6 +453,32 @@ and preserves V11/older/LF Continue. LAND-05 follows, including the owner's
 high-impact stuttering and separate elk-abundance request; neither is fixed by
 LAND-03 or a passing import. Do not start an intermediate performance/art tangent.
 
+### LAND-04 adoption and selected LAND-05 closeout, 17 September
+
+LAND-04 `159a188` / `f116f6f` is integrated through `6e0c248` with its matching
+native DLL and a clean 5.51 s main headless import. Focused worker evidence was
+reused, with original 183/184 use and 33/34 correction results kept explicit and
+their route/reporting fixes recorded. The coordinator assessment finds functional
+and lore-driven terrain work delivered, but connected Green growth and natural
+discovery/readability only partly delivered. Owner LAND-04 aesthetics remain
+unplayed/unapproved; the previously approved Scarwater character stays protected.
+
+The owner reinforced that all meteorite colours are augmentation/enhancement:
+affected properties should be visibly heightened in colour-specific ways. Read
+the current [world premise](docs/world-premise.md); restrained emission does not
+mean timid physical augmentation. Preserve quiet recovered contrasts and rules.
+The owner requested the next prompt with the coordinator's LAND-05 recommendation.
+The [closeout brief](docs/prototype/land05-closeout-worker-2026-09-17.md) selects
+one bounded session: (1) diagnose and repair the reported first/lakeside-biome
+stutters, (2) reduce excessive ambient elk separately, (3) strengthen connected
+augmented host forms and source discovery, led by Green. The later lag-free
+playthrough and speculative asset-loading explanation must remain in the evidence.
+Do not presume the cause or turn this into a broad benchmark/art rewrite.
+Prepare `D:/Wroughtwild/work/land05-closeout`, branch `codex/land05-closeout`;
+owner starts it, no automatic launch. Preserve all published V12/older/LF save
+geography and owners; use fresh V13 if frozen generation/population changes.
+This closes the original LAND wave; do not automatically invent LAND-06.
+
 ### Standard game development practices at prototype scale
 
 The owner asked why established game-development techniques were not the default

@@ -11,6 +11,14 @@ this reference into production. Exact illustrated anatomy remains illustrative.
 
 ## The rule to carry into every session
 
+**Owner reinforcement, 17 September:** every colour is a mode of augmentation.
+Affected hosts should feel heightened, not merely altered or tinted. White
+intensifies force/displacement/bracing; Red activity/accumulation/release; Blue
+holding/preservation/layering; Green spread/branching/connectivity. Choose the
+host property being enhanced, then exaggerate its physical expression enough to
+read in ordinary play. Preserve habitat identity, quiet contrasts and existing
+game rules; this is not uniform scale/emission or a new combat/economy system.
+
 > Generate different country from the seed. Apply consistent lore-defined forces to suitable hosts. Derive the present terrain, habitat and opportunities from those relationships.
 
 The same seed **and saved generation version** reproduce the same geography. Different seeds vary terrain, biome arrangement, impacts, influence reach, host distribution and discovery routes within selected guarantees. “Authored” means deliberately designed rules, reusable forms and relationships, not a fixed map. Scarwater is a proposed **family of generated basin compositions**, not a coordinate blueprint every world must copy.
