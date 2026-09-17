@@ -63,7 +63,7 @@ static func build_chunk(terrain: Terrain, chunk: Node3D, data: Dictionary) -> vo
  water.mesh=st.commit()
  var material := ShaderMaterial.new()
  material.shader=preload("res://art/lake_water.gdshader")
- if terrain.world_profile()=="frontier_v10":material.shader=preload("res://land02b/water.gdshader")
+ if terrain.world_profile() in ["frontier_v10","frontier_v11"]:material.shader=preload("res://land02b/water.gdshader")
  water.material_override=material
  water.cast_shadow=GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
  chunk.add_child(water)

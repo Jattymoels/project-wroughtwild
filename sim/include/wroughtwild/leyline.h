@@ -8,7 +8,7 @@
 
 namespace wroughtwild::leyline {
 inline constexpr const char* profile = "living_frontier_wave1";
-inline bool supports(const std::string& id) { return id == profile || id == "living_frontier_wave3"; }
+inline bool supports(const std::string& id) { return id == profile || id == "living_frontier_wave3" || id == "frontier_v11"; }
 inline constexpr int saveVersion = 4;
 struct Source {
     std::string id, label, material, rareItem;
@@ -30,12 +30,13 @@ struct State {
 struct Result { bool ok = false; int moved = 0; std::string message; };
 class World {
 public:
-    World(Config config, uint64_t seed);
+    World(Config config, uint64_t seed, std::string worldProfile = profile);
     const Config& config() const { return config_; }
     uint64_t seed() const { return seed_; }
+    const std::string& worldProfile() const { return worldProfile_; }
     const State& state(const std::string& id) const;
     const Source& source(const std::string& id) const;
-    // Anchor geography reuses a guaranteed reachable, clear V6 home margin.
+    // Published LF keeps its home margin; V11 uses its typed reachable source site.
     static worldgen::SurfacePoint anchor(const Source&, const worldgen::WorldMap&);
     Result work(const std::string& id);
     Result collect(const std::string& id, const std::string& item, economy::PlayerEconomy& player);
@@ -46,6 +47,7 @@ public:
 private:
     Config config_;
     uint64_t seed_;
+    std::string worldProfile_, ledgerProfile_;
     std::map<std::string, State> states_;
     void form(const Source&, State&);
 };

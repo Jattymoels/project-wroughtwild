@@ -15,7 +15,7 @@ const STONE := Color("555e5b")
 const METAL := Color("727a77")
 
 static func build(root: Node3D, ground: Terrain) -> FrontierSites:
-	if ground.world_profile() != "living_frontier_wave3": return null
+	if ground.world_profile() not in ["living_frontier_wave3","frontier_v11"]: return null
 	var result := FrontierSites.new()
 	result.name = "FrontierSites"
 	result.terrain = ground
@@ -55,13 +55,23 @@ func _box(at: Vector3, size: Vector3, colour: Color, solid := false, glow := fal
 	return part
 
 func _compose() -> void:
+	if terrain.world_profile()=="frontier_v11":
+		for site: Dictionary in terrain.map.get("leyline_source_sites",[]):
+			var influence := String(site.id).split("_")[0]
+			if influence=="red": continue # Red follows its authored ribs and growth.
+			var route: PackedVector3Array = site.approach
+			for i in range(0,route.size(),int(LeylineSource.LOOK.clue_spacing_m)):
+				_scar(route[i],influence)
 	for habitat: Dictionary in terrain.map.frontier_hosts:
 		var path: PackedVector3Array = habitat.source_route
 		var spacing := int(terrain.map.frontier_rules.habitat_cue_spacing_m)
 		for i in range(0,path.size(),spacing): _scar(path[i],String(habitat.influence))
 		for at: Vector3 in habitat.habits: _scar(at,String(habitat.influence),true)
-	for lab: Dictionary in terrain.map.laboratories: _laboratory(lab)
-	_artificial_trail()
+	# Ordinary LAND adopts one natural host; laboratory shells and collection
+	# apparatus remain exclusive to their original geography/campaign.
+	if terrain.world_profile() == "living_frontier_wave3":
+		for lab: Dictionary in terrain.map.laboratories: _laboratory(lab)
+		_artificial_trail()
 	refresh_apparatus()
 	refresh_buildings()
 
@@ -123,6 +133,10 @@ func _artificial_trail() -> void:
 	trail_pieces=dressing.slice(first_piece)
 
 func _scar(at: Vector3, influence: String, growth := false) -> void:
+	var first_part := dressing.size()
+	if terrain.world_profile()=="frontier_v11":
+		at = StrangeSites._ground(terrain,at.x,at.z)
+		if not at.is_finite(): return
 	var colour: Color = FrontierHostLook.PALETTE[influence]
 	# Coloured detail stays a small local part of ordinary ground/wood.
 	_box(at + Vector3(0,.09,0),Vector3(.8,.18,.6),Color("615d4b"))
@@ -138,6 +152,9 @@ func _scar(at: Vector3, influence: String, growth := false) -> void:
 				var branch := _box(at+Vector3(0,.22,i*.16),Vector3(.75,.04,.05),colour,false,true)
 				branch.rotation.y = -.4 if i==0 else .4
 			if growth: _box(at+Vector3(0,.45,0),Vector3(.07,.6,.07),Color("66724b"))
+
+	if terrain.world_profile()=="frontier_v11":
+		for i in range(first_part,dressing.size()): dressing[i].set_meta("support_anchor",at)
 
 func _laboratory(data: Dictionary) -> void:
 	var at: Vector3 = data.position
@@ -211,6 +228,10 @@ func refresh_buildings(changed: Array[AABB] = [], buildings: Dictionary = {}) ->
 		if not StrangeSites.touches_changes(bounds,changed): continue
 		# Paid occupied space always wins, including an explicitly loaded fixture.
 		part.visible = not StrangeSites._building_overlap(index,bounds)
+		if part.visible and part.has_meta("support_anchor"):
+			var anchor: Vector3 = part.get_meta("support_anchor")
+			var current := StrangeSites._ground(terrain,anchor.x,anchor.z)
+			part.visible = current.is_finite() and absf(current.y-anchor.y)<.4
 		var body := part.get_node_or_null("ExteriorBody")
 		if body != null:
 			for collision: CollisionShape3D in body.get_children(): collision.set_deferred("disabled",not part.visible)

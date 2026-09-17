@@ -1,0 +1,6 @@
+{
+	"checks": 200,
+	"distance_m": 485.593811258674,
+	"failures": 2,
+	"scope": "Normal New World and actual UI/controller. Arrival and non-source recipe inputs staged; no acquisition pacing/balance claim."
+}

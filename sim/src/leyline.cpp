@@ -53,7 +53,10 @@ Config Config::load(const std::string& path) {
     if (c.sources.empty() || c.sources.size() > 4) throw std::runtime_error("LF-2 permits four coloured hosts only.");
     return c;
 }
-World::World(Config config, uint64_t seed) : config_(std::move(config)), seed_(seed) {
+World::World(Config config, uint64_t seed, std::string worldProfile)
+    : config_(std::move(config)), seed_(seed), worldProfile_(std::move(worldProfile)),
+      ledgerProfile_(worldProfile_ == "frontier_v11" ? worldProfile_ : profile) {
+    if (!supports(worldProfile_)) throw std::runtime_error("Unsupported leyline world.");
     for (const auto& s : config_.sources) form(s, states_[s.id]);
 }
 const Source& World::source(const std::string& id) const {
@@ -62,6 +65,10 @@ const Source& World::source(const std::string& id) const {
 }
 const State& World::state(const std::string& id) const { return states_.at(id); }
 worldgen::SurfacePoint World::anchor(const Source& s, const worldgen::WorldMap& map) {
+    if (map.profileId == "frontier_v11") {
+        for (const auto& site : map.leylineSourceSites) if (site.sourceId == s.id) return site.at;
+        throw std::runtime_error("Missing LAND-03 source geography.");
+    }
     const auto& home = map.homeSites.at(static_cast<size_t>(s.homeIndex));
     const int x = home.x + static_cast<int>(std::round(s.offsetX / map.cellSize));
     const int z = home.z + static_cast<int>(std::round(s.offsetZ / map.cellSize));
@@ -108,7 +115,7 @@ void World::advance(double seconds, const std::set<std::string>& blocked) {
 }
 std::string World::serialize() const {
     std::ostringstream out; out << std::setprecision(17);
-    out << "{\"version\":" << saveVersion << ",\"profile\":\"" << profile << "\",\"seed\":\"" << seed_ << "\",\"sources\":{";
+    out << "{\"version\":" << saveVersion << ",\"profile\":\"" << ledgerProfile_ << "\",\"seed\":\"" << seed_ << "\",\"sources\":{";
     bool first = true;
     for (const auto& [id,s] : states_) {
         if (!first) out << ',';
@@ -125,7 +132,10 @@ bool World::restore(const std::string& text, std::string* reason) {
     try {
         const auto doc = json::parse(text);
         const int version = integer(doc->get("version"),1,saveVersion);
-        if (doc->get("profile").asString() != profile || doc->get("seed").asString() != std::to_string(seed_)) throw std::runtime_error("Leyline world identity mismatch.");
+        if (doc->get("profile").asString() != ledgerProfile_ || doc->get("seed").asString() != std::to_string(seed_)) throw std::runtime_error("Leyline world identity mismatch.");
+        // New ordinary worlds begin with the complete four-source contract.
+        // They cannot claim historical LF migration to mint missing owners.
+        if (worldProfile_ == "frontier_v11" && version != saveVersion) throw std::runtime_error("LAND-03 requires its complete source ledger.");
         const auto& records = doc->get("sources").asObject();
         // Published versions must contain their complete declared source set.
         // Only a source introduced later can receive initial stock on migration.

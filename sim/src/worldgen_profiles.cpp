@@ -9,7 +9,7 @@
 namespace wroughtwild::worldgen {
 
 bool knownProfile(const std::string& profileId) {
-    return profileId == "legacy_v1" || profileId == "frontier_v2" || profileId == "frontier_v3" || profileId == "frontier_v4" || profileId == "frontier_v5" || profileId == "frontier_v6" || (profileId == "frontier_v7" || profileId == "frontier_v8" || profileId == "frontier_v9" || profileId == "frontier_v10") || profileId == "living_frontier_wave1" || profileId == "living_frontier_wave3";
+    return profileId == "legacy_v1" || profileId == "frontier_v2" || profileId == "frontier_v3" || profileId == "frontier_v4" || profileId == "frontier_v5" || profileId == "frontier_v6" || (profileId == "frontier_v7" || profileId == "frontier_v8" || profileId == "frontier_v9" || profileId == "frontier_v10" || profileId == "frontier_v11") || profileId == "living_frontier_wave1" || profileId == "living_frontier_wave3";
 }
 
 const tuning::WorldgenTable& profileTable(const tuning::Tuning& tuning,
@@ -24,6 +24,7 @@ const tuning::WorldgenTable& profileTable(const tuning::Tuning& tuning,
     if (profileId == "frontier_v8") return tuning.frontierV8Worldgen;
     if (profileId == "frontier_v9") return tuning.frontierV9Worldgen;
     if (profileId == "frontier_v10") return tuning.frontierV10Worldgen;
+    if (profileId == "frontier_v11") return tuning.frontierV11Worldgen;
     if (profileId == "living_frontier_wave1") return tuning.livingFrontierWorldgen;
     if (profileId == "living_frontier_wave3") return tuning.livingFrontierWave3Worldgen;
     throw std::runtime_error("worldgen: unknown generation profile " + profileId);
@@ -104,6 +105,9 @@ namespace fractured_pressure {
 namespace wide_frontier = fractured_frontier;
 #include "worldgen_frontier_v6_pressure.inc"
 }
+namespace dry_steppe_frontier {
+#include "worldgen_frontier_v11.inc"
+}
 namespace living_frontier_wave3 {
 #include "worldgen_living_frontier_wave3.inc"
 }
@@ -123,7 +127,7 @@ WorldMap generateProfile(const tuning::Tuning& tuning, uint64_t seed, const std:
         modifier.id = id;
         generationInputs.world.eliteModifiers.push_back(modifier);
     }
-    const bool wide = profileId == "frontier_v6" || (profileId == "frontier_v7" || profileId == "frontier_v8" || profileId == "frontier_v9" || profileId == "frontier_v10") || profileId == "living_frontier_wave1" || profileId == "living_frontier_wave3";
+    const bool wide = profileId == "frontier_v6" || (profileId == "frontier_v7" || profileId == "frontier_v8" || profileId == "frontier_v9" || profileId == "frontier_v10" || profileId == "frontier_v11") || profileId == "living_frontier_wave1" || profileId == "living_frontier_wave3";
     WorldMap map = wide ? frontier_v6_base::generate(generationInputs, seed) : generate(generationInputs, seed);
     map.profileId = profileId;
     for (auto& node : map.nodes) node.resourceId = frozen_frontier::legacyNodeId(node);
@@ -132,16 +136,17 @@ WorldMap generateProfile(const tuning::Tuning& tuning, uint64_t seed, const std:
     if (profileId == "frontier_v4") cataclysm_frontier::composeFrontierV4(map, table);
     if (profileId == "frontier_v5") pressure_frontier::composeFrontierV5(map, table);
     if (wide) {
-        if(profileId == "frontier_v10") fractured_pressure::composeFrontierV6Pressure(map,table);
+        if(profileId == "frontier_v10" || profileId == "frontier_v11") fractured_pressure::composeFrontierV6Pressure(map,table);
         else if(profileId == "frontier_v9") scarwater_pressure::composeFrontierV6Pressure(map,table);
         else if(profileId == "frontier_v8") lake_pressure::composeFrontierV6Pressure(map,table);
         else if(profileId == "frontier_v7") reclaimed_pressure::composeFrontierV6Pressure(map,table);
         else wide_pressure::composeFrontierV6Pressure(map,table);
-        if(profileId=="frontier_v10") { fractured_frontier::finish(map,table); lake_frontier::finishWideFrontier(map,table); }
+        if(profileId=="frontier_v10" || profileId=="frontier_v11") { fractured_frontier::finish(map,table); lake_frontier::finishWideFrontier(map,table); }
         else if(profileId=="frontier_v9") { scarwater_frontier::finish(map,table); lake_frontier::finishWideFrontier(map,table); }
         else if(profileId=="frontier_v8") lake_frontier::finishWideFrontier(map,table);
         else wide_frontier::finishWideFrontier(map,table);
     }
+    if (profileId == "frontier_v11") dry_steppe_frontier::compose(map,table,tuning.livingFrontier);
     if (profileId == "living_frontier_wave3") living_frontier_wave3::compose(map,tuning.livingFrontier);
     return map;
 }

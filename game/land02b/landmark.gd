@@ -11,14 +11,26 @@ static func build(terrain: Terrain,detail_mask: Texture2D) -> Texture2D:
  var d: Vector3=place.direction
  var cross:=Vector3(-d.z,0,d.x)
  var radius:=float(place.ridge_half_length_m)+float(place.ridge_offset_m)+65.0
+ var minimum:=Vector2(centre.x-radius,centre.z-radius)
+ var maximum:=Vector2(centre.x+radius,centre.z+radius)
+ var steppe: Dictionary=terrain.map.get("dry_steppe",[{}])[0] if not terrain.map.get("dry_steppe",[]).is_empty() else {}
+ if not steppe.is_empty():
+  var steppe_radius:=maxf(float(steppe.half_length_m),float(steppe.half_width_m))+24.0
+  minimum=minimum.min(Vector2(steppe.centre.x,steppe.centre.z)-Vector2.ONE*steppe_radius)
+  maximum=maximum.max(Vector2(steppe.centre.x,steppe.centre.z)+Vector2.ONE*steppe_radius)
  var batches: Dictionary={}
  var normals: Dictionary={}
  var colours: Dictionary={}
  var owners: Dictionary={}
- for z in range(maxi(0,floori((centre.z-radius)/16)*16),mini(height,ceili((centre.z+radius)/16)*16),16):
-  for x in range(maxi(0,floori((centre.x-radius)/16)*16),mini(width,ceili((centre.x+radius)/16)*16),16):
+ for z in range(maxi(0,floori(minimum.y/16)*16),mini(height,ceili(maximum.y/16)*16),16):
+  for x in range(maxi(0,floori(minimum.x/16)*16),mini(width,ceili(maximum.x/16)*16),16):
    var delta:=Vector3(x+8,centre.y,z+8)-centre
-   if delta.dot(d)<-45 or delta.dot(d)>float(place.ridge_offset_m)+float(place.ridge_width_m)+65 or absf(delta.dot(cross))>float(place.ridge_half_length_m)+65:continue
+   var selected:=delta.dot(d)>=-45 and delta.dot(d)<=float(place.ridge_offset_m)+float(place.ridge_width_m)+65 and absf(delta.dot(cross))<=float(place.ridge_half_length_m)+65
+   if not steppe.is_empty():
+    var sd: Vector3=steppe.direction
+    var local:=Vector3(x+8,0,z+8)-Vector3(steppe.centre.x,0,steppe.centre.z)
+    selected=selected or (absf(local.dot(sd))<=float(steppe.half_length_m)+20 and absf(local.dot(Vector3(-sd.z,0,sd.x)))<=float(steppe.half_width_m)+20)
+   if not selected:continue
    var data: Dictionary=terrain._sim.world_mesh_chunk(terrain.seed_value(),16,x,z,PackedInt32Array(),true,terrain._blend_palette())
    mask.set_pixel(x/16,z/16,Color.WHITE)
    for kind: String in data.surfaces:

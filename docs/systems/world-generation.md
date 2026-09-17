@@ -1,5 +1,103 @@
 # World Generation, Settlements and Travel
 
+## LAND-03: worker V11 Dry Steppe and ordinary acquisition
+
+**Worker implementation, 17 September 2026.** Fresh ordinary worlds select
+`frontier_v11` using independent `worldgen-frontier-v11.json` inputs and a
+separate native Steppe composer. Focused generation and initial appearance
+checks below have passed. Ordinary paid work, final 8-check aimed source-route
+use and 27-check fresh-process Continue/rejection are complete; see the
+[worker result](../prototype/land03-dry-steppe-result-2026-09-16.md) for exact evidence.
+This is not yet coordinator adoption or owner aesthetic approval.
+
+The approved Scarwater basin, campy cliffs, lake, Gallery Woodland and two linked
+homes are composed through the unchanged V10 foundation. A seeded opposite-side
+Dry Steppe then forms low rolling country with interrupted mineral ribs, shallow
+cuts and two differently exposed physical approaches to the real Red workplace.
+Eligible dry substrate, existing cave roofs, water and protected discoveries are
+resolved before the Red host swells the bank and before low-growth dressing.
+Broad connected dry-country shoulders lead to the other two existing home cores:
+a sheltered work hollow and an open outlook. All four radius-14 m home cores
+retain their existing level support; no fifth home or new building rule is added.
+
+Steppe uses the shared continuous-density carrier and the same visible/contact/
+edit triangles. Expanding that local carrier preserves the existing Scarwater
+samples. Density regenerates from saved profile/seed; it is not another save
+owner. Original cave air, fixed lake beds, paid construction and later digging
+keep their established authority. V11 intentionally inherits the corrected V10
+surface, distant-landmark, material and selected-tree paths. V1–V10 and LF
+Continue retain their original generation identities without migration.
+
+`DrySteppePlace` describes only this composition: country frame, reveal, source,
+selected Red host, two approaches, mineral/release hosts and existing home IDs.
+`leylineSourceSites` gives the four existing source IDs real supported dry work
+anchors and approaches. Source stock, manual stages, claims, eligible renewal and
+paid devices stay in their existing native owners. Only the existing
+`lf_red_boar` teaching host is added here, with the existing minimum 170 m start
+separation and 65–130 m source separation. White/Blue/Green acquisition is usable;
+their substantial authored journeys and selected hosts remain LAND-04. Ordinary
+campaign policy remains `legacy`: acquisition does not enable LF laboratories,
+era transformations or the Conservator campaign. Ordinary finite pressure and
+rare sites remain separate owners.
+
+The first ordinary reveal exposed overly smooth, sand-like banks. The worker
+replaced Gaussian rib crowns with short, seed-varied rotated/chamfered mineral
+sections, sloping asymmetric caps, actual gaps and oblique crown clefts. Exposed
+rib and swollen-bank caps now contain native stone; soil and low growth remain
+between them. The shared route/work/home grading still has priority. The revised
+player-height reveal shows broken mineral structure, though broad exposed ground
+and inherited trees remain less rich than the concept references.
+
+The V11 `dry_steppe.design_purpose` entries explain each tuning control. Current
+references are a 180 m outward centre; independently varied 136 m/112 m country
+half-extents; 4.2 m rolling relief; 6.4 m interrupted ribs with 27 m spacing;
+2.4 m shallow cuts; 6 m clear route lanes; a 3.4 m hollow backbank; and a 7 m Red
+work radius. Seeded orientation/proportions and bounded substrate candidates
+change spatial composition. Twenty-four primary candidates and sixteen broader
+candidates precede a deterministic reachable opposite-side fallback; fallback use
+is reported by the place record. Original cave/quiet-home constraints take
+precedence over shape. These values describe implementation inputs, not measured
+universal outcomes or performance guarantees.
+
+Final native generation run `generation-20260917-092037` passed 34 checks with zero
+failures on seeds 77/78: deterministic geometry and source anchors, four complete
+dry radius-14 home cores, both Steppe home ecologies, distinct dry native routes,
+four unchanged source economies, separate Red host, edit-owned contact triangles
+and the retained V10 geography fingerprint. The initial run's two failed home-
+ecology assertions were corrected with the connected shoulders; they were not
+waived. The native acquisition/identity executable passed 63 checks, including
+one in-memory forced candidate-exhaustion world that exercises the real fallback
+and preserves homes, dry anchors/routes, host separation and finite discoveries.
+The production loader still rejects the injected negative candidate count.
+
+Actual controller traversal then found two steep-face catches that the earlier
+one-metre centre-height route assertions had missed. The final shortest paths
+could leave the graded lane and skim rib/bank edges where V11 switches to density
+faces. The corrected `physicalWalk` reads the same continuous roof crossings and
+one-metre four-column eligibility guard as the renderer, checks the actual roof
+fan slopes at a conservative 0.60 maximum and reserves a neighbouring cell for
+the capsule before flooding routes. Player slope/contact rules were not relaxed.
+
+The subsequent ordinary-use run traversed both complete terrain approaches to
+the Red source collider. It passed 198 of 200 assertions: the two remaining
+failures were a fixture asking the player to stand inside that solid source,
+not terrain catches. The final 8-check route-only run passed both actual camera-targeted source
+interactions and local Red art after 485.12 m of controller walking. Paid
+source/device/build checks are reused from the full run; 27 fresh-process
+Continue/rejection checks also passed. Exact records are in the result handoff.
+This intermediate run is not recorded as fully passing.
+
+Revised ordinary scene run `early-20260917-091228` passed six checks with zero
+failures and retained grounded reveal/source/hollow pictures. Those staged
+player positions establish load/use and initial appearance, not a completed
+walking or acquisition journey. Actual traversal, paid device use and targeted
+Continue results belong in the final result handoff.
+
+The owner's reported stutters/hitches and excessive elk remain separate deferred
+LAND-05 items. LAND-03 makes no global fauna-density change or new performance
+claim. The result handoff distinguishes actual appearance, ordinary paid use,
+focused checks and remaining limits before coordinator integration.
+
 ## LAND-02B: adopted fresh V10 environment foundation and Scarwater
 
 LAND-02B is adopted on main through `3759782` / `5c41ed2`, with the matching DLL

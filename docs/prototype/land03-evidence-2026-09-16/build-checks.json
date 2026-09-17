@@ -1,0 +1,32 @@
+{
+  "native_acquisition_and_forced_fallback": {
+    "checks": 63,
+    "failures": 0,
+    "evidence": "Final executable command output retained in task; tests/sim/test_land03_acquisition.cpp"
+  },
+  "dll_sha256": "101d4a26f0e1d8272cf0d8d85f77316c1e8138bdd3a2cf082a2f63b97361bc3d",
+  "changed_native_build_inputs_matched": [
+    "data/tuning/leyline.json",
+    "data/tuning/worldgen-frontier-v11.json",
+    "game/extensions/wroughtwild_sim/src/leyline_bindings.inc",
+    "game/extensions/wroughtwild_sim/src/wroughtwild_sim.cpp",
+    "sim/include/wroughtwild/leyline.h",
+    "sim/include/wroughtwild/tuning.h",
+    "sim/include/wroughtwild/worldgen.h",
+    "sim/src/contraptions.cpp",
+    "sim/src/leyline.cpp",
+    "sim/src/tuning.cpp",
+    "sim/src/worldgen_frontier_v11.inc",
+    "sim/src/worldgen_profiles.cpp",
+    "tools/wroughtwild-land03/CMakeLists.txt",
+    "tools/wroughtwild-land03/build-native.ps1"
+  ],
+  "runtime_art_hashes_matched": [
+    "grass-flow",
+    "grass-islands",
+    "sage-fan",
+    "red-brush",
+    "erosion-join",
+    "release-nodule"
+  ]
+}

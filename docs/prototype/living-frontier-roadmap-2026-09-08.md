@@ -1,6 +1,41 @@
 # Living Frontier — extraction, resonance and the laboratory campaign
 
 **Status: Waves 1–7 implemented as opt-in work and technically cleared by independent reviews. LF-7A/B expose captured laboratory configurations, exact rewards and saved return/reconfiguration. Both earlier defect regressions remain passing. INT-18A independently reproduces complete Relentless victories and Crossfire deaths. Crossfire completion, upper-tier balance, continuous fresh-campaign evidence, human clarity and the synchronous publication pause remain open.**
+## LAND-03 ordinary acquisition, 17 September 2026
+
+[LAND-03](land03-dry-steppe-worker-2026-09-16.md) adopts the existing complete
+four-source/device system into fresh `frontier_v11`, while keeping ordinary
+`legacy` campaign policy. It does not enable laboratories, Conservator progression
+or LF terrain events. Only the existing finite `lf_red_boar` teaching host is
+adapted here; the other selected host journeys remain LAND-04.
+
+The native owners remain `red_home_margin`, `white_home_margin`,
+`blue_home_margin` and `green_home_margin`, at V11's generated source sites.
+Each retains eight lots of sixteen units, four manual stages, fixed rare outcomes
+and ten minutes of eligible active-overworld renewal after depletion and claims.
+Pauses, trials and offline time earn no renewal. Reloading cannot recreate stock,
+claims or a rare roll. Ordinary finite resources and smithy pressure stay separate.
+
+Existing recipe costs and device semantics are unchanged: White requests, Blue
+delays, Green branches, and Red stores paid heat. White/Blue/Green kits each cost
+two matching raw units plus two wood; a Red buffer costs four salt, four wood and
+two iron ingots. Every heat charge costs two salt. Each receiver still pays its
+own mechanical drive and materials; signals create neither matter nor power.
+
+V11 source payloads carry their exact profile and seed and require all four
+owners. Device payloads likewise require their complete current schema and exact
+world identity. Missing, extra and wrong-world owners reject before installation;
+a same-seed profile rebind cannot carry stock across worlds. Published LF retains
+its historical internal payload tag and migrations; V10 retains its existing
+geography, ownership and acquisition restrictions. Source/device assets prepare
+at actual entry and remain shared for later use.
+
+The final native acquisition/fallback executable passed 63 checks. Actual source
+work, paid manufacture, the four-device workshop, paused-request/heat ownership
+and 27 fresh-process Continue/rejection checks also passed. The [worker result](land03-dry-steppe-result-2026-09-16.md)
+records traversal corrections and exact evidence separately from appearance.
+Staged non-source materials do not establish acquisition pacing or balance.
+
 See the [Wave 1 contract](living-frontier-wave1-2026-09-08.md) and
 [Wave 2 implementation and paid walkthrough](living-frontier-wave2-2026-09-08.md)
 for selected tuning, compatibility, evidence and remaining owner playtests.

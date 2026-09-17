@@ -30,7 +30,7 @@ struct Recipe {
     std::string excludedWorldProfile; // a selected replacement keeps legacy costs intact
     bool availableIn(const std::string& profile) const {
         // Wave 3 deliberately inherits the published experimental recipe policy.
-        const std::string policy = profile == "living_frontier_wave3" ? "living_frontier_wave1" : profile;
+        const std::string policy = (profile == "living_frontier_wave3" || profile == "frontier_v11") ? "living_frontier_wave1" : profile;
         return (worldProfile.empty() || worldProfile == policy) &&
                (excludedWorldProfile.empty() || excludedWorldProfile != policy);
     }
@@ -1052,6 +1052,12 @@ struct ScarwaterParams {
     double woodlandBandM=22, routeWidthM=5, lakeAspectDelta=.10;
     int candidateCount=24;
 };
+struct DrySteppeParams {
+    double centreDistanceM=180, halfLengthM=136, halfWidthM=112;
+    double rollingReliefM=4.2, ribHeightM=6.4, ribSpacingM=27, cutDepthM=2.4;
+    double routeWidthM=6, homeBankM=3.4, sourceWorkRadiusM=7;
+    int candidateCount=24;
+};
 struct FrontierHostDef { std::string id, sourceId, enemyId, influence; int homeIndex = 0; };
 struct FrontierLabDef { std::string id, label, regionId; };
 struct LivingFrontierTable {
@@ -1075,6 +1081,7 @@ struct WorldgenTable {
     ReclaimedFrontierParams reclaimedFrontier;
     LakeParams lake;
     ScarwaterParams scarwater;
+    DrySteppeParams drySteppe;
     uint64_t defaultSeed = 1;
     MapParams map;
     MountainParams mountains;
@@ -1351,6 +1358,7 @@ struct Tuning {
     std::map<std::string, double> centralRules;
     RealtimeTable realtime;
     WorldgenTable worldgen;
+    WorldgenTable frontierV11Worldgen; // LAND-03 separate Dry Steppe / Red inputs
     WorldgenTable frontierV10Worldgen; // LAND-02B frozen density/fracture inputs
     WorldgenTable frontierV9Worldgen; // LAND-02 immutable normal fresh-world inputs
     WorldgenTable frontierV8Worldgen;

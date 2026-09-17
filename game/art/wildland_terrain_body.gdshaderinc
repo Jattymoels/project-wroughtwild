@@ -2,6 +2,7 @@
 // surface relief and roughness; editable geometry and collision stay intact.
 #include "res://land02/ground.gdshaderinc"
 #include "res://land02b/ground.gdshaderinc"
+#include "res://land03/ground.gdshaderinc"
 
 uniform vec4 top_colour : source_color;
 uniform vec4 side_colour : source_color;
@@ -160,6 +161,7 @@ void fragment() {
 	rf08_surface(p,n,ALBEDO,ROUGHNESS);
 	land02_surface(p,n,ALBEDO);
 	land02b_surface(p,n,stone,ALBEDO,gradient,ROUGHNESS,EMISSION);
+	land03_surface(p,n,stone,broad,wear,ALBEDO,ROUGHNESS);
 	vec3 bumped = normalize(n - (gradient - n * dot(n,gradient)));
 	NORMAL = normalize((VIEW_MATRIX * vec4(bumped, 0.0)).xyz);
 }

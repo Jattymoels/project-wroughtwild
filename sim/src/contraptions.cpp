@@ -175,7 +175,7 @@ bool MachineWorld::itemAllowed(const std::string& item) const {
 Result MachineWorld::create(const std::string& key, const std::string& kind,
                             const std::array<double, 3>& position, int quarterTurns) {
     if (!knownKind(kind) || !identifier(key)) return no("Unknown fixture or invalid placement key.");
-    if ((kind=="white_connection" || kind=="blue_delay" || kind=="green_junction" || kind=="red_heat_buffer") && !leyline::supports(identity_.profile)) return no("Coloured components belong to the Living Frontier experiment.");
+    if ((kind=="white_connection" || kind=="blue_delay" || kind=="green_junction" || kind=="red_heat_buffer") && !leyline::supports(identity_.profile)) return no("This world does not support coloured components.");
     if (kind=="pressure_feeder" && !feederRecipeReady()) return no("The existing decorative forge recipe is unavailable.");
     if (state(key)) return no("That placement already contains a fixture.");
     if (states_.size() >= static_cast<size_t>(config_.maximumMachines)) return no("The world's fixture limit is reached.");
@@ -710,7 +710,8 @@ std::string MachineWorld::serialize() const {
 std::map<std::string, State> MachineWorld::parse(const std::string& source, std::map<std::string,int>* stocks) const {
     const auto document = json::parse(source);
     const int schema=integer(document->get("schema"),1,saveSchema);
-    if (schema>=3 && !leyline::supports(identity_.profile)) throw std::runtime_error("contraptions: experimental schema outside its world");
+    if (identity_.profile=="frontier_v11" && schema!=saveSchema) throw std::runtime_error("contraptions: LAND-03 requires its complete device ledger");
+    if (schema>=3 && !leyline::supports(identity_.profile)) throw std::runtime_error("contraptions: coloured-device schema outside its world");
     std::map<std::string,int> restoredStocks;
     if (schema==1) {
         if (identity_.profile=="frontier_v5" || identity_.profile=="frontier_v6" || (identity_.profile=="frontier_v7" || (identity_.profile=="frontier_v8" || (identity_.profile=="frontier_v9" || identity_.profile=="frontier_v10"))) || !identity_.sources.empty()) throw std::runtime_error("contraptions: source world requires its complete pressure ledger");
@@ -769,7 +770,7 @@ std::map<std::string, State> MachineWorld::parse(const std::string& source, std:
         for (const auto& item : s.remainder) if (config_.ferrousItems.count(item.first)) throw std::runtime_error("contraptions: ferrous ordinary output");
         if (s.kind != "cargo_winch" && s.kind != "ventlung_bellows" && s.kind!="pressure_feeder" && s.energy != 0) throw std::runtime_error("contraptions: invalid stored energy");
         if (s.kind != "stormglass_lever" && s.kind != "white_connection" && s.kind != "blue_delay" && s.kind != "green_junction" && s.pulses != 0) throw std::runtime_error("contraptions: invalid signal counter");
-        if ((s.kind == "white_connection" || s.kind == "blue_delay" || s.kind == "green_junction" || s.kind=="red_heat_buffer") && !leyline::supports(identity_.profile)) throw std::runtime_error("contraptions: coloured component outside its experiment");
+        if ((s.kind == "white_connection" || s.kind == "blue_delay" || s.kind == "green_junction" || s.kind=="red_heat_buffer") && !leyline::supports(identity_.profile)) throw std::runtime_error("contraptions: coloured component outside its supported world");
         if (schema>=5) {
             s.heat=integer(record->get("heat"),0,config_.heatCapacity);
             s.heatKey=record->get("heat_key").asString();

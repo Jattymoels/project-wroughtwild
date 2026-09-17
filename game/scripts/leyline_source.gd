@@ -1,6 +1,6 @@
 class_name LeylineSource
 extends StaticBody3D
-## Manual host and exposed collection tray. Native LF ledger owns every lot.
+## Manual host and exposed collection tray. Native source ledger owns every lot.
 const LOOK = preload("res://art/leyline_source_look.tres")
 var source_id := ""
 var sim: WroughtwildSim
@@ -13,6 +13,7 @@ var _colour := Color.WHITE
 var _highlight := false
 
 static func build(root: Node3D, ground: Terrain) -> void:
+	if not ground._sim.leyline_sources().is_empty() and G1Art.enabled(): G1Colours.prepare_resources()
 	var group := Node3D.new()
 	group.name = "LeylineSources"
 	root.add_child(group)
@@ -22,9 +23,14 @@ static func build(root: Node3D, ground: Terrain) -> void:
 		source.sim = ground._sim
 		source.terrain = ground
 		source.position = record.position
+		if ground.world_profile()=="frontier_v11":
+			var supported_at := StrangeSites._ground(ground,source.position.x,source.position.z)
+			if supported_at.is_finite(): source.position = supported_at
 		group.add_child(source)
-		# Short visible scars point toward the concentrated host from its existing
-		# guaranteed home approach. These hints grant no stock or interaction.
+		# V11 routes/host clues belong to FrontierSites so terrain/paid placement
+		# can refresh their support; Red's authored landform is its own lead.
+		if ground.world_profile()=="frontier_v11": continue
+		# Published LF clue geography remains unchanged.
 		var spawn := ground.surface_position(int(ground.map.spawn_x), int(ground.map.spawn_z))
 		var distance := spawn.distance_to(source.position)
 		for i in range(1, int(distance / LOOK.clue_spacing_m)):
@@ -127,17 +133,19 @@ func _open(message := "") -> void:
 		rows.append({"text":"Forming · %.0f / %.0f seconds of overworld activity. Return after exploring or building." % [s.formation,s.formation_seconds],"button":"Forming","enabled":false})
 	for item: String in s.claim:
 		rows.append({"text":"%d %s waiting in the host." % [s.claim[item],Hud.pretty(item)],"button":"Collect " + Hud.pretty(item),"enabled":ready,"callback":_collect.bind(item)})
-	var uses := {"red_salt":"Red Salt fires bricks: 8 clay + 2 salt → 4 bricks at your forge.","white_mineral":"Workbench: 2 White Mineral + 2 wood → 1 White Connection Kit.","blue_flake":"Workbench: 2 Blue Flakes + 2 wood → 1 Blue Delay Kit.","green_resin":"Workbench: 2 Green Resin + 2 wood → 1 Green Junction Kit."}
-	var detail := "Red Salt replaces the brick variant's fuel only. Forge Faint Ember: 96 salt + 4 iron ingots + 8 charcoal, immediately at a basic forge (Blacksmithing 1). Salt supplies no mechanical winding." if s.material=="red_salt" else "A signal requests a trip; the cargo drum spends its own stored winding. Blue holds one request for three active nearby seconds, with Pause, Resume and Cancel controls."
+	var uses := {"red_salt":"Red Salt fires bricks: 8 clay + 2 salt → 4 bricks. Build a paid Red Heat Buffer at your workbench to store heat for a feeder.","white_mineral":"Workbench: 2 White Mineral + 2 wood → 1 White Connection Kit.","blue_flake":"Workbench: 2 Blue Flakes + 2 wood → 1 Blue Delay Kit.","green_resin":"Workbench: 2 Green Resin + 2 wood → 1 Green Junction Kit."}
+	var detail := "Red Salt replaces the brick variant's fuel only. Forge Faint Ember: 96 salt + 4 iron ingots + 8 charcoal, immediately at a basic forge (Blacksmithing 1). Salt supplies no mechanical winding. A buffer costs 4 salt + 4 wood + 2 iron ingots; each stored heat costs 2 salt and fires one clay cycle. A feeder still needs its paid clay and winding." if s.material=="red_salt" else "A signal requests a trip; the cargo drum spends its own stored winding. Blue holds one request for three active nearby seconds, with Pause, Resume and Cancel controls."
 	if not String(s.rare_item).is_empty(): detail += " Each fixed lot has a %.1f%% bonus %s opportunity, independent of work or collection splits." % [float(s.rare_per_10000)/100.0,Hud.pretty(String(s.rare_item))]
 	rows.append({"text":uses.get(s.material,""),"button":"Material use","enabled":false,"details":detail})
-	if terrain.world_profile()=="living_frontier_wave3":
+	if terrain.world_profile()=="living_frontier_wave3" or (terrain.world_profile()=="frontier_v11" and source_id=="red_home_margin"):
 		rows.append({"text":frontier_observation(),"button":"Field reading","enabled":false,"details":frontier_manufacture()})
 	if not ready: message = "Clear the host's workspace and restore its ground support to work or collect."
 	_panel_player.open_custom_panel(s.label,rows,message,"leyline:"+source_id)
 	refresh()
 
 func frontier_observation() -> String:
+	if terrain.world_profile()=="frontier_v11":
+		return "Red gathers and releases within swollen mineral seams. On the separate Steppe route, a scarred boar roots before planting its feet to release a circle of heat. Observe safely, back away or interrupt it. This manual workplace needs no hunt."
 	return {
 		"red_home_margin":"Red vents outward. Beyond the calm clearing, a scarred boar plants its feet before releasing a circle of heat. Back away or interrupt it. The metal clamps here bear three matching cuts; follow them toward the Collection Annex.",
 		"blue_home_margin":"Blue holds before releasing. The scarred boar beyond the calm clearing commits to a straight charge: move sideways or interrupt it. Its flakes share this source's held pattern.",
@@ -151,7 +159,8 @@ func frontier_manufacture() -> String:
 	for id: String in recipes:
 		var recipe: Dictionary=sim.recipe("forge_faint_"+id)
 		detail+="\n%s: %s." % [String(recipe.display_name),WorkPanel.amounts_text(recipe.inputs)]
-	detail+="\n\nA signal requests work. Each receiver still pays its own winding; stored Red heat remains a separate thermal cost. The later collection apparatus leads to sealed laboratory sites."
+	detail+="\n\nA signal requests work. Each receiver still pays its own winding; stored Red heat remains a separate thermal cost."
+	if terrain.world_profile()=="living_frontier_wave3": detail+=" The later collection apparatus leads to sealed laboratory sites."
 	return detail
 
 func _can_act() -> bool:

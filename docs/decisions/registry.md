@@ -1,5 +1,13 @@
 # Decision Registry
 
+LAND-03 implementation, 17 September 2026: the selected fresh V11 successor adds
+living Dry Steppe/Red geography and the complete existing four-source/device
+acquisition set under ordinary `legacy` campaign policy. The approved Scarwater
+look and published V10/older/LF identities remain. No new attacks, recipes, costs,
+renewal rules or campaign events were selected. [Worker result](../prototype/land03-dry-steppe-result-2026-09-16.md)
+records actual appearance, checks and integration handoff. LAND-04 remains next;
+lag and elk abundance stay deferred to LAND-05. No later worker is launched.
+
 Owner LAND-02B acceptance and next slice, 17 September 2026: after a limited
 playtest the owner said "I love how it looks" and explicitly likes the odd/campy
 cliffs. Preserve the approved art character; the coordinator's suggested extra

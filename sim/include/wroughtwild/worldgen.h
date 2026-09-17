@@ -183,6 +183,21 @@ struct ScarwaterPlace {
     bool fallback=false;
     std::vector<SurfacePoint> ridge, shelteredRoute, outlookRoute;
 };
+// LAND-03 regenerated habitat and acquisition geography. Stock remains in LeylineWorld.
+struct PlacedLeylineSource {
+    std::string sourceId;
+    SurfacePoint at;
+    std::vector<SurfacePoint> approach;
+};
+struct DrySteppePlace {
+    std::string id="dry_steppe_0", channel="red", host="swollen_mineral_and_tough_growth";
+    std::string hollowHomeId, outlookHomeId;
+    SurfacePoint centre, reveal, redSource, redHost;
+    WorldDirection direction;
+    double halfLengthM=0, halfWidthM=0, ribHeightM=0, cutDepthM=0, phase=0;
+    bool fallback=false;
+    std::vector<SurfacePoint> ridgeRoute, lowRoute, mineralHosts, releasePockets;
+};
 // Regenerated local surface detail, not saved ownership. Zero is an absent
 // sample. Signs always agree with the generated voxel field; digs override it.
 struct SurfaceDensityField {
@@ -224,6 +239,8 @@ struct WorldMap {
     std::vector<PlacedHomeSite> homeSites;
     std::vector<PlacedLake> lakes;
     std::vector<ScarwaterPlace> scarwater;
+    std::vector<DrySteppePlace> drySteppe;
+    std::vector<PlacedLeylineSource> leylineSourceSites;
     SurfaceDensityField surfaceDensity;
     std::vector<float> augmentationField; // v4 only; row-major cells, finite [0,1]
     int spawnX = 0, spawnZ = 0;

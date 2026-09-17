@@ -1,6 +1,6 @@
 extends RefCounted
 ## Derived map context only. The native world remains the sole owner of damage.
-const PROFILES := ["frontier_v6","frontier_v7","frontier_v8","frontier_v9","frontier_v10","living_frontier_wave1","living_frontier_wave3"]
+const PROFILES := ["frontier_v6","frontier_v7","frontier_v8","frontier_v9","frontier_v10","frontier_v11","living_frontier_wave1","living_frontier_wave3"]
 static var settings: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://rf08/settings.json"))
 static var debris: ArrayMesh
 static var groundleaf: ArrayMesh

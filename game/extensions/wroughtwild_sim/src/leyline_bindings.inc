@@ -7,17 +7,23 @@ Dictionary leyline_result(const wroughtwild::leyline::Result& result) {
 }
 bool WroughtwildSim::leyline_bind_world(const String& profile, int seed) {
     if (!tuning_ || trial_) return false;
-    if (!wroughtwild::leyline::supports(to_std(profile))) { leylines_.reset(); leyline_positions_.clear(); return true; }
+    const auto id=to_std(profile);
+    if (!wroughtwild::leyline::supports(id)) { leylines_.reset(); leyline_positions_.clear(); return true; }
     if (seed < 0) return false;
-    if (!leylines_ || leylines_->seed() != static_cast<uint64_t>(seed))
-        leylines_ = std::make_unique<wroughtwild::leyline::World>(leyline_config_,static_cast<uint64_t>(seed));
-    machine_world_identity(profile,seed);
-    leyline_positions_.clear();
-    for (const auto& s : leyline_config_.sources) {
-        const auto at = wroughtwild::leyline::World::anchor(s,*world_cache_);
-        leyline_positions_[s.id] = Vector3((at.x+.5)*world_cache_->cellSize,at.y*world_cache_->cellSize,(at.z+.5)*world_cache_->cellSize);
-    }
-    return true;
+    try {
+        machine_world_identity(profile,seed);
+        std::map<std::string,Vector3> positions;
+        for (const auto& s : leyline_config_.sources) {
+            const auto at = wroughtwild::leyline::World::anchor(s,*world_cache_);
+            positions[s.id] = Vector3((at.x+.5)*world_cache_->cellSize,at.y*world_cache_->cellSize,(at.z+.5)*world_cache_->cellSize);
+        }
+        // A seed alone is not a world identity: even LF's historical shared
+        // payload tag must not carry live stock across a profile rebind.
+        if (!leylines_ || leylines_->seed() != static_cast<uint64_t>(seed) || leylines_->worldProfile()!=id)
+            leylines_ = std::make_unique<wroughtwild::leyline::World>(leyline_config_,static_cast<uint64_t>(seed),id);
+        leyline_positions_.swap(positions);
+        return true;
+    } catch (const std::exception& e) { last_error_=to_godot(e.what()); return false; }
 }
 Array WroughtwildSim::leyline_sources() const {
     Array result;
@@ -57,13 +63,23 @@ String WroughtwildSim::leyline_save() const { return leylines_ ? to_godot(leylin
 bool WroughtwildSim::leyline_validate_world(const String& text,const String& profile,int seed) const {
     if (!wroughtwild::leyline::supports(to_std(profile))) return text.is_empty();
     if (!tuning_ || seed < 0 || text.is_empty()) return false;
-    wroughtwild::leyline::World candidate(leyline_config_,static_cast<uint64_t>(seed));
+    wroughtwild::leyline::World candidate(leyline_config_,static_cast<uint64_t>(seed),to_std(profile));
     return candidate.restore(to_std(text));
 }
 bool WroughtwildSim::leyline_load_world(const String& text,const String& profile,int seed) {
     if (trial_ || !leyline_validate_world(text,profile,seed)) return false;
     if (!wroughtwild::leyline::supports(to_std(profile))) { leylines_.reset(); leyline_positions_.clear(); return true; }
-    auto candidate=std::make_unique<wroughtwild::leyline::World>(leyline_config_,static_cast<uint64_t>(seed));
-    if (!candidate->restore(to_std(text))) return false;
-    leylines_.swap(candidate); return leyline_bind_world(profile,seed);
+    try {
+        auto candidate=std::make_unique<wroughtwild::leyline::World>(leyline_config_,static_cast<uint64_t>(seed),to_std(profile));
+        if (!candidate->restore(to_std(text))) return false;
+        // Resolve every anchor before installing any owner. A malformed world
+        // cannot leave a half-loaded ledger or seed-only carry-over behind.
+        machine_world_identity(profile,seed);
+        std::map<std::string,Vector3> positions;
+        for (const auto& source : leyline_config_.sources) {
+            const auto at=wroughtwild::leyline::World::anchor(source,*world_cache_);
+            positions[source.id]=Vector3((at.x+.5)*world_cache_->cellSize,at.y*world_cache_->cellSize,(at.z+.5)*world_cache_->cellSize);
+        }
+        leylines_.swap(candidate); leyline_positions_.swap(positions); return true;
+    } catch (const std::exception& e) { last_error_=to_godot(e.what()); return false; }
 }

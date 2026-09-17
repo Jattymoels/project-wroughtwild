@@ -7,15 +7,19 @@ outrank historical review, packaging and rollout requirements.
 
 ## Current adoption and next worker
 
-**Next: LAND-03 Dry Steppe/Red and ordinary four-force acquisition.** The owner
-played briefly, said "I love how it looks", likes the odd/campy cliffs and asked
-to move on. This approves the current LAND-02B appearance and supersedes the
-coordinator's suggested extra art continuation. Preserve that character.
-[Worker brief](land03-dry-steppe-worker-2026-09-16.md) and
-[copyable prompt](land03-session-prompt-2026-09-16.md) are refreshed for fresh V11
-on the adopted V10 foundation. Workspace `D:/Wroughtwild/work/land03-dry-steppe`,
-branch `codex/land03-dry-steppe`; owner starts the session, no worker launched.
-LAND-04 remains after LAND-03, then one bounded LAND-05 closeout.
+**LAND-03 complete and checked; ready for coordinator integration.**
+[Dry Steppe/Red result](land03-dry-steppe-result-2026-09-16.md) records the V11
+landforms, original low-growth kit and ordinary four-source/device adoption.
+The approved Scarwater look, old Continue identities and ordinary campaign stay
+intact. Worker `D:/Wroughtwild/work/land03-dry-steppe`, branch
+`codex/land03-dry-steppe`; coordinator handles main adoption and push.
+Generation 34, native 63, corrected-route 8 and Continue 27 checks pass. The full
+200-assertion use run passed 198; its two solid-source endpoint fixture failures
+are resolved by the focused aimed-interaction check, without relabelling that
+original run. Four actual game pictures and exact DLL provenance are retained.
+LAND-04's White/Blue/Green journeys remain next, then one bounded LAND-05 closeout.
+No later worker has been launched. New Steppe visual feedback remains unplayed by
+the owner; standing implementation approval is not an aesthetic playtest claim.
 
 ### LAND-05 owner playtest backlog, 17 September
 
@@ -30,6 +34,11 @@ LAND-04 remains after LAND-03, then one bounded LAND-05 closeout.
   tuning pass after identifying the actual spawning path. Exact reduction is
   not selected. The owner suspects it is unrelated to lag; keep these as
   separate observations and preserve existing ownership/reward rules.
+- Steppe closeout notes: broad exposed slopes, repeated grass/fringe forms and
+  scalloped outer terrain remain visible in the worker pictures. Local form and
+  atmosphere can improve in the bounded closeout; these do not change the selected
+  LAND-04 sequence. No acquisition pacing or combat-balance claim follows from
+  staged test materials and a forced finite-host death.
 - Prior residual visual observations are optional refinement. Odd/campy cliff
   character is approved and must not be recorded as a defect to naturalise.
 

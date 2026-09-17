@@ -1,6 +1,36 @@
 class_name G1Colours
 extends Node3D
 ## The four F5 source/component/fixture families read their existing native owner.
+# Shared immutable assets prepare during real world entry and are retained for
+# later paid placement; per-owner shader state remains instance-local.
+static var _assets: Dictionary = {}
+static var _documents: Dictionary = {}
+static var _prepared := false
+
+static func _resource(path: String) -> Resource:
+	if not _assets.has(path): _assets[path] = R2Resources.resource(path)
+	return _assets[path]
+
+static func _document(path: String) -> Dictionary:
+	if not _documents.has(path): _documents[path] = JSON.parse_string(FileAccess.get_file_as_string(path))
+	return _documents[path]
+
+static func prepare_resources() -> void:
+	if _prepared: return
+	var integration := _document("res://g1/settings.json")
+	for channel: String in ["red","white","blue","green"]:
+		var folder := "res://f5/"+channel+"/"
+		_document(folder+channel+".json")
+		_resource(folder+channel+"_scar.gdshader")
+		for role: String in ["source","buffer" if channel=="red" else "post"]:
+			_resource(folder+channel+"-"+role+"-"+String(integration.colour_lod)+".glb")
+		for prefix: String in [channel,"fragment-1","fragment-2","fragment-3"]:
+			for suffix: String in ["base","orm","scar","normal"]:
+				_resource(folder+prefix+"-"+suffix+".png")
+		for i in 3: _resource(folder+channel+"-fragment-%d.glb"%(i+1))
+	_document("res://f5/green/asset-report.json")
+	_prepared = true
+
 var colour := "red"
 var source: LeylineSource
 var site: ContraptionSite
@@ -47,19 +77,19 @@ static func mount_source(owner_node: LeylineSource) -> void:
 	root.claims=Node3D.new()
 	root.add_child(root.claims)
 	for i in 3:
-		var fragment: Node3D=R2Resources.resource("res://f5/"+root.colour+"/"+root.colour+"-fragment-%d.glb"%(i+1)).instantiate()
+		var fragment: Node3D=_resource("res://f5/"+root.colour+"/"+root.colour+"-fragment-%d.glb"%(i+1)).instantiate()
 		root.claims.add_child(fragment)
 		fragment.position=Vector3(-.28+i*.24,.002,.66)
 		fragment.scale=Vector3.ONE*.52
 		root.bind_mineral(fragment,root.scar("fragment-%d"%(i+1)))
 
 func scar(prefix: String="") -> ShaderMaterial:
-	if settings.is_empty(): settings=JSON.parse_string(FileAccess.get_file_as_string("res://f5/"+colour+"/"+colour+".json"))
+	if settings.is_empty(): settings=_document("res://f5/"+colour+"/"+colour+".json")
 	if prefix.is_empty(): prefix=colour
 	var mat:=ShaderMaterial.new()
-	mat.shader=R2Resources.resource("res://f5/"+colour+"/"+colour+"_scar.gdshader")
+	mat.shader=_resource("res://f5/"+colour+"/"+colour+"_scar.gdshader")
 	for pair in [["base_texture","base"],["orm_texture","orm"],["scar_texture","scar"],["normal_texture","normal"]]:
-		mat.set_shader_parameter(pair[0],R2Resources.resource("res://f5/"+colour+"/"+prefix+"-"+pair[1]+".png"))
+		mat.set_shader_parameter(pair[0],_resource("res://f5/"+colour+"/"+prefix+"-"+pair[1]+".png"))
 	for key in ["period_seconds","minimum_light","peak_emission"]: mat.set_shader_parameter(key,settings.scar[key])
 	var rgb: Array=settings.scar.colour_srgb
 	mat.set_shader_parameter("core_colour",Color(rgb[0],rgb[1],rgb[2]))
@@ -68,8 +98,8 @@ func scar(prefix: String="") -> ShaderMaterial:
 	return mat
 
 func add_model(role: String) -> void:
-	var integration:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://g1/settings.json"))
-	var model: Node3D=R2Resources.resource("res://f5/"+colour+"/"+colour+"-"+role+"-"+String(integration.colour_lod)+".glb").instantiate()
+	var integration:Dictionary=_document("res://g1/settings.json")
+	var model: Node3D=_resource("res://f5/"+colour+"/"+colour+"-"+role+"-"+String(integration.colour_lod)+".glb").instantiate()
 	add_child(model)
 	mineral=scar()
 	bind_mineral(model,mineral)
@@ -78,7 +108,7 @@ func add_model(role: String) -> void:
 		assert(housing.size()==1,"One actual F5 structural housing")
 		housing[0].name="Housing"
 	if role=="post" and colour=="green":
-		var geometry:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://f5/green/asset-report.json"))
+		var geometry:Dictionary=_document("res://f5/green/asset-report.json")
 		for mesh in model.find_children("*CORE*","MeshInstance3D",true,false):
 			var i:=0 if "stem" in String(mesh.name) else 1 if "first" in String(mesh.name) else 2
 			var mat:=scar("fragment-%d"%(i+1))

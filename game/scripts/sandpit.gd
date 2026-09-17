@@ -15,7 +15,7 @@ const SEED_CONTROLS := preload("res://scripts/world_seed_controls.gd")
 @export var world_seed: int = 1
 ## Fresh worlds use the new resource geography; old saves explicitly select
 ## legacy_v1 before restoring builds, resource depletion and excavation.
-@export var world_profile: String = "frontier_v10"
+@export var world_profile: String = "frontier_v11"
 var seed_controls: Node
 
 @onready var terrain: Terrain = $Terrain
@@ -108,7 +108,7 @@ func _build_world(seed_value: int) -> void:
 	load("res://art/creature_resources.gd").prepare(_sim(),terrain.play03_trace)
 	load("res://art/scenery_resources.gd").prepare(terrain.play03_trace)
 	if world_profile=="frontier_v9": preload("res://land02/kit.gd").prepare()
-	if world_profile=="frontier_v10": preload("res://land02b/kit.gd").prepare()
+	if world_profile in ["frontier_v10","frontier_v11"]: preload("res://land02b/kit.gd").prepare()
 	# A new terrain map must not re-ground the previous world's decorative
 	# sites as its first streamed chunks arrive. Their state is wholly derived.
 	for name in ["FrontierSites", "LeylineSources", "PressurePockets", "CataclysmSites", "StrangeSites", "HabitatSites"]:
@@ -133,7 +133,7 @@ func _build_world(seed_value: int) -> void:
 	CataclysmSites.build(self, terrain)
 	PressurePocket.build(self, terrain)
 	if not _sim().leyline_bind_world(world_profile,seed_value):
-		push_error("Could not bind Living Frontier sources.")
+		push_error("Could not bind leyline sources.")
 		return
 	LeylineSource.build(self,terrain)
 	FrontierSites.build(self,terrain)
@@ -193,7 +193,7 @@ func _physics_process(delta: float) -> void:
 	if terrain.map.is_empty():
 		return
 	_tick_day(delta)
-	if world_profile in ["living_frontier_wave1","living_frontier_wave3"] and not player.trial.active() and player.combat.life > 0 and not player.work_panel.is_open() and not player.inventory_panel.is_open() and not player.class_panel.is_open() and not player.foundry_panel.is_open() and not player.chest_panel.is_open() and not player.hud.help_visible():
+	if world_profile in ["frontier_v11","living_frontier_wave1","living_frontier_wave3"] and not player.trial.active() and player.combat.life > 0 and not player.work_panel.is_open() and not player.inventory_panel.is_open() and not player.class_panel.is_open() and not player.foundry_panel.is_open() and not player.chest_panel.is_open() and not player.hud.help_visible():
 		var blocked := PackedStringArray()
 		for source in get_tree().get_nodes_in_group("leyline_sources"):
 			if is_ancestor_of(source):

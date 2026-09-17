@@ -1,5 +1,23 @@
 # Vertical-Slice Acceptance Criteria
 
+## LAND-03 Dry Steppe and ordinary acquisition (worker)
+
+- [x] Fresh V11 adds seeded physical Dry Steppe and an original supported low-growth
+  kit while retaining the approved Scarwater character and all four home cores.
+- [x] Generation/ownership checks cover two seeds, deterministic real source
+  anchors, protected homes, the separated existing Red host and forced fallback.
+- [x] Ordinary campaign adopts the existing complete four-source/device ledger;
+  no LF labs, new costs, free materials or offline renewal are enabled.
+- [x] Both actual controller approaches finish in source interaction range.
+  Four-source work, paid manufacture/device/home use and 27-check fresh
+  Continue/rejection pass; intermediate route/fixture failures and scoped fixes
+  are recorded without relabelling failed runs.
+- [ ] Owner Steppe aesthetic/comfort feedback, acquisition pacing and broader
+  gameplay remain open. Lag/hitches and excessive elk are deferred LAND-05 items.
+
+[LAND-03 result and actual game pictures](land03-dry-steppe-result-2026-09-16.md).
+Coordinator integration/push remains pending; LAND-04 is next, not launched.
+
 ## LAND-02B Scarwater foundation and art (adopted; owner look approved)
 
 - [x] Fresh V10 carries the improved surface/contact/edit foundation and rooted

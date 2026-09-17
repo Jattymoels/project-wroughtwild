@@ -1,0 +1,55 @@
+{
+  "forms": {
+    "grass-flow": {
+      "purpose": "Swept straw/olive blades tie many growing points into a broad low living mat.",
+      "triangles": 3600,
+      "vertices": 3240,
+      "width_m": 3.1070403892919543,
+      "height_m": 0.4718398153781891,
+      "sha256": "1472690aab75ac9de3bb333db78a81b070553e8ffa593b8d00b1152ab26c18db"
+    },
+    "grass-islands": {
+      "purpose": "Interrupted low grass hummocks form irregular dry holes between colonies.",
+      "triangles": 3080,
+      "vertices": 2772,
+      "width_m": 3.355563025377677,
+      "height_m": 0.47954174876213074,
+      "sha256": "ee9425435e21c413e62c2f7968a70bfa764af10e3ce1e5583aae8b00181eb067"
+    },
+    "sage-fan": {
+      "purpose": "Woody horizontal branching shrub, grey-olive paddle leaves and asymmetric sheltered crown.",
+      "triangles": 3164,
+      "vertices": 2678,
+      "width_m": 1.7401266672648952,
+      "height_m": 0.8258422017097473,
+      "sha256": "86ec4322d10a5d17e631f6483f7d933a1d02b90edda9de9e73054cf6f0f49a28"
+    },
+    "red-brush": {
+      "purpose": "Tough recurved clustered leaves with swollen woody joints and a few red active tips.",
+      "triangles": 3940,
+      "vertices": 3276,
+      "width_m": 1.6338783868219207,
+      "height_m": 0.9512808918952942,
+      "sha256": "7cad97bb0afeb6e8470b402e61f5db0315354c427b056aea2c5a0bf3c3f94d97"
+    },
+    "erosion-join": {
+      "purpose": "Small fractured shale fans seat native shallow-cut edges without inventing collision.",
+      "triangles": 2108,
+      "vertices": 1422,
+      "width_m": 2.670450867948615,
+      "height_m": 0.1329599767923355,
+      "sha256": "fb876d72be8be3b2d97a66e7856c17726f30d2ea306e426e38236e4468ead754"
+    },
+    "release-nodule": {
+      "purpose": "Irregular swollen mineral lobes surround dark recessed release pockets; local Red only.",
+      "triangles": 1686,
+      "vertices": 948,
+      "width_m": 2.0217407021308413,
+      "height_m": 0.4071630835533142,
+      "sha256": "f76bfaecc26149fb08e783395d7fca1803ac1a3602deb84ee7f15dc1efab6b10"
+    }
+  },
+  "method": "Original direct scripted Blender meshes and vertex materials. No image-to-3D, third-party art or reference pixels.",
+  "source": "D:\\Wroughtwild\\work\\land03-dry-steppe\\build\\land03\\source-art\\steppe-production.blend",
+  "coordinate_system": "Metres; Blender Z up, standard glTF Y up."
+}
