@@ -14,6 +14,8 @@ the six authored host forms and four actual final game pictures. Worktree
 `D:/Wroughtwild/work/land04-force-journeys`, branch `codex/land04-force-journeys`.
 Main remains at adopted LAND-03 until the coordinator integrates this result;
 the worker has not pushed or started LAND-05.
+Checked implementation: `159a188cac5a05408815e45f7d8aa3d040649f67`; the following
+documentation-only handoff records that SHA. Use the result's matching DLL.
 
 Generation/ownership 42 and native fallback 12 assertions passed. Full use passed
 183/184; the actual White route crossed the source body. A final route-only

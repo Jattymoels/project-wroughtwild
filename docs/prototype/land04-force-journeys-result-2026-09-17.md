@@ -4,6 +4,13 @@ Worker result, 17 September 2026, branch `codex/land04-force-journeys` in
 `D:/Wroughtwild/work/land04-force-journeys`. Coordinator integration and push are
 separate from this worker delivery. No LAND-05 work is included.
 
+Checked implementation: `159a188cac5a05408815e45f7d8aa3d040649f67`.
+The following handoff commit only records this identifier in documentation.
+Both commits remain on the requested worker branch; no main integration or push
+was performed. Selected code, runtime art, recipes and evidence are committed;
+generated local Godot import/UID outputs and ignored build/private-save outputs
+are excluded.
+
 ## Original-plan outcome
 
 Ordinary fresh worlds select **frontier_v12**. Seeded physical hosts now connect
