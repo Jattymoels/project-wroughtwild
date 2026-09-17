@@ -7,6 +7,18 @@ outrank historical review, packaging and rollout requirements.
 
 ## LAND-05 adopted; selected LAND wave integrated
 
+**Latest owner feedback:** generation and the world feel much better from initial
+looks/play; playtesting continues. This is positive initial feedback, not broad
+performance or gameplay clearance. The owner proposes future weighted biome
+adjacency/selection and meteor-colour incidence, with very rare mixed-colour
+occurrences and host-specific enhanced land/fauna/stone expressions. Record as
+future direction, not an implemented probability system or selected percentages.
+[Progress and recommended next sequence](land-wave-progress-and-next-direction-2026-09-17.md):
+LAND is 7/7 stages delivered (2 planning, 5 implementation), all 5 implementation
+slices integrated. Consolidate playtest notes, then design the interaction catalogue
+and weighted generation rules, prove a small subset, then one rare paired effect.
+No next wave or worker is dispatched; this count is not whole-game completion.
+
 LAND-05 closes the selected LAND wave and is integrated on main from `codex/land05-closeout` in
 `D:/Wroughtwild/work/land05-closeout`. See [result, pictures, limits and matching
 DLL](land05-closeout-result-2026-09-17.md). Checked implementation:

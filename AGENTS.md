@@ -481,6 +481,16 @@ This closes the original LAND wave; do not automatically invent LAND-06.
 
 ### Standard game development practices at prototype scale
 
+After LAND-05 adoption the owner reports much better generation and initial world
+look/feel and will keep playtesting. The proposed next direction is weighted biome
+selection/adjacency, colour-specific meteor incidence and very rare mixed-colour
+effects, with host-specific enhanced terrain, stone, growth and fauna. This is
+future direction, not current V13 behavior or approved numerical probabilities/
+mixed-force mechanics. See [LAND progress and next direction](docs/prototype/land-wave-progress-and-next-direction-2026-09-17.md).
+The LAND programme has 7/7 delivered stages (2 planning, 5 integrated implementation
+slices), not whole-game completion. Consolidate playtest notes before scoping the
+next wave; no automatic worker, full combination matrix or new slice is selected.
+
 LAND-05 is now adopted on main at the owner's request through `540222a` /
 `13bf15b`, with matching native DLL and clean 5.33 s main headless import. The
 [closeout result](docs/prototype/land05-closeout-result-2026-09-17.md) records reused
