@@ -2,6 +2,10 @@
 
 ## LAND-05: V13 population and presentation closeout
 
+Adopted on main through `540222a` / `13bf15b`, matching native DLL installed,
+with a clean 5.33 s main headless import. Remaining performance/visual limits
+are recorded in the result; no further generation profile is selected.
+
 Ordinary fresh worlds now select `frontier_v13`. Its terrain, resource/source
 sites, journeys, finite teaching hosts and native edit/contact path inherit V12
 exactly. After composition, `ambient_elk_keep_fraction: 0.5` retains whole ambient

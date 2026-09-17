@@ -5,12 +5,16 @@ plan, not a new acceptance gate. The owner wants a solo indie prototype develope
 through playable iterations. Current AGENTS.md and the owner's approved work
 outrank historical review, packaging and rollout requirements.
 
-## LAND-05 worker complete; coordinator integration pending
+## LAND-05 adopted; selected LAND wave integrated
 
-LAND-05 closes the selected LAND wave on `codex/land05-closeout` in
+LAND-05 closes the selected LAND wave and is integrated on main from `codex/land05-closeout` in
 `D:/Wroughtwild/work/land05-closeout`. See [result, pictures, limits and matching
 DLL](land05-closeout-result-2026-09-17.md). Checked implementation:
 `540222a7a49177c678e75c62fb9a80a81521d88e`; the subsequent handoff is documentation-only.
+Handoff `13bf15bcc569a7d33dabc6c7c37e584fea5af112` is adopted with the matching
+DLL. Ten changed native build inputs match provenance. Main's isolated headless
+import passed in 5.33 s, exit 0, zero errors; worker evidence was reused. All
+owned checks ended. This closes integration, not the unresolved limitations below.
 No next worker is selected or launched.
 
 - **Measured smaller lakeside stutters reduced:** same chosen V12 seed-77 walk
@@ -31,7 +35,7 @@ No next worker is selected or launched.
 - **Evidence:** final diagnostic 4, use 222 and Continue/rejection 29 checks pass;
   failed import/helper attempts remain explicit. Final import 4.18 s, zero errors.
   Exact selected cover output and targeted V12/LF ownership/Continue are checked.
-  All owned jobs ended. Coordinator copies the matching DLL with checked source.
+  All owned jobs ended. Matching DLL is installed in the owner checkout.
 
 Consolidated remaining LAND notes (no automatic implementation): the unknown large
 hitch, long ~46 s entry, residual collision/payload frame costs, unconfirmed

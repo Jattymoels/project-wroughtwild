@@ -17,6 +17,27 @@ Workspace: `D:/Wroughtwild/work/land05-closeout`, branch
 `codex/land05-closeout`, base `0240b5a5561c46084848f152c0ab464b71b2723d`.
 Coordinator handles main integration and push. No later worker was started.
 
+## Coordinator adoption, 17 September
+
+The owner requested merging the completed slice. Implementation `540222a` and
+handoff `13bf15bcc569a7d33dabc6c7c37e584fea5af112` are now adopted on main, with
+the matching DLL installed. Ten changed native build inputs and the DLL matched
+worker provenance. Main's isolated hidden headless import passed in **5.33 s**,
+exit 0, zero reported errors. The worker's diagnostic, 222 use and 29 Continue
+checks were reused; no new renderer, timing run or broad replay was added.
+All owned checks ended. Publication is recorded by the subsequent adoption commit.
+
+Coordinator inspection of the retained Green and Blue game pictures confirms
+more visible root-to-source connections and enlarged layered host forms. Repeated
+forms and open clearances remain; this does not claim owner aesthetic approval
+or close the unreproduced large freeze. The measured smaller-stall improvement
+and fresh-world elk reduction have the precise limits recorded below.
+
+The selected LAND wave is now integrated. No LAND-06 or additional worker is
+scheduled. Unrelated local captures/import metadata and live saves were preserved.
+The retained previous V12 DLL and integration record are under
+`D:/Wroughtwild/work/land05-closeout/build/land05/coordinator-adoption/`.
+
 ## Priority results
 
 | Priority | Result | Limit |

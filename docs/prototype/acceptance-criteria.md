@@ -1,6 +1,6 @@
 # Vertical-Slice Acceptance Criteria
 
-## LAND-05 closeout (worker delivery)
+## LAND-05 closeout (adopted)
 
 - [x] V13 retains V12 geography/source/finite-host identities and deterministically
   reduces whole ambient elk herds; older populations are not rewritten.
@@ -13,6 +13,8 @@
   improvement and new-player/owner discovery acceptance are not established.
 
 [Result, checks and integration handoff](land05-closeout-result-2026-09-17.md).
+Main adopts `540222a` / `13bf15b` with matching DLL; isolated import passed in
+5.33 s, exit 0, zero errors. Worker checks were reused without a new review wave.
 No LAND-06 is selected or automatically launched.
 
 ## LAND-04 force journeys (adopted)

@@ -481,6 +481,19 @@ This closes the original LAND wave; do not automatically invent LAND-06.
 
 ### Standard game development practices at prototype scale
 
+LAND-05 is now adopted on main at the owner's request through `540222a` /
+`13bf15b`, with matching native DLL and clean 5.33 s main headless import. The
+[closeout result](docs/prototype/land05-closeout-result-2026-09-17.md) records reused
+diagnostic, 222 use and 29 Continue checks. The selected LAND wave is integrated;
+do not automatically launch LAND-06 or another art/performance wave. The measured
+smaller lakeside stalls improved (first-walk worst frame 38.022 to 24.755 ms), but
+the owner's large freeze was not reproduced and remains unresolved. Fresh V13
+uses 50% whole-herd retention for ambient elk; older saved populations and the
+finite White stag remain intact. Green connections and White/Blue host forms
+are strengthened; owner aesthetic/discovery feedback, long entry, residual frame
+costs and the unconfirmed underground connection remain open. Never describe
+this as all lag fixed, exact halving in every seed or full owner playtest approval.
+
 The owner asked why established game-development techniques were not the default
 after the mob-arrival fix. Use suitable existing engine facilities and established
 patterns when implementing a slice; explain a custom approach when it is needed.

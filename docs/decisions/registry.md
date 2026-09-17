@@ -6,7 +6,8 @@ runtime cover/host-presentation refinements. The separate finite White stag,
 all older Continue identities and existing four-force rules remain. This executes
 the current approved work under D-030/D-032; it creates no new biome, campaign
 or force power. [Result and limitations](../prototype/land05-closeout-result-2026-09-17.md).
-Coordinator integration is pending, and no later slice is dispatched.
+Adopted on main through `540222a` / `13bf15b` at the owner's request, with matching
+native DLL and a clean 5.33 s main import. No later slice is dispatched.
 
 Owner augmentation reinforcement and LAND-05 preparation, 17 September 2026:
 meteorite magic/technology heightens existing properties in every affected host;

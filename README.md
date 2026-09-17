@@ -28,13 +28,14 @@ creature concept sheets with modelling notes. The selected creatures now have an
 
 ## Current phase
 
-LAND-05 closes the selected LAND wave on its worker branch: fresh `frontier_v13`
+LAND-05 is integrated on main and closes the selected LAND wave: fresh `frontier_v13`
 reduces ambient elk while retaining V12 country and the finite teaching stag.
 The measured lakeside cover stutters are reduced; Green connections and White/
 Blue host forms are stronger. The unknown large hitch, long entry and owner
 feedback remain open. Approved campy Scarwater and old Continue identities stay
 intact. See the [result and actual game pictures](docs/prototype/land05-closeout-result-2026-09-17.md).
-Coordinator main integration is pending; no further worker is scheduled.
+Implementation `540222a` and handoff `13bf15b` are adopted with matching native
+DLL and a clean 5.33 s main import; no further worker is scheduled.
 
 The [current whole-project coordination sheet](docs/prototype/coordinator-status-2026-09-15.md)
 distinguishes implemented gameplay, ready art adoption, remaining production and
