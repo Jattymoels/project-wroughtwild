@@ -2,8 +2,8 @@
 
 Worker result, 17 September 2026. Branch `codex/land03-dry-steppe` in
 `D:/Wroughtwild/work/land03-dry-steppe`. Coordinator integration/push pending.
-All focused changed-behavior checks are complete. Checked source revision is
-recorded in the final handoff commit.
+All focused changed-behavior checks are complete. Checked implementation:
+`ea87ef04638bbaa4674144d46cde75b51a02233b`. The following handoff commit changes documentation only.
 
 ## Playable result and original-plan progress
 

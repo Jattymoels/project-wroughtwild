@@ -8,6 +8,7 @@ outrank historical review, packaging and rollout requirements.
 ## Current adoption and next worker
 
 **LAND-03 complete and checked; ready for coordinator integration.**
+Implementation `ea87ef04638bbaa4674144d46cde75b51a02233b`; matching native DLL is recorded in the result.
 [Dry Steppe/Red result](land03-dry-steppe-result-2026-09-16.md) records the V11
 landforms, original low-growth kit and ordinary four-source/device adoption.
 The approved Scarwater look, old Continue identities and ordinary campaign stay
