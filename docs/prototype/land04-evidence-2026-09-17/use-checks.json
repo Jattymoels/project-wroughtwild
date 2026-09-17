@@ -1,0 +1,67 @@
+{
+	"art": {
+		"blue-journey": {
+			"instances": 12,
+			"journey": "journey_blue_source",
+			"parts": 12,
+			"placement": {
+				"placed_blue-lamination": 9,
+				"placed_blue-sheaths": 27,
+				"reserved": 9,
+				"surface_support": 6
+			},
+			"roles": {
+				"blue-lamination": 3,
+				"blue-sheaths": 9
+			}
+		},
+		"green-journey": {
+			"instances": 15,
+			"journey": "journey_green_source",
+			"parts": 15,
+			"placement": {
+				"placed_green-root-fan": 45
+			},
+			"roles": {
+				"green-root-fan": 15
+			}
+		},
+		"green-steppe": {
+			"instances": 13,
+			"journey": "journey_green_steppe",
+			"parts": 13,
+			"placement": {
+				"chunk_edge": 1,
+				"placed_green-steppe-colony": 16,
+				"water_or_dig": 1
+			},
+			"roles": {
+				"green-steppe-colony": 13
+			}
+		},
+		"lifecycle": {
+			"anchor": "(404.5, 38.70412, 423.5)",
+			"candidates": 1,
+			"floor": "(404, 39, 423)",
+			"journey": "journey_green_steppe",
+			"role": "green-steppe-colony",
+			"support_dig": "(404, 38, 423)"
+		},
+		"white-journey": {
+			"instances": 15,
+			"journey": "journey_white_source",
+			"parts": 15,
+			"placement": {
+				"placed_white-brace": 30,
+				"surface_support": 2
+			},
+			"roles": {
+				"white-brace": 15
+			}
+		}
+	},
+	"checks": 184,
+	"distance_m": 84.1671103388071,
+	"failures": 1,
+	"scope": "Normal New World and actual UI/controller. Arrival and non-source recipe inputs staged; no acquisition pacing/balance claim."
+}

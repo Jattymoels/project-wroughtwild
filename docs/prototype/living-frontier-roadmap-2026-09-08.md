@@ -1,6 +1,36 @@
 # Living Frontier — extraction, resonance and the laboratory campaign
 
 **Status: Waves 1–7 implemented as opt-in work and technically cleared by independent reviews. LF-7A/B expose captured laboratory configurations, exact rewards and saved return/reconfiguration. Both earlier defect regressions remain passing. INT-18A independently reproduces complete Relentless victories and Crossfire deaths. Crossfire completion, upper-tier balance, continuous fresh-campaign evidence, human clarity and the synchronous publication pause remain open.**
+## LAND-04 ordinary journeys, 17 September 2026
+
+[LAND-04](land04-force-journeys-worker-2026-09-17.md) carries the complete ordinary
+acquisition system into fresh `frontier_v12`. It adds source-linked placements
+for the existing finite White stag, Blue boar and Green moth, preserving stable
+host IDs, habits, combat, rewards and one-time saved death ownership. The V11 Red
+host is retained. These encounters remain optional; manual workplaces supply
+bulk material. Green's second, low Steppe visual host has no second resin source.
+
+The four owners remain `red_home_margin`, `white_home_margin`,
+`blue_home_margin` and `green_home_margin`. Eight lots of sixteen, four work
+stages, fixed rare outcomes and 600 eligible active-overworld seconds for renewal
+after depletion/claims remain unchanged. Paused, trial and offline time earns no
+stock. White requests work, Blue holds one request, Green branches requests and
+Red stores paid heat; existing recipes, materials and each receiver's own drive
+costs remain authoritative. Ordinary finite pressure remains separate.
+
+V12 source payloads carry `profile: frontier_v12` and the exact seed, and require
+the complete current source schema and four-owner set. Device payloads likewise
+require their complete current schema and exact V12/seed identity. Validation
+rejects wrong-profile/seed or missing owners before installation; same-seed
+profile rebinding does not inherit stock. V11 retains its own exact tag, while
+published LF retains its historical internal tag and permitted migrations.
+No old saved world is relabelled V12. The new profile keeps `legacy` campaign
+policy, without laboratories, Conservator progression or LF terrain events.
+
+Selected resources prepare in real world entry and validated Continue and are
+reused on arrival. LAND-04's result handoff records actual checks and appearance;
+this contract makes no new playtest, balance or smoothness claim.
+
 ## LAND-03 ordinary acquisition, 17 September 2026
 
 [LAND-03](land03-dry-steppe-worker-2026-09-16.md) adopts the existing complete

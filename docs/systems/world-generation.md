@@ -1,5 +1,51 @@
 # World Generation, Settlements and Travel
 
+## LAND-04: V12 White, Blue and Green journeys
+
+The [LAND-04 implementation](../prototype/land04-force-journeys-worker-2026-09-17.md)
+selects `frontier_v12` for ordinary fresh worlds, with its own
+`worldgen-frontier-v12.json` and isolated native journey composer. V11 and all
+older/LF Continue profiles retain their published inputs and geography. Earlier
+version notes below describe those retained versions, not the current default.
+The V12 successor carries forward approved Scarwater, Dry Steppe/Red, four
+radius-14 m home cores, fixed water, legitimate caves, discoveries and finite
+owners. It deliberately inherits V11's corrected native surface, contact,
+picking, near/far, material and selected-tree paths.
+
+`ForceJourney` records seeded physical composition rather than resource state:
+channel, eligible biome/host, direction, local envelope, source and work stance,
+reveal, routes, form/growth anchors and a fallback flag. White forms directionally
+offset mineral banks with braced joints. Blue forms supported nested shoulders
+in eligible fen, using sheltered existing rocky hills as its dry fallback.
+Green uses tall woodland root fans and a separate low Steppe colony expression.
+The secondary Green record has no source ID and cannot own resin. Three primary
+journeys link the unchanged source IDs to the existing finite `lf_white_stag`,
+`lf_blue_boar` and `lf_green_moth`; the prior Red host remains separate. Existing
+habit, combat, reward and once-only death ownership paths serve these placements.
+
+The deterministic bounded substrate search runs before local landform and route
+composition. The `force_journeys.design_purpose` tuning entries explain each
+control: a 30 m local envelope, 26 m reveal approach, 6 m route/work clearances,
+3.6/3.8/0.85 m White/Blue/Green relief, 290 m primary and 440 m fallback search,
+65 m source separation and 4 m candidate stride. Existing LF host placement
+limits remain 170 m from spawn, 65–130 m from its source, 60 m between hosts and
+18 m encounter clearings. A workplace endpoint is an unoccupied dry stance with
+source interaction reach, not the solid source centre. Fallback use is recorded;
+these limits and generated descriptions are not evidence of universal traversal.
+
+Local native terrain remains editable through its real collision/picking owner.
+Shared LAND04 forms prepare during actual entry and validated Continue, then
+reuse those resources through ordinary chunk arrival and local edit refresh.
+Presentation reads current ground support and paid-build suppression. Source
+lots, claims and device ownership stay in the existing native ledgers; V12 uses
+its exact profile/seed identity and complete payloads. The ordinary campaign
+remains `legacy`, with no new biome, resource economy or laboratory progression.
+
+Actual appearance, controller use and focused verification belong in the LAND-04
+result handoff; this specification does not certify them or owner playtesting.
+The reported stutters/large hitches and separate elk-abundance request remain
+LAND-05 work, with no performance or global population change in this slice.
+
 ## LAND-03: adopted V11 Dry Steppe and ordinary acquisition
 
 **Worker implementation, 17 September 2026.** Fresh ordinary worlds select

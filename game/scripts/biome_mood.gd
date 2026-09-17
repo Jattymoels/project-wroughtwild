@@ -112,7 +112,7 @@ func sun_rotation() -> Vector3:
 	var arc := sin(t * PI)
 	var pitch := -(0.18 + 0.75 * arc)
 	var yaw := SUN_YAW + (t - 0.5) * 1.4
-	if terrain!=null and terrain.world_profile() in ["frontier_v10","frontier_v11"] and not terrain.map.get("scarwater",[]).is_empty():
+	if terrain!=null and terrain.world_profile() in ["frontier_v10","frontier_v11","frontier_v12"] and not terrain.map.get("scarwater",[]).is_empty():
 		var direction: Vector3=terrain.map.scarwater[0].direction
 		yaw=atan2(-direction.x,-direction.z)+1.12+(t-.5)*1.4
 	return Vector3(pitch, yaw, 0.0)

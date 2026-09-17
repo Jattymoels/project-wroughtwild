@@ -55,7 +55,7 @@ Config Config::load(const std::string& path) {
 }
 World::World(Config config, uint64_t seed, std::string worldProfile)
     : config_(std::move(config)), seed_(seed), worldProfile_(std::move(worldProfile)),
-      ledgerProfile_(worldProfile_ == "frontier_v11" ? worldProfile_ : profile) {
+      ledgerProfile_((worldProfile_ == "frontier_v11" || worldProfile_ == "frontier_v12") ? worldProfile_ : profile) {
     if (!supports(worldProfile_)) throw std::runtime_error("Unsupported leyline world.");
     for (const auto& s : config_.sources) form(s, states_[s.id]);
 }
@@ -65,9 +65,9 @@ const Source& World::source(const std::string& id) const {
 }
 const State& World::state(const std::string& id) const { return states_.at(id); }
 worldgen::SurfacePoint World::anchor(const Source& s, const worldgen::WorldMap& map) {
-    if (map.profileId == "frontier_v11") {
+    if ((map.profileId == "frontier_v11" || map.profileId == "frontier_v12")) {
         for (const auto& site : map.leylineSourceSites) if (site.sourceId == s.id) return site.at;
-        throw std::runtime_error("Missing LAND-03 source geography.");
+        throw std::runtime_error("Missing ordinary source geography.");
     }
     const auto& home = map.homeSites.at(static_cast<size_t>(s.homeIndex));
     const int x = home.x + static_cast<int>(std::round(s.offsetX / map.cellSize));
@@ -135,7 +135,7 @@ bool World::restore(const std::string& text, std::string* reason) {
         if (doc->get("profile").asString() != ledgerProfile_ || doc->get("seed").asString() != std::to_string(seed_)) throw std::runtime_error("Leyline world identity mismatch.");
         // New ordinary worlds begin with the complete four-source contract.
         // They cannot claim historical LF migration to mint missing owners.
-        if (worldProfile_ == "frontier_v11" && version != saveVersion) throw std::runtime_error("LAND-03 requires its complete source ledger.");
+        if ((worldProfile_ == "frontier_v11" || worldProfile_ == "frontier_v12") && version != saveVersion) throw std::runtime_error("Ordinary worlds require their complete source ledger.");
         const auto& records = doc->get("sources").asObject();
         // Published versions must contain their complete declared source set.
         // Only a source introduced later can receive initial stock on migration.

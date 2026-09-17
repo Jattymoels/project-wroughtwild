@@ -23,13 +23,13 @@ static func build(root: Node3D, ground: Terrain) -> void:
 		source.sim = ground._sim
 		source.terrain = ground
 		source.position = record.position
-		if ground.world_profile()=="frontier_v11":
+		if ground.world_profile() in ["frontier_v11","frontier_v12"]:
 			var supported_at := StrangeSites._ground(ground,source.position.x,source.position.z)
 			if supported_at.is_finite(): source.position = supported_at
 		group.add_child(source)
-		# V11 routes/host clues belong to FrontierSites so terrain/paid placement
+		# Ordinary routes/host clues belong to FrontierSites so terrain/paid placement
 		# can refresh their support; Red's authored landform is its own lead.
-		if ground.world_profile()=="frontier_v11": continue
+		if ground.world_profile() in ["frontier_v11","frontier_v12"]: continue
 		# Published LF clue geography remains unchanged.
 		var spawn := ground.surface_position(int(ground.map.spawn_x), int(ground.map.spawn_z))
 		var distance := spawn.distance_to(source.position)
@@ -137,13 +137,20 @@ func _open(message := "") -> void:
 	var detail := "Red Salt replaces the brick variant's fuel only. Forge Faint Ember: 96 salt + 4 iron ingots + 8 charcoal, immediately at a basic forge (Blacksmithing 1). Salt supplies no mechanical winding. A buffer costs 4 salt + 4 wood + 2 iron ingots; each stored heat costs 2 salt and fires one clay cycle. A feeder still needs its paid clay and winding." if s.material=="red_salt" else "A signal requests a trip; the cargo drum spends its own stored winding. Blue holds one request for three active nearby seconds, with Pause, Resume and Cancel controls."
 	if not String(s.rare_item).is_empty(): detail += " Each fixed lot has a %.1f%% bonus %s opportunity, independent of work or collection splits." % [float(s.rare_per_10000)/100.0,Hud.pretty(String(s.rare_item))]
 	rows.append({"text":uses.get(s.material,""),"button":"Material use","enabled":false,"details":detail})
-	if terrain.world_profile()=="living_frontier_wave3" or (terrain.world_profile()=="frontier_v11" and source_id=="red_home_margin"):
+	if terrain.world_profile() in ["living_frontier_wave3","frontier_v12"] or (terrain.world_profile()=="frontier_v11" and source_id=="red_home_margin"):
 		rows.append({"text":frontier_observation(),"button":"Field reading","enabled":false,"details":frontier_manufacture()})
 	if not ready: message = "Clear the host's workspace and restore its ground support to work or collect."
 	_panel_player.open_custom_panel(s.label,rows,message,"leyline:"+source_id)
 	refresh()
 
 func frontier_observation() -> String:
+	if terrain.world_profile()=="frontier_v12":
+		return {
+			"red_home_margin":"Red gathers and releases within swollen mineral seams. On the separate Steppe route, a scarred boar roots before planting its feet to release a circle of heat. Back away or interrupt it. This manual workplace needs no hunt.",
+			"white_home_margin":"White offsets mineral banks in one direction; roots brace the loaded joints and the seam stops at breaks. The separate observation route reaches a scarred stag: it grazes and flees disturbance. White connections carry requests; the receiver pays for its own work.",
+			"blue_home_margin":"Blue holds nested mineral layers inside the bank. Work from the dry stance beside the flakes. A separate clearing holds the scarred boar, which commits to a straight charge: move sideways or interrupt it. A paid delay retains one request, then passes it to a receiver that pays its own work.",
+			"green_home_margin":"Green splits at connected root junctions. Tall woodland fans and low Steppe colonies express the same branching force; genuinely dry gaps stop it. This is the single resin owner. The separate growth route reaches a moth that visits branches and flees. A paid junction sends requests to two independently paid receivers."
+		}.get(source_id,"")
 	if terrain.world_profile()=="frontier_v11":
 		return "Red gathers and releases within swollen mineral seams. On the separate Steppe route, a scarred boar roots before planting its feet to release a circle of heat. Observe safely, back away or interrupt it. This manual workplace needs no hunt."
 	return {

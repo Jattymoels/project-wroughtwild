@@ -1,0 +1,55 @@
+{
+  "matched_native_inputs": [
+    {
+      "path": "data/tuning/worldgen-frontier-v12.json",
+      "sha256": "a16f60b05fc7906770cefa5663b891183e0acd63750c0a54ab189132a673752e"
+    },
+    {
+      "path": "game/extensions/wroughtwild_sim/src/wroughtwild_sim.cpp",
+      "sha256": "8ddeb9f51bd136fea0d7843e4c7adc150affdd0b4498cef0b3e1726904e167d9"
+    },
+    {
+      "path": "sim/include/wroughtwild/leyline.h",
+      "sha256": "6f4f036fb62b8574842eb0b189b5d5a2b941baf65a3213cf5ba20c86626534ab"
+    },
+    {
+      "path": "sim/include/wroughtwild/tuning.h",
+      "sha256": "5669bf2f31e818981875b47f6c4870aef0d1351743e36d6c3b1f052729277d82"
+    },
+    {
+      "path": "sim/include/wroughtwild/worldgen.h",
+      "sha256": "7319327a000c3b6cd1a35c2a2f1ef6a883958b80aa28aa3ada9c499ca337bffd"
+    },
+    {
+      "path": "sim/src/contraptions.cpp",
+      "sha256": "edd7669d9c9fd1bc78fcedd5b2c714f301f9084176800f9266eb365a96cd6b5a"
+    },
+    {
+      "path": "sim/src/leyline.cpp",
+      "sha256": "36552778217dcf184024910fe3769b65b2887ec896b3b6d8dc59bf4cb49f7e6f"
+    },
+    {
+      "path": "sim/src/tuning.cpp",
+      "sha256": "e126af9cfac0577797725987e86a2740c3290400a25474e0ac3e5a7bd37a6b1e"
+    },
+    {
+      "path": "sim/src/worldgen_frontier_v12.inc",
+      "sha256": "3aad366db3f9c88025566bdb87ae1a4d4e30f7a8386567e7ad1fd35d728ee27f"
+    },
+    {
+      "path": "sim/src/worldgen_profiles.cpp",
+      "sha256": "87ea83731fb11ae1066433e31768caf608bd64ac74ed109b8d2c184b35673388"
+    },
+    {
+      "path": "tools/wroughtwild-land04/build-native.ps1",
+      "sha256": "f2113ba3e0cb65078004ff06bc03a9ca79997d90ca85148dfac74cc996016a1d"
+    },
+    {
+      "path": "tools/wroughtwild-land04/CMakeLists.txt",
+      "sha256": "eb3ba5e30c6141b4c7d5d2c3969e38c64b8fb72bb6d13fb215dd00746d149095"
+    }
+  ],
+  "dll_sha256": "2c9916bfc0ae30a6ad04b8f13da5546b95045bfd360087285b763d8979836561",
+  "installed_dll_matches": true,
+  "selected_art_matches": 6
+}

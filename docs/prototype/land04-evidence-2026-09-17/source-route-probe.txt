@@ -1,0 +1,5 @@
+journey_blue_source at=302,36,578 host=290,32,642 source_route=34 host_route=79
+journey_white_source at=734,48,558 host=802,54,556 source_route=32 host_route=79
+journey_green_source at=562,37,334 host=564,30,268 source_route=32 host_route=73
+journey_green_steppe at=390,38,410 host=0,0,0 source_route=27 host_route=0
+SOURCE_CLEAR_ROUTES 12 routes avoid all four occupied footprints
