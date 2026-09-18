@@ -479,3 +479,416 @@ Makefile with `-Werror` removed, and every built suite was run against
 `data/tuning`. No Godot binary was available here, so the 139 headless engine
 checks were not run and no live-play claims are made beyond the committed
 screenshots and timing reports.
+
+---
+
+# Part 2 — Owner responses and follow-up, 18 September 2026
+
+The owner read Part 1 and replied with four points: (1) what Jolt adds,
+whether it is worth it and how big the rewrite is; (2) combat mechanics feel
+fine after tuning, but the experience is empty: you press buttons and things
+happen blindly, with no feedback to anything pressed; (3) finite is fine,
+provided there is enough biome diversity, transport and non-boring generation
+that it does not become a slog; (4) building and the new biomes feel good, but
+many small poor assets pull the look down and make the larger barren biomes
+feel worse. This part answers each. Section 2.5 replaces the recommended order
+in Part 1 §8. Everything remains a proposal until the owner selects it.
+
+## 2.1 Jolt: what it adds, what it costs
+
+**What it is in Godot 4.5.** Since Godot 4.4 the Jolt Physics library ships
+inside the engine as a module. It is selected with one project setting,
+`physics/3d/physics_engine`, from its default GodotPhysics3D to "Jolt Physics".
+The node API is unchanged: `CharacterBody3D`, `StaticBody3D`, shapes,
+`move_and_slide`, `test_move`, `intersect_ray`, `intersect_shape` and
+`ShapeCast3D` are all server-agnostic. So this is not a rewrite. No script has
+to be restructured.
+
+**What this game uses** (grep over `game/`, tests excluded): `move_and_slide`
+in 10 files, `test_move` 16 uses (the step-up at `player.gd:723-764` and the
+mob hop), `intersect_ray` 78 uses in 27 files, `intersect_shape` 26 uses in 8
+files, `cast_motion` 7, `ShapeCast3D` 8, one `ConcavePolygonShape3D` per
+terrain chunk with `backface_collision = true` (`terrain.gd:418`), box,
+capsule, sphere and convex shapes, and one cosmetic `RigidBody3D`
+(`resource_node.gd:549`). There is no `Area3D`, no joint, no `SoftBody3D`, no
+`WorldBoundaryShape3D` and no `HeightMapShape3D`. That is close to the
+smallest physics surface a 3D game can have, and the Jolt module supports all
+of it. Checked in the 4.5-stable module source: `backface_collision` is read
+and applied as a double-sided mesh shape
+(`modules/jolt_physics/shapes/jolt_concave_polygon_shape_3d.cpp`), so the
+two-sided terrain contract survives.
+
+**What Jolt would add here.**
+
+1. Steadier movement on triangle-mesh terrain. Jolt's enhanced internal edge
+   removal is on by default for the simulation and for motion queries
+   (`physics/jolt_physics_3d/simulation/use_enhanced_internal_edge_removal`
+   and `.../motion_queries/use_enhanced_internal_edge_removal`, both default
+   true), and mesh shapes get an active-edge threshold (default 50°). These
+   suppress the ghost contacts that make GodotPhysics character bodies snag
+   and jitter on the internal edges of trimeshes. One limit: the check works
+   per body pair, so it helps inside a chunk; the seam between two chunk
+   bodies is a body-to-body edge and gets less help.
+2. Speed and headroom. Jolt's broadphase and mesh collision are faster, and
+   the budget grows with every placed piece (one static body each, 1,310
+   measured), chunk body, mob and query. Caveat: no report measures the
+   physics step itself; the documented hitches are GDScript ground-cover
+   construction and publication, which Jolt does not touch. Building a
+   chunk's trimesh (`set_faces`, timed at `terrain.gd:419-421`) stays
+   synchronous on the main thread under both engines.
+3. Real rigid bodies later. Point 3 of the owner's reply asks for transport.
+   Carts, cargo, falling trees and ragdolls are rigid-body and joint work,
+   where Jolt is far more stable and GodotPhysics is weakest. If any of that
+   is coming, switch before building it.
+
+**Costs and risks.**
+
+- Behaviour deltas. Floor detection on slopes, the 0.55 m step-up and its
+  `safe_margin` recovery, the mob hop and the swimming spring will all move
+  slightly. Jolt uses a convex collision margin
+  (`collisions/collision_margin_fraction`, default 0.08) and its own recovery
+  (`motion_queries/recovery_iterations` 4, `recovery_amount` 0.4). Budget a
+  day of retuning in `player.gd` and `enemy.gd`.
+- One code-level dependency. `terrain.gd:159-163` maps a ray hit to a voxel
+  cell through the hit's `face_index`. Under Jolt, `face_index` is only
+  filled when `physics/jolt_physics_3d/queries/enable_ray_cast_face_index` is
+  on, which stores per-triangle data on every mesh shape. Either enable it,
+  or rely on the position-and-normal fallback that `strike_world` already
+  has (`player.gd:948-950`); check digging, cracking and placement picking
+  either way.
+- Tests. Of the 139 headless checks, those that walk real routes and compare
+  positions or distances may need tolerance changes. That is re-baselining,
+  not a correctness risk.
+- Determinism. The Jolt integration's own README says it "is not able to
+  make such guarantees". Nothing is lost: combat determinism lives in the
+  C++ hit stream, and GodotPhysics never promised it either.
+- Body cap. `physics/jolt_physics_3d/limits/max_bodies` defaults to 10,240.
+  Per-piece static bodies plus chunk bodies could reach it in a very large
+  base; raise the setting, or merge piece collision per building region
+  (Part 1 §4).
+- Shape casts are more accurate under Jolt but cost scales with cast
+  distance. Projectile sweeps are short; fine.
+
+**Verdict.** Worth a one-day trial now, and a definite yes before any
+rigid-body transport work. It will not fix the current stutters. The trial:
+flip the setting, enable ray face indices, play the step-up, cave, lake and
+home routes, run the headless checks, keep whichever engine passes and note
+the deltas. Reverting is the same one line. Size: one line of configuration,
+a day of verification, up to a day of retuning.
+
+**Pair it with physics interpolation.** `physics/common/physics_interpolation
+= true` (3D support since Godot 4.4) removes the 60 Hz stepping of body and
+camera on 120 Hz and 144 Hz displays that Part 1 §4 noted. After any teleport
+(world entry, Continue, trial gates) call `reset_physics_interpolation()` on
+the player so the first frame does not smear. Also small: a setting plus a
+handful of calls.
+
+## 2.2 Combat: why it feels empty, and a feedback layer that leaves the numbers alone
+
+The owner's description matches the code exactly.
+
+**Diagnosis.**
+
+1. The hit happens on the frame of the press. `_cast` calls `_use_strike`
+   directly (`player_combat.gd:445`), which spends the cooldown, picks
+   targets, deals damage and shoves, all in one call (`:904-948`). The hand
+   swing is a separate cosmetic clock of 0.28 to 0.48 s
+   (`game/art/combat_feel.gd`, `first_person_look.gd`) that starts at the
+   same moment, so the swing decorates a hit that has already landed. There
+   is no anticipation, no moment of contact and nothing to time. This alone
+   produces "blind".
+2. Combat is silent. No combat script plays a sound: not
+   `player_combat.gd`, `enemy.gd`, `boss.gd`, `first_person_hands.gd`, the
+   skill effects or the projectiles. The only audio in the game is
+   footsteps, ambience, work and device cues (`environment_ambience.gd`,
+   `player_footsteps.gd`, `game/art/footstep_sound.gd`,
+   `interaction_sound.gd`, `strange_sound.gd`). Casting, hitting, killing,
+   whiffing, being hit and enemy windups make no sound. In first person,
+   sound carries at least half of perceived weight.
+3. Reactions are faint. An enemy hit is a 0.12 s white flash and a
+   sim-sized shove; death is `queue_free()` on the same frame
+   (`enemy.gd:1232-1258`) with no fall and no corpse unless the mob is an
+   elite with a burst. Being hit is a HUD red flash and a compass bearing.
+   The only camera-side response to anything is an 18 mm hand recoil over
+   90 ms (`impact_recoil` in `first_person_look.gd`).
+4. Nothing tells the player whether a press will land. The crosshair turns
+   red over an enemy and names it (`hud.gd:508`), but red means "looking
+   at", not "within reach of this skill". The strike then picks the nearest
+   enemy in front within reach, which may not be the one under the
+   crosshair.
+5. Cooldowns are text. Slots show "ready" or a countdown
+   (`action_bar.gd:86-92`). A press on cooldown is silently ignored; a skill
+   becoming ready makes no sound.
+6. A miss resolves into the world with no swing, sound or cost
+   (`player.gd:933-955`).
+
+**What exists to build on.** The `hit_landed(total, kills, types)` signal
+(`player_combat.gd:947`), `hit_taken` and `damage_bearing` signals;
+`Enemy.stagger` and `Enemy.shove` sized by the sim (`enemy.gd:472,492`);
+`Enemy.take_damage(flash)`; `FirstPersonHands.present_skill` with
+per-delivery profiles (strike, rend, sweep, reap, nova, arrow, frost, ember,
+drive) in `combat_feel.tres`; `SkillCastEffect`, `SkillBurst` and `PulseRing`
+meshes; the `InteractionSound.play(root, at, cue)` helper that synthesises WAV
+cues in code (`game/art/interaction_sound.gd:56,112`), so first-pass combat
+sounds need no asset files; `ResourceNode._play_harvest_punch` as an accepted
+example of a punchy per-hit response.
+
+**The plan.** Organised by the four moments of a press. Rule: nothing in
+`sim/` or `data/tuning/combat_realtime.json` changes; every item is
+presentation, matching the owner's "mechanics are fine" and the existing
+"Cosmetic only" header on `combat_feel.gd`.
+
+*Moment 0, before the press: can I hit?*
+
+- A reach-aware crosshair: evaluate the primary strike's
+  `_nearest_enemy_in_front(reach)` each frame (the enemies group is already
+  scanned) and show a distinct "in reach" state, with a bracket on the
+  target's name and a faint outline or tint on the enemy that would actually
+  be hit.
+- A ready ping when a cooldown completes; a dull clack and slot nudge on a
+  rejected press.
+
+About two days.
+
+*Moment 1, the press: anticipation.*
+
+- Let the swing cause the hit. Split `_use_strike` into `begin` (spend, lock
+  the target set, start the swing and its sound) and `land` at a fixed
+  fraction of the swing (for example 40 %, roughly 120 to 140 ms for a
+  0.34 s swing), where the existing selection, `deal` and `_space_control`
+  code runs. Confirm reach at `land` with a small tolerance so a target that
+  stepped away produces a whiff. Heavy Strike gets a longer wind; its
+  existing 1.2 s recovery then reads as heavy rather than slow.
+- Cast sounds per delivery profile, two or three variations each, first
+  synthesised through `InteractionSound`.
+
+Two to three days. Risk: headless tests that call `use_skill` and assert
+damage on the same frame need a `contact_fraction = 0` test override, which
+keeps them exact.
+
+*Moment 2, contact: weight.*
+
+- Hit-pause on the hands only: freeze the swing for two or three frames at
+  contact. Do not use `Engine.time_scale`; it would also freeze enemy clocks,
+  statuses and the day cycle.
+- A camera impulse, not a shake: 0.5 to 1° of pitch and roll with an 80 ms
+  return on a hit dealt, scaled by damage fraction; 1.5 to 2° along
+  `damage_bearing` on a hit taken. The landing dip at `player.gd:661`
+  ("weight without screen shake") is the model.
+- Impact sounds by damage type layered on a body thud, and a distinct kill
+  sound.
+- Enemy reaction: turn the paid shove into a short knock-back arc, a flinch
+  pose on procedural rigs (`game/art/creature_motion.gd`) and a flinch clip
+  on the image-to-3D rigs, and pooled hit motes coloured by damage type (one
+  `GPUParticles3D` per type).
+- Hit marker: scale with the total from `hit_landed`, colour by type, larger
+  on kills, with an optional damage-number toggle.
+- Status application (chill, ignite, bleed) gets a visible tick and a sound.
+  The owner wants statuses to feel reliable, and reliability is partly
+  legibility.
+
+Three to four days.
+
+*Moment 3, aftermath: consequence.*
+
+- Death: hold the body one to two seconds (a tip-over tween for procedural
+  rigs; real ragdolls become practical after Jolt), then fade; loot pops
+  into the existing pickup magnet.
+- Whiff: swing sound plus air swish and hand overshoot; no cooldown refund,
+  so the sim stays untouched.
+- Taking damage: a directional vignette pulse along the compass bearing, a
+  hurt grunt, a low-life heartbeat layer; the Harry slow shows as heavy
+  footsteps.
+
+Two to three days.
+
+Total: eight to twelve working days for the whole layer. Moments 0 and 2
+alone remove most of "empty" in four to six days. Asset needs: about 25 short
+sounds (synthesised first) and four particle materials. First-person melee
+references worth studying: Dark Messiah of Might and Magic for weight,
+Enshrouded for wind-up and impact frames, Hades for hit-sound and marker
+cadence.
+
+## 2.3 A bigger finite world that is not a slog
+
+**What exists.** Seven biomes chosen by height and moisture
+(`biomeFor(table, cell.height, moisture)` in
+`sim/src/worldgen_frontier_v6_base.inc`), with the spawn biome forced inside
+a 150 m radius; three authored regions, the Scarwater basin, the Dry Steppe
+patch, one lake and four home cores. There are no rivers: the word does not
+occur anywhere in `sim/src`. Mountains are a cragginess field plus the rim.
+Walking is 5 m/s with no sprint, so the current world is about 3.5 minutes
+edge to edge and a 4 km world would be 13 minutes. Hauling is 240 units per
+material family.
+
+One tuning fact explains part of the barren feeling: Dry Steppe's node table
+is identical to Meadow's (`tree 0.009, boulder 0.008, stone_seam 0.004,
+pack_density 0.0006`, `data/tuning/worldgen-frontier-v13.json`). The Steppe is
+a Meadow with less grass and a different colour, plus its authored Red hosts.
+Ember Wastes is the only biome with real hostile density (0.013 with patrols)
+and Rocky Hills the only one with dense stone.
+
+**A. Structure the land so it reads.** In order of value per line of code:
+
+1. Drainage. Compute flow accumulation over the height field and carve
+   rivers, streams and lake chains. Rivers give direction, mark biome
+   boundaries, cut valleys that are natural routes, and become waterways
+   later. This is the largest single "non-boring" gain available and it is
+   entirely absent.
+2. Ridge lines and passes. The cragginess field already exists; shape it
+   into continuous ridges with deliberate gaps so travel has route choice
+   and vistas.
+3. Biome placement by the owner's proposed weighted adjacency on a coarse
+   grid (about 128 m cells), constrained by height, moisture, temperature
+   and river distance, with uninfluenced recovered ground as an explicit
+   member of the distribution.
+4. A point-of-interest budget per square kilometre (ruins, impacts, hosts,
+   vistas, shelters), placed by Poisson-disc sampling, with one rule: from
+   every home core at least one ambition is visible.
+5. Tall unique silhouettes (giant host trees, meteor spires) visible over
+   500 m to navigate by.
+
+**B. Biome diversity that is content, not tint.** Each biome needs its own
+node table, ground cover set, one or two creatures, one resource and a
+reason to go. First cheap step: give Dry Steppe its own table (stone seams
+and quarry layers, dry snags, husk and bone finds, ram and tortoise packs).
+That is a numbers-only tuning change.
+
+**C. Transport as earned capability.** The spec already lists carts and
+roads, boats, tracks, portals and gliding (`docs/systems/world-generation.md`,
+"Travel progression") and asks that transport preserve the value of
+discovering and connecting places. Tying it to the four forces fits the
+premise and the owner's earned-extractor pattern:
+
+- Tier 0: a travel sprint (about 7 m/s) that drops when a hostile is within
+  aggro range, so "position is the defence" stays intact in combat. The
+  cheapest slog reduction available.
+- Tier 1: roads and a hand cart. Roads are built from bulk stone, which gives
+  the owner's stone-throughput problem a demand sink; the cart raises the
+  hauling cap several times on road.
+- Tier 2: a tamed Valley Elk as pack animal. Elk are already everywhere and
+  the owner wants fewer ambient ones; give the survivors a use.
+- Tier 3, force based: White impulse gates that launch between discovered
+  White sources (fast travel that must be found and connected); Green root
+  bridges across fissures and rivers; Blue stasis crates that carry more
+  finite finds without loss; Red powered carts or rails toward automation.
+- Boats on rivers and the lake once rivers exist. DESIGN excludes boats "in
+  this slice" only.
+
+**D. Engineering prerequisites for 2 km** (from Part 1 §3): a new profile
+without the extent assertion, after pruning old profiles; keep blocks native
+and expose column queries instead of copying 96 MiB three times; run the
+existing centre-anchored composition per region tile with its own anchor;
+parallelise the floods; replace the whole-map horizon with a clipmap; save
+resource records as deltas; an entry-time budget of ten seconds. A dense 2 km
+field is 384 MiB native only; 4 km is 1.5 GiB and needs column compression or
+on-demand generation from the pure noise. Recommend 2 × 2 km as the next
+world, 4 km only after on-demand columns.
+
+**E. Order.** Rivers, biome tables and the Steppe fix first (about a week,
+generator and tuning, testable in `tests/sim`); then sprint, roads and cart
+(one to two weeks); then the 2 km profile (two to three weeks); then force
+transport tiers as content waves.
+
+## 2.4 Look and feel: cull the small assets, fill the barren biomes
+
+**Register.** `external-audit-evidence-2026-09-18/asset-register.csv` lists
+every runtime mesh under `game/` (tests and experiments excluded): 382
+meshes, 4.34 million unique triangles, 767 MB on disk, with triangle counts,
+texture presence, vertex colour, rigging and animation counts per file.
+
+| Kit folder | Meshes | Triangles | Textured | Flat colour | Note |
+| --- | --- | --- | --- | --- | --- |
+| `assets/authored` | 117 | 1,071,067 | 54 | 63 | creatures (21 rigged), cataclysm ruins, strange fixtures and finds |
+| `c1`, `c3` | 21 | 1,188,232 | 16 | 5 | bog oak and resinheart trees at 219,000 triangles each at LOD0 |
+| `r1` | 6 | 462,003 | 6 | 0 | pines and broadleaf at 98,000 to 131,000 at LOD1 |
+| `land02b` | 4 | 274,142 | 2 | 2 | gallery column 146,640 and arch 122,088 |
+| `c5` | 30 | 179,236 | 0 | 30 | ore veins, all 5,974 to 5,976 triangles: one generator, several colours |
+| `land02` to `land05` | 28 | 139,944 | 0 | 28 | force hosts, ribbons, fans, strata |
+| `rf02`, `rf06b`, `rf07`, `rf08` | 12 | 29,173 | 0 | 12 | reclaimed-frontier plants and shingle |
+| everything else | 164 | 992,148 | mixed | mixed | building materials, stations, devices, boulders, grass |
+
+Three things stand out.
+
+1. Four meshes hold more than a fifth of all triangles: the c1 and c3 tree
+   LOD0s at 219,000 each and the land02b column and arch at 146,000 and
+   122,000. Stylised games run trees at 2,000 to 20,000; these are ten to a
+   hundred times heavier, and visible LOD transitions are already recorded
+   in the ART-07 receipts. They are not the "crappy" ones, but they are the
+   ones that cost.
+2. The small flat-colour set is exactly what the owner is reacting to.
+   Twenty-six meshes under 400 triangles with no texture: the strange
+   fixtures (lamp 88, landing 88, bellows 104, lever 104, winch 156, basket
+   244, sorter 280), the rare finds (empty husk 40, arm 64, lanternheart 140,
+   thrumroot shell 266, low outcrop 272, vent case 342), four fire ember
+   meshes at 72, deadfall 158, stump 256, three strata pieces at 160, two
+   grass LODs and the root link. Most are gameplay objects seen close up,
+   and they sit in the same frame as a 219,000-triangle photo-textured tree.
+   The full list is in the CSV under `textured_materials = 0`.
+3. Two shading languages. 233 textured PBR meshes, mostly from the
+   image-to-3D pipeline, and 149 flat-colour meshes from scripted Blender
+   and procedural generators never sit together under one light.
+
+**Triage proposal.** Grade each CSV row keep, replace or remove:
+
+- Remove or hide: flat-colour props under about 300 triangles that carry no
+  gameplay (ember meshes, deadfall, stump variants, unused grass LODs). In a
+  barren biome, empty beats bad. Fewer, better objects.
+- Replace as one batch under one material rule: the 13 strange fixtures and
+  finds, the 30 ore veins, fires and stumps. One Blender session, one rule
+  (matte two- or three-tone vertex colour plus an emissive force seam,
+  consistent silhouette scale). These are the objects the player must find
+  and use, so they deserve the most consistency, not the least.
+- Decimate and re-LOD the four giants to about 30,000 at LOD0, 8,000 at LOD1
+  and 1,000 at LOD2 with cross-fade transitions, and atlas their textures.
+
+**Barren biome recipe.** What makes Valheim's Plains or Enshrouded's deserts
+feel vast rather than empty is not prop count:
+
+- the ground carries the detail: macro colour variation from two noise
+  octaves on albedo, a micro detail normal, and dense wind-blown grass where
+  the biome allows;
+- three to five large silhouettes per square kilometre (15 to 30 m rock
+  formations, dead giant trees, meteor spires) instead of three hundred
+  small props;
+- atmospheric depth: height fog and haze that read distance, a warm and cool
+  split, dust in the wind;
+- sky and light per biome (the `biome_mood` hooks exist), a real night sky,
+  cloud shadows;
+- sound: wind gusts and distant calls;
+- one visible reason to cross, on every horizon.
+
+For Dry Steppe specifically: its own node table (B above), tall grass tufts
+in wind, mesa banding using the strata pieces at landform scale rather than as
+160-triangle props, husk and bone finds, ram packs.
+
+The global lighting and post pass from Part 1 §5 stands and should land
+before any new kit is produced.
+
+## 2.5 Revised order, given the owner's answers
+
+1. Combat feedback, Moments 0 and 2 first (about a week). The owner's most
+   felt problem, and zero sim risk.
+2. Asset triage plus the barren-biome recipe, with Dry Steppe as the pilot
+   (about a week). No new kits until done.
+3. Rivers and per-biome node tables (about a week), verified in the headless
+   sim tests.
+4. Jolt and physics-interpolation trial (one day), before any rigid-body
+   transport work.
+5. Travel sprint, roads and cart; then the 2 km profile.
+
+The Part 1 engineering items (Linux build, CI, save-reset policy, document
+archive) remain. The save-reset decision gates item 3: it decides whether
+rivers can go into the shared base kernel or must be layered as yet another
+profile on top of the frozen ones.
+
+## How Part 2 was produced
+
+Jolt facts come from the Godot 4.5-stable engine source
+(`modules/jolt_physics/jolt_project_settings.cpp` and
+`shapes/jolt_concave_polygon_shape_3d.cpp`) and the Jolt integration README;
+the Godot documentation site was unreachable from this environment. Physics
+API usage, combat hooks, sound usage and tuning values were read directly from
+the repository. The asset register was generated by parsing every glTF and
+GLB under `game/` for accessor counts, materials, skins and animations; the
+script is not committed, the CSV is.
