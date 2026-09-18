@@ -1138,3 +1138,69 @@ Order still holds: shape fixes first, then content. After them, a content
 addition is safe when it is cooked, streams, and costs GPU or worker time;
 the owner can add mobs, density and biomes against the budgets in §3.7
 instead of against a feeling.
+
+## 3.9 How much of this, and when: sequence versus tandem
+
+The owner asked what share of ordinary game development goes to this kind of
+work, whether these problems are already solved in the field, and whether to
+focus on them first or run them alongside gameplay and combat work.
+
+**How studios treat it.** Performance is a budget owned continuously and
+worked in bursts, not a phase. Frame time, memory and load time are set as
+numbers early, checked at every milestone, and hardened in a dedicated pass
+before each one; the last stretch before shipping usually carries the
+heaviest optimisation. Day to day it is a small share of most people's time
+and a large share of a few people's. The distinction that matters is between
+architecture and optimisation. Architecture is where work runs: threads,
+streaming, data layout, what is cooked offline, what exists per tile versus
+per world. Optimisation is making a given piece faster. Architecture is
+decided in pre-production, before most content exists, because content
+inherits it; it is cheap then and very expensive later. Optimisation is the
+opposite: cheap late, wasteful early. Indie teams that defer the first kind
+usually pay with a late rewrite of streaming or world loading.
+
+**Are these problems solved?** Yes, as patterns. Chunk streaming, background
+loading behind a progress screen, cooked and compressed assets, LODs and
+instancing, spatial hashing, time-sliced AI, run-length voxel columns,
+flow-field navigation and per-seed world caches are all standard, with
+public references. Godot 4 adds known gaps with known workarounds: no 3D
+texture streaming, pipeline compilation on first use, GDScript speed, a
+single-threaded scene tree. So the risk is not research. It is a predictable
+number of weeks of plumbing, which is exactly the kind of work that is
+well-specified, testable with numbers, and suited to agent workers.
+
+**Which kind Wroughtwild has.** Almost entirely the first kind. Whole-world
+preparation at entry, hot paths in main-thread script, a dense block field
+copied three times, a body per placed piece, every mob thinking every tick:
+these are shapes, not slow functions. The entry time growing from 6 s to 46 s
+as art and content were adopted is the shape taxing content already. The
+project is at the last cheap moment for architecture: the vision calls for
+adding content at scale, and every addition made before the shape changes
+either inherits the tax or gets redone.
+
+**Recommendation: a bounded shape sprint now, in tandem with combat feel,
+then a budget discipline.**
+
+1. A shape sprint of about two to three weeks covering the entry list and
+   the first two hitch items in §3.6: timing table, loading screen,
+   per-tile art and site preparation, cover construction in the extension,
+   texture import pass, world cache. Architectural, number-checked,
+   agent-suited.
+2. In parallel, the combat feedback layer from Part 2 §2.2. It touches
+   `player_combat.gd`, `first_person_hands.gd`, `hud.gd` and enemy
+   presentation, none of which the shape sprint touches, and it is the work
+   that most needs the owner's judgement. Different files, different
+   workers, same weeks.
+3. Not in tandem: more mobs, denser cover, new biomes, new kits or the 2 km
+   world before the sprint lands. Each would be paid at entry and in
+   main-thread script today and re-plumbed per tile afterwards.
+4. After the sprint, performance becomes a budget, not a project: one
+   standing benchmark route (the seed 77 outlook walk), entry time and frame
+   percentiles recorded at each integration, the §3.7 numbers as the gate,
+   and one hardening week before each owner playtest milestone. Roughly a
+   tenth of effort thereafter, concentrated rather than spread.
+
+The owner's scarce resource is their own playtest hours and design
+judgement, not agent time. Put the agents on the shape work, which is
+specified and measurable, and keep the owner on combat feel and progression,
+which are not.
