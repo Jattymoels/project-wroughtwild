@@ -1110,3 +1110,31 @@ pipeline compilation on first use, 4.4 ubershaders, 4.5 shader baker,
 pipeline cache under `user://`) is stated from engine knowledge and should be
 checked against the 4.5 documentation when acted on, since that site was
 unreachable from this environment.
+
+## 3.8 What the fixes unlock, and the next ceiling behind each
+
+The owner asked whether that level of optimisation allows more mobs, more
+density, more biome diversity, more generation amplitude, and later better
+combat visuals and interactions. Yes to all, with one caveat: each item has a
+different next ceiling once the current one is removed. Knowing the next
+ceiling is what turns hesitation into a budget.
+
+| Vision item | Current limiter | Removed by (3.6) | Next ceiling | What to do when it is reached |
+| --- | --- | --- | --- | --- |
+| Many more mobs | Every live mob runs its full state machine in `_physics_process` every tick (`enemy.gd:663`); quadratic group scans; a 60 live cap (`mob_packs.gd:29`) | Grid-local queries, time-sliced thinking | Skinned triangles: the new roster is 62,000 to 154,000 triangles per creature (porcupine 154,400; stone husk 109,998; three at 80,000; stag, shrieker, boar and wolf at 62,000 to 68,000), against 11,000 to 24,000 for the older mobs | Decimate creatures to about 8,000 to 20,000 with LODs and far imposters; far mobs move on the height field without physics; beyond a few hundred live, batch steering in the extension |
+| Density of cover, props and trees | Per-chunk GDScript construction (the measured worst frame) | Construction in the extension, one buffer upload per MultiMesh | GPU overdraw of alpha-tested foliage plus shadow passes; trees at 25,000 to 220,000 triangles each, one `StaticBody3D` per tree (`resource_node.gd:2`) | Distance fade and LOD on cover, no shadow casting for grass, trees decimated to 5,000 to 20,000, collision as a simple cylinder |
+| Biome diversity | Nothing at run time; each authored region adds whole-map floods at entry (19 today) | Per-tile composition | Texture and shader budget per kit (Part 3 §3.4) | Shared material rules and atlases per biome; a handful of parametrised shaders |
+| Generation amplitude | Vertical range is 96 cells: base 24 plus scale 28 plus crag 25 plus rim 24 is clamped at `depth - 2` (`v6_base.inc:175`); the dense field doubles in memory with depth | Not on the list: needs run-length or interval columns instead of the dense `uint8` field | Traversal and reachability: the step-up is 0.55 m and the floor limit 45°, so steep ground becomes wall, and the generator throws when homes, sites or supply routes are unreachable (`v6_opening.inc:62,104,123,169`) | Compose passes, switchbacks and ledges as part of amplitude, give mobs slope rules, and let the horizon LOD carry tall features seen from far away |
+| Combat visuals and interactions | Almost nothing; combat is silent and instant | Part 2 §2.2 | Pipeline variants from new effect shaders (first-use stutter); simultaneous ragdolls | Warm materials at load; cap ragdolls at about ten; particles and camera impulses are effectively free |
+
+Two items are not covered by the performance list and deserve their own
+work: amplitude is a voxel-representation and traversal problem, and mobs in
+the hundreds are a creature-mesh and time-slicing problem before they are an
+AI problem. Everything else in the vision becomes GPU work once the main
+thread stops doing it, and the GPU is the part of the machine that currently
+sits idle.
+
+Order still holds: shape fixes first, then content. After them, a content
+addition is safe when it is cooked, streams, and costs GPU or worker time;
+the owner can add mobs, density and biomes against the budgets in §3.7
+instead of against a feeling.
